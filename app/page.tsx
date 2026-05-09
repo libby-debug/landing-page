@@ -1,65 +1,109 @@
-import Image from "next/image";
+const features = [
+  "Visual Concept Comparisons",
+  "BCBA-Style Practice Questions",
+  "Mastery Tracking",
+  "Graph & Data Interpretation",
+];
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+    <main className="min-h-screen bg-white text-slate-950">
+      <section className="relative overflow-hidden bg-[radial-gradient(circle_at_top_left,#dbeafe,transparent_35%),radial-gradient(circle_at_top_right,#fce7f3,transparent_35%),linear-gradient(135deg,#ffffff,#f8fbff)]">
+        <div className="absolute left-[-120px] top-[-120px] h-80 w-80 rounded-full bg-blue-500/20 blur-3xl" />
+        <div className="absolute right-[-120px] top-20 h-96 w-96 rounded-full bg-pink-500/20 blur-3xl" />
+        <div className="absolute bottom-[-120px] left-1/3 h-80 w-80 rounded-full bg-purple-500/20 blur-3xl" />
+
+        <div className="relative mx-auto grid max-w-7xl gap-14 px-6 py-24 lg:grid-cols-2 lg:items-center lg:px-12">
+          <div>
+            <img
+              src="/aba-mastered-logo.png"
+              alt="ABA Mastered"
+              className="mb-10 h-28 w-auto"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+            <div className="mb-6 inline-flex rounded-full border border-purple-200 bg-white/80 px-5 py-2 text-sm font-bold text-purple-700 shadow-sm backdrop-blur">
+              Stop memorizing. Start understanding.
+            </div>
+
+            <h1 className="text-6xl font-black tracking-tight sm:text-7xl">
+              Master ABA
+              <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-pink-500 bg-clip-text text-transparent">
+                visually.
+              </span>
+            </h1>
+
+            <p className="mt-8 max-w-2xl text-xl leading-9 text-slate-600">
+              ABA Mastered helps BCBA candidates learn, comprehend, and
+              understand Applied Behavior Analysis concepts and principles to
+              help you pass the BCBA exam.
+            </p>
+
+            <div className="mt-10 flex flex-wrap gap-4">
+              <button className="rounded-2xl bg-gradient-to-r from-blue-600 via-purple-600 to-pink-500 px-8 py-4 text-lg font-bold text-white shadow-xl shadow-purple-200 transition hover:-translate-y-1">
+                Start Learning
+              </button>
+
+              <button className="rounded-2xl border border-slate-200 bg-white px-8 py-4 text-lg font-bold text-slate-800 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+                Explore Features
+              </button>
+            </div>
+          </div>
+
+          <div className="rounded-[2rem] border border-white bg-white/80 p-5 shadow-2xl backdrop-blur">
+            <div className="rounded-[1.5rem] bg-gradient-to-br from-blue-600 via-purple-700 to-pink-500 p-8 text-white">
+              <p className="text-sm font-bold uppercase tracking-widest text-blue-100">
+                Study Dashboard
+              </p>
+
+              <h2 className="mt-4 text-4xl font-black">
+                Learn. Practice. Master.
+              </h2>
+
+              <div className="mt-8 space-y-4">
+                {features.map((feature) => (
+                  <div
+                    key={feature}
+                    className="rounded-2xl bg-white/15 p-5 text-lg font-bold backdrop-blur transition hover:bg-white/25"
+                  >
+                    {feature}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 py-20 lg:px-12">
+        <div className="rounded-[2rem] bg-white p-10 shadow-xl ring-1 ring-slate-100">
+          <div className="text-center">
+            <h2 className="text-4xl font-black tracking-tight">
+              Built for real BCBA understanding
+            </h2>
+
+            <p className="mx-auto mt-5 max-w-3xl text-lg leading-8 text-slate-600">
+              Learn concepts visually, practice clinically, and track your
+              mastery across BCBA exam domains.
+            </p>
+          </div>
+
+          <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {features.map((feature) => (
+              <div
+                key={feature}
+                className="rounded-3xl border border-slate-100 bg-gradient-to-br from-white to-slate-50 p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
+              >
+                <h3 className="text-xl font-black">{feature}</h3>
+
+                <p className="mt-4 leading-7 text-slate-600">
+                  Build deep ABA comprehension with examples, visuals, and
+                  practice tools.
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }

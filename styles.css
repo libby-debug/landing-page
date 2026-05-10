@@ -25,6 +25,7 @@ html {
 body {
   margin: 0;
   min-width: 320px;
+  overflow-x: hidden;
   background: #fff;
   color: var(--slate-950);
   font-family:
@@ -442,9 +443,22 @@ input:focus {
   }
 }
 
+@media (max-width: 767px) {
+  .top-logo {
+    justify-content: center;
+    padding: 1rem 1rem 1.5rem;
+  }
+
+  .top-logo img {
+    width: min(82vw, 18rem);
+    transform: none;
+  }
+}
+
 @media (max-width: 420px) {
   .hero,
   .features,
+  .how-it-works,
   .mission,
   .waitlist {
     padding-inline: 1rem;

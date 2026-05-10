@@ -4,6 +4,8 @@ import type { ButtonHTMLAttributes, ReactNode } from "react";
 type PageShellProps = {
   children: ReactNode;
   maxWidth?: "5xl" | "6xl";
+  align?: "start" | "center";
+  className?: string;
 };
 
 const maxWidthClass = {
@@ -11,10 +13,37 @@ const maxWidthClass = {
   "6xl": "max-w-6xl",
 };
 
-export function PageShell({ children, maxWidth = "5xl" }: PageShellProps) {
+const alignClass = {
+  start: "",
+  center: "flex flex-col items-center text-center",
+};
+
+export const gradientTextClass =
+  "bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent";
+
+export const eyebrowClass =
+  "text-sm font-semibold uppercase tracking-wide text-blue-600";
+
+export const pageTitleClass =
+  "mt-2 text-5xl font-extrabold tracking-tight text-slate-950";
+
+export const leadClass =
+  "mt-4 max-w-3xl text-lg leading-relaxed text-slate-600";
+
+export const cardBaseClass =
+  "rounded-3xl border p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-xl";
+
+export function PageShell({
+  children,
+  maxWidth = "5xl",
+  align = "start",
+  className = "",
+}: PageShellProps) {
   return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 p-8">
-      <div className={`mx-auto ${maxWidthClass[maxWidth]}`}>
+    <main
+      className={`relative z-20 min-h-[calc(100vh-18rem)] bg-white px-8 pb-24 pt-8 ${className}`}
+    >
+      <div className={`mx-auto ${maxWidthClass[maxWidth]} ${alignClass[align]}`}>
         {children}
       </div>
     </main>
@@ -28,9 +57,7 @@ type CardProps = {
 
 export function Card({ children, className = "" }: CardProps) {
   return (
-    <section
-      className={`rounded-3xl border bg-white p-6 shadow-sm ${className}`}
-    >
+    <section className={`${cardBaseClass} bg-white ${className}`}>
       {children}
     </section>
   );
@@ -60,13 +87,16 @@ export function Notice({ children, tone }: NoticeProps) {
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   size?: "compact" | "large";
-  variant?: "primary" | "secondary";
+  variant?: "primary" | "secondary" | "accent";
 };
 
 const buttonClass = {
   primary:
     "bg-slate-950 text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60",
-  secondary: "bg-blue-600 text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60",
+  secondary:
+    "border border-slate-200 bg-white text-slate-950 shadow-sm transition hover:border-slate-300 hover:shadow-md disabled:cursor-not-allowed disabled:opacity-60",
+  accent:
+    "bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white shadow-sm transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60",
 };
 
 export function Button({
@@ -94,7 +124,7 @@ type LinkButtonProps = {
   children: ReactNode;
   className?: string;
   size?: "compact" | "large";
-  variant?: "primary" | "secondary";
+  variant?: "primary" | "secondary" | "accent";
 };
 
 export function LinkButton({
@@ -162,7 +192,7 @@ export function ModuleCard({
 
   return (
     <div
-      className={`rounded-3xl border p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-xl ${card.bg} ${card.border}`}
+      className={`${cardBaseClass} ${card.bg} ${card.border}`}
     >
       <div className={`text-6xl font-extrabold tracking-tight ${card.color}`}>
         {term}
@@ -172,7 +202,7 @@ export function ModuleCard({
         {definition}
       </p>
 
-      <div className="mt-6">
+      <div className="mt-6 flex justify-center">
         <Link
           href={href}
           className="inline-block rounded-xl bg-slate-950 px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90"
@@ -198,20 +228,20 @@ export function ModuleLandingTemplate({
   cards,
 }: ModuleLandingTemplateProps) {
   return (
-    <PageShell maxWidth="6xl">
-      <p className="text-sm font-semibold uppercase tracking-wide text-blue-600">
+    <PageShell maxWidth="6xl" align="center">
+      <p className={eyebrowClass}>
         {eyebrow}
       </p>
 
-      <h1 className="mt-2 text-5xl font-extrabold tracking-tight text-slate-950">
+      <h1 className={pageTitleClass}>
         {title}
       </h1>
 
-      <p className="mt-4 max-w-3xl text-lg leading-relaxed text-slate-600">
+      <p className={leadClass}>
         {description}
       </p>
 
-      <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-10 grid w-full gap-6 md:grid-cols-2 lg:grid-cols-3">
         {cards.map((card) => (
           <ModuleCard key={card.term} {...card} />
         ))}
@@ -222,17 +252,13 @@ export function ModuleLandingTemplate({
 
 export function LoadingCard({ children }: { children: ReactNode }) {
   return (
-    <PageShell maxWidth="6xl">
-      <p className="text-sm font-semibold uppercase tracking-wide text-blue-600">
-        ABA Mastered
-      </p>
-
-      <h1 className="mt-2 text-5xl font-extrabold tracking-tight text-slate-950">
+    <PageShell maxWidth="6xl" align="center">
+      <h1 className={pageTitleClass}>
         Loading
       </h1>
 
-      <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        <div className="rounded-3xl border border-blue-200 bg-blue-50 p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-xl">
+      <div className="mt-10 grid w-full gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className={`${cardBaseClass} border-blue-200 bg-blue-50`}>
           <p className="text-base leading-relaxed text-slate-700">
             {children}
           </p>

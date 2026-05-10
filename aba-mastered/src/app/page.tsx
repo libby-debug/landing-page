@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { cardBaseClass, gradientTextClass } from "@/components/learning-ui";
 
 const cards = [
   {
@@ -34,27 +35,27 @@ const cards = [
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 p-8">
-      <div className="mx-auto max-w-6xl">
-        <p className="text-sm font-semibold uppercase tracking-wide text-blue-600">
-          ABA Mastered
-        </p>
-
+    <main className="relative -mt-44 flex min-h-[calc(100vh-18rem)] items-start justify-center bg-white px-8 pb-24 pt-0 sm:-mt-52 sm:pb-28">
+      <div className="relative z-20 mx-auto flex max-w-6xl flex-col items-center text-center">
         <h1 className="mt-2 text-5xl font-extrabold tracking-tight text-slate-950">
-          Stop memorizing. Start mastering.
+          <span>Stop memorizing. </span>
+          <span className={gradientTextClass}>
+            Start comprehending.
+          </span>
         </h1>
 
-        <p className="mt-4 max-w-3xl text-lg leading-relaxed text-slate-600">
-          ABA Mastered helps BCBA candidates learn, comprehend, and understand
-          Applied Behavior Analysis concepts through visual learning, concept
-          comparisons, quizzes, mastery tracking, and focused practice.
+        <p className="mx-auto mt-4 max-w-3xl text-lg leading-relaxed text-slate-600">
+          <strong>ABA Mastered</strong> helps BCBA candidates learn,
+          comprehend, and understand Applied Behavior Analysis concepts through
+          visual learning, concept comparisons, quizzes, mastery tracking, and
+          focused practice.
         </p>
 
-        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid w-full gap-6 md:grid-cols-2 lg:grid-cols-3">
           {cards.map((card) => (
             <div
               key={card.term}
-              className={`rounded-3xl border p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-xl ${card.bg} ${card.border}`}
+              className={`${cardBaseClass} ${card.bg} ${card.border}`}
             >
               <div
                 className={`text-6xl font-extrabold tracking-tight ${card.color}`}
@@ -66,7 +67,7 @@ export default function Home() {
                 {card.definition}
               </p>
 
-              <div className="mt-6">
+              <div className="mt-6 flex justify-center">
                 <Link
                   href={card.href}
                   className="inline-block rounded-xl bg-slate-950 px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90"

@@ -3,7 +3,15 @@
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState, type FormEvent } from "react";
-import { Button, Notice, PageShell } from "@/components/learning-ui";
+import {
+  Button,
+  Notice,
+  PageShell,
+  cardBaseClass,
+  eyebrowClass,
+  leadClass,
+  pageTitleClass,
+} from "@/components/learning-ui";
 import { isSupabaseConfigured, supabase } from "@/lib/supabase/client";
 
 type AuthFormProps = {
@@ -65,23 +73,25 @@ export function AuthForm({ mode }: AuthFormProps) {
   }
 
   return (
-    <PageShell maxWidth="6xl">
-      <p className="text-sm font-semibold uppercase tracking-wide text-blue-600">
+    <PageShell maxWidth="6xl" align="center">
+      <p className={eyebrowClass}>
         Visual BCBA exam prep
       </p>
 
-      <h1 className="mt-2 text-5xl font-extrabold tracking-tight text-slate-950">
+      <h1 className={pageTitleClass}>
         {isSignup ? "Start mastering ABA concepts" : "Welcome back"}
       </h1>
 
-      <p className="mt-4 max-w-3xl text-lg leading-relaxed text-slate-600">
+      <p className={leadClass}>
         {isSignup
           ? "Create an account to learn visually, compare confusing terms, practice with quizzes, and track mastery as you prepare for the BCBA exam."
           : "Log in to keep building comprehension, review weak areas, and continue your ABA Mastered study path."}
       </p>
 
-      <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        <div className="rounded-3xl border border-blue-200 bg-blue-50 p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-xl md:col-span-2">
+      <div className="mt-10 grid w-full gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div
+          className={`${cardBaseClass} border-blue-200 bg-blue-50 text-left md:col-span-2`}
+        >
           {status === "success" ? (
             <Notice tone="success">
               Check your email to confirm your account, then return here to log
@@ -91,7 +101,7 @@ export function AuthForm({ mode }: AuthFormProps) {
             <form className="grid gap-4" onSubmit={handleSubmit}>
               <div>
                 <label
-                  className="text-sm font-semibold uppercase tracking-wide text-blue-600"
+                  className={eyebrowClass}
                   htmlFor="email"
                 >
                   Email
@@ -110,7 +120,7 @@ export function AuthForm({ mode }: AuthFormProps) {
 
               <div>
                 <label
-                  className="text-sm font-semibold uppercase tracking-wide text-blue-600"
+                  className={eyebrowClass}
                   htmlFor="password"
                 >
                   Password

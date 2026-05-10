@@ -444,19 +444,13 @@ input:focus {
 }
 
 @media (max-width: 767px) {
-  body {
-    width: 100%;
-  }
-
   .top-logo {
-    display: block;
+    justify-content: center;
     padding: 1rem 1rem 1.75rem;
-    text-align: center;
   }
 
   .top-logo img {
-    width: min(82vw, 18rem);
-    margin: 0 auto;
+    width: min(76vw, 16rem);
     transform: none;
   }
 
@@ -472,20 +466,17 @@ input:focus {
   .section-inner,
   .mission-inner,
   .waitlist-card {
-    width: 100%;
-    max-width: 100%;
+    width: min(100%, 42rem);
     margin-inline: auto;
   }
 
-  .hero-copy,
-  .hero-text,
   .hero-actions {
-    width: 100%;
+    align-items: center;
   }
 
   .button,
   button {
-    width: 100%;
+    width: min(100%, 18rem);
   }
 }
 

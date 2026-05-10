@@ -33,6 +33,11 @@ body {
     sans-serif;
 }
 
+main {
+  width: 100%;
+  overflow: hidden;
+}
+
 img {
   display: block;
   max-width: 100%;
@@ -445,12 +450,13 @@ input:focus {
 
 @media (max-width: 767px) {
   .top-logo {
-    justify-content: center;
+    display: block;
     padding: 1rem 1rem 1.75rem;
   }
 
   .top-logo img {
     width: min(76vw, 16rem);
+    margin-inline: auto;
     transform: none;
   }
 
@@ -466,8 +472,17 @@ input:focus {
   .section-inner,
   .mission-inner,
   .waitlist-card {
-    width: min(100%, 42rem);
+    width: auto;
+    max-width: 24rem;
     margin-inline: auto;
+  }
+
+  .hero-copy,
+  h1,
+  .hero-text,
+  .section-copy {
+    margin-inline: auto;
+    text-align: center;
   }
 
   .hero-actions {
@@ -477,6 +492,7 @@ input:focus {
   .button,
   button {
     width: min(100%, 18rem);
+    margin-inline: auto;
   }
 }
 

@@ -2,17 +2,18 @@ import Link from "next/link";
 
 const cards = [
   {
-    term: "Start",
-    definition: "Create an ABA Mastered account.",
+    term: "Learn",
+    definition: "Build real comprehension with visual ABA concept breakdowns.",
     href: "/signup",
     color: "text-blue-600",
     bg: "bg-blue-50",
     border: "border-blue-200",
-    action: "Create Account",
+    action: "Start Learning",
   },
   {
-    term: "Login",
-    definition: "Return to your protected dashboard.",
+    term: "Compare",
+    definition:
+      "Discriminate confusing terms like DRO vs. DRA without rote memorization.",
     href: "/login",
     color: "text-purple-600",
     bg: "bg-purple-50",
@@ -20,8 +21,9 @@ const cards = [
     action: "Log In",
   },
   {
-    term: "Study",
-    definition: "Continue session planning and mastery tracking.",
+    term: "Master",
+    definition:
+      "Track practice, quizzes, and weak areas as you prepare for the BCBA exam.",
     href: "/dashboard",
     color: "text-green-600",
     bg: "bg-green-50",
@@ -39,12 +41,13 @@ export default function Home() {
         </p>
 
         <h1 className="mt-2 text-5xl font-extrabold tracking-tight text-slate-950">
-          Clinical clarity for busy ABA teams
+          Stop memorizing. Start mastering.
         </h1>
 
         <p className="mt-4 max-w-3xl text-lg leading-relaxed text-slate-600">
-          Plan sessions, protect progress data, and keep your day moving with
-          one calm workspace built for behavior analysis workflows.
+          ABA Mastered helps BCBA candidates learn, comprehend, and understand
+          Applied Behavior Analysis concepts through visual learning, concept
+          comparisons, quizzes, mastery tracking, and focused practice.
         </p>
 
         <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">

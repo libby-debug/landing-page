@@ -67,17 +67,17 @@ export function AuthForm({ mode }: AuthFormProps) {
   return (
     <PageShell maxWidth="6xl">
       <p className="text-sm font-semibold uppercase tracking-wide text-blue-600">
-        Secure practice portal
+        Visual BCBA exam prep
       </p>
 
       <h1 className="mt-2 text-5xl font-extrabold tracking-tight text-slate-950">
-        {isSignup ? "Create your ABA Mastered account" : "Welcome back"}
+        {isSignup ? "Start mastering ABA concepts" : "Welcome back"}
       </h1>
 
       <p className="mt-4 max-w-3xl text-lg leading-relaxed text-slate-600">
         {isSignup
-          ? "Start tracking learning plans, sessions, and progress from one focused workspace."
-          : "Log in to continue your client-ready session planning and progress tracking."}
+          ? "Create an account to learn visually, compare confusing terms, practice with quizzes, and track mastery as you prepare for the BCBA exam."
+          : "Log in to keep building comprehension, review weak areas, and continue your ABA Mastered study path."}
       </p>
 
       <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">

@@ -2,14 +2,14 @@ import { Suspense } from "react";
 import { AuthForm } from "@/components/auth-form";
 import { LoadingCard } from "@/components/learning-ui";
 
-export default function LoginPage() {
+export default function SignupPage() {
   return (
     <Suspense fallback={<AuthFallback />}>
-      <AuthForm mode="login" />
+      <AuthForm mode="signup" />
     </Suspense>
   );
 }
 
 function AuthFallback() {
-  return <LoadingCard>Loading login...</LoadingCard>;
+  return <LoadingCard>Loading signup...</LoadingCard>;
 }

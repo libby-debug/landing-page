@@ -465,7 +465,7 @@ input:focus {
   .how-it-works,
   .mission,
   .waitlist {
-    padding-inline: 1rem;
+    padding-inline: 0.875rem;
   }
 
   .hero-inner,
@@ -473,7 +473,7 @@ input:focus {
   .mission-inner,
   .waitlist-card {
     width: auto;
-    max-width: 24rem;
+    max-width: 22rem;
     margin-inline: auto;
   }
 
@@ -491,8 +491,13 @@ input:focus {
 
   .button,
   button {
-    width: min(100%, 18rem);
+    width: min(100%, 17rem);
     margin-inline: auto;
+  }
+
+  .feature-card,
+  .waitlist-card {
+    padding-inline: 1.25rem;
   }
 }
 

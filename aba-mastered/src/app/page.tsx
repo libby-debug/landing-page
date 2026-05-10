@@ -4,22 +4,23 @@ import { cardBaseClass, gradientTextClass } from "@/components/learning-ui";
 const cards = [
   {
     term: "Learn",
-    definition: "Build real comprehension with visual ABA concept breakdowns.",
+    definition:
+      "Build your ABA vocabulary and understand the material with visual concept breakdowns.",
     href: "/signup",
     color: "text-blue-600",
     bg: "bg-blue-50",
     border: "border-blue-200",
-    action: "Start Learning",
+    action: "Sign up",
   },
   {
     term: "Compare",
     definition:
-      "Discriminate confusing terms like DRO vs. DRA without rote memorization.",
-    href: "/login",
+      "Discriminate between confusing terms like DRO vs. DRA without rote memorization.",
+    href: "/how-it-works",
     color: "text-purple-600",
     bg: "bg-purple-50",
     border: "border-purple-200",
-    action: "Log In",
+    action: "How it works",
   },
   {
     term: "Master",

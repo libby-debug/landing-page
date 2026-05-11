@@ -84,36 +84,16 @@ export default function DifferentialReinforcementModulePage() {
           Start with a visual comparison
         </h2>
 
-        <div className="mx-auto mt-6 grid max-w-5xl justify-center gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {differentialReinforcementProcedures.map((procedure) => (
-            <article
-              key={procedure.abbreviation}
-              className={`${cardBaseClass} ${procedure.border} ${procedure.bg} ${getOverviewCardClass(procedure.slug)}`}
-            >
-              <div
-                className={`text-5xl font-extrabold tracking-tight ${procedure.color}`}
-              >
-                {procedure.abbreviation}
-              </div>
-
-              <h3 className="mt-4 text-xl font-extrabold tracking-tight text-slate-950">
-                {procedure.name}
-              </h3>
-
-              <p className="mt-4 text-base leading-relaxed text-slate-700">
-                {procedure.rule}
-              </p>
-
-              <div className="mt-6 flex justify-center">
-                <Link
-                  href={getStepHref(procedure.slug, "visual-comparison")}
-                  className="inline-block rounded-xl bg-slate-950 px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90"
-                >
-                  Start Lesson
-                </Link>
-              </div>
-            </article>
-          ))}
+        <div className="mt-10 grid gap-6 justify-items-center md:grid-cols-3">
+          {getOverviewProcedures(["dra", "dro", "dri", "drl", "drh"]).map(
+            (procedure) => (
+              <ProcedureCard
+                key={procedure.slug}
+                procedure={procedure}
+                className={getOverviewPlacementClass(procedure.slug)}
+              />
+            ),
+          )}
         </div>
       </section>
 
@@ -183,10 +163,64 @@ export default function DifferentialReinforcementModulePage() {
   );
 }
 
-function getOverviewCardClass(slug: string) {
-  if (slug === "drh") {
-    return "lg:col-start-2 lg:col-span-2";
-  }
+function ProcedureCard({
+  procedure,
+  className = "",
+}: {
+  procedure: (typeof differentialReinforcementProcedures)[number];
+  className?: string;
+}) {
+  return (
+    <article
+      className={`${cardBaseClass} ${procedure.border} ${procedure.bg} ${className} mx-auto flex h-full w-full max-w-sm flex-col items-center text-center`}
+    >
+      <div
+        className={`text-5xl font-extrabold tracking-tight ${procedure.color}`}
+      >
+        {procedure.abbreviation}
+      </div>
 
-  return "lg:col-span-2";
+      <h3 className="mt-4 text-xl font-extrabold tracking-tight text-slate-950">
+        {procedure.name}
+      </h3>
+
+      <p className="mt-4 text-base leading-relaxed text-slate-700">
+        {procedure.rule}
+      </p>
+
+      <div className="mt-auto flex justify-center pt-6">
+        <Link
+          href={getStepHref(procedure.slug, "visual-comparison")}
+          className="inline-block rounded-xl bg-slate-950 px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90"
+        >
+          Start Lesson
+        </Link>
+      </div>
+    </article>
+  );
+}
+
+function getOverviewPlacementClass(slug: string) {
+  const placement = {
+    dra: "md:col-start-1 md:row-start-1",
+    dro: "md:col-start-3 md:row-start-1",
+    dri: "md:col-start-1 md:row-start-2",
+    drl: "md:col-start-3 md:row-start-2",
+    drh: "md:col-start-2 md:row-start-3",
+  };
+
+  return placement[slug as keyof typeof placement] ?? "";
+}
+
+function getOverviewProcedures(slugs: string[]) {
+  return slugs
+    .map((slug) =>
+      differentialReinforcementProcedures.find(
+        (procedure) => procedure.slug === slug,
+      ),
+    )
+    .filter(
+      (procedure): procedure is (typeof differentialReinforcementProcedures)[number] =>
+        Boolean(procedure),
+    );
 }

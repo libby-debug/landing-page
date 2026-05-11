@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useState, type FormEvent } from "react";
+import { useState, type FormEvent, type ReactNode } from "react";
 import {
   Button,
   Notice,
@@ -16,9 +16,10 @@ import { isSupabaseConfigured, supabase } from "@/lib/supabase/client";
 
 type AuthFormProps = {
   mode: "login" | "signup";
+  afterSubmitAction?: ReactNode;
 };
 
-export function AuthForm({ mode }: AuthFormProps) {
+export function AuthForm({ mode, afterSubmitAction }: AuthFormProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [email, setEmail] = useState("");
@@ -159,6 +160,10 @@ export function AuthForm({ mode }: AuthFormProps) {
                     ? "Create account"
                     : "Log in"}
               </Button>
+
+              {afterSubmitAction ? (
+                <div className="text-center">{afterSubmitAction}</div>
+              ) : null}
             </form>
           )}
 

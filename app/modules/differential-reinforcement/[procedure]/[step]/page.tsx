@@ -266,8 +266,8 @@ function VisualComparison({
 
       <DiscriminationPractice
         questions={getVisualCheckQuestions(procedure, details)}
-        title="Unlock discrimination practice"
-        description="Pass this visual comparison check before moving to scenario discrimination."
+        title="Visual comparison check"
+        description="Pass this page check before moving forward."
         backHref={backHref}
         nextHref={nextHref}
         nextLabel={nextLabel}
@@ -335,7 +335,7 @@ function DiscriminationLesson({
 
       <DiscriminationPractice
         questions={practiceQuestions}
-        title="Unlock examples and nonexamples"
+        title="Discrimination practice check"
         description="Answer every discrimination item correctly. If one is incorrect, review the rationale and retry before advancing."
         backHref={backHref}
         nextHref={nextHref}
@@ -404,7 +404,7 @@ function ExamplesLesson({
 
       <DiscriminationPractice
         questions={getExampleCheckQuestions(procedure, details)}
-        title="Unlock common confusions"
+        title="Examples and nonexamples check"
         description="Classify examples and nonexamples correctly before moving to the confusion checks."
         backHref={backHref}
         nextHref={nextHref}
@@ -481,8 +481,8 @@ function CommonConfusionsLesson({
         <p className={eyebrowClass}>Mini checks</p>
         <DiscriminationPractice
           questions={miniChecks}
-          title="Unlock the mastery quiz"
-          description="Pass the common-confusion checks before attempting the final mastery quiz."
+          title="Common confusions check"
+          description="Pass the common-confusion checks before moving forward."
           backHref={backHref}
           nextHref={nextHref}
           nextLabel={nextLabel}

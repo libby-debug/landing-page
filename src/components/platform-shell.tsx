@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AuthProvider, useAuth } from "@/components/auth-provider";
+import { SiteHeader } from "@/components/site-header";
 
 const taskListSections = [
   { title: "Dashboard", href: "/dashboard", prominence: "primary" },
@@ -66,8 +67,10 @@ function PlatformShellContent({ children }: { children: React.ReactNode }) {
         className="pointer-events-none absolute inset-x-0 top-0 h-[48vh] bg-gradient-to-b from-white via-white/80 to-transparent"
       />
 
+      <SiteHeader />
+
       {showSidebar && (
-        <aside className="relative z-20 w-72 flex-col border-r bg-white p-6 shadow-sm lg:flex">
+        <aside className="relative z-20 w-72 flex-col border-r bg-white p-6 pt-28 shadow-sm lg:flex">
             <div className="pb-4">
               <Link href="/" aria-label="ABA Mastered home" className="inline-flex">
                 <img
@@ -111,14 +114,16 @@ function PlatformShellContent({ children }: { children: React.ReactNode }) {
             <div className="mt-auto rounded-3xl bg-blue-50 p-5">
               <p className="text-sm font-bold uppercase tracking-wide text-blue-600">Mastery Goal</p>
               <p className="mt-2 text-4xl font-extrabold text-blue-700">90%</p>
-              <p className="mt-2 text-sm text-slate-600">
+              <p className="mt-2 text-sm text-slate-950">
                 Lessons unlock through demonstrated mastery.
               </p>
             </div>
         </aside>
       )}
 
-      <main className="relative z-10 flex-1">{children}</main>
+      <main className="relative z-10 flex-1 pt-32 md:pt-36">
+        {children}
+      </main>
     </div>
   );
 }

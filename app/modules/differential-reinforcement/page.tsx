@@ -41,7 +41,7 @@ export default function DifferentialReinforcementModulePage() {
             {masteryThreshold}%
           </div>
 
-          <p className="mt-4 text-base leading-relaxed text-slate-700">
+          <p className="mt-4 text-base leading-relaxed text-slate-950">
             Mastery is reached when quiz and scenario performance is 90% or
             higher.
           </p>
@@ -56,7 +56,7 @@ export default function DifferentialReinforcementModulePage() {
             {lessonSteps.length}
           </div>
 
-          <p className="mt-4 text-base leading-relaxed text-slate-700">
+          <p className="mt-4 text-base leading-relaxed text-slate-950">
             Users move screen-by-screen before the mastery quiz appears.
           </p>
         </div>
@@ -70,7 +70,7 @@ export default function DifferentialReinforcementModulePage() {
             {differentialReinforcementProcedures.length}
           </div>
 
-          <p className="mt-4 text-base leading-relaxed text-slate-700">
+          <p className="mt-4 text-base leading-relaxed text-slate-950">
             DRA, DRO, DRI, DRL, and DRH are prepared for Supabase mastery
             tracking.
           </p>
@@ -106,13 +106,13 @@ export default function DifferentialReinforcementModulePage() {
               key={step.slug}
               className="rounded-2xl border border-slate-200 bg-slate-50 p-4"
             >
-              <p className="text-sm font-semibold uppercase tracking-wide text-slate-500">
+              <p className="text-sm font-semibold uppercase tracking-wide text-slate-950">
                 Step {index + 1}
               </p>
               <h3 className="mt-2 text-lg font-extrabold tracking-tight text-slate-950">
                 {step.title}
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-slate-600">
+              <p className="mt-2 text-sm leading-relaxed text-slate-950">
                 {step.description}
               </p>
             </div>
@@ -136,7 +136,7 @@ export default function DifferentialReinforcementModulePage() {
                   {confusion.title}
                 </h3>
 
-                <p className="mt-2 text-base leading-relaxed text-slate-700">
+                <p className="mt-2 text-base leading-relaxed text-slate-950">
                   {confusion.text}
                 </p>
               </div>
@@ -151,7 +151,7 @@ export default function DifferentialReinforcementModulePage() {
             {tcoAlignment.map((item) => (
               <div
                 key={item}
-                className="rounded-2xl border border-white/80 bg-white p-4 text-base font-semibold text-slate-700"
+                className="rounded-2xl border border-white/80 bg-white p-4 text-base font-semibold text-slate-950"
               >
                 {item}
               </div>
@@ -184,7 +184,7 @@ function ProcedureCard({
         {procedure.name}
       </h3>
 
-      <p className="mt-4 text-base leading-relaxed text-slate-700">
+      <p className="mt-4 text-base leading-relaxed text-slate-950">
         {procedure.rule}
       </p>
 

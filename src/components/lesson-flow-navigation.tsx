@@ -31,7 +31,7 @@ export function ProgressIndicator({
 
   return (
     <div className="w-full">
-      <div className="flex items-center justify-between text-sm font-semibold text-slate-600">
+      <div className="flex items-center justify-between text-sm font-semibold text-slate-950">
         <span>
           Step {current} of {total}
         </span>

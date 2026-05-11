@@ -51,7 +51,7 @@ export function DiscriminationPractice({
         <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-slate-950">
           {title}
         </h2>
-        <p className="mx-auto mt-3 max-w-3xl text-base leading-relaxed text-slate-700">
+        <p className="mx-auto mt-3 max-w-3xl text-base leading-relaxed text-slate-950">
           {description}
         </p>
       </div>
@@ -120,7 +120,7 @@ export function DiscriminationPractice({
                   >
                     {isCorrectSelection ? "Correct" : "Review before advancing"}
                   </p>
-                  <p className="mx-auto mt-2 max-w-3xl text-base leading-relaxed text-slate-700">
+                  <p className="mx-auto mt-2 max-w-3xl text-base leading-relaxed text-slate-950">
                     {question.rationale}
                   </p>
                   {!isCorrectSelection ? (

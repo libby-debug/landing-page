@@ -138,7 +138,7 @@ function DashboardContent() {
             and quizzes.
           </p>
 
-          <p className="mt-4 text-sm font-semibold text-slate-600">
+          <p className="mt-4 text-sm font-semibold text-slate-950">
             Signed in as {user?.email}
           </p>
         </div>
@@ -156,7 +156,7 @@ function DashboardContent() {
             {masteryThreshold}%
           </div>
 
-          <p className="mt-4 text-base leading-relaxed text-slate-700">
+          <p className="mt-4 text-base leading-relaxed text-slate-950">
             TCO 6 sections are marked mastered when progress reaches 90% or
             higher.
           </p>
@@ -171,7 +171,7 @@ function DashboardContent() {
             {masteredSections.length}
           </div>
 
-          <p className="mt-4 text-base leading-relaxed text-slate-700">
+          <p className="mt-4 text-base leading-relaxed text-slate-950">
             {masteredSections.length} of {tcoSections.length} TCO 6 sections
             currently meet the mastery criterion.
           </p>
@@ -186,7 +186,7 @@ function DashboardContent() {
             {averageProgress}%
           </div>
 
-          <p className="mt-4 text-base leading-relaxed text-slate-700">
+          <p className="mt-4 text-base leading-relaxed text-slate-950">
             Placeholder progress is ready to be replaced by Supabase progress
             tracking.
           </p>
@@ -202,7 +202,7 @@ function DashboardContent() {
               {continueSection.code}. {continueSection.title}
             </h2>
 
-            <p className="mt-3 max-w-3xl text-base leading-relaxed text-slate-600">
+            <p className="mt-3 max-w-3xl text-base leading-relaxed text-slate-950">
               Continue this TCO 6 section and move it toward the 90% mastery
               threshold.
             </p>
@@ -233,7 +233,7 @@ function DashboardContent() {
             </h2>
           </div>
 
-          <p className="text-sm font-semibold text-slate-600">
+          <p className="text-sm font-semibold text-slate-950">
             Mastery threshold: {masteryThreshold}%
           </p>
         </div>
@@ -266,7 +266,7 @@ function TcoSectionCard({ section }: { section: TcoSection }) {
               {section.code}. {section.title}
             </h3>
 
-            <p className="mt-2 text-base leading-relaxed text-slate-600">
+            <p className="mt-2 text-base leading-relaxed text-slate-950">
               Expand this section to prepare future subtopics, quizzes, and
               Supabase-backed progress tracking.
             </p>
@@ -278,7 +278,7 @@ function TcoSectionCard({ section }: { section: TcoSection }) {
 
       <div className="mt-6 grid gap-6 lg:grid-cols-[1.4fr_1fr]">
         <div>
-          <div className="flex items-center justify-center gap-4 text-sm font-semibold text-slate-600">
+          <div className="flex items-center justify-center gap-4 text-sm font-semibold text-slate-950">
             <span>Mastery progress</span>
             <span>{section.progress}%</span>
           </div>
@@ -350,7 +350,7 @@ function PlaceholderPanel({
 }) {
   return (
     <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-      <p className="text-sm font-semibold uppercase tracking-wide text-slate-500">
+      <p className="text-sm font-semibold uppercase tracking-wide text-slate-950">
         {label}
       </p>
 
@@ -358,7 +358,7 @@ function PlaceholderPanel({
         {value}
       </div>
 
-      <p className="mt-2 text-sm leading-relaxed text-slate-600">
+      <p className="mt-2 text-sm leading-relaxed text-slate-950">
         {description}
       </p>
     </div>

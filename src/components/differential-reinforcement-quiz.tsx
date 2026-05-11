@@ -158,7 +158,7 @@ export function DifferentialReinforcementQuiz({
                 <p className="text-sm font-semibold uppercase tracking-wide text-blue-600">
                   Rationale feedback
                 </p>
-                <p className="mt-2 text-base leading-relaxed text-slate-700">
+                <p className="mt-2 text-base leading-relaxed text-slate-950">
                   {question.rationale}
                 </p>
               </div>
@@ -204,7 +204,7 @@ export function DifferentialReinforcementQuiz({
           >
             {score}%
           </div>
-          <p className="mt-4 text-base leading-relaxed text-slate-700">
+          <p className="mt-4 text-base leading-relaxed text-slate-950">
             {correctCount} of {quizQuestions.length} correct.{" "}
             {mastered
               ? "Mastery threshold met."

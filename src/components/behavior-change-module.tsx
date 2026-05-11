@@ -255,7 +255,7 @@ export function BehaviorChangeModule({ module }: BehaviorChangeModuleProps) {
           >
             {masteryThreshold}%
           </div>
-          <p className="mt-4 text-base leading-relaxed text-slate-700">
+          <p className="mt-4 text-base leading-relaxed text-slate-950">
             Mastery is reached when quiz performance is 90% or higher.
           </p>
         </div>
@@ -267,7 +267,7 @@ export function BehaviorChangeModule({ module }: BehaviorChangeModuleProps) {
           <div className="mt-4 text-4xl font-extrabold tracking-tight text-purple-600">
             G
           </div>
-          <p className="mt-4 text-base leading-relaxed text-slate-700">
+          <p className="mt-4 text-base leading-relaxed text-slate-950">
             {module.tcoAlignment}
           </p>
         </div>
@@ -279,7 +279,7 @@ export function BehaviorChangeModule({ module }: BehaviorChangeModuleProps) {
           <div className="mt-4 text-6xl font-extrabold tracking-tight text-pink-600">
             {progressLoading ? "..." : getScoreText(savedScore?.score ?? null)}
           </div>
-          <p className="mt-4 text-base leading-relaxed text-slate-700">
+          <p className="mt-4 text-base leading-relaxed text-slate-950">
             {savedScore?.mastered
               ? "Mastery threshold met."
               : "Progress tracking is prepared for Supabase mastery scores."}
@@ -295,7 +295,7 @@ export function BehaviorChangeModule({ module }: BehaviorChangeModuleProps) {
           <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-slate-950">
             Master {module.previousTitle} to unlock {module.title}
           </h2>
-          <p className="mx-auto mt-4 max-w-3xl text-base leading-relaxed text-slate-700">
+          <p className="mx-auto mt-4 max-w-3xl text-base leading-relaxed text-slate-950">
             Reach 90% mastery in {module.previousTitle} before starting this
             module. Your saved {module.previousTitle} score is{" "}
             {progressLoading ? "loading" : getScoreText(previousScore?.score ?? null)}.
@@ -333,7 +333,7 @@ export function BehaviorChangeModule({ module }: BehaviorChangeModuleProps) {
                 >
                   {concept.label}
                 </h3>
-                <p className="mt-4 text-base leading-relaxed text-slate-700">
+                <p className="mt-4 text-base leading-relaxed text-slate-950">
                   {concept.text}
                 </p>
               </article>
@@ -356,7 +356,7 @@ export function BehaviorChangeModule({ module }: BehaviorChangeModuleProps) {
                 <h3 className="text-2xl font-extrabold tracking-tight text-slate-950">
                   {comparison.title}
                 </h3>
-                <p className="mt-4 text-base leading-relaxed text-slate-700">
+                <p className="mt-4 text-base leading-relaxed text-slate-950">
                   {comparison.description}
                 </p>
               </article>
@@ -380,7 +380,7 @@ export function BehaviorChangeModule({ module }: BehaviorChangeModuleProps) {
                 <p className="text-sm font-semibold uppercase tracking-wide text-green-600">
                   Example
                 </p>
-                <p className="mt-2 text-base leading-relaxed text-slate-700">
+                <p className="mt-2 text-base leading-relaxed text-slate-950">
                   {item.example}
                 </p>
               </div>
@@ -388,7 +388,7 @@ export function BehaviorChangeModule({ module }: BehaviorChangeModuleProps) {
                 <p className="text-sm font-semibold uppercase tracking-wide text-pink-600">
                   Nonexample
                 </p>
-                <p className="mt-2 text-base leading-relaxed text-slate-700">
+                <p className="mt-2 text-base leading-relaxed text-slate-950">
                   {item.nonexample}
                 </p>
               </div>
@@ -408,7 +408,7 @@ export function BehaviorChangeModule({ module }: BehaviorChangeModuleProps) {
               <h3 className="text-2xl font-extrabold tracking-tight text-slate-950">
                 {confusion.title}
               </h3>
-              <p className="mt-4 text-base leading-relaxed text-slate-700">
+              <p className="mt-4 text-base leading-relaxed text-slate-950">
                 {confusion.text}
               </p>
             </article>
@@ -466,7 +466,7 @@ export function BehaviorChangeModule({ module }: BehaviorChangeModuleProps) {
                   <p className="text-sm font-semibold uppercase tracking-wide text-blue-600">
                     Rationale feedback
                   </p>
-                  <p className="mt-2 text-base leading-relaxed text-slate-700">
+                  <p className="mt-2 text-base leading-relaxed text-slate-950">
                     {question.rationale}
                   </p>
                 </div>
@@ -509,7 +509,7 @@ export function BehaviorChangeModule({ module }: BehaviorChangeModuleProps) {
             >
               {getScoreText(currentScore)}
             </div>
-            <p className="mt-4 text-base leading-relaxed text-slate-700">
+            <p className="mt-4 text-base leading-relaxed text-slate-950">
               {correctCount} of {module.quiz.length} correct.{" "}
               {(currentScore ?? 0) >= masteryThreshold
                 ? "Mastery threshold met."

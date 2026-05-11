@@ -1,26 +1,50 @@
-import Image from "next/image";
 import Link from "next/link";
 
 export function SiteHeader() {
   return (
-    <header className="relative z-10 bg-[linear-gradient(to_bottom,#64748b_0%,#94a3b8_30%,#cbd5e1_55%,#f1f5f9_78%,#ffffff_100%)] shadow-sm shadow-slate-200/70 backdrop-blur">
-      <div className="mx-auto flex max-w-5xl items-center justify-center px-4 pb-10 pt-2 sm:px-6 sm:pb-12">
+    <header className="pointer-events-none absolute inset-x-0 top-0 z-30 px-4 pt-4 sm:px-6">
+      <div className="pointer-events-auto mx-auto flex w-full max-w-6xl flex-col gap-3 rounded-2xl border border-white/60 bg-white/70 px-4 py-3 shadow-sm backdrop-blur-md sm:flex-row sm:items-center sm:justify-between sm:px-5">
         <Link href="/" aria-label="ABA Mastered home" className="inline-flex">
-          <Image
-            src="/logo-for-aba-mastered.png"
-            alt="ABA Mastered logo"
-            width={1536}
-            height={1024}
-            priority
-            className="h-56 w-auto object-contain sm:h-64"
+          <img
+            src="/images/aba-mastered-header-icon.png"
+            alt="ABA Mastered"
+            className="h-14 w-14 object-contain"
           />
         </Link>
-      </div>
 
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 -bottom-12 h-12 bg-gradient-to-b from-white via-white/80 to-transparent"
-      />
+        <nav className="flex flex-wrap items-center gap-2 text-sm font-bold text-slate-800 sm:justify-end">
+          <Link
+            href="/"
+            className="rounded-xl px-3 py-2 transition hover:bg-white/80 hover:text-blue-700"
+          >
+            Main Page
+          </Link>
+          <Link
+            href="/how-it-works"
+            className="rounded-xl px-3 py-2 transition hover:bg-white/80 hover:text-blue-700"
+          >
+            How It Works
+          </Link>
+          <Link
+            href="/pricing"
+            className="rounded-xl px-3 py-2 transition hover:bg-white/80 hover:text-blue-700"
+          >
+            Pricing
+          </Link>
+          <Link
+            href="/login"
+            className="rounded-xl px-3 py-2 transition hover:bg-white/80 hover:text-blue-700"
+          >
+            Login
+          </Link>
+          <Link
+            href="/signup"
+            className="rounded-xl px-3 py-2 transition hover:bg-white/80 hover:text-blue-700"
+          >
+            Sign Up
+          </Link>
+        </nav>
+      </div>
     </header>
   );
 }

@@ -58,7 +58,7 @@ export default function LoginPage() {
             Welcome back
           </h1>
 
-          <p className="mt-3 text-sm font-semibold text-slate-600">
+          <p className="mt-3 text-sm font-semibold text-slate-950">
             Log in to continue your learning journey.
           </p>
 
@@ -95,12 +95,12 @@ export default function LoginPage() {
           </button>
 
           {message && (
-            <p className="mt-5 rounded-2xl bg-slate-50 p-4 font-semibold text-slate-700">
+            <p className="mt-5 rounded-2xl bg-slate-50 p-4 font-semibold text-slate-950">
               {message}
             </p>
           )}
 
-          <p className="mt-6 text-center font-semibold text-slate-700">
+          <p className="mt-6 text-center font-semibold text-slate-950">
             Don&rsquo;t have an account?{" "}
             <Link href="/signup" className="text-blue-600 hover:text-blue-700">
               Sign up

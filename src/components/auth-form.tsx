@@ -167,7 +167,7 @@ export function AuthForm({ mode, afterSubmitAction }: AuthFormProps) {
             </form>
           )}
 
-          <p className="mt-6 text-center text-slate-600">
+          <p className="mt-6 text-center text-slate-950">
             {isSignup ? "Already have an account?" : "New to ABA Mastered?"}{" "}
             <Link
               className="font-bold text-blue-700 hover:text-blue-800"

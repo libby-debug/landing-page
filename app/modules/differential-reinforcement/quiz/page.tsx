@@ -135,7 +135,7 @@ export default function DifferentialReinforcementQuizPage() {
           Differential Reinforcement
         </h1>
 
-        <p className="mt-4 max-w-3xl text-lg text-slate-700">
+        <p className="mt-4 max-w-3xl text-lg text-slate-950">
           Mixed practice across DRA, DRI, DRO, DRL, and DRH. Score 90% or higher
           to master this module.
         </p>
@@ -148,7 +148,7 @@ export default function DifferentialReinforcementQuizPage() {
                   <h2 className="text-2xl font-bold text-slate-950">
                     Mastery Check
                   </h2>
-                  <p className="mt-1 text-sm font-semibold text-slate-500">
+                  <p className="mt-1 text-sm font-semibold text-slate-950">
                     Question {current + 1} of {questions.length}
                   </p>
                 </div>
@@ -167,7 +167,7 @@ export default function DifferentialReinforcementQuizPage() {
                 />
               </div>
 
-              <p className="mt-6 text-lg leading-relaxed text-slate-700">
+              <p className="mt-6 text-lg leading-relaxed text-slate-950">
                 {question.prompt}
               </p>
 
@@ -216,7 +216,7 @@ export default function DifferentialReinforcementQuizPage() {
                     </p>
                   )}
 
-                  <p className="mt-2 text-slate-700">{question.rationale}</p>
+                  <p className="mt-2 text-slate-950">{question.rationale}</p>
 
                   <button
                     onClick={nextQuestion}
@@ -233,12 +233,12 @@ export default function DifferentialReinforcementQuizPage() {
                 Your Score: {percent}%
               </h2>
 
-              <p className="mt-3 text-lg text-slate-700">
+              <p className="mt-3 text-lg text-slate-950">
                 You got {score} out of {questions.length} correct.
               </p>
 
               {saveMessage && (
-                <p className="mt-4 rounded-2xl bg-white p-4 font-semibold text-slate-700">
+                <p className="mt-4 rounded-2xl bg-white p-4 font-semibold text-slate-950">
                   {saveMessage}
                 </p>
               )}

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 
 export default function HomePage() {
   return (
@@ -9,23 +8,8 @@ export default function HomePage() {
         className="pointer-events-none absolute inset-x-0 top-0 h-[55vh] bg-gradient-to-b from-white via-white/80 to-transparent"
       />
 
-      <div className="h-6 w-full border-b border-white/80 bg-white" />
-
-      <section className="relative flex min-h-[calc(100vh-1.5rem)] items-center justify-center px-6 py-16 text-center sm:px-8">
+      <section className="relative flex min-h-screen items-center justify-center px-6 py-16 text-center sm:px-8">
         <div className="relative z-10 mx-auto flex w-full max-w-[900px] flex-col items-center">
-          <div className="mb-12 flex w-full justify-center px-2 sm:mb-14">
-            <div className="relative aspect-[16/5] w-full max-w-[860px]">
-              <Image
-                src="/images/aba-mastered-hero-logo.png"
-                alt="ABA Mastered"
-                fill
-                priority
-                sizes="(min-width: 1024px) 860px, calc(100vw - 48px)"
-                className="object-contain"
-              />
-            </div>
-          </div>
-
           <h1 className="pb-2 text-6xl font-black leading-[1.12] tracking-tight text-slate-950 md:text-8xl md:leading-[1.08]">
             <span className="block">Stop</span>
             <span className="block pb-1">memorizing</span>

@@ -28,7 +28,7 @@ export const pageTitleClass =
   "mt-2 text-5xl font-extrabold tracking-tight text-slate-950";
 
 export const leadClass =
-  "mt-4 max-w-3xl text-lg leading-relaxed text-slate-600";
+  "mt-4 max-w-3xl text-lg leading-relaxed text-slate-950";
 
 export const cardBaseClass =
   "rounded-3xl border p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-xl";
@@ -198,7 +198,7 @@ export function ModuleCard({
         {term}
       </div>
 
-      <p className="mt-4 text-base leading-relaxed text-slate-700">
+      <p className="mt-4 text-base leading-relaxed text-slate-950">
         {definition}
       </p>
 
@@ -259,7 +259,7 @@ export function LoadingCard({ children }: { children: ReactNode }) {
 
       <div className="mt-10 grid w-full gap-6 md:grid-cols-2 lg:grid-cols-3">
         <div className={`${cardBaseClass} border-blue-200 bg-blue-50`}>
-          <p className="text-base leading-relaxed text-slate-700">
+          <p className="text-base leading-relaxed text-slate-950">
             {children}
           </p>
         </div>

@@ -193,7 +193,7 @@ function VisualComparison({
           <h3 className="mt-4 text-3xl font-extrabold tracking-tight text-slate-950">
             {details.targetBehavior}
           </h3>
-          <p className="mt-4 text-base leading-relaxed text-slate-700">
+          <p className="mt-4 text-base leading-relaxed text-slate-950">
             This is the response dimension or response class being targeted for
             decrease or change.
           </p>
@@ -208,7 +208,7 @@ function VisualComparison({
             >
               {procedure.abbreviation}
             </div>
-            <p className="mt-1 text-xs font-extrabold uppercase tracking-wide text-slate-500">
+            <p className="mt-1 text-xs font-extrabold uppercase tracking-wide text-slate-950">
               Reinforcement rule
             </p>
           </div>
@@ -221,7 +221,7 @@ function VisualComparison({
           <h3 className="mt-4 text-3xl font-extrabold tracking-tight text-slate-950">
             {details.reinforcementCriterion}
           </h3>
-          <p className="mt-4 text-base leading-relaxed text-slate-700">
+          <p className="mt-4 text-base leading-relaxed text-slate-950">
             {details.whatGetsReinforced}
           </p>
         </article>
@@ -232,7 +232,7 @@ function VisualComparison({
         <h3 className="mt-2 text-2xl font-extrabold tracking-tight text-slate-950">
           {procedure.name}
         </h3>
-        <p className="mx-auto mt-4 max-w-4xl text-lg leading-relaxed text-slate-700">
+        <p className="mx-auto mt-4 max-w-4xl text-lg leading-relaxed text-slate-950">
           {procedure.rule}
         </p>
       </section>
@@ -256,7 +256,7 @@ function VisualComparison({
               >
                 {item.abbreviation}
               </div>
-              <p className="mt-4 text-base leading-relaxed text-slate-700">
+              <p className="mt-4 text-base leading-relaxed text-slate-950">
                 {item.rule}
               </p>
             </article>
@@ -307,7 +307,7 @@ function DiscriminationLesson({
           <p className="mt-4 text-xl font-extrabold tracking-tight text-slate-950">
             {procedure.discrimination}
           </p>
-          <p className="mt-4 text-base leading-relaxed text-slate-700">
+          <p className="mt-4 text-base leading-relaxed text-slate-950">
             Before answering, identify the contingency: what response, absence,
             low-rate criterion, or high-rate criterion contacts reinforcement?
           </p>
@@ -324,7 +324,7 @@ function DiscriminationLesson({
                 <p className={`text-lg font-extrabold ${item.color}`}>
                   {item.abbreviation}
                 </p>
-                <p className="mt-1 text-sm leading-relaxed text-slate-700">
+                <p className="mt-1 text-sm leading-relaxed text-slate-950">
                   {item.rule}
                 </p>
               </div>
@@ -394,7 +394,7 @@ function ExamplesLesson({
         <p className={`text-sm font-semibold uppercase tracking-wide ${procedure.color}`}>
           Why this matters
         </p>
-        <p className="mx-auto mt-4 max-w-4xl text-lg leading-relaxed text-slate-700">
+        <p className="mx-auto mt-4 max-w-4xl text-lg leading-relaxed text-slate-950">
           Differential reinforcement labels are controlled by the contingency,
           not by how the scenario sounds. Look for what contacts reinforcement:
           an alternative response, an incompatible response, absence, lower
@@ -460,7 +460,7 @@ function CommonConfusionsLesson({
                 <h3 className="text-2xl font-extrabold tracking-tight text-blue-700">
                   {pair.leftLabel}
                 </h3>
-                <p className="mt-3 text-base leading-relaxed text-slate-700">
+                <p className="mt-3 text-base leading-relaxed text-slate-950">
                   {pair.leftText}
                 </p>
               </div>
@@ -468,7 +468,7 @@ function CommonConfusionsLesson({
                 <h3 className="text-2xl font-extrabold tracking-tight text-pink-700">
                   {pair.rightLabel}
                 </h3>
-                <p className="mt-3 text-base leading-relaxed text-slate-700">
+                <p className="mt-3 text-base leading-relaxed text-slate-950">
                   {pair.rightText}
                 </p>
               </div>
@@ -514,7 +514,7 @@ function MasteryQuizLesson({
         Score {masteryThreshold}% or higher to master {procedure.abbreviation}
       </h2>
 
-      <p className="mx-auto mt-3 max-w-3xl text-base leading-relaxed text-slate-600">
+      <p className="mx-auto mt-3 max-w-3xl text-base leading-relaxed text-slate-950">
         The quiz appears at the end of the lesson sequence so users review the
         visual comparison, discrimination practice, examples, and common
         confusions before attempting mastery.
@@ -524,7 +524,7 @@ function MasteryQuizLesson({
         {tcoAlignment.map((item) => (
           <div
             key={item}
-            className="rounded-2xl border border-blue-200 bg-blue-50 p-4 text-sm font-semibold text-slate-700"
+            className="rounded-2xl border border-blue-200 bg-blue-50 p-4 text-sm font-semibold text-slate-950"
           >
             {item}
           </div>
@@ -565,10 +565,10 @@ function ScenarioCard({
       <h3 className={`text-xl font-extrabold tracking-tight ${textClass[tone]}`}>
         {item.title}
       </h3>
-      <p className="mt-3 text-base leading-relaxed text-slate-700">
+      <p className="mt-3 text-base leading-relaxed text-slate-950">
         {item.scenario}
       </p>
-      <p className="mt-4 rounded-2xl bg-slate-50 p-4 text-sm font-semibold leading-relaxed text-slate-700">
+      <p className="mt-4 rounded-2xl bg-slate-50 p-4 text-sm font-semibold leading-relaxed text-slate-950">
         {item.why}
       </p>
     </article>

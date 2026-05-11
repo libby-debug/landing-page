@@ -70,7 +70,7 @@ export default function SignupPage() {
           </button>
 
           {message && (
-            <p className="mt-5 rounded-2xl bg-slate-50 p-4 font-semibold text-slate-700">
+            <p className="mt-5 rounded-2xl bg-slate-50 p-4 font-semibold text-slate-950">
               {message}
             </p>
           )}

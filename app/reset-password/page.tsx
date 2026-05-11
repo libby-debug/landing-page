@@ -38,7 +38,7 @@ export default function UpdatePasswordPage() {
             Create New Password
           </h1>
 
-          <p className="mt-3 text-slate-600">
+          <p className="mt-3 text-slate-950">
             Enter your new password below.
           </p>
 
@@ -56,7 +56,7 @@ export default function UpdatePasswordPage() {
           </button>
 
           {message && (
-            <p className="mt-5 rounded-2xl bg-slate-50 p-4 font-semibold text-slate-700">
+            <p className="mt-5 rounded-2xl bg-slate-50 p-4 font-semibold text-slate-950">
               {message}
             </p>
           )}

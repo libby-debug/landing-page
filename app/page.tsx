@@ -23,7 +23,7 @@ export default function HomePage() {
 
           <div className="mt-10 flex flex-wrap gap-4">
             <Link
-              href="/modules"
+              href="/signup"
               className="rounded-2xl bg-blue-600 px-8 py-4 text-lg font-bold text-white transition hover:bg-blue-700"
             >
               Start Studying

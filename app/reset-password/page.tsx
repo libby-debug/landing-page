@@ -24,7 +24,7 @@ export default function UpdatePasswordPage() {
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-pink-50 p-8">
+    <main className="min-h-screen bg-transparent p-8">
       <div className="mx-auto flex min-h-screen max-w-md items-center justify-center">
         <form
           onSubmit={handleUpdate}

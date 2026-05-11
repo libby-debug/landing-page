@@ -125,7 +125,7 @@ export default function DifferentialReinforcementQuizPage() {
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 p-8">
+    <main className="min-h-screen bg-transparent p-8">
       <div className="mx-auto max-w-5xl">
         <p className="text-sm font-semibold uppercase tracking-wide text-blue-600">
           Cumulative Mastery Quiz

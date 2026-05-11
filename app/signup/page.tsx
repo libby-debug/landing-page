@@ -29,17 +29,21 @@ export default function SignupPage() {
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-pink-50 p-8">
+    <main className="min-h-screen bg-transparent p-8">
       <div className="mx-auto flex min-h-screen max-w-md items-center justify-center">
         <form
           onSubmit={handleSignup}
           className="w-full rounded-3xl border bg-white p-8 shadow-xl"
         >
-          <p className="text-sm font-bold uppercase tracking-wide text-blue-600">
-            ABA Mastered
-          </p>
+          <div className="flex justify-center">
+            <img
+              src="/images/aba-mastered-hero-logo.png"
+              alt="ABA Mastered"
+              className="h-auto w-full max-w-[180px] object-contain"
+            />
+          </div>
 
-          <h1 className="mt-3 text-4xl font-extrabold text-slate-950">
+          <h1 className="mt-6 text-center text-4xl font-extrabold text-slate-950">
             Create your account
           </h1>
 

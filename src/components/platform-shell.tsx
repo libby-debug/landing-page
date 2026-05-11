@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { AuthProvider } from "@/components/auth-provider";
+import { AuthProvider, useAuth } from "@/components/auth-provider";
 
 const taskListSections = [
   { title: "Dashboard", href: "/dashboard", prominence: "primary" },
@@ -22,6 +22,14 @@ const taskListSections = [
   { title: "I. Personnel Supervision and Management", href: "#", prominence: "section" },
 ];
 
+const authenticatedRoutePrefixes = ["/dashboard", "/modules", "/account", "/study"];
+
+function isAuthenticatedAppRoute(pathname: string) {
+  return authenticatedRoutePrefixes.some(
+    (route) => pathname === route || pathname.startsWith(`${route}/`),
+  );
+}
+
 function isActiveNavItem(pathname: string, href: string) {
   if (href === "#") {
     return false;
@@ -39,20 +47,38 @@ function isActiveNavItem(pathname: string, href: string) {
 }
 
 export function PlatformShell({ children }: { children: React.ReactNode }) {
-  const pathname = usePathname();
-  const hideSidebar = pathname === "/";
-
   return (
     <AuthProvider>
-      <div className="flex min-h-screen">
-        {!hideSidebar && (
-          <aside className="hidden w-72 flex-col border-r bg-white p-6 shadow-sm lg:flex">
-            <div>
-              <h1 className="text-3xl font-extrabold text-blue-700">ABA Mastered</h1>
-              <p className="mt-2 text-sm text-slate-500">Stop Memorizing. Start Mastering.</p>
+      <PlatformShellContent>{children}</PlatformShellContent>
+    </AuthProvider>
+  );
+}
+
+function PlatformShellContent({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+  const { user } = useAuth();
+  const showSidebar = Boolean(user) && isAuthenticatedAppRoute(pathname);
+
+  return (
+    <div className="relative flex min-h-screen overflow-x-hidden bg-[radial-gradient(circle_at_12%_18%,rgba(255,255,255,0.95),transparent_28%),radial-gradient(circle_at_88%_12%,rgba(255,227,239,0.85),transparent_30%),linear-gradient(135deg,#dff1ff_0%,#ffffff_50%,#ffe3ef_100%)]">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 h-[48vh] bg-gradient-to-b from-white via-white/80 to-transparent"
+      />
+
+      {showSidebar && (
+        <aside className="relative z-20 w-72 flex-col border-r bg-white p-6 shadow-sm lg:flex">
+            <div className="pb-4">
+              <Link href="/" aria-label="ABA Mastered home" className="inline-flex">
+                <img
+                  src="/images/aba-mastered-hero-logo.png"
+                  alt="ABA Mastered"
+                  className="h-auto w-full max-w-[220px] object-contain"
+                />
+              </Link>
             </div>
 
-            <nav className="mt-10 flex flex-col gap-2">
+            <nav className="mt-6 flex flex-col gap-2">
               {taskListSections.map((item) => {
                 const isActive = isActiveNavItem(pathname, item.href);
                 const isPrimary = item.prominence === "primary";
@@ -89,11 +115,10 @@ export function PlatformShell({ children }: { children: React.ReactNode }) {
                 Lessons unlock through demonstrated mastery.
               </p>
             </div>
-          </aside>
-        )}
+        </aside>
+      )}
 
-        <main className="flex-1">{children}</main>
-      </div>
-    </AuthProvider>
+      <main className="relative z-10 flex-1">{children}</main>
+    </div>
   );
 }

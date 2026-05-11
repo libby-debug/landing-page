@@ -41,7 +41,7 @@ export function PageShell({
 }: PageShellProps) {
   return (
     <main
-      className={`relative z-20 min-h-[calc(100vh-18rem)] bg-white px-8 pb-24 pt-10 ${className}`}
+      className={`relative z-20 min-h-[calc(100vh-18rem)] bg-transparent px-8 pb-24 pt-10 ${className}`}
     >
       <div className={`mx-auto ${maxWidthClass[maxWidth]} ${alignClass[align]}`}>
         {children}

@@ -1,11 +1,13 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useState } from "react";
 import { useAuth } from "@/components/auth-provider";
 import { Button, cardBaseClass, gradientTextClass } from "@/components/learning-ui";
 import {
   masteryThreshold,
   type DifferentialReinforcementProcedure,
+  type QuizQuestion,
 } from "@/lib/modules/differential-reinforcement";
 import { isSupabaseConfigured, supabase } from "@/lib/supabase/client";
 
@@ -13,10 +15,16 @@ type SaveState = "idle" | "saving" | "saved" | "error";
 
 type DifferentialReinforcementQuizProps = {
   procedure: DifferentialReinforcementProcedure;
+  questions?: QuizQuestion[];
+  nextHref?: string;
+  reviewHref: string;
 };
 
 export function DifferentialReinforcementQuiz({
   procedure,
+  questions,
+  nextHref,
+  reviewHref,
 }: DifferentialReinforcementQuizProps) {
   const { user } = useAuth();
   const [answers, setAnswers] = useState<Record<number, string>>({});
@@ -24,17 +32,18 @@ export function DifferentialReinforcementQuiz({
   const [saveState, setSaveState] = useState<SaveState>("idle");
   const [message, setMessage] = useState("");
 
+  const quizQuestions = questions ?? procedure.quiz;
   const correctCount = useMemo(
     () =>
-      procedure.quiz.reduce((total, question, index) => {
+      quizQuestions.reduce((total, question, index) => {
         return answers[index] === question.answer ? total + 1 : total;
       }, 0),
-    [answers, procedure.quiz],
+    [answers, quizQuestions],
   );
 
-  const score = Math.round((correctCount / procedure.quiz.length) * 100);
+  const score = Math.round((correctCount / quizQuestions.length) * 100);
   const mastered = score >= masteryThreshold;
-  const allAnswered = procedure.quiz.every((_, index) => answers[index]);
+  const allAnswered = quizQuestions.every((_, index) => answers[index]);
 
   function selectAnswer(questionIndex: number, answer: string) {
     if (submitted) {
@@ -104,7 +113,7 @@ export function DifferentialReinforcementQuiz({
   return (
     <div className="mt-8 w-full">
       <div className="grid gap-6">
-        {procedure.quiz.map((question, questionIndex) => (
+        {quizQuestions.map((question, questionIndex) => (
           <article
             key={question.prompt}
             className={`${cardBaseClass} border-slate-200 bg-white text-left`}
@@ -187,11 +196,29 @@ export function DifferentialReinforcementQuiz({
             {score}%
           </div>
           <p className="mt-4 text-base leading-relaxed text-slate-700">
-            {correctCount} of {procedure.quiz.length} correct.{" "}
+            {correctCount} of {quizQuestions.length} correct.{" "}
             {mastered
               ? "Mastery threshold met."
               : "Review the rationales and retry for 90% mastery."}
           </p>
+
+          <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            {mastered && nextHref ? (
+              <Link
+                href={nextHref}
+                className="inline-block rounded-xl bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:opacity-90"
+              >
+                Continue to next procedure
+              </Link>
+            ) : null}
+
+            <Link
+              href={reviewHref}
+              className="inline-block rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-950 shadow-sm transition hover:border-slate-300 hover:shadow-md"
+            >
+              {mastered ? "Review lesson" : "Go back to review"}
+            </Link>
+          </div>
         </section>
       ) : null}
 

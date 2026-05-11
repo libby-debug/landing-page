@@ -1,5 +1,9 @@
 import Link from "next/link";
-import { cardBaseClass, gradientTextClass } from "@/components/learning-ui";
+import {
+  PageShell,
+  cardBaseClass,
+  gradientTextClass,
+} from "@/components/learning-ui";
 
 const cards = [
   {
@@ -36,8 +40,7 @@ const cards = [
 
 export default function Home() {
   return (
-    <main className="relative -mt-44 flex min-h-[calc(100vh-18rem)] items-start justify-center bg-white px-8 pb-24 pt-0 sm:-mt-52 sm:pb-28">
-      <div className="relative z-20 mx-auto flex max-w-6xl flex-col items-center text-center">
+    <PageShell maxWidth="6xl">
         <h1 className="mt-2 text-5xl font-extrabold tracking-tight text-slate-950">
           <span>Stop memorizing. </span>
           <span className={gradientTextClass}>
@@ -79,7 +82,6 @@ export default function Home() {
             </div>
           ))}
         </div>
-      </div>
-    </main>
+    </PageShell>
   );
 }

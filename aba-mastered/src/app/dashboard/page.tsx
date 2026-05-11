@@ -126,8 +126,8 @@ function DashboardContent() {
 
   return (
     <PageShell maxWidth="6xl">
-      <section className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
-        <div>
+      <section className="flex w-full flex-col items-center gap-6 text-center">
+        <div className="flex flex-col items-center">
           <p className={eyebrowClass}>BACB Test Content Outline 6</p>
 
           <h1 className={pageTitleClass}>Welcome back.</h1>
@@ -146,7 +146,7 @@ function DashboardContent() {
         <LogoutButton />
       </section>
 
-      <section className="mt-10 grid gap-6 md:grid-cols-3">
+      <section className="mt-10 grid w-full gap-6 md:grid-cols-3">
         <div className={`${cardBaseClass} border-blue-200 bg-blue-50`}>
           <p className={eyebrowClass}>Mastery threshold</p>
 
@@ -193,9 +193,9 @@ function DashboardContent() {
         </div>
       </section>
 
-      <section className={`${cardBaseClass} mt-10 border-blue-200 bg-white`}>
-        <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-          <div>
+      <section className={`${cardBaseClass} mt-10 w-full border-blue-200 bg-white text-center`}>
+        <div className="flex flex-col items-center gap-6">
+          <div className="flex flex-col items-center">
             <p className={eyebrowClass}>Continue studying</p>
 
             <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-slate-950">
@@ -223,9 +223,9 @@ function DashboardContent() {
         />
       </section>
 
-      <section id="tco-6-sections" className="mt-10">
-        <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-          <div>
+      <section id="tco-6-sections" className="mt-10 w-full">
+        <div className="flex flex-col items-center gap-2 text-center">
+          <div className="flex flex-col items-center">
             <p className={eyebrowClass}>TCO 6 study categories</p>
 
             <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-slate-950">
@@ -252,16 +252,16 @@ function TcoSectionCard({ section }: { section: TcoSection }) {
   const isMastered = section.progress >= masteryThreshold;
 
   return (
-    <details className={`${cardBaseClass} border-blue-200 bg-white`} open>
-      <summary className="flex cursor-pointer list-none flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-        <div className="flex gap-4">
+    <details className={`${cardBaseClass} border-blue-200 bg-white text-center`} open>
+      <summary className="flex cursor-pointer list-none flex-col items-center gap-4">
+        <div className="flex flex-col items-center gap-4">
           <div
             className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl text-2xl font-extrabold ${gradientTextClass}`}
           >
             {section.code}
           </div>
 
-          <div>
+          <div className="flex flex-col items-center">
             <h3 className="text-2xl font-extrabold tracking-tight text-slate-950">
               {section.code}. {section.title}
             </h3>
@@ -278,7 +278,7 @@ function TcoSectionCard({ section }: { section: TcoSection }) {
 
       <div className="mt-6 grid gap-6 lg:grid-cols-[1.4fr_1fr]">
         <div>
-          <div className="flex items-center justify-between text-sm font-semibold text-slate-600">
+          <div className="flex items-center justify-center gap-4 text-sm font-semibold text-slate-600">
             <span>Mastery progress</span>
             <span>{section.progress}%</span>
           </div>
@@ -289,7 +289,7 @@ function TcoSectionCard({ section }: { section: TcoSection }) {
             className="mt-2"
           />
 
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
             <Link
               href={section.href}
               className="inline-block rounded-xl bg-slate-950 px-4 py-2 text-center text-sm font-semibold text-white transition hover:opacity-90"

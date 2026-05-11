@@ -90,7 +90,7 @@ export function AuthForm({ mode }: AuthFormProps) {
 
       <div className="mt-10 grid w-full gap-6 md:grid-cols-2 lg:grid-cols-3">
         <div
-          className={`${cardBaseClass} border-blue-200 bg-blue-50 text-left md:col-span-2`}
+          className={`${cardBaseClass} border-blue-200 bg-blue-50 text-center md:col-span-2`}
         >
           {status === "success" ? (
             <Notice tone="success">
@@ -101,7 +101,7 @@ export function AuthForm({ mode }: AuthFormProps) {
             <form className="grid gap-4" onSubmit={handleSubmit}>
               <div>
                 <label
-                  className={eyebrowClass}
+                  className={`block ${eyebrowClass}`}
                   htmlFor="email"
                 >
                   Email
@@ -120,7 +120,7 @@ export function AuthForm({ mode }: AuthFormProps) {
 
               <div>
                 <label
-                  className={eyebrowClass}
+                  className={`block ${eyebrowClass}`}
                   htmlFor="password"
                 >
                   Password

@@ -36,12 +36,12 @@ export const cardBaseClass =
 export function PageShell({
   children,
   maxWidth = "5xl",
-  align = "start",
+  align = "center",
   className = "",
 }: PageShellProps) {
   return (
     <main
-      className={`relative z-20 min-h-[calc(100vh-18rem)] bg-white px-8 pb-24 pt-8 ${className}`}
+      className={`relative z-20 min-h-[calc(100vh-18rem)] bg-white px-8 pb-24 pt-10 ${className}`}
     >
       <div className={`mx-auto ${maxWidthClass[maxWidth]} ${alignClass[align]}`}>
         {children}
@@ -77,7 +77,7 @@ const noticeClass = {
 export function Notice({ children, tone }: NoticeProps) {
   return (
     <div
-      className={`rounded-xl border px-4 py-3 text-left text-sm font-bold transition-all ${noticeClass[tone]}`}
+      className={`rounded-xl border px-4 py-3 text-center text-sm font-bold transition-all ${noticeClass[tone]}`}
       role={tone === "error" ? "alert" : "status"}
     >
       {children}

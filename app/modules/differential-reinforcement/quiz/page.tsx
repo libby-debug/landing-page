@@ -11,7 +11,7 @@ const questions = [
     choices: ["DRA", "DRI", "DRO", "DRL"],
     answer: "DRA",
     rationale:
-      "This is DRA because an appropriate alternative behavior is reinforced.",
+      "This is DRA because reinforcement is given contingent upon the use of an alternative behavior.",
   },
   {
     prompt:
@@ -19,7 +19,7 @@ const questions = [
     choices: ["DRA", "DRI", "DRO", "DRH"],
     answer: "DRI",
     rationale:
-      "This is DRI because hands in pockets is incompatible with touching the walls.",
+      "This is DRI because reinforcement is given contingent upon the use of an incompatible behavior.",
   },
   {
     prompt:
@@ -27,7 +27,7 @@ const questions = [
     choices: ["DRA", "DRO", "DRL", "DRH"],
     answer: "DRO",
     rationale:
-      "This is DRO because reinforcement depends on the absence of the target behavior.",
+      "This is DRO because reinforcement is given contingent upon the absence of the target behavior.",
   },
   {
     prompt:
@@ -35,7 +35,7 @@ const questions = [
     choices: ["DRO", "DRL", "DRH", "DRI"],
     answer: "DRL",
     rationale:
-      "This is DRL because reinforcement is delivered for a lower rate of behavior.",
+      "This is DRL because reinforcement is given when responses are lower than a predetermined criterion.",
   },
   {
     prompt:
@@ -43,7 +43,7 @@ const questions = [
     choices: ["DRA", "DRO", "DRL", "DRH"],
     answer: "DRH",
     rationale:
-      "This is DRH because reinforcement is delivered for a higher rate of behavior.",
+      "This is DRH because reinforcement is given when responses are higher than a predetermined criterion.",
   },
 ];
 

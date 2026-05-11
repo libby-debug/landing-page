@@ -659,7 +659,7 @@ function getPracticeQuestions(
       options: ["DRA", "DRI", "DRO", "DRL", "DRH"],
       answer: "DRO",
       rationale:
-        "DRO reinforces the absence of the target behavior during a specified interval.",
+        "DRO means reinforcement is given contingent upon the absence of the target behavior.",
     },
     {
       prompt:
@@ -667,7 +667,7 @@ function getPracticeQuestions(
       options: ["DRA", "DRI", "DRO", "DRL", "DRH"],
       answer: "DRI",
       rationale:
-        "DRI reinforces an incompatible behavior that cannot occur simultaneously with the target behavior.",
+        "DRI means reinforcement is given contingent upon the use of an incompatible behavior.",
     },
     {
       prompt:
@@ -675,7 +675,7 @@ function getPracticeQuestions(
       options: ["DRA", "DRI", "DRO", "DRL", "DRH"],
       answer: "DRH",
       rationale:
-        "DRH reinforces higher rates of behavior when increasing response frequency is the goal.",
+        "DRH means reinforcement is given when responses are higher than a predetermined criterion.",
     },
   ];
 }

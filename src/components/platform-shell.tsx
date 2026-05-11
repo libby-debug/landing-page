@@ -8,19 +8,51 @@ import { SiteHeader } from "@/components/site-header";
 const taskListSections = [
   { title: "Dashboard", href: "/dashboard", prominence: "primary" },
   { title: "Modules", href: "/modules", prominence: "primary" },
-  { title: "A. Behaviorism and Philosophical Foundations", href: "#", prominence: "section" },
-  { title: "B. Concepts and Principles", href: "#", prominence: "section" },
-  { title: "C. Measurement, Data Display, and Interpretation", href: "#", prominence: "section" },
-  { title: "D. Experimental Design", href: "#", prominence: "section" },
-  { title: "E. Ethical and Professional Issues", href: "#", prominence: "section" },
-  { title: "F. Behavior Assessment", href: "#", prominence: "section" },
   {
-    title: "G. Behavior-Change Procedures",
-    href: "/modules/differential-reinforcement",
+    title: "A. Behaviorism and Philosophical Foundations",
+    href: "/dashboard/tco-6/a",
     prominence: "section",
   },
-  { title: "H. Selecting and Implementing Interventions", href: "#", prominence: "section" },
-  { title: "I. Personnel Supervision and Management", href: "#", prominence: "section" },
+  {
+    title: "B. Concepts and Principles",
+    href: "/dashboard/tco-6/b",
+    prominence: "section",
+  },
+  {
+    title: "C. Measurement, Data Display, and Interpretation",
+    href: "/dashboard/tco-6/c",
+    prominence: "section",
+  },
+  {
+    title: "D. Experimental Design",
+    href: "/dashboard/tco-6/d",
+    prominence: "section",
+  },
+  {
+    title: "E. Ethical and Professional Issues",
+    href: "/dashboard/tco-6/e",
+    prominence: "section",
+  },
+  {
+    title: "F. Behavior Assessment",
+    href: "/dashboard/tco-6/f",
+    prominence: "section",
+  },
+  {
+    title: "G. Behavior-Change Procedures",
+    href: "/dashboard/tco-6/g",
+    prominence: "section",
+  },
+  {
+    title: "H. Selecting and Implementing Interventions",
+    href: "/dashboard/tco-6/h",
+    prominence: "section",
+  },
+  {
+    title: "I. Personnel Supervision and Management",
+    href: "/dashboard/tco-6/i",
+    prominence: "section",
+  },
 ];
 
 const authenticatedRoutePrefixes = ["/dashboard", "/modules", "/account", "/study"];
@@ -41,7 +73,14 @@ function isActiveNavItem(pathname: string, href: string) {
   }
 
   if (href === "/modules") {
-    return pathname === "/modules";
+    return pathname === "/modules" || pathname.startsWith("/modules/");
+  }
+
+  if (
+    href === "/dashboard/tco-6/g" &&
+    pathname.startsWith("/modules/differential-reinforcement")
+  ) {
+    return true;
   }
 
   return pathname === href || pathname.startsWith(`${href}/`);

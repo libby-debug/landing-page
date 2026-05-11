@@ -72,7 +72,7 @@ export function BehaviorChangeModule({ module }: BehaviorChangeModuleProps) {
   const [currentScore, setCurrentScore] = useState<number | null>(null);
   const [savedScore, setSavedScore] = useState<SavedScore | null>(null);
   const [previousScore, setPreviousScore] = useState<SavedScore | null>(null);
-  const [progressLoading, setProgressLoading] = useState(true);
+  const [progressLoading, setProgressLoading] = useState(false);
   const [saveState, setSaveState] = useState<SaveState>("idle");
   const [message, setMessage] = useState("");
 
@@ -97,25 +97,29 @@ export function BehaviorChangeModule({ module }: BehaviorChangeModuleProps) {
   const locked = Boolean(module.previousSlug) && !previousMastered;
 
   useEffect(() => {
-    if (authLoading) {
-      return;
-    }
-
-    if (!isSupabaseConfigured || !user) {
-      setProgressLoading(false);
-      return;
-    }
-
     let mounted = true;
 
     async function loadScores() {
+      if (authLoading) {
+        return;
+      }
+
+      if (!isSupabaseConfigured || !user) {
+        setSavedScore(null);
+        setPreviousScore(null);
+        setProgressLoading(false);
+        return;
+      }
+
+      const userId = user.id;
+
       setProgressLoading(true);
       setMessage("");
 
       const currentRequest = supabase
         .from("module_mastery_scores")
         .select("score, mastered")
-        .eq("user_id", user.id)
+        .eq("user_id", userId)
         .eq("module_slug", module.slug)
         .maybeSingle();
 
@@ -123,7 +127,7 @@ export function BehaviorChangeModule({ module }: BehaviorChangeModuleProps) {
         ? supabase
             .from("module_mastery_scores")
             .select("score, mastered")
-            .eq("user_id", user.id)
+            .eq("user_id", userId)
             .eq("module_slug", module.previousSlug)
             .maybeSingle()
         : Promise.resolve({ data: null, error: null });
@@ -233,7 +237,7 @@ export function BehaviorChangeModule({ module }: BehaviorChangeModuleProps) {
           <>
             {module.title.split(" ").slice(0, -1).join(" ")}{" "}
             <span className={gradientTextClass}>
-              {module.title.split(" ").slice(-1)}
+              {module.title.split(" ").slice(-1).join(" ")}
             </span>
           </>
         ) : (
@@ -479,7 +483,7 @@ export function BehaviorChangeModule({ module }: BehaviorChangeModuleProps) {
             disabled={!allAnswered || submitted || locked}
             onClick={submitQuiz}
           >
-            Submit quiz
+            {saveState === "saving" ? "Saving..." : "Submit quiz"}
           </Button>
           <Button
             type="button"
@@ -523,6 +527,12 @@ export function BehaviorChangeModule({ module }: BehaviorChangeModuleProps) {
             }`}
           >
             {message}
+          </p>
+        ) : null}
+
+        {saveState === "saving" ? (
+          <p className="mx-auto mt-6 max-w-2xl rounded-2xl border border-blue-200 bg-blue-50 px-4 py-3 text-sm font-semibold text-blue-700">
+            Saving your mastery score...
           </p>
         ) : null}
       </section>

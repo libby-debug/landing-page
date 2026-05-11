@@ -84,11 +84,11 @@ export default function DifferentialReinforcementModulePage() {
           Start with a visual comparison
         </h2>
 
-        <div className="mt-6 grid gap-6 md:grid-cols-2 xl:grid-cols-5">
+        <div className="mx-auto mt-6 grid max-w-5xl justify-center gap-6 md:grid-cols-2 lg:grid-cols-4">
           {differentialReinforcementProcedures.map((procedure) => (
             <article
               key={procedure.abbreviation}
-              className={`${cardBaseClass} ${procedure.border} ${procedure.bg}`}
+              className={`${cardBaseClass} ${procedure.border} ${procedure.bg} ${getOverviewCardClass(procedure.slug)}`}
             >
               <div
                 className={`text-5xl font-extrabold tracking-tight ${procedure.color}`}
@@ -181,4 +181,12 @@ export default function DifferentialReinforcementModulePage() {
       </section>
     </PageShell>
   );
+}
+
+function getOverviewCardClass(slug: string) {
+  if (slug === "drh") {
+    return "lg:col-start-2 lg:col-span-2";
+  }
+
+  return "lg:col-span-2";
 }

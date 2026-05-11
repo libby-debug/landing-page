@@ -1,92 +1,173 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { cardBaseClass } from "@/components/learning-ui";
 import type { QuizQuestion } from "@/lib/modules/differential-reinforcement";
 
 type DiscriminationPracticeProps = {
   questions: QuizQuestion[];
+  title?: string;
+  description?: string;
+  backHref?: string;
+  nextHref?: string;
+  nextLabel?: string;
 };
 
-export function DiscriminationPractice({ questions }: DiscriminationPracticeProps) {
+export function DiscriminationPractice({
+  questions,
+  title = "Screen check",
+  description = "Answer every item correctly to unlock the next lesson screen.",
+  backHref,
+  nextHref,
+  nextLabel = "Next Lesson",
+}: DiscriminationPracticeProps) {
   const [answers, setAnswers] = useState<Record<number, string>>({});
+  const allCorrect = questions.every(
+    (question, index) => answers[index] === question.answer,
+  );
+
+  function selectAnswer(questionIndex: number, option: string) {
+    setAnswers((current) => ({
+      ...current,
+      [questionIndex]: option,
+    }));
+  }
+
+  function retryQuestion(questionIndex: number) {
+    setAnswers((current) => {
+      const nextAnswers = { ...current };
+      delete nextAnswers[questionIndex];
+      return nextAnswers;
+    });
+  }
 
   return (
-    <div className="mt-8 grid w-full gap-6">
-      {questions.map((question, questionIndex) => {
-        const selected = answers[questionIndex];
+    <section className="mt-10 w-full">
+      <div className={`${cardBaseClass} border-blue-200 bg-blue-50 text-center`}>
+        <p className="text-sm font-semibold uppercase tracking-wide text-blue-600">
+          Required check
+        </p>
+        <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-slate-950">
+          {title}
+        </h2>
+        <p className="mx-auto mt-3 max-w-3xl text-base leading-relaxed text-slate-700">
+          {description}
+        </p>
+      </div>
 
-        return (
-          <article
-            key={question.prompt}
-            className={`${cardBaseClass} border-slate-200 bg-white text-left`}
-          >
-            <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
-              <h3 className="text-xl font-extrabold tracking-tight text-slate-950">
-                {questionIndex + 1}. {question.prompt}
-              </h3>
-              <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-extrabold uppercase tracking-wide text-blue-700">
-                Immediate feedback
-              </span>
-            </div>
+      <div className="mt-8 grid w-full gap-6">
+        {questions.map((question, questionIndex) => {
+          const selected = answers[questionIndex];
+          const isCorrectSelection = selected === question.answer;
 
-            <div className="mt-5 grid gap-3 md:grid-cols-2">
-              {question.options.map((option) => {
-                const isSelected = selected === option;
-                const isCorrect = option === question.answer;
-                const hasAnswer = Boolean(selected);
+          return (
+            <article
+              key={question.prompt}
+              className={`${cardBaseClass} border-slate-200 bg-white text-center`}
+            >
+              <div className="flex flex-col items-center gap-3">
+                <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-extrabold uppercase tracking-wide text-blue-700">
+                  Immediate feedback
+                </span>
+                <h3 className="max-w-4xl text-xl font-extrabold tracking-tight text-slate-950">
+                  {questionIndex + 1}. {question.prompt}
+                </h3>
+              </div>
 
-                return (
-                  <button
-                    key={option}
-                    type="button"
-                    onClick={() =>
-                      setAnswers((current) => ({
-                        ...current,
-                        [questionIndex]: option,
-                      }))
-                    }
-                    className={`rounded-2xl border px-4 py-3 text-left text-sm font-semibold transition ${
-                      hasAnswer && isCorrect
-                        ? "border-green-300 bg-green-50 text-green-700"
-                        : hasAnswer && isSelected
-                          ? "border-pink-300 bg-pink-50 text-pink-700"
-                          : isSelected
-                            ? "border-blue-300 bg-blue-50 text-blue-700"
-                            : "border-slate-200 bg-white text-slate-700 hover:border-blue-200 hover:bg-blue-50"
-                    }`}
-                  >
-                    {option}
-                  </button>
-                );
-              })}
-            </div>
+              <div className="mt-5 grid gap-3 md:grid-cols-2">
+                {question.options.map((option) => {
+                  const isSelected = selected === option;
+                  const isCorrect = option === question.answer;
+                  const hasAnswer = Boolean(selected);
 
-            {selected ? (
-              <div
-                className={`mt-5 rounded-2xl border p-4 text-center ${
-                  selected === question.answer
-                    ? "border-green-200 bg-green-50"
-                    : "border-pink-200 bg-pink-50"
-                }`}
-              >
-                <p
-                  className={`text-sm font-semibold uppercase tracking-wide ${
-                    selected === question.answer
-                      ? "text-green-700"
-                      : "text-pink-700"
+                  return (
+                    <button
+                      key={option}
+                      type="button"
+                      disabled={hasAnswer}
+                      onClick={() => selectAnswer(questionIndex, option)}
+                      className={`rounded-2xl border px-4 py-3 text-center text-sm font-semibold transition disabled:cursor-not-allowed ${
+                        hasAnswer && isCorrect
+                          ? "border-green-300 bg-green-50 text-green-700"
+                          : hasAnswer && isSelected
+                            ? "border-pink-300 bg-pink-50 text-pink-700"
+                            : isSelected
+                              ? "border-blue-300 bg-blue-50 text-blue-700"
+                              : "border-slate-200 bg-white text-slate-700 hover:border-blue-200 hover:bg-blue-50"
+                      }`}
+                    >
+                      {option}
+                    </button>
+                  );
+                })}
+              </div>
+
+              {selected ? (
+                <div
+                  className={`mt-5 rounded-2xl border p-4 text-center ${
+                    isCorrectSelection
+                      ? "border-green-200 bg-green-50"
+                      : "border-pink-200 bg-pink-50"
                   }`}
                 >
-                  {selected === question.answer ? "Correct" : "Review this distinction"}
-                </p>
-                <p className="mt-2 text-base leading-relaxed text-slate-700">
-                  {question.rationale}
-                </p>
-              </div>
-            ) : null}
-          </article>
-        );
-      })}
-    </div>
+                  <p
+                    className={`text-sm font-semibold uppercase tracking-wide ${
+                      isCorrectSelection
+                        ? "text-green-700"
+                        : "text-pink-700"
+                    }`}
+                  >
+                    {isCorrectSelection ? "Correct" : "Review before advancing"}
+                  </p>
+                  <p className="mx-auto mt-2 max-w-3xl text-base leading-relaxed text-slate-700">
+                    {question.rationale}
+                  </p>
+                  {!isCorrectSelection ? (
+                    <button
+                      type="button"
+                      onClick={() => retryQuestion(questionIndex)}
+                      className="mt-4 rounded-xl border border-pink-200 bg-white px-4 py-2 text-sm font-semibold text-pink-700 shadow-sm transition hover:border-pink-300"
+                    >
+                      Retry this item
+                    </button>
+                  ) : null}
+                </div>
+              ) : null}
+            </article>
+          );
+        })}
+      </div>
+
+      {backHref || nextHref ? (
+        <div className="mt-10 flex w-full flex-col items-center justify-center gap-4 sm:flex-row">
+          {backHref ? (
+            <Link
+              href={backHref}
+              className="inline-block rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-950 shadow-sm transition hover:border-slate-300 hover:shadow-md"
+            >
+              Back
+            </Link>
+          ) : null}
+
+          {nextHref && allCorrect ? (
+            <Link
+              href={nextHref}
+              className="inline-block rounded-xl bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:opacity-90"
+            >
+              {nextLabel}
+            </Link>
+          ) : nextHref ? (
+            <button
+              type="button"
+              disabled
+              className="inline-block cursor-not-allowed rounded-xl bg-slate-200 px-5 py-3 text-sm font-semibold text-slate-500"
+            >
+              Pass check to continue
+            </button>
+          ) : null}
+        </div>
+      ) : null}
+    </section>
   );
 }

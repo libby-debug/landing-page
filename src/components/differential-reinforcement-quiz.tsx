@@ -18,6 +18,7 @@ type DifferentialReinforcementQuizProps = {
   questions?: QuizQuestion[];
   nextHref?: string;
   reviewHref: string;
+  backHref: string;
 };
 
 export function DifferentialReinforcementQuiz({
@@ -25,6 +26,7 @@ export function DifferentialReinforcementQuiz({
   questions,
   nextHref,
   reviewHref,
+  backHref,
 }: DifferentialReinforcementQuizProps) {
   const { user } = useAuth();
   const [answers, setAnswers] = useState<Record<number, string>>({});
@@ -166,6 +168,13 @@ export function DifferentialReinforcementQuiz({
       </div>
 
       <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <Link
+          href={backHref}
+          className="inline-block rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-950 shadow-sm transition hover:border-slate-300 hover:shadow-md"
+        >
+          Back
+        </Link>
+
         <Button
           type="button"
           size="large"

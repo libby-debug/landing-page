@@ -2,7 +2,6 @@ import { notFound } from "next/navigation";
 import { DifferentialReinforcementQuiz } from "@/components/differential-reinforcement-quiz";
 import { DiscriminationPractice } from "@/components/discrimination-practice";
 import {
-  LessonNavigation,
   LessonStepTracker,
   ProgressIndicator,
 } from "@/components/lesson-flow-navigation";
@@ -89,17 +88,13 @@ export default async function DifferentialReinforcementLessonPage({
         />
       </section>
 
-      <LessonScreen procedure={procedure} stepSlug={step.slug} />
-
-      {step.slug !== "mastery-quiz" ? (
-        <LessonNavigation
-          backHref={backHref}
-          nextHref={nextHref}
-          nextLabel={nextLabel}
-        />
-      ) : (
-        <LessonNavigation backHref={backHref} />
-      )}
+      <LessonScreen
+        procedure={procedure}
+        stepSlug={step.slug}
+        backHref={backHref}
+        nextHref={nextHref}
+        nextLabel={nextLabel}
+      />
     </PageShell>
   );
 }
@@ -107,37 +102,80 @@ export default async function DifferentialReinforcementLessonPage({
 function LessonScreen({
   procedure,
   stepSlug,
+  backHref,
+  nextHref,
+  nextLabel,
 }: {
   procedure: DifferentialReinforcementProcedure;
   stepSlug: LessonStepSlug;
+  backHref: string;
+  nextHref?: string;
+  nextLabel: string;
 }) {
   const details = getProcedureLessonDetails(procedure);
 
   if (stepSlug === "visual-comparison") {
-    return <VisualComparison procedure={procedure} details={details} />;
+    return (
+      <VisualComparison
+        procedure={procedure}
+        details={details}
+        backHref={backHref}
+        nextHref={nextHref}
+        nextLabel={nextLabel}
+      />
+    );
   }
 
   if (stepSlug === "discrimination-practice") {
-    return <DiscriminationLesson procedure={procedure} details={details} />;
+    return (
+      <DiscriminationLesson
+        procedure={procedure}
+        details={details}
+        backHref={backHref}
+        nextHref={nextHref}
+        nextLabel={nextLabel}
+      />
+    );
   }
 
   if (stepSlug === "examples") {
-    return <ExamplesLesson procedure={procedure} details={details} />;
+    return (
+      <ExamplesLesson
+        procedure={procedure}
+        details={details}
+        backHref={backHref}
+        nextHref={nextHref}
+        nextLabel={nextLabel}
+      />
+    );
   }
 
   if (stepSlug === "common-confusions") {
-    return <CommonConfusionsLesson procedure={procedure} />;
+    return (
+      <CommonConfusionsLesson
+        procedure={procedure}
+        backHref={backHref}
+        nextHref={nextHref}
+        nextLabel={nextLabel}
+      />
+    );
   }
 
-  return <MasteryQuizLesson procedure={procedure} />;
+  return <MasteryQuizLesson procedure={procedure} backHref={backHref} />;
 }
 
 function VisualComparison({
   procedure,
   details,
+  backHref,
+  nextHref,
+  nextLabel,
 }: {
   procedure: DifferentialReinforcementProcedure;
   details: ReturnType<typeof getProcedureLessonDetails>;
+  backHref: string;
+  nextHref?: string;
+  nextLabel: string;
 }) {
   return (
     <section className="mt-10 w-full">
@@ -147,7 +185,7 @@ function VisualComparison({
         What gets reinforced?
       </h2>
 
-      <div className="mt-6 grid gap-6 lg:grid-cols-[1fr_auto_1fr]">
+      <div className="mx-auto mt-6 grid max-w-6xl gap-6 lg:grid-cols-[1fr_auto_1fr]">
         <article className="rounded-3xl border border-pink-200 bg-pink-50 p-8 shadow-sm">
           <p className="text-sm font-semibold uppercase tracking-wide text-pink-600">
             {details.targetLabel}
@@ -199,7 +237,7 @@ function VisualComparison({
         </p>
       </section>
 
-      <div className="mt-8 grid gap-6 lg:grid-cols-3">
+      <div className="mx-auto mt-8 grid max-w-6xl gap-6 lg:grid-cols-3">
         {details.visualExamples.map((item) => (
           <ScenarioCard key={item.title} item={item} tone="blue" />
         ))}
@@ -207,7 +245,7 @@ function VisualComparison({
 
       <section className="mt-10 w-full">
         <p className={eyebrowClass}>Compare across procedures</p>
-        <div className="mt-6 grid gap-6 md:grid-cols-2 xl:grid-cols-5">
+        <div className="mx-auto mt-6 grid max-w-6xl justify-center gap-6 md:grid-cols-2 xl:grid-cols-5">
           {differentialReinforcementProcedures.map((item) => (
             <article
               key={item.abbreviation}
@@ -225,6 +263,15 @@ function VisualComparison({
           ))}
         </div>
       </section>
+
+      <DiscriminationPractice
+        questions={getVisualCheckQuestions(procedure, details)}
+        title="Unlock discrimination practice"
+        description="Pass this visual comparison check before moving to scenario discrimination."
+        backHref={backHref}
+        nextHref={nextHref}
+        nextLabel={nextLabel}
+      />
     </section>
   );
 }
@@ -232,9 +279,15 @@ function VisualComparison({
 function DiscriminationLesson({
   procedure,
   details,
+  backHref,
+  nextHref,
+  nextLabel,
 }: {
   procedure: DifferentialReinforcementProcedure;
   details: ReturnType<typeof getProcedureLessonDetails>;
+  backHref: string;
+  nextHref?: string;
+  nextLabel: string;
 }) {
   const practiceQuestions = getPracticeQuestions(procedure, details);
 
@@ -246,7 +299,7 @@ function DiscriminationLesson({
         Discriminate {procedure.abbreviation} from DRA, DRI, DRO, DRL, and DRH
       </h2>
 
-      <div className="mt-6 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+      <div className="mx-auto mt-6 grid max-w-6xl gap-6 lg:grid-cols-[0.9fr_1.1fr]">
         <article className={`${cardBaseClass} ${procedure.border} ${procedure.bg}`}>
           <p className={`text-sm font-semibold uppercase tracking-wide ${procedure.color}`}>
             Decision rule
@@ -280,7 +333,14 @@ function DiscriminationLesson({
         </article>
       </div>
 
-      <DiscriminationPractice questions={practiceQuestions} />
+      <DiscriminationPractice
+        questions={practiceQuestions}
+        title="Unlock examples and nonexamples"
+        description="Answer every discrimination item correctly. If one is incorrect, review the rationale and retry before advancing."
+        backHref={backHref}
+        nextHref={nextHref}
+        nextLabel={nextLabel}
+      />
     </section>
   );
 }
@@ -288,9 +348,15 @@ function DiscriminationLesson({
 function ExamplesLesson({
   procedure,
   details,
+  backHref,
+  nextHref,
+  nextLabel,
 }: {
   procedure: DifferentialReinforcementProcedure;
   details: ReturnType<typeof getProcedureLessonDetails>;
+  backHref: string;
+  nextHref?: string;
+  nextLabel: string;
 }) {
   return (
     <section className="mt-10 w-full">
@@ -300,7 +366,7 @@ function ExamplesLesson({
         Build fluency with {procedure.abbreviation}
       </h2>
 
-      <div className="mt-6 grid gap-6 lg:grid-cols-2">
+      <div className="mx-auto mt-6 grid max-w-6xl gap-6 lg:grid-cols-2">
         <section className={`${cardBaseClass} border-green-200 bg-green-50`}>
           <p className="text-sm font-semibold uppercase tracking-wide text-green-700">
             Correct examples
@@ -335,14 +401,29 @@ function ExamplesLesson({
           rate, or higher rate.
         </p>
       </section>
+
+      <DiscriminationPractice
+        questions={getExampleCheckQuestions(procedure, details)}
+        title="Unlock common confusions"
+        description="Classify examples and nonexamples correctly before moving to the confusion checks."
+        backHref={backHref}
+        nextHref={nextHref}
+        nextLabel={nextLabel}
+      />
     </section>
   );
 }
 
 function CommonConfusionsLesson({
   procedure,
+  backHref,
+  nextHref,
+  nextLabel,
 }: {
   procedure: DifferentialReinforcementProcedure;
+  backHref: string;
+  nextHref?: string;
+  nextLabel: string;
 }) {
   const confusionPairs = getConfusionPairs(procedure);
   const miniChecks = confusionPairs.map((pair): QuizQuestion => ({
@@ -365,7 +446,7 @@ function CommonConfusionsLesson({
         Protect the technical distinction
       </h2>
 
-      <div className="mt-6 grid gap-6">
+      <div className="mx-auto mt-6 grid max-w-6xl gap-6">
         {confusionPairs.map((pair) => (
           <article
             key={pair.title}
@@ -398,7 +479,14 @@ function CommonConfusionsLesson({
 
       <section className="mt-10">
         <p className={eyebrowClass}>Mini checks</p>
-        <DiscriminationPractice questions={miniChecks} />
+        <DiscriminationPractice
+          questions={miniChecks}
+          title="Unlock the mastery quiz"
+          description="Pass the common-confusion checks before attempting the final mastery quiz."
+          backHref={backHref}
+          nextHref={nextHref}
+          nextLabel={nextLabel}
+        />
       </section>
     </section>
   );
@@ -406,8 +494,10 @@ function CommonConfusionsLesson({
 
 function MasteryQuizLesson({
   procedure,
+  backHref,
 }: {
   procedure: DifferentialReinforcementProcedure;
+  backHref: string;
 }) {
   const details = getProcedureLessonDetails(procedure);
   const masteryQuestions = getPracticeQuestions(procedure, details);
@@ -446,6 +536,7 @@ function MasteryQuizLesson({
         questions={masteryQuestions}
         nextHref={nextHref}
         reviewHref={getStepHref(procedure.slug, "visual-comparison")}
+        backHref={backHref}
       />
     </section>
   );
@@ -482,6 +573,72 @@ function ScenarioCard({
       </p>
     </article>
   );
+}
+
+function getVisualCheckQuestions(
+  procedure: DifferentialReinforcementProcedure,
+  details: ReturnType<typeof getProcedureLessonDetails>,
+): QuizQuestion[] {
+  return [
+    {
+      prompt: `In ${procedure.abbreviation}, what gets reinforced?`,
+      options: [
+        details.whatGetsReinforced,
+        details.targetBehavior,
+        "Any behavior that happens after reinforcement",
+        "Only behavior topography, regardless of contingency",
+      ],
+      answer: details.whatGetsReinforced,
+      rationale: details.whatGetsReinforced,
+    },
+    {
+      prompt: details.visualExamples[0].scenario,
+      options: ["DRA", "DRI", "DRO", "DRL", "DRH"],
+      answer: procedure.abbreviation,
+      rationale: details.visualExamples[0].why,
+    },
+  ];
+}
+
+function getExampleCheckQuestions(
+  procedure: DifferentialReinforcementProcedure,
+  details: ReturnType<typeof getProcedureLessonDetails>,
+): QuizQuestion[] {
+  return [
+    {
+      prompt: `${details.examples[1].scenario} Is this a correct example of ${procedure.abbreviation}?`,
+      options: [
+        `Yes, this is ${procedure.abbreviation}`,
+        "No, this is a nonexample",
+        "Only if no reinforcement is delivered",
+        "Only if the target behavior increases",
+      ],
+      answer: `Yes, this is ${procedure.abbreviation}`,
+      rationale: details.examples[1].why,
+    },
+    {
+      prompt: `${details.nonexamples[0].scenario} Is this a correct example of ${procedure.abbreviation}?`,
+      options: [
+        `Yes, this is ${procedure.abbreviation}`,
+        "No, this is a nonexample",
+        "Only if the learner chooses it",
+        "Only if the interval is short",
+      ],
+      answer: "No, this is a nonexample",
+      rationale: details.nonexamples[0].why,
+    },
+    {
+      prompt: `${details.nonexamples[1].scenario} Is this a correct example of ${procedure.abbreviation}?`,
+      options: [
+        `Yes, this is ${procedure.abbreviation}`,
+        "No, this is a nonexample",
+        "Only if it happens during baseline",
+        "Only if the reinforcer is edible",
+      ],
+      answer: "No, this is a nonexample",
+      rationale: details.nonexamples[1].why,
+    },
+  ];
 }
 
 function getPracticeQuestions(

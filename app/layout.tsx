@@ -7,20 +7,54 @@ export const metadata = {
 };
 
 const taskListSections = [
+ const taskListSections = [
   { title: "Dashboard", href: "/dashboard" },
   { title: "Modules", href: "/modules" },
+
+  {
+    title: "A. Behaviorism and Philosophical Foundations",
+    href: "#",
+  },
+
+  {
+    title: "B. Concepts and Principles",
+    href: "#",
+  },
+
+  {
+    title: "C. Measurement, Data Display, and Interpretation",
+    href: "#",
+  },
+
+  {
+    title: "D. Experimental Design",
+    href: "#",
+  },
+
+  {
+    title: "E. Ethical and Professional Issues",
+    href: "#",
+  },
+
+  {
+    title: "F. Behavior Assessment",
+    href: "#",
+  },
+
   {
     title: "G. Behavior-Change Procedures",
     href: "/modules/differential-reinforcement",
   },
-  { title: "A. Behaviorism and Philosophical Foundations", href: "#" },
-  { title: "B. Concepts and Principles", href: "#" },
-  { title: "C. Measurement, Data Display, and Interpretation", href: "#" },
-  { title: "D. Experimental Design", href: "#" },
-  { title: "E. Ethical and Professional Issues", href: "#" },
-  { title: "F. Behavior Assessment", href: "#" },
-  { title: "H. Selecting and Implementing Interventions", href: "#" },
-  { title: "I. Personnel Supervision and Management", href: "#" },
+
+  {
+    title: "H. Selecting and Implementing Interventions",
+    href: "#",
+  },
+
+  {
+    title: "I. Personnel Supervision and Management",
+    href: "#",
+  },
 ];
 
 export default function RootLayout({

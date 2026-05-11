@@ -62,11 +62,6 @@ function PlatformShellContent({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="relative flex min-h-screen overflow-x-hidden bg-[radial-gradient(circle_at_12%_18%,rgba(255,255,255,0.95),transparent_28%),radial-gradient(circle_at_88%_12%,rgba(255,227,239,0.85),transparent_30%),linear-gradient(135deg,#dff1ff_0%,#ffffff_50%,#ffe3ef_100%)]">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 h-[48vh] bg-gradient-to-b from-white via-white/80 to-transparent"
-      />
-
       <SiteHeader />
 
       {showSidebar && (

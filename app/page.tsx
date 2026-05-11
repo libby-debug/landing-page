@@ -3,13 +3,16 @@ import Link from "next/link";
 export default function HomePage() {
   return (
     <main className="relative min-h-screen overflow-hidden bg-gradient-to-r from-[#dff1ff] to-[#ffe3ef]">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 h-[55vh] bg-gradient-to-b from-white via-white/80 to-transparent"
-      />
-
-      <section className="relative flex min-h-screen items-center justify-center px-6 py-16 text-center sm:px-8">
+      <section className="relative flex min-h-0 items-start justify-center px-6 pb-16 pt-2 text-center sm:px-8 sm:pt-4">
         <div className="relative z-10 mx-auto flex w-full max-w-[900px] flex-col items-center">
+          <div className="flex w-full justify-center px-2">
+            <img
+              src="/images/aba-mastered-hero-logo.png"
+              alt="ABA Mastered"
+              className="h-auto w-full max-w-[678px] object-contain"
+            />
+          </div>
+
           <h1 className="pb-2 text-6xl font-black leading-[1.12] tracking-tight text-slate-950 md:text-8xl md:leading-[1.08]">
             <span className="block">Stop</span>
             <span className="block pb-1">memorizing</span>

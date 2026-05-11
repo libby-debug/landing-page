@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 
 const planNames = {
   monthly: "Monthly Plan",
@@ -10,68 +10,49 @@ const planNames = {
   "6month": "6-Month Plan",
 };
 
-const states = [
-  "AL",
-  "AK",
-  "AZ",
-  "AR",
-  "CA",
-  "CO",
-  "CT",
-  "DE",
-  "FL",
-  "GA",
-  "HI",
-  "ID",
-  "IL",
-  "IN",
-  "IA",
-  "KS",
-  "KY",
-  "LA",
-  "ME",
-  "MD",
-  "MA",
-  "MI",
-  "MN",
-  "MS",
-  "MO",
-  "MT",
-  "NE",
-  "NV",
-  "NH",
-  "NJ",
-  "NM",
-  "NY",
-  "NC",
-  "ND",
-  "OH",
-  "OK",
-  "OR",
-  "PA",
-  "RI",
-  "SC",
-  "SD",
-  "TN",
-  "TX",
-  "UT",
-  "VT",
-  "VA",
-  "WA",
-  "WV",
-  "WI",
-  "WY",
-];
-
-const inputClass =
-  "rounded-xl border border-slate-950 bg-white p-4 font-semibold text-slate-950 placeholder:text-slate-500";
+type CheckoutResponse = {
+  url?: string;
+  error?: string;
+};
 
 function CheckoutContent() {
   const searchParams = useSearchParams();
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
   const plan = searchParams.get("plan") ?? "monthly";
   const price = searchParams.get("price") ?? "79";
   const selectedPlan =
     planNames[plan as keyof typeof planNames] ?? "Monthly Plan";
+
+  async function handleCheckout() {
+    setIsLoading(true);
+    setError("");
+
+    try {
+      const response = await fetch("/api/create-checkout-session", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ plan }),
+      });
+      const data = (await response.json()) as CheckoutResponse;
+
+      if (!response.ok || !data.url) {
+        throw new Error(data.error ?? "Unable to start Stripe Checkout.");
+      }
+
+      window.location.href = data.url;
+    } catch (checkoutError) {
+      const message =
+        checkoutError instanceof Error
+          ? checkoutError.message
+          : "Unable to start Stripe Checkout.";
+
+      setError(message);
+      setIsLoading(false);
+    }
+  }
 
   return (
     <main className="min-h-screen bg-transparent px-6 pb-24 text-center sm:px-8">
@@ -84,8 +65,8 @@ function CheckoutContent() {
           Complete Your Purchase
         </h1>
 
-        <div className="mt-10 w-full rounded-3xl border border-slate-950 bg-white p-6 text-left shadow-2xl shadow-slate-900/15 sm:p-8">
-          <div className="rounded-2xl bg-blue-50 p-5 text-center">
+        <div className="mt-10 w-full rounded-3xl border border-slate-950 bg-white p-6 text-center shadow-2xl shadow-slate-900/15 sm:p-8">
+          <div className="rounded-2xl bg-blue-50 p-5">
             <p className="text-xl font-black text-slate-950">
               You selected the {selectedPlan}
             </p>
@@ -94,127 +75,33 @@ function CheckoutContent() {
             </p>
           </div>
 
-          <form className="mt-8 grid gap-4">
-            <label className="grid gap-2 text-sm font-black text-slate-950">
-              Email Address
-              <input
-                className={inputClass}
-                placeholder="Email address"
-                type="email"
-              />
-            </label>
+          <div className="mt-8 rounded-2xl border border-slate-200 bg-white px-5 py-6">
+            <h2 className="text-2xl font-black text-slate-950">
+              Continue to Stripe Checkout
+            </h2>
+            <p className="mx-auto mt-3 max-w-xl text-base font-semibold leading-7 text-slate-950">
+              Stripe will securely collect your payment details and complete
+              your ABA Mastered plan purchase.
+            </p>
 
-            <label className="grid gap-2 text-sm font-black text-slate-950">
-              Phone Number
-              <input
-                className={inputClass}
-                inputMode="tel"
-                placeholder="Phone number"
-                type="tel"
-              />
-            </label>
-
-            <label className="grid gap-2 text-sm font-black text-slate-950">
-              Cardholder Name
-              <input
-                className={inputClass}
-                placeholder="Full name"
-                type="text"
-              />
-            </label>
-
-            <label className="grid gap-2 text-sm font-black text-slate-950">
-              Address
-              <input
-                className={inputClass}
-                placeholder="Street address"
-                type="text"
-              />
-            </label>
-
-            <label className="grid gap-2 text-sm font-black text-slate-950">
-              Address Line 2
-              <input
-                className={inputClass}
-                placeholder="Apartment, suite, unit, or building"
-                type="text"
-              />
-            </label>
-
-            <div className="grid gap-4 md:grid-cols-[minmax(0,0.85fr)_minmax(7rem,8rem)_minmax(7rem,8.5rem)] md:gap-6">
-              <label className="grid gap-2 text-sm font-black text-slate-950">
-                City
-                <input
-                  className={inputClass}
-                  placeholder="City"
-                  type="text"
-                />
-              </label>
-
-              <label className="grid gap-2 text-sm font-black text-slate-950">
-                State
-                <select className={inputClass} defaultValue="">
-                  <option value="" disabled>
-                    State
-                  </option>
-                  {states.map((state) => (
-                    <option key={state} value={state}>
-                      {state}
-                    </option>
-                  ))}
-                </select>
-              </label>
-
-              <label className="grid gap-2 text-sm font-black text-slate-950">
-                ZIP Code
-                <input
-                  className={inputClass}
-                  inputMode="numeric"
-                  placeholder="ZIP Code"
-                  type="text"
-                />
-              </label>
-            </div>
-
-            <label className="grid gap-2 text-sm font-black text-slate-950">
-              Credit Card Number
-              <input
-                className={inputClass}
-                inputMode="numeric"
-                placeholder="1234 1234 1234 1234"
-                type="text"
-              />
-            </label>
-
-            <div className="grid gap-4 sm:grid-cols-2">
-              <label className="grid gap-2 text-sm font-black text-slate-950">
-                Expiration Date
-                <input
-                  className={inputClass}
-                  inputMode="numeric"
-                  placeholder="MM/YY"
-                  type="text"
-                />
-              </label>
-
-              <label className="grid gap-2 text-sm font-black text-slate-950">
-                CVC Number
-                <input
-                  className={inputClass}
-                  inputMode="numeric"
-                  placeholder="CVC"
-                  type="text"
-                />
-              </label>
-            </div>
+            {error ? (
+              <p
+                className="mt-5 rounded-2xl border border-red-200 bg-red-50 p-4 text-sm font-bold text-red-700"
+                role="alert"
+              >
+                {error}
+              </p>
+            ) : null}
 
             <button
-              className="mt-3 rounded-xl bg-blue-600 p-4 font-black text-white transition hover:bg-blue-700"
+              className="mt-6 w-full rounded-xl bg-blue-600 p-4 font-black text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60"
+              disabled={isLoading}
+              onClick={handleCheckout}
               type="button"
             >
-              Complete Purchase
+              {isLoading ? "Redirecting to Stripe..." : "Proceed to Checkout"}
             </button>
-          </form>
+          </div>
 
           <Link
             href="/pricing"

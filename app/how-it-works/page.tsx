@@ -30,13 +30,6 @@ export default function HowItWorksPage() {
 
       <div className="mt-10 flex w-full flex-col items-center justify-center gap-4 sm:w-auto sm:flex-row">
         <Link
-          href="/login"
-          className="w-full rounded-2xl border border-slate-300 bg-white/80 px-8 py-4 text-center text-lg font-bold leading-normal text-slate-800 shadow-sm transition hover:border-slate-400 hover:bg-white sm:w-auto"
-        >
-          Login
-        </Link>
-
-        <Link
           href="/pricing"
           className="w-full rounded-2xl border border-slate-300 bg-white/80 px-8 py-4 text-center text-lg font-bold leading-normal text-slate-800 shadow-sm transition hover:border-slate-400 hover:bg-white sm:w-auto"
         >

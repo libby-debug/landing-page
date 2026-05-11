@@ -2,9 +2,11 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 
 export default function SignupPage() {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -24,7 +26,7 @@ export default function SignupPage() {
     if (error) {
       setMessage(error.message);
     } else {
-      setMessage("Account created! Check your email to confirm your account.");
+      router.push("/pricing");
     }
   }
 

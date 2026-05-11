@@ -81,7 +81,7 @@ export default function LoginPage() {
           />
 
           <Link
-            href="/reset-password"
+            href="/forgot-password"
             className="mt-3 block text-right text-sm font-semibold text-blue-600 hover:text-blue-700"
           >
             Forgot your password?

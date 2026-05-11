@@ -5,7 +5,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "ABA Mastered",
-  description: "Focused ABA practice planning and progress tracking.",
+  description: "ABA study app aligned to TCO 6.",
 };
 
 export default function RootLayout({

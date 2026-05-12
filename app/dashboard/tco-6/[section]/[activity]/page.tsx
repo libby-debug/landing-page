@@ -201,10 +201,7 @@ function PracticeView({ section }: { section: TcoSection }) {
 
 function MasteryCheckView({ section }: { section: TcoSection }) {
   const masteryQuestions = getModuleContent(section.slug).masteryQuestions;
-  const masteryHeading =
-    section.code === "B"
-      ? "Module B: End of Lesson Mastery Check"
-      : `Module ${section.code} mastery`;
+  const masteryHeading = `Module ${section.code}: Mastery Check`;
 
   return (
     <section className={`${cardBaseClass} mt-8 w-full border-white/70 bg-white/95 text-center shadow-xl shadow-slate-900/10`}>

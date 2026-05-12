@@ -577,9 +577,11 @@ function criterionPanel(title: string, values: number[]): GraphPanel {
 export function GraphCard({
   className = "",
   graphId,
+  monochrome = false,
 }: {
   className?: string;
   graphId: string;
+  monochrome?: boolean;
 }) {
   const graph = moduleDGraphExamples[graphId as ModuleDGraphId];
 
@@ -592,7 +594,11 @@ export function GraphCard({
       className={`mx-auto w-full max-w-5xl rounded-3xl border border-white/70 bg-white/95 p-5 text-center shadow-sm ${className}`}
     >
       <div className="text-center">
-        <p className="text-sm font-black uppercase tracking-wide text-blue-600">
+        <p
+          className={`text-sm font-black uppercase tracking-wide ${
+            monochrome ? "text-slate-950" : "text-blue-600"
+          }`}
+        >
           Graph Example
         </p>
         <h3 className="mt-2 text-2xl font-black text-slate-950">
@@ -608,6 +614,7 @@ export function GraphCard({
           <GraphPanelView
             key={`${graph.id}-${panel.title ?? index}`}
             callouts={index === 0 ? graph.callouts : undefined}
+            monochrome={monochrome}
             panel={panel}
           />
         ))}
@@ -618,9 +625,11 @@ export function GraphCard({
 
 function GraphPanelView({
   callouts,
+  monochrome,
   panel,
 }: {
   callouts?: GraphCallout[];
+  monochrome: boolean;
   panel: GraphPanel;
 }) {
   const allPoints = panel.series.flatMap((item) => item.points);
@@ -722,7 +731,7 @@ function GraphPanelView({
               x2={xScale(criterion.end)}
               y1={yScale(criterion.value)}
               y2={yScale(criterion.value)}
-              stroke={toneStyles.pink.line}
+              stroke={monochrome ? "#0f172a" : toneStyles.pink.line}
               strokeDasharray="8 5"
               strokeWidth="3"
             />
@@ -730,7 +739,9 @@ function GraphPanelView({
               <text
                 x={xScale(criterion.start)}
                 y={yScale(criterion.value) - 7}
-                className="fill-pink-700 text-[12px] font-black"
+                className={`text-[12px] font-black ${
+                  monochrome ? "fill-slate-950" : "fill-pink-700"
+                }`}
               >
                 {criterion.label}
               </text>
@@ -738,15 +749,21 @@ function GraphPanelView({
           </g>
         ))}
 
-        {panel.series.map((item) => (
+        {panel.series.map((item, index) => (
           <g key={item.label}>
             <polyline
               fill="none"
               points={item.points
                 .map((point) => `${xScale(point.x)},${yScale(point.y)}`)
                 .join(" ")}
-              stroke={toneStyles[item.tone].line}
-              strokeDasharray={item.dashed ? "8 7" : undefined}
+              stroke={monochrome ? "#0f172a" : toneStyles[item.tone].line}
+              strokeDasharray={
+                item.dashed
+                  ? "8 7"
+                  : monochrome && index % 3 === 2
+                    ? "2 7"
+                    : undefined
+              }
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth="4"
@@ -757,6 +774,7 @@ function GraphPanelView({
                 cx={xScale(point.x)}
                 cy={yScale(point.y)}
                 marker={item.marker ?? "circle"}
+                monochrome={monochrome}
                 tone={item.tone}
               />
             ))}
@@ -770,7 +788,7 @@ function GraphPanelView({
               x2={xScale(callout.x)}
               y1={yScale(callout.y) - 36}
               y2={yScale(callout.y) - 8}
-              stroke={toneStyles[callout.tone].line}
+              stroke={monochrome ? "#0f172a" : toneStyles[callout.tone].line}
               strokeWidth="2"
             />
             <rect
@@ -779,8 +797,8 @@ function GraphPanelView({
               width="104"
               height="28"
               rx="10"
-              fill={toneStyles[callout.tone].soft}
-              stroke={toneStyles[callout.tone].line}
+              fill={monochrome ? "#ffffff" : toneStyles[callout.tone].soft}
+              stroke={monochrome ? "#0f172a" : toneStyles[callout.tone].line}
             />
             <text
               x={xScale(callout.x)}
@@ -836,7 +854,11 @@ function GraphPanelView({
           >
             <span
               className="h-3 w-3 rounded-full"
-              style={{ backgroundColor: toneStyles[item.tone].line }}
+              style={{
+                backgroundColor: monochrome
+                  ? "#0f172a"
+                  : toneStyles[item.tone].line,
+              }}
             />
             {item.label}
           </span>
@@ -850,14 +872,16 @@ function Marker({
   cx,
   cy,
   marker,
+  monochrome,
   tone,
 }: {
   cx: number;
   cy: number;
   marker: NonNullable<GraphSeries["marker"]>;
+  monochrome: boolean;
   tone: GraphTone;
 }) {
-  const fill = toneStyles[tone].line;
+  const fill = monochrome ? "#0f172a" : toneStyles[tone].line;
 
   if (marker === "square") {
     return <rect x={cx - 5} y={cy - 5} width="10" height="10" rx="2" fill={fill} />;

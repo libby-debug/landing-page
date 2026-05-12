@@ -763,7 +763,11 @@ export function PracticeQuestionCard({
       </h3>
 
       {question.graphId ? (
-        <GraphCard className="mt-5" graphId={question.graphId} />
+        <GraphCard
+          className="mt-5"
+          graphId={question.graphId}
+          monochrome={mode === "practice" && sectionSlug === "d"}
+        />
       ) : null}
 
       <QuestionResponseInput
@@ -1000,7 +1004,11 @@ export function MasteryCheckQuiz({
           </h3>
 
           {question.graphId ? (
-            <GraphCard className="mt-5" graphId={question.graphId} />
+            <GraphCard
+              className="mt-5"
+              graphId={question.graphId}
+              monochrome={sectionSlug === "d"}
+            />
           ) : null}
 
           <QuestionResponseInput

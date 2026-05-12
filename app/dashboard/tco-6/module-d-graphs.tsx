@@ -578,10 +578,14 @@ export function GraphCard({
   className = "",
   graphId,
   monochrome = false,
+  titleOverride,
+  hideDescription = false,
 }: {
   className?: string;
   graphId: string;
+  hideDescription?: boolean;
   monochrome?: boolean;
+  titleOverride?: string;
 }) {
   const graph = moduleDGraphExamples[graphId as ModuleDGraphId];
 
@@ -594,19 +598,14 @@ export function GraphCard({
       className={`mx-auto w-full max-w-5xl rounded-3xl border border-white/70 bg-white/95 p-5 text-center shadow-sm ${className}`}
     >
       <div className="text-center">
-        <p
-          className={`text-sm font-black uppercase tracking-wide ${
-            monochrome ? "text-slate-950" : "text-blue-600"
-          }`}
-        >
-          Graph Example
-        </p>
-        <h3 className="mt-2 text-2xl font-black text-slate-950">
-          {graph.title}
+        <h3 className="text-2xl font-black text-slate-950">
+          {titleOverride ?? graph.title}
         </h3>
-        <p className="mx-auto mt-2 max-w-3xl text-sm font-semibold leading-6 text-slate-950">
-          {graph.description}
-        </p>
+        {hideDescription ? null : (
+          <p className="mx-auto mt-2 max-w-3xl text-sm font-semibold leading-6 text-slate-950">
+            {graph.description}
+          </p>
+        )}
       </div>
 
       <div className="mx-auto mt-5 grid w-full max-w-4xl place-items-center gap-4">
@@ -852,13 +851,10 @@ function GraphPanelView({
             key={item.label}
             className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-xs font-black text-slate-950"
           >
-            <span
-              className="h-3 w-3 rounded-full"
-              style={{
-                backgroundColor: monochrome
-                  ? "#0f172a"
-                  : toneStyles[item.tone].line,
-              }}
+            <LegendMarker
+              marker={item.marker ?? "circle"}
+              monochrome={monochrome}
+              tone={item.tone}
             />
             {item.label}
           </span>
@@ -906,4 +902,41 @@ function Marker({
   }
 
   return <circle cx={cx} cy={cy} r="5.5" fill={fill} />;
+}
+
+function LegendMarker({
+  marker,
+  monochrome,
+  tone,
+}: {
+  marker: NonNullable<GraphSeries["marker"]>;
+  monochrome: boolean;
+  tone: GraphTone;
+}) {
+  const fill = monochrome ? "#0f172a" : toneStyles[tone].line;
+  const baseClass = "inline-block h-3 w-3 shrink-0";
+
+  if (marker === "square") {
+    return <span className={`${baseClass} rounded-[3px]`} style={{ backgroundColor: fill }} />;
+  }
+
+  if (marker === "triangle") {
+    return (
+      <span
+        className={`${baseClass} [clip-path:polygon(50%_0,0_100%,100%_100%)]`}
+        style={{ backgroundColor: fill }}
+      />
+    );
+  }
+
+  if (marker === "diamond") {
+    return (
+      <span
+        className={`${baseClass} rotate-45 rounded-[2px]`}
+        style={{ backgroundColor: fill }}
+      />
+    );
+  }
+
+  return <span className={`${baseClass} rounded-full`} style={{ backgroundColor: fill }} />;
 }

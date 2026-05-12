@@ -995,7 +995,9 @@ export function MasteryCheckQuiz({
             <GraphCard
               className="mt-5"
               graphId={question.graphId}
-              monochrome={sectionSlug === "d"}
+              hideDescription
+              monochrome
+              titleOverride={`Graph for Question ${index + 1}`}
             />
           ) : null}
 

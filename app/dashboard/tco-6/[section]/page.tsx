@@ -22,6 +22,7 @@ import {
   SaveProgressButton,
   SavedModuleProgressCard,
 } from "../progression";
+import { ChecklistButtons } from "../checklist-buttons";
 
 type TcoSectionPageProps = {
   params: Promise<{
@@ -93,22 +94,11 @@ export default async function TcoSectionPage({ params }: TcoSectionPageProps) {
               <p className={eyebrowClass}>TCO 6 checklist</p>
 
               <h2 className={sectionTitleClass}>
-                Module {section.code} checklist items
+                Module {section.code}: Checklist Items
               </h2>
             </div>
 
-            <div className="mt-6 grid gap-4">
-              {section.checklistItems.map((item) => (
-                <div
-                  key={item}
-                  className="rounded-2xl border border-slate-200 bg-slate-50 p-4 text-center"
-                >
-                  <p className="text-base font-bold leading-7 text-slate-950">
-                    {item}
-                  </p>
-                </div>
-              ))}
-            </div>
+            <ChecklistButtons section={section} />
           </div>
 
           <aside className="grid gap-6">

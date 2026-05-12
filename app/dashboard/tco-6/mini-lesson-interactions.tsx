@@ -551,7 +551,7 @@ function FlowInteraction({
                 "Respondent conditioning moves from Neutral Stimulus (NS), to pairing with an Unconditioned Stimulus (US), to Conditioned Stimulus (CS), to Conditioned Response (CR)."
               : defaultLearnHint()}
           </p>
-          {!isCorrect && !remediation ? <ResetAnswersButton onClick={reset} /> : null}
+          {!isCorrect ? <ResetAnswersButton onClick={reset} /> : null}
         </div>
       ) : null}
     </div>
@@ -903,6 +903,8 @@ function MatchingInteraction({
                 onPassedChange?.(false);
               }}
               className={`cursor-grab rounded-2xl border p-4 text-sm font-black transition active:cursor-grabbing ${
+                pair.term === "Duration" ? "mt-3" : ""
+              } ${
                 activeTerm === pair.term
                   ? "border-purple-300 bg-purple-50 text-purple-700"
                   : "border-white bg-white text-slate-950 hover:border-purple-200"
@@ -1524,7 +1526,7 @@ function FeedbackBox({
       <p className="mt-2 text-sm font-semibold leading-6 text-slate-950">
         <FormattedConceptText text={message} />
       </p>
-      {!correct && !remediation && onReset ? (
+      {!correct && onReset ? (
         <ResetAnswersButton onClick={onReset} />
       ) : null}
     </div>
@@ -1538,7 +1540,7 @@ function ResetAnswersButton({ onClick }: { onClick: () => void }) {
       onClick={onClick}
       className="mt-4 rounded-xl border border-pink-200 bg-white px-5 py-3 text-sm font-black text-pink-700 shadow-sm transition hover:border-pink-300 hover:bg-pink-50 focus:outline-none focus:ring-2 focus:ring-pink-300 focus:ring-offset-2"
     >
-      Reset answers
+      Reset Answers
     </button>
   );
 }

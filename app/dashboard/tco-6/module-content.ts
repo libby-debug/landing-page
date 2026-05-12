@@ -574,74 +574,815 @@ const sectionAMiniLessons: MiniLessonContent[] = [
   },
 ];
 
-const sectionCMiniLessons: MiniLessonContent[] = [
+const sectionCExpandedMiniLessons: MiniLessonContent[] = [
   {
-    slug: "operational-definitions",
-    label: "C.1",
-    title: "Operational definitions",
+    slug: "operational-definitions-and-measurement",
+    label: "C1",
+    title: "Operational Definitions and Measurement",
     body: [
       "An operational definition describes behavior in [observable and measurable terms].",
-      "It tells observers exactly what counts and what does not count.",
+      "Measurement starts by saying exactly what counts and what does not count.",
     ],
     visual: {
       type: "example",
-      example: "Counts: hand contacts peer with force.",
-      nonexample: "Does not count: being aggressive.",
+      example: "Counts: hand contacts peer with force during instruction.",
+      nonexample: "Does not count: being aggressive or upset.",
     },
   },
   {
-    slug: "direct-indirect-product",
-    label: "C.2",
-    title: "Direct, indirect, and product measures",
+    slug: "direct-indirect-permanent-product",
+    label: "C2",
+    title: "Direct, Indirect, and Permanent Product Measurement",
     body: [
       "Direct measurement observes [the behavior as it occurs].",
-      "Product measurement records [an outcome behavior leaves behind].",
+      "Permanent product measurement records [a lasting outcome behavior leaves behind].",
     ],
     visual: {
       type: "sorting",
       prompt: "Sort the measurement examples.",
-      categories: ["Direct measure", "Product measure"],
+      categories: ["Direct measure", "Permanent product"],
       items: [
         { label: "Count hand raises during class", category: "Direct measure" },
-        { label: "Score completed math problems", category: "Product measure" },
+        { label: "Score completed math problems after class", category: "Permanent product" },
         { label: "Time how long crying lasts", category: "Direct measure" },
-        { label: "Count worksheets turned in", category: "Product measure" },
+        { label: "Count worksheets turned in", category: "Permanent product" },
       ],
     },
   },
   {
-    slug: "continuous-discontinuous",
-    label: "C.5-C.7",
-    title: "Continuous vs discontinuous measurement",
+    slug: "frequency-rate-duration",
+    label: "C3",
+    title: "Frequency, Rate, and Duration",
     body: [
-      "Continuous measurement captures [every response or response dimension].",
-      "Discontinuous measurement samples behavior during intervals.",
+      "Frequency counts [how many responses occurred].",
+      "Rate adds [time] to the count; Duration measures [how long behavior lasts].",
     ],
     visual: {
-      type: "comparison",
-      leftTitle: "Continuous",
-      leftText: "Frequency, duration, latency, IRT",
-      rightTitle: "Discontinuous",
-      rightText: "Partial interval, whole interval, momentary time sampling",
-      cue: "Continuous = most complete record. Discontinuous = sample of behavior.",
+      type: "matching",
+      prompt: "Match each continuous measure to its cue.",
+      pairs: [
+        { term: "Frequency", definition: "Number of responses." },
+        { term: "Rate", definition: "Responses per unit of time." },
+        { term: "Duration", definition: "How long behavior lasts." },
+      ],
     },
   },
   {
-    slug: "graph-interpretation",
-    label: "C.10-C.12",
-    title: "Graph interpretation",
+    slug: "latency-vs-irt",
+    label: "C4",
+    title: "Latency vs IRT",
     body: [
-      "Visual analysis focuses on [level, trend, variability, immediacy, overlap, and consistency].",
-      "Interpret data before changing intervention procedures.",
+      "Latency measures [time from stimulus to response].",
+      "Interresponse time (IRT) measures [time between two responses].",
+    ],
+    visual: {
+      type: "comparison",
+      leftTitle: "Latency",
+      leftText: "Instruction -> time -> first response",
+      rightTitle: "IRT",
+      rightText: "Response -> time -> next response",
+      cue: "Latency starts after an antecedent. IRT starts after a response.",
+    },
+  },
+  {
+    slug: "continuous-measurement-procedures",
+    label: "C5",
+    title: "Continuous Measurement Procedures",
+    body: [
+      "Continuous measurement attempts to capture [every response or response dimension].",
+      "Use it when the response can be counted or timed accurately.",
+    ],
+    visual: {
+      type: "select-all",
+      prompt: "Select continuous measurement procedures.",
+      choices: [
+        { label: "Frequency", correct: true },
+        { label: "Duration", correct: true },
+        { label: "Latency", correct: true },
+        { label: "Partial interval recording", correct: false },
+      ],
+      feedback:
+        "Frequency, duration, latency, and IRT are continuous measures. Interval recording samples behavior.",
+    },
+  },
+  {
+    slug: "discontinuous-measurement-procedures",
+    label: "C6",
+    title: "Discontinuous Measurement Procedures",
+    body: [
+      "Discontinuous measurement samples behavior during [observation intervals].",
+      "It may overestimate or underestimate behavior depending on the procedure.",
+    ],
+    visual: {
+      type: "comparison",
+      leftTitle: "Whole interval",
+      leftText: "Behavior must occur for the entire interval",
+      rightTitle: "Partial interval",
+      rightText: "Behavior occurs at any time during the interval",
+      cue: "Whole interval can underestimate. Partial interval can overestimate.",
+    },
+  },
+  {
+    slug: "momentary-time-sampling",
+    label: "C7",
+    title: "Momentary Time Sampling",
+    body: [
+      "Momentary time sampling records whether behavior occurs [at the instant the interval ends].",
+      "It is useful when continuous observation is impractical.",
     ],
     visual: {
       type: "choice",
-      prompt: "Which feature asks whether data changed right after intervention began?",
-      choices: ["Immediacy of effect", "Measurement validity", "IRT", "Trials to criterion"],
-      answer: "Immediacy of effect",
+      prompt:
+        "A timer beeps every 2 minutes, and the observer records whether the learner is on task at that exact moment. Which procedure is used?",
+      choices: ["Momentary time sampling", "Whole interval recording", "Partial interval recording", "Frequency"],
+      answer: "Momentary time sampling",
+      hint:
+        "Look for recording only at a specific moment, not throughout the whole interval.",
       feedback:
-        "Immediacy of effect compares data right before and right after a condition change.",
+        "Momentary time sampling scores behavior only at the observation moment.",
     },
+  },
+  {
+    slug: "trial-by-trial-recording",
+    label: "C8",
+    title: "Trial-by-Trial Recording",
+    body: [
+      "Trial-by-trial recording scores [whether each teaching trial is correct or incorrect].",
+      "It is common for discrete trial instruction and skill acquisition data.",
+    ],
+    visual: {
+      type: "flow",
+      prompt: "Put the trial-by-trial data path in order.",
+      steps: ["Present trial", "Record response accuracy", "Calculate percent correct"],
+      feedback:
+        "Trial-by-trial recording tracks performance across individual teaching opportunities.",
+    },
+  },
+  {
+    slug: "percentage-and-ratio",
+    label: "C9",
+    title: "Percentage and Ratio Measures",
+    body: [
+      "Percentage shows [part divided by whole times 100].",
+      "Ratio compares [one quantity to another quantity].",
+    ],
+    visual: {
+      type: "fill-blank",
+      prompt: "Complete the percentage formula.",
+      sentence: "Percentage = number correct divided by total opportunities times ____.",
+      answer: "100",
+      feedback:
+        "Percentage converts part-to-whole performance into a value out of 100.",
+    },
+  },
+  {
+    slug: "ioa-purpose",
+    label: "C10",
+    title: "Interobserver Agreement (IOA)",
+    body: [
+      "Interobserver agreement (IOA) compares [two observers' records of the same event].",
+      "High IOA supports confidence in measurement, but it does not prove validity.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "What is the best reason to collect IOA?",
+      choices: [
+        "To evaluate consistency between observers",
+        "To prove the intervention caused behavior change",
+        "To replace operational definitions",
+        "To show generalization occurred",
+      ],
+      answer: "To evaluate consistency between observers",
+      hint: "IOA is about agreement in measurement, not experimental control.",
+      feedback:
+        "IOA evaluates consistency between observers' data records.",
+    },
+  },
+  {
+    slug: "count-ioa",
+    label: "C11",
+    title: "Count IOA: Total, Exact, and Mean Count-per-Interval",
+    body: [
+      "Total count IOA compares [overall counts].",
+      "Exact count-per-interval IOA requires [the same count in each interval].",
+    ],
+    visual: {
+      type: "matching",
+      prompt: "Match each count IOA method to its cue.",
+      pairs: [
+        { term: "Total count IOA", definition: "Smaller total count divided by larger total count." },
+        { term: "Exact count-per-interval IOA", definition: "Intervals with identical counts divided by total intervals." },
+        { term: "Mean count-per-interval IOA", definition: "Average agreement across intervals." },
+      ],
+    },
+  },
+  {
+    slug: "duration-ioa",
+    label: "C12",
+    title: "Duration IOA",
+    body: [
+      "Total duration IOA compares [total time recorded by each observer].",
+      "Mean duration-per-occurrence IOA compares [duration agreement for each occurrence].",
+    ],
+    visual: {
+      type: "comparison",
+      leftTitle: "Total duration IOA",
+      leftText: "Total shorter duration / total longer duration",
+      rightTitle: "Mean duration IOA",
+      rightText: "Agreement for each occurrence, then averaged",
+      cue: "Use duration IOA when the response dimension is time.",
+    },
+  },
+  {
+    slug: "trial-by-trial-ioa",
+    label: "C13",
+    title: "Trial-by-Trial IOA",
+    body: [
+      "Trial-by-trial IOA compares observer agreement [for each trial].",
+      "It fits discrete opportunities such as correct or incorrect teaching trials.",
+    ],
+    visual: {
+      type: "fill-blank",
+      prompt: "Complete the IOA cue.",
+      sentence: "Trial-by-trial IOA divides agreements by total ____.",
+      answer: "trials",
+      feedback:
+        "Trial-by-trial IOA compares observer records across individual trials.",
+    },
+  },
+  {
+    slug: "graph-types",
+    label: "C14",
+    title: "Graph Types and Data Display",
+    body: [
+      "Line graphs show [behavior over time].",
+      "Bar graphs compare [summaries across conditions or categories].",
+    ],
+    visual: {
+      type: "sorting",
+      prompt: "Sort each display by its best use.",
+      categories: ["Line graph", "Bar graph"],
+      items: [
+        { label: "Daily rate of aggression across sessions", category: "Line graph" },
+        { label: "Total responses by setting", category: "Bar graph" },
+        { label: "Duration across baseline and intervention sessions", category: "Line graph" },
+        { label: "Average score for three groups", category: "Bar graph" },
+      ],
+    },
+  },
+  {
+    slug: "visual-analysis-level-trend-variability",
+    label: "C15",
+    title: "Level, Trend, and Variability",
+    body: [
+      "Level asks [how high or low] data are.",
+      "Trend asks [direction]; variability asks [how much data fluctuate].",
+    ],
+    visual: {
+      type: "graph",
+      graphId: "reversal-aba",
+      graphTitle: "Visual analysis cue",
+      phases: [
+        { label: "Level", detail: "How high or low?", tone: "blue" },
+        { label: "Trend", detail: "Upward, downward, or flat?", tone: "purple" },
+        { label: "Variability", detail: "Stable or bouncing?", tone: "pink" },
+      ],
+      prompt:
+        "Which visual analysis feature asks whether the data path is moving upward, downward, or flat?",
+      choices: ["Trend", "Level", "Overlap", "Trial-by-trial IOA"],
+      answer: "Trend",
+      hint: "Think about direction across sessions.",
+      feedback: "Trend describes the direction of the data path.",
+    },
+  },
+  {
+    slug: "immediacy-overlap-functional-relation",
+    label: "C16",
+    title: "Immediacy, Overlap, and Functional Relation",
+    body: [
+      "Immediacy asks whether behavior changes [right after a condition change].",
+      "A functional relation is supported when behavior changes with [systematic manipulation of the independent variable].",
+    ],
+    visual: {
+      type: "graph",
+      graphId: "reversal-pvr",
+      graphTitle: "Functional relation cue",
+      phases: [
+        { label: "Baseline", detail: "Prediction from baseline data.", tone: "blue" },
+        { label: "Intervention", detail: "Immediate behavior change.", tone: "green" },
+        { label: "Return", detail: "Verification when condition changes.", tone: "pink" },
+      ],
+      prompt: "Which feature strengthens evidence of a functional relation?",
+      choices: [
+        "Repeated behavior change when conditions change",
+        "One data point higher than baseline",
+        "A colorful graph title",
+        "A longer session name",
+      ],
+      answer: "Repeated behavior change when conditions change",
+      hint: "Look for replicated change tied to condition changes.",
+      feedback:
+        "A functional relation is supported when behavior changes predictably with the independent variable.",
+    },
+  },
+  {
+    slug: "baseline-intervention-maintenance-generalization",
+    label: "C17",
+    title: "Baseline, Intervention, Maintenance, and Generalization Data",
+    body: [
+      "Baseline data support [prediction before intervention].",
+      "Maintenance and generalization data show whether behavior change [continues or transfers].",
+    ],
+    visual: {
+      type: "matching",
+      prompt: "Match each data phase to its cue.",
+      pairs: [
+        { term: "Baseline", definition: "Data before intervention." },
+        { term: "Intervention", definition: "Data after the independent variable is introduced." },
+        { term: "Maintenance", definition: "Behavior continues after teaching or intervention changes." },
+        { term: "Generalization", definition: "Behavior transfers across people, settings, behaviors, or time." },
+      ],
+    },
+  },
+  {
+    slug: "single-subject-design-basics",
+    label: "C18",
+    title: "Single-Subject Design Basics",
+    body: [
+      "Single-subject designs use repeated measurement to evaluate [individual behavior change].",
+      "Experimental control is shown when data patterns change with experimental conditions.",
+    ],
+    visual: {
+      type: "select-all",
+      prompt: "Select design features that help demonstrate experimental control.",
+      choices: [
+        { label: "Repeated measurement", correct: true },
+        { label: "Clear phase changes or design logic", correct: true },
+        { label: "Only one pretest and one posttest", correct: false },
+        { label: "Behavior change linked to the independent variable", correct: true },
+      ],
+      feedback:
+        "Single-subject designs rely on repeated measurement and systematic condition changes.",
+    },
+  },
+  {
+    slug: "single-subject-design-types",
+    label: "C19",
+    title: "Reversal, Multiple Baseline, Alternating Treatments, and Changing Criterion",
+    body: [
+      "Each single-subject design shows experimental control through [a different data pattern].",
+      "Choose the design that fits the behavior, ethics, and intervention question.",
+    ],
+    visual: {
+      type: "matching",
+      prompt: "Match each design to its visual logic.",
+      pairs: [
+        { term: "Reversal Design", definition: "Behavior changes as conditions repeat or withdraw." },
+        { term: "Multiple Baseline Design", definition: "Behavior changes after staggered intervention across tiers." },
+        { term: "Alternating Treatments / Multielement Design", definition: "Rapid alternation creates separated data paths." },
+        { term: "Changing Criterion Design", definition: "Behavior tracks stepwise criterion changes." },
+      ],
+    },
+  },
+  {
+    slug: "data-based-decision-making",
+    label: "C20",
+    title: "Data-Based Decision Making",
+    body: [
+      "Data-based decisions require matching the decision to [the data pattern].",
+      "Stable improvement may support continuing; no effect may support revising the intervention.",
+    ],
+    visual: {
+      type: "choice",
+      prompt:
+        "Baseline is stable, intervention begins, and behavior does not change across several sessions. What is the best data-based decision?",
+      choices: [
+        "Review and adjust the intervention plan",
+        "Declare a functional relation",
+        "Ignore the data because intervention has started",
+        "Switch to percentage IOA",
+      ],
+      answer: "Review and adjust the intervention plan",
+      hint: "Ask whether the data pattern shows behavior change after intervention.",
+      feedback:
+        "Data-based decision making uses the observed pattern to continue, revise, or investigate conditions.",
+    },
+  },
+];
+
+const sectionCPracticeQuestions: QuestionContent[] = [
+  {
+    type: "matching",
+    prompt: "Match each continuous measure to its best use.",
+    pairs: [
+      { term: "Frequency", definition: "Count each response." },
+      { term: "Rate", definition: "Count responses per unit of time." },
+      { term: "Duration", definition: "Measure how long behavior lasts." },
+      { term: "Latency", definition: "Measure time from stimulus to response." },
+      { term: "IRT", definition: "Measure time between two responses." },
+    ],
+    answer: "All continuous measures matched correctly",
+    explanation:
+      "Continuous measures capture response occurrence or temporal dimensions directly.",
+    hint:
+      "Separate counting responses from measuring time before, during, or between responses.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A BCBA counts 24 vocal disruptions during a 30-minute observation and reports 0.8 disruptions per minute. Which measure is reported?",
+    choices: ["Rate", "Frequency", "Duration", "Latency"],
+    answer: "Rate",
+    explanation:
+      "Rate is count per unit of time. The count was converted to disruptions per minute.",
+    hint: "Look for a count divided by observation time.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A therapist records the time from the instruction 'start work' to the learner's first pencil mark. Which measure is used?",
+    choices: ["Latency", "IRT", "Duration", "Whole interval recording"],
+    answer: "Latency",
+    explanation:
+      "Latency measures elapsed time from an antecedent stimulus to the beginning of the response.",
+    hint: "Ask whether timing begins after a stimulus or after a previous response.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "An observer records whether aggression occurred at any point during each 10-second interval. Which procedure is used?",
+    choices: ["Partial interval recording", "Whole interval recording", "Momentary time sampling", "Trial-by-trial recording"],
+    answer: "Partial interval recording",
+    explanation:
+      "Partial interval recording scores an interval if behavior occurs at any time during the interval.",
+    hint: "Look for any occurrence within the interval.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "An observer records on-task behavior only if it occurs for the entire 1-minute interval. Which procedure is used?",
+    choices: ["Whole interval recording", "Partial interval recording", "Momentary time sampling", "Frequency"],
+    answer: "Whole interval recording",
+    explanation:
+      "Whole interval recording requires behavior to occur across the full interval.",
+    hint: "Look for the entire interval requirement.",
+  },
+  {
+    type: "select-all",
+    prompt: "Select all statements that correctly describe discontinuous measurement.",
+    choices: [
+      "It samples behavior during intervals.",
+      "Partial interval recording can overestimate behavior.",
+      "Whole interval recording can underestimate behavior.",
+      "It always captures every response.",
+    ],
+    answers: [
+      "It samples behavior during intervals.",
+      "Partial interval recording can overestimate behavior.",
+      "Whole interval recording can underestimate behavior.",
+    ],
+    answer:
+      "Discontinuous measurement samples behavior and can overestimate or underestimate depending on the procedure.",
+    explanation:
+      "Discontinuous procedures sample behavior. Partial interval can overestimate, and whole interval can underestimate.",
+    hint:
+      "Think about whether the method captures every response or samples intervals.",
+  },
+  {
+    type: "fill-blank",
+    prompt:
+      "Complete the cue: Interresponse time measures time between two ____.",
+    answer: "responses",
+    explanation:
+      "IRT measures elapsed time between two consecutive responses.",
+    hint: "IRT begins after one response and ends at the next one.",
+  },
+  {
+    type: "matching",
+    prompt: "Match each IOA method to the data it fits best.",
+    pairs: [
+      { term: "Exact count IOA", definition: "Interval-by-interval count agreement." },
+      { term: "Mean count-per-interval IOA", definition: "Average count agreement across intervals." },
+      { term: "Total duration IOA", definition: "Agreement on total time behavior occurred." },
+      { term: "Trial-by-trial IOA", definition: "Agreement across discrete teaching trials." },
+    ],
+    answer: "All IOA methods matched correctly",
+    explanation:
+      "IOA method selection depends on the response dimension and data collection system.",
+    hint:
+      "Match count data to count IOA, duration data to duration IOA, and trial data to trial-by-trial IOA.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "Observer A records 18 responses and Observer B records 20 responses during the same session. Which count IOA formula is most directly used for total count IOA?",
+    choices: ["18 divided by 20", "20 divided by 18", "18 plus 20", "Exact interval agreements divided by intervals"],
+    answer: "18 divided by 20",
+    explanation:
+      "Total count IOA divides the smaller count by the larger count and multiplies by 100.",
+    hint:
+      "For total count IOA, compare the smaller total count to the larger total count.",
+  },
+  {
+    type: "scenario",
+    graphId: "reversal-aba",
+    prompt:
+      "Baseline data are high and stable. Intervention starts and behavior immediately drops to a lower, stable level with little overlap. Which interpretation is strongest?",
+    choices: ["Clear intervention effect", "No functional relation", "High variability blocks interpretation", "Only external validity is shown"],
+    answer: "Clear intervention effect",
+    explanation:
+      "A clear level change with immediacy and low overlap supports an intervention effect.",
+    hint:
+      "Compare level, immediacy, overlap, and stability across the phase change.",
+  },
+  {
+    type: "scenario",
+    graphId: "multiple-baseline-settings",
+    prompt:
+      "Behavior changes only after intervention is introduced at staggered times across settings. Which design is represented?",
+    choices: ["Multiple Baseline Design", "Reversal Design", "Changing Criterion Design", "Alternating Treatments / Multielement Design"],
+    answer: "Multiple Baseline Design",
+    explanation:
+      "Multiple Baseline Designs show behavior change after staggered intervention across tiers.",
+    hint:
+      "Look for staggered intervention rather than withdrawal or rapid alternation.",
+  },
+  {
+    type: "scenario",
+    graphId: "alternating-standard",
+    prompt:
+      "Two interventions are rapidly alternated, and one data path is consistently higher than the other. Which design feature is being evaluated?",
+    choices: ["Differentiated data paths", "Criterion tracking", "Return to baseline", "Exact count IOA"],
+    answer: "Differentiated data paths",
+    explanation:
+      "Alternating Treatments / Multielement Designs compare conditions through rapid alternation and separated data paths.",
+    hint:
+      "Focus on rapid alternation and whether the paths separate by condition.",
+  },
+  {
+    type: "scenario",
+    graphId: "changing-criterion-on-task",
+    prompt:
+      "On-task duration increases each time the criterion line increases. Which graph feature supports experimental control?",
+    choices: ["Behavior tracks criterion shifts", "Behavior reverses after withdrawal", "All tiers change at once", "Data paths overlap completely"],
+    answer: "Behavior tracks criterion shifts",
+    explanation:
+      "Changing Criterion Designs show control when behavior shifts with each criterion change.",
+    hint:
+      "Look for behavior moving step-by-step with the criterion line.",
+  },
+  {
+    type: "matching",
+    prompt: "Match each graph interpretation cue.",
+    pairs: [
+      { term: "Level", definition: "How high or low the data are." },
+      { term: "Trend", definition: "Direction of the data path." },
+      { term: "Variability", definition: "How much data fluctuate." },
+      { term: "Immediacy of effect", definition: "Change right after a condition changes." },
+    ],
+    answer: "Graph interpretation cues matched correctly",
+    explanation:
+      "Visual analysis inspects level, trend, variability, immediacy, overlap, and consistency.",
+    hint:
+      "Ask what each cue tells you to inspect in the graph.",
+  },
+  {
+    type: "select-all",
+    prompt: "Select all features that strengthen evidence for a functional relation.",
+    choices: [
+      "Repeated behavior change when the independent variable changes",
+      "Low overlap between baseline and intervention data",
+      "Immediate change after phase change",
+      "A single improved data point with no replication",
+    ],
+    answers: [
+      "Repeated behavior change when the independent variable changes",
+      "Low overlap between baseline and intervention data",
+      "Immediate change after phase change",
+    ],
+    answer:
+      "Repeated condition-linked change, low overlap, and immediacy strengthen evidence for a functional relation.",
+    explanation:
+      "Functional relation identification relies on replicated, condition-linked behavior change and visual analysis features.",
+    hint:
+      "Look for replicated change tied to the independent variable, not one isolated data point.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A skill remains at criterion three weeks after intervention is faded. Which data type is being evaluated?",
+    choices: ["Maintenance", "Baseline", "Latency", "Exact count IOA"],
+    answer: "Maintenance",
+    explanation:
+      "Maintenance data show whether behavior change continues after teaching or intervention conditions change.",
+    hint:
+      "Think about behavior continuing over time after teaching conditions change.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A learner uses the trained communication response with a new teacher in a new classroom. Which data type is most relevant?",
+    choices: ["Generalization", "Duration IOA", "Baseline prediction", "Momentary time sampling"],
+    answer: "Generalization",
+    explanation:
+      "Generalization data show transfer across people, settings, behaviors, or time.",
+    hint:
+      "Look for transfer beyond the original teaching condition.",
+  },
+];
+
+const sectionCMasteryQuestions: QuestionContent[] = [
+  {
+    type: "scenario",
+    prompt:
+      "A BCBA wants to measure how many times a learner leaves their seat during a 20-minute work period. Which measure is most direct?",
+    choices: ["Frequency", "Duration", "Latency", "Momentary time sampling"],
+    answer: "Frequency",
+    explanation:
+      "Frequency counts the number of responses during an observation.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A BCBA reports that a learner emitted 15 responses in 5 minutes. Which measure is needed to compare this session to a 10-minute session?",
+    choices: ["Rate", "Frequency only", "Latency", "Whole interval recording"],
+    answer: "Rate",
+    explanation:
+      "Rate controls for observation time by reporting responses per unit of time.",
+  },
+  {
+    type: "scenario",
+    prompt: "Which option best differentiates latency and IRT?",
+    choices: [
+      "Latency is time from stimulus to response; IRT is time between responses.",
+      "Latency counts responses; IRT records permanent products.",
+      "Latency samples intervals; IRT records whether behavior occurred at the interval end.",
+      "Latency measures observer agreement; IRT measures experimental control.",
+    ],
+    answer:
+      "Latency is time from stimulus to response; IRT is time between responses.",
+    explanation:
+      "Latency begins after an antecedent stimulus. IRT begins after a response and ends at the next response.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A completed worksheet is scored after class to measure independent work. Which measurement procedure is used?",
+    choices: ["Permanent product", "Momentary time sampling", "IRT", "Partial interval recording"],
+    answer: "Permanent product",
+    explanation:
+      "Permanent product measurement records an outcome behavior leaves behind.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "Which discontinuous procedure is most likely to overestimate behavior?",
+    choices: ["Partial interval recording", "Whole interval recording", "Total duration recording", "Frequency recording"],
+    answer: "Partial interval recording",
+    explanation:
+      "Partial interval recording can overestimate behavior because any occurrence scores the interval.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "Which discontinuous procedure is most likely to underestimate behavior?",
+    choices: ["Whole interval recording", "Partial interval recording", "Frequency recording", "Total count IOA"],
+    answer: "Whole interval recording",
+    explanation:
+      "Whole interval recording can underestimate behavior because behavior must occur for the entire interval.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "An observer records whether behavior is occurring exactly when the timer beeps. Which procedure is used?",
+    choices: ["Momentary time sampling", "Whole interval recording", "Partial interval recording", "Rate"],
+    answer: "Momentary time sampling",
+    explanation:
+      "Momentary time sampling records behavior at the observation moment.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "Two observers record the same discrete teaching trials as correct or incorrect. Which IOA method best fits?",
+    choices: ["Trial-by-trial IOA", "Total duration IOA", "Mean duration IOA", "Total count IOA"],
+    answer: "Trial-by-trial IOA",
+    explanation:
+      "Trial-by-trial IOA evaluates agreement across discrete trial records.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "Two observers collect counts in each interval, and the BCBA wants agreement only when both observers recorded the same count for an interval. Which IOA method fits?",
+    choices: ["Exact count-per-interval IOA", "Total count IOA", "Total duration IOA", "Trial-by-trial IOA"],
+    answer: "Exact count-per-interval IOA",
+    explanation:
+      "Exact count-per-interval IOA counts intervals in which observers recorded exactly the same count.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "Two observers measure how long tantrums last across a session. Which IOA family fits the response dimension?",
+    choices: ["Duration IOA", "Count IOA", "Trial-by-trial IOA", "Percentage IOA only"],
+    answer: "Duration IOA",
+    explanation:
+      "Duration IOA is used when observers record how long behavior lasts.",
+  },
+  {
+    type: "scenario",
+    graphId: "reversal-aba",
+    prompt:
+      "In a graph, data shift from high baseline levels to low intervention levels immediately after the phase change, with little overlap. Which visual analysis feature is most directly described?",
+    choices: ["Immediacy of effect", "Generalization", "Total count IOA", "Momentary time sampling"],
+    answer: "Immediacy of effect",
+    explanation:
+      "Immediacy of effect evaluates whether behavior changes right after a condition change.",
+  },
+  {
+    type: "scenario",
+    graphId: "reversal-pvr",
+    prompt:
+      "Which option best supports a functional relation in a single-subject graph?",
+    choices: [
+      "Behavior changes repeatedly when the independent variable changes.",
+      "Behavior improves once without replication.",
+      "The y-axis has a clinical label.",
+      "The graph contains three colors.",
+    ],
+    answer: "Behavior changes repeatedly when the independent variable changes.",
+    explanation:
+      "Functional relation identification requires replicated, condition-linked behavior change.",
+  },
+  {
+    type: "scenario",
+    graphId: "multiple-baseline-participants",
+    prompt:
+      "A graph shows three participants with intervention introduced at different sessions. Each participant changes only after intervention begins. Which design is shown?",
+    choices: ["Multiple Baseline Design", "Reversal Design", "Changing Criterion Design", "Alternating Treatments / Multielement Design"],
+    answer: "Multiple Baseline Design",
+    explanation:
+      "Multiple Baseline Designs use staggered intervention across participants, settings, or behaviors.",
+  },
+  {
+    type: "scenario",
+    graphId: "alternating-standard",
+    prompt:
+      "A graph rapidly alternates Intervention A and Intervention B and shows separated data paths. Which design is shown?",
+    choices: ["Alternating Treatments / Multielement Design", "Multiple Baseline Design", "Withdrawal Design", "Changing Criterion Design"],
+    answer: "Alternating Treatments / Multielement Design",
+    explanation:
+      "Alternating Treatments / Multielement Designs compare rapidly alternated conditions through differentiated data paths.",
+  },
+  {
+    type: "scenario",
+    graphId: "changing-criterion-on-task",
+    prompt:
+      "A learner's behavior changes stepwise each time the performance criterion changes. Which design is shown?",
+    choices: ["Changing Criterion Design", "Multiple Baseline Design", "Reversal Design", "Alternating Treatments / Multielement Design"],
+    answer: "Changing Criterion Design",
+    explanation:
+      "Changing Criterion Designs show control when behavior tracks criterion shifts.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A newly taught mand continues after programmed teaching sessions end. Which interpretation is most relevant?",
+    choices: ["Maintenance", "Baseline", "Variability", "Exact count IOA"],
+    answer: "Maintenance",
+    explanation:
+      "Maintenance means behavior continues after intervention or teaching conditions change.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A learner uses a skill with a different therapist and in a different room. Which interpretation is most relevant?",
+    choices: ["Generalization", "Latency", "Permanent product", "Instrumentation"],
+    answer: "Generalization",
+    explanation:
+      "Generalization means behavior occurs across people, settings, behaviors, or time beyond original conditions.",
+  },
+  {
+    type: "fill-blank",
+    prompt:
+      "Complete the cue: Trend describes the ____ of the data path.",
+    answer: "direction",
+    explanation:
+      "Trend describes whether data move upward, downward, or remain flat.",
+  },
+  {
+    type: "fill-blank",
+    prompt:
+      "Complete the cue: Level asks how high or ____ the data are.",
+    answer: "low",
+    explanation:
+      "Level describes the vertical value of data within a phase.",
+  },
+  {
+    type: "fill-blank",
+    prompt:
+      "Complete the cue: A functional relation is supported when behavior changes with the independent ____.",
+    answer: "variable",
+    explanation:
+      "A functional relation is supported when behavior changes systematically with manipulation of the independent variable.",
   },
 ];
 
@@ -2323,75 +3064,9 @@ const moduleContent: Record<string, ModuleContent> = {
     masteryQuestions: sectionBMasteryQuestions,
   },
   c: {
-    miniLessons: sectionCMiniLessons,
-    practiceQuestions: [
-      {
-        type: "scenario",
-        prompt:
-          "An observer records every instance of hand raising during circle time. What type of measurement is this?",
-        choices: ["Direct continuous measurement", "Indirect assessment", "Product measurement", "Momentary time sampling"],
-        answer: "Direct continuous measurement",
-        explanation:
-          "The observer records the behavior as it occurs and captures each response.",
-      },
-      {
-        type: "sorting",
-        prompt: "Sort each measure by category.",
-        categories: ["Temporal dimension", "Occurrence measure"],
-        items: [
-          { label: "Duration", category: "Temporal dimension" },
-          { label: "Latency", category: "Temporal dimension" },
-          { label: "Frequency", category: "Occurrence measure" },
-          { label: "Count", category: "Occurrence measure" },
-        ],
-        answer: "All measurement types sorted correctly",
-        explanation:
-          "Duration, latency, and IRT are temporal measures. Frequency and count measure occurrence.",
-      },
-      {
-        type: "fill-blank",
-        prompt: "Complete the definition: An operational definition must be observable and ____.",
-        answer: "measurable",
-        explanation:
-          "Operational definitions make data collection consistent by specifying observable and measurable behavior.",
-      },
-    ],
-    masteryQuestions: [
-      {
-        prompt:
-          "A teacher estimates that a learner was off task 'a lot' during math. What is the biggest measurement problem?",
-        choices: [
-          "The measure is not operational or precise.",
-          "The measure is continuous and direct.",
-          "The measure captures every response.",
-          "The measure is a valid product measure.",
-        ],
-        answer: "The measure is not operational or precise.",
-        explanation:
-          "A vague estimate does not define what counted or provide reliable measurement.",
-      },
-      {
-        type: "matching",
-        prompt: "Match each graph feature to the question it answers.",
-        pairs: [
-          { term: "Level", definition: "How high or low are the data?" },
-          { term: "Trend", definition: "What direction are data moving?" },
-          { term: "Variability", definition: "How much do data bounce around?" },
-        ],
-        answer: "All graph features matched correctly",
-        explanation:
-          "Visual analysis uses level, trend, variability, immediacy, overlap, and consistency across phases.",
-      },
-      {
-        type: "scenario",
-        prompt:
-          "A BCBA scores completed worksheets after class instead of observing responses during class. What kind of measure is this?",
-        choices: ["Product measure", "Momentary time sampling", "Latency", "Interresponse time"],
-        answer: "Product measure",
-        explanation:
-          "A product measure records an outcome produced by behavior rather than the behavior as it occurs.",
-      },
-    ],
+    miniLessons: sectionCExpandedMiniLessons,
+    practiceQuestions: sectionCPracticeQuestions,
+    masteryQuestions: sectionCMasteryQuestions,
   },
   d: {
     miniLessons: [

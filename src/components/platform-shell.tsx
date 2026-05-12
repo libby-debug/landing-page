@@ -146,12 +146,16 @@ function PlatformShellContent({ children }: { children: React.ReactNode }) {
               })}
             </nav>
 
-            <div className="mt-auto rounded-3xl bg-blue-50 p-5">
-              <p className="text-sm font-bold uppercase tracking-wide text-blue-600">Mastery Goal</p>
-              <p className="mt-2 text-4xl font-extrabold text-blue-700">90%</p>
-              <p className="mt-2 text-sm text-slate-950">
-                Practice and mastery checks pass at 90%; mini-lessons still
-                require 100%.
+            <div className="mt-auto flex min-h-40 flex-col items-center justify-center rounded-2xl border border-blue-100 bg-blue-50 p-4 text-center shadow-sm">
+              <p className="text-xs font-black uppercase tracking-wide text-blue-600">
+                Mastery Goal
+              </p>
+              <p className="mt-2 text-4xl font-black leading-none text-blue-700">
+                90%
+              </p>
+              <p className="mt-3 max-w-48 text-xs font-semibold leading-5 text-slate-950">
+                Practice and mastery checks pass at 90%; mini-lessons require
+                100%.
               </p>
             </div>
         </aside>

@@ -82,9 +82,29 @@ export type MiniLessonContent = {
   visual: VisualKind;
 };
 
+export type QuestionType =
+  | "multiple-choice"
+  | "scenario"
+  | "matching"
+  | "sorting"
+  | "fill-blank"
+  | "select-all"
+  | "true-false";
+
 export type QuestionContent = {
+  type?: QuestionType;
   prompt: string;
-  choices: string[];
+  choices?: string[];
+  pairs?: {
+    term: string;
+    definition: string;
+  }[];
+  categories?: [string, string];
+  items?: {
+    label: string;
+    category: string;
+  }[];
+  answers?: string[];
   answer: string;
   explanation: string;
 };
@@ -483,6 +503,45 @@ export const sectionBPracticeQuestions: QuestionContent[] = [
     explanation:
       "A stimulus is removed after the response and future responding decreases. That is negative punishment.",
   },
+  {
+    type: "matching",
+    prompt: "Match each concept to its fastest discrimination cue.",
+    pairs: [
+      {
+        term: "Positive reinforcement",
+        definition: "Stimulus added, behavior increases.",
+      },
+      {
+        term: "Negative reinforcement",
+        definition: "Stimulus removed, behavior increases.",
+      },
+      {
+        term: "Positive punishment",
+        definition: "Stimulus added, behavior decreases.",
+      },
+      {
+        term: "Negative punishment",
+        definition: "Stimulus removed, behavior decreases.",
+      },
+    ],
+    answer: "All consequence processes matched correctly",
+    explanation:
+      "Positive and negative describe whether the stimulus is added or removed. Reinforcement and punishment describe whether behavior increases or decreases.",
+  },
+  {
+    type: "sorting",
+    prompt: "Sort each phrase by what controls the behavior.",
+    categories: ["Respondent", "Operant"],
+    items: [
+      { label: "Elicited by antecedent stimuli", category: "Respondent" },
+      { label: "Selected by consequences", category: "Operant" },
+      { label: "Stimulus-stimulus pairing", category: "Respondent" },
+      { label: "Behavior-consequence relation", category: "Operant" },
+    ],
+    answer: "All respondent and operant cues sorted correctly",
+    explanation:
+      "Respondent behavior is elicited by antecedent stimuli. Operant behavior is selected by consequences.",
+  },
 ];
 
 export const sectionBMasteryQuestions: QuestionContent[] = [
@@ -551,5 +610,30 @@ export const sectionBMasteryQuestions: QuestionContent[] = [
     answer: "Reinforcement is defined by an increase in future responding.",
     explanation:
       "A consequence is reinforcement only if it increases future frequency of similar responses under similar conditions.",
+  },
+  {
+    type: "fill-blank",
+    prompt:
+      "Complete the technical cue: Negative means a stimulus is removed, reduced, delayed, or ____.",
+    answer: "avoided",
+    explanation:
+      "Negative refers to removal, reduction, delay, or avoidance of a stimulus. It does not mean bad.",
+  },
+  {
+    type: "select-all",
+    prompt: "Select all statements that correctly describe positive punishment.",
+    choices: [
+      "A stimulus is added after the response.",
+      "Future behavior decreases.",
+      "A stimulus is removed after the response.",
+      "Future behavior increases.",
+    ],
+    answers: [
+      "A stimulus is added after the response.",
+      "Future behavior decreases.",
+    ],
+    answer: "A stimulus is added after the response; future behavior decreases.",
+    explanation:
+      "Positive punishment combines an added stimulus with a decrease in future responding.",
   },
 ];

@@ -1,6 +1,6 @@
 import type { TcoSection } from "./data";
-import { sectionBMiniLessons } from "./section-b-content";
+import { getModuleContent } from "./module-content";
 
 export function getMiniLessons(section: TcoSection) {
-  return section.slug === "b" ? sectionBMiniLessons : [];
+  return getModuleContent(section.slug).miniLessons;
 }

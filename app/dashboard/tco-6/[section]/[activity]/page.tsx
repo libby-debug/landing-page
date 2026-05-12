@@ -10,29 +10,23 @@ import {
   sectionTitleClass,
 } from "@/components/learning-ui";
 import {
-  getMasteryStatus,
   getTcoSection,
   tcoSections,
   type TcoSection,
 } from "../../data";
 import { getMiniLessons } from "../../mini-lesson-data";
 import { MiniLessonView } from "../../mini-lesson-ui";
+import { getModuleContent } from "../../module-content";
 import {
   MasteryCheckQuiz,
-  PlaceholderPracticeQuestionCard,
   PracticeQuestionCard,
 } from "../../question-interactions";
 import {
   ActivityGate,
   ActivityProgressNav,
   CompleteLearnLink,
-  CompletePracticeLink,
   type ActivitySlug,
 } from "../../progression";
-import {
-  sectionBMasteryQuestions,
-  sectionBPracticeQuestions,
-} from "../../section-b-content";
 
 const activities = ["learn", "practice", "mastery-check"] as const;
 
@@ -156,9 +150,7 @@ function LearnView({ section }: { section: TcoSection }) {
 }
 
 function PracticeView({ section }: { section: TcoSection }) {
-  const practiceQuestions =
-    section.slug === "b" ? sectionBPracticeQuestions : [];
-  const practicePrompts = section.checklistItems.slice(0, 3);
+  const practiceQuestions = getModuleContent(section.slug).practiceQuestions;
 
   return (
     <section className={`${cardBaseClass} mt-8 w-full border-white/70 bg-white/95 text-center shadow-xl shadow-slate-900/10`}>
@@ -169,37 +161,23 @@ function PracticeView({ section }: { section: TcoSection }) {
       </h2>
 
       <div className="mt-6 grid gap-6">
-        {practiceQuestions.length > 0
-          ? practiceQuestions.map((question, index) => (
-              <PracticeQuestionCard
-                index={index}
-                key={question.prompt}
-                mode="practice"
-                question={question}
-                sectionSlug={section.slug}
-                totalQuestions={practiceQuestions.length}
-              />
-            ))
-          : practicePrompts.map((item, index) => (
-              <PlaceholderPracticeQuestionCard
-                index={index}
-                item={item}
-                key={item}
-                sectionSlug={section.slug}
-              />
-            ))}
+        {practiceQuestions.map((question, index) => (
+          <PracticeQuestionCard
+            index={index}
+            key={question.prompt}
+            mode="practice"
+            question={question}
+            sectionSlug={section.slug}
+            totalQuestions={practiceQuestions.length}
+          />
+        ))}
       </div>
-      {practiceQuestions.length === 0 ? (
-        <CompletePracticeLink sectionSlug={section.slug} />
-      ) : null}
     </section>
   );
 }
 
 function MasteryCheckView({ section }: { section: TcoSection }) {
-  const status = getMasteryStatus(section.progress);
-  const masteryQuestions =
-    section.slug === "b" ? sectionBMasteryQuestions : [];
+  const masteryQuestions = getModuleContent(section.slug).masteryQuestions;
 
   return (
     <section className={`${cardBaseClass} mt-8 w-full border-white/70 bg-white/95 text-center shadow-xl shadow-slate-900/10`}>
@@ -209,47 +187,11 @@ function MasteryCheckView({ section }: { section: TcoSection }) {
         Module {section.code} mastery
       </h2>
 
-      {masteryQuestions.length > 0 ? (
-        <MasteryCheckQuiz
-          questions={masteryQuestions}
-          sectionCode={section.code}
-          sectionSlug={section.slug}
-        />
-      ) : (
-        <div className="mx-auto mt-8 max-w-3xl rounded-3xl border border-blue-100 bg-blue-50 p-6">
-          <p className="text-sm font-black uppercase tracking-wide text-blue-600">
-            Score placeholder
-          </p>
-
-          <div className="mt-3 text-7xl font-black tracking-tight text-slate-950">
-            {section.progress}%
-          </div>
-
-          <p className="mt-3 text-lg font-black text-slate-950">
-            100% required to master
-          </p>
-
-          <div className="mt-6 h-4 rounded-full bg-white">
-            <div
-              className="h-4 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
-              style={{ width: `${section.progress}%` }}
-            />
-          </div>
-
-          <p className="mt-4 rounded-2xl bg-white/80 p-4 text-sm font-bold text-slate-950">
-            Current status: {status}. Future mastery checks will save score data
-            to Supabase and unlock progression when the learner reaches the 100%
-            mastery threshold.
-          </p>
-
-          <button
-            type="button"
-            className="mt-6 rounded-xl bg-slate-950 px-6 py-3 text-sm font-black text-white transition hover:opacity-90"
-          >
-            Retry
-          </button>
-        </div>
-      )}
+      <MasteryCheckQuiz
+        questions={masteryQuestions}
+        sectionCode={section.code}
+        sectionSlug={section.slug}
+      />
     </section>
   );
 }

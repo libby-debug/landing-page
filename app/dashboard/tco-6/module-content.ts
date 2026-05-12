@@ -399,12 +399,12 @@ const sectionGMiniLessons: MiniLessonContent[] = [
     title: "Prompting and fading",
     body: [
       "Prompts increase the likelihood of a correct response.",
-      "Prompt fading transfers control to [the natural SD].",
+      "Prompt fading transfers control to [the natural Discriminative Stimulus (SD)].",
     ],
     visual: {
       type: "flow",
       prompt: "Order a prompt fading sequence.",
-      steps: ["Natural SD", "Prompt if needed", "Correct response", "Fade prompt"],
+      steps: ["Natural Discriminative Stimulus (SD)", "Prompt if needed", "Correct response", "Fade prompt"],
     },
   },
   {
@@ -920,7 +920,7 @@ const moduleContent: Record<string, ModuleContent> = {
         choices: [
           "The item may be a reinforcer because it increased behavior.",
           "Preference alone proves reinforcement.",
-          "The item is an SD.",
+          "The item is a Discriminative Stimulus (SD).",
           "The item is a punisher because it was selected.",
         ],
         answer: "The item may be a reinforcer because it increased behavior.",
@@ -995,11 +995,11 @@ const moduleContent: Record<string, ModuleContent> = {
       {
         type: "scenario",
         prompt:
-          "A prompt is gradually reduced until the learner responds to the natural SD. What procedure is this?",
+          "A prompt is gradually reduced until the learner responds to the natural Discriminative Stimulus (SD). What procedure is this?",
         choices: ["Prompt fading", "Response cost", "DRO", "Functional analysis"],
         answer: "Prompt fading",
         explanation:
-          "Prompt fading transfers stimulus control from the prompt to the natural SD.",
+          "Prompt fading transfers stimulus control from the prompt to the natural Discriminative Stimulus (SD).",
       },
       {
         type: "fill-blank",

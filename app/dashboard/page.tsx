@@ -93,7 +93,7 @@ function DashboardContent() {
           <p className={leadClass}>
             Track ABA Mastered study progress through the canonical TCO 6
             structure, with every module prepared for future lessons,
-            practice, and 100% mastery checks.
+            practice, and 90% mastery checks.
           </p>
 
           <p className="mt-4 text-sm font-semibold text-slate-950">
@@ -108,7 +108,7 @@ function DashboardContent() {
         <SummaryCard
           eyebrow="Mastery threshold"
           value={`${masteryThreshold}%`}
-          description="Modules move to Completed when checks reach 100% correct."
+          description="Practice tests and mastery checks pass at 90% or higher."
           tone="blue"
         />
 
@@ -137,7 +137,7 @@ function DashboardContent() {
             </h2>
 
             <p className="mt-3 text-base leading-relaxed text-slate-950">
-              Continue this TCO 6 module and move it toward the 100% mastery
+              Continue this TCO 6 module and move it toward the 90% mastery
               threshold.
             </p>
           </div>

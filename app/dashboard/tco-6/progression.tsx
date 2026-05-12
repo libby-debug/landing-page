@@ -3,6 +3,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { useEffect, useState } from "react";
+import { masteryThreshold, miniLessonMasteryThreshold } from "./data";
 
 export type ModuleProgress = {
   learnCompleted: boolean;
@@ -151,7 +152,11 @@ export function ActivityProgressNav({
             key={item.activity}
             aria-disabled="true"
             className={`${baseClass} ${stateClass}`}
-            title={`${item.label} unlocks after the previous step is completed with 100%.`}
+            title={
+              item.activity === "practice"
+                ? `Practice unlocks after Learn is completed with ${miniLessonMasteryThreshold}%.`
+                : `Mastery Check unlocks after Practice is completed with ${masteryThreshold}% or higher.`
+            }
           >
             Locked · {item.label}
           </span>
@@ -187,8 +192,8 @@ export function LockedActivityCard({
 }) {
   const requirement =
     activity === "practice"
-      ? "Complete Learn with 100% correct to unlock Practice."
-      : "Complete Practice with 100% correct to unlock Mastery Check.";
+      ? `Complete Learn with ${miniLessonMasteryThreshold}% correct to unlock Practice.`
+      : `Complete Practice with ${masteryThreshold}% or higher to unlock Mastery Check. You do not need a perfect score to pass Practice.`;
 
   return (
     <section className="mt-8 w-full rounded-3xl border border-slate-200 bg-slate-50 p-8 text-center shadow-sm">

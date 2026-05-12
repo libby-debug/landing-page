@@ -1,4 +1,5 @@
-export const masteryThreshold = 100;
+export const masteryThreshold = 90;
+export const miniLessonMasteryThreshold = 100;
 
 export type MasteryStatus = "Not Started" | "In Progress" | "Mastered";
 
@@ -40,7 +41,7 @@ export const tcoSections: TcoSection[] = [
     slug: "b",
     title: "Concepts and Principles",
     description:
-      "Discriminate core behavior-analytic concepts including stimulus control, motivating operations, positive and negative reinforcement, positive and negative punishment, extinction, verbal behavior, and schedules of reinforcement.",
+      "Discriminate core behavior-analytic concepts including stimulus control, Motivating Operation (MO) effects, positive and negative reinforcement, positive and negative punishment, extinction, verbal behavior, and schedules of reinforcement.",
     progress: 35,
     checklistItems: [
       "B.1-B.2. Distinguish behavior, response, response class, stimulus, and stimulus class.",
@@ -48,7 +49,7 @@ export const tcoSections: TcoSection[] = [
       "B.6-B.8. Distinguish automatic vs. socially mediated contingencies and unconditioned/conditioned/generalized reinforcers and punishers.",
       "B.9-B.10. Identify simple and complex (concurrent, multiple, mixed, chained) schedules of reinforcement.",
       "B.11-B.15. Distinguish operant/respondent extinction, stimulus control, discrimination, generalization, and maintenance.",
-      "B.16-B.17. Identify Motivating Operations (MOs) and distinguish them from stimulus control.",
+      "B.16-B.17. Identify Motivating Operation (MO) effects and distinguish them from stimulus control.",
       "B.18-B.20. Distinguish rule-governed vs. contingency-shaped behavior and identify verbal operants and multiple control.",
       "B.21-B.24. Identify emergent relations, behavioral momentum, the matching law, and imitation vs. observational learning.",
     ],
@@ -61,12 +62,14 @@ export const tcoSections: TcoSection[] = [
       {
         name: "Schedules of Reinforcement",
         contentType: "Animated Visual",
-        keyConcepts: "FR, VR, FI, VI",
+        keyConcepts:
+          "FR (Fixed Ratio), VR (Variable Ratio), FI (Fixed Interval), VI (Variable Interval)",
       },
       {
         name: "Verbal Behavior",
         contentType: "Comparison Table",
-        keyConcepts: "Mand, Tact, Echoic, Intraverbal",
+        keyConcepts:
+          "Mand, tact, echoic, intraverbal, textual, transcription, autoclitic, multiple control",
       },
     ],
   },
@@ -179,11 +182,11 @@ export const tcoSections: TcoSection[] = [
     slug: "g",
     title: "Behavior-Change Procedures",
     description:
-      "Study reinforcement, differential reinforcement, token economies, MOs/SDs, discrimination training, prompting, shaping, chaining, punishment, and maintenance.",
+      "Study reinforcement, differential reinforcement, token economies, Motivating Operation (MO) effects, Discriminative Stimulus (SD) arrangements, discrimination training, prompting, shaping, chaining, punishment, and maintenance.",
     progress: 70,
     checklistItems: [
       "G.1-G.4. Design reinforcement, differential reinforcement (DRA, DRO, etc.), time-based schedules, and token economies.",
-      "G.5-G.10. Incorporate MOs/SDs, discrimination training, prompting/fading, modeling, and rules.",
+      "G.5-G.10. Incorporate Motivating Operation (MO) effects and Discriminative Stimulus (SD) arrangements, discrimination training, prompting/fading, modeling, and rules.",
       "G.11-G.14. Use shaping, chaining, trial-based/free-operant procedures, and group contingencies.",
       "G.15-G.19. Promote generalization, maintenance, punishment procedures, and emergent relations.",
     ],

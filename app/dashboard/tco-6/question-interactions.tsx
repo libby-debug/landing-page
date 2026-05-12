@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { masteryThreshold } from "./data";
 import { useModuleProgress } from "./progression";
 import type { QuestionContent } from "./section-b-content";
 
@@ -134,6 +135,40 @@ function getQuestionLabel(question: QuestionContent) {
   };
 
   return labels[question.type ?? "multiple-choice"];
+}
+
+function asMultipleChoiceMasteryQuestion(question: QuestionContent) {
+  return {
+    ...question,
+    type: "multiple-choice" as const,
+  };
+}
+
+function getMultipleChoiceMasteryQuestions(questions: QuestionContent[]) {
+  return questions
+    .filter((question) => Boolean(question.choices?.length))
+    .map(asMultipleChoiceMasteryQuestion);
+}
+
+function hashString(value: string) {
+  return value.split("").reduce((hash, character) => {
+    return (hash * 31 + character.charCodeAt(0)) >>> 0;
+  }, 7);
+}
+
+function seededRandom(seed: number) {
+  const next = Math.sin(seed) * 10000;
+  return next - Math.floor(next);
+}
+
+function shuffleQuestions(questions: QuestionContent[], seed: number) {
+  return [...questions]
+    .map((question, index) => ({
+      question,
+      sort: seededRandom(seed + index + hashString(question.prompt)),
+    }))
+    .sort((left, right) => left.sort - right.sort)
+    .map((item) => item.question);
 }
 
 function QuestionResponseInput({
@@ -311,9 +346,10 @@ export function PracticeQuestionCard({
     results[index] = result;
     window.localStorage.setItem(key, JSON.stringify(results));
 
-    const complete =
-      Object.keys(results).length === totalQuestions &&
-      Object.values(results).every(Boolean);
+    const answeredCount = Object.keys(results).length;
+    const correctCount = Object.values(results).filter(Boolean).length;
+    const score = Math.round((correctCount / totalQuestions) * 100);
+    const complete = answeredCount === totalQuestions && score >= masteryThreshold;
 
     if (complete) {
       updateProgress({ practiceCompleted: true });
@@ -409,18 +445,35 @@ export function MasteryCheckQuiz({
 }) {
   const [responses, setResponses] = useState<Record<number, string>>({});
   const [completed, setCompleted] = useState(false);
+  const [attemptKey, setAttemptKey] = useState(0);
+  const multipleChoiceQuestions = useMemo(
+    () => getMultipleChoiceMasteryQuestions(questions),
+    [questions],
+  );
+  const displayQuestions = useMemo(
+    () =>
+      shuffleQuestions(
+        multipleChoiceQuestions,
+        attemptKey + hashString(sectionSlug),
+      ),
+    [attemptKey, multipleChoiceQuestions, sectionSlug],
+  );
+
   const correctCount = useMemo(
     () =>
-      questions.reduce(
+      displayQuestions.reduce(
         (total, question, index) =>
           isCorrect(question, responses[index] ?? "") ? total + 1 : total,
         0,
       ),
-    [questions, responses],
+    [displayQuestions, responses],
   );
-  const score = Math.round((correctCount / questions.length) * 100);
-  const passed = score === 100;
-  const allAnswered = questions.every((question, index) =>
+  const score =
+    displayQuestions.length > 0
+      ? Math.round((correctCount / displayQuestions.length) * 100)
+      : 0;
+  const passed = score >= masteryThreshold;
+  const allAnswered = displayQuestions.every((question, index) =>
     isAnswered(question, responses[index] ?? ""),
   );
   const { updateProgress } = useModuleProgress(sectionSlug);
@@ -434,6 +487,7 @@ export function MasteryCheckQuiz({
   }
 
   function retry() {
+    setAttemptKey((current) => current + 1);
     setResponses({});
     setCompleted(false);
   }
@@ -453,18 +507,21 @@ export function MasteryCheckQuiz({
           Mastery requirement
         </p>
         <p className="mt-2 text-base font-semibold leading-7 text-slate-950">
-          Complete all questions, then submit your mastery check. 100% is
-          required to master Module {sectionCode}.
+          Complete the multiple-choice questions, then submit your mastery
+          check. Passing score: {masteryThreshold}% for Module {sectionCode}.
+        </p>
+        <p className="mt-2 text-sm font-black text-blue-700">
+          You do not need a perfect score to pass.
         </p>
       </div>
 
-      {questions.map((question, index) => (
+      {displayQuestions.map((question, index) => (
         <article
           key={question.prompt}
           className="rounded-3xl border border-slate-200 bg-slate-50 p-5 text-left"
         >
           <p className="text-sm font-black uppercase tracking-wide text-purple-600">
-            Question {index + 1} / {getQuestionLabel(question)}
+            Question {index + 1} / Multiple choice
           </p>
 
           <h3 className="mt-2 text-xl font-black text-slate-950">
@@ -500,7 +557,7 @@ export function MasteryCheckQuiz({
               {score}%
             </div>
             <p className="mt-3 text-lg font-black text-slate-950">
-              {passed ? "Module completed" : "Retry required"}
+              {passed ? "Module completed" : "Retry/remediation required"}
             </p>
             <div className="mt-6 h-4 rounded-full bg-white">
               <div
@@ -511,7 +568,8 @@ export function MasteryCheckQuiz({
           </>
         ) : (
           <p className="text-base font-black text-slate-950">
-            Score will appear after final submission. 100% required to master.
+            Score will appear after final submission. Passing score:{" "}
+            {masteryThreshold}%. You do not need a perfect score to pass.
           </p>
         )}
 
@@ -519,7 +577,7 @@ export function MasteryCheckQuiz({
           <button
             type="button"
             className="rounded-xl bg-slate-950 px-6 py-3 text-sm font-black text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
-            disabled={!allAnswered}
+            disabled={!allAnswered || displayQuestions.length === 0}
             onClick={submitMasteryCheck}
           >
             Submit Mastery Check

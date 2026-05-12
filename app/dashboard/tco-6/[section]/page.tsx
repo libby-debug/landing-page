@@ -13,6 +13,7 @@ import {
   getMasteryStatus,
   getTcoSection,
   masteryThreshold,
+  miniLessonMasteryThreshold,
   tcoSections,
 } from "../data";
 import { ActivityProgressNav } from "../progression";
@@ -125,7 +126,8 @@ export default async function TcoSectionPage({ params }: TcoSectionPageProps) {
 
               <p className="mt-4 text-sm font-semibold leading-6 text-slate-950">
                 Progression runs Learn, then Practice, then Mastery Check.
-                Each step unlocks after 100% correct.
+                Learn requires {miniLessonMasteryThreshold}% correct. Practice
+                and Mastery Check pass at {masteryThreshold}% or higher.
               </p>
             </div>
 

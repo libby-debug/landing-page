@@ -49,11 +49,11 @@ export const behaviorChangeModules: Record<string, StudyModule> = {
       },
       {
         label: "Stimulus prompt",
-        text: "Supplemental antecedent stimulus that [changes the salience or features] of the discriminative stimulus.",
+        text: "Supplemental antecedent stimulus that [changes the salience or features] of the Discriminative Stimulus.",
       },
       {
         label: "Transfer of stimulus control",
-        text: "The target response comes under control of the [natural discriminative stimulus] rather than the supplemental prompt.",
+        text: "The target response comes under control of the [natural Discriminative Stimulus] rather than the supplemental prompt.",
       },
     ],
     comparisons: [
@@ -85,11 +85,11 @@ export const behaviorChangeModules: Record<string, StudyModule> = {
     commonConfusions: [
       {
         title: "Prompting is not the terminal goal",
-        text: "Prompting should support accurate responding while arranging [transfer of stimulus control] to the natural discriminative stimulus.",
+        text: "Prompting should support accurate responding while arranging [transfer of stimulus control] to the natural Discriminative Stimulus.",
       },
       {
         title: "Prompt dependence",
-        text: "Prompt dependence occurs when responding remains under control of [the prompt rather than the relevant discriminative stimulus].",
+        text: "Prompt dependence occurs when responding remains under control of [the prompt rather than the relevant Discriminative Stimulus].",
       },
     ],
     quiz: [
@@ -116,11 +116,11 @@ export const behaviorChangeModules: Record<string, StudyModule> = {
           "Transfer of stimulus control",
           "Permanent prompt dependence",
           "Response suppression",
-          "Abolishing operation",
+          "Abolishing Operation (AO)",
         ],
         answer: "Transfer of stimulus control",
         rationale:
-          "Prompting should be faded so the response occurs under the natural discriminative stimulus.",
+          "Prompting should be faded so the response occurs under the natural Discriminative Stimulus.",
       },
     ],
   },
@@ -129,7 +129,7 @@ export const behaviorChangeModules: Record<string, StudyModule> = {
     title: "Prompt Fading",
     eyebrow: "TCO 6 Behavior-Change Procedures",
     description:
-      "Study how prompts are systematically reduced so correct responding transfers to the relevant discriminative stimulus.",
+      "Study how prompts are systematically reduced so correct responding transfers to the relevant Discriminative Stimulus.",
     tcoAlignment: "TCO 6 G. Behavior-Change Procedures",
     previousSlug: "prompting",
     previousTitle: "Prompting",
@@ -144,7 +144,7 @@ export const behaviorChangeModules: Record<string, StudyModule> = {
       },
       {
         label: "Time delay",
-        text: "A delay is inserted [between the discriminative stimulus and prompt] to allow independent responding.",
+        text: "A delay is inserted [between the Discriminative Stimulus and prompt] to allow independent responding.",
       },
     ],
     comparisons: [
@@ -199,7 +199,7 @@ export const behaviorChangeModules: Record<string, StudyModule> = {
       },
       {
         prompt:
-          "A teacher waits 5 seconds after the discriminative stimulus before giving a prompt. What is this?",
+          "A teacher waits 5 seconds after the Discriminative Stimulus before giving a prompt. What is this?",
         options: ["Time delay", "DRH", "Extinction burst", "Overcorrection"],
         answer: "Time delay",
         rationale:
@@ -209,12 +209,12 @@ export const behaviorChangeModules: Record<string, StudyModule> = {
         prompt:
           "What is the primary goal of prompt fading?",
         options: [
-          "Independent responding under the natural discriminative stimulus",
+          "Independent responding under the natural Discriminative Stimulus",
           "Permanent prompt dependence",
           "Reducing reinforcement",
           "Increasing response effort",
         ],
-        answer: "Independent responding under the natural discriminative stimulus",
+        answer: "Independent responding under the natural Discriminative Stimulus",
         rationale:
           "Prompt fading transfers stimulus control from the prompt to the relevant antecedent stimulus.",
       },
@@ -327,7 +327,7 @@ export const behaviorChangeModules: Record<string, StudyModule> = {
     concepts: [
       {
         label: "Behavior chain",
-        text: "A [sequence of responses] in which each response produces a stimulus change that functions as a conditioned reinforcer and discriminative stimulus for the next response.",
+        text: "A [sequence of responses] in which each response produces a stimulus change that functions as a conditioned reinforcer and Discriminative Stimulus for the next response.",
       },
       {
         label: "Task analysis",
@@ -371,7 +371,7 @@ export const behaviorChangeModules: Record<string, StudyModule> = {
       },
       {
         title: "Each step has a stimulus function",
-        text: "The stimulus change after each response can function as [a conditioned reinforcer and discriminative stimulus] for the next response.",
+        text: "The stimulus change after each response can function as [a conditioned reinforcer and Discriminative Stimulus] for the next response.",
       },
     ],
     quiz: [
@@ -394,7 +394,7 @@ export const behaviorChangeModules: Record<string, StudyModule> = {
         options: [
           "The component responses in sequence",
           "A punisher hierarchy",
-          "A motivating operation only",
+          "A Motivating Operation (MO) only",
           "A preference assessment format",
         ],
         answer: "The component responses in sequence",
@@ -504,7 +504,7 @@ export const behaviorChangeModules: Record<string, StudyModule> = {
           "Extinction burst",
           "Stimulus control",
           "Backward chaining",
-          "Abolishing operation",
+          "Abolishing Operation (AO)",
         ],
         answer: "Extinction burst",
         rationale:

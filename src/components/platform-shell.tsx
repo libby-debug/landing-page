@@ -140,9 +140,10 @@ function PlatformShellContent({ children }: { children: React.ReactNode }) {
 
             <div className="mt-auto rounded-3xl bg-blue-50 p-5">
               <p className="text-sm font-bold uppercase tracking-wide text-blue-600">Mastery Goal</p>
-              <p className="mt-2 text-4xl font-extrabold text-blue-700">100%</p>
+              <p className="mt-2 text-4xl font-extrabold text-blue-700">90%</p>
               <p className="mt-2 text-sm text-slate-950">
-                Lessons unlock through demonstrated mastery.
+                Practice and mastery checks pass at 90%; mini-lessons still
+                require 100%.
               </p>
             </div>
         </aside>

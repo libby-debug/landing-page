@@ -11,6 +11,7 @@ import {
 } from "@/components/learning-ui";
 import {
   getTcoSection,
+  masteryThreshold,
   tcoSections,
   type TcoSection,
 } from "../../data";
@@ -159,6 +160,11 @@ function PracticeView({ section }: { section: TcoSection }) {
       <h2 className={sectionTitleClass}>
         Practice Module {section.code}
       </h2>
+
+      <p className="mx-auto mt-3 max-w-2xl rounded-2xl border border-blue-100 bg-blue-50 p-4 text-sm font-black text-blue-700">
+        Passing score: {masteryThreshold}%. You do not need a perfect score to
+        pass.
+      </p>
 
       <div className="mt-6 grid gap-6">
         {practiceQuestions.map((question, index) => (

@@ -211,6 +211,7 @@ function FlowInteraction({
   function reset() {
     setSelectedSteps([]);
     setSubmitted(false);
+    setDraggedStep("");
     onPassedChange?.(false);
   }
 
@@ -287,13 +288,6 @@ function FlowInteraction({
         >
           Check Answer
         </button>
-        <button
-          type="button"
-          onClick={reset}
-          className="w-full rounded-xl border border-slate-300 bg-white px-6 py-3 text-center text-sm font-black text-slate-950 transition hover:border-slate-400 sm:w-auto"
-        >
-          Reset
-        </button>
       </div>
 
       {submitted ? (
@@ -313,8 +307,9 @@ function FlowInteraction({
           </p>
           <p className="mt-2 text-sm font-semibold leading-6 text-slate-950">
             {visual.feedback ??
-              "Respondent conditioning moves from neutral stimulus, to pairing with an unconditioned stimulus, to conditioned stimulus, to conditioned response."}
+              "Respondent conditioning moves from Neutral Stimulus (NS), to pairing with an Unconditioned Stimulus (US), to Conditioned Stimulus (CS), to Conditioned Response (CR)."}
           </p>
+          {!isCorrect ? <ResetAnswersButton onClick={reset} /> : null}
         </div>
       ) : null}
     </div>
@@ -331,6 +326,12 @@ function ChoiceInteraction({
   const [selected, setSelected] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const isCorrect = selected === visual.answer;
+
+  function reset() {
+    setSelected("");
+    setSubmitted(false);
+    onPassedChange?.(false);
+  }
 
   return (
     <div className="mx-auto mt-8 max-w-4xl rounded-3xl border border-purple-100 bg-purple-50 p-5 text-center">
@@ -370,6 +371,7 @@ function ChoiceInteraction({
               ? visual.feedback
               : `Review this distinction: ${visual.feedback}`
           }
+          onReset={reset}
         />
       ) : null}
     </div>
@@ -390,43 +392,88 @@ function MatchingInteraction({
     () => [...visual.pairs].reverse().map((pair) => pair.definition),
     [visual.pairs],
   );
-  const allMatched = Object.keys(matches).length === visual.pairs.length;
+  const allMatched = definitions.every((definition) => matches[definition]);
   const isCorrect = visual.pairs.every(
     (pair) => matches[pair.definition] === pair.term,
   );
 
-  function assignMatch(definition: string) {
-    if (!activeTerm) {
+  function assignMatch(definition: string, term = activeTerm) {
+    if (!term) {
       return;
     }
 
     setSubmitted(false);
     onPassedChange?.(false);
-    setMatches((current) => ({ ...current, [definition]: activeTerm }));
+    setMatches((current) => {
+      const next = { ...current };
+
+      Object.entries(next).forEach(([matchedDefinition, matchedTerm]) => {
+        if (matchedTerm === term && matchedDefinition !== definition) {
+          delete next[matchedDefinition];
+        }
+      });
+
+      next[definition] = term;
+      return next;
+    });
     setActiveTerm("");
+  }
+
+  function dragTerm(event: DragEvent<HTMLButtonElement>, term: string) {
+    event.dataTransfer.setData("text/plain", term);
+    event.dataTransfer.effectAllowed = "move";
+    setActiveTerm(term);
+    setSubmitted(false);
+    onPassedChange?.(false);
+  }
+
+  function dropTerm(event: DragEvent<HTMLButtonElement>, definition: string) {
+    event.preventDefault();
+    const term = event.dataTransfer.getData("text/plain") || activeTerm;
+    assignMatch(definition, term);
+  }
+
+  function reset() {
+    setActiveTerm("");
+    setMatches({});
+    setSubmitted(false);
+    onPassedChange?.(false);
   }
 
   return (
     <div className="mx-auto mt-8 max-w-5xl rounded-3xl border border-blue-100 bg-blue-50 p-5 text-center">
       <h3 className="text-2xl font-black text-slate-950">{visual.prompt}</h3>
+      <p className="mx-auto mt-2 max-w-3xl text-sm font-semibold leading-6 text-slate-950">
+        Drag a term to its definition, or click a term and then click the
+        matching definition. Keyboard users can press Enter or Space on a term,
+        then Enter or Space on a definition.
+      </p>
       <div className="mt-5 grid gap-4 lg:grid-cols-[0.8fr_1.2fr]">
         <div className="grid gap-3">
           {visual.pairs.map((pair) => (
             <button
               key={pair.term}
               type="button"
+              aria-pressed={activeTerm === pair.term}
+              draggable
+              onDragStart={(event) => dragTerm(event, pair.term)}
               onClick={() => {
                 setActiveTerm(pair.term);
                 setSubmitted(false);
                 onPassedChange?.(false);
               }}
-              className={`rounded-2xl border p-4 text-sm font-black transition ${
+              className={`cursor-grab rounded-2xl border p-4 text-sm font-black transition active:cursor-grabbing ${
                 activeTerm === pair.term
                   ? "border-purple-300 bg-purple-50 text-purple-700"
                   : "border-white bg-white text-slate-950 hover:border-purple-200"
               }`}
             >
               {pair.term}
+              {Object.values(matches).includes(pair.term) ? (
+                <span className="mt-2 block text-xs font-black uppercase tracking-wide text-slate-600">
+                  Placed
+                </span>
+              ) : null}
             </button>
           ))}
         </div>
@@ -435,8 +482,18 @@ function MatchingInteraction({
             <button
               key={definition}
               type="button"
+              aria-label={`Match a term to definition: ${definition}`}
+              onDragOver={(event: DragEvent<HTMLButtonElement>) => {
+                event.preventDefault();
+                event.dataTransfer.dropEffect = "move";
+              }}
+              onDrop={(event) => dropTerm(event, definition)}
               onClick={() => assignMatch(definition)}
-              className="rounded-2xl border border-white bg-white p-4 text-left text-sm font-semibold leading-6 text-slate-950 transition hover:border-blue-200"
+              className={`rounded-2xl border bg-white p-4 text-left text-sm font-semibold leading-6 text-slate-950 transition ${
+                matches[definition]
+                  ? "border-blue-300"
+                  : "border-white hover:border-blue-200"
+              }`}
             >
               <span className="mb-2 block text-xs font-black uppercase tracking-wide text-blue-600">
                 {matches[definition] ?? "Choose a term"}
@@ -461,6 +518,7 @@ function MatchingInteraction({
               ? "Matched. Operant conditioning is organized around behavior and its consequences."
               : "Review each term and match it to the role it plays in the contingency."
           }
+          onReset={reset}
         />
       ) : null}
     </div>
@@ -477,6 +535,12 @@ function TrueFalseInteraction({
   const [selected, setSelected] = useState<boolean | null>(null);
   const [submitted, setSubmitted] = useState(false);
   const isCorrect = selected === visual.answer;
+
+  function reset() {
+    setSelected(null);
+    setSubmitted(false);
+    onPassedChange?.(false);
+  }
 
   return (
     <div className="mx-auto mt-8 max-w-4xl rounded-3xl border border-green-100 bg-green-50 p-5 text-center">
@@ -515,6 +579,7 @@ function TrueFalseInteraction({
         <FeedbackBox
           correct={isCorrect}
           message={visual.feedback}
+          onReset={reset}
         />
       ) : null}
     </div>
@@ -552,6 +617,13 @@ function SortingInteraction({
     onPassedChange?.(false);
     setPlacements((current) => ({ ...current, [item]: category }));
     setActiveItem("");
+  }
+
+  function reset() {
+    setActiveItem("");
+    setPlacements({});
+    setSubmitted(false);
+    onPassedChange?.(false);
   }
 
   return (
@@ -616,6 +688,7 @@ function SortingInteraction({
               ? "Sorted correctly. The technical label depends on the contingency and future behavior change."
               : "Review each scenario and ask what happened to the stimulus and future behavior."
           }
+          onReset={reset}
         />
       ) : null}
     </div>
@@ -633,6 +706,12 @@ function FillBlankInteraction({
   const [submitted, setSubmitted] = useState(false);
   const isCorrect =
     answer.trim().toLowerCase() === visual.answer.trim().toLowerCase();
+
+  function reset() {
+    setAnswer("");
+    setSubmitted(false);
+    onPassedChange?.(false);
+  }
 
   return (
     <div className="mx-auto mt-8 max-w-4xl rounded-3xl border border-blue-100 bg-blue-50 p-5 text-center">
@@ -661,7 +740,11 @@ function FillBlankInteraction({
         }}
       />
       {submitted ? (
-        <FeedbackBox correct={isCorrect} message={visual.feedback} />
+        <FeedbackBox
+          correct={isCorrect}
+          message={visual.feedback}
+          onReset={reset}
+        />
       ) : null}
     </div>
   );
@@ -698,6 +781,12 @@ function SelectAllInteraction({
     );
   }
 
+  function reset() {
+    setSelected([]);
+    setSubmitted(false);
+    onPassedChange?.(false);
+  }
+
   return (
     <div className="mx-auto mt-8 max-w-4xl rounded-3xl border border-purple-100 bg-purple-50 p-5 text-center">
       <h3 className="text-2xl font-black text-slate-950">{visual.prompt}</h3>
@@ -725,7 +814,11 @@ function SelectAllInteraction({
         }}
       />
       {submitted ? (
-        <FeedbackBox correct={isCorrect} message={visual.feedback} />
+        <FeedbackBox
+          correct={isCorrect}
+          message={visual.feedback}
+          onReset={reset}
+        />
       ) : null}
     </div>
   );
@@ -781,9 +874,11 @@ function CompletionButton({
 function FeedbackBox({
   correct,
   message,
+  onReset,
 }: {
   correct: boolean;
   message: string;
+  onReset?: () => void;
 }) {
   return (
     <div
@@ -803,7 +898,22 @@ function FeedbackBox({
       <p className="mt-2 text-sm font-semibold leading-6 text-slate-950">
         {message}
       </p>
+      {!correct && onReset ? (
+        <ResetAnswersButton onClick={onReset} />
+      ) : null}
     </div>
+  );
+}
+
+function ResetAnswersButton({ onClick }: { onClick: () => void }) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className="mt-4 rounded-xl border border-pink-200 bg-white px-5 py-3 text-sm font-black text-pink-700 shadow-sm transition hover:border-pink-300 hover:bg-pink-50 focus:outline-none focus:ring-2 focus:ring-pink-300 focus:ring-offset-2"
+    >
+      Reset answers
+    </button>
   );
 }
 

@@ -14,6 +14,22 @@ export type VisualKind =
       steps: string[];
     }
   | {
+      type: "graph";
+      prompt: string;
+      graphTitle: string;
+      phases: {
+        label: string;
+        detail: string;
+        tone: "blue" | "pink" | "purple" | "green";
+      }[];
+      choices: string[];
+      answer: string;
+      feedback: string;
+      cue?: string;
+      graphId?: string;
+      hint?: string;
+    }
+  | {
       type: "quadrant";
       items: {
         title: string;
@@ -32,6 +48,7 @@ export type VisualKind =
       choices: string[];
       answer: string;
       feedback: string;
+      hint?: string;
     }
   | {
       type: "matching";
@@ -107,6 +124,8 @@ export type QuestionContent = {
   answers?: string[];
   answer: string;
   explanation: string;
+  graphId?: string;
+  hint?: string;
 };
 
 export const sectionBMiniLessons: MiniLessonContent[] = [

@@ -198,9 +198,11 @@ function hasDeveloperPreviewAccess(
   activity: ActivitySlug,
   sectionSlug: string,
 ) {
+  // Development-only bypass for QA shortcuts. Production learners still follow
+  // normal Learn -> Practice -> Mastery Check progression.
   return (
     process.env.NODE_ENV === "development" &&
-    sectionSlug === "b" &&
+    ["a", "b", "c", "d"].includes(sectionSlug) &&
     (activity === "practice" || activity === "mastery-check")
   );
 }

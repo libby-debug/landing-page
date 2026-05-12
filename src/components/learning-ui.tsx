@@ -129,10 +129,41 @@ export function ComparisonDefinitionBlocks({ text }: { text: string }) {
   );
 }
 
+export function FormattedConceptText({
+  className = "",
+  text,
+}: {
+  className?: string;
+  text: string;
+}) {
+  const blocks = splitInlineComparisonText(text);
+
+  if (blocks.length <= 1) {
+    return <HighlightedText text={text} />;
+  }
+
+  return (
+    <span className={`flex flex-col gap-2 leading-6 ${className}`}>
+      {blocks.map((block) => (
+        <span key={block} className="block">
+          <HighlightedText text={block} />
+        </span>
+      ))}
+    </span>
+  );
+}
+
 function splitComparisonText(text: string) {
   return text
     .replaceAll("; ", ". ")
     .split(/(?<=\.)\s+/)
+    .map((part) => part.trim())
+    .filter(Boolean);
+}
+
+function splitInlineComparisonText(text: string) {
+  return text
+    .split(/\s*;\s+/)
     .map((part) => part.trim())
     .filter(Boolean);
 }

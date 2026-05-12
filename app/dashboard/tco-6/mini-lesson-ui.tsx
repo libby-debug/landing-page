@@ -2,9 +2,12 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { InteractiveVisualBlock } from "./mini-lesson-interactions";
 import {
-  HighlightedText,
+  InteractiveVisualBlock,
+  readSavedLearnInteractionState,
+} from "./mini-lesson-interactions";
+import {
+  FormattedConceptText,
   cardBaseClass,
   eyebrowClass,
 } from "@/components/learning-ui";
@@ -40,8 +43,11 @@ export function MiniLessonView({
   const { updateProgress } = useModuleProgress(section.slug);
   const [passedLessonSlug, setPassedLessonSlug] = useState(() => {
     const savedLesson = readSavedModuleProgress(section.slug).snapshots.learn;
-    return savedLesson?.lessonSlug === lesson.slug &&
-      savedLesson.completedQuestions?.includes(lesson.slug)
+    const savedInteraction = readSavedLearnInteractionState(section.slug, lesson.slug);
+
+    return (savedLesson?.lessonSlug === lesson.slug &&
+      savedLesson.completedQuestions?.includes(lesson.slug)) ||
+      savedInteraction.completed
       ? lesson.slug
       : "";
   });
@@ -85,13 +91,15 @@ export function MiniLessonView({
             key={sentence}
             className="text-lg font-semibold leading-8 text-slate-950"
           >
-            <HighlightedText text={sentence} />
+            <FormattedConceptText text={sentence} />
           </p>
         ))}
       </div>
 
       <InteractiveVisualBlock
+        lessonSlug={lesson.slug}
         onPassedChange={handlePassedChange}
+        sectionSlug={section.slug}
         visual={lesson.visual}
       />
 

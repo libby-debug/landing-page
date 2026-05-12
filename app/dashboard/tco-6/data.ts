@@ -100,7 +100,7 @@ export const tcoSections: TcoSection[] = [
     slug: "d",
     title: "Experimental Design",
     description:
-      "Analyze variables, validity, threats to validity, single-case design logic, and visual analysis of experimental control.",
+      "Understand types of variables, threats to validity, external vs. internal validity, and single-case design.",
     progress: 15,
     checklistItems: [
       "D.1-D.3. Distinguish variables, validity (internal/external), and threats to validity.",
@@ -110,9 +110,9 @@ export const tcoSections: TcoSection[] = [
     ],
     contentMapModules: [
       {
-        name: "ABA Reversal Design",
+        name: "A-B-A Reversal Design",
         contentType: "Graph Analysis",
-        keyConcepts: "ABA, reversal, experimental control",
+        keyConcepts: "A-B-A, reversal, experimental control",
       },
       {
         name: "Alternating Treatments Design",

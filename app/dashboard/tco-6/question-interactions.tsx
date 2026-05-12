@@ -1,7 +1,9 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { FormattedConceptText } from "@/components/learning-ui";
 import { masteryThreshold } from "./data";
+import { GraphCard } from "./module-d-graphs";
 import {
   SaveProgressButton,
   practiceAnswersKey,
@@ -15,6 +17,7 @@ const positiveFeedbackMessages = [
   "Great job!",
   "Good job! You are correct!",
   "Excellent work!",
+  "Excellent discrimination!",
   "Correct!",
   "Nice work!",
   "You got it!",
@@ -338,7 +341,74 @@ function getQuestionText(question: QuestionContent) {
 }
 
 function getConceptHint(question: QuestionContent) {
+  if (question.hint) {
+    return question.hint;
+  }
+
   const text = getQuestionText(question);
+
+  if (
+    text.includes("independent variable") ||
+    text.includes("dependent variable") ||
+    text.includes("extraneous variable") ||
+    text.includes("confounding variable") ||
+    text.includes("variable term")
+  ) {
+    return "Separate what the analyst changes, what behavior is measured, and what other events could explain the data pattern.";
+  }
+
+  if (
+    text.includes("component analysis") ||
+    text.includes("parametric analysis") ||
+    text.includes("comparative analysis")
+  ) {
+    return "Ask whether the question is comparing interventions, identifying active package parts, or testing different values of one independent variable.";
+  }
+
+  if (
+    text.includes("sequence effect") ||
+    text.includes("response generalization") ||
+    text.includes("administrative") ||
+    text.includes("staff support") ||
+    text.includes("consent")
+  ) {
+    return "Look for the applied-design issue: order effects, independence across tiers, participant safety, consent, or implementation support.";
+  }
+
+  if (
+    text.includes("reversal") ||
+    text.includes("withdrawal") ||
+    text.includes("multiple baseline") ||
+    text.includes("alternating treatments") ||
+    text.includes("multielement") ||
+    text.includes("changing criterion")
+  ) {
+    return "Identify the design by its graph pattern: repeated condition changes, staggered tiers, rapid alternation, or stepwise criterion shifts.";
+  }
+
+  if (
+    text.includes("experimental control") ||
+    text.includes("internal validity") ||
+    text.includes("external validity") ||
+    text.includes("threat") ||
+    text.includes("history") ||
+    text.includes("maturation") ||
+    text.includes("instrumentation")
+  ) {
+    return "Ask whether the design rules out alternative explanations, shows the independent variable caused change, or supports generality beyond the original case.";
+  }
+
+  if (
+    text.includes("visual analysis") ||
+    text.includes("level") ||
+    text.includes("trend") ||
+    text.includes("variability") ||
+    text.includes("overlap") ||
+    text.includes("immediacy") ||
+    text.includes("graph")
+  ) {
+    return "Use the graph features: level, trend, variability, immediacy of effect, overlap, and consistency across similar phases.";
+  }
 
   if (
     text.includes("reinforcement") ||
@@ -486,7 +556,7 @@ function QuestionResponseInput({
   if (question.type === "fill-blank") {
     return (
       <input
-        className="mt-5 w-full rounded-2xl border border-slate-200 bg-white p-4 text-base font-bold text-slate-950 outline-none transition focus:border-blue-400"
+        className="mx-auto mt-5 block w-full max-w-3xl rounded-2xl border border-slate-200 bg-white p-4 text-base font-bold text-slate-950 outline-none transition focus:border-blue-400"
         disabled={disabled}
         onChange={(event) => onChange(event.target.value)}
         placeholder="Type your answer"
@@ -499,13 +569,15 @@ function QuestionResponseInput({
     const record = parseRecordResponse(response);
 
     return (
-      <div className="mt-5 grid gap-3">
+      <div className="mx-auto mt-5 grid w-full max-w-4xl gap-3">
         {question.pairs.map((pair) => (
           <label
             className="grid gap-2 rounded-2xl border border-slate-200 bg-white p-4 text-sm font-bold text-slate-950 sm:grid-cols-[0.8fr_1.2fr] sm:items-center"
             key={pair.term}
           >
-            <span>{pair.term}</span>
+            <span>
+              <FormattedConceptText text={pair.term} />
+            </span>
             <select
               className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm font-bold text-slate-950"
               disabled={disabled}
@@ -532,14 +604,16 @@ function QuestionResponseInput({
     const categories = question.categories;
 
     return (
-      <div className="mt-5 grid gap-3">
+      <div className="mx-auto mt-5 grid w-full max-w-4xl gap-3">
         {question.items.map((item) => (
           <div
             className="rounded-2xl border border-slate-200 bg-white p-4"
             key={item.label}
           >
-            <p className="text-sm font-black text-slate-950">{item.label}</p>
-            <div className="mt-3 grid gap-2 sm:grid-cols-2">
+            <p className="text-sm font-black text-slate-950">
+              <FormattedConceptText text={item.label} />
+            </p>
+            <div className="mx-auto mt-3 grid w-full max-w-3xl gap-2 sm:grid-cols-2">
               {categories.map((category) => (
                 <label
                   className="flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm font-bold text-slate-950"
@@ -554,7 +628,7 @@ function QuestionResponseInput({
                     }
                     type="radio"
                   />
-                  {category}
+                  <FormattedConceptText text={category} />
                 </label>
               ))}
             </div>
@@ -568,7 +642,7 @@ function QuestionResponseInput({
     const selected = parseArrayResponse(response);
 
     return (
-      <div className="mt-5 grid gap-3">
+      <div className="mx-auto mt-5 grid w-full max-w-3xl gap-3">
         {question.choices.map((choice) => (
           <label
             className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white p-4 text-sm font-bold text-slate-950"
@@ -583,7 +657,7 @@ function QuestionResponseInput({
               }
               type="checkbox"
             />
-            {choice}
+            <FormattedConceptText text={choice} />
           </label>
         ))}
       </div>
@@ -593,7 +667,7 @@ function QuestionResponseInput({
   const choices = question.choices ?? ["True", "False"];
 
   return (
-    <div className="mt-5 grid gap-3">
+    <div className="mx-auto mt-5 grid w-full max-w-3xl gap-3">
       {choices.map((choice) => (
         <label
           key={choice}
@@ -607,7 +681,7 @@ function QuestionResponseInput({
             onChange={() => onChange(choice)}
             type="radio"
           />
-          {choice}
+          <FormattedConceptText text={choice} />
         </label>
       ))}
     </div>
@@ -637,12 +711,21 @@ export function PracticeQuestionCard({
 
     const savedAnswer = readStoredAnswer(sectionSlug, index);
     const savedFeedback = readStoredPracticeFeedback(sectionSlug, index);
-    return Boolean(savedAnswer && savedFeedback.submitted);
+    return Boolean(
+      savedAnswer &&
+      savedFeedback.submitted &&
+      savedFeedback.feedbackState !== "idle",
+    );
   });
   const [incorrectAttempts, setIncorrectAttempts] = useState(() =>
     mode === "practice"
       ? readStoredPracticeFeedback(sectionSlug, index).incorrectAttempts
       : 0,
+  );
+  const [answerRevealVisible, setAnswerRevealVisible] = useState(() =>
+    mode === "practice"
+      ? readStoredPracticeFeedback(sectionSlug, index).answerRevealVisible
+      : false,
   );
   const { updateProgress } = useModuleProgress(sectionSlug);
   const answered = isAnswered(question, response);
@@ -676,8 +759,12 @@ export function PracticeQuestionCard({
       </p>
 
       <h3 className="mt-2 text-xl font-black text-slate-950">
-        {question.prompt}
+        <FormattedConceptText text={question.prompt} />
       </h3>
+
+      {question.graphId ? (
+        <GraphCard className="mt-5" graphId={question.graphId} />
+      ) : null}
 
       <QuestionResponseInput
         name={`${mode}-${sectionSlug}-${index}`}
@@ -691,6 +778,7 @@ export function PracticeQuestionCard({
             });
           }
           setSubmitted(false);
+          setAnswerRevealVisible(false);
           updatePracticeResult(false);
         }}
         question={question}
@@ -699,7 +787,7 @@ export function PracticeQuestionCard({
 
       <button
         type="button"
-        className="mt-5 rounded-xl bg-slate-950 px-5 py-3 text-sm font-black text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+          className="mx-auto mt-5 block rounded-xl bg-slate-950 px-5 py-3 text-sm font-black text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
         disabled={!answered}
         onClick={() => {
           const nextIncorrectAttempts =
@@ -710,6 +798,7 @@ export function PracticeQuestionCard({
             mode === "practice" && !correct && nextIncorrectAttempts >= 4;
 
           setSubmitted(true);
+          setAnswerRevealVisible(answerRevealVisible);
           if (mode === "practice" && !correct) {
             setIncorrectAttempts(nextIncorrectAttempts);
           }
@@ -743,7 +832,10 @@ export function PracticeQuestionCard({
           remediationDetails={
             mode === "practice" ? getPracticeRemediationDetails(question) : undefined
           }
-          revealIncorrectAnswer={mode === "practice" && incorrectAttempts >= 4}
+          revealIncorrectAnswer={
+            mode === "practice" &&
+            (answerRevealVisible || incorrectAttempts >= 4)
+          }
         />
       ) : null}
     </article>
@@ -867,8 +959,8 @@ export function MasteryCheckQuiz({
   }
 
   return (
-    <div className="mt-8 grid gap-6 text-left">
-      <div className="rounded-3xl border border-purple-100 bg-purple-50 p-5 text-center">
+    <div className="mx-auto mt-8 grid w-full gap-6 text-left">
+      <div className="mx-auto w-full max-w-4xl rounded-3xl border border-purple-100 bg-purple-50 p-5 text-center">
         <p className="text-sm font-black uppercase tracking-wide text-purple-600">
           Mastery requirement
         </p>
@@ -904,8 +996,12 @@ export function MasteryCheckQuiz({
           </p>
 
           <h3 className="mt-2 text-xl font-black text-slate-950">
-            {question.prompt}
+            <FormattedConceptText text={question.prompt} />
           </h3>
+
+          {question.graphId ? (
+            <GraphCard className="mt-5" graphId={question.graphId} />
+          ) : null}
 
           <QuestionResponseInput
             disabled={completed && isCorrect(question, responses[index] ?? "")}
@@ -929,7 +1025,7 @@ export function MasteryCheckQuiz({
         </article>
       ))}
 
-      <div className="rounded-3xl border border-blue-100 bg-blue-50 p-6 text-center">
+      <div className="mx-auto w-full max-w-4xl rounded-3xl border border-blue-100 bg-blue-50 p-6 text-center">
         {completed ? (
           <>
             <p className="text-sm font-black uppercase tracking-wide text-blue-600">
@@ -1006,12 +1102,12 @@ function AnswerFeedback({
 
   return (
     <div
-      className={`mt-5 rounded-2xl border p-4 text-center ${
+      className={`mx-auto mt-5 w-full max-w-3xl rounded-2xl border p-4 text-center ${
         isCorrect
           ? "border-green-200 bg-green-50"
           : showRemediation
             ? "border-amber-200 bg-amber-50"
-          : "border-pink-200 bg-pink-50"
+          : "border-red-200 bg-red-50"
       }`}
     >
       <p
@@ -1020,7 +1116,7 @@ function AnswerFeedback({
             ? "text-green-700"
             : showRemediation
               ? "text-amber-700"
-              : "text-pink-700"
+              : "text-red-700"
         }`}
       >
         {isCorrect
@@ -1036,22 +1132,29 @@ function AnswerFeedback({
           </p>
           <ul className="mt-2 space-y-2 text-sm font-semibold leading-6 text-slate-950">
             {remediationDetails.items.map((item) => (
-              <li key={item}>{item}</li>
+              <li key={item}>
+                <FormattedConceptText text={item} />
+              </li>
             ))}
           </ul>
         </div>
       ) : isCorrect || showRemediation ? (
         <p className="mt-2 text-sm font-black text-slate-950">
-          Correct answer: {correctAnswer}
+          <span>Correct answer: </span>
+          <FormattedConceptText text={correctAnswer} />
         </p>
       ) : null}
       <p className="mt-2 text-sm font-semibold leading-6 text-slate-950">
-        {isCorrect || showRemediation
-          ? explanation
-          : `Hint: ${hint ?? explanation}`}
+        <FormattedConceptText
+          text={
+            isCorrect || showRemediation
+              ? explanation
+              : `Hint: ${hint ?? explanation}`
+          }
+        />
       </p>
       {!isCorrect && !showRemediation && incorrectAttempts > 0 ? (
-        <p className="mt-2 text-xs font-bold uppercase tracking-wide text-pink-700">
+        <p className="mt-2 text-xs font-bold uppercase tracking-wide text-red-700">
           Incorrect attempt {incorrectAttempts} of 4
         </p>
       ) : null}

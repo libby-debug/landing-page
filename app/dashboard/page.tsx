@@ -31,6 +31,10 @@ const averageProgress = Math.round(
     tcoSections.length,
 );
 
+const developerShortcutSections = tcoSections.filter((section) =>
+  ["a", "b", "c", "d"].includes(section.slug),
+);
+
 export default function DashboardPage() {
   return (
     <ProtectedRoute>
@@ -127,6 +131,54 @@ function DashboardContent() {
         />
       </section>
 
+      {/* Development-only QA panel. These links are stripped from production UI by NODE_ENV. */}
+      {process.env.NODE_ENV === "development" ? (
+        <section className={`${cardBaseClass} mt-8 w-full border-amber-200 bg-amber-50 text-center`}>
+          <p className="text-sm font-black uppercase tracking-wide text-amber-700">
+            Developer Shortcuts
+          </p>
+
+          <h2 className={sectionTitleClass}>
+            Preview practice and mastery checks
+          </h2>
+
+          <p className="mx-auto mt-3 max-w-3xl text-sm font-semibold leading-6 text-slate-950">
+            These links are visible only in local development and bypass
+            progression locks only for preview/testing.
+          </p>
+
+          <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+            {developerShortcutSections.map((section) => (
+              <div
+                key={section.slug}
+                className="rounded-2xl border border-amber-200 bg-white/80 p-4 text-center"
+              >
+                <p className="text-sm font-black uppercase tracking-wide text-amber-700">
+                  Module {section.code}
+                </p>
+                <h3 className="mt-1 text-base font-black text-slate-950">
+                  {section.title}
+                </h3>
+                <div className="mt-4 grid gap-2">
+                  <Link
+                    href={`/dashboard/tco-6/${section.slug}/practice`}
+                    className="rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-sm font-black text-green-700 transition hover:border-green-300 hover:bg-green-100"
+                  >
+                    Module {section.code} Practice
+                  </Link>
+                  <Link
+                    href={`/dashboard/tco-6/${section.slug}/mastery-check`}
+                    className="rounded-xl border border-blue-200 bg-blue-50 px-4 py-3 text-sm font-black text-blue-700 transition hover:border-blue-300 hover:bg-blue-100"
+                  >
+                    Module {section.code} Mastery
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      ) : null}
+
       <section className={`${cardBaseClass} mt-8 w-full border-blue-200 bg-white text-center`}>
         <div className="flex flex-col items-center gap-5 md:flex-row md:justify-between md:text-left">
           <div className="flex max-w-3xl flex-col items-center md:items-start">
@@ -216,7 +268,7 @@ function SummaryCard({
 function TcoSectionCard({ section }: { section: TcoSection }) {
   const { progress: savedProgress } = useModuleProgress(section.slug);
   const showDeveloperAccess =
-    process.env.NODE_ENV === "development" && section.slug === "b";
+    process.env.NODE_ENV === "development" && ["a", "b", "c", "d"].includes(section.slug);
   const completed = savedProgress.masteryCompleted;
   const status = getMasteryStatus(section.progress);
   const displayedStatus = completed ? "Completed" : status;
@@ -277,13 +329,13 @@ function TcoSectionCard({ section }: { section: TcoSection }) {
       {showDeveloperAccess ? (
         <div className="mt-3 grid gap-2">
           <Link
-            href="/dashboard/tco-6/b/practice"
+            href={`/dashboard/tco-6/${section.slug}/practice`}
             className="inline-block rounded-xl border border-green-200 bg-green-50 px-5 py-3 text-center text-sm font-black text-green-700 transition hover:border-green-300 hover:bg-green-100"
           >
             Preview Practice Check
           </Link>
           <Link
-            href="/dashboard/tco-6/b/mastery-check"
+            href={`/dashboard/tco-6/${section.slug}/mastery-check`}
             className="inline-block rounded-xl border border-blue-200 bg-blue-50 px-5 py-3 text-center text-sm font-black text-blue-700 transition hover:border-blue-300 hover:bg-blue-100"
           >
             Preview Mastery Check

@@ -195,6 +195,74 @@ export const sectionBMiniLessons: MiniLessonContent[] = [
     },
   },
   {
+    slug: "pavlov-vs-skinner",
+    label: "B.3",
+    title: "Pavlovian vs operant learning",
+    body: [
+      "Pavlovian learning is based on events that come [before behavior].",
+      "Operant learning is based on events that come [after behavior].",
+    ],
+    visual: {
+      type: "comparison",
+      leftTitle: "Respondent / Pavlovian",
+      leftText: "Antecedent stimulus -> elicited response",
+      rightTitle: "Operant / Skinner",
+      rightText: "Response -> consequence -> future behavior",
+      cue: "Respondent = antecedent pairing. Operant = consequence selection.",
+    },
+  },
+  {
+    slug: "respondent-symbols",
+    label: "B.3",
+    title: "US, UR, NS, CS, CR",
+    body: [
+      "Respondent conditioning starts with a neutral stimulus that does not elicit the target response.",
+      "After pairings, the neutral stimulus becomes [a conditioned stimulus].",
+    ],
+    visual: {
+      type: "matching",
+      prompt: "Match each respondent term to its role.",
+      pairs: [
+        {
+          term: "Unconditioned stimulus",
+          definition: "Elicits a response without prior learning.",
+        },
+        {
+          term: "Unconditioned response",
+          definition: "Unlearned response elicited by the US.",
+        },
+        {
+          term: "Neutral stimulus",
+          definition: "Does not yet elicit the target response.",
+        },
+        {
+          term: "Conditioned stimulus",
+          definition: "Elicits the conditioned response after pairing.",
+        },
+      ],
+    },
+  },
+  {
+    slug: "free-operant-vs-discrete-trial",
+    label: "B.3",
+    title: "Free operant vs discrete trial",
+    body: [
+      "Free-operant behavior can occur repeatedly without a specific trial start.",
+      "Discrete-trial methods arrange [clear cued opportunities] to respond.",
+    ],
+    visual: {
+      type: "sorting",
+      prompt: "Sort each example by response arrangement.",
+      categories: ["Free operant", "Discrete trial"],
+      items: [
+        { label: "Pressing a lever repeatedly", category: "Free operant" },
+        { label: "Answering after a teacher presents an SD", category: "Discrete trial" },
+        { label: "Talking freely on the playground", category: "Free operant" },
+        { label: "Touching a card after 'point to dog'", category: "Discrete trial" },
+      ],
+    },
+  },
+  {
     slug: "reinforcement-increases",
     label: "B.4",
     title: "Reinforcement = behavior increases",
@@ -379,6 +447,44 @@ export const sectionBMiniLessons: MiniLessonContent[] = [
     },
   },
   {
+    slug: "shaping-crf-intermittent",
+    label: "B.4 / B.9",
+    title: "Shaping and reinforcement schedules",
+    body: [
+      "Shaping teaches new behavior by reinforcing [successive approximations].",
+      "New behavior often starts on CRF, then shifts toward intermittent reinforcement.",
+    ],
+    visual: {
+      type: "flow",
+      prompt: "Order the teaching sequence for a new operant response.",
+      steps: [
+        "Reinforce closer approximations",
+        "Use CRF while behavior is new",
+        "Stabilize the response",
+        "Thin to intermittent reinforcement",
+      ],
+    },
+  },
+  {
+    slug: "schedule-matrix",
+    label: "B.9-B.10",
+    title: "Schedules of reinforcement",
+    body: [
+      "Interval schedules are [time based].",
+      "Ratio schedules are [response based].",
+    ],
+    visual: {
+      type: "matching",
+      prompt: "Match each schedule to its discrimination cue.",
+      pairs: [
+        { term: "FI", definition: "Fixed time interval." },
+        { term: "VI", definition: "Variable time interval." },
+        { term: "FR", definition: "Fixed response requirement." },
+        { term: "VR", definition: "Variable response requirement." },
+      ],
+    },
+  },
+  {
     slug: "sd-vs-motivating-operation",
     label: "B.16-B.17",
     title: "SD vs motivating operation",
@@ -396,6 +502,57 @@ export const sectionBMiniLessons: MiniLessonContent[] = [
     },
   },
   {
+    slug: "sd-vs-sdelta",
+    label: "B.11-B.15",
+    title: "SD vs S-delta",
+    body: [
+      "An SD signals [reinforcement is available] for a response.",
+      "An S-delta signals that the response [will not be reinforced].",
+    ],
+    visual: {
+      type: "comparison",
+      leftTitle: "SD",
+      leftText: "Response -> reinforcement available",
+      rightTitle: "S-delta",
+      rightText: "Response -> no reinforcement",
+      cue: "SD = reinforcement available. S-delta = reinforcement not available.",
+    },
+  },
+  {
+    slug: "three-term-contingency",
+    label: "B.11-B.15",
+    title: "Three-term contingency",
+    body: [
+      "The three-term contingency connects antecedent, response, and consequence.",
+      "Read it as [SD -> R -> Sr].",
+    ],
+    visual: {
+      type: "flow",
+      prompt: "Put the three-term contingency in order.",
+      steps: ["SD", "Response", "Reinforcing consequence"],
+    },
+  },
+  {
+    slug: "eo-ao-setting-events",
+    label: "B.16-B.17",
+    title: "EO, AO, and setting events",
+    body: [
+      "An EO increases [reinforcer value and current behavior].",
+      "An AO decreases [reinforcer value and current behavior].",
+    ],
+    visual: {
+      type: "sorting",
+      prompt: "Sort each event by its likely effect.",
+      categories: ["EO", "AO"],
+      items: [
+        { label: "No food since morning before snack time", category: "EO" },
+        { label: "Just ate a large meal before snack time", category: "AO" },
+        { label: "Long delay since attention was available", category: "EO" },
+        { label: "Extended access to attention", category: "AO" },
+      ],
+    },
+  },
+  {
     slug: "extinction-vs-punishment",
     label: "B.11 / B.5",
     title: "Extinction vs punishment",
@@ -410,6 +567,27 @@ export const sectionBMiniLessons: MiniLessonContent[] = [
       rightTitle: "Punishment",
       rightText: "Added/removed consequence decreases behavior",
       cue: "Extinction = reinforcer no longer follows. Punishment = consequence reduces future responding.",
+    },
+  },
+  {
+    slug: "extinction-cautions",
+    label: "B.11",
+    title: "Extinction cautions",
+    body: [
+      "Extinction can produce [extinction bursts].",
+      "Previously reduced behavior may reappear through spontaneous recovery.",
+    ],
+    visual: {
+      type: "select-all",
+      prompt: "Select cautions to plan for when using extinction.",
+      choices: [
+        { label: "Extinction burst", correct: true },
+        { label: "Spontaneous recovery", correct: true },
+        { label: "Immediate permanent elimination", correct: false },
+        { label: "No need to identify the maintaining reinforcer", correct: false },
+      ],
+      feedback:
+        "Extinction requires identifying and withholding the maintaining reinforcer, plus planning for bursts and spontaneous recovery.",
     },
   },
   {
@@ -542,6 +720,104 @@ export const sectionBPracticeQuestions: QuestionContent[] = [
     explanation:
       "Respondent behavior is elicited by antecedent stimuli. Operant behavior is selected by consequences.",
   },
+  {
+    type: "matching",
+    prompt: "Match each respondent-conditioning symbol to its role.",
+    pairs: [
+      {
+        term: "US",
+        definition: "Stimulus that elicits a response without prior learning.",
+      },
+      {
+        term: "UR",
+        definition: "Unlearned response elicited by the US.",
+      },
+      {
+        term: "NS",
+        definition: "Stimulus that does not yet elicit the target response.",
+      },
+      {
+        term: "CS",
+        definition: "Stimulus that elicits a learned conditioned response.",
+      },
+    ],
+    answer: "All respondent-conditioning symbols matched correctly",
+    explanation:
+      "The NS becomes a CS after pairing with a US. The CS then elicits the CR.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A green traffic light signals that continuing to drive will contact reinforcement for moving with traffic. In this context, the green light functions as what?",
+    choices: ["SD", "S-delta", "Abolishing operation", "Unconditioned response"],
+    answer: "SD",
+    explanation:
+      "An SD signals that reinforcement is available for a response in its presence.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A red traffic light signals that continuing to drive will not contact reinforcement and may contact punishment. For continuing to drive, the red light is best described as what?",
+    choices: ["S-delta", "SD", "Conditioned reinforcer", "CRF"],
+    answer: "S-delta",
+    explanation:
+      "An S-delta signals that a response will not be reinforced in its presence.",
+  },
+  {
+    type: "sorting",
+    prompt: "Sort each schedule by what controls reinforcement availability.",
+    categories: ["Time based", "Response based"],
+    items: [
+      { label: "Fixed interval", category: "Time based" },
+      { label: "Variable interval", category: "Time based" },
+      { label: "Fixed ratio", category: "Response based" },
+      { label: "Variable ratio", category: "Response based" },
+    ],
+    answer: "All schedules sorted correctly",
+    explanation:
+      "Interval schedules are time based. Ratio schedules are response based.",
+  },
+  {
+    type: "fill-blank",
+    prompt:
+      "Complete the cue: Shaping teaches new behavior by reinforcing successive ____.",
+    answer: "approximations",
+    explanation:
+      "Shaping uses differential reinforcement of successive approximations toward a terminal response.",
+  },
+  {
+    type: "select-all",
+    prompt: "Select all cautions commonly associated with extinction.",
+    choices: [
+      "Extinction burst",
+      "Spontaneous recovery",
+      "Need to identify the maintaining reinforcer",
+      "Immediate permanent behavior elimination",
+    ],
+    answers: [
+      "Extinction burst",
+      "Spontaneous recovery",
+      "Need to identify the maintaining reinforcer",
+    ],
+    answer:
+      "Extinction burst; spontaneous recovery; need to identify the maintaining reinforcer",
+    explanation:
+      "Extinction requires withholding the maintaining reinforcer and planning for extinction bursts and spontaneous recovery.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A learner has not eaten since breakfast, and food-maintained manding increases near 5 p.m. Which concept best explains the increased value of food?",
+    choices: [
+      "Establishing operation",
+      "S-delta",
+      "Response cost",
+      "Conditioned response",
+    ],
+    answer: "Establishing operation",
+    explanation:
+      "An establishing operation increases reinforcer value and evokes behavior that has produced that reinforcer.",
+  },
 ];
 
 export const sectionBMasteryQuestions: QuestionContent[] = [
@@ -635,5 +911,86 @@ export const sectionBMasteryQuestions: QuestionContent[] = [
     answer: "A stimulus is added after the response; future behavior decreases.",
     explanation:
       "Positive punishment combines an added stimulus with a decrease in future responding.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A neutral tone is paired with an air puff several times. Later, the tone alone elicits blinking. What is the tone after pairing?",
+    choices: [
+      "Conditioned stimulus",
+      "Unconditioned stimulus",
+      "S-delta",
+      "Negative reinforcer",
+    ],
+    answer: "Conditioned stimulus",
+    explanation:
+      "After pairing, the formerly neutral stimulus becomes a conditioned stimulus that elicits a conditioned response.",
+  },
+  {
+    type: "matching",
+    prompt: "Match each stimulus-control term to its discrimination cue.",
+    pairs: [
+      {
+        term: "SD",
+        definition: "Signals reinforcement is available for a response.",
+      },
+      {
+        term: "S-delta",
+        definition: "Signals the response will not be reinforced.",
+      },
+      {
+        term: "Setting event",
+        definition: "Contextual variable that alters antecedent effects.",
+      },
+      {
+        term: "Motivating operation",
+        definition: "Changes reinforcer value and current behavior.",
+      },
+    ],
+    answer: "All stimulus-control and motivating-operation terms matched correctly",
+    explanation:
+      "SD and S-delta signal availability of reinforcement. Motivating operations change value; setting events alter how antecedents function.",
+  },
+  {
+    type: "sorting",
+    prompt: "Sort the schedule examples.",
+    categories: ["Fixed", "Variable"],
+    items: [
+      { label: "Reinforcement after exactly 10 responses", category: "Fixed" },
+      { label: "Reinforcement after an average of 10 responses", category: "Variable" },
+      { label: "Reinforcement after exactly 5 minutes", category: "Fixed" },
+      { label: "Reinforcement after an average of 5 minutes", category: "Variable" },
+    ],
+    answer: "All schedule examples sorted correctly",
+    explanation:
+      "Fixed schedules use constant requirements. Variable schedules vary around an average requirement.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A new skill is reinforced after every correct response until responding is stable. Which schedule is being used?",
+    choices: [
+      "Continuous reinforcement",
+      "Variable interval",
+      "Extinction",
+      "S-delta",
+    ],
+    answer: "Continuous reinforcement",
+    explanation:
+      "Continuous reinforcement, or CRF, reinforces each correct response and is often used when teaching new behavior.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A substitute teacher changes the classroom context, and teacher prompts no longer occasion the usual on-task behavior. Which concept best captures this contextual effect?",
+    choices: [
+      "Setting event",
+      "Unconditioned response",
+      "Fixed ratio schedule",
+      "Positive punishment",
+    ],
+    answer: "Setting event",
+    explanation:
+      "A setting event is a contextual or environmental variable that can alter the effect of antecedent events.",
   },
 ];

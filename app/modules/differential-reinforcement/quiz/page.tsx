@@ -2,6 +2,10 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import {
+  pageTitleClass,
+  sectionTitleClass,
+} from "@/components/learning-ui";
 import { supabase } from "@/lib/supabase";
 
 const questions = [
@@ -131,7 +135,7 @@ export default function DifferentialReinforcementQuizPage() {
           Cumulative Mastery Quiz
         </p>
 
-        <h1 className="mt-2 text-5xl font-extrabold text-slate-950">
+        <h1 className={pageTitleClass}>
           Differential Reinforcement
         </h1>
 
@@ -229,7 +233,7 @@ export default function DifferentialReinforcementQuizPage() {
             </>
           ) : (
             <div className="rounded-3xl bg-slate-50 p-6">
-              <h2 className="text-4xl font-extrabold text-slate-950">
+              <h2 className={sectionTitleClass}>
                 Your Score: {percent}%
               </h2>
 

@@ -7,11 +7,12 @@ import {
 } from "@/components/lesson-flow-navigation";
 import {
   PageShell,
+  HighlightedText,
   cardBaseClass,
   eyebrowClass,
-  gradientTextClass,
   leadClass,
   pageTitleClass,
+  sectionTitleClass,
 } from "@/components/learning-ui";
 import {
   differentialReinforcementProcedures,
@@ -71,8 +72,7 @@ export default async function DifferentialReinforcementLessonPage({
       <p className={eyebrowClass}>TCO 6 G.1-G.4 Behavior-Change Procedures</p>
 
       <h1 className={pageTitleClass}>
-        {procedure.abbreviation}:{" "}
-        <span className={gradientTextClass}>{step.title}</span>
+        {procedure.abbreviation}: {step.title}
       </h1>
 
       <p className={leadClass}>
@@ -181,7 +181,7 @@ function VisualComparison({
     <section className="mt-10 w-full">
       <p className={eyebrowClass}>Visual comparison</p>
 
-      <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-slate-950">
+      <h2 className={sectionTitleClass}>
         What gets reinforced?
       </h2>
 
@@ -222,7 +222,7 @@ function VisualComparison({
             {details.reinforcementCriterion}
           </h3>
           <p className="mt-4 text-base leading-relaxed text-slate-950">
-            {details.whatGetsReinforced}
+            <HighlightedText text={details.whatGetsReinforced} />
           </p>
         </article>
       </div>
@@ -233,7 +233,7 @@ function VisualComparison({
           {procedure.name}
         </h3>
         <p className="mx-auto mt-4 max-w-4xl text-lg leading-relaxed text-slate-950">
-          {procedure.rule}
+          <HighlightedText text={procedure.rule} />
         </p>
       </section>
 
@@ -257,7 +257,7 @@ function VisualComparison({
                 {item.abbreviation}
               </div>
               <p className="mt-4 text-base leading-relaxed text-slate-950">
-                {item.rule}
+                <HighlightedText text={item.rule} />
               </p>
             </article>
           ))}
@@ -295,7 +295,7 @@ function DiscriminationLesson({
     <section className="mt-10 w-full">
       <p className={eyebrowClass}>Discrimination practice</p>
 
-      <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-slate-950">
+      <h2 className={sectionTitleClass}>
         Discriminate {procedure.abbreviation} from DRA, DRI, DRO, DRL, and DRH
       </h2>
 
@@ -305,7 +305,7 @@ function DiscriminationLesson({
             Decision rule
           </p>
           <p className="mt-4 text-xl font-extrabold tracking-tight text-slate-950">
-            {procedure.discrimination}
+            <HighlightedText text={procedure.discrimination} />
           </p>
           <p className="mt-4 text-base leading-relaxed text-slate-950">
             Before answering, identify the contingency: what response, absence,
@@ -325,7 +325,7 @@ function DiscriminationLesson({
                   {item.abbreviation}
                 </p>
                 <p className="mt-1 text-sm leading-relaxed text-slate-950">
-                  {item.rule}
+                  <HighlightedText text={item.rule} />
                 </p>
               </div>
             ))}
@@ -362,7 +362,7 @@ function ExamplesLesson({
     <section className="mt-10 w-full">
       <p className={eyebrowClass}>Examples and nonexamples</p>
 
-      <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-slate-950">
+      <h2 className={sectionTitleClass}>
         Build fluency with {procedure.abbreviation}
       </h2>
 
@@ -442,7 +442,7 @@ function CommonConfusionsLesson({
     <section className="mt-10 w-full">
       <p className={eyebrowClass}>Common confusions</p>
 
-      <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-slate-950">
+      <h2 className={sectionTitleClass}>
         Protect the technical distinction
       </h2>
 
@@ -457,19 +457,19 @@ function CommonConfusionsLesson({
             </p>
             <div className="mt-5 grid gap-4 md:grid-cols-2">
               <div className="rounded-2xl border border-blue-200 bg-blue-50 p-5">
-                <h3 className="text-2xl font-extrabold tracking-tight text-blue-700">
+                <h3 className="text-2xl font-extrabold tracking-tight text-slate-950">
                   {pair.leftLabel}
                 </h3>
                 <p className="mt-3 text-base leading-relaxed text-slate-950">
-                  {pair.leftText}
+                  <HighlightedText text={pair.leftText} />
                 </p>
               </div>
               <div className="rounded-2xl border border-pink-200 bg-pink-50 p-5">
-                <h3 className="text-2xl font-extrabold tracking-tight text-pink-700">
+                <h3 className="text-2xl font-extrabold tracking-tight text-slate-950">
                   {pair.rightLabel}
                 </h3>
                 <p className="mt-3 text-base leading-relaxed text-slate-950">
-                  {pair.rightText}
+                  <HighlightedText text={pair.rightText} />
                 </p>
               </div>
             </div>
@@ -510,7 +510,7 @@ function MasteryQuizLesson({
     <section className="mt-10 w-full">
       <p className={eyebrowClass}>Mastery quiz</p>
 
-      <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-slate-950">
+      <h2 className={sectionTitleClass}>
         Score {masteryThreshold}% or higher to master {procedure.abbreviation}
       </h2>
 
@@ -554,15 +554,9 @@ function ScenarioCard({
     green: "border-green-200 bg-white",
     pink: "border-pink-200 bg-white",
   };
-  const textClass = {
-    blue: "text-blue-700",
-    green: "text-green-700",
-    pink: "text-pink-700",
-  };
-
   return (
     <article className={`rounded-2xl border p-5 shadow-sm ${toneClass[tone]}`}>
-      <h3 className={`text-xl font-extrabold tracking-tight ${textClass[tone]}`}>
+      <h3 className="text-xl font-extrabold tracking-tight text-slate-950">
         {item.title}
       </h3>
       <p className="mt-3 text-base leading-relaxed text-slate-950">
@@ -579,17 +573,19 @@ function getVisualCheckQuestions(
   procedure: DifferentialReinforcementProcedure,
   details: ReturnType<typeof getProcedureLessonDetails>,
 ): QuizQuestion[] {
+  const reinforcedResponse = stripHighlightMarkers(details.whatGetsReinforced);
+
   return [
     {
       prompt: `In ${procedure.abbreviation}, what gets reinforced?`,
       options: [
-        details.whatGetsReinforced,
+        reinforcedResponse,
         details.targetBehavior,
         "Any behavior that happens after reinforcement",
         "Only behavior topography, regardless of contingency",
       ],
-      answer: details.whatGetsReinforced,
-      rationale: details.whatGetsReinforced,
+      answer: reinforcedResponse,
+      rationale: reinforcedResponse,
     },
     {
       prompt: details.visualExamples[0].scenario,
@@ -598,6 +594,10 @@ function getVisualCheckQuestions(
       rationale: details.visualExamples[0].why,
     },
   ];
+}
+
+function stripHighlightMarkers(text: string) {
+  return text.replaceAll("[", "").replaceAll("]", "");
 }
 
 function getExampleCheckQuestions(

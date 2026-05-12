@@ -45,27 +45,27 @@ export const behaviorChangeModules: Record<string, StudyModule> = {
     concepts: [
       {
         label: "Response prompt",
-        text: "Supplemental antecedent stimulus that evokes the correct response by assisting the learner's behavior.",
+        text: "Supplemental antecedent stimulus that evokes the correct response by [assisting the learner's behavior].",
       },
       {
         label: "Stimulus prompt",
-        text: "Supplemental antecedent stimulus that changes the salience or features of the discriminative stimulus.",
+        text: "Supplemental antecedent stimulus that [changes the salience or features] of the discriminative stimulus.",
       },
       {
         label: "Transfer of stimulus control",
-        text: "The target response comes under control of the natural discriminative stimulus rather than the supplemental prompt.",
+        text: "The target response comes under control of the [natural discriminative stimulus] rather than the supplemental prompt.",
       },
     ],
     comparisons: [
       {
         title: "Response prompt vs. stimulus prompt",
         description:
-          "Response prompts act on the learner's response. Stimulus prompts alter the antecedent stimulus arrangement.",
+          "Response prompts act on [the learner's response]. Stimulus prompts alter [the antecedent stimulus arrangement]. Cue: response prompt = help the behavior; stimulus prompt = change the stimulus.",
       },
       {
         title: "Prompting vs. reinforcement",
         description:
-          "Prompting increases the likelihood of a correct response before behavior occurs. Reinforcement follows behavior and increases future responding.",
+          "Prompting happens [before behavior occurs]. Reinforcement follows behavior and [increases future responding]. Cue: prompt before, reinforcement after.",
       },
     ],
     examples: [
@@ -85,11 +85,11 @@ export const behaviorChangeModules: Record<string, StudyModule> = {
     commonConfusions: [
       {
         title: "Prompting is not the terminal goal",
-        text: "Prompting should support accurate responding while arranging transfer of stimulus control to the natural discriminative stimulus.",
+        text: "Prompting should support accurate responding while arranging [transfer of stimulus control] to the natural discriminative stimulus.",
       },
       {
         title: "Prompt dependence",
-        text: "Prompt dependence occurs when responding remains under control of the prompt rather than the relevant discriminative stimulus.",
+        text: "Prompt dependence occurs when responding remains under control of [the prompt rather than the relevant discriminative stimulus].",
       },
     ],
     quiz: [
@@ -136,27 +136,27 @@ export const behaviorChangeModules: Record<string, StudyModule> = {
     concepts: [
       {
         label: "Most-to-least prompting",
-        text: "Prompts begin with more intrusive assistance and are systematically reduced across trials.",
+        text: "Prompts begin with [more intrusive assistance] and are systematically reduced across trials.",
       },
       {
         label: "Least-to-most prompting",
-        text: "Prompts begin with the least intrusive assistance and increase only as needed.",
+        text: "Prompts begin with [the least intrusive assistance] and increase only as needed.",
       },
       {
         label: "Time delay",
-        text: "A delay is inserted between the discriminative stimulus and prompt to allow independent responding.",
+        text: "A delay is inserted [between the discriminative stimulus and prompt] to allow independent responding.",
       },
     ],
     comparisons: [
       {
         title: "Prompt fading vs. prompt removal",
         description:
-          "Prompt fading is systematic and planned. Abrupt prompt removal can produce errors or loss of instructional control.",
+          "Prompt fading is [systematic and planned]. Abrupt prompt removal can produce errors or loss of instructional control. Cue: fading = gradual transfer; removal = sudden absence.",
       },
       {
         title: "Graduated guidance vs. time delay",
         description:
-          "Graduated guidance changes physical assistance moment by moment. Time delay changes the interval before prompt delivery.",
+          "Graduated guidance changes [physical assistance] moment by moment. Time delay changes [the interval before prompt delivery].",
       },
     ],
     examples: [
@@ -176,7 +176,7 @@ export const behaviorChangeModules: Record<string, StudyModule> = {
     commonConfusions: [
       {
         title: "Fading is not extinction",
-        text: "Prompt fading reduces supplemental antecedent assistance. Extinction withholds reinforcement for a previously reinforced response.",
+        text: "Prompt fading reduces [supplemental antecedent assistance]. Extinction withholds [reinforcement for a previously reinforced response].",
       },
       {
         title: "Intrusiveness matters",
@@ -232,27 +232,27 @@ export const behaviorChangeModules: Record<string, StudyModule> = {
     concepts: [
       {
         label: "Successive approximations",
-        text: "Responses that increasingly resemble the terminal behavior across dimensions such as topography, duration, latency, or force.",
+        text: "Responses that [increasingly resemble the terminal behavior] across dimensions such as topography, duration, latency, or force.",
       },
       {
         label: "Terminal behavior",
-        text: "The final response form or performance criterion selected before shaping begins.",
+        text: "The [final response form or performance criterion] selected before shaping begins.",
       },
       {
         label: "Differential reinforcement",
-        text: "Reinforce closer approximations while withholding reinforcement for earlier approximations.",
+        text: "Reinforce [closer approximations] while withholding reinforcement for earlier approximations.",
       },
     ],
     comparisons: [
       {
         title: "Shaping vs. chaining",
         description:
-          "Shaping changes one response across successive approximations. Chaining links multiple responses into a behavior chain.",
+          "Shaping changes [one response across successive approximations]. Chaining links [multiple responses into a behavior chain]. Cue: shaping = change a response; chaining = link responses.",
       },
       {
         title: "Shaping vs. prompting",
         description:
-          "Shaping relies on differential reinforcement of approximations. Prompting uses supplemental antecedent stimuli to evoke correct responding.",
+          "Shaping relies on [differential reinforcement of approximations]. Prompting uses [supplemental antecedent stimuli] to evoke correct responding.",
       },
     ],
     examples: [
@@ -272,7 +272,7 @@ export const behaviorChangeModules: Record<string, StudyModule> = {
     commonConfusions: [
       {
         title: "Approximation criteria must shift",
-        text: "If the criterion never changes, the procedure is not shaping toward a terminal behavior.",
+        text: "If the criterion [never changes], the procedure is not shaping toward a terminal behavior.",
       },
       {
         title: "Do not skip approximations too quickly",
@@ -327,27 +327,27 @@ export const behaviorChangeModules: Record<string, StudyModule> = {
     concepts: [
       {
         label: "Behavior chain",
-        text: "A sequence of responses in which each response produces a stimulus change that functions as a conditioned reinforcer and discriminative stimulus for the next response.",
+        text: "A [sequence of responses] in which each response produces a stimulus change that functions as a conditioned reinforcer and discriminative stimulus for the next response.",
       },
       {
         label: "Task analysis",
-        text: "Breaking a complex skill into teachable component responses in the correct sequence.",
+        text: "Breaking a complex skill into [teachable component responses in the correct sequence].",
       },
       {
         label: "Backward chaining",
-        text: "Teach the final response first so completion of the chain contacts the terminal reinforcer.",
+        text: "Teach [the final response first] so completion of the chain contacts the terminal reinforcer.",
       },
     ],
     comparisons: [
       {
         title: "Forward chaining vs. backward chaining",
         description:
-          "Forward chaining teaches the first step first. Backward chaining teaches the last step first.",
+          "Forward chaining teaches [the first step first]. Backward chaining teaches [the last step first].",
       },
       {
         title: "Total-task chaining vs. single-step chaining",
         description:
-          "Total-task chaining teaches every step during each teaching opportunity, with prompts as needed.",
+          "Total-task chaining teaches [every step during each teaching opportunity], with prompts as needed.",
       },
     ],
     examples: [
@@ -367,11 +367,11 @@ export const behaviorChangeModules: Record<string, StudyModule> = {
     commonConfusions: [
       {
         title: "Chains require response sequences",
-        text: "A single response that changes gradually is not a behavior chain.",
+        text: "A single response that changes gradually is [not a behavior chain].",
       },
       {
         title: "Each step has a stimulus function",
-        text: "The stimulus change after each response can function as a conditioned reinforcer and discriminative stimulus for the next response.",
+        text: "The stimulus change after each response can function as [a conditioned reinforcer and discriminative stimulus] for the next response.",
       },
     ],
     quiz: [
@@ -428,27 +428,27 @@ export const behaviorChangeModules: Record<string, StudyModule> = {
     concepts: [
       {
         label: "Extinction",
-        text: "Withholding reinforcement for a previously reinforced response, resulting in a decrease in future responding.",
+        text: "[Withholding reinforcement] for a previously reinforced response, resulting in a decrease in future responding.",
       },
       {
         label: "Extinction burst",
-        text: "A temporary increase in frequency, intensity, or variability of responding after extinction begins.",
+        text: "A [temporary increase] in frequency, intensity, or variability of responding after extinction begins.",
       },
       {
         label: "Function-based extinction",
-        text: "The reinforcer maintaining the behavior must be identified so that reinforcer can be withheld.",
+        text: "The [reinforcer maintaining the behavior] must be identified so that reinforcer can be withheld.",
       },
     ],
     comparisons: [
       {
         title: "Extinction vs. punishment",
         description:
-          "Extinction withholds the maintaining reinforcer. Punishment presents or removes a stimulus after behavior to decrease future responding.",
+          "Extinction [withholds the maintaining reinforcer]. Punishment [presents or removes a stimulus after behavior] to decrease future responding. Cue: extinction = no reinforcer; punishment = added/removed consequence.",
       },
       {
         title: "Escape extinction vs. planned ignoring",
         description:
-          "Escape extinction prevents escape from maintaining behavior. Planned ignoring withholds attention-maintained reinforcement.",
+          "Escape extinction prevents [escape] from maintaining behavior. Planned ignoring withholds [attention-maintained reinforcement].",
       },
     ],
     examples: [
@@ -468,7 +468,7 @@ export const behaviorChangeModules: Record<string, StudyModule> = {
     commonConfusions: [
       {
         title: "Extinction depends on function",
-        text: "The same topography may require different extinction procedures depending on the maintaining reinforcer.",
+        text: "The same topography may require different extinction procedures depending on [the maintaining reinforcer].",
       },
       {
         title: "Extinction burst is not failure",

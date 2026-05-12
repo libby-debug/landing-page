@@ -1,11 +1,13 @@
 import Link from "next/link";
 import {
   PageShell,
+  ComparisonDefinitionBlocks,
+  HighlightedText,
   cardBaseClass,
   eyebrowClass,
-  gradientTextClass,
   leadClass,
   pageTitleClass,
+  sectionTitleClass,
 } from "@/components/learning-ui";
 import {
   differentialReinforcementProcedures,
@@ -21,9 +23,7 @@ export default function DifferentialReinforcementModulePage() {
     <PageShell maxWidth="6xl">
       <p className={eyebrowClass}>TCO 6 G.1-G.4 Behavior-Change Procedures</p>
 
-      <h1 className={pageTitleClass}>
-        Differential <span className={gradientTextClass}>Reinforcement</span>
-      </h1>
+      <h1 className={pageTitleClass}>Differential Reinforcement</h1>
 
       <p className={leadClass}>
         Compare DRA, DRO, DRI, DRL, and DRH using examples, nonexamples,
@@ -35,9 +35,7 @@ export default function DifferentialReinforcementModulePage() {
         <div className={`${cardBaseClass} border-blue-200 bg-blue-50`}>
           <p className={eyebrowClass}>Mastery threshold</p>
 
-          <div
-            className={`mt-4 text-6xl font-extrabold tracking-tight ${gradientTextClass}`}
-          >
+          <div className="mt-4 text-6xl font-extrabold tracking-tight text-slate-950">
             {masteryThreshold}%
           </div>
 
@@ -80,7 +78,7 @@ export default function DifferentialReinforcementModulePage() {
       <section className="mt-10 w-full">
         <p className={eyebrowClass}>Choose a lesson</p>
 
-        <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-slate-950">
+        <h2 className={sectionTitleClass}>
           Start with a visual comparison
         </h2>
 
@@ -136,9 +134,9 @@ export default function DifferentialReinforcementModulePage() {
                   {confusion.title}
                 </h3>
 
-                <p className="mt-2 text-base leading-relaxed text-slate-950">
-                  {confusion.text}
-                </p>
+                <div className="mt-4">
+                  <ComparisonDefinitionBlocks text={confusion.text} />
+                </div>
               </div>
             ))}
           </div>
@@ -185,7 +183,7 @@ function ProcedureCard({
       </h3>
 
       <p className="mt-4 text-base leading-relaxed text-slate-950">
-        {procedure.rule}
+        <HighlightedText text={procedure.rule} />
       </p>
 
       <div className="mt-auto flex justify-center pt-6">

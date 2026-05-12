@@ -1,4 +1,4 @@
-export const masteryThreshold = 90;
+export const masteryThreshold = 100;
 
 export type MasteryStatus = "Not Started" | "In Progress" | "Mastered";
 
@@ -40,7 +40,7 @@ export const tcoSections: TcoSection[] = [
     slug: "b",
     title: "Concepts and Principles",
     description:
-      "Discriminate core behavior-analytic concepts including stimulus control, motivating operation, reinforcement, punishment, extinction, verbal behavior, and schedules.",
+      "Discriminate core behavior-analytic concepts including stimulus control, motivating operations, positive and negative reinforcement, positive and negative punishment, extinction, verbal behavior, and schedules of reinforcement.",
     progress: 35,
     checklistItems: [
       "B.1-B.2. Distinguish behavior, response, response class, stimulus, and stimulus class.",

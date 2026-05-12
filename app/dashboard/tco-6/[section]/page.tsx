@@ -5,9 +5,9 @@ import {
   PageShell,
   cardBaseClass,
   eyebrowClass,
-  gradientTextClass,
   leadClass,
   pageTitleClass,
+  sectionTitleClass,
 } from "@/components/learning-ui";
 import {
   getMasteryStatus,
@@ -15,6 +15,7 @@ import {
   masteryThreshold,
   tcoSections,
 } from "../data";
+import { ActivityProgressNav } from "../progression";
 
 type TcoSectionPageProps = {
   params: Promise<{
@@ -45,8 +46,7 @@ export default async function TcoSectionPage({ params }: TcoSectionPageProps) {
           <p className={eyebrowClass}>BACB Test Content Outline 6</p>
 
           <h1 className={pageTitleClass}>
-            <span className={gradientTextClass}>{section.code}.</span>{" "}
-            {section.title}
+            {section.code}. {section.title}
           </h1>
 
           <p className={leadClass}>{section.description}</p>
@@ -93,8 +93,8 @@ export default async function TcoSectionPage({ params }: TcoSectionPageProps) {
             <div className="text-center">
               <p className={eyebrowClass}>TCO 6 checklist</p>
 
-              <h2 className="mt-2 text-3xl font-black tracking-tight text-slate-950">
-                Section {section.code} checklist items
+              <h2 className={sectionTitleClass}>
+                Module {section.code} checklist items
               </h2>
             </div>
 
@@ -118,30 +118,14 @@ export default async function TcoSectionPage({ params }: TcoSectionPageProps) {
                 Learning modes
               </p>
 
-              <div className="mt-5 grid gap-3">
-                <Link
-                  href={`/dashboard/tco-6/${section.slug}/learn`}
-                  className="rounded-xl bg-slate-950 px-5 py-3 text-sm font-black text-white transition hover:opacity-90"
-                >
-                  Learn
-                </Link>
-                <Link
-                  href={`/dashboard/tco-6/${section.slug}/practice`}
-                  className="rounded-xl border border-slate-300 bg-white px-5 py-3 text-sm font-black text-slate-950 transition hover:border-slate-400"
-                >
-                  Practice
-                </Link>
-                <Link
-                  href={`/dashboard/tco-6/${section.slug}/mastery-check`}
-                  className="rounded-xl bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 px-5 py-3 text-sm font-black text-white transition hover:opacity-90"
-                >
-                  Mastery Check
-                </Link>
-              </div>
+              <ActivityProgressNav
+                activeActivity="learn"
+                sectionSlug={section.slug}
+              />
 
               <p className="mt-4 text-sm font-semibold leading-6 text-slate-950">
-                These buttons are ready for future lesson, practice, and
-                mastery-check flows.
+                Progression runs Learn, then Practice, then Mastery Check.
+                Each step unlocks after 100% correct.
               </p>
             </div>
 
@@ -172,7 +156,7 @@ export default async function TcoSectionPage({ params }: TcoSectionPageProps) {
               ) : (
                 <p className="mt-4 text-sm font-semibold leading-6 text-slate-950">
                   Module placeholders will be added here as ABA Mastered content
-                  expands for this TCO 6 section.
+                  expands for this TCO 6 module.
                 </p>
               )}
             </div>

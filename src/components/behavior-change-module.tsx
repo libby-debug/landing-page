@@ -5,12 +5,14 @@ import { useEffect, useMemo, useState } from "react";
 import { useAuth } from "@/components/auth-provider";
 import {
   Button,
+  ComparisonDefinitionBlocks,
+  HighlightedText,
   PageShell,
   cardBaseClass,
   eyebrowClass,
-  gradientTextClass,
   leadClass,
   pageTitleClass,
+  sectionTitleClass,
 } from "@/components/learning-ui";
 import {
   masteryThreshold,
@@ -232,27 +234,14 @@ export function BehaviorChangeModule({ module }: BehaviorChangeModuleProps) {
     <PageShell maxWidth="6xl">
       <p className={eyebrowClass}>{module.eyebrow}</p>
 
-      <h1 className={pageTitleClass}>
-        {module.title.includes(" ") ? (
-          <>
-            {module.title.split(" ").slice(0, -1).join(" ")}{" "}
-            <span className={gradientTextClass}>
-              {module.title.split(" ").slice(-1).join(" ")}
-            </span>
-          </>
-        ) : (
-          <span className={gradientTextClass}>{module.title}</span>
-        )}
-      </h1>
+      <h1 className={pageTitleClass}>{module.title}</h1>
 
       <p className={leadClass}>{module.description}</p>
 
       <section className="mt-10 grid w-full gap-6 md:grid-cols-3">
         <div className={`${cardBaseClass} border-blue-200 bg-blue-50`}>
           <p className={eyebrowClass}>Mastery threshold</p>
-          <div
-            className={`mt-4 text-6xl font-extrabold tracking-tight ${gradientTextClass}`}
-          >
+          <div className="mt-4 text-6xl font-extrabold tracking-tight text-slate-950">
             {masteryThreshold}%
           </div>
           <p className="mt-4 text-base leading-relaxed text-slate-950">
@@ -292,7 +281,7 @@ export function BehaviorChangeModule({ module }: BehaviorChangeModuleProps) {
           className={`${cardBaseClass} mt-10 w-full border-slate-200 bg-slate-50`}
         >
           <p className={eyebrowClass}>Progression gating</p>
-          <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-slate-950">
+          <h2 className={sectionTitleClass}>
             Master {module.previousTitle} to unlock {module.title}
           </h2>
           <p className="mx-auto mt-4 max-w-3xl text-base leading-relaxed text-slate-950">
@@ -315,7 +304,7 @@ export function BehaviorChangeModule({ module }: BehaviorChangeModuleProps) {
 
       <section className="mt-10 w-full">
         <p className={eyebrowClass}>Visual comparison</p>
-        <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-slate-950">
+        <h2 className={sectionTitleClass}>
           Core distinctions
         </h2>
 
@@ -328,13 +317,11 @@ export function BehaviorChangeModule({ module }: BehaviorChangeModuleProps) {
                 key={concept.label}
                 className={`${cardBaseClass} ${tone.border} ${tone.bg}`}
               >
-                <h3
-                  className={`text-3xl font-extrabold tracking-tight ${tone.text}`}
-                >
+                <h3 className="text-3xl font-extrabold tracking-tight text-slate-950">
                   {concept.label}
                 </h3>
                 <p className="mt-4 text-base leading-relaxed text-slate-950">
-                  {concept.text}
+                  <HighlightedText text={concept.text} />
                 </p>
               </article>
             );
@@ -356,9 +343,9 @@ export function BehaviorChangeModule({ module }: BehaviorChangeModuleProps) {
                 <h3 className="text-2xl font-extrabold tracking-tight text-slate-950">
                   {comparison.title}
                 </h3>
-                <p className="mt-4 text-base leading-relaxed text-slate-950">
-                  {comparison.description}
-                </p>
+                <div className="mt-4">
+                  <ComparisonDefinitionBlocks text={comparison.description} />
+                </div>
               </article>
             );
           })}
@@ -408,9 +395,9 @@ export function BehaviorChangeModule({ module }: BehaviorChangeModuleProps) {
               <h3 className="text-2xl font-extrabold tracking-tight text-slate-950">
                 {confusion.title}
               </h3>
-              <p className="mt-4 text-base leading-relaxed text-slate-950">
-                {confusion.text}
-              </p>
+              <div className="mt-4">
+                <ComparisonDefinitionBlocks text={confusion.text} />
+              </div>
             </article>
           ))}
         </div>
@@ -418,7 +405,7 @@ export function BehaviorChangeModule({ module }: BehaviorChangeModuleProps) {
 
       <section className="mt-10 w-full">
         <p className={eyebrowClass}>Mastery quiz</p>
-        <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-slate-950">
+        <h2 className={sectionTitleClass}>
           Score 90% or higher to master {module.title}
         </h2>
 
@@ -501,11 +488,7 @@ export function BehaviorChangeModule({ module }: BehaviorChangeModuleProps) {
           >
             <p className={eyebrowClass}>Quiz score</p>
             <div
-              className={`mt-4 text-6xl font-extrabold tracking-tight ${
-                (currentScore ?? 0) >= masteryThreshold
-                  ? gradientTextClass
-                  : "text-slate-950"
-              }`}
+              className="mt-4 text-6xl font-extrabold tracking-tight text-slate-950"
             >
               {getScoreText(currentScore)}
             </div>

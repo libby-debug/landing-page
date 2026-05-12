@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { useAuth } from "@/components/auth-provider";
-import { Button, cardBaseClass, gradientTextClass } from "@/components/learning-ui";
+import { Button, cardBaseClass } from "@/components/learning-ui";
 import {
   masteryThreshold,
   type DifferentialReinforcementProcedure,
@@ -197,11 +197,7 @@ export function DifferentialReinforcementQuiz({
           <p className="text-sm font-semibold uppercase tracking-wide text-blue-600">
             Mastery score
           </p>
-          <div
-            className={`mt-4 text-6xl font-extrabold tracking-tight ${
-              mastered ? gradientTextClass : "text-slate-950"
-            }`}
-          >
+          <div className="mt-4 text-6xl font-extrabold tracking-tight text-slate-950">
             {score}%
           </div>
           <p className="mt-4 text-base leading-relaxed text-slate-950">

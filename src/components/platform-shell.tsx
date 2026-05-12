@@ -119,7 +119,6 @@ function PlatformShellContent({ children }: { children: React.ReactNode }) {
               {taskListSections.map((item) => {
                 const isActive = isActiveNavItem(pathname, item.href);
                 const isPrimary = item.prominence === "primary";
-                const isDashboard = item.title === "Dashboard";
                 const prominenceClass = isPrimary
                   ? "text-lg font-extrabold text-slate-950"
                   : "text-sm font-semibold text-slate-600";
@@ -133,13 +132,7 @@ function PlatformShellContent({ children }: { children: React.ReactNode }) {
                     href={item.href}
                     className={`rounded-xl px-4 py-3 transition ${prominenceClass} ${activeClass}`}
                   >
-                    {isDashboard ? (
-                      <span className="bg-gradient-to-r from-blue-600 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-                        {item.title}
-                      </span>
-                    ) : (
-                      item.title
-                    )}
+                    {item.title}
                   </Link>
                 );
               })}
@@ -147,7 +140,7 @@ function PlatformShellContent({ children }: { children: React.ReactNode }) {
 
             <div className="mt-auto rounded-3xl bg-blue-50 p-5">
               <p className="text-sm font-bold uppercase tracking-wide text-blue-600">Mastery Goal</p>
-              <p className="mt-2 text-4xl font-extrabold text-blue-700">90%</p>
+              <p className="mt-2 text-4xl font-extrabold text-blue-700">100%</p>
               <p className="mt-2 text-sm text-slate-950">
                 Lessons unlock through demonstrated mastery.
               </p>

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { LogoutButton } from "@/components/logout-button";
 import { ProtectedRoute } from "@/components/protected-route";
 import { useAuth } from "@/components/auth-provider";
@@ -8,9 +9,9 @@ import {
   PageShell,
   cardBaseClass,
   eyebrowClass,
-  gradientTextClass,
   leadClass,
   pageTitleClass,
+  sectionTitleClass,
 } from "@/components/learning-ui";
 import {
   getMasteryStatus,
@@ -18,10 +19,7 @@ import {
   tcoSections,
   type TcoSection,
 } from "./tco-6/data";
-
-const masteredSections = tcoSections.filter(
-  (section) => section.progress >= masteryThreshold,
-);
+import { useModuleProgress } from "./tco-6/progression";
 
 const continueSection =
   tcoSections
@@ -43,6 +41,46 @@ export default function DashboardPage() {
 
 function DashboardContent() {
   const { user } = useAuth();
+  const [completedSlugs, setCompletedSlugs] = useState<Set<string>>(new Set());
+
+  useEffect(() => {
+    function loadCompletedModules() {
+      const completed = new Set<string>();
+
+      tcoSections.forEach((section) => {
+        const stored = window.localStorage.getItem(
+          `aba-mastered:tco6:${section.slug}:progress`,
+        );
+
+        if (!stored) {
+          return;
+        }
+
+        try {
+          const progress = JSON.parse(stored) as { masteryCompleted?: boolean };
+
+          if (progress.masteryCompleted) {
+            completed.add(section.slug);
+          }
+        } catch {
+          // Ignore malformed local progress and keep the dashboard stable.
+        }
+      });
+
+      setCompletedSlugs(completed);
+    }
+
+    loadCompletedModules();
+    window.addEventListener("aba-mastered-progress", loadCompletedModules);
+
+    return () =>
+      window.removeEventListener("aba-mastered-progress", loadCompletedModules);
+  }, []);
+
+  const completedCount = tcoSections.filter(
+    (section) =>
+      completedSlugs.has(section.slug) || section.progress >= masteryThreshold,
+  ).length;
 
   return (
     <PageShell maxWidth="6xl" className="pt-4">
@@ -54,8 +92,8 @@ function DashboardContent() {
 
           <p className={leadClass}>
             Track ABA Mastered study progress through the canonical TCO 6
-            structure, with every section prepared for future lessons,
-            practice, and 90% mastery checks.
+            structure, with every module prepared for future lessons,
+            practice, and 100% mastery checks.
           </p>
 
           <p className="mt-4 text-sm font-semibold text-slate-950">
@@ -70,13 +108,13 @@ function DashboardContent() {
         <SummaryCard
           eyebrow="Mastery threshold"
           value={`${masteryThreshold}%`}
-          description="Sections move to Mastered when score placeholders reach 90% or higher."
+          description="Modules move to Completed when checks reach 100% correct."
           tone="blue"
         />
 
         <SummaryCard
-          eyebrow="Mastered sections"
-          value={`${masteredSections.length}/${tcoSections.length}`}
+          eyebrow="Mastered modules"
+          value={`${completedCount}/${tcoSections.length}`}
           description="Progress is ready to connect to Supabase mastery tracking."
           tone="purple"
         />
@@ -94,12 +132,12 @@ function DashboardContent() {
           <div className="flex max-w-3xl flex-col items-center md:items-start">
             <p className={eyebrowClass}>Continue studying</p>
 
-            <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-slate-950">
+            <h2 className={sectionTitleClass}>
               {continueSection.code}. {continueSection.title}
             </h2>
 
             <p className="mt-3 text-base leading-relaxed text-slate-950">
-              Continue this TCO 6 section and move it toward the 90% mastery
+              Continue this TCO 6 module and move it toward the 100% mastery
               threshold.
             </p>
           </div>
@@ -123,12 +161,12 @@ function DashboardContent() {
         <div className="flex flex-col items-center gap-2 text-center">
           <p className={eyebrowClass}>Study categories</p>
 
-          <h2 className="text-3xl font-extrabold tracking-tight text-slate-950">
+          <h2 className={sectionTitleClass}>
             BACB Test Content Outline 6
           </h2>
 
           <p className="max-w-3xl text-base font-semibold leading-7 text-slate-950">
-            Each section is structured for visual learning, practice, and
+            Each module is structured for visual learning, practice, and
             mastery checks while preserving official ABA terminology.
           </p>
         </div>
@@ -164,11 +202,7 @@ function SummaryCard({
     <div className={`${cardBaseClass} ${toneClass} text-center`}>
       <p className="text-sm font-semibold uppercase tracking-wide">{eyebrow}</p>
 
-      <div
-        className={`mt-4 text-5xl font-extrabold tracking-tight ${
-          tone === "blue" ? gradientTextClass : ""
-        }`}
-      >
+      <div className="mt-4 text-5xl font-extrabold tracking-tight text-slate-950">
         {value}
       </div>
 
@@ -180,11 +214,25 @@ function SummaryCard({
 }
 
 function TcoSectionCard({ section }: { section: TcoSection }) {
+  const { progress: savedProgress } = useModuleProgress(section.slug);
+  const completed = savedProgress.masteryCompleted;
   const status = getMasteryStatus(section.progress);
-  const actionLabel = section.progress === 0 ? "Start Learning" : "Continue";
+  const displayedStatus = completed ? "Completed" : status;
+  const displayedProgress = completed ? 100 : section.progress;
+  const actionLabel = completed
+    ? "Review Module"
+    : section.progress === 0
+      ? "Start Learning"
+      : "Continue";
 
   return (
-    <article className={`${cardBaseClass} flex h-full flex-col border-white/70 bg-white/95 text-center shadow-xl shadow-slate-900/10`}>
+    <article
+      className={`${cardBaseClass} flex h-full flex-col text-center shadow-xl shadow-slate-900/10 ${
+        completed
+          ? "border-green-300 bg-green-50 shadow-green-100"
+          : "border-white/70 bg-white/95"
+      }`}
+    >
       <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-r from-blue-600 via-purple-500 to-pink-500 text-3xl font-black text-white shadow-lg shadow-pink-300/30">
         {section.code}
       </div>
@@ -198,7 +246,7 @@ function TcoSectionCard({ section }: { section: TcoSection }) {
       </p>
 
       <div className="mt-5 flex flex-wrap items-center justify-center gap-2">
-        <StatusBadge status={status} />
+        <StatusBadge status={displayedStatus} />
         <span className="rounded-xl bg-slate-100 px-3 py-2 text-xs font-black uppercase tracking-wide text-slate-950">
           {section.checklistItems.length} checklist items
         </span>
@@ -207,12 +255,12 @@ function TcoSectionCard({ section }: { section: TcoSection }) {
       <div className="mt-5">
         <div className="flex items-center justify-between text-sm font-black text-slate-950">
           <span>Progress</span>
-          <span>{section.progress}%</span>
+          <span>{displayedProgress}%</span>
         </div>
 
         <ProgressBar
           label={`${section.code}. ${section.title} mastery progress`}
-          progress={section.progress}
+          progress={displayedProgress}
           className="mt-2"
         />
       </div>
@@ -229,7 +277,7 @@ function TcoSectionCard({ section }: { section: TcoSection }) {
 
 function StatusBadge({ status }: { status: string }) {
   const statusClass =
-    status === "Mastered"
+    status === "Completed" || status === "Mastered"
       ? "bg-purple-100 text-purple-700"
       : status === "In Progress"
         ? "bg-blue-100 text-blue-700"

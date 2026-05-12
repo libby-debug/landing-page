@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { gradientTextClass } from "@/components/learning-ui";
 import type { LessonStepSlug } from "@/lib/modules/differential-reinforcement";
 
 type LessonStep = {
@@ -75,9 +74,7 @@ export function LessonStepTracker({
                 : "border-slate-200 bg-white text-slate-500 hover:border-blue-200 hover:text-blue-700"
             }`}
           >
-            <span className={isCurrent ? gradientTextClass : ""}>
-              {index + 1}. {step.label}
-            </span>
+            <span>{index + 1}. {step.label}</span>
           </Link>
         ) : (
           <div

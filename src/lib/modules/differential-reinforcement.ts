@@ -100,7 +100,7 @@ export const differentialReinforcementProcedures: DifferentialReinforcementProce
     slug: "dra",
     abbreviation: "DRA",
     name: "Differential Reinforcement of an Alternative Behavior",
-    rule: "Reinforcement is given contingent upon the use of an alternative behavior.",
+    rule: "Reinforcement is given contingent upon [the use of an alternative behavior].",
     example:
       "Reinforce requesting a break instead of engaging in escape-maintained problem behavior.",
     nonexample:
@@ -108,7 +108,7 @@ export const differentialReinforcementProcedures: DifferentialReinforcementProce
     confusion:
       "DRA is commonly confused with DRI. DRA requires an alternative behavior; DRI requires an incompatible behavior.",
     discrimination:
-      "Ask whether a specific alternative response is being reinforced and whether that response serves the same function as the behavior targeted for decrease.",
+      "Ask whether [a specific alternative response] is being reinforced and whether that response serves the same function as the behavior targeted for decrease.",
     color: "text-blue-600",
     border: "border-blue-200",
     bg: "bg-blue-50",
@@ -152,7 +152,7 @@ export const differentialReinforcementProcedures: DifferentialReinforcementProce
     slug: "dro",
     abbreviation: "DRO",
     name: "Differential Reinforcement of Other Behavior",
-    rule: "Reinforcement is given contingent upon the absence of the target behavior.",
+    rule: "Reinforcement is given contingent upon [the absence of the target behavior].",
     example:
       "Deliver reinforcement when aggression does not occur for a 5-minute interval.",
     nonexample:
@@ -160,7 +160,7 @@ export const differentialReinforcementProcedures: DifferentialReinforcementProce
     confusion:
       "DRO does not teach a specific alternative response unless another teaching procedure is added.",
     discrimination:
-      "Ask whether reinforcement depends on the absence of the target behavior for an interval, rather than a specific replacement response.",
+      "Ask whether reinforcement depends on [the absence of the target behavior for an interval], rather than a specific replacement response.",
     color: "text-purple-600",
     border: "border-purple-200",
     bg: "bg-purple-50",
@@ -203,7 +203,7 @@ export const differentialReinforcementProcedures: DifferentialReinforcementProce
     slug: "dri",
     abbreviation: "DRI",
     name: "Differential Reinforcement of Incompatible Behavior",
-    rule: "Reinforcement is given contingent upon the use of an incompatible behavior.",
+    rule: "Reinforcement is given contingent upon [the use of an incompatible behavior].",
     example:
       "Reinforce hands folded on the desk when hand-flapping is the behavior targeted for decrease.",
     nonexample:
@@ -211,7 +211,7 @@ export const differentialReinforcementProcedures: DifferentialReinforcementProce
     confusion:
       "DRI is a subtype of DRA when the alternative response is physically incompatible with the target behavior.",
     discrimination:
-      "Ask whether the reinforced behavior and target behavior are physically impossible to emit at the same time.",
+      "Ask whether the reinforced behavior and target behavior are [physically impossible to emit at the same time].",
     color: "text-pink-600",
     border: "border-pink-200",
     bg: "bg-pink-50",
@@ -254,7 +254,7 @@ export const differentialReinforcementProcedures: DifferentialReinforcementProce
     slug: "drl",
     abbreviation: "DRL",
     name: "Differential Reinforcement of Low Rates",
-    rule: "Reinforcement is given when responses are lower than a predetermined criterion.",
+    rule: "Reinforcement is given when responses are [lower than a predetermined criterion].",
     example:
       "Reinforce raising a hand three or fewer times during a 20-minute lesson.",
     nonexample:
@@ -262,7 +262,7 @@ export const differentialReinforcementProcedures: DifferentialReinforcementProce
     confusion:
       "DRL is not used when the behavior must be eliminated completely.",
     discrimination:
-      "Ask whether the goal is a reduced but still acceptable rate, not zero responding.",
+      "Ask whether the goal is [a reduced but still acceptable rate], not zero responding.",
     color: "text-green-600",
     border: "border-green-200",
     bg: "bg-green-50",
@@ -305,7 +305,7 @@ export const differentialReinforcementProcedures: DifferentialReinforcementProce
     slug: "drh",
     abbreviation: "DRH",
     name: "Differential Reinforcement of High Rates",
-    rule: "Reinforcement is given when responses are higher than a predetermined criterion.",
+    rule: "Reinforcement is given when responses are [higher than a predetermined criterion].",
     example:
       "Reinforce completing at least 20 math facts during a 5-minute timing.",
     nonexample:
@@ -313,7 +313,7 @@ export const differentialReinforcementProcedures: DifferentialReinforcementProce
     confusion:
       "DRH increases behavior. DRL decreases response rate without requiring zero responding.",
     discrimination:
-      "Ask whether reinforcement depends on exceeding a high-rate criterion for a desired behavior.",
+      "Ask whether reinforcement depends on [exceeding a high-rate criterion] for a desired behavior.",
     color: "text-orange-600",
     border: "border-orange-200",
     bg: "bg-orange-50",
@@ -364,19 +364,19 @@ export const tcoAlignment = [
 export const moduleConfusions = [
   {
     title: "DRA vs. DRI",
-    text: "DRA reinforcement is given contingent upon the use of an alternative behavior. DRI reinforcement is given contingent upon the use of an incompatible behavior.",
+    text: "DRA reinforcement is given contingent upon [an alternative behavior]. DRI reinforcement is given contingent upon [an incompatible behavior]. Cue: DRI must be impossible with the target behavior.",
   },
   {
     title: "DRO vs. DRA",
-    text: "DRO reinforcement is given contingent upon the absence of the target behavior. DRA reinforcement is given contingent upon the use of an alternative behavior.",
+    text: "DRO reinforcement is given contingent upon [absence of the target behavior]. DRA reinforcement is given contingent upon [use of an alternative behavior].",
   },
   {
     title: "DRL vs. DRO",
-    text: "DRL reinforcement is given when responses are lower than a predetermined criterion. DRO reinforcement is given contingent upon the absence of the target behavior.",
+    text: "DRL reinforcement is given when responses are [lower than a predetermined criterion]. DRO reinforcement is given contingent upon [absence of the target behavior]. Cue: DRL allows some behavior; DRO requires zero at the check.",
   },
   {
     title: "DRH vs. DRL",
-    text: "DRH reinforcement is given when responses are higher than a predetermined criterion. DRL reinforcement is given when responses are lower than a predetermined criterion.",
+    text: "DRH reinforcement is given when responses are [higher than a predetermined criterion]. DRL reinforcement is given when responses are [lower than a predetermined criterion].",
   },
 ];
 
@@ -413,7 +413,7 @@ export function getProcedureLessonDetails(
       reinforcementCriterion:
         "Requesting a break using speech, picture exchange, or another taught communication response",
       whatGetsReinforced:
-        "The use of an alternative behavior.",
+        "The use of [an alternative behavior].",
       visualExamples: [
         {
           title: "Escape-maintained behavior",
@@ -479,7 +479,7 @@ export function getProcedureLessonDetails(
       reinforcementCriterion:
         "Zero occurrences of aggression for the entire interval",
       whatGetsReinforced:
-        "The absence of the target behavior.",
+        "The [absence of the target behavior].",
       visualExamples: [
         {
           title: "Whole-interval DRO",
@@ -547,7 +547,7 @@ export function getProcedureLessonDetails(
       reinforcementLabel: "Incompatible behavior",
       reinforcementCriterion: "Keeping both hands in pockets while walking",
       whatGetsReinforced:
-        "The use of an incompatible behavior.",
+        "The use of [an incompatible behavior].",
       visualExamples: [
         {
           title: "Hands occupied",
@@ -611,7 +611,7 @@ export function getProcedureLessonDetails(
       reinforcementLabel: "Low-rate criterion",
       reinforcementCriterion: "Eight or fewer call-outs during class",
       whatGetsReinforced:
-        "Responses lower than a predetermined criterion.",
+        "Responses [lower than a predetermined criterion].",
       visualExamples: [
         {
           title: "Full-session DRL",
@@ -676,7 +676,7 @@ export function getProcedureLessonDetails(
       reinforcementLabel: "High-rate criterion",
       reinforcementCriterion: "Completing at least 20 math facts in 5 minutes",
       whatGetsReinforced:
-        "Responses higher than a predetermined criterion.",
+        "Responses [higher than a predetermined criterion].",
       visualExamples: [
         {
           title: "Fluency practice",
@@ -743,6 +743,8 @@ export function getProcedureLessonDetails(
 export function getConfusionPairs(
   procedure: DifferentialReinforcementProcedure,
 ): ConfusionPair[] {
+  const plainDiscrimination = stripHighlightMarkers(procedure.discrimination);
+
   return [
     {
       title: `${procedure.abbreviation} anchor`,
@@ -751,17 +753,17 @@ export function getConfusionPairs(
       rightLabel: "Common error",
       rightText: procedure.confusion,
       checkPrompt: `What must you verify before labeling a scenario ${procedure.abbreviation}?`,
-      checkAnswer: procedure.discrimination,
-      rationale: procedure.discrimination,
+      checkAnswer: plainDiscrimination,
+      rationale: plainDiscrimination,
     },
     {
       title: "DRA vs. DRI",
       leftLabel: "DRA",
       leftText:
-        "Reinforcement is given contingent upon the use of an alternative behavior. The alternative behavior does not have to be physically incompatible with the target behavior.",
+        "Reinforcement is given contingent upon [the use of an alternative behavior]. The alternative behavior does not have to be physically incompatible with the target behavior.",
       rightLabel: "DRI",
       rightText:
-        "Reinforcement is given contingent upon the use of an incompatible behavior.",
+        "Reinforcement is given contingent upon [the use of an incompatible behavior].",
       checkPrompt:
         "If asking for help replaces yelling but yelling could still occur, which procedure is more precise?",
       checkAnswer: "DRA",
@@ -772,10 +774,10 @@ export function getConfusionPairs(
       title: "DRO vs. DRL",
       leftLabel: "DRO",
       leftText:
-        "Reinforcement is given contingent upon the absence of the target behavior.",
+        "Reinforcement is given contingent upon [the absence of the target behavior].",
       rightLabel: "DRL",
       rightText:
-        "Reinforcement is given when responses are lower than a predetermined criterion.",
+        "Reinforcement is given when responses are [lower than a predetermined criterion].",
       checkPrompt:
         "If reinforcement is delivered for three or fewer call-outs, which procedure is more precise?",
       checkAnswer: "DRL",
@@ -786,10 +788,10 @@ export function getConfusionPairs(
       title: "DRL vs. DRH",
       leftLabel: "DRL",
       leftText:
-        "Reinforcement is given when responses are lower than a predetermined criterion.",
+        "Reinforcement is given when responses are [lower than a predetermined criterion].",
       rightLabel: "DRH",
       rightText:
-        "Reinforcement is given when responses are higher than a predetermined criterion.",
+        "Reinforcement is given when responses are [higher than a predetermined criterion].",
       checkPrompt:
         "If reinforcement is delivered for at least 20 completed math facts, which procedure is more precise?",
       checkAnswer: "DRH",
@@ -797,4 +799,8 @@ export function getConfusionPairs(
         "The learner contacts reinforcement for a higher rate of behavior, so the arrangement is DRH.",
     },
   ];
+}
+
+function stripHighlightMarkers(text: string) {
+  return text.replaceAll("[", "").replaceAll("]", "");
 }

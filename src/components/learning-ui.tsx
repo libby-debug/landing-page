@@ -19,13 +19,16 @@ const alignClass = {
 };
 
 export const gradientTextClass =
-  "bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent";
+  "inline-block overflow-visible bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text px-1 pb-1 leading-[1.15] text-transparent [-webkit-box-decoration-break:clone] [box-decoration-break:clone]";
 
 export const eyebrowClass =
   "text-sm font-semibold uppercase tracking-wide text-blue-600";
 
 export const pageTitleClass =
-  "mt-2 text-5xl font-extrabold tracking-tight text-slate-950";
+  `mt-2 max-w-full overflow-visible px-2 pb-2 text-5xl font-extrabold leading-[1.15] tracking-tight ${gradientTextClass}`;
+
+export const sectionTitleClass =
+  "mt-2 max-w-full overflow-visible px-2 pb-1 text-3xl font-extrabold leading-[1.15] tracking-tight text-slate-950";
 
 export const leadClass =
   "mt-4 max-w-3xl text-lg leading-relaxed text-slate-950";
@@ -83,6 +86,55 @@ export function Notice({ children, tone }: NoticeProps) {
       {children}
     </div>
   );
+}
+
+export function HighlightedText({ text }: { text: string }) {
+  const parts = text.split(/(\[[^\]]+\])/g);
+
+  return (
+    <>
+      {parts.map((part, index) => {
+        const isHighlighted = part.startsWith("[") && part.endsWith("]");
+        const content = isHighlighted ? part.slice(1, -1) : part;
+
+        return isHighlighted ? (
+          <em
+            key={`${content}-${index}`}
+            className="font-inherit text-slate-950"
+          >
+            {content}
+          </em>
+        ) : (
+          <span key={`${content}-${index}`}>{content}</span>
+        );
+      })}
+    </>
+  );
+}
+
+export function ComparisonDefinitionBlocks({ text }: { text: string }) {
+  const blocks = splitComparisonText(text);
+
+  return (
+    <div className="mx-auto grid max-w-3xl gap-4 text-center">
+      {blocks.map((block) => (
+        <p
+          key={block}
+          className="rounded-2xl bg-white/80 px-5 py-4 text-base font-semibold leading-7 text-slate-950"
+        >
+          <HighlightedText text={block} />
+        </p>
+      ))}
+    </div>
+  );
+}
+
+function splitComparisonText(text: string) {
+  return text
+    .replaceAll("; ", ". ")
+    .split(/(?<=\.)\s+/)
+    .map((part) => part.trim())
+    .filter(Boolean);
 }
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {

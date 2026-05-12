@@ -16,7 +16,12 @@ import {
   miniLessonMasteryThreshold,
   tcoSections,
 } from "../data";
-import { ActivityProgressNav, SaveProgressButton } from "../progression";
+import { getMiniLessons } from "../mini-lesson-data";
+import {
+  ActivityProgressNav,
+  SaveProgressButton,
+  SavedModuleProgressCard,
+} from "../progression";
 
 type TcoSectionPageProps = {
   params: Promise<{
@@ -74,25 +79,12 @@ export default async function TcoSectionPage({ params }: TcoSectionPageProps) {
         </div>
 
         <section className={`${cardBaseClass} mt-8 w-full border-blue-200 bg-white text-center shadow-xl shadow-slate-900/10`}>
-          <div className="mx-auto max-w-3xl">
-            <p className={eyebrowClass}>Mastery progress</p>
-
-            <div className="mt-3 flex items-end justify-center gap-3">
-              <span className="text-6xl font-black tracking-tight text-slate-950">
-                {section.progress}%
-              </span>
-              <span className="pb-2 text-sm font-black uppercase tracking-wide text-slate-950">
-                {status}
-              </span>
-            </div>
-
-            <div className="mt-5 h-3 rounded-full bg-slate-100">
-              <div
-                className="h-3 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
-                style={{ width: `${section.progress}%` }}
-              />
-            </div>
-          </div>
+          <SavedModuleProgressCard
+            fallbackProgress={section.progress}
+            label={`${section.code}. ${section.title} module completion status`}
+            sectionSlug={section.slug}
+            totalLessons={getMiniLessons(section).length}
+          />
         </section>
 
         <section className="mt-8 grid w-full gap-6 lg:grid-cols-[1.35fr_0.85fr]">
@@ -135,38 +127,6 @@ export default async function TcoSectionPage({ params }: TcoSectionPageProps) {
                 Learn requires {miniLessonMasteryThreshold}% correct. Practice
                 and Mastery Check pass at {masteryThreshold}% or higher.
               </p>
-            </div>
-
-            <div className={`${cardBaseClass} border-pink-200 bg-white text-center`}>
-              <p className="text-sm font-black uppercase tracking-wide text-pink-600">
-                Future modules
-              </p>
-
-              {section.contentMapModules.length > 0 ? (
-                <div className="mt-4 grid gap-3">
-                  {section.contentMapModules.map((module) => (
-                    <div
-                      key={module.name}
-                      className="rounded-2xl border border-slate-200 bg-slate-50 p-4"
-                    >
-                      <h3 className="text-base font-black text-slate-950">
-                        {module.name}
-                      </h3>
-                      <p className="mt-1 text-sm font-semibold text-blue-600">
-                        {module.contentType}
-                      </p>
-                      <p className="mt-2 text-sm leading-6 text-slate-950">
-                        {module.keyConcepts}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <p className="mt-4 text-sm font-semibold leading-6 text-slate-950">
-                  Module placeholders will be added here as ABA Mastered content
-                  expands for this TCO 6 module.
-                </p>
-              )}
             </div>
           </aside>
         </section>

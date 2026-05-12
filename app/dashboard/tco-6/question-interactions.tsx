@@ -6,6 +6,7 @@ import { masteryThreshold } from "./data";
 import { GraphCard } from "./module-d-graphs";
 import {
   SaveProgressButton,
+  persistModuleScore,
   practiceAnswersKey,
   practiceResultsKey,
   readSavedModuleProgress,
@@ -25,6 +26,10 @@ const positiveFeedbackMessages = [
 
 function getPositiveFeedback(index: number) {
   return positiveFeedbackMessages[index % positiveFeedbackMessages.length];
+}
+
+function getPracticeRemediationAttemptLimit(sectionSlug: string) {
+  return sectionSlug === "a" ? 3 : 4;
 }
 
 function normalize(value: string) {
@@ -146,14 +151,22 @@ function getQuestionLabel(question: QuestionContent) {
   return labels[question.type ?? "multiple-choice"];
 }
 
-function asMultipleChoiceMasteryQuestion(question: QuestionContent) {
+function asMasteryQuestion(question: QuestionContent) {
+  if (question.type === "fill-blank") {
+    return question;
+  }
+
   return {
     ...question,
     type: "multiple-choice" as const,
   };
 }
 
-function isSingleAnswerMasteryQuestion(question: QuestionContent) {
+function isSupportedMasteryQuestion(question: QuestionContent) {
+  if (question.type === "fill-blank") {
+    return Boolean(question.answer);
+  }
+
   const prompt = question.prompt.toLowerCase();
 
   return Boolean(question.choices?.length)
@@ -165,8 +178,8 @@ function isSingleAnswerMasteryQuestion(question: QuestionContent) {
 
 function getMultipleChoiceMasteryQuestions(questions: QuestionContent[]) {
   return questions
-    .filter(isSingleAnswerMasteryQuestion)
-    .map(asMultipleChoiceMasteryQuestion);
+    .filter(isSupportedMasteryQuestion)
+    .map(asMasteryQuestion);
 }
 
 function hashString(value: string) {
@@ -730,6 +743,7 @@ export function PracticeQuestionCard({
   const { updateProgress } = useModuleProgress(sectionSlug);
   const answered = isAnswered(question, response);
   const correct = isCorrect(question, response);
+  const remediationAttemptLimit = getPracticeRemediationAttemptLimit(sectionSlug);
 
   function updatePracticeResult(result: boolean) {
     if (mode !== "practice" || !totalQuestions || typeof window === "undefined") {
@@ -746,6 +760,8 @@ export function PracticeQuestionCard({
     const correctCount = Object.values(results).filter(Boolean).length;
     const score = Math.round((correctCount / totalQuestions) * 100);
     const complete = answeredCount === totalQuestions && score >= masteryThreshold;
+
+    void persistModuleScore(sectionSlug, score, complete);
 
     if (complete) {
       updateProgress({ practiceCompleted: true });
@@ -799,7 +815,9 @@ export function PracticeQuestionCard({
               ? incorrectAttempts + 1
               : incorrectAttempts;
           const answerRevealVisible =
-            mode === "practice" && !correct && nextIncorrectAttempts >= 4;
+            mode === "practice" &&
+            !correct &&
+            nextIncorrectAttempts >= remediationAttemptLimit;
 
           setSubmitted(true);
           setAnswerRevealVisible(answerRevealVisible);
@@ -838,44 +856,12 @@ export function PracticeQuestionCard({
           }
           revealIncorrectAnswer={
             mode === "practice" &&
-            (answerRevealVisible || incorrectAttempts >= 4)
+            (answerRevealVisible || incorrectAttempts >= remediationAttemptLimit)
           }
+          remediationAttemptLimit={remediationAttemptLimit}
         />
       ) : null}
     </article>
-  );
-}
-
-export function PlaceholderPracticeQuestionCard({
-  index,
-  item,
-  sectionSlug,
-}: {
-  index: number;
-  item: string;
-  sectionSlug: string;
-}) {
-  const question: QuestionContent = {
-    prompt: `Which answer best matches this TCO 6 item? ${item}`,
-    choices: [
-      "Correct module concept placeholder",
-      "Related but less precise ABA term",
-      "Common exam distractor",
-      "Clinically incomplete answer",
-    ],
-    answer: "Correct module concept placeholder",
-    explanation:
-      "Rationale feedback will explain why the correct answer matches the TCO 6 checklist item and why each distractor is less precise.",
-  };
-
-  return (
-    <PracticeQuestionCard
-      index={index}
-      mode="practice"
-      question={question}
-      sectionSlug={sectionSlug}
-      totalQuestions={1}
-    />
   );
 }
 
@@ -960,6 +946,8 @@ export function MasteryCheckQuiz({
     if (passed) {
       updateProgress({ masteryCompleted: true });
     }
+
+    void persistModuleScore(sectionSlug, score, passed);
   }
 
   return (
@@ -969,7 +957,7 @@ export function MasteryCheckQuiz({
           Mastery requirement
         </p>
         <p className="mt-2 text-base font-semibold leading-7 text-slate-950">
-          Complete the multiple-choice questions, then submit your mastery
+          Complete the mastery questions, then submit your mastery
           check. Passing score: {masteryThreshold}% for Module {sectionCode}.
         </p>
       </div>
@@ -996,7 +984,7 @@ export function MasteryCheckQuiz({
           className="rounded-3xl border border-slate-200 bg-slate-50 p-5 text-left"
         >
           <p className="text-sm font-black uppercase tracking-wide text-purple-600">
-            Question {index + 1} / Multiple choice
+            Question {index + 1} / {getQuestionLabel(question)}
           </p>
 
           <h3 className="mt-2 text-xl font-black text-slate-950">
@@ -1092,6 +1080,7 @@ function AnswerFeedback({
   isCorrect,
   message,
   remediationDetails,
+  remediationAttemptLimit = 4,
   revealIncorrectAnswer = false,
 }: {
   correctAnswer: string;
@@ -1104,6 +1093,7 @@ function AnswerFeedback({
     heading: string;
     items: string[];
   };
+  remediationAttemptLimit?: number;
   revealIncorrectAnswer?: boolean;
 }) {
   const showRemediation = !isCorrect && revealIncorrectAnswer;
@@ -1163,7 +1153,7 @@ function AnswerFeedback({
       </p>
       {!isCorrect && !showRemediation && incorrectAttempts > 0 ? (
         <p className="mt-2 text-xs font-bold uppercase tracking-wide text-red-700">
-          Incorrect attempt {incorrectAttempts} of 4
+          Incorrect attempt {incorrectAttempts} of {remediationAttemptLimit}
         </p>
       ) : null}
     </div>

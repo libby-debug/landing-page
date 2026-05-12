@@ -624,6 +624,83 @@ export const sectionBMiniLessons: MiniLessonContent[] = [
     },
   },
   {
+    slug: "conditioned-vs-generalized-consequences",
+    label: "B.6-B.8",
+    title: "Conditioned vs generalized conditioned consequences",
+    body: [
+      "Conditioned consequences acquire function through [pairing].",
+      "Generalized conditioned consequences are paired with [many reinforcers or punishers].",
+    ],
+    visual: {
+      type: "comparison",
+      leftTitle: "Conditioned",
+      leftText: "Paired with a specific reinforcer or punisher",
+      rightTitle: "Generalized conditioned",
+      rightText: "Paired with many reinforcers or punishers",
+      cue: "Conditioned = learned function. Generalized conditioned = learned across many backup consequences.",
+    },
+  },
+  {
+    slug: "reinforcer-vs-punisher-type-discrimination",
+    label: "B.6-B.8",
+    title: "Reinforcer vs punisher type discrimination",
+    body: [
+      "First ask whether behavior [increases or decreases].",
+      "Then ask whether the consequence required learning, pairing, or many backup consequences.",
+    ],
+    visual: {
+      type: "select-all",
+      prompt: "Select examples of generalized conditioned reinforcers.",
+      choices: [
+        { label: "Tokens exchangeable for snacks, attention, activities, and breaks", correct: true },
+        { label: "Money exchangeable for many different goods and services", correct: true },
+        { label: "A clicker paired only with one edible reinforcer", correct: false },
+        { label: "A warning tone paired with response cost", correct: false },
+      ],
+      feedback:
+        "Generalized conditioned reinforcers are conditioned reinforcers paired with many backup reinforcers.",
+    },
+  },
+  {
+    slug: "b6-b8-consequence-chart",
+    label: "B.6-B.8",
+    title: "B.6-B.8 consequence classification chart",
+    body: [
+      "Classify consequences by [effect on behavior] and [learning history].",
+      "The same stimulus label is not enough; verify the effect on future responding.",
+    ],
+    visual: {
+      type: "matching",
+      prompt: "Match each classification to its fastest discrimination cue.",
+      pairs: [
+        {
+          term: "Unconditioned reinforcer",
+          definition: "Increases behavior without prior learning.",
+        },
+        {
+          term: "Conditioned reinforcer",
+          definition: "Increases behavior after pairing with reinforcement.",
+        },
+        {
+          term: "Generalized conditioned reinforcer",
+          definition: "Increases behavior after pairing with many reinforcers.",
+        },
+        {
+          term: "Unconditioned punisher",
+          definition: "Decreases behavior without prior learning.",
+        },
+        {
+          term: "Conditioned punisher",
+          definition: "Decreases behavior after pairing with punishment.",
+        },
+        {
+          term: "Generalized conditioned punisher",
+          definition: "Decreases behavior after pairing with many punishers.",
+        },
+      ],
+    },
+  },
+  {
     slug: "escape-vs-avoidance",
     label: "B.4 / B.6-B.8",
     title: "Escape vs avoidance",
@@ -1108,6 +1185,154 @@ export const sectionBMiniLessons: MiniLessonContent[] = [
     },
   },
   {
+    slug: "rule-governed-vs-contingency-shaped",
+    label: "B.18-B.20",
+    title: "Rule-governed vs contingency-shaped behavior",
+    body: [
+      "Rule-governed behavior contacts control through [a verbal description of contingencies].",
+      "Contingency-shaped behavior contacts control through [direct contact with consequences].",
+    ],
+    visual: {
+      type: "sorting",
+      prompt: "Sort each behavior by its controlling history.",
+      categories: ["Rule-governed", "Contingency-shaped"],
+      items: [
+        { label: "Follows a written safety rule before contacting danger", category: "Rule-governed" },
+        { label: "Stops touching a rough zipper after it repeatedly scratches skin", category: "Contingency-shaped" },
+        { label: "Completes a task after hearing the contingency described", category: "Rule-governed" },
+        { label: "Presses gently after gentle presses produce reinforcement", category: "Contingency-shaped" },
+      ],
+    },
+  },
+  {
+    slug: "six-verbal-operants",
+    label: "B.18-B.20",
+    title: "Mand, tact, intraverbal, echoic, textual, and transcription",
+    body: [
+      "Verbal operants are separated by [antecedent control, response form, and consequence].",
+      "The same spoken word can be a different operant when the controlling variables change.",
+    ],
+    visual: {
+      type: "matching",
+      prompt: "Match each verbal operant to the fastest discrimination cue.",
+      pairs: [
+        { term: "Mand", definition: "Motivating Operation plus specific reinforcement." },
+        { term: "Tact", definition: "Nonverbal Discriminative Stimulus plus generalized conditioned reinforcement." },
+        { term: "Intraverbal", definition: "Verbal stimulus with no point-to-point correspondence." },
+        { term: "Echoic", definition: "Verbal stimulus with point-to-point correspondence and formal similarity." },
+      ],
+    },
+  },
+  {
+    slug: "textual-transcription-response-form",
+    label: "B.18-B.20",
+    title: "Textual vs transcription response form",
+    body: [
+      "Textual behavior has [a written verbal antecedent and a spoken response].",
+      "Transcription has [a spoken verbal antecedent and a written, typed, or fingerspelled response].",
+    ],
+    visual: {
+      type: "comparison",
+      leftTitle: "Textual",
+      leftText: "See written word -> say the word",
+      rightTitle: "Transcription",
+      rightText: "Hear spoken word -> write, type, or fingerspell it",
+      cue: "Both have point-to-point correspondence. The response form is the quick discriminator.",
+    },
+  },
+  {
+    slug: "pure-vs-impure-verbal-operants",
+    label: "B.18-B.20",
+    title: "Pure vs impure verbal operants",
+    body: [
+      "A pure verbal operant has [one primary controlling variable].",
+      "An impure verbal operant has [multiple sources of control].",
+    ],
+    visual: {
+      type: "comparison",
+      leftTitle: "Pure tact",
+      leftText: "Sees cookie -> says 'cookie' -> social acknowledgment",
+      rightTitle: "Impure tact",
+      rightText: "Sees cookie while hungry -> says 'cookie' -> may also function as a mand",
+      cue: "Pure = one main control. Impure = overlapping control, often tact plus mand variables.",
+    },
+  },
+  {
+    slug: "antecedent-response-consequence-verbal-operants",
+    label: "B.18-B.20",
+    title: "Antecedent, response, and consequence in verbal operants",
+    body: [
+      "A mand is identified by [Motivating Operation -> response -> specific reinforcement].",
+      "A tact is identified by [nonverbal Discriminative Stimulus -> response -> generalized conditioned reinforcement].",
+    ],
+    visual: {
+      type: "flow",
+      prompt: "Build the mand relation.",
+      steps: ["Motivating Operation", "Verbal response", "Specific reinforcement"],
+      feedback:
+        "A mand is controlled by a Motivating Operation and maintained by specific reinforcement related to that Motivating Operation.",
+    },
+  },
+  {
+    slug: "audience-control-verbal-behavior",
+    label: "B.18-B.20",
+    title: "Audience control",
+    body: [
+      "Audience control occurs when [the listener or audience functions as a Discriminative Stimulus].",
+      "Different audiences can evoke different verbal behavior because of different reinforcement histories.",
+    ],
+    visual: {
+      type: "choice",
+      prompt:
+        "A student uses technical terms with a BCBA but everyday language with a new caregiver. What is the controlling variable?",
+      choices: ["Audience control", "Automatic reinforcement", "Textual behavior", "Respondent conditioning"],
+      answer: "Audience control",
+      feedback:
+        "The audience functions as a Discriminative Stimulus because different listeners have different reinforcement histories for the speaker's verbal behavior.",
+    },
+  },
+  {
+    slug: "automatic-reinforcement-in-verbal-behavior",
+    label: "B.18-B.20",
+    title: "Automatic reinforcement in verbal behavior",
+    body: [
+      "Some verbal behavior may be maintained by [sensory consequences produced by the speaker's own response].",
+      "Automatic reinforcement does not require another person to mediate the consequence.",
+    ],
+    visual: {
+      type: "select-all",
+      prompt: "Select examples most consistent with automatic reinforcement in verbal behavior.",
+      choices: [
+        { label: "Repeating a sound because the sound itself is reinforcing", correct: true },
+        { label: "Singing quietly because hearing the tune is reinforcing", correct: true },
+        { label: "Saying 'water' and receiving water from a caregiver", correct: false },
+        { label: "Labeling a picture and receiving praise from a teacher", correct: false },
+      ],
+      feedback:
+        "Automatic reinforcement is produced directly by the response. Socially mediated verbal behavior requires listener mediation.",
+    },
+  },
+  {
+    slug: "convergent-vs-divergent-multiple-control",
+    label: "B.18-B.20",
+    title: "Convergent vs divergent multiple control",
+    body: [
+      "Convergent multiple control means [several variables strengthen one response].",
+      "Divergent multiple control means [one variable strengthens several responses].",
+    ],
+    visual: {
+      type: "sorting",
+      prompt: "Sort each multiple-control example.",
+      categories: ["Convergent", "Divergent"],
+      items: [
+        { label: "A visible dog plus 'what animal barks?' evokes 'dog'", category: "Convergent" },
+        { label: "The word 'beach' evokes 'sand,' 'ocean,' and 'vacation'", category: "Divergent" },
+        { label: "Hunger plus seeing chips evokes 'chips'", category: "Convergent" },
+        { label: "A picture of school evokes 'teacher,' 'desk,' and 'bus'", category: "Divergent" },
+      ],
+    },
+  },
+  {
     slug: "extinction-vs-punishment",
     label: "B.11 / B.5",
     title: "Extinction vs punishment",
@@ -1438,6 +1663,112 @@ export const sectionBPracticeQuestions: QuestionContent[] = [
     answer: "Conditioned punisher",
     explanation:
       "The buzzer acquired punishing function through pairing, so it is a Conditioned punisher.",
+  },
+  {
+    type: "select-all",
+    prompt:
+      "Select all examples that are socially mediated contingencies.",
+    choices: [
+      "A teacher gives attention after a learner raises a hand.",
+      "A parent opens a cabinet after a child requests a snack.",
+      "Scratching reduces an itch without another person delivering the consequence.",
+      "Rocking produces vestibular stimulation directly.",
+    ],
+    answers: [
+      "A teacher gives attention after a learner raises a hand.",
+      "A parent opens a cabinet after a child requests a snack.",
+    ],
+    answer: "A teacher gives attention after a learner raises a hand.",
+    explanation:
+      "Socially mediated contingencies require another person to arrange or deliver the consequence. Automatic contingencies are produced directly by the response.",
+    hint:
+      "Ask whether another person delivers the consequence or the response produces the consequence directly.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A learner's scratching reduces skin irritation immediately without another person delivering a consequence. Scratching increases in similar conditions. Which relation is most accurate?",
+    choices: [
+      "Automatic negative reinforcement",
+      "Socially mediated positive reinforcement",
+      "Conditioned punishment",
+      "Generalized conditioned reinforcement",
+    ],
+    answer: "Automatic negative reinforcement",
+    explanation:
+      "The consequence is automatic because the response directly reduces stimulation. It is negative reinforcement because removing or reducing irritation increases future scratching.",
+    hint:
+      "Identify whether another person mediates the consequence, then ask whether behavior increases or decreases.",
+  },
+  {
+    type: "matching",
+    prompt:
+      "Match each conditioned or generalized conditioned consequence to its discrimination cue.",
+    pairs: [
+      {
+        term: "Conditioned reinforcer",
+        definition: "Learned reinforcing effect through pairing with reinforcement.",
+      },
+      {
+        term: "Generalized conditioned reinforcer",
+        definition: "Learned reinforcing effect through pairing with many reinforcers.",
+      },
+      {
+        term: "Conditioned punisher",
+        definition: "Learned punishing effect through pairing with punishment.",
+      },
+      {
+        term: "Generalized conditioned punisher",
+        definition: "Learned punishing effect through pairing with many punishers.",
+      },
+    ],
+    answer: "All conditioned consequence cues matched correctly",
+    explanation:
+      "Conditioned consequences acquire function through pairing. Generalized conditioned consequences are paired with many backup reinforcers or punishers.",
+    hint:
+      "Separate learned function from generalized learned function across many backup consequences.",
+  },
+  {
+    type: "fill-blank",
+    prompt:
+      "Complete the cue: generalized conditioned consequences are paired with ____ backup consequences.",
+    answer: "many",
+    explanation:
+      "Generalized conditioned reinforcers or punishers are paired with many different backup reinforcers or punishers.",
+    hint:
+      "Think about why tokens or money can remain useful across different Motivating Operations.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A response-cost warning has been paired with loss of recess, loss of tokens, and loss of preferred activities. Later, the warning alone decreases future calling out. Which label is most accurate?",
+    choices: [
+      "Generalized conditioned punisher",
+      "Unconditioned punisher",
+      "Generalized conditioned reinforcer",
+      "Automatic reinforcer",
+    ],
+    answer: "Generalized conditioned punisher",
+    explanation:
+      "The warning acquired punishing function through pairing with many punishers, so it is a generalized conditioned punisher.",
+    hint:
+      "Focus on learned punishing function and whether the stimulus was paired with one punisher or many punishers.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A novel chime is paired only with access to one preferred snack. Later, the chime increases responding. Which label is most accurate?",
+    choices: [
+      "Conditioned reinforcer",
+      "Generalized conditioned reinforcer",
+      "Unconditioned reinforcer",
+      "Conditioned punisher",
+    ],
+    answer: "Conditioned reinforcer",
+    explanation:
+      "The chime acquired reinforcing function through pairing with reinforcement. It is not generalized unless paired with many reinforcers.",
+    hint:
+      "Check whether the reinforcing effect required learning and whether the stimulus was paired with one backup reinforcer or many.",
   },
   {
     type: "scenario",
@@ -1938,6 +2269,179 @@ export const sectionBPracticeQuestions: QuestionContent[] = [
     explanation:
       "Rule-governed behavior is controlled by verbal descriptions of contingencies. Contingency-shaped behavior is shaped by direct contact with consequences.",
   },
+  {
+    type: "select-all",
+    prompt: "Select all cues that identify a mand.",
+    choices: [
+      "A Motivating Operation is relevant.",
+      "The consequence is specific reinforcement.",
+      "The response is controlled only by a nonverbal Discriminative Stimulus.",
+      "Generalized conditioned reinforcement is the primary consequence.",
+    ],
+    answers: [
+      "A Motivating Operation is relevant.",
+      "The consequence is specific reinforcement.",
+    ],
+    answer: "A mand is controlled by a Motivating Operation and maintained by specific reinforcement.",
+    explanation:
+      "A mand is discriminated by the relation among antecedent conditions, response, and consequence: Motivating Operation, verbal response, and specific reinforcement.",
+  },
+  {
+    type: "matching",
+    prompt: "Match each verbal operant to its antecedent-response-consequence cue.",
+    pairs: [
+      {
+        term: "Mand",
+        definition: "Motivating Operation -> verbal response -> specific reinforcement.",
+      },
+      {
+        term: "Tact",
+        definition: "Nonverbal Discriminative Stimulus -> verbal response -> generalized conditioned reinforcement.",
+      },
+      {
+        term: "Echoic",
+        definition: "Verbal auditory stimulus -> spoken response with formal similarity.",
+      },
+      {
+        term: "Intraverbal",
+        definition: "Verbal stimulus -> related verbal response with no point-to-point correspondence.",
+      },
+    ],
+    answer: "All verbal operants matched to antecedent-response-consequence cues",
+    explanation:
+      "Verbal operants are best discriminated by antecedent conditions, response form, point-to-point correspondence, formal similarity, and maintaining consequence.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A learner sees a cookie, has not eaten for several hours, says 'cookie,' and receives the cookie. Which classification is most accurate?",
+    choices: ["Impure tact with mand control", "Pure tact", "Textual behavior", "Listener responding"],
+    answer: "Impure tact with mand control",
+    explanation:
+      "The visible cookie provides nonverbal stimulus control, and deprivation functions as a Motivating Operation for cookie access. The response has multiple sources of control.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A learner sees a cookie after lunch, says 'cookie,' and the teacher says, 'Yes, that is a cookie.' Which verbal operant is most directly described?",
+    choices: ["Tact", "Mand", "Echoic", "Transcription"],
+    answer: "Tact",
+    explanation:
+      "The response is controlled by a nonverbal Discriminative Stimulus and maintained by generalized conditioned reinforcement.",
+  },
+  {
+    type: "fill-blank",
+    prompt:
+      "Complete the discrimination cue: An intraverbal has no point-to-point ____ with the verbal stimulus.",
+    answer: "correspondence",
+    explanation:
+      "Intraverbals are evoked by verbal stimuli, but the response does not match the beginning, middle, and end of the stimulus.",
+  },
+  {
+    type: "select-all",
+    prompt: "Select all relations with point-to-point correspondence.",
+    choices: ["Echoic", "Textual", "Transcription", "Intraverbal"],
+    answers: ["Echoic", "Textual", "Transcription"],
+    answer: "Echoic, textual, and transcription have point-to-point correspondence.",
+    explanation:
+      "Echoic, textual, and transcription preserve point-to-point correspondence. Intraverbal responding is controlled by a verbal stimulus but lacks point-to-point correspondence.",
+  },
+  {
+    type: "sorting",
+    prompt: "Sort each item by whether it is an example or nonexample of a mand.",
+    categories: ["Mand example", "Mand nonexample"],
+    items: [
+      { label: "Says 'break' during a difficult task and receives a break", category: "Mand example" },
+      { label: "Sees a car and says 'car' while an adult says 'yes'", category: "Mand nonexample" },
+      { label: "Asks 'where is my pencil?' when needing a pencil", category: "Mand example" },
+      { label: "Repeats 'pencil' after a teacher says 'say pencil'", category: "Mand nonexample" },
+    ],
+    answer: "Mand examples and nonexamples sorted correctly",
+    explanation:
+      "Mand examples include a relevant Motivating Operation and specific reinforcement. Nonexamples may be tacts, echoics, or other verbal operants.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A learner hears 'write turtle' and writes turtle. Which feature separates this from textual behavior?",
+    choices: [
+      "The antecedent is spoken rather than written.",
+      "The response is maintained only by automatic reinforcement.",
+      "There is no point-to-point correspondence.",
+      "The response is controlled by a Motivating Operation.",
+    ],
+    answer: "The antecedent is spoken rather than written.",
+    explanation:
+      "Transcription involves a spoken verbal stimulus and a written, typed, or fingerspelled response. Textual behavior involves a written verbal stimulus and a spoken response.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A learner says 'bubbles,' 'pop,' and 'again' after seeing a bubble wand. Which multiple-control pattern is most directly illustrated?",
+    choices: ["Divergent multiple control", "Convergent multiple control", "Formal similarity", "Rule-governed behavior"],
+    answer: "Divergent multiple control",
+    explanation:
+      "One antecedent variable, the bubble wand, strengthens several different verbal responses.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A learner says 'dog' when seeing a dog and hearing 'what animal says woof?' Which multiple-control pattern is most directly illustrated?",
+    choices: ["Convergent multiple control", "Divergent multiple control", "Automatic reinforcement", "Audience control"],
+    answer: "Convergent multiple control",
+    explanation:
+      "More than one variable, including a nonverbal stimulus and a verbal stimulus, strengthens one response.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A student gives a technical explanation to a supervisor but a simpler explanation to a parent after different reinforcement histories with each listener. Which variable is most relevant?",
+    choices: ["Audience control", "Formal similarity", "Textual behavior", "Respondent extinction"],
+    answer: "Audience control",
+    explanation:
+      "The listener functions as a Discriminative Stimulus for different verbal behavior because of the speaker's reinforcement history with that audience.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A child repeats a rhythmic phrase while alone because hearing the phrase is reinforcing. Which consequence relation is most likely?",
+    choices: ["Automatic reinforcement", "Specific social reinforcement", "Generalized conditioned punishment", "Listener-mediated reinforcement"],
+    answer: "Automatic reinforcement",
+    explanation:
+      "The response directly produces reinforcing sensory consequences for the speaker rather than requiring listener mediation.",
+  },
+  {
+    type: "sorting",
+    prompt: "Sort each example by whether it is pure or impure verbal behavior.",
+    categories: ["Pure operant", "Impure operant"],
+    items: [
+      { label: "Sees a cat, says 'cat,' receives social acknowledgment", category: "Pure operant" },
+      { label: "Sees juice while thirsty, says 'juice,' and receives juice", category: "Impure operant" },
+      { label: "Hears 'say ball,' says 'ball'", category: "Pure operant" },
+      { label: "Looks at a locked door, wants escape, and says 'open door'", category: "Impure operant" },
+    ],
+    answer: "Pure and impure verbal operants sorted correctly",
+    explanation:
+      "Pure verbal operants are primarily controlled by one variable. Impure verbal operants involve multiple sources of control, such as tact plus mand variables.",
+  },
+  {
+    type: "select-all",
+    prompt: "Select all nonexamples of tacting.",
+    choices: [
+      "Saying 'water' because thirsty and receiving water",
+      "Repeating 'water' after a teacher says 'say water'",
+      "Seeing water and saying 'water' while receiving social acknowledgment",
+      "Answering 'water' when asked 'what do you drink?'",
+    ],
+    answers: [
+      "Saying 'water' because thirsty and receiving water",
+      "Repeating 'water' after a teacher says 'say water'",
+      "Answering 'water' when asked 'what do you drink?'",
+    ],
+    answer: "The mand, echoic, and intraverbal examples are nonexamples of tacting.",
+    explanation:
+      "A tact is controlled by a nonverbal stimulus and maintained by generalized conditioned reinforcement. The other examples are controlled by different antecedent or consequence relations.",
+  },
 ];
 
 export const sectionBMasteryQuestions: QuestionContent[] = [
@@ -2147,6 +2651,93 @@ export const sectionBMasteryQuestions: QuestionContent[] = [
     answer: "All consequence classifications matched correctly",
     explanation:
       "Classify consequences by learning history and effect: unconditioned does not require learning, conditioned requires pairing, and generalized conditioned consequences are paired with many reinforcers or punishers.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A peer gives attention after a learner makes a joke, and joking increases. Which classification best fits the contingency?",
+    choices: [
+      "Socially mediated positive reinforcement",
+      "Automatic positive reinforcement",
+      "Automatic punishment",
+      "Unconditioned punishment",
+    ],
+    answer: "Socially mediated positive reinforcement",
+    explanation:
+      "The consequence is socially mediated because another person delivers attention. It is reinforcement because joking increases.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A learner hums because the sound directly produces auditory stimulation, and humming increases when alone. Which classification is most accurate?",
+    choices: [
+      "Automatic reinforcement",
+      "Socially mediated reinforcement",
+      "Conditioned punishment",
+      "Negative punishment",
+    ],
+    answer: "Automatic reinforcement",
+    explanation:
+      "Automatic reinforcement is produced directly by the response rather than delivered by another person.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "Tokens increase responding because they have been exchanged for edibles, attention, toys, and breaks. Which consequence type is most accurate?",
+    choices: [
+      "Generalized conditioned reinforcer",
+      "Conditioned reinforcer",
+      "Unconditioned reinforcer",
+      "Generalized conditioned punisher",
+    ],
+    answer: "Generalized conditioned reinforcer",
+    explanation:
+      "Tokens are generalized conditioned reinforcers when paired with many backup reinforcers.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A neutral red card is repeatedly paired with loss of points. Later, the red card alone decreases future responding. Which consequence type is most accurate?",
+    choices: [
+      "Conditioned punisher",
+      "Unconditioned punisher",
+      "Conditioned reinforcer",
+      "Automatic punisher",
+    ],
+    answer: "Conditioned punisher",
+    explanation:
+      "The red card acquired punishing function through pairing with another punisher.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "Which option best differentiates conditioned and generalized conditioned reinforcers?",
+    choices: [
+      "Conditioned reinforcers acquire function through pairing; generalized conditioned reinforcers are paired with many reinforcers.",
+      "Conditioned reinforcers require no learning; generalized conditioned reinforcers decrease behavior.",
+      "Conditioned reinforcers are automatic; generalized conditioned reinforcers are always socially mediated punishers.",
+      "Conditioned reinforcers decrease behavior; generalized conditioned reinforcers increase behavior without pairing.",
+    ],
+    answer:
+      "Conditioned reinforcers acquire function through pairing; generalized conditioned reinforcers are paired with many reinforcers.",
+    explanation:
+      "Both are learned reinforcers, but generalized conditioned reinforcers have been paired with many different reinforcers.",
+  },
+  {
+    type: "fill-blank",
+    prompt:
+      "Complete the cue: automatic contingencies are produced directly by the ____.",
+    answer: "response",
+    explanation:
+      "Automatic contingencies are produced directly by the response, without another person mediating the consequence.",
+  },
+  {
+    type: "fill-blank",
+    prompt:
+      "Complete the cue: unconditioned reinforcers and punishers do not require prior ____.",
+    answer: "learning",
+    explanation:
+      "Unconditioned consequences function as reinforcers or punishers without prior learning.",
   },
   {
     type: "scenario",
@@ -2534,5 +3125,178 @@ export const sectionBMasteryQuestions: QuestionContent[] = [
     answer: "Rule-governed behavior",
     explanation:
       "Rule-governed behavior is controlled by a verbal description of a contingency rather than only direct shaping by consequences.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A learner needed direct experience with several token schedules before allocating more responding to the richer schedule. Which description is most accurate?",
+    choices: [
+      "Contingency-shaped behavior",
+      "Rule-governed behavior",
+      "Textual behavior",
+      "Respondent conditioning",
+    ],
+    answer: "Contingency-shaped behavior",
+    explanation:
+      "Contingency-shaped behavior develops through direct contact with consequences rather than primarily through a verbal description of contingencies.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A learner has not had access to attention, says 'watch me,' and adult attention follows. Which option best differentiates this verbal operant?",
+    choices: [
+      "Mand: Motivating Operation and specific reinforcement",
+      "Tact: nonverbal Discriminative Stimulus and generalized conditioned reinforcement",
+      "Echoic: formal similarity with a verbal model",
+      "Textual: written verbal stimulus and spoken response",
+    ],
+    answer: "Mand: Motivating Operation and specific reinforcement",
+    explanation:
+      "The relevant Motivating Operation is attention deprivation, and the consequence is specific reinforcement in the form of adult attention.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A learner sees a picture of a toothbrush and says 'toothbrush.' The teacher responds, 'Yes, toothbrush.' Which option is most accurate?",
+    choices: [
+      "Tact",
+      "Mand",
+      "Intraverbal",
+      "Transcription",
+    ],
+    answer: "Tact",
+    explanation:
+      "The response is controlled by a nonverbal Discriminative Stimulus and maintained by generalized conditioned reinforcement.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A teacher asks, 'What flies in the sky?' and the learner says, 'airplane.' Which feature rules out echoic behavior?",
+    choices: [
+      "The response lacks point-to-point correspondence with the verbal stimulus.",
+      "The response is written rather than spoken.",
+      "The consequence is automatic reinforcement.",
+      "The antecedent is a nonverbal stimulus.",
+    ],
+    answer: "The response lacks point-to-point correspondence with the verbal stimulus.",
+    explanation:
+      "Intraverbal responding is evoked by a verbal stimulus but does not have point-to-point correspondence with that verbal stimulus.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A learner reads the printed word 'jump' aloud. Which feature separates this from transcription?",
+    choices: [
+      "Textual behavior has a written verbal stimulus and a spoken response.",
+      "Textual behavior requires formal similarity.",
+      "Textual behavior is controlled by a Motivating Operation.",
+      "Textual behavior has no point-to-point correspondence.",
+    ],
+    answer: "Textual behavior has a written verbal stimulus and a spoken response.",
+    explanation:
+      "Textual behavior is controlled by a written verbal stimulus and produces a spoken response. Transcription is controlled by a spoken verbal stimulus and produces a written, typed, or fingerspelled response.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A teacher says 'write spoon,' and the learner writes spoon. Which verbal operant is described?",
+    choices: ["Transcription", "Textual", "Echoic", "Tact"],
+    answer: "Transcription",
+    explanation:
+      "Transcription occurs when a spoken verbal stimulus evokes a written, typed, or fingerspelled response with point-to-point correspondence.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A learner says 'car' while looking at a car and wanting to play with it. Which description best captures the likely control?",
+    choices: [
+      "Impure verbal operant with multiple sources of control",
+      "Pure echoic under formal similarity",
+      "Listener responding under audience control only",
+      "Textual behavior with point-to-point correspondence",
+    ],
+    answer: "Impure verbal operant with multiple sources of control",
+    explanation:
+      "The visible car can provide tact control, while the Motivating Operation for access can provide mand control. That overlapping control makes the response impure.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A learner says 'dog' after seeing a dog, hearing 'what animal barks?', and wanting to talk about pets. Which concept is most directly involved?",
+    choices: [
+      "Convergent multiple control",
+      "Divergent multiple control",
+      "Abolishing Operation (AO)",
+      "Respondent extinction",
+    ],
+    answer: "Convergent multiple control",
+    explanation:
+      "Several variables converge to strengthen one response: the nonverbal stimulus, the verbal question, and the relevant establishing context.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "The word 'farm' evokes 'cow,' 'tractor,' 'barn,' and 'hay.' Which type of multiple control is demonstrated?",
+    choices: [
+      "Divergent multiple control",
+      "Convergent multiple control",
+      "Formal similarity",
+      "Point-to-point correspondence",
+    ],
+    answer: "Divergent multiple control",
+    explanation:
+      "One antecedent variable strengthens several different responses, which is divergent multiple control.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A learner describes the same behavior in technical ABA terms with a supervisor and simpler terms with a caregiver. Which concept best explains the shift?",
+    choices: [
+      "Audience control",
+      "Automatic reinforcement",
+      "Textual behavior",
+      "Unconditioned Response (UR)",
+    ],
+    answer: "Audience control",
+    explanation:
+      "Different audiences can function as Discriminative Stimuli for different verbal responses because of different reinforcement histories.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A child repeats a silly sound when alone because hearing the sound is reinforcing. Which consequence relation is most accurate?",
+    choices: [
+      "Automatic reinforcement",
+      "Socially mediated reinforcement",
+      "Generalized conditioned punishment",
+      "Rule-governed behavior",
+    ],
+    answer: "Automatic reinforcement",
+    explanation:
+      "The reinforcing consequence is produced directly by the response, without listener mediation.",
+  },
+  {
+    type: "fill-blank",
+    prompt:
+      "Complete the cue: Echoic behavior has point-to-point correspondence and formal ____.",
+    answer: "similarity",
+    explanation:
+      "Echoic behavior has point-to-point correspondence and formal similarity because the auditory verbal stimulus and spoken response match in form.",
+  },
+  {
+    type: "fill-blank",
+    prompt:
+      "Complete the cue: Convergent multiple control means multiple variables strengthen one ____.",
+    answer: "response",
+    explanation:
+      "Convergent multiple control occurs when more than one controlling variable strengthens a single response.",
+  },
+  {
+    type: "fill-blank",
+    prompt:
+      "Complete the cue: A mand is controlled by a Motivating Operation and maintained by ____ reinforcement.",
+    answer: "specific",
+    explanation:
+      "A mand is maintained by specific reinforcement related to the relevant Motivating Operation.",
   },
 ];

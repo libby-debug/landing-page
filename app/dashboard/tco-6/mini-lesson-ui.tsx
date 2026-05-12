@@ -15,6 +15,8 @@ import type { TcoSection } from "./data";
 import { getMiniLessons } from "./mini-lesson-data";
 import {
   SaveProgressButton,
+  markLearnLessonComplete,
+  readCompletedLearnLessonSlugs,
   readSavedModuleProgress,
   useModuleProgress,
 } from "./progression";
@@ -44,21 +46,37 @@ export function MiniLessonView({
   const [passedLessonSlug, setPassedLessonSlug] = useState(() => {
     const savedLesson = readSavedModuleProgress(section.slug).snapshots.learn;
     const savedInteraction = readSavedLearnInteractionState(section.slug, lesson.slug);
+    const completedLessons = readCompletedLearnLessonSlugs(section.slug);
 
     return (savedLesson?.lessonSlug === lesson.slug &&
       savedLesson.completedQuestions?.includes(lesson.slug)) ||
-      savedInteraction.completed
+      savedInteraction.completed ||
+      completedLessons.includes(lesson.slug)
       ? lesson.slug
       : "";
   });
   const isFinalLesson = lessonIndex + 1 >= lessons.length;
   const lessonPassed = passedLessonSlug === lesson.slug;
+  const completedLearnSlugs = lessonPassed
+    ? Array.from(
+        new Set([...readCompletedLearnLessonSlugs(section.slug), lesson.slug]),
+      )
+    : readCompletedLearnLessonSlugs(section.slug);
 
   function handlePassedChange(passed: boolean) {
     setPassedLessonSlug(passed ? lesson.slug : "");
 
-    if (passed && isFinalLesson) {
-      updateProgress({ learnCompleted: true });
+    if (passed) {
+      const savedProgress = markLearnLessonComplete({
+        currentLocation: `/dashboard/tco-6/${section.slug}/learn/${lessonIndex + 1}`,
+        lessonSlug: lesson.slug,
+        sectionSlug: section.slug,
+        totalLessons: lessons.length,
+      });
+
+      if (savedProgress?.masteryProgress.learnCompleted) {
+        updateProgress({ learnCompleted: true });
+      }
     }
   }
 
@@ -105,13 +123,13 @@ export function MiniLessonView({
 
       <SaveProgressButton
         activity="learn"
-        completedQuestions={lessonPassed ? [lesson.slug] : []}
+        completedQuestions={completedLearnSlugs}
         currentLocation={`/dashboard/tco-6/${section.slug}/learn/${lessonIndex + 1}`}
         lessonSlug={lesson.slug}
-        passed={lessonPassed}
-        score={lessonPassed ? 100 : 0}
+        passed={completedLearnSlugs.length >= lessons.length}
+        score={Math.round((completedLearnSlugs.length / lessons.length) * 100)}
         sectionSlug={section.slug}
-        totalQuestions={1}
+        totalQuestions={lessons.length}
       />
 
       <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">

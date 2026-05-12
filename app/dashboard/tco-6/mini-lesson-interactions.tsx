@@ -537,7 +537,7 @@ function FlowInteraction({
             {isCorrect
               ? "Correct sequence"
               : remediation
-                ? "Review Topic in Learning Modules"
+                ? "Review topic again"
                 : "Review and try again"}
           </p>
           {remediation ? (
@@ -1512,7 +1512,7 @@ function FeedbackBox({
         {correct
           ? "Correct"
           : remediation
-            ? "Review Topic in Learning Modules"
+            ? "Review topic again"
             : "Review and try again"}
       </p>
       {!correct && remediation && correctAnswer ? (

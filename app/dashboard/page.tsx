@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { LogoutButton } from "@/components/logout-button";
 import { ProtectedRoute } from "@/components/protected-route";
 import { useAuth } from "@/components/auth-provider";
+import { useDailyDuration } from "@/components/daily-duration-tracker";
+import { isSupabaseConfigured, supabase } from "@/lib/supabase/client";
 import {
   PageShell,
   cardBaseClass,
@@ -19,17 +21,12 @@ import {
   tcoSections,
   type TcoSection,
 } from "./tco-6/data";
-import { useModuleProgress } from "./tco-6/progression";
-
-const continueSection =
-  tcoSections
-    .filter((section) => section.progress < masteryThreshold)
-    .sort((a, b) => b.progress - a.progress)[0] ?? tcoSections[0];
-
-const averageProgress = Math.round(
-  tcoSections.reduce((total, section) => total + section.progress, 0) /
-    tcoSections.length,
-);
+import { getMiniLessons } from "./tco-6/mini-lesson-data";
+import {
+  calculateSavedModuleProgressPercent,
+  readProgress,
+  useModuleProgress,
+} from "./tco-6/progression";
 
 const developerShortcutSections = tcoSections.filter((section) =>
   ["a", "b", "c", "d"].includes(section.slug),
@@ -45,46 +42,129 @@ export default function DashboardPage() {
 
 function DashboardContent() {
   const { user } = useAuth();
+  const dailyDuration = useDailyDuration();
+  const [progressLoaded, setProgressLoaded] = useState(false);
+  const [moduleProgress, setModuleProgress] = useState<Record<string, number>>(
+    {},
+  );
   const [completedSlugs, setCompletedSlugs] = useState<Set<string>>(new Set());
 
   useEffect(() => {
-    function loadCompletedModules() {
+    async function loadSavedModuleProgress() {
       const completed = new Set<string>();
+      const progressBySlug: Record<string, number> = {};
 
       tcoSections.forEach((section) => {
-        const stored = window.localStorage.getItem(
-          `aba-mastered:tco6:${section.slug}:progress`,
+        progressBySlug[section.slug] = calculateSavedModuleProgressPercent(
+          section.slug,
+          getMiniLessons(section).length,
+          section.progress,
         );
+        const progress = readProgress(section.slug);
 
-        if (!stored) {
-          return;
-        }
-
-        try {
-          const progress = JSON.parse(stored) as { masteryCompleted?: boolean };
-
-          if (progress.masteryCompleted) {
-            completed.add(section.slug);
-          }
-        } catch {
-          // Ignore malformed local progress and keep the dashboard stable.
+        if (progress.masteryCompleted) {
+          completed.add(section.slug);
         }
       });
 
+      if (isSupabaseConfigured && user) {
+        const { data } = await supabase
+          .from("module_mastery_scores")
+          .select("module_slug, score, mastered")
+          .eq("user_id", user.id);
+
+        data?.forEach((row) => {
+          const section = tcoSections.find(
+            (item) => item.slug === row.module_slug,
+          );
+
+          if (!section) {
+            return;
+          }
+
+          const remoteScore =
+            typeof row.score === "number" ? row.score : 0;
+          progressBySlug[section.slug] = Math.max(
+            progressBySlug[section.slug] ?? 0,
+            remoteScore,
+          );
+
+          if (row.mastered || remoteScore >= masteryThreshold) {
+            completed.add(section.slug);
+          }
+        });
+      }
+
+      setModuleProgress(progressBySlug);
       setCompletedSlugs(completed);
+      setProgressLoaded(true);
     }
 
-    loadCompletedModules();
-    window.addEventListener("aba-mastered-progress", loadCompletedModules);
+    function syncSavedModuleProgress() {
+      void loadSavedModuleProgress();
+    }
 
-    return () =>
-      window.removeEventListener("aba-mastered-progress", loadCompletedModules);
-  }, []);
+    syncSavedModuleProgress();
+    window.addEventListener("aba-mastered-progress", syncSavedModuleProgress);
+    window.addEventListener(
+      "aba-mastered-learn-progress",
+      syncSavedModuleProgress,
+    );
+    window.addEventListener(
+      "aba-mastered-progress-saved",
+      syncSavedModuleProgress,
+    );
 
+    return () => {
+      window.removeEventListener(
+        "aba-mastered-progress",
+        syncSavedModuleProgress,
+      );
+      window.removeEventListener(
+        "aba-mastered-learn-progress",
+        syncSavedModuleProgress,
+      );
+      window.removeEventListener(
+        "aba-mastered-progress-saved",
+        syncSavedModuleProgress,
+      );
+    };
+  }, [user]);
+
+  const getSectionProgress = (section: TcoSection) =>
+    moduleProgress[section.slug] ?? 0;
+  const averageProgress = Math.round(
+    tcoSections.reduce(
+      (total, section) => total + getSectionProgress(section),
+      0,
+    ) / tcoSections.length,
+  );
+  const continueSection =
+    tcoSections
+      .filter((section) => getSectionProgress(section) < masteryThreshold)
+      .sort((a, b) => getSectionProgress(b) - getSectionProgress(a))[0] ??
+    tcoSections[0];
+  const continueSectionProgress = getSectionProgress(continueSection);
   const completedCount = tcoSections.filter(
     (section) =>
-      completedSlugs.has(section.slug) || section.progress >= masteryThreshold,
+      completedSlugs.has(section.slug) ||
+      getSectionProgress(section) >= masteryThreshold,
   ).length;
+  const startedCount = tcoSections.filter(
+    (section) => getSectionProgress(section) > 0,
+  ).length;
+  const completedDescription = !progressLoaded
+    ? "Loading your saved module completion data."
+    : completedCount > 0
+      ? "Calculated from saved mastery checks and completed module progress."
+      : startedCount > 0
+        ? "No modules mastered yet. Keep going from your saved progress."
+        : "No modules completed yet. Start a Learn path to begin tracking.";
+  const overallDescription = !progressLoaded
+    ? "Loading saved Learn, Practice, and Mastery Check progress."
+    : startedCount > 0
+      ? "Calculated from your saved Learn, Practice, and Mastery Check progress."
+      : "Your progress will appear here after your first saved lesson check.";
 
   return (
     <PageShell maxWidth="6xl" className="pt-4">
@@ -95,9 +175,8 @@ function DashboardContent() {
           <h1 className={pageTitleClass}>Dashboard</h1>
 
           <p className={leadClass}>
-            Track ABA Mastered study progress through the canonical TCO 6
-            structure, with every module prepared for future lessons,
-            practice, and 90% mastery checks.
+            Track your progress through our colorful, interactive platform.
+            Save as you go and see your progress real-time in your Dashboard!
           </p>
 
           <p className="mt-4 text-sm font-semibold text-slate-950">
@@ -110,23 +189,29 @@ function DashboardContent() {
 
       <section className="mt-8 grid w-full gap-6 md:grid-cols-3">
         <SummaryCard
-          eyebrow="Mastery threshold"
-          value={`${masteryThreshold}%`}
-          description="Practice tests and mastery checks pass at 90% or higher."
+          eyebrow="Daily Duration"
+          value={dailyDuration.loaded ? dailyDuration.formatted : "..."}
+          description={
+            dailyDuration.loaded
+              ? dailyDuration.totalMs > 0
+                ? "Tracked from midnight to midnight in your local timezone."
+                : "Engagement time will appear here as you use the platform today."
+              : "Loading today's engagement time."
+          }
           tone="blue"
         />
 
         <SummaryCard
-          eyebrow="Mastered modules"
-          value={`${completedCount}/${tcoSections.length}`}
-          description="Progress is ready to connect to Supabase mastery tracking."
+          eyebrow="Completed modules"
+          value={progressLoaded ? `${completedCount}/${tcoSections.length}` : "..."}
+          description={completedDescription}
           tone="purple"
         />
 
         <SummaryCard
           eyebrow="Overall progress"
-          value={`${averageProgress}%`}
-          description="Current values are placeholders for the first dashboard experience."
+          value={progressLoaded ? `${averageProgress}%` : "..."}
+          description={overallDescription}
           tone="pink"
         />
       </section>
@@ -203,8 +288,8 @@ function DashboardContent() {
         </div>
 
         <ProgressBar
-          label={`${continueSection.code}. ${continueSection.title} mastery progress`}
-          progress={continueSection.progress}
+          label={`${continueSection.code}. ${continueSection.title} module completion status`}
+          progress={continueSectionProgress}
           className="mt-6"
         />
       </section>
@@ -218,14 +303,19 @@ function DashboardContent() {
           </h2>
 
           <p className="max-w-3xl text-base font-semibold leading-7 text-slate-950">
-            Each module is structured for visual learning, practice, and
-            mastery checks while preserving official ABA terminology.
+            Each module is structured for visual learning, interactive
+            practice, and mastery checks to retain ABA terminology outlined in
+            TCO 6.
           </p>
         </div>
 
         <div className="mt-6 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {tcoSections.map((section) => (
-            <TcoSectionCard key={section.code} section={section} />
+            <TcoSectionCard
+              key={section.code}
+              progressPercent={getSectionProgress(section)}
+              section={section}
+            />
           ))}
         </div>
       </section>
@@ -265,17 +355,23 @@ function SummaryCard({
   );
 }
 
-function TcoSectionCard({ section }: { section: TcoSection }) {
+function TcoSectionCard({
+  progressPercent,
+  section,
+}: {
+  progressPercent: number;
+  section: TcoSection;
+}) {
   const { progress: savedProgress } = useModuleProgress(section.slug);
   const showDeveloperAccess =
     process.env.NODE_ENV === "development" && ["a", "b", "c", "d"].includes(section.slug);
   const completed = savedProgress.masteryCompleted;
-  const status = getMasteryStatus(section.progress);
+  const status = getMasteryStatus(progressPercent);
   const displayedStatus = completed ? "Completed" : status;
-  const displayedProgress = completed ? 100 : section.progress;
+  const displayedProgress = completed ? 100 : progressPercent;
   const actionLabel = completed
     ? "Review Module"
-    : section.progress === 0
+    : progressPercent === 0
       ? "Start Learning"
       : "Continue";
 
@@ -313,7 +409,7 @@ function TcoSectionCard({ section }: { section: TcoSection }) {
         </div>
 
         <ProgressBar
-          label={`${section.code}. ${section.title} mastery progress`}
+          label={`${section.code}. ${section.title} module completion status`}
           progress={displayedProgress}
           className="mt-2"
         />
@@ -332,7 +428,7 @@ function TcoSectionCard({ section }: { section: TcoSection }) {
             href={`/dashboard/tco-6/${section.slug}/practice`}
             className="inline-block rounded-xl border border-green-200 bg-green-50 px-5 py-3 text-center text-sm font-black text-green-700 transition hover:border-green-300 hover:bg-green-100"
           >
-            Preview Practice Check
+            Preview Interactive Practice Test
           </Link>
           <Link
             href={`/dashboard/tco-6/${section.slug}/mastery-check`}

@@ -69,8 +69,8 @@ export default function DifferentialReinforcementModulePage() {
           </div>
 
           <p className="mt-4 text-base leading-relaxed text-slate-950">
-            DRA, DRO, DRI, DRL, and DRH are prepared for Supabase mastery
-            tracking.
+            DRA, DRO, DRI, DRL, and DRH each include focused lesson paths and
+            mastery checks.
           </p>
         </div>
       </section>

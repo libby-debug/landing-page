@@ -343,7 +343,7 @@ function DiscriminationLesson({
 
       <DiscriminationPractice
         questions={practiceQuestions}
-        title="Discrimination practice check"
+        title="Discrimination Interactive Practice Test"
         description="Answer every discrimination item correctly. If one is incorrect, review the rationale and retry before advancing."
         backHref={backHref}
         nextHref={nextHref}

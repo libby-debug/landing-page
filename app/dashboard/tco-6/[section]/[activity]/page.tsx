@@ -39,12 +39,6 @@ type TcoActivityPageProps = {
   }>;
 };
 
-const activityLabels: Record<ActivitySlug, string> = {
-  learn: "Learn",
-  practice: "Practice",
-  "mastery-check": "Mastery Check",
-};
-
 export function generateStaticParams() {
   return tcoSections.flatMap((section) =>
     activities.map((activity) => ({
@@ -72,10 +66,6 @@ export default async function TcoActivityPage({
     <ProtectedRoute>
       <PageShell maxWidth="6xl" className="pt-4">
         <div className="flex w-full flex-col items-center text-center">
-          <p className={eyebrowClass}>
-            TCO 6 Module {section.code} / {activityLabels[activity]}
-          </p>
-
           <h1 className={pageTitleClass}>
             {section.code}. {section.title}
           </h1>
@@ -165,7 +155,7 @@ function PracticeView({ section }: { section: TcoSection }) {
       <p className={eyebrowClass}>Interactive Practice</p>
 
       <h2 className={sectionTitleClass}>
-        Module {section.code} Practice Check
+        Module {section.code}: Interactive Practice Test
       </h2>
 
       <p className="mx-auto mt-3 max-w-2xl rounded-2xl border border-blue-100 bg-blue-50 p-4 text-sm font-black text-blue-700">

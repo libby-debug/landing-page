@@ -3,10 +3,11 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AuthProvider, useAuth } from "@/components/auth-provider";
+import { DailyDurationTracker } from "@/components/daily-duration-tracker";
 import { SiteHeader } from "@/components/site-header";
 
 const taskListSections = [
-  { title: "Dashboard", href: "/dashboard", prominence: "primary" },
+  { title: "Main Dashboard", href: "/dashboard", prominence: "primary" },
   { title: "Modules", href: "/modules", prominence: "primary" },
   {
     title: "A. Behaviorism and Philosophical Foundations",
@@ -101,6 +102,7 @@ function PlatformShellContent({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="relative flex min-h-screen overflow-x-hidden bg-[radial-gradient(circle_at_12%_18%,rgba(255,255,255,0.95),transparent_28%),radial-gradient(circle_at_88%_12%,rgba(255,227,239,0.85),transparent_30%),linear-gradient(135deg,#dff1ff_0%,#ffffff_50%,#ffe3ef_100%)]">
+      <DailyDurationTracker />
       <SiteHeader />
 
       {showSidebar && (
@@ -132,7 +134,13 @@ function PlatformShellContent({ children }: { children: React.ReactNode }) {
                     href={item.href}
                     className={`rounded-xl px-4 py-3 transition ${prominenceClass} ${activeClass}`}
                   >
-                    {item.title}
+                    {item.href === "/dashboard" ? (
+                      <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+                        {item.title}
+                      </span>
+                    ) : (
+                      item.title
+                    )}
                   </Link>
                 );
               })}

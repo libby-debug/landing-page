@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import { ProtectedRoute } from "@/components/protected-route";
 import {
   PageShell,
-  eyebrowClass,
   leadClass,
   pageTitleClass,
 } from "@/components/learning-ui";
@@ -47,8 +46,6 @@ export default async function MiniLessonPage({ params }: MiniLessonPageProps) {
     <ProtectedRoute>
       <PageShell maxWidth="6xl" className="pt-4">
         <div className="flex w-full flex-col items-center text-center">
-          <p className={eyebrowClass}>TCO 6 Module {section.code} / Learn</p>
-
           <h1 className={pageTitleClass}>
             {section.code}. {section.title}
           </h1>

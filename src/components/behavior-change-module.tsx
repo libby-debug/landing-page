@@ -290,7 +290,7 @@ export function BehaviorChangeModule({ module }: BehaviorChangeModuleProps) {
           <p className="mt-4 text-base leading-relaxed text-slate-950">
             {savedScore?.mastered
               ? "Mastery threshold met."
-              : "Progress tracking is prepared for Supabase mastery scores."}
+              : "Complete the quiz at 90% or higher to save mastery."}
           </p>
         </div>
       </section>

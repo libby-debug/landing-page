@@ -32,74 +32,544 @@ function replaceSortingPracticeQuestions(questions: QuestionContent[]) {
 
 const sectionAMiniLessons: MiniLessonContent[] = [
   {
-    slug: "description-prediction-control",
-    label: "A.1",
-    title: "Goals of behavior analysis",
+    slug: "what-is-behavior-analysis",
+    label: "A1",
+    title: "What Is Behavior Analysis?",
     body: [
-      "Description identifies [what behavior is happening].",
-      "Prediction and control show [orderly relations with environmental variables].",
+      "Behavior analysis studies [behavior-environment relations].",
+      "Its goals are description, prediction, and control.",
     ],
     visual: {
-      type: "flow",
-      prompt: "Put the goals in the order behavior analysts build understanding.",
-      steps: ["Description", "Prediction", "Control"],
+      type: "choice",
+      prompt: "Which statement best reflects behavior analysis?",
+      choices: [
+        "Behavior is studied in relation to environmental events.",
+        "Behavior is explained by personality traits first.",
+        "Behavior is understood mainly through diagnostic labels.",
+        "Behavior changes are assumed without measurement.",
+      ],
+      answer: "Behavior is studied in relation to environmental events.",
+      hint:
+        "Look for observable behavior and its relation to environmental variables.",
+      feedback:
+        "Behavior analysis focuses on [relations between behavior and environment].",
     },
   },
   {
-    slug: "philosophical-assumptions",
-    label: "A.2",
-    title: "Philosophical assumptions",
+    slug: "prediction-vs-control",
+    label: "A2",
+    title: "Prediction vs Control",
     body: [
-      "Determinism means behavior is [lawful].",
-      "Empiricism means decisions are based on [objective observation].",
+      "Prediction means behavior reliably changes with [other events].",
+      "Control means manipulating a variable produces [behavior change].",
     ],
     visual: {
       type: "matching",
-      prompt: "Match each assumption to its key distinction.",
+      prompt: "Match each goal to its discrimination cue.",
       pairs: [
-        { term: "Determinism", definition: "Behavior is lawful." },
-        { term: "Empiricism", definition: "Use objective observation." },
-        { term: "Parsimony", definition: "Try the simplest adequate explanation first." },
-        { term: "Pragmatism", definition: "Ask whether the explanation works." },
+        { term: "Description", definition: "Measures what behavior occurs." },
+        { term: "Prediction", definition: "Shows behavior covaries with another event." },
+        { term: "Control", definition: "Shows behavior changes when a variable is manipulated." },
       ],
+    },
+  },
+  {
+    slug: "determinism",
+    label: "A3",
+    title: "Determinism",
+    body: [
+      "Determinism assumes behavior is [lawful].",
+      "Behavior is not treated as random or uncaused.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which statement best reflects determinism?",
+      choices: [
+        "Behavior occurs in lawful relations with variables.",
+        "Behavior is random until a diagnosis is assigned.",
+        "Behavior is caused only by internal traits.",
+        "Behavior should be explained without environmental variables.",
+      ],
+      answer: "Behavior occurs in lawful relations with variables.",
+      hint:
+        "Determinism asks whether behavior has orderly relations rather than random causes.",
+      feedback:
+        "Determinism means behavior is [lawful] and can be studied scientifically.",
+    },
+  },
+  {
+    slug: "selectionism",
+    label: "A4",
+    title: "Selectionism",
+    body: [
+      "Selectionism explains behavior through [selection by consequences across history].",
+      "Responses that contact effective consequences become more likely.",
+    ],
+    visual: {
+      type: "fill-blank",
+      prompt: "Complete the selectionism cue.",
+      sentence: "Selectionism emphasizes selection by ____ across history.",
+      answer: "consequences",
+      feedback:
+        "Selectionism emphasizes [selection by consequences] across phylogenic, ontogenic, and cultural histories.",
+    },
+  },
+  {
+    slug: "empiricism",
+    label: "A5",
+    title: "Empiricism",
+    body: [
+      "Empiricism relies on [objective observation and data].",
+      "It protects decision-making from opinion alone.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which action best reflects empiricism?",
+      choices: [
+        "Collect direct data before changing a treatment decision.",
+        "Assume the intervention works because it sounds reasonable.",
+        "Use the most complex explanation first.",
+        "Ignore observation when caregiver reports are available.",
+      ],
+      answer: "Collect direct data before changing a treatment decision.",
+      hint:
+        "Empiricism is about objective observation and data-based decisions.",
+      feedback:
+        "Empiricism means conclusions are based on [objective observation and data].",
+    },
+  },
+  {
+    slug: "parsimony",
+    label: "A6",
+    title: "Parsimony",
+    body: [
+      "Parsimony starts with [the simplest adequate explanation].",
+      "Complex explanations are considered only when simpler ones are insufficient.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which statement best reflects parsimony?",
+      choices: [
+        "Check simple environmental explanations before complex ones.",
+        "Choose the explanation with the most technical words.",
+        "Use mentalistic explanations before observing contingencies.",
+        "Avoid revising explanations after new data appear.",
+      ],
+      answer: "Check simple environmental explanations before complex ones.",
+      hint:
+        "Parsimony means the simplest explanation that adequately fits the facts.",
+      feedback:
+        "Parsimony means beginning with [the simplest adequate explanation].",
+    },
+  },
+  {
+    slug: "pragmatism",
+    label: "A7",
+    title: "Pragmatism",
+    body: [
+      "Pragmatism asks whether an explanation [works in practice].",
+      "Useful explanations help prediction and effective action.",
+    ],
+    visual: {
+      type: "true-false",
+      prompt: "Pragmatism check",
+      statement:
+        "A pragmatic explanation is useful when it helps prediction, action, and effective behavior change.",
+      answer: true,
+      feedback:
+        "Pragmatism evaluates whether an explanation is [useful for effective action].",
     },
   },
   {
     slug: "radical-behaviorism",
-    label: "A.3",
-    title: "Radical behaviorism",
+    label: "A8",
+    title: "Radical Behaviorism",
     body: [
-      "Radical behaviorism includes [public and private events].",
-      "Private events are behavior to be explained, not mental causes outside behavior analysis.",
+      "Radical behaviorism analyzes [public behavior and private events].",
+      "It keeps explanation within behavior-environment relations.",
     ],
     visual: {
-      type: "comparison",
-      leftTitle: "Public behavior",
-      leftText: "Observable by others",
-      rightTitle: "Private events",
-      rightText: "Accessible mainly to the person",
-      cue: "Radical behaviorism includes both, but still analyzes behavior-environment relations.",
+      type: "choice",
+      prompt: "Which statement best reflects radical behaviorism?",
+      choices: [
+        "Private events can be analyzed as behavior.",
+        "Private events should be ignored because they are not real.",
+        "Only public behavior belongs in behavior analysis.",
+        "Thoughts explain behavior outside environmental relations.",
+      ],
+      answer: "Private events can be analyzed as behavior.",
+      hint:
+        "Radical behaviorism includes private events, but does not treat them as nonbehavioral causes.",
+      feedback:
+        "Radical behaviorism includes [private events] as behavior to be explained.",
     },
   },
   {
-    slug: "aba-dimensions",
-    label: "A.5",
-    title: "Dimensions of ABA",
+    slug: "private-events",
+    label: "A9",
+    title: "Private Events",
     body: [
-      "Applied means the behavior is [socially significant].",
-      "Analytic means the data show [experimental control].",
+      "Private events are [accessible mainly to the person experiencing them].",
+      "They are behavior to be explained, not explanatory shortcuts.",
+    ],
+    visual: {
+      type: "matching",
+      prompt: "Match each event to its access cue.",
+      pairs: [
+        { term: "Public behavior", definition: "Observable by others." },
+        { term: "Private event", definition: "Accessible mainly to the person." },
+        { term: "Behavior-analytic explanation", definition: "Stays within behavior-environment relations." },
+      ],
+    },
+  },
+  {
+    slug: "mentalism-vs-behaviorism",
+    label: "A10",
+    title: "Mentalism vs Behaviorism",
+    body: [
+      "Mentalism explains behavior by [hypothetical inner causes].",
+      "Behaviorism explains behavior through [behavior-environment relations].",
+    ],
+    visual: {
+      type: "sorting",
+      prompt: "Sort each statement by explanatory style.",
+      categories: ["Mentalism", "Behaviorism"],
+      items: [
+        { label: "He aggressed because of an inner drive.", category: "Mentalism" },
+        { label: "Aggression contacted escape from demands.", category: "Behaviorism" },
+        { label: "She completed work after reinforcement increased.", category: "Behaviorism" },
+        { label: "She completed work because of willpower.", category: "Mentalism" },
+      ],
+    },
+  },
+  {
+    slug: "experimental-analysis-of-behavior",
+    label: "A11",
+    title: "Experimental Analysis of Behavior (EAB)",
+    body: [
+      "EAB is the [basic research] branch of behavior analysis.",
+      "It identifies principles under controlled conditions.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which activity best represents EAB?",
+      choices: [
+        "Studying schedules of reinforcement in a laboratory preparation.",
+        "Writing an insurance-funded treatment plan.",
+        "Training caregivers to implement a home program.",
+        "Selecting a socially significant school goal.",
+      ],
+      answer: "Studying schedules of reinforcement in a laboratory preparation.",
+      hint:
+        "EAB is basic research on behavioral principles, not service delivery.",
+      feedback:
+        "EAB studies [basic behavioral principles] under controlled conditions.",
+    },
+  },
+  {
+    slug: "applied-behavior-analysis",
+    label: "A12",
+    title: "Applied Behavior Analysis (ABA)",
+    body: [
+      "Applied Behavior Analysis (ABA) applies behavioral principles to [socially significant behavior].",
+      "ABA is analytic, data-based, and intervention-focused.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which example best represents ABA?",
+      choices: [
+        "Using reinforcement procedures to increase functional communication at school.",
+        "Studying behavior principles without an applied goal.",
+        "Explaining behavior with a personality label.",
+        "Describing behavior without measuring change.",
+      ],
+      answer:
+        "Using reinforcement procedures to increase functional communication at school.",
+      hint:
+        "ABA applies principles to socially significant behavior and measures behavior change.",
+      feedback:
+        "ABA applies behavior principles to [socially significant behavior].",
+    },
+  },
+  {
+    slug: "dimensions-of-aba",
+    label: "A13",
+    title: "What Are the 7 Dimensions of ABA?",
+    body: [
+      "The 7 dimensions define [high-quality ABA practice].",
+      "They help distinguish behavior-analytic work from vague intervention claims.",
     ],
     visual: {
       type: "select-all",
-      prompt: "Select dimensions that describe ABA work.",
+      prompt: "Select ABA dimensions.",
       choices: [
         { label: "Applied", correct: true },
+        { label: "Behavioral", correct: true },
         { label: "Analytic", correct: true },
-        { label: "Technological", correct: true },
         { label: "Speculative", correct: false },
       ],
       feedback:
         "ABA is applied, behavioral, analytic, technological, conceptually systematic, effective, and generality-focused.",
+    },
+  },
+  {
+    slug: "applied-dimension",
+    label: "A14",
+    title: "Applied",
+    body: [
+      "Applied means the target has [social importance].",
+      "Exam trap: an intervention can be measured well but still target a trivial behavior.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which example best reflects the applied dimension?",
+      choices: [
+        "Teaching safe street crossing because it increases independence.",
+        "Measuring pencil taps because they are easy to count.",
+        "Using a graph to show experimental control.",
+        "Writing procedures in replicable detail.",
+      ],
+      answer: "Teaching safe street crossing because it increases independence.",
+      hint:
+        "Applied is about whether the behavior matters in the person's life.",
+      feedback:
+        "Applied means the behavior is [socially significant] for the learner or stakeholders.",
+    },
+  },
+  {
+    slug: "behavioral-dimension",
+    label: "A15",
+    title: "Behavioral",
+    body: [
+      "Behavioral means the target is [observable and measurable behavior].",
+      "Exam trap: an important goal is not behavioral unless the response is defined.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which target best meets the behavioral dimension?",
+      choices: [
+        "Initiates a mand by saying, signing, or selecting a picture within 5 seconds.",
+        "Becomes more confident during group work.",
+        "Improves attitude toward peers.",
+        "Understands classroom routines.",
+      ],
+      answer:
+        "Initiates a mand by saying, signing, or selecting a picture within 5 seconds.",
+      hint:
+        "Behavioral requires observable and measurable responding, not a broad internal state.",
+      feedback:
+        "Behavioral means the target is [observable and measurable].",
+    },
+  },
+  {
+    slug: "analytic-dimension",
+    label: "A16",
+    title: "Analytic",
+    body: [
+      "Analytic means data show [experimental control].",
+      "The analyst demonstrates that the intervention, not chance, produced behavior change.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which statement best reflects the analytic dimension?",
+      choices: [
+        "Behavior changes when the intervention is introduced and replicates across phases.",
+        "The behavior is important to the family.",
+        "The procedure is written in detailed steps.",
+        "The intervention produced a small but noticeable change.",
+      ],
+      answer:
+        "Behavior changes when the intervention is introduced and replicates across phases.",
+      hint:
+        "Analytic is about demonstrating a functional relation or experimental control.",
+      feedback:
+        "Analytic means data demonstrate [experimental control] over behavior.",
+    },
+  },
+  {
+    slug: "technological-dimension",
+    label: "A17",
+    title: "Technological",
+    body: [
+      "Technological means procedures are [clear enough to replicate].",
+      "A reader should know exactly what to do.",
+    ],
+    visual: {
+      type: "select-all",
+      prompt: "Select statements that show a technological procedure.",
+      choices: [
+        { label: "The protocol specifies the prompt, response, consequence, and timing.", correct: true },
+        { label: "A second therapist can implement it from the written description.", correct: true },
+        { label: "The behavior is important to the learner.", correct: false },
+        { label: "The procedure is based on reinforcement principles.", correct: false },
+      ],
+      feedback:
+        "Technological means procedures are [complete and replicable].",
+    },
+  },
+  {
+    slug: "conceptually-systematic-dimension",
+    label: "A18",
+    title: "Conceptually Systematic",
+    body: [
+      "Conceptually systematic means procedures are linked to [behavior-analytic principles].",
+      "Exam trap: a procedure can be technological but not conceptually systematic if no principle is identified.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which statement best shows conceptually systematic practice?",
+      choices: [
+        "The plan uses differential reinforcement and explains how reinforcement changes future responding.",
+        "The plan says to use the worksheet because it is popular.",
+        "The plan lists steps but no behavioral principle.",
+        "The plan targets a socially important behavior.",
+      ],
+      answer:
+        "The plan uses differential reinforcement and explains how reinforcement changes future responding.",
+      hint:
+        "Conceptually systematic asks whether procedures are tied to behavior-analytic principles.",
+      feedback:
+        "Conceptually systematic means the procedure is linked to [behavior-analytic principles].",
+    },
+  },
+  {
+    slug: "effective-dimension",
+    label: "A19",
+    title: "Effective",
+    body: [
+      "Effective means behavior change is [large enough to matter].",
+      "A statistically neat change is not enough if it does not improve the learner's life.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which example best reflects effective intervention?",
+      choices: [
+        "Tantrums decrease from 15 per day to 1 per week and family routines improve.",
+        "Tantrums decrease from 15 per day to 14 per day.",
+        "The procedure is written clearly.",
+        "The skill occurs with a new teacher after training.",
+      ],
+      answer:
+        "Tantrums decrease from 15 per day to 1 per week and family routines improve.",
+      hint:
+        "Effective asks whether the behavior change is meaningful in size or practical value.",
+      feedback:
+        "Effective means behavior change is [meaningful and practical].",
+    },
+  },
+  {
+    slug: "generality-dimension",
+    label: "A20",
+    title: "Generality",
+    body: [
+      "Generality means behavior change [maintains or transfers].",
+      "It can occur across time, settings, people, or related behaviors.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which example best reflects generality?",
+      choices: [
+        "A learner uses the skill at school, home, and with a new caregiver.",
+        "The skill improves only during teaching sessions.",
+        "The target behavior is socially important.",
+        "The protocol is detailed enough to replicate.",
+      ],
+      answer:
+        "A learner uses the skill at school, home, and with a new caregiver.",
+      hint:
+        "Generality asks whether behavior change extends beyond the original teaching condition.",
+      feedback:
+        "Generality means behavior change [maintains or transfers across conditions].",
+    },
+  },
+  {
+    slug: "applied-vs-behavioral",
+    label: "A21",
+    title: "Applied vs Behavioral",
+    body: [
+      "Applied means the goal is [socially significant].",
+      "Behavioral means the target is [observable and measurable behavior].",
+    ],
+    visual: {
+      type: "comparison",
+      leftTitle: "Applied",
+      leftText: "Socially significant goal",
+      rightTitle: "Behavioral",
+      rightText: "Observable and measurable target",
+      cue: "Applied = why the target matters. Behavioral = what is measured.",
+    },
+  },
+  {
+    slug: "analytic-vs-technological",
+    label: "A22",
+    title: "Analytic vs Technological",
+    body: [
+      "Analytic means data show [experimental control].",
+      "Technological means procedures are [clear enough to replicate].",
+    ],
+    visual: {
+      type: "matching",
+      prompt: "Match each dimension to its cue.",
+      pairs: [
+        { term: "Analytic", definition: "Data demonstrate experimental control." },
+        { term: "Technological", definition: "Procedures are clear enough to replicate." },
+        { term: "Applied", definition: "The target behavior is socially significant." },
+      ],
+    },
+  },
+  {
+    slug: "technological-vs-conceptually-systematic",
+    label: "A23",
+    title: "Technological vs Conceptually Systematic",
+    body: [
+      "Technological asks whether procedures are [replicable].",
+      "Conceptually systematic asks whether procedures are [principle-based].",
+    ],
+    visual: {
+      type: "matching",
+      prompt: "Match each dimension to its discrimination cue.",
+      pairs: [
+        { term: "Technological", definition: "Procedure is clear enough to replicate." },
+        { term: "Conceptually systematic", definition: "Procedure is linked to behavior-analytic principles." },
+      ],
+    },
+  },
+  {
+    slug: "effective-vs-generality",
+    label: "A24",
+    title: "Effective vs Generality",
+    body: [
+      "Effective means behavior change is [large enough to matter].",
+      "Generality means behavior change [maintains or transfers].",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "A skill maintains after intervention ends and occurs at home. Which dimension is most directly shown?",
+      choices: ["Generality", "Effective", "Analytic", "Behavioral"],
+      answer: "Generality",
+      hint:
+        "Focus on whether behavior change lasts or transfers beyond the original setting.",
+      feedback:
+        "Generality means behavior change [maintains over time or transfers across conditions].",
+    },
+  },
+  {
+    slug: "dimension-discrimination-practice",
+    label: "A25",
+    title: "Dimension Discrimination Practice",
+    body: [
+      "Dimension questions often use similar wording.",
+      "Ask what the example is testing: importance, measurement, control, replication, principle, magnitude, or transfer.",
+    ],
+    visual: {
+      type: "matching",
+      prompt: "Match each dimension to the fastest discrimination cue.",
+      pairs: [
+        { term: "Applied", definition: "Social significance." },
+        { term: "Behavioral", definition: "Observable and measurable behavior." },
+        { term: "Analytic", definition: "Experimental control." },
+        { term: "Generality", definition: "Maintenance or transfer." },
+      ],
     },
   },
 ];
@@ -1424,15 +1894,18 @@ const moduleContent: Record<string, ModuleContent> = {
     practiceQuestions: [
       {
         type: "matching",
-        prompt: "Match each philosophical assumption to its key distinction.",
+        prompt: "Match each philosophical assumption to its discrimination cue.",
         pairs: [
-          { term: "Selectionism", definition: "Behavior is shaped across consequences and history." },
-          { term: "Empiricism", definition: "Knowledge comes from objective observation." },
-          { term: "Parsimony", definition: "Start with the simplest adequate explanation." },
+          { term: "Selectionism", definition: "Behavior is selected by consequences across history." },
+          { term: "Determinism", definition: "Behavior occurs in lawful relations." },
+          { term: "Empiricism", definition: "Knowledge comes from objective observation and data." },
+          { term: "Parsimony", definition: "Begin with the simplest adequate explanation." },
         ],
         answer: "All terms matched to their definitions",
         explanation:
-          "These assumptions guide behavior analysts toward environmental, observable, and useful explanations.",
+          "Philosophical assumptions guide behavior analysts toward lawful, data-based, and useful explanations.",
+        hint:
+          "Separate history of consequences, lawfulness, observation, and simplest adequate explanation.",
       },
       {
         type: "scenario",
@@ -1442,25 +1915,178 @@ const moduleContent: Record<string, ModuleContent> = {
         answer: "Radical behaviorism",
         explanation:
           "Radical behaviorism includes private events while still explaining behavior through behavior-environment relations.",
+        hint:
+          "Focus on the view that includes private events but still analyzes them behavior-analytically.",
       },
       {
-        type: "sorting",
-        prompt: "Sort each ABA dimension cue.",
-        categories: ["Applied", "Technological"],
-        items: [
-          { label: "Targets socially significant behavior", category: "Applied" },
-          { label: "Procedures are written clearly enough to replicate", category: "Technological" },
-          { label: "Improves client quality of life", category: "Applied" },
-          { label: "Uses precise implementation steps", category: "Technological" },
-        ],
-        answer: "All descriptions sorted correctly",
+        type: "scenario",
+        prompt:
+          "A behavior analyst observes that aggression reliably occurs after difficult demands but does not yet manipulate any variables. Which goal has been reached?",
+        choices: ["Prediction", "Control", "Technological", "Generality"],
+        answer: "Prediction",
         explanation:
-          "Applied focuses on social significance. Technological focuses on clear, replicable procedures.",
+          "Prediction is shown when behavior reliably covaries with another event. Control requires manipulating a variable and producing behavior change.",
+        hint:
+          "Ask whether the analyst only sees a reliable relation or has changed a variable to demonstrate an effect.",
+      },
+      {
+        type: "select-all",
+        prompt:
+          "Select all examples that best represent the technological dimension.",
+        choices: [
+          "A written protocol defines each prompt, response, and consequence.",
+          "A second BCBA can replicate the procedure from the written steps.",
+          "The target behavior is important to the family.",
+          "A graph shows behavior changed after intervention.",
+        ],
+        answers: [
+          "A written protocol defines each prompt, response, and consequence.",
+          "A second BCBA can replicate the procedure from the written steps.",
+        ],
+        answer: "A written protocol defines each prompt, response, and consequence.",
+        explanation:
+          "Technological means procedures are described clearly and completely enough for replication.",
+        hint:
+          "Look for clear procedural description and replication, not social importance or experimental control.",
+      },
+      {
+        type: "fill-blank",
+        prompt:
+          "Complete the statement: The analytic dimension is shown when data demonstrate experimental ____.",
+        answer: "control",
+        explanation:
+          "Analytic means the data demonstrate experimental control over the behavior.",
+        hint:
+          "Think about the dimension that shows a functional relation between intervention and behavior.",
+      },
+      {
+        type: "scenario",
+        prompt:
+          "A program reduces self-injury in the clinic, and the behavior change maintains at home with caregivers after training. Which dimension is most directly represented?",
+        choices: ["Generality", "Behavioral", "Parsimony", "Empiricism"],
+        answer: "Generality",
+        explanation:
+          "Generality means behavior change lasts over time, appears in other environments, or spreads to related behaviors.",
+        hint:
+          "Focus on maintenance and transfer beyond the original teaching context.",
+      },
+      {
+        type: "scenario",
+        prompt:
+          "A team chooses handwashing because it affects health and independence, then defines the exact responses to measure. Which pair best differentiates these decisions?",
+        choices: [
+          "Applied = social importance; Behavioral = observable and measurable response",
+          "Analytic = social importance; Technological = observable and measurable response",
+          "Behavioral = social importance; Applied = experimental control",
+          "Generality = social importance; Effective = observable and measurable response",
+        ],
+        answer:
+          "Applied = social importance; Behavioral = observable and measurable response",
+        explanation:
+          "Applied asks whether the target is socially significant. Behavioral asks whether the target response is observable and measurable.",
+        hint:
+          "Separate why the target matters from whether the response can be directly observed and measured.",
+      },
+      {
+        type: "scenario",
+        prompt:
+          "A protocol says, 'Provide help as needed and reward good behavior.' A second therapist cannot implement it consistently. Which dimension is weakest?",
+        choices: [
+          "Technological",
+          "Effective",
+          "Generality",
+          "Applied",
+        ],
+        answer: "Technological",
+        explanation:
+          "Technological requires procedures to be described completely enough that another person can replicate them.",
+        hint:
+          "Look for whether the written procedure tells someone exactly what to do.",
+      },
+      {
+        type: "select-all",
+        prompt:
+          "Select all statements that show the conceptually systematic dimension.",
+        choices: [
+          "The intervention uses differential reinforcement and explains the reinforcement contingency.",
+          "The treatment package is described in terms of motivating operation and stimulus control when relevant.",
+          "The behavior is important to the family.",
+          "The skill generalizes to a new setting.",
+        ],
+        answers: [
+          "The intervention uses differential reinforcement and explains the reinforcement contingency.",
+          "The treatment package is described in terms of motivating operation and stimulus control when relevant.",
+        ],
+        answer:
+          "The intervention uses differential reinforcement and explains the reinforcement contingency.",
+        explanation:
+          "Conceptually systematic means procedures are linked to behavior-analytic principles, not just described as a list of steps.",
+        hint:
+          "Look for language that connects procedures to behavior-analytic principles rather than importance or transfer.",
+      },
+      {
+        type: "matching",
+        prompt:
+          "Match each commonly confused dimension pair to its discrimination cue.",
+        pairs: [
+          {
+            term: "Analytic vs Technological",
+            definition:
+              "Experimental control vs procedures clear enough to replicate.",
+          },
+          {
+            term: "Effective vs Generality",
+            definition:
+              "Meaningful behavior change vs maintenance or transfer.",
+          },
+          {
+            term: "Technological vs Conceptually Systematic",
+            definition:
+              "Replicable procedure vs procedure linked to behavioral principles.",
+          },
+          {
+            term: "Applied vs Behavioral",
+            definition:
+              "Social significance vs observable and measurable target.",
+          },
+        ],
+        answer: "All dimension pairs matched to their discrimination cues",
+        explanation:
+          "Dimension discrimination depends on identifying the critical feature in the scenario: importance, measurement, control, replication, principle, magnitude, or transfer.",
+        hint:
+          "Focus on the one feature each pair is contrasting, not whether the example sounds generally behavior-analytic.",
+      },
+      {
+        type: "fill-blank",
+        prompt:
+          "Complete the cue: Effective asks whether the behavior change is large enough to ____.",
+        answer: "matter",
+        explanation:
+          "Effective means the behavior change is large enough to matter in the learner's life or service context.",
+        hint:
+          "Think about practical importance, not whether change merely appears on a graph.",
+      },
+      {
+        type: "scenario",
+        prompt:
+          "A procedure reduces out-of-seat behavior during one teaching session, but the response returns the next day and does not occur in other settings. Which dimension still needs stronger evidence?",
+        choices: [
+          "Generality",
+          "Behavioral",
+          "Technological",
+          "Conceptually systematic",
+        ],
+        answer: "Generality",
+        explanation:
+          "Generality requires behavior change to maintain over time, transfer across settings or people, or spread to related behaviors.",
+        hint:
+          "Look for maintenance over time or transfer beyond the original teaching condition.",
       },
     ],
     masteryQuestions: [
       {
-        prompt: "Which answer best states the goals of behavior analysis?",
+        prompt:
+          "A BCBA measures elopement, identifies when it is most likely, then changes antecedents and consequences to reduce it. Which sequence best describes the goals of behavior analysis?",
         choices: [
           "Description, prediction, and control of behavior",
           "Diagnosis, insight, and personality change",
@@ -1470,13 +2096,19 @@ const moduleContent: Record<string, ModuleContent> = {
         answer: "Description, prediction, and control of behavior",
         explanation:
           "Behavior analysis aims to describe, predict, and control behavior through lawful environmental relations.",
+        hint:
+          "Look for measuring behavior, identifying reliable relations, and then changing variables.",
       },
       {
-        type: "fill-blank",
-        prompt: "Complete the statement: Empiricism means decisions are based on ____.",
-        answer: "observation",
+        type: "scenario",
+        prompt:
+          "A supervisor rejects an explanation based only on opinion and asks for direct observation and data. Which philosophical assumption is emphasized?",
+        choices: ["Empiricism", "Selectionism", "Parsimony", "Pragmatism"],
+        answer: "Empiricism",
         explanation:
           "Empiricism means relying on objective observation and data rather than opinion or assumption.",
+        hint:
+          "Focus on data and observation rather than usefulness, simplicity, or history of consequences.",
       },
       {
         type: "scenario",
@@ -1491,6 +2123,197 @@ const moduleContent: Record<string, ModuleContent> = {
         answer: "Applied, analytic, and technological",
         explanation:
           "Applied means socially significant, analytic means demonstrated control, and technological means clearly described.",
+        hint:
+          "Map each phrase: social importance, demonstrated control, and clearly written procedures.",
+      },
+      {
+        type: "scenario",
+        prompt:
+          "A BCBA explains hand flapping by first considering current antecedents and consequences rather than assuming a complex internal cause. Which assumption best fits?",
+        choices: ["Parsimony", "Mentalism", "Structuralism", "Methodological behaviorism"],
+        answer: "Parsimony",
+        explanation:
+          "Parsimony means starting with the simplest adequate explanation before adding more complex explanations.",
+        hint:
+          "Look for the simplest adequate explanation before moving to more complex accounts.",
+      },
+      {
+        type: "scenario",
+        prompt:
+          "A learner privately repeats, 'I can do this,' before starting work. Which statement best aligns with radical behaviorism?",
+        choices: [
+          "The private event is behavior that can be analyzed, but it is not treated as an outside mental cause.",
+          "The private event must be ignored because it cannot be observed by others.",
+          "The private event explains behavior without environmental analysis.",
+          "The private event is not part of behavior analysis.",
+        ],
+        answer:
+          "The private event is behavior that can be analyzed, but it is not treated as an outside mental cause.",
+        explanation:
+          "Radical behaviorism includes private events as behavior to be explained within behavior-environment relations.",
+        hint:
+          "Choose the option that includes private events without making them nonbehavioral causes.",
+      },
+      {
+        type: "scenario",
+        prompt:
+          "A researcher studies reinforcement schedules in a laboratory to identify basic behavioral principles. Which area is best described?",
+        choices: [
+          "Experimental Analysis of Behavior (EAB)",
+          "Professional behavior-analytic practice",
+          "Applied Behavior Analysis (ABA)",
+          "A service delivery model only",
+        ],
+        answer: "Experimental Analysis of Behavior (EAB)",
+        explanation:
+          "EAB is the basic research branch that studies behavioral principles, often in controlled laboratory arrangements.",
+        hint:
+          "Separate basic research on principles from applied intervention for socially significant behavior.",
+      },
+      {
+        type: "scenario",
+        prompt:
+          "A school program targets reading fluency, defines responses precisely, links procedures to reinforcement, and produces meaningful improvement. Which set best matches ABA dimensions?",
+        choices: [
+          "Applied, behavioral, conceptually systematic, and effective",
+          "Determinism, parsimony, pragmatism, and philosophic doubt",
+          "Indirect, discontinuous, valid, and reliable",
+          "Respondent, operant, discriminated, and generalized",
+        ],
+        answer: "Applied, behavioral, conceptually systematic, and effective",
+        explanation:
+          "The example includes social significance, observable behavior, procedures linked to principles, and meaningful behavior change.",
+        hint:
+          "Look for ABA dimensions rather than philosophical assumptions or measurement terms.",
+      },
+      {
+        type: "scenario",
+        prompt:
+          "A clinic targets a learner's ability to request a break because it reduces dangerous elopement risk and increases independence. Which dimension is most directly shown by selecting this target?",
+        choices: [
+          "Applied",
+          "Behavioral",
+          "Technological",
+          "Analytic",
+        ],
+        answer: "Applied",
+        explanation:
+          "Applied means the target behavior is socially significant for the learner or stakeholders.",
+        hint:
+          "Focus on why this target was selected and whether it matters in the learner's life.",
+      },
+      {
+        type: "scenario",
+        prompt:
+          "A report says the learner will 'be respectful.' Which revision best improves the behavioral dimension?",
+        choices: [
+          "The learner says 'excuse me' before interrupting during 80% of observed opportunities.",
+          "The learner develops better character during group instruction.",
+          "The learner understands why respect is important.",
+          "The learner feels more connected to classmates.",
+        ],
+        answer:
+          "The learner says 'excuse me' before interrupting during 80% of observed opportunities.",
+        explanation:
+          "Behavioral targets must be observable and measurable, not broad labels or inferred states.",
+        hint:
+          "Choose the option that describes a response someone could observe and count.",
+      },
+      {
+        type: "scenario",
+        prompt:
+          "A behavior change occurs only when the intervention is introduced, reverses when it is withdrawn, and improves again when reintroduced. Which dimension is most directly demonstrated?",
+        choices: [
+          "Analytic",
+          "Generality",
+          "Technological",
+          "Conceptually systematic",
+        ],
+        answer: "Analytic",
+        explanation:
+          "Analytic means the data demonstrate experimental control or a functional relation between intervention and behavior.",
+        hint:
+          "Look for evidence that the intervention, not another variable, produced the behavior change.",
+      },
+      {
+        type: "scenario",
+        prompt:
+          "A written intervention includes exact prompting steps, response definitions, reinforcement schedule, error correction, and data collection procedures. Which dimension is most directly represented?",
+        choices: [
+          "Technological",
+          "Applied",
+          "Effective",
+          "Generality",
+        ],
+        answer: "Technological",
+        explanation:
+          "Technological means procedures are described clearly and completely enough for replication.",
+        hint:
+          "Focus on whether another trained person could implement the procedure from the description.",
+      },
+      {
+        type: "scenario",
+        prompt:
+          "A plan says to withhold reinforcement following problem behavior and reinforce functional communication because extinction and differential reinforcement alter future responding. Which dimension is most directly shown?",
+        choices: [
+          "Conceptually systematic",
+          "Behavioral",
+          "Applied",
+          "Generality",
+        ],
+        answer: "Conceptually systematic",
+        explanation:
+          "Conceptually systematic means procedures are explicitly linked to behavior-analytic principles.",
+        hint:
+          "Look for whether the procedure is connected to behavioral principles rather than just written clearly.",
+      },
+      {
+        type: "scenario",
+        prompt:
+          "A learner's manding increases from 1 independent mand per day to 35 per day, allowing access to breaks and materials without problem behavior. Which dimension is most directly shown?",
+        choices: [
+          "Effective",
+          "Generality",
+          "Technological",
+          "Parsimony",
+        ],
+        answer: "Effective",
+        explanation:
+          "Effective means behavior change is meaningful and practical, not merely detectable.",
+        hint:
+          "Focus on the size and practical importance of the behavior change.",
+      },
+      {
+        type: "scenario",
+        prompt:
+          "A learner uses the same functional communication response with a parent, teacher, and after-school provider 3 weeks after teaching ends. Which dimension is most directly shown?",
+        choices: [
+          "Generality",
+          "Analytic",
+          "Empiricism",
+          "Behavioral",
+        ],
+        answer: "Generality",
+        explanation:
+          "Generality means behavior change maintains over time or transfers across people, settings, materials, or related behaviors.",
+        hint:
+          "Look for maintenance and transfer after the original teaching condition.",
+      },
+      {
+        type: "scenario",
+        prompt:
+          "An intervention is socially important, produces meaningful change, and generalizes, but the written procedure is too vague for another clinician to replicate. Which dimension is missing?",
+        choices: [
+          "Technological",
+          "Applied",
+          "Effective",
+          "Generality",
+        ],
+        answer: "Technological",
+        explanation:
+          "The technological dimension is missing because the procedure is not described clearly enough for replication.",
+        hint:
+          "Identify the dimension related to procedural clarity rather than importance, outcome size, or transfer.",
       },
     ],
   },

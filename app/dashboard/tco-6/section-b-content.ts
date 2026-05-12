@@ -1027,7 +1027,7 @@ export const sectionBMiniLessons: MiniLessonContent[] = [
     visual: {
       type: "choice",
       prompt:
-        "A learner says, 'The trash is full,' while looking at the trash and wanting someone to empty it. Which label is most precise?",
+        "A learner says, 'The trash is full,' while looking at the trash and wanting someone to empty it. Which label is described?",
       choices: ["Impure tact", "Echoic", "Textual", "Listener responding"],
       answer: "Impure tact",
       feedback:
@@ -1184,7 +1184,7 @@ export const sectionBMiniLessons: MiniLessonContent[] = [
 export const sectionBPracticeQuestions: QuestionContent[] = [
   {
     type: "matching",
-    prompt: "Match each B.1-B.2 vocabulary term to its current TCO 6 cue.",
+    prompt: "Match each term to it's definition.",
     pairs: [
       {
         term: "Behavior",
@@ -1203,7 +1203,7 @@ export const sectionBPracticeQuestions: QuestionContent[] = [
         definition: "The broader surrounding context in which behavior occurs.",
       },
     ],
-    answer: "All B.1-B.2 terms matched correctly",
+    answer: "All terms matched correctly",
     explanation:
       "Behavior is the measurable activity. A response is one instance. A stimulus is a specific part of the broader environment.",
   },
@@ -1236,7 +1236,7 @@ export const sectionBPracticeQuestions: QuestionContent[] = [
   {
     type: "scenario",
     prompt:
-      "During observation, a learner claps once. The observer records that one clap. Which term is most precise?",
+      "During observation, a learner claps once. The observer records that one clap. Which term is described?",
     choices: ["Response", "Response class", "Stimulus class", "Motivating Operation"],
     answer: "Response",
     explanation:
@@ -1263,7 +1263,7 @@ export const sectionBPracticeQuestions: QuestionContent[] = [
   {
     type: "fill-blank",
     prompt:
-      "Complete the discrimination cue: a stimulus is a specific aspect of the ____.",
+      "Complete the definition: a stimulus is a specific aspect of the ____.",
     answer: "environment",
     explanation:
       "A stimulus is a specific detectable aspect of the environment that can be differentiated from other aspects.",
@@ -1322,7 +1322,7 @@ export const sectionBPracticeQuestions: QuestionContent[] = [
   },
   {
     type: "matching",
-    prompt: "Match each concept to its fastest discrimination cue.",
+    prompt: "Match each concept to its key distinction.",
     pairs: [
       {
         term: "Positive reinforcement",
@@ -1361,7 +1361,7 @@ export const sectionBPracticeQuestions: QuestionContent[] = [
   },
   {
     type: "matching",
-    prompt: "Match each reinforcer or punisher type to its discrimination cue.",
+    prompt: "Match each reinforcer or punisher type to its definition.",
     pairs: [
       {
         term: "Unconditioned reinforcer",
@@ -1395,7 +1395,7 @@ export const sectionBPracticeQuestions: QuestionContent[] = [
   {
     type: "scenario",
     prompt:
-      "Tokens can be exchanged for snacks, activities, attention, and other backup reinforcers. Which label is most precise?",
+      "Tokens can be exchanged for snacks, activities, attention, and other backup reinforcers. Which label is described?",
     choices: [
       "Generalized conditioned reinforcer",
       "Unconditioned reinforcer",
@@ -1409,7 +1409,7 @@ export const sectionBPracticeQuestions: QuestionContent[] = [
   {
     type: "scenario",
     prompt:
-      "A neutral buzzer is repeatedly paired with response cost. Later, the buzzer alone decreases future responding. Which label is most precise?",
+      "A neutral buzzer is repeatedly paired with response cost. Later, the buzzer alone decreases future responding. Which label is described?",
     choices: [
       "Conditioned punisher",
       "Unconditioned punisher",
@@ -1423,7 +1423,7 @@ export const sectionBPracticeQuestions: QuestionContent[] = [
   {
     type: "scenario",
     prompt:
-      "Math problems are already on the desk. The learner completes one problem, the teacher removes the rest, and completing problems increases. Which discrimination is most precise?",
+      "Math problems are already on the desk. The learner completes one problem, the teacher removes the rest, and completing problems increases. Which discrimination is described?",
     choices: ["Escape", "Avoidance", "Positive reinforcement", "Respondent extinction"],
     answer: "Escape",
     explanation:
@@ -1432,7 +1432,7 @@ export const sectionBPracticeQuestions: QuestionContent[] = [
   {
     type: "scenario",
     prompt:
-      "A worksheet folder signals math is about to start. The learner asks for a break before the worksheet is presented, the worksheet is delayed, and break requests increase. Which discrimination is most precise?",
+      "A worksheet folder signals math is about to start. The learner asks for a break before the worksheet is presented, the worksheet is delayed, and break requests increase. Which discrimination is described?",
     choices: ["Avoidance", "Escape", "Positive punishment", "Respondent conditioning"],
     answer: "Avoidance",
     explanation:
@@ -1448,7 +1448,7 @@ export const sectionBPracticeQuestions: QuestionContent[] = [
       { label: "Stimulus-stimulus pairing", category: "Respondent" },
       { label: "Behavior-consequence relation", category: "Operant" },
     ],
-    answer: "All respondent and operant cues sorted correctly",
+    answer: "All respondent and operant descriptions sorted correctly",
     explanation:
       "Respondent behavior is elicited by antecedent stimuli. Operant behavior is selected by consequences.",
   },
@@ -1511,7 +1511,7 @@ export const sectionBPracticeQuestions: QuestionContent[] = [
   },
   {
     type: "matching",
-    prompt: "Match each complex schedule to its discrimination cue.",
+    prompt: "Match each complex schedule to its definition.",
     pairs: [
       {
         term: "Concurrent schedule",
@@ -1537,7 +1537,7 @@ export const sectionBPracticeQuestions: QuestionContent[] = [
   {
     type: "scenario",
     prompt:
-      "A learner can work on math for tokens or read for points at the same time. Each option has its own schedule of reinforcement. Which schedule is most precise?",
+      "A learner can work on math for tokens or read for points at the same time. Each option has its own schedule of reinforcement. Which schedule is described?",
     choices: ["Concurrent schedule", "Multiple schedule", "Mixed schedule", "Chained schedule"],
     answer: "Concurrent schedule",
     explanation:
@@ -1546,7 +1546,7 @@ export const sectionBPracticeQuestions: QuestionContent[] = [
   {
     type: "scenario",
     prompt:
-      "A green card signals FR work, and a blue card signals FI work. The components alternate. Which schedule is most precise?",
+      "A green card signals FR work, and a blue card signals FI work. The components alternate. Which schedule is described?",
     choices: ["Multiple schedule", "Mixed schedule", "Concurrent schedule", "Tandem schedule"],
     answer: "Multiple schedule",
     explanation:
@@ -1555,7 +1555,7 @@ export const sectionBPracticeQuestions: QuestionContent[] = [
   {
     type: "scenario",
     prompt:
-      "A learner completes worksheet steps in the same order: first copy, then solve, then check. Each step signals the next component and eventual reinforcement. Which schedule is most precise?",
+      "A learner completes worksheet steps in the same order: first copy, then solve, then check. Each step signals the next component and eventual reinforcement. Which schedule is described?",
     choices: ["Chained schedule", "Mixed schedule", "Concurrent schedule", "Variable Ratio"],
     answer: "Chained schedule",
     explanation:
@@ -1564,7 +1564,7 @@ export const sectionBPracticeQuestions: QuestionContent[] = [
   {
     type: "fill-blank",
     prompt:
-      "Complete the cue: Shaping teaches new behavior by reinforcing successive ____.",
+      "Complete the definition: Shaping teaches new behavior by reinforcing successive ____.",
     answer: "approximations",
     explanation:
       "Shaping uses differential reinforcement of successive approximations toward a terminal response.",
@@ -1630,7 +1630,7 @@ export const sectionBPracticeQuestions: QuestionContent[] = [
   },
   {
     type: "sorting",
-    prompt: "Sort each cue by whether it describes a Motivating Operation or a Discriminative Stimulus.",
+    prompt: "Sort each statement by whether it describes a Motivating Operation or a Discriminative Stimulus.",
     categories: ["Motivating Operation", "Discriminative Stimulus"],
     items: [
       { label: "Changes the current value of attention", category: "Motivating Operation" },
@@ -1638,7 +1638,7 @@ export const sectionBPracticeQuestions: QuestionContent[] = [
       { label: "Food deprivation increases the value of food", category: "Motivating Operation" },
       { label: "A vending machine light signals snacks can be purchased", category: "Discriminative Stimulus" },
     ],
-    answer: "All Motivating Operation and Discriminative Stimulus cues sorted correctly",
+    answer: "All Motivating Operation and Discriminative Stimulus statements sorted correctly",
     explanation:
       "Motivating Operations alter value and evoke or abate behavior. Discriminative Stimuli signal whether reinforcement is available for a response.",
   },
@@ -1738,7 +1738,7 @@ export const sectionBPracticeQuestions: QuestionContent[] = [
   {
     type: "scenario",
     prompt:
-      "A therapist claps twice, and the learner immediately claps twice with the same movement form. Which concept is most precise?",
+      "A therapist claps twice, and the learner immediately claps twice with the same movement form. Which concept is described?",
     choices: ["Imitation", "Observational learning", "Transitivity", "Maintenance"],
     answer: "Imitation",
     explanation:
@@ -1845,7 +1845,7 @@ export const sectionBPracticeQuestions: QuestionContent[] = [
   {
     type: "scenario",
     prompt:
-      "A learner touches the picture of a shoe after hearing 'touch shoe.' Which classification is most precise?",
+      "A learner touches the picture of a shoe after hearing 'touch shoe.' Which classification is described?",
     choices: ["Listener responding", "Mand", "Tact", "Autoclitic"],
     answer: "Listener responding",
     explanation:
@@ -1873,7 +1873,7 @@ export const sectionBPracticeQuestions: QuestionContent[] = [
   {
     type: "fill-blank",
     prompt:
-      "Complete the cue: An autoclitic is verbal behavior about ____ behavior.",
+      "Complete the definition: An autoclitic is verbal behavior about ____ behavior.",
     answer: "verbal",
     explanation:
       "An autoclitic is verbal behavior about verbal behavior, such as modifying, qualifying, or describing another verbal response.",
@@ -1946,28 +1946,23 @@ export const sectionBMasteryQuestions: QuestionContent[] = [
       "A response class includes responses that share a common function or effect, even if their forms differ.",
   },
   {
-    type: "select-all",
-    prompt: "Select all statements that correctly describe stimulus and environment.",
+    type: "scenario",
+    prompt:
+      "A BCBA identifies the classroom lights as the specific environmental event occasioning eye shielding. Which statement describes this?",
     choices: [
-      "A stimulus is a specific aspect of the environment.",
-      "The environment is the broader context in which behavior occurs.",
-      "A stimulus class may include stimuli that share a common function.",
+      "The lights are a stimulus within the broader environment.",
+      "The lights are a response class.",
+      "The environment is one specific stimulus only.",
       "A response is the same thing as a stimulus.",
     ],
-    answers: [
-      "A stimulus is a specific aspect of the environment.",
-      "The environment is the broader context in which behavior occurs.",
-      "A stimulus class may include stimuli that share a common function.",
-    ],
-    answer:
-      "A stimulus is part of the environment; environment is the broader context; stimulus classes can share function.",
+    answer: "The lights are a stimulus within the broader environment.",
     explanation:
-      "Stimulus and environment are related but not identical. A stimulus is a distinguishable part of the broader environment.",
+      "A stimulus is a distinguishable aspect of the broader environment. Stimulus and environment are related, but they are not identical.",
   },
   {
     type: "scenario",
     prompt:
-      "A clinician groups photos, toy versions, cartoons, and stuffed examples of dogs because all occasion the learner saying 'dog.' Which concept is most precise?",
+      "A clinician groups photos, toy versions, cartoons, and stuffed examples of dogs because all occasion the learner saying 'dog.' Which concept is described?",
     choices: ["Stimulus class", "Response class", "Response cost", "Operant extinction"],
     answer: "Stimulus class",
     explanation:
@@ -1976,7 +1971,7 @@ export const sectionBMasteryQuestions: QuestionContent[] = [
   {
     type: "scenario",
     prompt:
-      "A learner can tap a card, sign, or say a word to request the same item. The forms differ, but each produces the same reinforcer. Which concept is most precise?",
+      "A learner can tap a card, sign, or say a word to request the same item. The forms differ, but each produces the same reinforcer. Which concept is described?",
     choices: ["Response class", "Stimulus class", "Conditioned Stimulus (CS)", "Abolishing Operation (AO)"],
     answer: "Response class",
     explanation:
@@ -2051,32 +2046,28 @@ export const sectionBMasteryQuestions: QuestionContent[] = [
   {
     type: "fill-blank",
     prompt:
-      "Complete the technical cue: Negative means a stimulus is removed, reduced, delayed, or ____.",
+      "Complete the statement: Negative means a stimulus is removed, reduced, delayed, or ____.",
     answer: "avoided",
     explanation:
       "Negative refers to removal, reduction, delay, or avoidance of a stimulus. It does not mean bad.",
   },
   {
-    type: "select-all",
-    prompt: "Select all statements that correctly describe positive punishment.",
+    type: "scenario",
+    prompt: "Which scenario is the best example of positive punishment?",
     choices: [
-      "A stimulus is added after the response.",
-      "Future behavior decreases.",
-      "A stimulus is removed after the response.",
-      "Future behavior increases.",
+      "A reprimand is delivered after calling out, and calling out decreases.",
+      "A token is removed after calling out, and calling out decreases.",
+      "Praise is delivered after hand raising, and hand raising increases.",
+      "Noise is removed after task completion, and task completion increases.",
     ],
-    answers: [
-      "A stimulus is added after the response.",
-      "Future behavior decreases.",
-    ],
-    answer: "A stimulus is added after the response; future behavior decreases.",
+    answer: "A reprimand is delivered after calling out, and calling out decreases.",
     explanation:
-      "Positive punishment combines an added stimulus with a decrease in future responding.",
+      "Positive punishment requires an added stimulus after the response and a decrease in future responding.",
   },
   {
     type: "scenario",
     prompt:
-      "A learner leaves the table after a task is presented. The task is removed, and leaving the table increases when tasks are present. Which consequence relation is most precise?",
+      "A learner leaves the table after a task is presented. The task is removed, and leaving the table increases when tasks are present. Which consequence relation is described?",
     choices: ["Negative reinforcement through escape", "Negative punishment", "Respondent extinction", "Positive reinforcement"],
     answer: "Negative reinforcement through escape",
     explanation:
@@ -2085,7 +2076,7 @@ export const sectionBMasteryQuestions: QuestionContent[] = [
   {
     type: "scenario",
     prompt:
-      "A learner asks for a break when a timer signals math will start soon. Math is delayed, and asking for a break increases. Which relation is most precise?",
+      "A learner asks for a break when a timer signals math will start soon. Math is delayed, and asking for a break increases. Which relation is described?",
     choices: ["Negative reinforcement through avoidance", "Positive punishment", "Respondent conditioning", "S-delta"],
     answer: "Negative reinforcement through avoidance",
     explanation:
@@ -2141,7 +2132,7 @@ export const sectionBMasteryQuestions: QuestionContent[] = [
   {
     type: "scenario",
     prompt:
-      "Which option is the best cumulative discrimination across Module B concepts?",
+      "Which option best differentiates these concepts?",
     choices: [
       "An Establishing Operation changes reinforcer value; a Discriminative Stimulus signals availability; reinforcement increases future behavior.",
       "A Discriminative Stimulus changes reinforcer value; punishment always means something bad happened.",
@@ -2169,7 +2160,7 @@ export const sectionBMasteryQuestions: QuestionContent[] = [
   },
   {
     type: "matching",
-    prompt: "Match each stimulus-control term to its discrimination cue.",
+    prompt: "Match each stimulus-control term to its definition.",
     pairs: [
       {
         term: "SD (Discriminative Stimulus)",
@@ -2221,7 +2212,7 @@ export const sectionBMasteryQuestions: QuestionContent[] = [
   {
     type: "scenario",
     prompt:
-      "A behavior maintained by attention no longer produces attention, and the behavior decreases. Which process is most precise?",
+      "A behavior maintained by attention no longer produces attention, and the behavior decreases. Which process is described?",
     choices: ["Operant extinction", "Respondent extinction", "Negative punishment", "Abolishing Operation (AO)"],
     answer: "Operant extinction",
     explanation:
@@ -2230,7 +2221,7 @@ export const sectionBMasteryQuestions: QuestionContent[] = [
   {
     type: "scenario",
     prompt:
-      "A Conditioned Stimulus (CS) is repeatedly presented without the Unconditioned Stimulus (US), and the Conditioned Response (CR) weakens. Which process is most precise?",
+      "A Conditioned Stimulus (CS) is repeatedly presented without the Unconditioned Stimulus (US), and the Conditioned Response (CR) weakens. Which process is described?",
     choices: ["Respondent extinction", "Operant extinction", "Positive punishment", "Stimulus generalization"],
     answer: "Respondent extinction",
     explanation:
@@ -2278,7 +2269,7 @@ export const sectionBMasteryQuestions: QuestionContent[] = [
   {
     type: "scenario",
     prompt:
-      "A red light signals one reinforcement schedule, and a green light signals another. The schedules alternate across components. Which schedule is most precise?",
+      "A red light signals one reinforcement schedule, and a green light signals another. The schedules alternate across components. Which schedule is described?",
     choices: ["Multiple schedule", "Mixed schedule", "Concurrent schedule", "Chained schedule"],
     answer: "Multiple schedule",
     explanation:
@@ -2287,7 +2278,7 @@ export const sectionBMasteryQuestions: QuestionContent[] = [
   {
     type: "scenario",
     prompt:
-      "Two schedules alternate unpredictably, but there is no cue signaling which component is active. Which schedule is most precise?",
+      "Two schedules alternate unpredictably, but there is no signal showing which component is active. Which schedule is described?",
     choices: ["Mixed schedule", "Multiple schedule", "Concurrent schedule", "Chained schedule"],
     answer: "Mixed schedule",
     explanation:
@@ -2338,7 +2329,7 @@ export const sectionBMasteryQuestions: QuestionContent[] = [
   {
     type: "scenario",
     prompt:
-      "A learner was taught to ask for help with one teacher, then asks for help with a different teacher without direct training. Which type of behavior change is most precise?",
+      "A learner was taught to ask for help with one teacher, then asks for help with a different teacher without direct training. Which type of behavior change is described?",
     choices: ["Generalization", "Maintenance", "Matching law", "Behavioral momentum"],
     answer: "Generalization",
     explanation:
@@ -2347,7 +2338,7 @@ export const sectionBMasteryQuestions: QuestionContent[] = [
   {
     type: "scenario",
     prompt:
-      "A learner continues using a communication response six weeks after prompts and contrived reinforcement are faded. Which concept is most precise?",
+      "A learner continues using a communication response six weeks after prompts and contrived reinforcement are faded. Which concept is described?",
     choices: ["Maintenance", "Generalization", "Reflexivity", "Mixed schedule"],
     answer: "Maintenance",
     explanation:
@@ -2381,7 +2372,7 @@ export const sectionBMasteryQuestions: QuestionContent[] = [
   {
     type: "scenario",
     prompt:
-      "A learner chooses between two tasks. Most responding shifts toward the task that has produced the higher relative rate of reinforcement. Which concept is most precise?",
+      "A learner chooses between two tasks. Most responding shifts toward the task that has produced the higher relative rate of reinforcement. Which concept is described?",
     choices: ["Matching law", "Behavioral momentum", "Stimulus equivalence", "Maintenance"],
     answer: "Matching law",
     explanation:
@@ -2390,7 +2381,7 @@ export const sectionBMasteryQuestions: QuestionContent[] = [
   {
     type: "scenario",
     prompt:
-      "A teacher rapidly presents several mastered requests before presenting a difficult request to increase compliance. Which concept is most precise?",
+      "A teacher rapidly presents several mastered requests before presenting a difficult request to increase compliance. Which concept is described?",
     choices: ["Behavioral momentum", "Matching law", "Generalization", "Multiple schedule"],
     answer: "Behavioral momentum",
     explanation:
@@ -2399,7 +2390,7 @@ export const sectionBMasteryQuestions: QuestionContent[] = [
   {
     type: "scenario",
     prompt:
-      "A model touches head, and the learner immediately touches head with the same movement. Which concept is most precise?",
+      "A model touches head, and the learner immediately touches head with the same movement. Which concept is described?",
     choices: ["Imitation", "Observational learning", "Transitivity", "Chained schedule"],
     answer: "Imitation",
     explanation:
@@ -2417,7 +2408,7 @@ export const sectionBMasteryQuestions: QuestionContent[] = [
   {
     type: "scenario",
     prompt:
-      "A learner has not had attention for several minutes, says 'look at me,' and receives adult attention. Which verbal operant is most precise?",
+      "A learner has not had attention for several minutes, says 'look at me,' and receives adult attention. Which verbal operant is described?",
     choices: ["Mand", "Tact", "Echoic", "Textual"],
     answer: "Mand",
     explanation:
@@ -2426,7 +2417,7 @@ export const sectionBMasteryQuestions: QuestionContent[] = [
   {
     type: "scenario",
     prompt:
-      "A learner sees a plane overhead and says 'plane.' The response produces social acknowledgment. Which verbal operant is most precise?",
+      "A learner sees a plane overhead and says 'plane.' The response produces social acknowledgment. Which verbal operant is described?",
     choices: ["Tact", "Mand", "Intraverbal", "Transcription"],
     answer: "Tact",
     explanation:
@@ -2469,30 +2460,24 @@ export const sectionBMasteryQuestions: QuestionContent[] = [
   {
     type: "scenario",
     prompt:
-      "A child writes 'dog' while looking at the printed word dog. Which verbal relation is most precise?",
+      "A child writes 'dog' while looking at the printed word dog. Which verbal relation is described?",
     choices: ["Copying a text", "Transcription", "Textual", "Intraverbal"],
     answer: "Copying a text",
     explanation:
       "Copying a text has point-to-point correspondence and formal similarity between the written verbal stimulus and written response.",
   },
   {
-    type: "select-all",
-    prompt: "Select all examples of speaker behavior.",
+    type: "scenario",
+    prompt: "Which is the best example of listener responding rather than speaker behavior?",
     choices: [
-      "Saying 'cookie' to request a cookie",
-      "Labeling a car when seeing a car",
-      "Answering 'red' when asked 'what color is it?'",
       "Touching the cup after hearing 'touch cup'",
-    ],
-    answers: [
       "Saying 'cookie' to request a cookie",
       "Labeling a car when seeing a car",
       "Answering 'red' when asked 'what color is it?'",
     ],
-    answer:
-      "Manding, tacting, and intraverbal responding are speaker behavior; touching the cup is listener responding.",
+    answer: "Touching the cup after hearing 'touch cup'",
     explanation:
-      "Speaker behavior includes verbal operants. Listener responding is behavior controlled by another person's verbal stimulus and is not itself a speaker verbal operant.",
+      "Listener responding is behavior controlled by another person's verbal stimulus. Manding, tacting, and intraverbal responding are speaker verbal operants.",
   },
   {
     type: "sorting",

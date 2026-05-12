@@ -215,6 +215,8 @@ function SummaryCard({
 
 function TcoSectionCard({ section }: { section: TcoSection }) {
   const { progress: savedProgress } = useModuleProgress(section.slug);
+  const showDeveloperAccess =
+    process.env.NODE_ENV === "development" && section.slug === "b";
   const completed = savedProgress.masteryCompleted;
   const status = getMasteryStatus(section.progress);
   const displayedStatus = completed ? "Completed" : status;
@@ -271,6 +273,23 @@ function TcoSectionCard({ section }: { section: TcoSection }) {
       >
         {actionLabel}
       </Link>
+
+      {showDeveloperAccess ? (
+        <div className="mt-3 grid gap-2">
+          <Link
+            href="/dashboard/tco-6/b/practice"
+            className="inline-block rounded-xl border border-green-200 bg-green-50 px-5 py-3 text-center text-sm font-black text-green-700 transition hover:border-green-300 hover:bg-green-100"
+          >
+            Preview Practice Check
+          </Link>
+          <Link
+            href="/dashboard/tco-6/b/mastery-check"
+            className="inline-block rounded-xl border border-blue-200 bg-blue-50 px-5 py-3 text-center text-sm font-black text-blue-700 transition hover:border-blue-300 hover:bg-blue-100"
+          >
+            Preview Mastery Check
+          </Link>
+        </div>
+      ) : null}
     </article>
   );
 }

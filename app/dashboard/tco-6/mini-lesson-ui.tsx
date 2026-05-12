@@ -10,7 +10,11 @@ import {
 } from "@/components/learning-ui";
 import type { TcoSection } from "./data";
 import { getMiniLessons } from "./mini-lesson-data";
-import { useModuleProgress } from "./progression";
+import {
+  SaveProgressButton,
+  readSavedModuleProgress,
+  useModuleProgress,
+} from "./progression";
 import {
   type MiniLessonContent,
 } from "./section-b-content";
@@ -34,7 +38,13 @@ export function MiniLessonView({
       ? `/dashboard/tco-6/${section.slug}/learn/${lessonIndex + 2}`
       : `/dashboard/tco-6/${section.slug}/practice`;
   const { updateProgress } = useModuleProgress(section.slug);
-  const [passedLessonSlug, setPassedLessonSlug] = useState("");
+  const [passedLessonSlug, setPassedLessonSlug] = useState(() => {
+    const savedLesson = readSavedModuleProgress(section.slug).snapshots.learn;
+    return savedLesson?.lessonSlug === lesson.slug &&
+      savedLesson.completedQuestions?.includes(lesson.slug)
+      ? lesson.slug
+      : "";
+  });
   const isFinalLesson = lessonIndex + 1 >= lessons.length;
   const lessonPassed = passedLessonSlug === lesson.slug;
 
@@ -83,6 +93,17 @@ export function MiniLessonView({
       <InteractiveVisualBlock
         onPassedChange={handlePassedChange}
         visual={lesson.visual}
+      />
+
+      <SaveProgressButton
+        activity="learn"
+        completedQuestions={lessonPassed ? [lesson.slug] : []}
+        currentLocation={`/dashboard/tco-6/${section.slug}/learn/${lessonIndex + 1}`}
+        lessonSlug={lesson.slug}
+        passed={lessonPassed}
+        score={lessonPassed ? 100 : 0}
+        sectionSlug={section.slug}
+        totalQuestions={1}
       />
 
       <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">

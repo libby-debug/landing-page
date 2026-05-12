@@ -26,6 +26,7 @@ import {
   ActivityGate,
   ActivityProgressNav,
   CompleteLearnLink,
+  SaveProgressButton,
   type ActivitySlug,
 } from "../../progression";
 
@@ -125,6 +126,12 @@ function LearnView({ section }: { section: TcoSection }) {
       <h2 className={sectionTitleClass}>
         Module {section.code} learning path
       </h2>
+      <SaveProgressButton
+        activity="learn"
+        currentLocation={`/dashboard/tco-6/${section.slug}/learn`}
+        sectionSlug={section.slug}
+        totalQuestions={section.checklistItems.length}
+      />
       <div className="mt-6 grid gap-5">
         {section.checklistItems.map((item, index) => (
           <article
@@ -155,16 +162,26 @@ function PracticeView({ section }: { section: TcoSection }) {
 
   return (
     <section className={`${cardBaseClass} mt-8 w-full border-white/70 bg-white/95 text-center shadow-xl shadow-slate-900/10`}>
-      <p className={eyebrowClass}>BCBA-style practice</p>
+      <p className={eyebrowClass}>Interactive Practice</p>
 
       <h2 className={sectionTitleClass}>
-        Practice Module {section.code}
+        Module {section.code} Practice Check
       </h2>
 
       <p className="mx-auto mt-3 max-w-2xl rounded-2xl border border-blue-100 bg-blue-50 p-4 text-sm font-black text-blue-700">
-        Passing score: {masteryThreshold}%. You do not need a perfect score to
-        pass.
+        Passing score: {masteryThreshold}%.
       </p>
+
+      <SaveProgressButton
+        activity="practice"
+        currentLocation={`/dashboard/tco-6/${section.slug}/practice`}
+        sectionSlug={section.slug}
+        storageKeys={{
+          results: `aba-mastered:tco6:${section.slug}:practice-results`,
+          selectedAnswers: `aba-mastered:tco6:${section.slug}:practice-answers`,
+        }}
+        totalQuestions={practiceQuestions.length}
+      />
 
       <div className="mt-6 grid gap-6">
         {practiceQuestions.map((question, index) => (
@@ -184,13 +201,17 @@ function PracticeView({ section }: { section: TcoSection }) {
 
 function MasteryCheckView({ section }: { section: TcoSection }) {
   const masteryQuestions = getModuleContent(section.slug).masteryQuestions;
+  const masteryHeading =
+    section.code === "B"
+      ? "Module B: End of Lesson Mastery Check"
+      : `Module ${section.code} mastery`;
 
   return (
     <section className={`${cardBaseClass} mt-8 w-full border-white/70 bg-white/95 text-center shadow-xl shadow-slate-900/10`}>
       <p className={eyebrowClass}>Mastery check</p>
 
       <h2 className={sectionTitleClass}>
-        Module {section.code} mastery
+        {masteryHeading}
       </h2>
 
       <MasteryCheckQuiz

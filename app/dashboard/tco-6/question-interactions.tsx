@@ -2,7 +2,13 @@
 
 import { useMemo, useState } from "react";
 import { masteryThreshold } from "./data";
-import { useModuleProgress } from "./progression";
+import {
+  SaveProgressButton,
+  practiceAnswersKey,
+  practiceResultsKey,
+  readSavedModuleProgress,
+  useModuleProgress,
+} from "./progression";
 import type { QuestionContent } from "./section-b-content";
 
 const positiveFeedbackMessages = [
@@ -144,9 +150,19 @@ function asMultipleChoiceMasteryQuestion(question: QuestionContent) {
   };
 }
 
+function isSingleAnswerMasteryQuestion(question: QuestionContent) {
+  const prompt = question.prompt.toLowerCase();
+
+  return Boolean(question.choices?.length)
+    && question.type !== "select-all"
+    && !question.answers?.length
+    && !prompt.includes("select all")
+    && Boolean(question.choices?.includes(question.answer));
+}
+
 function getMultipleChoiceMasteryQuestions(questions: QuestionContent[]) {
   return questions
-    .filter((question) => Boolean(question.choices?.length))
+    .filter(isSingleAnswerMasteryQuestion)
     .map(asMultipleChoiceMasteryQuestion);
 }
 
@@ -171,6 +187,278 @@ function shuffleQuestions(questions: QuestionContent[], seed: number) {
     .map((item) => item.question);
 }
 
+function uniqueStringValues(values: string[]) {
+  return Array.from(new Set(values));
+}
+
+function shuffleStringValues(values: string[], seedSource: string) {
+  const uniqueValues = uniqueStringValues(values);
+  const shuffled = uniqueValues
+    .map((value, index) => ({
+      value,
+      sort: seededRandom(hashString(seedSource) + index + hashString(value)),
+    }))
+    .sort((left, right) => left.sort - right.sort)
+    .map((item) => item.value);
+  const unchanged =
+    shuffled.length > 1 &&
+    shuffled.every((value, index) => value === uniqueValues[index]);
+
+  return unchanged ? [...shuffled.slice(1), shuffled[0]] : shuffled;
+}
+
+function readStoredAnswer(sectionSlug: string, index: number) {
+  if (typeof window === "undefined") {
+    return "";
+  }
+
+  try {
+    const stored = window.localStorage.getItem(practiceAnswersKey(sectionSlug));
+    const answers = stored ? JSON.parse(stored) as Record<string, string> : {};
+    return answers[index] ?? "";
+  } catch {
+    return "";
+  }
+}
+
+function writeStoredAnswer(sectionSlug: string, index: number, value: string) {
+  if (typeof window === "undefined") {
+    return;
+  }
+
+  try {
+    const stored = window.localStorage.getItem(practiceAnswersKey(sectionSlug));
+    const answers = stored ? JSON.parse(stored) as Record<string, string> : {};
+    answers[index] = value;
+    window.localStorage.setItem(practiceAnswersKey(sectionSlug), JSON.stringify(answers));
+  } catch {
+    window.localStorage.setItem(
+      practiceAnswersKey(sectionSlug),
+      JSON.stringify({ [index]: value }),
+    );
+  }
+}
+
+type PracticeFeedbackState = {
+  answerRevealVisible: boolean;
+  feedbackState: "idle" | "correct" | "hint" | "remediation";
+  incorrectAttempts: number;
+  isCorrect: boolean;
+  submitted: boolean;
+};
+
+const emptyPracticeFeedbackState: PracticeFeedbackState = {
+  answerRevealVisible: false,
+  feedbackState: "idle",
+  incorrectAttempts: 0,
+  isCorrect: false,
+  submitted: false,
+};
+
+function practiceFeedbackKey(sectionSlug: string) {
+  return `aba-mastered:tco6:${sectionSlug}:practice-feedback`;
+}
+
+function readStoredPracticeFeedback(sectionSlug: string, index: number) {
+  if (typeof window === "undefined") {
+    return emptyPracticeFeedbackState;
+  }
+
+  try {
+    const stored = window.localStorage.getItem(practiceFeedbackKey(sectionSlug));
+    const feedback = stored
+      ? JSON.parse(stored) as Record<string, PracticeFeedbackState>
+      : {};
+    return { ...emptyPracticeFeedbackState, ...feedback[index] };
+  } catch {
+    return emptyPracticeFeedbackState;
+  }
+}
+
+function writeStoredPracticeFeedback(
+  sectionSlug: string,
+  index: number,
+  state: PracticeFeedbackState,
+) {
+  if (typeof window === "undefined") {
+    return;
+  }
+
+  try {
+    const stored = window.localStorage.getItem(practiceFeedbackKey(sectionSlug));
+    const feedback = stored
+      ? JSON.parse(stored) as Record<string, PracticeFeedbackState>
+      : {};
+    feedback[index] = state;
+    window.localStorage.setItem(practiceFeedbackKey(sectionSlug), JSON.stringify(feedback));
+  } catch {
+    window.localStorage.setItem(
+      practiceFeedbackKey(sectionSlug),
+      JSON.stringify({ [index]: state }),
+    );
+  }
+}
+
+function getPracticeRemediationDetails(question: QuestionContent) {
+  if (question.type === "matching" && question.pairs) {
+    return {
+      heading: "Correct matches:",
+      items: question.pairs.map((pair) => `${pair.term} \u2192 ${pair.definition}`),
+    };
+  }
+
+  if (question.type === "sorting" && question.items) {
+    return {
+      heading: "Correct sorting:",
+      items: question.items.map((item) => `${item.label} \u2192 ${item.category}`),
+    };
+  }
+
+  if (question.type === "select-all") {
+    return {
+      heading: "Correct selections:",
+      items: question.answers ?? [question.answer],
+    };
+  }
+
+  return undefined;
+}
+
+function getQuestionText(question: QuestionContent) {
+  return [
+    question.prompt,
+    ...(question.choices ?? []),
+    ...(question.categories ?? []),
+    ...(question.answers ?? []),
+    ...(question.pairs ?? []).flatMap((pair) => [pair.term, pair.definition]),
+    ...(question.items ?? []).flatMap((item) => [item.label, item.category]),
+  ]
+    .join(" ")
+    .toLowerCase();
+}
+
+function getConceptHint(question: QuestionContent) {
+  const text = getQuestionText(question);
+
+  if (
+    text.includes("reinforcement") ||
+    text.includes("punishment") ||
+    text.includes("escape") ||
+    text.includes("avoidance")
+  ) {
+    return "Start with the behavioral effect: did future responding increase or decrease? Then check whether the consequence added something or removed, reduced, delayed, or avoided something.";
+  }
+
+  if (
+    text.includes("motivating operation") ||
+    text.includes("establishing operation") ||
+    text.includes("abolishing operation") ||
+    text.includes("discriminative stimulus") ||
+    text.includes("s-delta")
+  ) {
+    return "Separate value from availability: one antecedent changes how effective a consequence is, while another signals whether reinforcement is available for a response.";
+  }
+
+  if (
+    text.includes("respondent") ||
+    text.includes("operant") ||
+    text.includes("conditioned stimulus") ||
+    text.includes("unconditioned stimulus") ||
+    text.includes("conditioned response")
+  ) {
+    return "Ask whether the relation is stimulus-stimulus pairing that elicits responding, or behavior selected by what happens after the response.";
+  }
+
+  if (
+    text.includes("extinction") ||
+    text.includes("spontaneous recovery") ||
+    text.includes("extinction burst")
+  ) {
+    return "Identify what previously maintained the response or reflex, then check whether that maintaining relation is discontinued.";
+  }
+
+  if (
+    text.includes("schedule") ||
+    text.includes("fixed") ||
+    text.includes("variable") ||
+    text.includes("ratio") ||
+    text.includes("interval") ||
+    text.includes("concurrent") ||
+    text.includes("multiple") ||
+    text.includes("mixed") ||
+    text.includes("chained")
+  ) {
+    return "Use the schedule cues: response count versus time, fixed versus variable, simultaneous versus alternating, signaled versus unsignaled, and ordered sequences.";
+  }
+
+  if (
+    text.includes("generalization") ||
+    text.includes("maintenance") ||
+    text.includes("setting event")
+  ) {
+    return "Check whether the behavior is occurring under new conditions, persisting over time, or being affected by broader contextual variables.";
+  }
+
+  if (
+    text.includes("matching law") ||
+    text.includes("behavioral momentum") ||
+    text.includes("imitation") ||
+    text.includes("observational learning")
+  ) {
+    return "Look at the relation being tested: response allocation across alternatives, high-probability request sequences, formal similarity, or learning after observing a model and consequences.";
+  }
+
+  if (
+    text.includes("mand") ||
+    text.includes("tact") ||
+    text.includes("echoic") ||
+    text.includes("intraverbal") ||
+    text.includes("textual") ||
+    text.includes("transcription") ||
+    text.includes("listener responding") ||
+    text.includes("autoclitic") ||
+    text.includes("multiple control")
+  ) {
+    return "For verbal behavior, compare the controlling variable: motivation and specific reinforcement, nonverbal stimuli, verbal stimuli, point-to-point correspondence, formal similarity, or listener action.";
+  }
+
+  if (
+    text.includes("behavior") ||
+    text.includes("response") ||
+    text.includes("response class") ||
+    text.includes("stimulus") ||
+    text.includes("stimulus class")
+  ) {
+    return "Decide whether the question is asking about organism activity, one instance of that activity, a group of responses, one environmental event, or a group of stimuli.";
+  }
+
+  if (question.type === "matching") {
+    return "Compare the critical feature in each prompt with the critical feature in each definition before matching them.";
+  }
+
+  if (question.type === "sorting") {
+    return "Compare the categories first, then sort each example by the feature that makes the categories different.";
+  }
+
+  if (question.type === "select-all") {
+    return "Check each option independently and ask whether it meets every part of the question.";
+  }
+
+  if (question.type === "fill-blank") {
+    return "Focus on the missing discriminating cue instead of the surrounding sentence.";
+  }
+
+  if (question.type === "true-false") {
+    return "Check whether every part of the statement is accurate, not just the first familiar term.";
+  }
+
+  if (question.type === "scenario") {
+    return "Focus on the controlling variable, what happens before the behavior, and what happens after the behavior.";
+  }
+
+  return "Compare the answer choices by their critical differences before choosing the most accurate option.";
+}
+
 function QuestionResponseInput({
   disabled = false,
   name,
@@ -184,6 +472,17 @@ function QuestionResponseInput({
   question: QuestionContent;
   response: string;
 }) {
+  const matchingDefinitions = useMemo(
+    () =>
+      question.pairs
+        ? shuffleStringValues(
+            question.pairs.map((pair) => pair.definition),
+            question.prompt,
+          )
+        : [],
+    [question.pairs, question.prompt],
+  );
+
   if (question.type === "fill-blank") {
     return (
       <input
@@ -198,7 +497,6 @@ function QuestionResponseInput({
 
   if (question.type === "matching" && question.pairs) {
     const record = parseRecordResponse(response);
-    const definitions = question.pairs.map((pair) => pair.definition);
 
     return (
       <div className="mt-5 grid gap-3">
@@ -217,7 +515,7 @@ function QuestionResponseInput({
               value={record[pair.term] ?? ""}
             >
               <option value="">Choose match</option>
-              {definitions.map((definition) => (
+              {matchingDefinitions.map((definition) => (
                 <option key={definition} value={definition}>
                   {definition}
                 </option>
@@ -329,8 +627,23 @@ export function PracticeQuestionCard({
   sectionSlug: string;
   totalQuestions?: number;
 }) {
-  const [response, setResponse] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+  const [response, setResponse] = useState(() =>
+    mode === "practice" ? readStoredAnswer(sectionSlug, index) : "",
+  );
+  const [submitted, setSubmitted] = useState(() => {
+    if (mode !== "practice") {
+      return false;
+    }
+
+    const savedAnswer = readStoredAnswer(sectionSlug, index);
+    const savedFeedback = readStoredPracticeFeedback(sectionSlug, index);
+    return Boolean(savedAnswer && savedFeedback.submitted);
+  });
+  const [incorrectAttempts, setIncorrectAttempts] = useState(() =>
+    mode === "practice"
+      ? readStoredPracticeFeedback(sectionSlug, index).incorrectAttempts
+      : 0,
+  );
   const { updateProgress } = useModuleProgress(sectionSlug);
   const answered = isAnswered(question, response);
   const correct = isCorrect(question, response);
@@ -340,7 +653,7 @@ export function PracticeQuestionCard({
       return;
     }
 
-    const key = `aba-mastered:tco6:${sectionSlug}:practice-results`;
+    const key = practiceResultsKey(sectionSlug);
     const stored = window.localStorage.getItem(key);
     const results = stored ? JSON.parse(stored) as Record<string, boolean> : {};
     results[index] = result;
@@ -370,6 +683,13 @@ export function PracticeQuestionCard({
         name={`${mode}-${sectionSlug}-${index}`}
         onChange={(value) => {
           setResponse(value);
+          if (mode === "practice") {
+            writeStoredAnswer(sectionSlug, index, value);
+            writeStoredPracticeFeedback(sectionSlug, index, {
+              ...emptyPracticeFeedbackState,
+              incorrectAttempts,
+            });
+          }
           setSubmitted(false);
           updatePracticeResult(false);
         }}
@@ -382,7 +702,30 @@ export function PracticeQuestionCard({
         className="mt-5 rounded-xl bg-slate-950 px-5 py-3 text-sm font-black text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
         disabled={!answered}
         onClick={() => {
+          const nextIncorrectAttempts =
+            mode === "practice" && !correct
+              ? incorrectAttempts + 1
+              : incorrectAttempts;
+          const answerRevealVisible =
+            mode === "practice" && !correct && nextIncorrectAttempts >= 4;
+
           setSubmitted(true);
+          if (mode === "practice" && !correct) {
+            setIncorrectAttempts(nextIncorrectAttempts);
+          }
+          if (mode === "practice") {
+            writeStoredPracticeFeedback(sectionSlug, index, {
+              answerRevealVisible,
+              feedbackState: correct
+                ? "correct"
+                : answerRevealVisible
+                  ? "remediation"
+                  : "hint",
+              incorrectAttempts: nextIncorrectAttempts,
+              isCorrect: correct,
+              submitted: true,
+            });
+          }
           updatePracticeResult(correct);
         }}
       >
@@ -393,8 +736,14 @@ export function PracticeQuestionCard({
         <AnswerFeedback
           correctAnswer={question.answer}
           explanation={question.explanation}
+          hint={mode === "practice" ? getConceptHint(question) : undefined}
+          incorrectAttempts={mode === "practice" ? incorrectAttempts : 0}
           isCorrect={correct}
           message={getPositiveFeedback(index)}
+          remediationDetails={
+            mode === "practice" ? getPracticeRemediationDetails(question) : undefined
+          }
+          revealIncorrectAnswer={mode === "practice" && incorrectAttempts >= 4}
         />
       ) : null}
     </article>
@@ -443,8 +792,15 @@ export function MasteryCheckQuiz({
   sectionCode: string;
   sectionSlug: string;
 }) {
-  const [responses, setResponses] = useState<Record<number, string>>({});
-  const [completed, setCompleted] = useState(false);
+  const savedMasterySnapshot =
+    readSavedModuleProgress(sectionSlug).snapshots["mastery-check"];
+  const [responses, setResponses] = useState<Record<number, string>>(() =>
+    savedMasterySnapshot?.selectedAnswers ?? {},
+  );
+  const [incorrectAttempts, setIncorrectAttempts] = useState<Record<number, number>>({});
+  const [completed, setCompleted] = useState(() =>
+    Boolean(savedMasterySnapshot?.submitted),
+  );
   const [attemptKey, setAttemptKey] = useState(0);
   const multipleChoiceQuestions = useMemo(
     () => getMultipleChoiceMasteryQuestions(questions),
@@ -489,10 +845,20 @@ export function MasteryCheckQuiz({
   function retry() {
     setAttemptKey((current) => current + 1);
     setResponses({});
+    setIncorrectAttempts({});
     setCompleted(false);
   }
 
   function submitMasteryCheck() {
+    setIncorrectAttempts((current) => {
+      const next = { ...current };
+      displayQuestions.forEach((question, index) => {
+        if (!isCorrect(question, responses[index] ?? "")) {
+          next[index] = (next[index] ?? 0) + 1;
+        }
+      });
+      return next;
+    });
     setCompleted(true);
 
     if (passed) {
@@ -510,10 +876,23 @@ export function MasteryCheckQuiz({
           Complete the multiple-choice questions, then submit your mastery
           check. Passing score: {masteryThreshold}% for Module {sectionCode}.
         </p>
-        <p className="mt-2 text-sm font-black text-blue-700">
-          You do not need a perfect score to pass.
-        </p>
       </div>
+
+      <SaveProgressButton
+        activity="mastery-check"
+        completedQuestions={Object.entries(responses)
+          .filter(([, response]) => response.length > 0)
+          .map(([index]) => index)}
+        currentLocation={`/dashboard/tco-6/${sectionSlug}/mastery-check`}
+        passed={completed ? passed : undefined}
+        score={score}
+        sectionSlug={sectionSlug}
+        selectedAnswers={Object.fromEntries(
+          Object.entries(responses).map(([index, response]) => [index, response]),
+        )}
+        submitted={completed}
+        totalQuestions={displayQuestions.length}
+      />
 
       {displayQuestions.map((question, index) => (
         <article
@@ -529,7 +908,7 @@ export function MasteryCheckQuiz({
           </h3>
 
           <QuestionResponseInput
-            disabled={completed}
+            disabled={completed && isCorrect(question, responses[index] ?? "")}
             name={`mastery-${sectionCode}-${index}`}
             onChange={(value) => updateAnswer(index, value)}
             question={question}
@@ -540,8 +919,11 @@ export function MasteryCheckQuiz({
             <AnswerFeedback
               correctAnswer={question.answer}
               explanation={question.explanation}
+              hint={getConceptHint(question)}
+              incorrectAttempts={incorrectAttempts[index] ?? 0}
               isCorrect={isCorrect(question, responses[index] ?? "")}
               message={getPositiveFeedback(index)}
+              revealIncorrectAnswer={(incorrectAttempts[index] ?? 0) >= 4}
             />
           ) : null}
         </article>
@@ -569,7 +951,7 @@ export function MasteryCheckQuiz({
         ) : (
           <p className="text-base font-black text-slate-950">
             Score will appear after final submission. Passing score:{" "}
-            {masteryThreshold}%. You do not need a perfect score to pass.
+            {masteryThreshold}%.
           </p>
         )}
 
@@ -601,35 +983,78 @@ export function MasteryCheckQuiz({
 function AnswerFeedback({
   correctAnswer,
   explanation,
+  hint,
+  incorrectAttempts = 0,
   isCorrect,
   message,
+  remediationDetails,
+  revealIncorrectAnswer = false,
 }: {
   correctAnswer: string;
   explanation: string;
+  hint?: string;
+  incorrectAttempts?: number;
   isCorrect: boolean;
   message: string;
+  remediationDetails?: {
+    heading: string;
+    items: string[];
+  };
+  revealIncorrectAnswer?: boolean;
 }) {
+  const showRemediation = !isCorrect && revealIncorrectAnswer;
+
   return (
     <div
       className={`mt-5 rounded-2xl border p-4 text-center ${
         isCorrect
           ? "border-green-200 bg-green-50"
+          : showRemediation
+            ? "border-amber-200 bg-amber-50"
           : "border-pink-200 bg-pink-50"
       }`}
     >
       <p
         className={`text-sm font-black uppercase tracking-wide ${
-          isCorrect ? "text-green-700" : "text-pink-700"
+          isCorrect
+            ? "text-green-700"
+            : showRemediation
+              ? "text-amber-700"
+              : "text-pink-700"
         }`}
       >
-        {isCorrect ? message : "Incorrect"}
+        {isCorrect
+          ? message
+          : showRemediation
+            ? "Review Topic in Learning Modules"
+            : "Not quite"}
       </p>
-      <p className="mt-2 text-sm font-black text-slate-950">
-        Correct answer: {correctAnswer}
-      </p>
+      {showRemediation && remediationDetails ? (
+        <div className="mx-auto mt-3 max-w-2xl rounded-2xl border border-amber-200 bg-white/70 p-4 text-left">
+          <p className="text-sm font-black text-slate-950">
+            {remediationDetails.heading}
+          </p>
+          <ul className="mt-2 space-y-2 text-sm font-semibold leading-6 text-slate-950">
+            {remediationDetails.items.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+      ) : isCorrect || showRemediation ? (
+        <p className="mt-2 text-sm font-black text-slate-950">
+          Correct answer: {correctAnswer}
+        </p>
+      ) : null}
       <p className="mt-2 text-sm font-semibold leading-6 text-slate-950">
-        {explanation}
+        {isCorrect || showRemediation
+          ? explanation
+          : `Hint: ${hint ?? explanation}`}
       </p>
+      {!isCorrect && !showRemediation && incorrectAttempts > 0 ? (
+        <p className="mt-2 text-xs font-bold uppercase tracking-wide text-pink-700">
+          Incorrect attempt {incorrectAttempts} of 4
+        </p>
+      ) : null}
     </div>
   );
 }

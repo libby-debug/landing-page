@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
 import { useEffect, useState } from "react";
 import { masteryThreshold, miniLessonMasteryThreshold } from "./data";
@@ -13,6 +14,27 @@ export type ModuleProgress = {
 
 export type ActivitySlug = "learn" | "practice" | "mastery-check";
 
+export type SavedProgressSnapshot = {
+  activity: string;
+  completedQuestions?: string[];
+  currentLocation: string;
+  lessonSlug?: string;
+  masteryProgress?: ModuleProgress;
+  passed?: boolean;
+  score?: number;
+  selectedAnswers?: Record<string, string>;
+  submitted?: boolean;
+  totalQuestions?: number;
+  updatedAt: string;
+};
+
+export type SavedModuleProgress = {
+  currentLocation?: string;
+  masteryProgress: ModuleProgress;
+  snapshots: Record<string, SavedProgressSnapshot>;
+  updatedAt: string;
+};
+
 const emptyProgress: ModuleProgress = {
   learnCompleted: false,
   practiceCompleted: false,
@@ -21,6 +43,31 @@ const emptyProgress: ModuleProgress = {
 
 function progressKey(sectionSlug: string) {
   return `aba-mastered:tco6:${sectionSlug}:progress`;
+}
+
+function savedProgressKey(sectionSlug: string) {
+  return `aba-mastered:tco6:${sectionSlug}:saved-progress`;
+}
+
+export function practiceAnswersKey(sectionSlug: string) {
+  return `aba-mastered:tco6:${sectionSlug}:practice-answers`;
+}
+
+export function practiceResultsKey(sectionSlug: string) {
+  return `aba-mastered:tco6:${sectionSlug}:practice-results`;
+}
+
+function safeReadRecord(key?: string) {
+  if (!key || typeof window === "undefined") {
+    return {};
+  }
+
+  try {
+    const stored = window.localStorage.getItem(key);
+    return stored ? JSON.parse(stored) as Record<string, string | boolean> : {};
+  } catch {
+    return {};
+  }
 }
 
 function readProgress(sectionSlug: string): ModuleProgress {
@@ -45,6 +92,60 @@ function writeProgress(sectionSlug: string, progress: ModuleProgress) {
       detail: { sectionSlug, progress },
     }),
   );
+}
+
+export function readSavedModuleProgress(sectionSlug: string): SavedModuleProgress {
+  const fallback: SavedModuleProgress = {
+    masteryProgress: readProgress(sectionSlug),
+    snapshots: {},
+    updatedAt: "",
+  };
+
+  if (typeof window === "undefined") {
+    return fallback;
+  }
+
+  try {
+    const stored = window.localStorage.getItem(savedProgressKey(sectionSlug));
+    return stored
+      ? { ...fallback, ...JSON.parse(stored) }
+      : fallback;
+  } catch {
+    return fallback;
+  }
+}
+
+export function saveModuleProgressSnapshot(
+  sectionSlug: string,
+  snapshot: Omit<SavedProgressSnapshot, "masteryProgress" | "updatedAt">,
+) {
+  const updatedAt = new Date().toISOString();
+  const previous = readSavedModuleProgress(sectionSlug);
+  const masteryProgress = readProgress(sectionSlug);
+  const nextSnapshot: SavedProgressSnapshot = {
+    ...snapshot,
+    masteryProgress,
+    updatedAt,
+  };
+  const nextState: SavedModuleProgress = {
+    ...previous,
+    currentLocation: snapshot.currentLocation,
+    masteryProgress,
+    snapshots: {
+      ...previous.snapshots,
+      [snapshot.activity]: nextSnapshot,
+    },
+    updatedAt,
+  };
+
+  window.localStorage.setItem(savedProgressKey(sectionSlug), JSON.stringify(nextState));
+  window.dispatchEvent(
+    new CustomEvent("aba-mastered-progress-saved", {
+      detail: { sectionSlug, savedProgress: nextState },
+    }),
+  );
+
+  return nextState;
 }
 
 export function useModuleProgress(sectionSlug: string) {
@@ -93,6 +194,17 @@ export function isActivityUnlocked(
   return progress.learnCompleted && progress.practiceCompleted;
 }
 
+function hasDeveloperPreviewAccess(
+  activity: ActivitySlug,
+  sectionSlug: string,
+) {
+  return (
+    process.env.NODE_ENV === "development" &&
+    sectionSlug === "b" &&
+    (activity === "practice" || activity === "mastery-check")
+  );
+}
+
 export function ActivityProgressNav({
   activeActivity,
   sectionSlug,
@@ -126,7 +238,9 @@ export function ActivityProgressNav({
   return (
     <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
       {items.map((item) => {
-        const unlocked = isActivityUnlocked(item.activity, progress);
+        const unlocked =
+          isActivityUnlocked(item.activity, progress) ||
+          hasDeveloperPreviewAccess(item.activity, sectionSlug);
         const active = item.activity === activeActivity;
         const baseClass =
           "rounded-xl border px-4 py-2 text-sm font-black shadow-sm transition";
@@ -176,7 +290,9 @@ export function ActivityGate({
   sectionSlug: string;
 }) {
   const { progress } = useModuleProgress(sectionSlug);
-  const unlocked = isActivityUnlocked(activity, progress);
+  const unlocked =
+    isActivityUnlocked(activity, progress) ||
+    hasDeveloperPreviewAccess(activity, sectionSlug);
 
   if (!unlocked && activity !== "learn") {
     return <LockedActivityCard activity={activity} />;
@@ -193,7 +309,7 @@ export function LockedActivityCard({
   const requirement =
     activity === "practice"
       ? `Complete Learn with ${miniLessonMasteryThreshold}% correct to unlock Practice.`
-      : `Complete Practice with ${masteryThreshold}% or higher to unlock Mastery Check. You do not need a perfect score to pass Practice.`;
+      : `Complete Practice with ${masteryThreshold}% or higher to unlock Mastery Check.`;
 
   return (
     <section className="mt-8 w-full rounded-3xl border border-slate-200 bg-slate-50 p-8 text-center shadow-sm">
@@ -235,5 +351,89 @@ export function CompletePracticeLink({ sectionSlug }: { sectionSlug: string }) {
     >
       Complete Practice and Unlock Mastery Check
     </Link>
+  );
+}
+
+export function SaveProgressButton({
+  activity,
+  completedQuestions,
+  currentLocation,
+  lessonSlug,
+  passed,
+  score,
+  sectionSlug,
+  selectedAnswers,
+  storageKeys,
+  submitted,
+  totalQuestions,
+}: {
+  activity: string;
+  completedQuestions?: string[];
+  currentLocation?: string;
+  lessonSlug?: string;
+  passed?: boolean;
+  score?: number;
+  sectionSlug: string;
+  selectedAnswers?: Record<string, string>;
+  storageKeys?: {
+    selectedAnswers?: string;
+    results?: string;
+  };
+  submitted?: boolean;
+  totalQuestions?: number;
+}) {
+  const pathname = usePathname();
+  const [message, setMessage] = useState("");
+
+  function saveProgress() {
+    const storedAnswers = safeReadRecord(storageKeys?.selectedAnswers);
+    const storedResults = safeReadRecord(storageKeys?.results);
+    const resultValues = Object.values(storedResults);
+    const correctCount = resultValues.filter(Boolean).length;
+    const resolvedScore =
+      score ??
+      (totalQuestions && resultValues.length > 0
+        ? Math.round((correctCount / totalQuestions) * 100)
+        : undefined);
+    const resolvedCompletedQuestions =
+      completedQuestions ??
+      Object.entries(storedResults)
+        .filter(([, value]) => Boolean(value))
+        .map(([key]) => key);
+
+    saveModuleProgressSnapshot(sectionSlug, {
+      activity,
+      completedQuestions: resolvedCompletedQuestions,
+      currentLocation: currentLocation ?? pathname,
+      lessonSlug,
+      passed,
+      score: resolvedScore,
+      selectedAnswers:
+        selectedAnswers ?? Object.fromEntries(
+          Object.entries(storedAnswers).map(([key, value]) => [key, String(value)]),
+        ),
+      submitted,
+      totalQuestions,
+    });
+
+    setMessage("Progress saved.");
+    window.setTimeout(() => setMessage(""), 2200);
+  }
+
+  return (
+    <div className="mt-6 flex flex-col items-center justify-center gap-2 text-center">
+      <button
+        type="button"
+        onClick={saveProgress}
+        className="rounded-xl border border-green-300 bg-green-600 px-6 py-3 text-sm font-black text-white shadow-sm shadow-green-100 transition hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2"
+      >
+        Save Progress
+      </button>
+      {message ? (
+        <p className="rounded-2xl border border-green-200 bg-green-50 px-4 py-2 text-sm font-black text-green-700">
+          {message}
+        </p>
+      ) : null}
+    </div>
   );
 }

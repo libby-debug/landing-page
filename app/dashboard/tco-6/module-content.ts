@@ -11,6 +11,25 @@ type ModuleContent = {
   masteryQuestions: QuestionContent[];
 };
 
+function replaceSortingPracticeQuestions(questions: QuestionContent[]) {
+  return questions.map((question) => {
+    if (question.type !== "sorting" || !question.items?.length) {
+      return question;
+    }
+
+    return {
+      type: "matching" as const,
+      prompt: "Match each item to the correct category.",
+      pairs: question.items.map((item) => ({
+        term: item.label,
+        definition: item.category,
+      })),
+      answer: question.answer,
+      explanation: question.explanation,
+    };
+  });
+}
+
 const sectionAMiniLessons: MiniLessonContent[] = [
   {
     slug: "description-prediction-control",
@@ -36,7 +55,7 @@ const sectionAMiniLessons: MiniLessonContent[] = [
     ],
     visual: {
       type: "matching",
-      prompt: "Match each assumption to the discrimination cue.",
+      prompt: "Match each assumption to its key distinction.",
       pairs: [
         { term: "Determinism", definition: "Behavior is lawful." },
         { term: "Empiricism", definition: "Use objective observation." },
@@ -216,7 +235,7 @@ const sectionDMiniLessons: MiniLessonContent[] = [
     ],
     visual: {
       type: "matching",
-      prompt: "Match each design to its fastest cue.",
+      prompt: "Match each design to its key distinction.",
       pairs: [
         { term: "Reversal", definition: "Return to baseline or previous condition." },
         { term: "Multiple baseline", definition: "Stagger intervention across tiers." },
@@ -322,7 +341,7 @@ const sectionFMiniLessons: MiniLessonContent[] = [
     ],
     visual: {
       type: "matching",
-      prompt: "Match preference assessment formats to their cues.",
+      prompt: "Match preference assessment formats to their definitions.",
       pairs: [
         { term: "Paired stimulus", definition: "Choose between two items at a time." },
         { term: "MSWO", definition: "Choose from an array, then remove selected item." },
@@ -379,7 +398,7 @@ const sectionGMiniLessons: MiniLessonContent[] = [
     title: "Differential reinforcement",
     body: [
       "Differential reinforcement reinforces [one response pattern] while another response pattern contacts extinction or less reinforcement.",
-      "The discrimination cue is what response, rate, or absence produces reinforcement.",
+      "The key distinction is what response, rate, or absence produces reinforcement.",
     ],
     visual: {
       type: "matching",
@@ -564,13 +583,13 @@ const moduleContent: Record<string, ModuleContent> = {
     practiceQuestions: [
       {
         type: "matching",
-        prompt: "Match each philosophical assumption to its discrimination cue.",
+        prompt: "Match each philosophical assumption to its key distinction.",
         pairs: [
           { term: "Selectionism", definition: "Behavior is shaped across consequences and history." },
           { term: "Empiricism", definition: "Knowledge comes from objective observation." },
           { term: "Parsimony", definition: "Start with the simplest adequate explanation." },
         ],
-        answer: "All terms matched to their correct cues",
+        answer: "All terms matched to their definitions",
         explanation:
           "These assumptions guide behavior analysts toward environmental, observable, and useful explanations.",
       },
@@ -593,7 +612,7 @@ const moduleContent: Record<string, ModuleContent> = {
           { label: "Improves client quality of life", category: "Applied" },
           { label: "Uses precise implementation steps", category: "Technological" },
         ],
-        answer: "All cues sorted correctly",
+        answer: "All descriptions sorted correctly",
         explanation:
           "Applied focuses on social significance. Technological focuses on clear, replicable procedures.",
       },
@@ -613,7 +632,7 @@ const moduleContent: Record<string, ModuleContent> = {
       },
       {
         type: "fill-blank",
-        prompt: "Complete the cue: Empiricism means decisions are based on ____.",
+        prompt: "Complete the statement: Empiricism means decisions are based on ____.",
         answer: "observation",
         explanation:
           "Empiricism means relying on objective observation and data rather than opinion or assumption.",
@@ -724,7 +743,7 @@ const moduleContent: Record<string, ModuleContent> = {
       },
       {
         type: "matching",
-        prompt: "Match each single-subject design to its cue.",
+        prompt: "Match each single-subject design to its definition.",
         pairs: [
           { term: "Reversal", definition: "Baseline and intervention conditions repeat." },
           { term: "Multiple baseline", definition: "Intervention starts at different times across tiers." },
@@ -765,7 +784,7 @@ const moduleContent: Record<string, ModuleContent> = {
       },
       {
         type: "fill-blank",
-        prompt: "Complete the cue: IV is changed by the analyst; DV is the behavior being ____.",
+        prompt: "Complete the statement: IV is changed by the analyst; DV is the behavior being ____.",
         answer: "measured",
         explanation:
           "The dependent variable is the measured behavior that may change as a function of the independent variable.",
@@ -809,7 +828,7 @@ const moduleContent: Record<string, ModuleContent> = {
       },
       {
         type: "fill-blank",
-        prompt: "Complete the cue: Cultural humility requires ongoing self-____.",
+        prompt: "Complete the statement: Cultural humility requires ongoing self-____.",
         answer: "reflection",
         explanation:
           "Cultural humility involves ongoing self-reflection, learning, and responsiveness to the client context.",
@@ -846,7 +865,7 @@ const moduleContent: Record<string, ModuleContent> = {
       },
       {
         type: "matching",
-        prompt: "Match each ethics term to its cue.",
+        prompt: "Match each ethics term to its definition.",
         pairs: [
           { term: "Competence", definition: "Practice within training and experience." },
           { term: "Confidentiality", definition: "Protect identifying information." },
@@ -854,7 +873,7 @@ const moduleContent: Record<string, ModuleContent> = {
         ],
         answer: "All ethics terms matched correctly",
         explanation:
-          "These cues help discriminate common ethics concepts on exam scenarios.",
+          "These definitions help discriminate common ethics concepts on exam scenarios.",
       },
     ],
   },
@@ -872,7 +891,7 @@ const moduleContent: Record<string, ModuleContent> = {
       },
       {
         type: "matching",
-        prompt: "Match the function cue to the maintaining reinforcer.",
+        prompt: "Match each function to the maintaining reinforcer.",
         pairs: [
           { term: "Attention", definition: "Social interaction follows behavior." },
           { term: "Escape", definition: "Demands are removed or delayed." },
@@ -929,7 +948,7 @@ const moduleContent: Record<string, ModuleContent> = {
       },
       {
         type: "fill-blank",
-        prompt: "Complete the cue: Functional analysis tests function by manipulating ____.",
+        prompt: "Complete the statement: Functional analysis tests function by manipulating ____.",
         answer: "conditions",
         explanation:
           "Functional analysis manipulates antecedent and consequence conditions to test behavioral function.",
@@ -941,7 +960,7 @@ const moduleContent: Record<string, ModuleContent> = {
     practiceQuestions: [
       {
         type: "matching",
-        prompt: "Match each differential reinforcement procedure to its cue.",
+        prompt: "Match each differential reinforcement procedure to its definition.",
         pairs: [
           { term: "DRA", definition: "Alternative behavior reinforced." },
           { term: "DRI", definition: "Incompatible behavior reinforced." },
@@ -956,7 +975,7 @@ const moduleContent: Record<string, ModuleContent> = {
       {
         type: "scenario",
         prompt:
-          "A learner receives reinforcement for asking for help instead of tearing worksheets. Which procedure is most precise?",
+          "A learner receives reinforcement for asking for help instead of tearing worksheets. Which procedure is described?",
         choices: ["DRA", "DRO", "DRL", "DRH"],
         answer: "DRA",
         explanation:
@@ -1003,7 +1022,7 @@ const moduleContent: Record<string, ModuleContent> = {
       },
       {
         type: "fill-blank",
-        prompt: "Complete the cue: Shaping reinforces successive ____.",
+        prompt: "Complete the statement: Shaping reinforces successive ____.",
         answer: "approximations",
         explanation:
           "Shaping reinforces successive approximations toward a terminal response.",
@@ -1038,7 +1057,7 @@ const moduleContent: Record<string, ModuleContent> = {
       },
       {
         type: "matching",
-        prompt: "Match implementation terms to their cues.",
+        prompt: "Match implementation terms to their definitions.",
         pairs: [
           { term: "Treatment integrity", definition: "Plan implemented as written." },
           { term: "Effectiveness", definition: "Behavior changes meaningfully." },
@@ -1074,7 +1093,7 @@ const moduleContent: Record<string, ModuleContent> = {
       },
       {
         type: "fill-blank",
-        prompt: "Complete the cue: Integrity asks whether the intervention was implemented as ____.",
+        prompt: "Complete the statement: Integrity asks whether the intervention was implemented as ____.",
         answer: "planned",
         explanation:
           "Treatment integrity measures whether procedures were implemented as planned or written.",
@@ -1086,7 +1105,7 @@ const moduleContent: Record<string, ModuleContent> = {
     practiceQuestions: [
       {
         type: "matching",
-        prompt: "Match BST components to their cues.",
+        prompt: "Match BST components to their definitions.",
         pairs: [
           { term: "Instructions", definition: "Tell what to do." },
           { term: "Modeling", definition: "Show what to do." },
@@ -1100,7 +1119,7 @@ const moduleContent: Record<string, ModuleContent> = {
       {
         type: "scenario",
         prompt:
-          "A supervisee knows how to run preference assessments but does not do them because materials are unavailable. What is the best cue?",
+          "A supervisee knows how to run preference assessments but does not do them because materials are unavailable. What is the best description?",
         choices: ["Performance deficit", "Skill deficit", "Respondent extinction", "Negative punishment"],
         answer: "Performance deficit",
         explanation:
@@ -1145,7 +1164,7 @@ const moduleContent: Record<string, ModuleContent> = {
       },
       {
         type: "fill-blank",
-        prompt: "Complete the cue: Function-based supervision analyzes antecedents and ____ for supervisee behavior.",
+        prompt: "Complete the statement: Function-based supervision analyzes antecedents and ____ for supervisee behavior.",
         answer: "consequences",
         explanation:
           "Function-based supervision uses behavior-environment relations to improve supervisee performance.",
@@ -1155,9 +1174,18 @@ const moduleContent: Record<string, ModuleContent> = {
 };
 
 export function getModuleContent(sectionSlug: string) {
-  return moduleContent[sectionSlug] ?? {
-    miniLessons: [],
-    practiceQuestions: [],
-    masteryQuestions: [],
+  const content = moduleContent[sectionSlug];
+
+  if (!content) {
+    return {
+      miniLessons: [],
+      practiceQuestions: [],
+      masteryQuestions: [],
+    };
+  }
+
+  return {
+    ...content,
+    practiceQuestions: replaceSortingPracticeQuestions(content.practiceQuestions),
   };
 }

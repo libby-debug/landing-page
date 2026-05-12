@@ -7,6 +7,7 @@ import {
   sectionTitleClass,
 } from "@/components/learning-ui";
 import { supabase } from "@/lib/supabase";
+import { SaveProgressButton } from "../../../dashboard/tco-6/progression";
 
 const questions = [
   {
@@ -54,6 +55,8 @@ const questions = [
 export default function DifferentialReinforcementQuizPage() {
   const [current, setCurrent] = useState(0);
   const [selected, setSelected] = useState("");
+  const [answers, setAnswers] = useState<Record<number, string>>({});
+  const [incorrectAttempts, setIncorrectAttempts] = useState<Record<number, number>>({});
   const [score, setScore] = useState(0);
   const [answered, setAnswered] = useState(false);
   const [saveMessage, setSaveMessage] = useState("");
@@ -106,17 +109,38 @@ export default function DifferentialReinforcementQuizPage() {
     if (answered) return;
 
     setSelected(choice);
+    setAnswers((currentAnswers) => ({
+      ...currentAnswers,
+      [current]: choice,
+    }));
     setAnswered(true);
 
     if (choice === question.answer) {
       setScore(score + 1);
+    } else {
+      setIncorrectAttempts((currentAttempts) => ({
+        ...currentAttempts,
+        [current]: (currentAttempts[current] ?? 0) + 1,
+      }));
     }
   }
 
   function nextQuestion() {
     setSelected("");
+    setAnswers({});
     setAnswered(false);
+    setIncorrectAttempts((currentAttempts) => {
+      const next = { ...currentAttempts };
+      delete next[current];
+      return next;
+    });
     setCurrent(current + 1);
+  }
+
+  function tryAgain() {
+    setSelected("");
+    setAnswers({});
+    setAnswered(false);
   }
 
   function restartQuiz() {
@@ -124,6 +148,7 @@ export default function DifferentialReinforcementQuizPage() {
     setCurrent(0);
     setSelected("");
     setAnswered(false);
+    setIncorrectAttempts({});
     setScore(0);
     setSaveMessage("");
   }
@@ -143,6 +168,22 @@ export default function DifferentialReinforcementQuizPage() {
           Mixed practice across DRA, DRI, DRO, DRL, and DRH. Score 90% or higher
           to master this module.
         </p>
+
+        <SaveProgressButton
+          activity="mastery-quiz"
+          completedQuestions={Array.from({ length: current }, (_, index) =>
+            String(index),
+          )}
+          currentLocation="/modules/differential-reinforcement/quiz"
+          passed={isFinished ? mastery : undefined}
+          score={percent}
+          sectionSlug="differential-reinforcement"
+          selectedAnswers={Object.fromEntries(
+            Object.entries(answers).map(([index, answer]) => [index, answer]),
+          )}
+          submitted={isFinished}
+          totalQuestions={questions.length}
+        />
 
         <section className="mt-10 rounded-3xl border bg-white p-6 shadow-sm">
           {!isFinished ? (
@@ -177,8 +218,11 @@ export default function DifferentialReinforcementQuizPage() {
 
               <div className="mt-6 grid gap-3 md:grid-cols-2">
                 {question.choices.map((choice) => {
-                  const isCorrect = choice === question.answer;
                   const isSelected = selected === choice;
+                  const isSelectedCorrect =
+                    answered && isSelected && choice === question.answer;
+                  const isSelectedIncorrect =
+                    answered && isSelected && choice !== question.answer;
 
                   let buttonStyle =
                     "rounded-xl border px-4 py-3 text-left font-bold transition-all ";
@@ -186,10 +230,10 @@ export default function DifferentialReinforcementQuizPage() {
                   if (!answered) {
                     buttonStyle +=
                       "bg-slate-50 text-slate-800 hover:bg-blue-50 hover:text-blue-700";
-                  } else if (isCorrect) {
+                  } else if (isSelectedCorrect) {
                     buttonStyle +=
                       "bg-green-100 border-green-400 text-green-700";
-                  } else if (isSelected) {
+                  } else if (isSelectedIncorrect) {
                     buttonStyle +=
                       "bg-red-100 border-red-400 text-red-700";
                   } else {
@@ -209,10 +253,22 @@ export default function DifferentialReinforcementQuizPage() {
               </div>
 
               {answered && (
-                <div className="mt-6 rounded-2xl bg-slate-50 p-5">
+                <div
+                  className={`mt-6 rounded-2xl p-5 ${
+                    selected === question.answer
+                      ? "border border-green-200 bg-green-50"
+                      : (incorrectAttempts[current] ?? 0) >= 4
+                        ? "border border-amber-200 bg-amber-50"
+                        : "border border-pink-200 bg-pink-50"
+                  }`}
+                >
                   {selected === question.answer ? (
                     <p className="text-xl font-bold text-green-700">
                       Correct!
+                    </p>
+                  ) : (incorrectAttempts[current] ?? 0) >= 4 ? (
+                    <p className="text-xl font-bold text-amber-700">
+                      Review Topic in Learning Modules
                     </p>
                   ) : (
                     <p className="text-xl font-bold text-red-700">
@@ -220,13 +276,35 @@ export default function DifferentialReinforcementQuizPage() {
                     </p>
                   )}
 
-                  <p className="mt-2 text-slate-950">{question.rationale}</p>
+                  {selected !== question.answer &&
+                  (incorrectAttempts[current] ?? 0) >= 4 ? (
+                    <p className="mt-2 font-bold text-slate-950">
+                      Correct answer: {question.answer}
+                    </p>
+                  ) : null}
+
+                  <p className="mt-2 text-slate-950">
+                    {selected === question.answer ||
+                    (incorrectAttempts[current] ?? 0) >= 4
+                      ? question.rationale
+                      : "Hint: Identify the reinforcement criterion: alternative behavior, incompatible behavior, absence of the target behavior, lower rate, or higher rate."}
+                  </p>
 
                   <button
-                    onClick={nextQuestion}
+                    onClick={
+                      selected === question.answer ||
+                      (incorrectAttempts[current] ?? 0) >= 4
+                        ? nextQuestion
+                        : tryAgain
+                    }
                     className="mt-5 rounded-xl bg-slate-950 px-5 py-3 font-semibold text-white"
                   >
-                    {isLastQuestion ? "See Results" : "Next Question"}
+                    {selected !== question.answer &&
+                    (incorrectAttempts[current] ?? 0) < 4
+                      ? "Try again"
+                      : isLastQuestion
+                        ? "See Results"
+                        : "Next Question"}
                   </button>
                 </div>
               )}

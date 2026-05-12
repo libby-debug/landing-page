@@ -16,7 +16,7 @@ import {
   miniLessonMasteryThreshold,
   tcoSections,
 } from "../data";
-import { ActivityProgressNav } from "../progression";
+import { ActivityProgressNav, SaveProgressButton } from "../progression";
 
 type TcoSectionPageProps = {
   params: Promise<{
@@ -65,6 +65,12 @@ export default async function TcoSectionPage({ params }: TcoSectionPageProps) {
           >
             Back to dashboard
           </Link>
+
+          <SaveProgressButton
+            activity="module-overview"
+            currentLocation={`/dashboard/tco-6/${section.slug}`}
+            sectionSlug={section.slug}
+          />
         </div>
 
         <section className={`${cardBaseClass} mt-8 w-full border-blue-200 bg-white text-center shadow-xl shadow-slate-900/10`}>

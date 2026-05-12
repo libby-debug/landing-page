@@ -67,9 +67,14 @@ function getScoreText(score: number | null) {
   return typeof score === "number" ? `${score}%` : "0%";
 }
 
+function getBehaviorChangeQuizHint() {
+  return "Focus on the behavior-change relation: what response pattern contacts reinforcement, what step is being taught, and whether responding increases, decreases, or contacts extinction.";
+}
+
 export function BehaviorChangeModule({ module }: BehaviorChangeModuleProps) {
   const { user, loading: authLoading } = useAuth();
   const [answers, setAnswers] = useState<Record<number, string>>({});
+  const [incorrectAttempts, setIncorrectAttempts] = useState<Record<number, number>>({});
   const [submitted, setSubmitted] = useState(false);
   const [currentScore, setCurrentScore] = useState<number | null>(null);
   const [savedScore, setSavedScore] = useState<SavedScore | null>(null);
@@ -162,7 +167,7 @@ export function BehaviorChangeModule({ module }: BehaviorChangeModuleProps) {
   }, [authLoading, module.previousSlug, module.slug, user]);
 
   function updateAnswer(questionIndex: number, answer: string) {
-    if (submitted) {
+    if (submitted && answers[questionIndex] === module.quiz[questionIndex].answer) {
       return;
     }
 
@@ -170,6 +175,10 @@ export function BehaviorChangeModule({ module }: BehaviorChangeModuleProps) {
       ...current,
       [questionIndex]: answer,
     }));
+    setSubmitted(false);
+    setCurrentScore(null);
+    setSaveState("idle");
+    setMessage("");
   }
 
   async function submitQuiz() {
@@ -178,6 +187,15 @@ export function BehaviorChangeModule({ module }: BehaviorChangeModuleProps) {
     }
 
     setSubmitted(true);
+    setIncorrectAttempts((current) => {
+      const next = { ...current };
+      module.quiz.forEach((question, index) => {
+        if (answers[index] !== question.answer) {
+          next[index] = (next[index] ?? 0) + 1;
+        }
+      });
+      return next;
+    });
     setCurrentScore(calculatedScore);
 
     if (!isSupabaseConfigured) {
@@ -224,6 +242,7 @@ export function BehaviorChangeModule({ module }: BehaviorChangeModuleProps) {
 
   function resetQuiz() {
     setAnswers({});
+    setIncorrectAttempts({});
     setSubmitted(false);
     setCurrentScore(null);
     setSaveState("idle");
@@ -420,20 +439,21 @@ export function BehaviorChangeModule({ module }: BehaviorChangeModuleProps) {
               </h3>
 
               <div className="mt-5 grid gap-3 md:grid-cols-2">
-                {question.options.map((option) => {
-                  const selected = answers[questionIndex] === option;
-                  const correct = submitted && option === question.answer;
-                  const incorrectSelected =
-                    submitted && selected && option !== question.answer;
+              {question.options.map((option) => {
+                const selected = answers[questionIndex] === option;
+                const selectedCorrect =
+                  submitted && selected && option === question.answer;
+                const incorrectSelected =
+                  submitted && selected && option !== question.answer;
 
                   return (
                     <button
                       key={option}
                       type="button"
-                      disabled={submitted || locked}
+                      disabled={locked || (submitted && selectedCorrect)}
                       onClick={() => updateAnswer(questionIndex, option)}
                       className={`rounded-2xl border px-4 py-3 text-left text-sm font-semibold transition disabled:cursor-not-allowed ${
-                        correct
+                        selectedCorrect
                           ? "border-green-300 bg-green-50 text-green-700"
                           : incorrectSelected
                             ? "border-pink-300 bg-pink-50 text-pink-700"
@@ -449,13 +469,49 @@ export function BehaviorChangeModule({ module }: BehaviorChangeModuleProps) {
               </div>
 
               {submitted ? (
-                <div className="mt-5 rounded-2xl border border-blue-200 bg-blue-50 p-4">
-                  <p className="text-sm font-semibold uppercase tracking-wide text-blue-600">
-                    Rationale feedback
+                <div
+                  className={`mt-5 rounded-2xl border p-4 ${
+                    answers[questionIndex] === question.answer
+                      ? "border-green-200 bg-green-50"
+                      : (incorrectAttempts[questionIndex] ?? 0) >= 4
+                        ? "border-amber-200 bg-amber-50"
+                        : "border-pink-200 bg-pink-50"
+                  }`}
+                >
+                  <p
+                    className={`text-sm font-semibold uppercase tracking-wide ${
+                      answers[questionIndex] === question.answer
+                        ? "text-green-700"
+                        : (incorrectAttempts[questionIndex] ?? 0) >= 4
+                          ? "text-amber-700"
+                          : "text-pink-700"
+                    }`}
+                  >
+                    {answers[questionIndex] === question.answer
+                      ? "Rationale feedback"
+                      : (incorrectAttempts[questionIndex] ?? 0) >= 4
+                        ? "Review Topic in Learning Modules"
+                        : "Not quite. Hint"}
                   </p>
+                  {answers[questionIndex] !== question.answer &&
+                  (incorrectAttempts[questionIndex] ?? 0) >= 4 ? (
+                    <p className="mt-2 text-sm font-black text-slate-950">
+                      Correct answer: {question.answer}
+                    </p>
+                  ) : null}
                   <p className="mt-2 text-base leading-relaxed text-slate-950">
-                    {question.rationale}
+                    {answers[questionIndex] === question.answer ||
+                    (incorrectAttempts[questionIndex] ?? 0) >= 4
+                      ? question.rationale
+                      : `Hint: ${getBehaviorChangeQuizHint()}`}
                   </p>
+                  {answers[questionIndex] !== question.answer &&
+                  (incorrectAttempts[questionIndex] ?? 0) > 0 &&
+                  (incorrectAttempts[questionIndex] ?? 0) < 4 ? (
+                    <p className="mt-2 text-xs font-bold uppercase tracking-wide text-pink-700">
+                      Incorrect attempt {incorrectAttempts[questionIndex]} of 4
+                    </p>
+                  ) : null}
                 </div>
               ) : null}
             </article>

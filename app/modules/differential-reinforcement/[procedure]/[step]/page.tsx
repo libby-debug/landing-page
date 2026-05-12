@@ -5,6 +5,7 @@ import {
   LessonStepTracker,
   ProgressIndicator,
 } from "@/components/lesson-flow-navigation";
+import { SaveProgressButton } from "../../../../dashboard/tco-6/progression";
 import {
   PageShell,
   HighlightedText,
@@ -85,6 +86,13 @@ export default async function DifferentialReinforcementLessonPage({
           steps={lessonSteps}
           currentStepSlug={step.slug}
           procedureSlug={procedure.slug}
+        />
+        <SaveProgressButton
+          activity={step.slug}
+          currentLocation={getStepHref(procedure.slug, step.slug)}
+          lessonSlug={`${procedure.slug}-${step.slug}`}
+          sectionSlug={`differential-reinforcement-${procedure.slug}`}
+          totalQuestions={1}
         />
       </section>
 
@@ -655,7 +663,7 @@ function getPracticeQuestions(
     ...procedure.quiz,
     {
       prompt:
-        "A learner earns reinforcement when the target behavior does not occur for the full interval. Which procedure is most precise?",
+        "A learner earns reinforcement when the target behavior does not occur for the full interval. Which procedure is described?",
       options: ["DRA", "DRI", "DRO", "DRL", "DRH"],
       answer: "DRO",
       rationale:
@@ -663,7 +671,7 @@ function getPracticeQuestions(
     },
     {
       prompt:
-        "A learner earns reinforcement for a behavior that cannot happen at the same time as the target behavior. Which procedure is most precise?",
+        "A learner earns reinforcement for a behavior that cannot happen at the same time as the target behavior. Which procedure is described?",
       options: ["DRA", "DRI", "DRO", "DRL", "DRH"],
       answer: "DRI",
       rationale:
@@ -671,7 +679,7 @@ function getPracticeQuestions(
     },
     {
       prompt:
-        "A learner earns reinforcement for responding above a specified rate criterion. Which procedure is most precise?",
+        "A learner earns reinforcement for responding above a specified rate criterion. Which procedure is described?",
       options: ["DRA", "DRI", "DRO", "DRL", "DRH"],
       answer: "DRH",
       rationale:

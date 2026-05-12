@@ -30,6 +30,7 @@ export function DifferentialReinforcementQuiz({
 }: DifferentialReinforcementQuizProps) {
   const { user } = useAuth();
   const [answers, setAnswers] = useState<Record<number, string>>({});
+  const [incorrectAttempts, setIncorrectAttempts] = useState<Record<number, number>>({});
   const [submitted, setSubmitted] = useState(false);
   const [saveState, setSaveState] = useState<SaveState>("idle");
   const [message, setMessage] = useState("");
@@ -48,7 +49,7 @@ export function DifferentialReinforcementQuiz({
   const allAnswered = quizQuestions.every((_, index) => answers[index]);
 
   function selectAnswer(questionIndex: number, answer: string) {
-    if (submitted) {
+    if (submitted && answers[questionIndex] === quizQuestions[questionIndex].answer) {
       return;
     }
 
@@ -56,6 +57,9 @@ export function DifferentialReinforcementQuiz({
       ...current,
       [questionIndex]: answer,
     }));
+    setSubmitted(false);
+    setSaveState("idle");
+    setMessage("");
   }
 
   async function submitQuiz() {
@@ -63,6 +67,15 @@ export function DifferentialReinforcementQuiz({
       return;
     }
 
+    setIncorrectAttempts((current) => {
+      const next = { ...current };
+      quizQuestions.forEach((question, index) => {
+        if (answers[index] !== question.answer) {
+          next[index] = (next[index] ?? 0) + 1;
+        }
+      });
+      return next;
+    });
     setSubmitted(true);
 
     if (!isSupabaseConfigured) {
@@ -107,6 +120,7 @@ export function DifferentialReinforcementQuiz({
 
   function resetQuiz() {
     setAnswers({});
+    setIncorrectAttempts({});
     setSubmitted(false);
     setSaveState("idle");
     setMessage("");
@@ -127,7 +141,8 @@ export function DifferentialReinforcementQuiz({
             <div className="mt-5 grid gap-3 md:grid-cols-2">
               {question.options.map((option) => {
                 const selected = answers[questionIndex] === option;
-                const correct = submitted && option === question.answer;
+                const selectedCorrect =
+                  submitted && selected && option === question.answer;
                 const incorrectSelected =
                   submitted && selected && option !== question.answer;
 
@@ -135,10 +150,10 @@ export function DifferentialReinforcementQuiz({
                   <button
                     key={option}
                     type="button"
-                    disabled={submitted}
+                    disabled={submitted && selectedCorrect}
                     onClick={() => selectAnswer(questionIndex, option)}
                     className={`rounded-2xl border px-4 py-3 text-left text-sm font-semibold transition disabled:cursor-not-allowed ${
-                      correct
+                      selectedCorrect
                         ? "border-green-300 bg-green-50 text-green-700"
                         : incorrectSelected
                           ? "border-pink-300 bg-pink-50 text-pink-700"
@@ -154,13 +169,49 @@ export function DifferentialReinforcementQuiz({
             </div>
 
             {submitted ? (
-              <div className="mt-5 rounded-2xl border border-blue-200 bg-blue-50 p-4 text-center">
-                <p className="text-sm font-semibold uppercase tracking-wide text-blue-600">
-                  Rationale feedback
+              <div
+                className={`mt-5 rounded-2xl border p-4 text-center ${
+                  answers[questionIndex] === question.answer
+                    ? "border-green-200 bg-green-50"
+                    : (incorrectAttempts[questionIndex] ?? 0) >= 4
+                      ? "border-amber-200 bg-amber-50"
+                      : "border-pink-200 bg-pink-50"
+                }`}
+              >
+                <p
+                  className={`text-sm font-semibold uppercase tracking-wide ${
+                    answers[questionIndex] === question.answer
+                      ? "text-green-700"
+                      : (incorrectAttempts[questionIndex] ?? 0) >= 4
+                        ? "text-amber-700"
+                        : "text-pink-700"
+                  }`}
+                >
+                  {answers[questionIndex] === question.answer
+                    ? "Rationale feedback"
+                    : (incorrectAttempts[questionIndex] ?? 0) >= 4
+                      ? "Review Topic in Learning Modules"
+                      : "Not quite. Hint"}
                 </p>
+                {answers[questionIndex] !== question.answer &&
+                (incorrectAttempts[questionIndex] ?? 0) >= 4 ? (
+                  <p className="mt-2 text-sm font-black text-slate-950">
+                    Correct answer: {question.answer}
+                  </p>
+                ) : null}
                 <p className="mt-2 text-base leading-relaxed text-slate-950">
-                  {question.rationale}
+                  {answers[questionIndex] === question.answer ||
+                  (incorrectAttempts[questionIndex] ?? 0) >= 4
+                    ? question.rationale
+                    : "Hint: Identify the reinforcement criterion: alternative behavior, incompatible behavior, absence of the target behavior, lower rate, or higher rate."}
                 </p>
+                {answers[questionIndex] !== question.answer &&
+                (incorrectAttempts[questionIndex] ?? 0) > 0 &&
+                (incorrectAttempts[questionIndex] ?? 0) < 4 ? (
+                  <p className="mt-2 text-xs font-bold uppercase tracking-wide text-pink-700">
+                    Incorrect attempt {incorrectAttempts[questionIndex]} of 4
+                  </p>
+                ) : null}
               </div>
             ) : null}
           </article>

@@ -9444,76 +9444,1456 @@ const sectionFTcoAuditMasteryQuestions: QuestionContent[] = [
 
 const sectionGMiniLessons: MiniLessonContent[] = [
   {
-    slug: "differential-reinforcement",
-    label: "G.1-G.4",
-    title: "Differential reinforcement",
+    slug: "g1-reinforcement-procedure-selection",
+    label: "G.1",
+    title: "Positive and Negative Reinforcement Procedures",
     body: [
-      "Differential reinforcement reinforces [one response pattern] while another response pattern contacts extinction or less reinforcement.",
-      "The key distinction is what response, rate, or absence produces reinforcement.",
+      "Positive reinforcement adds [a stimulus after behavior] and behavior increases.",
+      "Negative reinforcement removes [an aversive stimulus after behavior] and behavior increases.",
     ],
     visual: {
-      type: "matching",
-      prompt: "Match each differential reinforcement procedure to its criterion.",
-      pairs: [
-        { term: "DRA", definition: "Alternative behavior produces reinforcement." },
-        { term: "DRI", definition: "Incompatible behavior produces reinforcement." },
-        { term: "DRO", definition: "Absence of target behavior produces reinforcement." },
-        { term: "DRL", definition: "Lower rate produces reinforcement." },
-        { term: "DRH", definition: "Higher rate produces reinforcement." },
+      type: "sorting",
+      prompt: "Sort each procedure by reinforcement type.",
+      categories: ["Positive reinforcement", "Negative reinforcement"],
+      items: [
+        { label: "Tokens delivered after homework completion", category: "Positive reinforcement" },
+        { label: "Break from demands after appropriate break request", category: "Negative reinforcement" },
+        { label: "Praise after independent handwashing", category: "Positive reinforcement" },
+        { label: "Noise reduced after wearing headphones appropriately", category: "Negative reinforcement" },
       ],
     },
   },
   {
-    slug: "prompting-and-fading",
-    label: "G.5-G.10",
-    title: "Prompting and fading",
+    slug: "g1-reinforcement-contingency-quality",
+    label: "G.1",
+    title: "Reinforcement Quality",
     body: [
-      "Prompts increase the likelihood of a correct response.",
-      "Prompt fading transfers control to [the natural Discriminative Stimulus (SD)].",
+      "Effective reinforcement procedures arrange [immediate, contingent, and valuable consequences].",
+      "A reinforcer is confirmed by [increased future responding], not by preference alone.",
     ],
     visual: {
-      type: "flow",
-      prompt: "Order a prompt fading sequence.",
-      steps: ["Natural Discriminative Stimulus (SD)", "Prompt if needed", "Correct response", "Fade prompt"],
+      type: "choice",
+      prompt: "Which procedure is most likely to strengthen requesting?",
+      choices: [
+        "Deliver the requested item immediately after an independent request",
+        "Deliver the item randomly with no relation to requesting",
+        "Wait several hours before delivering the item",
+        "Deliver the item only after problem behavior",
+      ],
+      answer: "Deliver the requested item immediately after an independent request",
+      hint: "Look for [contingency] and [immediacy].",
+      feedback:
+        "Reinforcement procedures work best when consequences are [contingent, immediate, and valuable].",
     },
   },
   {
-    slug: "shaping-and-chaining",
-    label: "G.11-G.14",
-    title: "Shaping vs chaining",
+    slug: "g1-reinforcement-vs-bribery",
+    label: "G.1",
+    title: "Reinforcement vs Bribery",
     body: [
-      "Shaping reinforces [successive approximations of one response].",
-      "Chaining teaches [a sequence of responses].",
+      "Reinforcement is a planned contingency that follows [a target response].",
+      "Bribery usually offers a consequence after problem behavior is already occurring.",
+    ],
+    visual: {
+      type: "comparison",
+      leftTitle: "Reinforcement",
+      leftText: "Planned consequence follows the target response",
+      rightTitle: "Bribery",
+      rightText: "Offer made after problem behavior has begun",
+      cue: "Design the contingency before behavior occurs.",
+    },
+  },
+  {
+    slug: "g2-dra",
+    label: "G.2",
+    title: "DRA",
+    body: [
+      "Differential Reinforcement of Alternative Behavior (DRA) reinforces [an appropriate alternative response].",
+      "The alternative should contact the same reinforcer as the problem behavior when possible.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which example best fits DRA?",
+      choices: [
+        "Reinforce asking for help instead of tearing worksheets",
+        "Reinforce no screaming for five minutes",
+        "Reinforce only lower rates of calling out",
+        "Remove tokens after aggression",
+      ],
+      answer: "Reinforce asking for help instead of tearing worksheets",
+      hint: "Find the example that reinforces [a replacement response].",
+      feedback: "DRA strengthens [an alternative behavior] that can compete with problem behavior.",
+    },
+  },
+  {
+    slug: "g2-dri",
+    label: "G.2",
+    title: "DRI",
+    body: [
+      "Differential Reinforcement of Incompatible Behavior (DRI) reinforces [a response that cannot occur at the same time] as the target behavior.",
+      "Incompatibility is about response form, not just social acceptability.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which replacement response is incompatible with hand biting?",
+      choices: [
+        "Holding a two-hand fidget",
+        "Saying 'break'",
+        "Looking at a timer",
+        "Sitting near staff",
+      ],
+      answer: "Holding a two-hand fidget",
+      hint: "Look for a response that physically cannot occur with the target response.",
+      feedback: "DRI requires [physical incompatibility] with the target behavior.",
+    },
+  },
+  {
+    slug: "g2-dro-drl-drh",
+    label: "G.2",
+    title: "DRO, DRL, and DRH",
+    body: [
+      "DRO reinforces [absence of the target behavior].",
+      "DRL reinforces [lower rates]; DRH reinforces [higher rates].",
+    ],
+    visual: {
+      type: "matching",
+      prompt: "Match each differential reinforcement procedure.",
+      pairs: [
+        { term: "DRO", definition: "Reinforce no target behavior during an interval." },
+        { term: "DRL", definition: "Reinforce rates below a criterion." },
+        { term: "DRH", definition: "Reinforce rates above a criterion." },
+        { term: "DRA", definition: "Reinforce an alternative response." },
+      ],
+    },
+  },
+  {
+    slug: "g2-dr-with-without-extinction",
+    label: "G.2",
+    title: "Differential Reinforcement With Extinction",
+    body: [
+      "Differential reinforcement with extinction reinforces [the desired response] and withholds reinforcement for [the target problem behavior].",
+      "Without extinction, the problem behavior may still contact its maintaining consequence.",
+    ],
+    visual: {
+      type: "select-all",
+      prompt: "Select features of DRA with extinction.",
+      choices: [
+        { label: "Alternative behavior contacts reinforcement", correct: true },
+        { label: "Problem behavior no longer contacts the maintaining reinforcer", correct: true },
+        { label: "The maintaining reinforcer is delivered for problem behavior", correct: false },
+        { label: "Safety and feasibility must be considered", correct: true },
+      ],
+      feedback:
+        "DRA with extinction combines [reinforcement for replacement behavior] with [withholding reinforcement for problem behavior].",
+    },
+  },
+  {
+    slug: "g3-time-based-reinforcement",
+    label: "G.3",
+    title: "Time-Based Reinforcement",
+    body: [
+      "Time-based reinforcement delivers stimuli by [time], not by the learner's response.",
+      "Noncontingent reinforcement can reduce motivation for problem behavior by arranging access independently.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which example is time-based reinforcement?",
+      choices: [
+        "Attention is delivered every 2 minutes regardless of behavior",
+        "Attention is delivered only after hand raising",
+        "Tokens are removed after aggression",
+        "Praise follows correct responses only",
+      ],
+      answer: "Attention is delivered every 2 minutes regardless of behavior",
+      hint: "Look for delivery based on [elapsed time], not a response.",
+      feedback: "Time-based schedules are [response-independent].",
+    },
+  },
+  {
+    slug: "g3-ft-vt-schedules",
+    label: "G.3",
+    title: "Fixed-Time vs Variable-Time",
+    body: [
+      "Fixed-Time (FT) schedules deliver reinforcement after [constant time intervals].",
+      "Variable-Time (VT) schedules deliver reinforcement after [variable time intervals] around an average.",
+    ],
+    visual: {
+      type: "matching",
+      prompt: "Match each schedule to its cue.",
+      pairs: [
+        { term: "FT 2 min", definition: "Deliver after every 2 minutes." },
+        { term: "VT 2 min", definition: "Deliver around a 2-minute average." },
+        { term: "Response-independent", definition: "Delivery does not require a target response." },
+        { term: "Schedule thinning", definition: "Gradually increase the time between deliveries." },
+      ],
+    },
+  },
+  {
+    slug: "g4-conditioned-reinforcers",
+    label: "G.4",
+    title: "Conditioned Reinforcers",
+    body: [
+      "Conditioned reinforcers acquire value through [pairing with other reinforcers].",
+      "Generalized conditioned reinforcers are paired with [many backup reinforcers].",
+    ],
+    visual: {
+      type: "comparison",
+      leftTitle: "Conditioned",
+      leftText: "Paired with another reinforcer",
+      rightTitle: "Generalized",
+      rightText: "Paired with many reinforcers",
+      cue: "Tokens become powerful when exchange options stay valuable.",
+    },
+  },
+  {
+    slug: "g4-token-economy-components",
+    label: "G.4",
+    title: "Token Economy Components",
+    body: [
+      "Token economies include [target responses, tokens, backup reinforcers, exchange rules, and response-cost rules if used].",
+      "Tokens should be delivered and exchanged using clear, teachable procedures.",
+    ],
+    visual: {
+      type: "select-all",
+      prompt: "Select components of a token economy.",
+      choices: [
+        { label: "Defined target responses", correct: true },
+        { label: "Tokens delivered for target responses", correct: true },
+        { label: "Backup reinforcers and exchange schedule", correct: true },
+        { label: "Unplanned token delivery for any behavior", correct: false },
+      ],
+      feedback: "Token economies require [clear earning and exchange contingencies].",
+    },
+  },
+  {
+    slug: "g4-token-exchange",
+    label: "G.4",
+    title: "Token Exchange and Backup Reinforcers",
+    body: [
+      "Tokens maintain value when they can be exchanged for [effective backup reinforcers].",
+      "Exchange schedules should balance motivation, practicality, and learner understanding.",
+    ],
+    visual: {
+      type: "flow",
+      prompt: "Order a token economy exchange sequence.",
+      steps: [
+        "Target response occurs",
+        "Token is delivered",
+        "Tokens are saved or counted",
+        "Tokens are exchanged for backup reinforcer",
+      ],
+      feedback: "Tokens function through [exchange for backup reinforcers].",
+    },
+  },
+  {
+    slug: "g5-mos-in-interventions",
+    label: "G.5",
+    title: "Motivating Operations in Interventions",
+    body: [
+      "Motivating Operations (MOs) alter [the value of a consequence].",
+      "Intervention plans can arrange MOs by managing deprivation, satiation, effort, and aversive conditions.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which intervention change most directly alters an MO?",
+      choices: [
+        "Offer breaks before tasks become highly aversive",
+        "Add a picture that signals reinforcement is available",
+        "Use a larger response card",
+        "Change the data sheet color",
+      ],
+      answer: "Offer breaks before tasks become highly aversive",
+      hint: "Look for a change in [reinforcer value or aversiveness].",
+      feedback: "MO-based intervention changes [the value of consequences].",
+    },
+  },
+  {
+    slug: "g5-sds-in-interventions",
+    label: "G.5",
+    title: "Discriminative Stimuli in Interventions",
+    body: [
+      "A Discriminative Stimulus (SD) signals [reinforcement is available for a response].",
+      "Clear SDs help learners know when and where responses will contact reinforcement.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which change best improves SD control?",
+      choices: [
+        "Show a help card only when asking for help will be reinforced",
+        "Let the learner become more deprived of attention",
+        "Remove all cues from the setting",
+        "Deliver tokens on a time schedule",
+      ],
+      answer: "Show a help card only when asking for help will be reinforced",
+      hint: "Find the cue that signals [response-reinforcer availability].",
+      feedback: "SD arrangements clarify [when a response will be reinforced].",
+    },
+  },
+  {
+    slug: "g5-mo-vs-sd-planning",
+    label: "G.5",
+    title: "MO vs SD Planning",
+    body: [
+      "MO strategies change [how much the consequence matters].",
+      "SD strategies change [which response is signaled as available for reinforcement].",
+    ],
+    visual: {
+      type: "sorting",
+      prompt: "Sort each intervention change.",
+      categories: ["MO strategy", "SD strategy"],
+      items: [
+        { label: "Reduce task effort to lower escape value", category: "MO strategy" },
+        { label: "Display a green card when break requests are available", category: "SD strategy" },
+        { label: "Provide noncontingent attention before problem behavior", category: "MO strategy" },
+        { label: "Use a clear instruction before a teaching trial", category: "SD strategy" },
+      ],
+    },
+  },
+  {
+    slug: "g6-simple-discrimination",
+    label: "G.6",
+    title: "Simple Discrimination",
+    body: [
+      "Simple discrimination training teaches one response under [one relevant antecedent condition].",
+      "The learner contacts reinforcement in the SD condition and not in the S-delta condition.",
+    ],
+    visual: {
+      type: "comparison",
+      leftTitle: "SD",
+      leftText: "Response is reinforced",
+      rightTitle: "S-delta",
+      rightText: "Response is not reinforced",
+      cue: "Discrimination training contrasts reinforcement availability.",
+    },
+  },
+  {
+    slug: "g6-conditional-discrimination",
+    label: "G.6",
+    title: "Conditional Discrimination",
+    body: [
+      "Conditional discrimination depends on [the relation between two or more stimuli].",
+      "Matching-to-sample teaches responding based on which comparison matches the sample.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which example is conditional discrimination?",
+      choices: [
+        "Choose the picture of a dog when the sample is a dog",
+        "Say 'help' when a help card is visible",
+        "Sit when told 'sit'",
+        "Raise hand when the teacher pauses",
+      ],
+      answer: "Choose the picture of a dog when the sample is a dog",
+      hint: "Look for responding based on [the relation between stimuli].",
+      feedback: "Conditional discrimination requires [stimulus-stimulus relations].",
+    },
+  },
+  {
+    slug: "g6-error-correction-discrimination",
+    label: "G.6",
+    title: "Discrimination Error Correction",
+    body: [
+      "Error correction should help transfer control to [the relevant antecedent stimulus].",
+      "Effective correction avoids reinforcing repeated errors or prompt dependence.",
+    ],
+    visual: {
+      type: "flow",
+      prompt: "Order a simple error-correction sequence.",
+      steps: ["Learner error", "Brief correction or prompt", "Represent the SD", "Reinforce independent correct response"],
+      feedback: "Error correction should promote [independent discrimination].",
+    },
+  },
+  {
+    slug: "g7-stimulus-prompts",
+    label: "G.7",
+    title: "Stimulus Prompts",
+    body: [
+      "Stimulus prompts change [the antecedent stimulus] to make the correct response more likely.",
+      "Examples include position, size, color, or highlighting cues.",
+    ],
+    visual: {
+      type: "sorting",
+      prompt: "Sort each prompt type.",
+      categories: ["Stimulus prompt", "Response prompt"],
+      items: [
+        { label: "Place the correct card closer", category: "Stimulus prompt" },
+        { label: "Point to the correct card", category: "Response prompt" },
+        { label: "Make the correct comparison larger", category: "Stimulus prompt" },
+        { label: "Physically guide the hand", category: "Response prompt" },
+      ],
+    },
+  },
+  {
+    slug: "g7-response-prompts",
+    label: "G.7",
+    title: "Response Prompts",
+    body: [
+      "Response prompts act on [the learner's response].",
+      "They include verbal, gestural, model, partial physical, and full physical prompts.",
+    ],
+    visual: {
+      type: "matching",
+      prompt: "Match each response prompt.",
+      pairs: [
+        { term: "Verbal", definition: "Tell the learner what to say or do." },
+        { term: "Gestural", definition: "Point or motion toward the response." },
+        { term: "Model", definition: "Demonstrate the response." },
+        { term: "Physical", definition: "Guide the response with contact." },
+      ],
+    },
+  },
+  {
+    slug: "g7-prompt-selection",
+    label: "G.7",
+    title: "Prompt Selection",
+    body: [
+      "Prompt selection should use [the least intrusive effective prompt] when possible.",
+      "The prompt must support correct responding without becoming the controlling stimulus long term.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which prompt plan is strongest?",
+      choices: [
+        "Use the least intrusive prompt likely to produce correct responding and plan fading",
+        "Use full physical prompts forever because they reduce errors",
+        "Avoid prompts even when the learner cannot respond",
+        "Use random prompts without data",
+      ],
+      answer: "Use the least intrusive prompt likely to produce correct responding and plan fading",
+      hint: "Look for [effectiveness] plus [planned fading].",
+      feedback: "Prompt selection balances [learner success and transfer of stimulus control].",
+    },
+  },
+  {
+    slug: "g8-prompt-fading-systems",
+    label: "G.8",
+    title: "Prompt Fading Systems",
+    body: [
+      "Prompt fading gradually removes [supplemental stimulus control].",
+      "Most-to-least and least-to-most prompting differ in how support changes across opportunities.",
+    ],
+    visual: {
+      type: "comparison",
+      leftTitle: "Most-to-least",
+      leftText: "Start more supportive, then fade",
+      rightTitle: "Least-to-most",
+      rightText: "Start less supportive, then increase if needed",
+      cue: "Both aim for independent responding to the natural SD.",
+    },
+  },
+  {
+    slug: "g8-time-delay",
+    label: "G.8",
+    title: "Time Delay",
+    body: [
+      "Time delay inserts [a delay between the SD and prompt].",
+      "The delay gives the learner an opportunity to respond before the prompt occurs.",
+    ],
+    visual: {
+      type: "flow",
+      prompt: "Order a progressive time-delay trial.",
+      steps: ["Present natural SD", "Wait briefly", "Prompt if needed", "Reinforce correct response"],
+      feedback: "Time delay transfers control by increasing [opportunity for independent responding].",
+    },
+  },
+  {
+    slug: "g9-live-modeling",
+    label: "G.9",
+    title: "Modeling Procedures",
+    body: [
+      "Modeling shows [the target response] before the learner performs it.",
+      "Models should be clear, relevant, and followed by opportunities to practice.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which example uses modeling?",
+      choices: [
+        "The therapist demonstrates handwashing before the learner tries",
+        "The therapist removes a token after problem behavior",
+        "The therapist delivers attention every 2 minutes",
+        "The therapist records a scatterplot",
+      ],
+      answer: "The therapist demonstrates handwashing before the learner tries",
+      hint: "Look for [showing the response].",
+      feedback: "Modeling provides [a demonstration of the target response].",
+    },
+  },
+  {
+    slug: "g9-video-modeling",
+    label: "G.9",
+    title: "Video Modeling",
+    body: [
+      "Video modeling presents [recorded demonstrations] of the target response.",
+      "It may support repeated viewing, consistency, and generalization across people.",
+    ],
+    visual: {
+      type: "select-all",
+      prompt: "Select possible advantages of video modeling.",
+      choices: [
+        { label: "Consistent demonstration across trials", correct: true },
+        { label: "Repeated viewing opportunities", correct: true },
+        { label: "No need to assess whether the learner imitates", correct: false },
+        { label: "May reduce live model demands", correct: true },
+      ],
+      feedback: "Video modeling uses [recorded models] to support performance.",
+    },
+  },
+  {
+    slug: "g10-instructions",
+    label: "G.10",
+    title: "Instructions",
+    body: [
+      "Instructions describe [what to do] and can function as antecedent stimuli.",
+      "Effective instructions are clear, concise, and matched to the learner's repertoire.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which instruction is most behaviorally clear?",
+      choices: [
+        "Put the red block in the bin",
+        "Behave nicely",
+        "Do better",
+        "Be respectful",
+      ],
+      answer: "Put the red block in the bin",
+      hint: "Look for [observable response requirements].",
+      feedback: "Instructions should specify [the expected response].",
+    },
+  },
+  {
+    slug: "g10-rules",
+    label: "G.10",
+    title: "Rules",
+    body: [
+      "Rules describe [contingencies] that may guide behavior without direct contact with each contingency.",
+      "Rules are useful when natural contingencies are delayed, risky, or hard to contact quickly.",
+    ],
+    visual: {
+      type: "comparison",
+      leftTitle: "Instruction",
+      leftText: "Tells what response to emit",
+      rightTitle: "Rule",
+      rightText: "Describes response-consequence relation",
+      cue: "Rules can support behavior before direct contingency contact.",
+    },
+  },
+  {
+    slug: "g11-shaping-foundation",
+    label: "G.11",
+    title: "Shaping",
+    body: [
+      "Shaping reinforces [successive approximations] toward a terminal response.",
+      "The response class changes gradually through differential reinforcement.",
+    ],
+    visual: {
+      type: "flow",
+      prompt: "Order a shaping sequence.",
+      steps: ["Define terminal response", "Reinforce first approximation", "Raise criterion gradually", "Reinforce closer approximations"],
+      feedback: "Shaping builds behavior through [successive approximations].",
+    },
+  },
+  {
+    slug: "g11-shaping-criteria",
+    label: "G.11",
+    title: "Shaping Criteria",
+    body: [
+      "Criteria should change in [small enough steps] for learner success.",
+      "Moving too quickly can produce errors, extinction bursts, or loss of responding.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which shaping decision is strongest?",
+      choices: [
+        "Increase the response requirement after stable success at the current approximation",
+        "Jump immediately to the terminal response with no reinforcement",
+        "Change criteria randomly across trials",
+        "Reinforce only errors to create variability",
+      ],
+      answer: "Increase the response requirement after stable success at the current approximation",
+      hint: "Look for gradual change based on [current performance].",
+      feedback: "Shaping criteria should follow [data and learner success].",
+    },
+  },
+  {
+    slug: "g11-shaping-vs-prompting",
+    label: "G.11",
+    title: "Shaping vs Prompting",
+    body: [
+      "Shaping changes [response form or dimension] through reinforcement.",
+      "Prompting adds [supplemental antecedent assistance] to evoke a response.",
     ],
     visual: {
       type: "comparison",
       leftTitle: "Shaping",
-      leftText: "One response changes form",
-      rightTitle: "Chaining",
-      rightText: "Multiple steps link together",
-      cue: "Shaping = closer approximations. Chaining = task-analysis steps.",
+      leftText: "Reinforce closer approximations",
+      rightTitle: "Prompting",
+      rightText: "Add assistance before the response",
+      cue: "Shaping changes the response; prompting helps evoke it.",
     },
   },
   {
-    slug: "punishment-safeguards",
-    label: "G.15-G.19",
-    title: "Punishment safeguards",
+    slug: "g12-task-analysis",
+    label: "G.12",
+    title: "Task Analysis",
     body: [
-      "Punishment procedures require [ethical safeguards and function-based alternatives].",
-      "Use reinforcement-based procedures and data-based review whenever possible.",
+      "A task analysis breaks a complex skill into [teachable response steps].",
+      "Each step should be observable, sequenced, and useful for instruction.",
+    ],
+    visual: {
+      type: "flow",
+      prompt: "Order a basic handwashing task analysis.",
+      steps: ["Turn on water", "Wet hands", "Apply soap", "Rinse hands"],
+      feedback: "Chaining uses [sequenced task-analysis steps].",
+    },
+  },
+  {
+    slug: "g12-forward-chaining",
+    label: "G.12",
+    title: "Forward Chaining",
+    body: [
+      "Forward chaining teaches [the first step first].",
+      "The learner completes mastered early steps while later steps are prompted.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which example fits forward chaining?",
+      choices: [
+        "Teach step 1 independently, then add step 2 after step 1 is mastered",
+        "Teach the final step first",
+        "Prompt every step each time forever",
+        "Reinforce only absence of behavior",
+      ],
+      answer: "Teach step 1 independently, then add step 2 after step 1 is mastered",
+      hint: "Look for teaching from [beginning to end].",
+      feedback: "Forward chaining starts with [the first response in the chain].",
+    },
+  },
+  {
+    slug: "g12-backward-chaining",
+    label: "G.12",
+    title: "Backward Chaining",
+    body: [
+      "Backward chaining teaches [the final step first].",
+      "The learner contacts natural reinforcement at the end of the chain early in teaching.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which example fits backward chaining?",
+      choices: [
+        "Prompt all steps except the final step, then reinforce independent completion of the final step",
+        "Teach the first step first",
+        "Teach unrelated responses in random order",
+        "Deliver reinforcement on a time schedule only",
+      ],
+      answer: "Prompt all steps except the final step, then reinforce independent completion of the final step",
+      hint: "Look for teaching [the last step] first.",
+      feedback: "Backward chaining begins instruction with [the terminal step].",
+    },
+  },
+  {
+    slug: "g12-total-task-chaining",
+    label: "G.12",
+    title: "Total-Task Chaining",
+    body: [
+      "Total-task chaining teaches [all steps in the chain during each opportunity].",
+      "Prompts are provided as needed across the full sequence.",
+    ],
+    visual: {
+      type: "comparison",
+      leftTitle: "Forward/backward",
+      leftText: "Teach selected steps systematically",
+      rightTitle: "Total-task",
+      rightText: "Practice every step each time",
+      cue: "Choose based on learner skills, chain length, and instructional context.",
+    },
+  },
+  {
+    slug: "g13-trial-based-procedures",
+    label: "G.13",
+    title: "Trial-Based Procedures",
+    body: [
+      "Trial-based procedures use [discrete learning opportunities] with clear antecedents and consequences.",
+      "They can support repeated practice and precise data collection.",
+    ],
+    visual: {
+      type: "flow",
+      prompt: "Order a trial-based teaching opportunity.",
+      steps: ["Present SD", "Learner responds", "Consequence delivered", "Record data"],
+      feedback: "Trial-based teaching uses [structured learning trials].",
+    },
+  },
+  {
+    slug: "g13-free-operant-procedures",
+    label: "G.13",
+    title: "Free-Operant Procedures",
+    body: [
+      "Free-operant procedures allow [repeated responding over time] without discrete trial boundaries.",
+      "They are useful when behavior can occur freely during natural routines.",
+    ],
+    visual: {
+      type: "sorting",
+      prompt: "Sort each teaching format.",
+      categories: ["Trial-based", "Free-operant"],
+      items: [
+        { label: "Ten discrete tact trials at a table", category: "Trial-based" },
+        { label: "Mand opportunities during free play", category: "Free-operant" },
+        { label: "One instruction-response-consequence sequence", category: "Trial-based" },
+        { label: "Continuous access to materials during art", category: "Free-operant" },
+      ],
+    },
+  },
+  {
+    slug: "g14-dependent-group-contingency",
+    label: "G.14",
+    title: "Dependent Group Contingency",
+    body: [
+      "A dependent group contingency delivers a group consequence based on [one learner's or a small group's behavior].",
+      "It can create peer pressure, so dignity and fairness must be considered.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which example is a dependent group contingency?",
+      choices: [
+        "The class earns extra recess if one table group completes cleanup",
+        "Each learner earns a token for their own work",
+        "The class earns recess only if every learner meets the goal",
+        "Attention is delivered every 2 minutes regardless of behavior",
+      ],
+      answer: "The class earns extra recess if one table group completes cleanup",
+      hint: "Look for the group outcome based on [one person or subgroup].",
+      feedback: "Dependent group contingencies depend on [selected individual or subgroup performance].",
+    },
+  },
+  {
+    slug: "g14-independent-group-contingency",
+    label: "G.14",
+    title: "Independent Group Contingency",
+    body: [
+      "An independent group contingency uses the same criterion, but each learner earns based on [their own behavior].",
+      "It reduces reliance on peer performance.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which example is an independent group contingency?",
+      choices: [
+        "Each student earns computer time if they complete their own work",
+        "The whole class earns music if everyone completes work",
+        "The whole class earns music if one student completes work",
+        "Tokens are removed after problem behavior",
+      ],
+      answer: "Each student earns computer time if they complete their own work",
+      hint: "Look for [individual earning] under a group-wide criterion.",
+      feedback: "Independent group contingencies deliver consequences based on [each learner's performance].",
+    },
+  },
+  {
+    slug: "g14-interdependent-group-contingency",
+    label: "G.14",
+    title: "Interdependent Group Contingency",
+    body: [
+      "An interdependent group contingency delivers the group consequence when [all members or the group as a whole] meet the criterion.",
+      "It can support teamwork but requires careful criterion setting.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which example is interdependent?",
+      choices: [
+        "The class earns recess if the class average reaches 90%",
+        "One learner earns a token for independent work",
+        "The class earns recess if one learner finishes",
+        "A learner gets a break after asking",
+      ],
+      answer: "The class earns recess if the class average reaches 90%",
+      hint: "Look for a consequence based on [whole-group performance].",
+      feedback: "Interdependent group contingencies depend on [the group meeting the criterion].",
+    },
+  },
+  {
+    slug: "g15-stimulus-generalization",
+    label: "G.15",
+    title: "Stimulus Generalization",
+    body: [
+      "Stimulus generalization occurs when a response occurs under [new but similar antecedent conditions].",
+      "Planning may include multiple examples, varied materials, and natural cues.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which example shows stimulus generalization?",
+      choices: [
+        "A learner greets familiar and unfamiliar teachers",
+        "A learner says hello and waves to the same teacher",
+        "A learner maintains the skill three months later",
+        "A learner earns tokens for correct responses",
+      ],
+      answer: "A learner greets familiar and unfamiliar teachers",
+      hint: "Look for [new antecedent conditions].",
+      feedback: "Stimulus generalization involves responding across [new stimuli, people, settings, or materials].",
+    },
+  },
+  {
+    slug: "g15-response-generalization",
+    label: "G.15",
+    title: "Response Generalization",
+    body: [
+      "Response generalization occurs when [new response forms] occur after teaching related responses.",
+      "Plans can reinforce varied appropriate responses that produce the same function.",
+    ],
+    visual: {
+      type: "comparison",
+      leftTitle: "Stimulus generalization",
+      leftText: "Same response in new situations",
+      rightTitle: "Response generalization",
+      rightText: "New responses in related situations",
+      cue: "Ask whether the antecedent changed or the response form changed.",
+    },
+  },
+  {
+    slug: "g16-maintenance",
+    label: "G.16",
+    title: "Maintenance",
+    body: [
+      "Maintenance means behavior continues [after intervention conditions are reduced or removed].",
+      "Plan maintenance with natural reinforcers, caregiver implementation, and periodic checks.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which plan best supports maintenance?",
+      choices: [
+        "Transfer reinforcement to natural classroom consequences and monitor over time",
+        "Keep every prompt forever",
+        "Stop data collection immediately after first correct response",
+        "Teach only in one room with one therapist",
+      ],
+      answer: "Transfer reinforcement to natural classroom consequences and monitor over time",
+      hint: "Look for [continued behavior over time] under natural conditions.",
+      feedback: "Maintenance planning supports [durable responding].",
+    },
+  },
+  {
+    slug: "g16-schedule-thinning",
+    label: "G.16",
+    title: "Schedule Thinning",
+    body: [
+      "Schedule thinning gradually reduces [the density of reinforcement].",
+      "Thinning should be data-based so behavior remains strong as reinforcement becomes more natural.",
+    ],
+    visual: {
+      type: "flow",
+      prompt: "Order a schedule-thinning plan.",
+      steps: ["Start dense reinforcement", "Check stable responding", "Thin gradually", "Monitor for relapse or ratio strain"],
+      feedback: "Schedule thinning moves from [dense reinforcement] toward [natural schedules].",
+    },
+  },
+  {
+    slug: "g16-maintenance-vs-generalization",
+    label: "G.16",
+    title: "Maintenance vs Generalization",
+    body: [
+      "Maintenance asks whether behavior continues [over time].",
+      "Generalization asks whether behavior occurs [across new stimuli, settings, people, or responses].",
+    ],
+    visual: {
+      type: "sorting",
+      prompt: "Sort each outcome.",
+      categories: ["Maintenance", "Generalization"],
+      items: [
+        { label: "Skill still occurs after 8 weeks", category: "Maintenance" },
+        { label: "Skill occurs with a new caregiver", category: "Generalization" },
+        { label: "Skill occurs after prompts are removed", category: "Maintenance" },
+        { label: "Skill occurs with new materials", category: "Generalization" },
+      ],
+    },
+  },
+  {
+    slug: "g17-punishment-procedures",
+    label: "G.17",
+    title: "Positive and Negative Punishment Procedures",
+    body: [
+      "Positive punishment adds [a stimulus after behavior] and behavior decreases.",
+      "Negative punishment removes [a stimulus after behavior] and behavior decreases.",
+    ],
+    visual: {
+      type: "sorting",
+      prompt: "Sort each punishment procedure.",
+      categories: ["Positive punishment", "Negative punishment"],
+      items: [
+        { label: "Corrective practice after unsafe behavior", category: "Positive punishment" },
+        { label: "Token loss after aggression", category: "Negative punishment" },
+        { label: "Brief reprimand after shouting", category: "Positive punishment" },
+        { label: "Loss of game access after property destruction", category: "Negative punishment" },
+      ],
+    },
+  },
+  {
+    slug: "g17-response-cost-time-out",
+    label: "G.17",
+    title: "Response Cost and Time-Out",
+    body: [
+      "Response cost removes [a specified amount of reinforcement] after behavior.",
+      "Time-out removes [access to reinforcement] for a brief period after behavior.",
+    ],
+    visual: {
+      type: "comparison",
+      leftTitle: "Response cost",
+      leftText: "Lose tokens or points",
+      rightTitle: "Time-out",
+      rightText: "Lose access to reinforcement",
+      cue: "Both are negative punishment procedures when behavior decreases.",
+    },
+  },
+  {
+    slug: "g18-emotional-effects",
+    label: "G.18",
+    title: "Emotional Effects",
+    body: [
+      "Behavior-change procedures can produce [emotional responding, avoidance, aggression, or reduced engagement].",
+      "Plans should monitor unwanted effects and prioritize reinforcement-based approaches when possible.",
     ],
     visual: {
       type: "select-all",
-      prompt: "Select safeguards for punishment procedures.",
+      prompt: "Select possible unwanted effects to monitor.",
       choices: [
-        { label: "Functional assessment", correct: true },
-        { label: "Reinforcement for alternative behavior", correct: true },
-        { label: "Ongoing data review", correct: true },
-        { label: "Use because it works quickly without consent", correct: false },
+        { label: "Avoidance of teaching materials", correct: true },
+        { label: "Emotional responding", correct: true },
+        { label: "Aggression or escape from the intervention context", correct: true },
+        { label: "Guaranteed generalization after one session", correct: false },
       ],
-      feedback:
-        "Punishment requires strong safeguards, consent, monitoring, and reinforcement-based alternatives.",
+      feedback: "Monitor [emotional and elicited effects] throughout intervention.",
     },
+  },
+  {
+    slug: "g18-mitigating-side-effects",
+    label: "G.18",
+    title: "Mitigating Unwanted Effects",
+    body: [
+      "Mitigation includes [functional assessment, reinforcement for alternatives, gradual changes, and data review].",
+      "The plan should protect dignity, safety, and treatment acceptability.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which plan best mitigates unwanted effects?",
+      choices: [
+        "Teach alternatives, monitor side effects, and adjust based on data",
+        "Ignore distress because behavior reduction is the only outcome",
+        "Use the most intrusive procedure first",
+        "Stop all reinforcement for appropriate behavior",
+      ],
+      answer: "Teach alternatives, monitor side effects, and adjust based on data",
+      hint: "Look for [monitoring] and [reinforcement-based supports].",
+      feedback: "Mitigation protects [client welfare and treatment effectiveness].",
+    },
+  },
+  {
+    slug: "g19-emergent-relations",
+    label: "G.19",
+    title: "Emergent Relations",
+    body: [
+      "Emergent relations occur when untaught relations appear after [training related relations].",
+      "Teaching can be designed to promote derived responding and generative performance.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which example shows an emergent relation?",
+      choices: [
+        "After learning A-B and B-C, the learner demonstrates A-C without direct teaching",
+        "The learner repeats one prompted response",
+        "The learner loses tokens after problem behavior",
+        "The learner receives attention every 2 minutes",
+      ],
+      answer: "After learning A-B and B-C, the learner demonstrates A-C without direct teaching",
+      hint: "Look for [untaught performance] after related training.",
+      feedback: "Emergent relations involve [new relations not directly taught].",
+    },
+  },
+  {
+    slug: "g19-generative-performance",
+    label: "G.19",
+    title: "Generative Performance",
+    body: [
+      "Generative performance means learners produce [novel, useful responses] beyond the exact training examples.",
+      "Multiple exemplars, matrix training, and recombinative teaching can support generativity.",
+    ],
+    visual: {
+      type: "select-all",
+      prompt: "Select strategies that may promote generative performance.",
+      choices: [
+        { label: "Multiple-exemplar training", correct: true },
+        { label: "Matrix training", correct: true },
+        { label: "Teaching only one rigid example", correct: false },
+        { label: "Programming common stimulus features", correct: true },
+      ],
+      feedback: "Generative teaching promotes [novel responding from trained relations].",
+    },
+  },
+];
+
+const sectionGPracticeQuestions: QuestionContent[] = [
+  {
+    type: "scenario",
+    prompt:
+      "A learner appropriately asks for a break, and the task is removed for 30 seconds. Break requests increase. Which procedure is being used?",
+    choices: ["Negative reinforcement", "Positive punishment", "Response cost", "DRO"],
+    answer: "Negative reinforcement",
+    explanation:
+      "Negative reinforcement removes [an aversive stimulus after behavior] and behavior increases.",
+    hint: "Ask whether something was added or removed, and whether behavior increased.",
+  },
+  {
+    type: "matching",
+    prompt: "Match each differential reinforcement procedure to its criterion.",
+    pairs: [
+      { term: "DRA", definition: "Alternative response produces reinforcement." },
+      { term: "DRI", definition: "Incompatible response produces reinforcement." },
+      { term: "DRO", definition: "Absence of target behavior produces reinforcement." },
+      { term: "DRL", definition: "Lower rate produces reinforcement." },
+    ],
+    answer: "All differential reinforcement procedures matched correctly",
+    explanation:
+      "Differential reinforcement depends on [which response pattern contacts reinforcement].",
+    hint: "Compare the required response pattern for each procedure.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A teacher provides attention every 3 minutes regardless of behavior to reduce attention-maintained disruption. Which schedule is most directly described?",
+    choices: ["Fixed-time reinforcement", "DRA", "DRH", "Token exchange"],
+    answer: "Fixed-time reinforcement",
+    explanation:
+      "Fixed-time schedules deliver reinforcement after [constant time intervals] independent of responding.",
+    hint: "Look for delivery based on elapsed time rather than a response.",
+  },
+  {
+    type: "select-all",
+    prompt: "Select core token economy components.",
+    choices: [
+      "Defined target responses",
+      "Tokens delivered for target responses",
+      "Backup reinforcers and exchange rules",
+      "Tokens delivered randomly without exchange options",
+    ],
+    answers: [
+      "Defined target responses",
+      "Tokens delivered for target responses",
+      "Backup reinforcers and exchange rules",
+    ],
+    answer: "Defined responses, tokens, backup reinforcers, and exchange rules",
+    explanation:
+      "Token economies require [earning rules and exchange contingencies].",
+    hint: "Look for the parts that make tokens function as conditioned reinforcers.",
+  },
+  {
+    type: "sorting",
+    prompt: "Sort each intervention arrangement.",
+    categories: ["MO strategy", "SD strategy"],
+    items: [
+      { label: "Provide noncontingent attention before attention-seeking behavior", category: "MO strategy" },
+      { label: "Show a card when break requests will be honored", category: "SD strategy" },
+      { label: "Reduce task difficulty before escape behavior escalates", category: "MO strategy" },
+      { label: "Present a clear instruction before a teaching trial", category: "SD strategy" },
+    ],
+    answer: "All intervention arrangements sorted correctly",
+    explanation:
+      "MOs alter [reinforcer value]; SDs signal [response-reinforcer availability].",
+    hint: "Separate value-altering changes from signal changes.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A learner selects the comparison picture that matches the sample picture. Which procedure is being taught?",
+    choices: ["Conditional discrimination", "Simple discrimination", "DRO", "Response cost"],
+    answer: "Conditional discrimination",
+    explanation:
+      "Conditional discrimination depends on [the relation between two or more stimuli].",
+    hint: "Look for responding based on a stimulus-stimulus relation.",
+  },
+  {
+    type: "matching",
+    prompt: "Match each prompt to its category.",
+    pairs: [
+      { term: "Make the correct card larger", definition: "Stimulus prompt." },
+      { term: "Point to the correct card", definition: "Response prompt." },
+      { term: "Physically guide the response", definition: "Response prompt." },
+      { term: "Place correct option closer", definition: "Stimulus prompt." },
+    ],
+    answer: "All prompts matched correctly",
+    explanation:
+      "Stimulus prompts alter [the antecedent stimulus]; response prompts assist [the learner's response].",
+    hint: "Ask whether the prompt changes the materials or helps the response.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A therapist waits 2 seconds after the SD before prompting, then gradually increases the wait. What is the procedure?",
+    choices: ["Time delay", "Backward chaining", "Response cost", "NCR"],
+    answer: "Time delay",
+    explanation:
+      "Time delay inserts [a delay between the SD and prompt] to promote independent responding.",
+    hint: "Look for a planned delay before the prompt.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "The therapist demonstrates tying the first knot, then the learner practices. Which procedure is being used?",
+    choices: ["Modeling", "DRO", "Time-out", "Schedule thinning"],
+    answer: "Modeling",
+    explanation:
+      "Modeling provides [a demonstration of the target response].",
+    hint: "Look for showing the response before the learner performs it.",
+  },
+  {
+    type: "fill-blank",
+    prompt: "Complete the cue: Shaping reinforces successive ____.",
+    answer: "approximations",
+    explanation:
+      "Shaping reinforces [successive approximations] toward a terminal response.",
+    hint: "The missing word describes closer versions of the final response.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A learner is prompted through every step of toothbrushing during each teaching opportunity. Which chaining procedure is most directly described?",
+    choices: ["Total-task chaining", "Backward chaining", "Forward chaining", "DRO"],
+    answer: "Total-task chaining",
+    explanation:
+      "Total-task chaining teaches [all steps in the chain during each opportunity].",
+    hint: "Look for practicing the full sequence every time.",
+  },
+  {
+    type: "sorting",
+    prompt: "Sort the teaching formats.",
+    categories: ["Trial-based", "Free-operant"],
+    items: [
+      { label: "Discrete listener-response trials", category: "Trial-based" },
+      { label: "Mand opportunities during free play", category: "Free-operant" },
+      { label: "Ten structured tact trials", category: "Trial-based" },
+      { label: "Naturally occurring social initiations during recess", category: "Free-operant" },
+    ],
+    answer: "All teaching formats sorted correctly",
+    explanation:
+      "Trial-based procedures use [discrete opportunities]; free-operant procedures allow [repeated responding over time].",
+    hint: "Look for clear trial boundaries versus ongoing opportunities.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "The entire class earns a dance break if the class average reaches 90% on completed work. Which group contingency is this?",
+    choices: ["Interdependent", "Independent", "Dependent", "Response cost"],
+    answer: "Interdependent",
+    explanation:
+      "Interdependent group contingencies depend on [the group meeting the criterion].",
+    hint: "Ask whether the group consequence depends on whole-group performance.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "After teaching requests with one therapist, the learner requests with a parent and a teacher. Which outcome is shown?",
+    choices: ["Stimulus generalization", "Response generalization", "Response cost", "Backward chaining"],
+    answer: "Stimulus generalization",
+    explanation:
+      "Stimulus generalization occurs when behavior occurs across [new people, settings, materials, or antecedents].",
+    hint: "Look for the same response under new antecedent conditions.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "The BCBA gradually moves from FR 1 to VR 3 while monitoring stable responding. Which procedure is being used?",
+    choices: ["Schedule thinning", "Positive punishment", "DRO", "Video modeling"],
+    answer: "Schedule thinning",
+    explanation:
+      "Schedule thinning gradually reduces [reinforcement density] while preserving behavior.",
+    hint: "Look for a planned move from dense to leaner reinforcement.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A learner loses one token after aggression, and aggression decreases. Which procedure is described?",
+    choices: ["Response cost", "Positive reinforcement", "DRH", "Modeling"],
+    answer: "Response cost",
+    explanation:
+      "Response cost removes [a specified amount of reinforcement] after behavior and is negative punishment when behavior decreases.",
+    hint: "Ask whether reinforcement was removed after behavior.",
+  },
+  {
+    type: "select-all",
+    prompt: "Select unwanted effects to monitor during behavior-change procedures.",
+    choices: [
+      "Emotional responding",
+      "Avoidance of teaching materials",
+      "Aggression or escape from the intervention context",
+      "Guaranteed generalization after one session",
+    ],
+    answers: [
+      "Emotional responding",
+      "Avoidance of teaching materials",
+      "Aggression or escape from the intervention context",
+    ],
+    answer: "Emotional responding, avoidance, and aggression or escape",
+    explanation:
+      "G.18 requires monitoring [emotional and elicited effects] of procedures.",
+    hint: "Look for effects that may signal distress or unwanted side effects.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "After training A-B and B-C relations, the learner demonstrates A-C without direct teaching. Which outcome is shown?",
+    choices: ["Emergent relation", "Response cost", "DRO", "Time-based reinforcement"],
+    answer: "Emergent relation",
+    explanation:
+      "Emergent relations are [untaught relations] that appear after related training.",
+    hint: "Look for a relation that was not directly trained.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A written rule says, 'If you finish the checklist before lunch, you earn computer time.' Which feature makes this a rule rather than a simple instruction?",
+    choices: [
+      "It describes a response-consequence relation",
+      "It physically guides the learner's hand",
+      "It removes reinforcement after behavior",
+      "It presents a two-item preference choice",
+    ],
+    answer: "It describes a response-consequence relation",
+    explanation:
+      "Rules describe [contingencies] that can guide behavior before direct contact with every consequence.",
+    hint: "Look for whether the statement describes what consequence follows the response.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A therapist shows a video of a peer ordering food, then the learner practices ordering. Which procedure is being used?",
+    choices: ["Video modeling", "Forward chaining", "Response cost", "DRL"],
+    answer: "Video modeling",
+    explanation:
+      "Video modeling uses [recorded demonstrations] of the target response.",
+    hint: "Look for a recorded model shown before practice.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A learner can request snacks repeatedly during natural play without the teacher starting each trial. Which teaching format best fits?",
+    choices: ["Free-operant procedure", "Trial-based procedure", "Backward chaining", "Dependent group contingency"],
+    answer: "Free-operant procedure",
+    explanation:
+      "Free-operant procedures allow [repeated responding over time] without discrete trial boundaries.",
+    hint: "Look for ongoing opportunities rather than a teacher-controlled trial sequence.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "During a new procedure, the learner begins avoiding the teaching table and crying when materials appear. What should the BCBA do?",
+    choices: [
+      "Monitor and adjust for possible emotional or elicited effects",
+      "Ignore the change because only target behavior matters",
+      "Increase intrusiveness without reviewing data",
+      "Stop all reinforcement for appropriate behavior",
+    ],
+    answer: "Monitor and adjust for possible emotional or elicited effects",
+    explanation:
+      "G.18 requires identifying and mitigating [emotional and elicited effects] of behavior-change procedures.",
+    hint: "Focus on unwanted effects produced by the intervention context.",
+  },
+];
+
+const sectionGMasteryQuestions: QuestionContent[] = [
+  {
+    type: "scenario",
+    prompt:
+      "A BCBA teaches a learner to request a break, and task removal follows only appropriate break requests. Break requests increase and disruption decreases. Which procedure best describes the plan?",
+    choices: ["DRA using negative reinforcement", "DRO using positive punishment", "DRH using response cost", "Noncontingent reinforcement only"],
+    answer: "DRA using negative reinforcement",
+    explanation:
+      "The alternative response contacts [removal of demands], so the plan combines DRA with negative reinforcement.",
+    hint: "Identify the response being strengthened and the consequence that follows it.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A team provides attention every 2 minutes independent of behavior, then slowly increases the interval as disruption remains low. Which combination is described?",
+    choices: ["Time-based reinforcement with schedule thinning", "Backward chaining with response cost", "DRL with token exchange", "Conditional discrimination with modeling"],
+    answer: "Time-based reinforcement with schedule thinning",
+    explanation:
+      "Time-based reinforcement is [response-independent], and thinning gradually reduces [reinforcement density].",
+    hint: "Look for time-based delivery and gradual changes to the schedule.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "Which plan best reflects a token economy?",
+    choices: [
+      "Define target responses, deliver tokens for those responses, and exchange tokens for backup reinforcers",
+      "Deliver praise randomly with no exchange system",
+      "Remove tokens without teaching how they are earned",
+      "Use tokens only as data points on a graph",
+    ],
+    answer:
+      "Define target responses, deliver tokens for those responses, and exchange tokens for backup reinforcers",
+    explanation:
+      "Token economies require [earning rules, tokens, backup reinforcers, and exchange rules].",
+    hint: "Look for both earning and exchange contingencies.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A learner fails to request help unless the teacher points at the help card. The BCBA gradually reduces pointing until the card itself evokes requesting. Which process is targeted?",
+    choices: ["Prompt fading to transfer stimulus control", "Response cost to reduce behavior", "Backward chaining of a task analysis", "Noncontingent reinforcement"],
+    answer: "Prompt fading to transfer stimulus control",
+    explanation:
+      "Prompt fading transfers control from [supplemental prompts] to [the natural SD].",
+    hint: "Ask whether assistance is being reduced so natural cues control the response.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A learner chooses the correct comparison only when it matches the sample. Which discrimination is being taught?",
+    choices: ["Conditional discrimination", "Simple discrimination", "Response generalization", "Negative punishment"],
+    answer: "Conditional discrimination",
+    explanation:
+      "Conditional discrimination requires responding based on [the relation between stimuli].",
+    hint: "Look for the response depending on a sample-comparison relation.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A therapist reinforces gradually clearer approximations of the word 'water' until the learner says the full word. Which procedure is described?",
+    choices: ["Shaping", "Forward chaining", "DRO", "Independent group contingency"],
+    answer: "Shaping",
+    explanation:
+      "Shaping reinforces [successive approximations] of one response dimension or form.",
+    hint: "Look for gradual changes in one response.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A BCBA teaches the final step of zipping a coat first because that step naturally completes the routine. Which procedure is described?",
+    choices: ["Backward chaining", "Forward chaining", "DRH", "Stimulus fading"],
+    answer: "Backward chaining",
+    explanation:
+      "Backward chaining teaches [the final step first].",
+    hint: "Look for instruction beginning at the end of the chain.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "Each learner in a group earns the same reward only if their own behavior meets criterion. Which group contingency is described?",
+    choices: ["Independent group contingency", "Interdependent group contingency", "Dependent group contingency", "Time-based reinforcement"],
+    answer: "Independent group contingency",
+    explanation:
+      "Independent group contingencies use a group-wide criterion, but consequences depend on [each learner's own behavior].",
+    hint: "Ask whether each learner earns individually or the group earns together.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A learner uses a newly taught greeting with peers, siblings, and unfamiliar adults. Which outcome is most directly shown?",
+    choices: ["Stimulus generalization", "Maintenance", "Response cost", "DRL"],
+    answer: "Stimulus generalization",
+    explanation:
+      "Stimulus generalization occurs when the same response occurs under [new antecedent conditions].",
+    hint: "Look for same response, new people or settings.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A learner says 'help,' hands over a help card, and raises a hand to get assistance after only one response form was directly taught. Which outcome is shown?",
+    choices: ["Response generalization", "Stimulus generalization", "Time-out", "Simple discrimination"],
+    answer: "Response generalization",
+    explanation:
+      "Response generalization involves [new response forms] that serve a related function.",
+    hint: "Look for new responses, not new antecedents.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A plan uses response cost for dangerous behavior. Which safeguard is most important?",
+    choices: [
+      "Use functional assessment, reinforcement for alternatives, consent, and ongoing data review",
+      "Use response cost without monitoring because it is simple",
+      "Remove all reinforcement for appropriate behavior",
+      "Avoid teaching replacement behavior",
+    ],
+    answer:
+      "Use functional assessment, reinforcement for alternatives, consent, and ongoing data review",
+    explanation:
+      "Punishment procedures require [ethical safeguards, alternatives, and data-based monitoring].",
+    hint: "Look for a plan that protects client welfare and teaches appropriate behavior.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "After training several noun-verb combinations, a learner produces new untrained combinations using the same words. Which target does this best support?",
+    choices: ["Generative performance", "Response cost", "DRO", "Fixed-time reinforcement"],
+    answer: "Generative performance",
+    explanation:
+      "Generative performance involves [novel, useful responding] beyond directly trained examples.",
+    hint: "Look for untrained combinations emerging from trained components.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A BCBA reduces response effort before demands because escape-maintained behavior is more likely when work is difficult. Which intervention variable is being adjusted?",
+    choices: ["Motivating operation", "Discriminative stimulus", "Response cost", "Conditional discrimination"],
+    answer: "Motivating operation",
+    explanation:
+      "Motivating operations alter [the value of a consequence], such as the value of escape from difficult tasks.",
+    hint: "Ask whether the plan changes value or signals availability.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A therapist demonstrates a response, the learner imitates it, and feedback follows. Which procedure is most directly involved?",
+    choices: ["Modeling", "Schedule thinning", "DRO", "Response cost"],
+    answer: "Modeling",
+    explanation:
+      "Modeling provides [a demonstration of the target response] before learner performance.",
+    hint: "Look for the procedure that shows the response.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "Which statement best differentiates an instruction from a rule?",
+    choices: [
+      "An instruction specifies what to do; a rule describes a contingency relation",
+      "An instruction always uses punishment; a rule always uses response cost",
+      "An instruction is a token; a rule is a backup reinforcer",
+      "An instruction requires no learner repertoire; a rule requires no consequence history",
+    ],
+    answer:
+      "An instruction specifies what to do; a rule describes a contingency relation",
+    explanation:
+      "Instructions specify [the expected response]; rules describe [response-consequence relations].",
+    hint: "Compare what the statement tells the learner about behavior and consequences.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "Which teaching arrangement is best described as trial-based?",
+    choices: [
+      "The teacher presents an SD, the learner responds, a consequence follows, and data are recorded",
+      "The learner can respond freely throughout recess with no trial boundaries",
+      "The class earns a reward only if the group average meets criterion",
+      "Tokens are exchanged for backup reinforcers after a session",
+    ],
+    answer:
+      "The teacher presents an SD, the learner responds, a consequence follows, and data are recorded",
+    explanation:
+      "Trial-based procedures use [discrete learning opportunities] with clear antecedents and consequences.",
+    hint: "Look for a clear beginning and end to each learning opportunity.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A learner starts crying and escaping from sessions after a new response cost program begins. Which G.18 issue should be evaluated?",
+    choices: [
+      "Emotional and elicited effects of the behavior-change procedure",
+      "Emergent relations from matrix training",
+      "Simple discrimination between SD and S-delta",
+      "Paired-stimulus preference hierarchy",
+    ],
+    answer:
+      "Emotional and elicited effects of the behavior-change procedure",
+    explanation:
+      "Behavior-change procedures can produce [emotional responding, avoidance, or other unwanted effects] that require monitoring and mitigation.",
+    hint: "Focus on side effects of the procedure, not the target behavior definition.",
   },
 ];
 
@@ -10893,77 +12273,8 @@ const moduleContent: Record<string, ModuleContent> = {
   },
   g: {
     miniLessons: sectionGMiniLessons,
-    practiceQuestions: [
-      {
-        type: "matching",
-        prompt: "Match each differential reinforcement procedure to its definition.",
-        pairs: [
-          { term: "DRA", definition: "Alternative behavior reinforced." },
-          { term: "DRI", definition: "Incompatible behavior reinforced." },
-          { term: "DRO", definition: "Absence of target behavior reinforced." },
-          { term: "DRL", definition: "Lower rate reinforced." },
-          { term: "DRH", definition: "Higher rate reinforced." },
-        ],
-        answer: "All differential reinforcement procedures matched correctly",
-        explanation:
-          "The key discrimination is what response pattern contacts reinforcement.",
-      },
-      {
-        type: "scenario",
-        prompt:
-          "A learner receives reinforcement for asking for help instead of tearing worksheets. Which procedure is described?",
-        choices: ["DRA", "DRO", "DRL", "DRH"],
-        answer: "DRA",
-        explanation:
-          "An alternative behavior, asking for help, produces reinforcement.",
-      },
-      {
-        type: "sorting",
-        prompt: "Sort shaping and chaining examples.",
-        categories: ["Shaping", "Chaining"],
-        items: [
-          { label: "Reinforce closer approximations of a word", category: "Shaping" },
-          { label: "Teach steps of handwashing", category: "Chaining" },
-          { label: "Gradually require clearer articulation", category: "Shaping" },
-          { label: "Link task-analysis steps", category: "Chaining" },
-        ],
-        answer: "All examples sorted correctly",
-        explanation:
-          "Shaping changes one response form; chaining links multiple responses in a sequence.",
-      },
-    ],
-    masteryQuestions: [
-      {
-        prompt:
-          "Which definition is correct for DRO?",
-        choices: [
-          "Reinforcement is given contingent upon the absence of the target behavior.",
-          "Reinforcement is given for an incompatible behavior.",
-          "Reinforcement is given when rates are higher than criterion.",
-          "Reinforcement is given for any prompted response.",
-        ],
-        answer:
-          "Reinforcement is given contingent upon the absence of the target behavior.",
-        explanation:
-          "DRO reinforces the absence of the target behavior for a specified interval or moment.",
-      },
-      {
-        type: "scenario",
-        prompt:
-          "A prompt is gradually reduced until the learner responds to the natural Discriminative Stimulus (SD). What procedure is this?",
-        choices: ["Prompt fading", "Response cost", "DRO", "Functional analysis"],
-        answer: "Prompt fading",
-        explanation:
-          "Prompt fading transfers stimulus control from the prompt to the natural Discriminative Stimulus (SD).",
-      },
-      {
-        type: "fill-blank",
-        prompt: "Complete the statement: Shaping reinforces successive ____.",
-        answer: "approximations",
-        explanation:
-          "Shaping reinforces successive approximations toward a terminal response.",
-      },
-    ],
+    practiceQuestions: sectionGPracticeQuestions,
+    masteryQuestions: sectionGMasteryQuestions,
   },
   h: {
     miniLessons: sectionHMiniLessons,

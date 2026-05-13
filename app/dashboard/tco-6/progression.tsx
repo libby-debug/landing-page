@@ -430,6 +430,51 @@ export function markLearnLessonComplete({
   });
 }
 
+export function clearLearnLessonCompletion({
+  currentLocation,
+  lessonSlug,
+  sectionSlug,
+  totalLessons,
+}: {
+  currentLocation: string;
+  lessonSlug: string;
+  sectionSlug: string;
+  totalLessons: number;
+}) {
+  if (typeof window === "undefined") {
+    return;
+  }
+
+  const completedLessons = writeCompletedLearnLessonSlugs(
+    sectionSlug,
+    readCompletedLearnLessonSlugs(sectionSlug).filter((slug) => slug !== lessonSlug),
+  );
+  const learnCompleted =
+    totalLessons > 0 && completedLessons.length >= totalLessons;
+  const nextProgress = {
+    ...readProgress(sectionSlug),
+    learnCompleted,
+  };
+  const score =
+    totalLessons > 0
+      ? Math.round((completedLessons.length / totalLessons) * 100)
+      : 0;
+
+  writeProgress(sectionSlug, nextProgress);
+  void persistModuleScore(sectionSlug, score, learnCompleted);
+
+  return saveModuleProgressSnapshot(sectionSlug, {
+    activity: "learn",
+    completedQuestions: completedLessons,
+    currentLocation,
+    lessonSlug,
+    passed: learnCompleted,
+    score,
+    submitted: false,
+    totalQuestions: totalLessons,
+  });
+}
+
 export function readSavedModuleProgress(sectionSlug: string): SavedModuleProgress {
   const fallback: SavedModuleProgress = {
     masteryProgress: readProgress(sectionSlug),

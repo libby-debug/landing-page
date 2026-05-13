@@ -15,6 +15,7 @@ import type { TcoSection } from "./data";
 import { getMiniLessons } from "./mini-lesson-data";
 import {
   SaveProgressButton,
+  clearLearnLessonCompletion,
   markLearnLessonComplete,
   readCompletedLearnLessonSlugs,
   readSavedModuleProgress,
@@ -65,6 +66,21 @@ export function MiniLessonView({
 
   function handlePassedChange(passed: boolean) {
     setPassedLessonSlug(passed ? lesson.slug : "");
+
+    if (!passed) {
+      const savedProgress = clearLearnLessonCompletion({
+        currentLocation: `/dashboard/tco-6/${section.slug}/learn/${lessonIndex + 1}`,
+        lessonSlug: lesson.slug,
+        sectionSlug: section.slug,
+        totalLessons: lessons.length,
+      });
+
+      if (!savedProgress?.masteryProgress.learnCompleted) {
+        updateProgress({ learnCompleted: false });
+      }
+
+      return;
+    }
 
     if (passed) {
       const savedProgress = markLearnLessonComplete({

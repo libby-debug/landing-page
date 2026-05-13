@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { DragEvent } from "react";
 import {
   ComparisonDefinitionBlocks,
@@ -92,11 +92,17 @@ function useRestoreLearnCompletion(
   completed: boolean | undefined,
   onPassedChange?: (passed: boolean) => void,
 ) {
+  const onPassedChangeRef = useRef(onPassedChange);
+
+  useEffect(() => {
+    onPassedChangeRef.current = onPassedChange;
+  }, [onPassedChange]);
+
   useEffect(() => {
     if (completed) {
-      onPassedChange?.(true);
+      onPassedChangeRef.current?.(true);
     }
-  }, [completed, onPassedChange]);
+  }, [completed]);
 }
 
 function nextIncorrectState(attempts = 0) {
@@ -443,7 +449,7 @@ function FlowInteraction({
     setSelectedSteps([]);
     setSubmitted(false);
     setDraggedStep("");
-    resetState({ attempts: state.attempts ?? 0, selectedSteps: [] });
+    resetState({ selectedSteps: [] });
     onPassedChange?.(false);
   }
 
@@ -606,7 +612,7 @@ function ChoiceInteraction({
   function reset() {
     setSelected("");
     setSubmitted(false);
-    resetState({ attempts: state.attempts ?? 0, selected: "" });
+    resetState({ selected: "" });
     onPassedChange?.(false);
   }
 
@@ -701,7 +707,7 @@ function GraphInterpretationInteraction({
   function reset() {
     setSelected("");
     setSubmitted(false);
-    resetState({ attempts: state.attempts ?? 0, selected: "" });
+    resetState({ selected: "" });
     onPassedChange?.(false);
   }
 
@@ -894,7 +900,7 @@ function MatchingInteraction({
     setActiveTerm("");
     setMatches({});
     setSubmitted(false);
-    resetState({ attempts: state.attempts ?? 0, matches: {} });
+    resetState({ matches: {} });
     onPassedChange?.(false);
   }
 
@@ -1032,7 +1038,7 @@ function TrueFalseInteraction({
   function reset() {
     setSelected(null);
     setSubmitted(false);
-    resetState({ attempts: state.attempts ?? 0, selectedBoolean: null });
+    resetState({ selectedBoolean: null });
     onPassedChange?.(false);
   }
 
@@ -1163,7 +1169,7 @@ function SortingInteraction({
     setActiveItem("");
     setPlacements({});
     setSubmitted(false);
-    resetState({ attempts: state.attempts ?? 0, placements: {} });
+    resetState({ placements: {} });
     onPassedChange?.(false);
   }
 
@@ -1282,7 +1288,7 @@ function FillBlankInteraction({
   function reset() {
     setAnswer("");
     setSubmitted(false);
-    resetState({ answer: "", attempts: state.attempts ?? 0 });
+    resetState({ answer: "" });
     onPassedChange?.(false);
   }
 
@@ -1397,7 +1403,7 @@ function SelectAllInteraction({
   function reset() {
     setSelected([]);
     setSubmitted(false);
-    resetState({ attempts: state.attempts ?? 0, selectedItems: [] });
+    resetState({ selectedItems: [] });
     onPassedChange?.(false);
   }
 

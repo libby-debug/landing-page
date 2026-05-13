@@ -27,7 +27,7 @@ const plans = [
     cadence: "today",
     effective: "$63",
     discount: "20% off",
-    accent: "pink",
+    accent: "teal",
     buttonLineTwo: "6-Month Plan",
     href: "/checkout?plan=6month&price=379",
   },
@@ -45,13 +45,13 @@ const accentClass = {
     text: "text-purple-600",
     bg: "bg-purple-50",
     button:
-      "border-transparent bg-gradient-to-r from-blue-600 via-purple-500 to-pink-500 text-white",
+      "border-transparent bg-gradient-to-r from-purple-600 via-blue-500 to-teal-400 text-white",
   },
-  pink: {
-    border: "border-pink-300",
-    text: "text-pink-500",
-    bg: "bg-pink-50",
-    button: "border-pink-500 text-pink-500",
+  teal: {
+    border: "border-teal-300",
+    text: "text-teal-500",
+    bg: "bg-teal-50",
+    button: "border-teal-500 text-teal-500",
   },
 };
 
@@ -79,7 +79,7 @@ export default function PricingPage() {
                   className={`relative flex flex-col rounded-3xl border ${tone.border} bg-white p-6 text-center shadow-xl`}
                 >
                   {plan.popular ? (
-                    <div className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-r from-blue-600 via-purple-500 to-pink-500 px-8 py-2 text-sm font-extrabold uppercase tracking-wide text-white shadow-lg">
+                    <div className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-r from-purple-600 via-blue-500 to-teal-400 px-8 py-2 text-sm font-extrabold uppercase tracking-wide text-white shadow-lg">
                       Most Popular
                     </div>
                   ) : null}

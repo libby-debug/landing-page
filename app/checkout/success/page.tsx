@@ -21,7 +21,7 @@ export default function CheckoutSuccessPage() {
 
           <Link
             href="/dashboard"
-            className="mt-8 inline-block rounded-2xl bg-gradient-to-r from-blue-600 via-purple-500 to-pink-500 px-8 py-4 text-center text-lg font-bold text-white shadow-lg shadow-pink-300/30 transition hover:scale-[1.02] hover:shadow-xl hover:shadow-pink-300/40"
+            className="mt-8 inline-block rounded-2xl bg-gradient-to-r from-purple-600 via-blue-500 to-teal-400 px-8 py-4 text-center text-lg font-bold text-white shadow-lg shadow-teal-300/30 transition hover:scale-[1.02] hover:shadow-xl hover:shadow-teal-300/40"
           >
             Go to Dashboard
           </Link>

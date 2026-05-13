@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import {
   PageShell,
@@ -6,6 +5,7 @@ import {
   leadClass,
   pageTitleClass,
 } from "@/components/learning-ui";
+import { HowItWorksFeatureGraphic } from "@/components/how-it-works-feature-graphic";
 
 export default function HowItWorksPage() {
   return (
@@ -19,14 +19,7 @@ export default function HowItWorksPage() {
         and mastery tracking.
       </p>
 
-      <Image
-        src="/homepage-graphic.png"
-        alt="ABA Mastered visual study features"
-        width={941}
-        height={650}
-        priority
-        className="mt-10 h-auto w-full max-w-4xl object-contain"
-      />
+      <HowItWorksFeatureGraphic />
 
       <div className="mt-10 flex w-full flex-col items-center justify-center gap-4 sm:w-auto sm:flex-row">
         <Link
@@ -38,7 +31,7 @@ export default function HowItWorksPage() {
 
         <Link
           href="/signup"
-          className="w-full rounded-2xl bg-gradient-to-r from-blue-600 via-purple-500 to-pink-500 px-8 py-4 text-center text-lg font-bold leading-normal text-white shadow-lg shadow-pink-300/30 transition hover:scale-[1.02] hover:shadow-xl hover:shadow-pink-300/40 sm:w-auto"
+          className="w-full rounded-2xl bg-gradient-to-r from-purple-600 via-blue-500 to-teal-400 px-8 py-4 text-center text-lg font-bold leading-normal text-white shadow-lg shadow-teal-300/30 transition hover:scale-[1.02] hover:shadow-xl hover:shadow-teal-300/40 sm:w-auto"
         >
           Sign Up
         </Link>

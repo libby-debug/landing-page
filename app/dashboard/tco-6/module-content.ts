@@ -845,7 +845,7 @@ const sectionCExpandedMiniLessons: MiniLessonContent[] = [
       phases: [
         { label: "Level", detail: "How high or low?", tone: "blue" },
         { label: "Trend", detail: "Upward, downward, or flat?", tone: "purple" },
-        { label: "Variability", detail: "Stable or bouncing?", tone: "pink" },
+        { label: "Variability", detail: "Stable or bouncing?", tone: "teal" },
       ],
       prompt:
         "Which visual analysis feature asks whether the data path is moving upward, downward, or flat?",
@@ -870,7 +870,7 @@ const sectionCExpandedMiniLessons: MiniLessonContent[] = [
       phases: [
         { label: "Baseline", detail: "Prediction from baseline data.", tone: "blue" },
         { label: "Intervention", detail: "Immediate behavior change.", tone: "green" },
-        { label: "Return", detail: "Verification when condition changes.", tone: "pink" },
+        { label: "Return", detail: "Verification when condition changes.", tone: "teal" },
       ],
       prompt: "Which feature strengthens evidence of a functional relation?",
       choices: [
@@ -1132,6 +1132,41 @@ const sectionCPracticeQuestions: QuestionContent[] = [
       "Look for behavior moving step-by-step with the criterion line.",
   },
   {
+    type: "scenario",
+    graphId: "reversal-pvr",
+    prompt:
+      "A graph shows baseline responding, behavior change during intervention, return toward baseline when the intervention is withdrawn, and behavior change again when intervention returns. What is the strongest interpretation?",
+    choices: [
+      "Prediction, verification, and replication strengthen experimental control",
+      "Only external validity is demonstrated",
+      "A single phase change is enough to demonstrate control",
+      "IOA has replaced the need for repeated measurement",
+    ],
+    answer:
+      "Prediction, verification, and replication strengthen experimental control",
+    explanation:
+      "Experimental control is strengthened when baseline prediction is tested, verified by withdrawal or return, and replicated when the independent variable is reintroduced.",
+    hint:
+      "Look for repeated behavior change tied to condition changes, not one isolated improvement.",
+  },
+  {
+    type: "scenario",
+    graphId: "multiple-baseline-settings",
+    prompt:
+      "Across three settings, behavior changes only after the intervention begins in each setting while untreated settings remain near baseline. What does this pattern support?",
+    choices: [
+      "Experimental control through staggered intervention",
+      "A history threat affecting all settings at once",
+      "Treatment withdrawal as the required control tactic",
+      "Momentary time sampling as the dependent variable",
+    ],
+    answer: "Experimental control through staggered intervention",
+    explanation:
+      "A staggered pattern supports experimental control when each tier changes only after the independent variable is introduced.",
+    hint:
+      "Compare when each tier changes relative to when intervention begins in that tier.",
+  },
+  {
     type: "matching",
     prompt: "Match each graph interpretation cue.",
     pairs: [
@@ -1166,6 +1201,23 @@ const sectionCPracticeQuestions: QuestionContent[] = [
       "Functional relation identification relies on replicated, condition-linked behavior change and visual analysis features.",
     hint:
       "Look for replicated change tied to the independent variable, not one isolated data point.",
+  },
+  {
+    type: "scenario",
+    graphId: "alternating-standard",
+    prompt:
+      "Two rapidly alternated conditions produce consistently separated data paths with little overlap. Which visual-analysis conclusion is best supported?",
+    choices: [
+      "One condition is associated with a different level of responding",
+      "Behavior is maintained only because baseline was withdrawn",
+      "The criterion line controlled the behavior step by step",
+      "The data show generalization across settings",
+    ],
+    answer: "One condition is associated with a different level of responding",
+    explanation:
+      "In Alternating Treatments / Multielement Designs, separated data paths with low overlap support a condition-linked difference in responding.",
+    hint:
+      "Focus on level separation and overlap across rapidly alternated conditions.",
   },
   {
     type: "scenario",
@@ -1344,6 +1396,53 @@ const sectionCMasteryQuestions: QuestionContent[] = [
   },
   {
     type: "scenario",
+    graphId: "reversal-pvr",
+    prompt:
+      "Which statement best describes how experimental control is demonstrated in this kind of single-subject graph?",
+    choices: [
+      "Behavior changes when the independent variable is introduced, withdrawn or changed, and reintroduced.",
+      "The title names the design, so the effect is experimentally controlled.",
+      "One improved data point after intervention is enough to rule out alternative explanations.",
+      "The same intervention is used with a group average instead of repeated measurement.",
+    ],
+    answer:
+      "Behavior changes when the independent variable is introduced, withdrawn or changed, and reintroduced.",
+    explanation:
+      "Experimental control is demonstrated when behavior changes systematically with manipulation of the independent variable across repeated comparisons.",
+  },
+  {
+    type: "scenario",
+    graphId: "multiple-baseline-participants",
+    prompt:
+      "Which pattern most strongly supports experimental control when withdrawal is not appropriate?",
+    choices: [
+      "Staggered intervention with behavior change only after intervention begins in each tier",
+      "All participants improve before intervention begins",
+      "Only one participant is measured before and after intervention",
+      "Behavior changes in every tier at the same calendar time",
+    ],
+    answer:
+      "Staggered intervention with behavior change only after intervention begins in each tier",
+    explanation:
+      "Staggered intervention reduces threats to validity because untreated tiers continue to serve as comparisons until intervention is introduced.",
+  },
+  {
+    type: "scenario",
+    graphId: "alternating-standard",
+    prompt:
+      "Which visual-analysis feature best supports a condition difference in a rapidly alternated design?",
+    choices: [
+      "Consistent separation between data paths with low overlap",
+      "A return to baseline after every intervention session",
+      "The same criterion line across all phases",
+      "Only one data point in each condition",
+    ],
+    answer: "Consistent separation between data paths with low overlap",
+    explanation:
+      "Alternating Treatments / Multielement Designs rely on differentiation between rapidly alternated data paths.",
+  },
+  {
+    type: "scenario",
     prompt:
       "A newly taught mand continues after programmed teaching sessions end. Which interpretation is most relevant?",
     choices: ["Maintenance", "Baseline", "Variability", "Exact count IOA"],
@@ -1361,26 +1460,42 @@ const sectionCMasteryQuestions: QuestionContent[] = [
       "Generalization means behavior occurs across people, settings, behaviors, or time beyond original conditions.",
   },
   {
-    type: "fill-blank",
     prompt:
-      "Complete the cue: Trend describes the ____ of the data path.",
-    answer: "direction",
+      "Which option best describes trend during Visual Analysis of Graphs?",
+    choices: [
+      "The direction of the data path across sessions",
+      "How high or low the data are within a phase",
+      "The amount of overlap between adjacent phases",
+      "Agreement between two observers' records",
+    ],
+    answer: "The direction of the data path across sessions",
     explanation:
       "Trend describes whether data move upward, downward, or remain flat.",
   },
   {
-    type: "fill-blank",
     prompt:
-      "Complete the cue: Level asks how high or ____ the data are.",
-    answer: "low",
+      "Which option best describes level during Visual Analysis of Graphs?",
+    choices: [
+      "How high or low the data are within a phase",
+      "The direction of the data path over time",
+      "Whether behavior occurs in a new setting",
+      "Whether observers recorded the same count",
+    ],
+    answer: "How high or low the data are within a phase",
     explanation:
       "Level describes the vertical value of data within a phase.",
   },
   {
-    type: "fill-blank",
     prompt:
-      "Complete the cue: A functional relation is supported when behavior changes with the independent ____.",
-    answer: "variable",
+      "Which statement best describes a functional relation?",
+    choices: [
+      "Behavior changes systematically with manipulation of the independent variable.",
+      "Behavior changes once after a preferred item is delivered.",
+      "Two observers agree on measurement during one session.",
+      "A skill appears in a new setting after teaching.",
+    ],
+    answer:
+      "Behavior changes systematically with manipulation of the independent variable.",
     explanation:
       "A functional relation is supported when behavior changes systematically with manipulation of the independent variable.",
   },
@@ -1427,7 +1542,7 @@ const sectionDMiniLessons: MiniLessonContent[] = [
       phases: [
         { label: "Baseline", detail: "[Data before intervention].", tone: "blue" },
         { label: "Intervention", detail: "[Condition changed by the analyst].", tone: "green" },
-        { label: "Withdrawal", detail: "[Intervention is removed].", tone: "pink" },
+        { label: "Withdrawal", detail: "[Intervention is removed].", tone: "teal" },
       ],
       cue: "Note: phase change lines [separate experimental conditions].",
       prompt: "What does a phase change line tell the learner to inspect?",
@@ -1457,9 +1572,9 @@ const sectionDMiniLessons: MiniLessonContent[] = [
       graphId: "withdrawal-problem-behavior",
       graphTitle: "Withdrawal pattern for problem behavior",
       phases: [
-        { label: "A1 - Baseline", detail: "[High baseline] problem behavior.", tone: "pink" },
+        { label: "A1 - Baseline", detail: "[High baseline] problem behavior.", tone: "teal" },
         { label: "B1 - Intervention", detail: "[Low behavior] during intervention.", tone: "green" },
-        { label: "A2 - Withdrawal", detail: "Behavior increases [after withdrawal].", tone: "pink" },
+        { label: "A2 - Withdrawal", detail: "Behavior increases [after withdrawal].", tone: "teal" },
         { label: "B2 - Intervention", detail: "Behavior decreases [when intervention returns].", tone: "green" },
       ],
       cue: "Note: the key test is whether behavior changes when the condition is [removed and reintroduced].",
@@ -1522,7 +1637,7 @@ const sectionDMiniLessons: MiniLessonContent[] = [
       graphTitle: "Withdrawal Design",
       phases: [
         { label: "Prediction", detail: "A1 predicts [baseline responding].", tone: "blue" },
-        { label: "Verification", detail: "A2 tests [the baseline prediction again].", tone: "pink" },
+        { label: "Verification", detail: "A2 tests [the baseline prediction again].", tone: "teal" },
         { label: "Replication", detail: "B2 reproduces [the intervention effect].", tone: "green" },
       ],
       cue: "Note: prediction, verification, and replication are [core logic for experimental control].",
@@ -1554,7 +1669,7 @@ const sectionDMiniLessons: MiniLessonContent[] = [
       phases: [
         { label: "Participant 1", detail: "Earliest intervention and earliest behavior change.", tone: "green" },
         { label: "Participant 2", detail: "Later intervention and later behavior change.", tone: "purple" },
-        { label: "Participant 3", detail: "Latest intervention and latest behavior change.", tone: "pink" },
+        { label: "Participant 3", detail: "Latest intervention and latest behavior change.", tone: "teal" },
       ],
       cue: "Note: staggered change across participants supports [experimental control].",
       prompt: "What graph feature shows staggered intervention?",
@@ -1585,7 +1700,7 @@ const sectionDMiniLessons: MiniLessonContent[] = [
       phases: [
         { label: "General Education", detail: "Intervention begins first.", tone: "green" },
         { label: "Playground", detail: "Intervention begins later.", tone: "purple" },
-        { label: "Small Group", detail: "Intervention begins last.", tone: "pink" },
+        { label: "Small Group", detail: "Intervention begins last.", tone: "teal" },
       ],
       cue: "Note: unchanged baselines in untreated settings help [rule out coincidental change].",
       prompt: "What threat to validity is reduced by staggering intervention across settings?",
@@ -1617,7 +1732,7 @@ const sectionDMiniLessons: MiniLessonContent[] = [
       phases: [
         { label: "Behavior 1", detail: "Changes after early intervention.", tone: "green" },
         { label: "Behavior 2", detail: "Changes after middle intervention.", tone: "purple" },
-        { label: "Behavior 3", detail: "Changes after late intervention.", tone: "pink" },
+        { label: "Behavior 3", detail: "Changes after late intervention.", tone: "teal" },
       ],
       cue: "Note: each behavior serves as [a comparison for the others].",
       prompt: "Which pattern supports control across behaviors?",
@@ -1681,7 +1796,7 @@ const sectionDMiniLessons: MiniLessonContent[] = [
       phases: [
         { label: "Control set", detail: "Remains flat without intervention.", tone: "blue" },
         { label: "Intervention A", detail: "Improves gradually.", tone: "purple" },
-        { label: "Intervention B", detail: "Improves more quickly.", tone: "pink" },
+        { label: "Intervention B", detail: "Improves more quickly.", tone: "teal" },
       ],
       cue: "Note: compare [equivalent sets], not the same response under alternating conditions.",
       prompt: "What distinguishes Adapted Alternating Treatments from standard Alternating Treatments?",
@@ -1713,7 +1828,7 @@ const sectionDMiniLessons: MiniLessonContent[] = [
       graphTitle: "Increasing on-task duration",
       phases: [
         { label: "Baseline", detail: "Stable responding before criteria.", tone: "blue" },
-        { label: "Criteria", detail: "Horizontal criterion lines change by phase.", tone: "pink" },
+        { label: "Criteria", detail: "Horizontal criterion lines change by phase.", tone: "teal" },
         { label: "Tracking", detail: "Data follow each criterion shift.", tone: "green" },
       ],
       cue: "Note: criterion lines are [part of the analysis], not decoration.",
@@ -1745,7 +1860,7 @@ const sectionDMiniLessons: MiniLessonContent[] = [
       graphId: "changing-criterion-smoking",
       graphTitle: "Decreasing criterion steps",
       phases: [
-        { label: "High baseline", detail: "Initial level is elevated.", tone: "pink" },
+        { label: "High baseline", detail: "Initial level is elevated.", tone: "teal" },
         { label: "Lower criteria", detail: "Criterion lines decrease.", tone: "purple" },
         { label: "Tracking", detail: "Data follow decreasing steps.", tone: "green" },
       ],
@@ -1780,7 +1895,7 @@ const sectionDMiniLessons: MiniLessonContent[] = [
       phases: [
         { label: "Level", detail: "[How high or low] are the data?", tone: "blue" },
         { label: "Trend", detail: "What [direction] are data moving?", tone: "purple" },
-        { label: "Variability", detail: "How much do data [bounce around]?", tone: "pink" },
+        { label: "Variability", detail: "How much do data [bounce around]?", tone: "teal" },
       ],
       cue: "Note: analyze [within-phase patterns] before comparing across phases.",
       prompt: "Which visual analysis component asks whether data are moving upward, downward, or flat?",
@@ -1805,7 +1920,7 @@ const sectionDMiniLessons: MiniLessonContent[] = [
       graphTitle: "Immediate change and replicated effect",
       phases: [
         { label: "Immediacy", detail: "Change [right after phase change].", tone: "green" },
-        { label: "Overlap", detail: "How much phases [share the same data range].", tone: "pink" },
+        { label: "Overlap", detail: "How much phases [share the same data range].", tone: "teal" },
         { label: "Consistency", detail: "Similar phases show [similar patterns].", tone: "purple" },
       ],
       cue: "Note: strong effects usually show [immediacy, low overlap, and consistency] across similar phases.",
@@ -2004,7 +2119,7 @@ const sectionDVariablesAndValidityMiniLessons: MiniLessonContent[] = [
       graphTitle: "Internal validity cue",
       phases: [
         { label: "Prediction", detail: "Baseline predicts [continued responding].", tone: "blue" },
-        { label: "Verification", detail: "Return to baseline [tests the prediction].", tone: "pink" },
+        { label: "Verification", detail: "Return to baseline [tests the prediction].", tone: "teal" },
         { label: "Replication", detail: "Reintroduction [repeats the effect].", tone: "green" },
       ],
       cue: "Note: internal validity improves when behavior [repeatedly changes with the independent variable].",
@@ -2132,7 +2247,7 @@ const sectionDAnalysisApplicationMiniLessons: MiniLessonContent[] = [
       graphTitle: "Comparing interventions",
       phases: [
         { label: "Intervention A", detail: "One condition produces [one data path].", tone: "blue" },
-        { label: "Intervention B", detail: "Another condition produces [a second data path].", tone: "pink" },
+        { label: "Intervention B", detail: "Another condition produces [a second data path].", tone: "teal" },
         { label: "Comparison", detail: "Separation helps identify [the stronger option].", tone: "green" },
       ],
       cue: "Note: comparative analysis asks [which intervention performs better], not whether one package component is necessary.",
@@ -2657,7 +2772,7 @@ const moduleContent: Record<string, ModuleContent> = {
         explanation:
           "Radical behaviorism includes private events while still explaining behavior through behavior-environment relations.",
         hint:
-          "Focus on the view that includes private events but still analyzes them behavior-analytically.",
+          "Ask whether private events are included while the explanation still stays inside behavior-environment relations.",
       },
       {
         type: "scenario",
@@ -2698,7 +2813,7 @@ const moduleContent: Record<string, ModuleContent> = {
         explanation:
           "Analytic means the data demonstrate experimental control over the behavior.",
         hint:
-          "Think about the dimension that shows a functional relation between intervention and behavior.",
+          "Think about evidence that the intervention, rather than another variable, produced the behavior change.",
       },
       {
         type: "scenario",
@@ -2709,7 +2824,7 @@ const moduleContent: Record<string, ModuleContent> = {
         explanation:
           "Generality means behavior change lasts over time, appears in other environments, or spreads to related behaviors.",
         hint:
-          "Focus on maintenance and transfer beyond the original teaching context.",
+          "Ask whether the change remains useful beyond the original teaching conditions.",
       },
       {
         type: "scenario",
@@ -2742,7 +2857,7 @@ const moduleContent: Record<string, ModuleContent> = {
         explanation:
           "Technological requires procedures to be described completely enough that another person can replicate them.",
         hint:
-          "Look for whether the written procedure tells someone exactly what to do.",
+          "Ask whether another person could implement the procedure consistently from the written steps.",
       },
       {
         type: "select-all",
@@ -2763,7 +2878,7 @@ const moduleContent: Record<string, ModuleContent> = {
         explanation:
           "Conceptually systematic means procedures are linked to behavior-analytic principles, not just described as a list of steps.",
         hint:
-          "Look for language that connects procedures to behavior-analytic principles rather than importance or transfer.",
+          "Ask whether the rationale connects the procedure to behavior-change principles instead of only naming outcomes.",
       },
       {
         type: "matching",
@@ -2805,7 +2920,7 @@ const moduleContent: Record<string, ModuleContent> = {
         explanation:
           "Effective means the behavior change is large enough to matter in the learner's life or service context.",
         hint:
-          "Think about practical importance, not whether change merely appears on a graph.",
+          "Compare visible behavior change with whether that change is large enough to be useful in everyday life.",
       },
       {
         type: "scenario",
@@ -2821,7 +2936,7 @@ const moduleContent: Record<string, ModuleContent> = {
         explanation:
           "Generality requires behavior change to maintain over time, transfer across settings or people, or spread to related behaviors.",
         hint:
-          "Look for maintenance over time or transfer beyond the original teaching condition.",
+          "Ask whether the change continues or appears outside the original teaching condition.",
       },
     ],
     masteryQuestions: [
@@ -3539,6 +3654,7 @@ const moduleContent: Record<string, ModuleContent> = {
     ],
     masteryQuestions: [
       {
+        type: "scenario",
         graphId: "withdrawal-problem-behavior",
         prompt:
           "A target behavior decreases during intervention, returns toward baseline when intervention is withdrawn, and decreases again when intervention is reintroduced. Which design is described?",
@@ -3587,6 +3703,7 @@ const moduleContent: Record<string, ModuleContent> = {
           "History refers to [outside events] that may account for behavior change.",
       },
       {
+        type: "scenario",
         prompt:
           "Which statement best differentiates Internal vs External Validity?",
         choices: [

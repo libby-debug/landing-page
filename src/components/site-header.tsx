@@ -1,14 +1,24 @@
+"use client";
+
 import Link from "next/link";
+import Image from "next/image";
+import { useAuth } from "@/components/auth-provider";
 
 export function SiteHeader() {
+  const { user } = useAuth();
+  const loginHref = user ? "/dashboard" : "/login";
+
   return (
     <header className="pointer-events-none absolute inset-x-0 top-0 z-30 px-4 pt-4 sm:px-6">
       <div className="pointer-events-auto mx-auto flex w-full max-w-6xl flex-col gap-3 rounded-2xl border border-white/60 bg-white/70 px-4 py-3 shadow-sm backdrop-blur-md sm:flex-row sm:items-center sm:justify-between sm:px-5">
         <Link href="/" aria-label="ABA Mastered home" className="inline-flex">
-          <img
-            src="/images/aba-mastered-header-icon.png"
+          <Image
+            src="/images/aba-mastered-hero-logo.png"
             alt="ABA Mastered"
-            className="h-14 w-14 object-contain"
+            width={180}
+            height={120}
+            priority
+            className="h-14 w-auto object-contain p-1"
           />
         </Link>
 
@@ -32,7 +42,7 @@ export function SiteHeader() {
             Pricing
           </Link>
           <Link
-            href="/login"
+            href={loginHref}
             className="rounded-xl px-3 py-2 transition hover:bg-white/80 hover:text-blue-700"
           >
             Login

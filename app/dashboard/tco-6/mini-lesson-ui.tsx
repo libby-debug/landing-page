@@ -88,7 +88,7 @@ export function MiniLessonView({
 
       <div className="mx-auto mt-4 h-3 max-w-xl rounded-full bg-slate-100">
         <div
-          className="h-3 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
+          className="h-3 rounded-full bg-gradient-to-r from-purple-600 via-blue-500 to-teal-400"
           style={{
             width: `${((lessonIndex + 1) / lessons.length) * 100}%`,
           }}
@@ -143,7 +143,7 @@ export function MiniLessonView({
         {lessonPassed ? (
           <Link
             href={nextHref}
-            className="w-full rounded-xl bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 px-6 py-3 text-center text-sm font-black text-white shadow-sm transition hover:opacity-90 sm:w-auto"
+            className="w-full rounded-xl bg-gradient-to-r from-purple-600 via-blue-500 to-teal-400 px-6 py-3 text-center text-sm font-black text-white shadow-sm transition hover:opacity-90 sm:w-auto"
           >
             {isFinalLesson ? "Unlock Practice" : "Next"}
           </Link>

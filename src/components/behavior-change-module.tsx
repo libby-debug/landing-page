@@ -43,9 +43,9 @@ const toneClasses = [
     text: "text-purple-600",
   },
   {
-    border: "border-pink-200",
-    bg: "bg-pink-50",
-    text: "text-pink-600",
+    border: "border-teal-200",
+    bg: "bg-teal-50",
+    text: "text-teal-600",
   },
   {
     border: "border-green-200",
@@ -280,11 +280,11 @@ export function BehaviorChangeModule({ module }: BehaviorChangeModuleProps) {
           </p>
         </div>
 
-        <div className={`${cardBaseClass} border-pink-200 bg-pink-50`}>
-          <p className="text-sm font-semibold uppercase tracking-wide text-pink-600">
+        <div className={`${cardBaseClass} border-teal-200 bg-teal-50`}>
+          <p className="text-sm font-semibold uppercase tracking-wide text-teal-600">
             Saved mastery
           </p>
-          <div className="mt-4 text-6xl font-extrabold tracking-tight text-pink-600">
+          <div className="mt-4 text-6xl font-extrabold tracking-tight text-teal-600">
             {progressLoading ? "..." : getScoreText(savedScore?.score ?? null)}
           </div>
           <p className="mt-4 text-base leading-relaxed text-slate-950">
@@ -390,8 +390,8 @@ export function BehaviorChangeModule({ module }: BehaviorChangeModuleProps) {
                   {item.example}
                 </p>
               </div>
-              <div className="mt-4 rounded-2xl border border-pink-200 bg-pink-50 p-4 text-left">
-                <p className="text-sm font-semibold uppercase tracking-wide text-pink-600">
+              <div className="mt-4 rounded-2xl border border-teal-200 bg-teal-50 p-4 text-left">
+                <p className="text-sm font-semibold uppercase tracking-wide text-teal-600">
                   Nonexample
                 </p>
                 <p className="mt-2 text-base leading-relaxed text-slate-950">
@@ -456,7 +456,7 @@ export function BehaviorChangeModule({ module }: BehaviorChangeModuleProps) {
                         selectedCorrect
                           ? "border-green-300 bg-green-50 text-green-700"
                           : incorrectSelected
-                            ? "border-pink-300 bg-pink-50 text-pink-700"
+                            ? "border-teal-300 bg-teal-50 text-teal-700"
                             : selected
                               ? "border-blue-300 bg-blue-50 text-blue-700"
                               : "border-slate-200 bg-white text-slate-700 hover:border-blue-200 hover:bg-blue-50"
@@ -475,7 +475,7 @@ export function BehaviorChangeModule({ module }: BehaviorChangeModuleProps) {
                       ? "border-green-200 bg-green-50"
                       : (incorrectAttempts[questionIndex] ?? 0) >= 4
                         ? "border-amber-200 bg-amber-50"
-                        : "border-pink-200 bg-pink-50"
+                        : "border-teal-200 bg-teal-50"
                   }`}
                 >
                   <p
@@ -484,7 +484,7 @@ export function BehaviorChangeModule({ module }: BehaviorChangeModuleProps) {
                         ? "text-green-700"
                         : (incorrectAttempts[questionIndex] ?? 0) >= 4
                           ? "text-amber-700"
-                          : "text-pink-700"
+                          : "text-teal-700"
                     }`}
                   >
                     {answers[questionIndex] === question.answer
@@ -508,7 +508,7 @@ export function BehaviorChangeModule({ module }: BehaviorChangeModuleProps) {
                   {answers[questionIndex] !== question.answer &&
                   (incorrectAttempts[questionIndex] ?? 0) > 0 &&
                   (incorrectAttempts[questionIndex] ?? 0) < 4 ? (
-                    <p className="mt-2 text-xs font-bold uppercase tracking-wide text-pink-700">
+                    <p className="mt-2 text-xs font-bold uppercase tracking-wide text-teal-700">
                       Incorrect attempt {incorrectAttempts[questionIndex]} of 4
                     </p>
                   ) : null}
@@ -562,7 +562,7 @@ export function BehaviorChangeModule({ module }: BehaviorChangeModuleProps) {
             className={`mx-auto mt-6 max-w-2xl rounded-2xl border px-4 py-3 text-sm font-semibold ${
               saveState === "saved"
                 ? "border-green-200 bg-green-50 text-green-700"
-                : "border-pink-200 bg-pink-50 text-pink-700"
+                : "border-teal-200 bg-teal-50 text-teal-700"
             }`}
           >
             {message}

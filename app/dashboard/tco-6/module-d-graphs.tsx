@@ -15,7 +15,7 @@ export type ModuleDGraphId =
   | "withdrawal-aba"
   | "withdrawal-beginner";
 
-type GraphTone = "blue" | "pink" | "purple" | "green" | "slate";
+type GraphTone = "blue" | "teal" | "purple" | "green" | "slate";
 
 type DataPoint = {
   x: number;
@@ -71,7 +71,7 @@ type ModuleDGraphExample = {
 const toneStyles: Record<GraphTone, { line: string; soft: string; text: string }> = {
   blue: { line: "#2563eb", soft: "#dbeafe", text: "#1d4ed8" },
   green: { line: "#16a34a", soft: "#dcfce7", text: "#15803d" },
-  pink: { line: "#db2777", soft: "#fce7f3", text: "#be185d" },
+  teal: { line: "#0d9488", soft: "#ccfbf1", text: "#0f766e" },
   purple: { line: "#9333ea", soft: "#f3e8ff", text: "#7e22ce" },
   slate: { line: "#0f172a", soft: "#e2e8f0", text: "#0f172a" },
 };
@@ -161,7 +161,7 @@ export const moduleDGraphExamples: Record<ModuleDGraphId, ModuleDGraphExample> =
       "A1 predicts baseline responding, A2 verifies the prediction, and B2 replicates the intervention effect.",
     callouts: [
       { label: "Prediction", x: 3, y: 7, tone: "blue" },
-      { label: "Verification", x: 8, y: 8, tone: "pink" },
+      { label: "Verification", x: 8, y: 8, tone: "teal" },
       { label: "Replication", x: 11, y: 22, tone: "green" },
     ],
     panels: [
@@ -243,7 +243,7 @@ export const moduleDGraphExamples: Record<ModuleDGraphId, ModuleDGraphExample> =
         series: [
           series("Baseline", "slate", [6, 7, 6, 7, 6, 7], "circle", true),
           series("Intervention A", "blue", [12, 14, 15, 16, 17, 18], "square"),
-          series("Intervention B", "pink", [20, 22, 23, 25, 26, 27], "triangle"),
+          series("Intervention B", "teal", [20, 22, 23, 25, 26, 27], "triangle"),
         ],
       },
     ],
@@ -275,7 +275,7 @@ export const moduleDGraphExamples: Record<ModuleDGraphId, ModuleDGraphExample> =
         yLabel: "Problem behavior per minute",
         yMax: 12,
         series: [
-          series("Attention", "pink", [8, 9, 8, 10, 9, 11], "circle"),
+          series("Attention", "teal", [8, 9, 8, 10, 9, 11], "circle"),
           series("Alone", "purple", [2, 2, 3, 2, 2, 3], "square", true),
           series("Demand", "blue", [4, 5, 4, 5, 4, 5], "triangle"),
           series("Control", "green", [1, 1, 0, 1, 1, 0], "diamond"),
@@ -337,7 +337,7 @@ export const moduleDGraphExamples: Record<ModuleDGraphId, ModuleDGraphExample> =
         series: [
           {
             label: "Cigarettes",
-            tone: "pink",
+            tone: "teal",
             marker: "circle",
             points: [
               { x: 1, y: 27 },
@@ -389,7 +389,7 @@ export const moduleDGraphExamples: Record<ModuleDGraphId, ModuleDGraphExample> =
         series: [
           {
             label: "Problem behavior",
-            tone: "pink",
+            tone: "teal",
             marker: "circle",
             points: [
               { x: 1, y: 19 },
@@ -576,13 +576,17 @@ function criterionPanel(title: string, values: number[]): GraphPanel {
 
 export function GraphCard({
   className = "",
+  genericPanelLabels = false,
   graphId,
+  hideCallouts = false,
   monochrome = false,
   titleOverride,
   hideDescription = false,
 }: {
   className?: string;
+  genericPanelLabels?: boolean;
   graphId: string;
+  hideCallouts?: boolean;
   hideDescription?: boolean;
   monochrome?: boolean;
   titleOverride?: string;
@@ -612,9 +616,11 @@ export function GraphCard({
         {graph.panels.map((panel, index) => (
           <GraphPanelView
             key={`${graph.id}-${panel.title ?? index}`}
-            callouts={index === 0 ? graph.callouts : undefined}
+            callouts={!hideCallouts && index === 0 ? graph.callouts : undefined}
+            genericPanelLabels={genericPanelLabels}
             monochrome={monochrome}
             panel={panel}
+            panelIndex={index}
           />
         ))}
       </div>
@@ -624,12 +630,16 @@ export function GraphCard({
 
 function GraphPanelView({
   callouts,
+  genericPanelLabels,
   monochrome,
   panel,
+  panelIndex,
 }: {
   callouts?: GraphCallout[];
+  genericPanelLabels: boolean;
   monochrome: boolean;
   panel: GraphPanel;
+  panelIndex: number;
 }) {
   const allPoints = panel.series.flatMap((item) => item.points);
   const maxX = Math.max(...allPoints.map((point) => point.x), 1);
@@ -637,7 +647,10 @@ function GraphPanelView({
   const yMin = panel.yMin ?? 0;
   const yMax = panel.yMax;
   const width = 720;
-  const height = panel.title ? 230 : 260;
+  const panelTitle = genericPanelLabels
+    ? `Panel ${panelIndex + 1}`
+    : panel.title;
+  const height = panelTitle ? 230 : 260;
   const margin = { bottom: 44, left: 66, right: 26, top: 38 };
   const plotWidth = width - margin.left - margin.right;
   const plotHeight = height - margin.top - margin.bottom;
@@ -648,13 +661,13 @@ function GraphPanelView({
 
   return (
     <div className="mx-auto w-full max-w-4xl rounded-3xl border border-slate-200 bg-slate-50 p-4">
-      {panel.title ? (
+      {panelTitle ? (
         <p className="mb-2 text-center text-sm font-black uppercase tracking-wide text-slate-950">
-          {panel.title}
+          {panelTitle}
         </p>
       ) : null}
       <svg
-        aria-label={`${panel.title ?? "Graph panel"} showing ${panel.yLabel} across sessions`}
+        aria-label={`Graph panel ${panelIndex + 1} showing ${panel.yLabel} across sessions`}
         className="mx-auto block h-auto w-full overflow-visible"
         role="img"
         viewBox={`0 0 ${width} ${height}`}
@@ -730,7 +743,7 @@ function GraphPanelView({
               x2={xScale(criterion.end)}
               y1={yScale(criterion.value)}
               y2={yScale(criterion.value)}
-              stroke={monochrome ? "#0f172a" : toneStyles.pink.line}
+              stroke={monochrome ? "#0f172a" : toneStyles.teal.line}
               strokeDasharray="8 5"
               strokeWidth="3"
             />
@@ -739,7 +752,7 @@ function GraphPanelView({
                 x={xScale(criterion.start)}
                 y={yScale(criterion.value) - 7}
                 className={`text-[12px] font-black ${
-                  monochrome ? "fill-slate-950" : "fill-pink-700"
+                  monochrome ? "fill-slate-950" : "fill-teal-700"
                 }`}
               >
                 {criterion.label}

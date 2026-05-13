@@ -20,7 +20,7 @@ export type VisualKind =
       phases: {
         label: string;
         detail: string;
-        tone: "blue" | "pink" | "purple" | "green";
+        tone: "blue" | "teal" | "purple" | "green";
       }[];
       choices: string[];
       answer: string;
@@ -2444,7 +2444,7 @@ export const sectionBPracticeQuestions: QuestionContent[] = [
   },
 ];
 
-export const sectionBMasteryQuestions: QuestionContent[] = [
+const sectionBMasteryQuestionSource: QuestionContent[] = [
   {
     prompt:
       "Which statement best distinguishes behavior from response?",
@@ -3300,3 +3300,115 @@ export const sectionBMasteryQuestions: QuestionContent[] = [
       "A mand is maintained by specific reinforcement related to the relevant Motivating Operation.",
   },
 ];
+
+export const sectionBMasteryQuestions: QuestionContent[] =
+  sectionBMasteryQuestionSource.map(convertSectionBMasteryQuestion);
+
+function convertSectionBMasteryQuestion(question: QuestionContent): QuestionContent {
+  if (
+    (question.type === "multiple-choice" || question.type === "scenario" || !question.type) &&
+    question.choices?.includes(question.answer)
+  ) {
+    return {
+      ...question,
+      type: "multiple-choice",
+    };
+  }
+
+  const answer = getSectionBMasteryAnswer(question);
+
+  return {
+    ...question,
+    answer,
+    choices: getSectionBMasteryChoices(question, answer),
+    type: "multiple-choice",
+  };
+}
+
+function getSectionBMasteryAnswer(question: QuestionContent) {
+  if (question.type === "matching" && question.pairs?.length) {
+    return question.pairs
+      .map((pair) => `${pair.term} = ${pair.definition}`)
+      .join("; ");
+  }
+
+  if (question.type === "sorting" && question.items?.length && question.categories) {
+    return question.categories
+      .map((category) => {
+        const labels = question.items
+          ?.filter((item) => item.category === category)
+          .map((item) => item.label)
+          .join(", ");
+
+        return `${category}: ${labels}`;
+      })
+      .join("; ");
+  }
+
+  if (question.type === "select-all") {
+    return (question.answers ?? [question.answer]).join("; ");
+  }
+
+  return question.answer;
+}
+
+function getSectionBMasteryChoices(question: QuestionContent, answer: string) {
+  if (question.type === "matching" && question.pairs?.length) {
+    const shiftedDefinitions = question.pairs.map((pair, index, pairs) => {
+      const nextDefinition = pairs[(index + 1) % pairs.length]?.definition ?? pair.definition;
+      return `${pair.term} = ${nextDefinition}`;
+    });
+
+    return uniqueSectionBMasteryChoices([
+      answer,
+      shiftedDefinitions.join("; "),
+      question.pairs.map((pair) => `${pair.term} = ${pair.term}`).join("; "),
+      "The terms are matched by surface similarity instead of controlling variables.",
+    ]);
+  }
+
+  if (question.type === "sorting" && question.items?.length && question.categories) {
+    const reversedCategories = [...question.categories].reverse();
+
+    return uniqueSectionBMasteryChoices([
+      answer,
+      reversedCategories
+        .map((category, categoryIndex) => {
+          const labels = question.items
+            ?.filter((_, index) => index % 2 === categoryIndex)
+            .map((item) => item.label)
+            .join(", ");
+
+          return `${category}: ${labels}`;
+        })
+        .join("; "),
+      question.items
+        .map((item) => `${item.label}: ${question.categories?.[0]}`)
+        .join("; "),
+      "All examples belong to the same category because they share surface form.",
+    ]);
+  }
+
+  if (question.type === "select-all") {
+    const incorrectChoices =
+      question.choices?.filter((choice) => !question.answers?.includes(choice)) ?? [];
+
+    return uniqueSectionBMasteryChoices([
+      answer,
+      incorrectChoices.join("; "),
+      question.choices?.slice(0, 2).join("; ") ?? "",
+      "All listed options",
+    ]);
+  }
+
+  return uniqueSectionBMasteryChoices([
+    answer,
+    "a consequence relation selected by future behavior change",
+    "an antecedent relation that signals reinforcement availability",
+    "a respondent relation based on stimulus-stimulus pairing",
+  ]);
+}
+
+function uniqueSectionBMasteryChoices(choices: string[]) {
+  return Array.from(new Set(choices.filter(Boolean))).slice(0, 4);
+}

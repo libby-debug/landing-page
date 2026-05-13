@@ -19,7 +19,7 @@ const alignClass = {
 };
 
 export const gradientTextClass =
-  "inline-block overflow-visible bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text px-1 pb-1 leading-[1.15] text-transparent [-webkit-box-decoration-break:clone] [box-decoration-break:clone]";
+  "inline-block overflow-visible bg-gradient-to-r from-purple-600 via-blue-500 to-teal-400 bg-clip-text px-1 pb-1 leading-[1.15] text-transparent [-webkit-text-fill-color:transparent] [-webkit-box-decoration-break:clone] [box-decoration-break:clone]";
 
 export const eyebrowClass =
   "text-sm font-semibold uppercase tracking-wide text-blue-600";
@@ -100,7 +100,7 @@ export function HighlightedText({ text }: { text: string }) {
         return isHighlighted ? (
           <em
             key={`${content}-${index}`}
-            className="font-inherit text-slate-950"
+            className="font-normal italic text-inherit"
           >
             {content}
           </em>
@@ -179,7 +179,7 @@ const buttonClass = {
   secondary:
     "border border-slate-200 bg-white text-slate-950 shadow-sm transition hover:border-slate-300 hover:shadow-md disabled:cursor-not-allowed disabled:opacity-60",
   accent:
-    "bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white shadow-sm transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60",
+    "bg-gradient-to-r from-purple-600 via-blue-500 to-teal-400 text-white shadow-sm transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60",
 };
 
 export function Button({
@@ -234,7 +234,7 @@ type ModuleCardProps = {
   term: string;
   definition: string;
   href: string;
-  tone?: "blue" | "green" | "purple" | "orange" | "pink";
+  tone?: "blue" | "green" | "purple" | "orange" | "teal";
 };
 
 const moduleCardClass = {
@@ -258,10 +258,10 @@ const moduleCardClass = {
     bg: "bg-orange-50",
     border: "border-orange-200",
   },
-  pink: {
-    color: "text-pink-600",
-    bg: "bg-pink-50",
-    border: "border-pink-200",
+  teal: {
+    color: "text-slate-950",
+    bg: "bg-gradient-to-r from-purple-50 via-blue-50 to-teal-50",
+    border: "border-blue-200",
   },
 };
 

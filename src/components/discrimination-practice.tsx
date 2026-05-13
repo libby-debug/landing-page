@@ -91,7 +91,7 @@ export function DiscriminationPractice({
                         hasAnswer && isCorrect
                           ? "border-green-300 bg-green-50 text-green-700"
                           : hasAnswer && isSelected
-                            ? "border-pink-300 bg-pink-50 text-pink-700"
+                            ? "border-teal-300 bg-teal-50 text-teal-700"
                             : isSelected
                               ? "border-blue-300 bg-blue-50 text-blue-700"
                               : "border-slate-200 bg-white text-slate-700 hover:border-blue-200 hover:bg-blue-50"
@@ -108,14 +108,14 @@ export function DiscriminationPractice({
                   className={`mt-5 rounded-2xl border p-4 text-center ${
                     isCorrectSelection
                       ? "border-green-200 bg-green-50"
-                      : "border-pink-200 bg-pink-50"
+                      : "border-teal-200 bg-teal-50"
                   }`}
                 >
                   <p
                     className={`text-sm font-semibold uppercase tracking-wide ${
                       isCorrectSelection
                         ? "text-green-700"
-                        : "text-pink-700"
+                        : "text-teal-700"
                     }`}
                   >
                     {isCorrectSelection ? "Correct" : "Review before advancing"}
@@ -127,7 +127,7 @@ export function DiscriminationPractice({
                     <button
                       type="button"
                       onClick={() => retryQuestion(questionIndex)}
-                      className="mt-4 rounded-xl border border-pink-200 bg-white px-4 py-2 text-sm font-semibold text-pink-700 shadow-sm transition hover:border-pink-300"
+                      className="mt-4 rounded-xl border border-teal-200 bg-white px-4 py-2 text-sm font-semibold text-teal-700 shadow-sm transition hover:border-teal-300"
                     >
                       Retry this item
                     </button>
@@ -153,7 +153,7 @@ export function DiscriminationPractice({
           {nextHref && allCorrect ? (
             <Link
               href={nextHref}
-              className="inline-block rounded-xl bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:opacity-90"
+              className="inline-block rounded-xl bg-gradient-to-r from-purple-600 via-blue-500 to-teal-400 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:opacity-90"
             >
               {nextLabel}
             </Link>

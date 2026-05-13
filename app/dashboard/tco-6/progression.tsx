@@ -22,6 +22,8 @@ export type SavedProgressSnapshot = {
   lessonSlug?: string;
   masteryProgress?: ModuleProgress;
   passed?: boolean;
+  questionOrder?: string[];
+  questionResults?: Record<string, boolean>;
   score?: number;
   selectedAnswers?: Record<string, string>;
   submitted?: boolean;
@@ -450,7 +452,7 @@ export function ActivityProgressNav({
             title={
               item.activity === "practice"
                 ? `Practice unlocks after Learn is completed with ${miniLessonMasteryThreshold}%.`
-                : `Mastery Check unlocks after Practice is completed with ${masteryThreshold}% or higher.`
+                : "Mastery Check unlocks after Practice is completed with 100% correct."
             }
           >
             Locked · {item.label}
@@ -490,7 +492,7 @@ export function LockedActivityCard({
   const requirement =
     activity === "practice"
       ? `Complete Learn with ${miniLessonMasteryThreshold}% correct to unlock Practice.`
-      : `Complete Practice with ${masteryThreshold}% or higher to unlock Mastery Check.`;
+      : "Complete Practice with 100% correct to unlock Mastery Check.";
 
   return (
     <section className="mt-8 w-full rounded-3xl border border-slate-200 bg-slate-50 p-8 text-center shadow-sm">
@@ -551,7 +553,7 @@ export function SavedModuleProgressCard({
         role="img"
       >
         <div
-          className="h-3 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
+          className="h-3 rounded-full bg-gradient-to-r from-purple-600 via-blue-500 to-teal-400"
           style={{ width: `${progressPercent}%` }}
         />
       </div>
@@ -566,23 +568,9 @@ export function CompleteLearnLink({ sectionSlug }: { sectionSlug: string }) {
     <Link
       href={`/dashboard/tco-6/${sectionSlug}/practice`}
       onClick={() => updateProgress({ learnCompleted: true })}
-      className="mt-8 inline-block rounded-xl bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 px-6 py-3 text-sm font-black text-white shadow-sm transition hover:opacity-90"
+      className="mt-8 inline-block rounded-xl bg-gradient-to-r from-purple-600 via-blue-500 to-teal-400 px-6 py-3 text-sm font-black text-white shadow-sm transition hover:opacity-90"
     >
       Complete Learn and Unlock Practice
-    </Link>
-  );
-}
-
-export function CompletePracticeLink({ sectionSlug }: { sectionSlug: string }) {
-  const { updateProgress } = useModuleProgress(sectionSlug);
-
-  return (
-    <Link
-      href={`/dashboard/tco-6/${sectionSlug}/mastery-check`}
-      onClick={() => updateProgress({ practiceCompleted: true })}
-      className="mt-8 inline-block rounded-xl bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 px-6 py-3 text-sm font-black text-white shadow-sm transition hover:opacity-90"
-    >
-      Complete Practice and Unlock Mastery Check
     </Link>
   );
 }
@@ -593,6 +581,7 @@ export function SaveProgressButton({
   currentLocation,
   lessonSlug,
   passed,
+  questionOrder,
   score,
   sectionSlug,
   selectedAnswers,
@@ -605,6 +594,7 @@ export function SaveProgressButton({
   currentLocation?: string;
   lessonSlug?: string;
   passed?: boolean;
+  questionOrder?: string[];
   score?: number;
   sectionSlug: string;
   selectedAnswers?: Record<string, string>;
@@ -640,6 +630,7 @@ export function SaveProgressButton({
       currentLocation: currentLocation ?? pathname,
       lessonSlug,
       passed,
+      questionOrder,
       score: resolvedScore,
       selectedAnswers:
         selectedAnswers ?? Object.fromEntries(

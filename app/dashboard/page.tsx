@@ -5,14 +5,16 @@ import { useEffect, useState } from "react";
 import { LogoutButton } from "@/components/logout-button";
 import { ProtectedRoute } from "@/components/protected-route";
 import { useAuth } from "@/components/auth-provider";
-import { useDailyDuration } from "@/components/daily-duration-tracker";
+import {
+  useDailyDuration,
+  useWeeklyDailyDuration,
+} from "@/components/daily-duration-tracker";
 import { isSupabaseConfigured, supabase } from "@/lib/supabase/client";
 import {
   PageShell,
   cardBaseClass,
   eyebrowClass,
   leadClass,
-  pageTitleClass,
   sectionTitleClass,
 } from "@/components/learning-ui";
 import {
@@ -32,6 +34,15 @@ const developerShortcutSections = tcoSections.filter((section) =>
   ["a", "b", "c", "d"].includes(section.slug),
 );
 
+const dashboardGradientTextClass =
+  "inline-block overflow-visible bg-gradient-to-r from-purple-600 via-blue-500 to-teal-400 bg-clip-text px-2 pb-2 leading-[1.15] text-transparent [-webkit-text-fill-color:transparent] [-webkit-box-decoration-break:clone] [box-decoration-break:clone]";
+
+const dashboardPageTitleClass =
+  `mt-2 max-w-full text-5xl font-extrabold tracking-tight ${dashboardGradientTextClass}`;
+
+const dashboardGradientClass =
+  "bg-gradient-to-r from-purple-600 via-blue-500 to-teal-400";
+
 export default function DashboardPage() {
   return (
     <ProtectedRoute>
@@ -43,6 +54,7 @@ export default function DashboardPage() {
 function DashboardContent() {
   const { user } = useAuth();
   const dailyDuration = useDailyDuration();
+  const weeklyDuration = useWeeklyDailyDuration();
   const [progressLoaded, setProgressLoaded] = useState(false);
   const [moduleProgress, setModuleProgress] = useState<Record<string, number>>(
     {},
@@ -172,7 +184,7 @@ function DashboardContent() {
         <div className="flex flex-col items-center">
           <p className={eyebrowClass}>BACB Test Content Outline 6</p>
 
-          <h1 className={pageTitleClass}>Dashboard</h1>
+          <h1 className={dashboardPageTitleClass}>Dashboard</h1>
 
           <p className={leadClass}>
             Track your progress through our colorful, interactive platform.
@@ -212,9 +224,14 @@ function DashboardContent() {
           eyebrow="Overall progress"
           value={progressLoaded ? `${averageProgress}%` : "..."}
           description={overallDescription}
-          tone="pink"
+          tone="teal"
         />
       </section>
+
+      <DailyEngagementGraph
+        days={weeklyDuration.days}
+        loaded={weeklyDuration.loaded}
+      />
 
       {/* Development-only QA panel. These links are stripped from production UI by NODE_ENV. */}
       {process.env.NODE_ENV === "development" ? (
@@ -247,7 +264,7 @@ function DashboardContent() {
                 <div className="mt-4 grid gap-2">
                   <Link
                     href={`/dashboard/tco-6/${section.slug}/practice`}
-                    className="rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-sm font-black text-green-700 transition hover:border-green-300 hover:bg-green-100"
+                    className="rounded-xl border border-blue-200 bg-gradient-to-r from-purple-50 via-blue-50 to-teal-50 px-4 py-3 text-sm font-black text-slate-950 transition hover:shadow-md"
                   >
                     Module {section.code} Practice
                   </Link>
@@ -281,7 +298,7 @@ function DashboardContent() {
 
           <Link
             href={`/dashboard/tco-6/${continueSection.slug}`}
-            className="inline-block rounded-xl bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 px-5 py-3 text-center text-sm font-semibold text-white shadow-sm transition hover:opacity-90"
+            className={`inline-block rounded-xl ${dashboardGradientClass} px-5 py-3 text-center text-sm font-semibold text-white shadow-sm shadow-teal-200/60 transition hover:opacity-90`}
           >
             Continue
           </Link>
@@ -323,6 +340,81 @@ function DashboardContent() {
   );
 }
 
+function DailyEngagementGraph({
+  days,
+  loaded,
+}: {
+  days: Array<{ dateKey: string; dayLabel: string; minutes: number }>;
+  loaded: boolean;
+}) {
+  const chartDays =
+    days.length > 0
+      ? days
+      : Array.from({ length: 7 }, (_, index) => ({
+          dateKey: `loading-${index}`,
+          dayLabel: "Day",
+          minutes: 0,
+        }));
+  const maxMinutes = Math.max(...chartDays.map((day) => day.minutes), 1);
+
+  return (
+    <section className={`${cardBaseClass} mt-6 w-full border-blue-200 bg-blue-50 text-center shadow-xl shadow-teal-100/60`}>
+      <div className="flex flex-col items-center gap-2">
+        <p className="text-sm font-black uppercase tracking-wide text-blue-700">
+          7-Day Engagement
+        </p>
+        <h2 className="text-2xl font-black tracking-tight text-slate-950">
+          Daily Duration
+        </h2>
+        <p className="max-w-2xl text-sm font-semibold leading-6 text-slate-950">
+          Total minutes engaged with ABA Mastered for each of the last 7 days.
+        </p>
+      </div>
+
+      <div className="mt-6 overflow-x-auto">
+        <div
+          className="mx-auto grid min-w-[560px] max-w-5xl grid-cols-7 items-end gap-3 rounded-3xl border border-blue-100 bg-white/80 p-5 sm:gap-4"
+          role="img"
+          aria-label="Bar graph showing daily engagement minutes for the last 7 days"
+        >
+          {chartDays.map((day) => {
+            const heightPercent = loaded
+              ? Math.max((day.minutes / maxMinutes) * 100, day.minutes > 0 ? 8 : 2)
+              : 2;
+
+            return (
+              <div
+                key={day.dateKey}
+                className="flex min-h-64 flex-col items-center justify-end gap-3"
+              >
+                <div className="flex h-44 w-full items-end justify-center rounded-2xl bg-blue-100/70 p-2">
+                  <div
+                    className="w-full max-w-14 rounded-t-2xl bg-gradient-to-t from-purple-600 via-blue-500 to-teal-400 shadow-sm shadow-teal-200/60 transition-all"
+                    style={{ height: `${heightPercent}%` }}
+                    aria-label={`${day.dayLabel}: ${loaded ? day.minutes : 0} minutes`}
+                    title={`${day.dayLabel}: ${loaded ? day.minutes : 0} minutes`}
+                  />
+                </div>
+                <div className="text-center">
+                  <p className="text-sm font-black text-slate-950">
+                    {day.dayLabel}
+                  </p>
+                  <p className="text-xs font-bold uppercase tracking-wide text-blue-700">
+                    {loaded ? day.minutes : "..."}
+                  </p>
+                  <p className="text-xs font-bold uppercase tracking-wide text-blue-700">
+                    minutes
+                  </p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function SummaryCard({
   eyebrow,
   value,
@@ -332,19 +424,19 @@ function SummaryCard({
   eyebrow: string;
   value: string;
   description: string;
-  tone: "blue" | "purple" | "pink";
+  tone: "blue" | "purple" | "teal";
 }) {
   const toneClass = {
     blue: "border-blue-200 bg-blue-50 text-blue-600",
     purple: "border-purple-200 bg-purple-50 text-purple-600",
-    pink: "border-pink-200 bg-pink-50 text-pink-600",
+    teal: "border-blue-200 bg-gradient-to-r from-purple-50 via-blue-50 to-teal-50 text-slate-950",
   }[tone];
 
   return (
     <div className={`${cardBaseClass} ${toneClass} text-center`}>
       <p className="text-sm font-semibold uppercase tracking-wide">{eyebrow}</p>
 
-      <div className="mt-4 text-5xl font-extrabold tracking-tight text-slate-950">
+      <div className="mt-4 inline-block bg-gradient-to-r from-purple-600 via-blue-500 to-teal-400 bg-clip-text text-5xl font-extrabold tracking-tight text-transparent [-webkit-text-fill-color:transparent]">
         {value}
       </div>
 
@@ -379,11 +471,11 @@ function TcoSectionCard({
     <article
       className={`${cardBaseClass} flex h-full flex-col text-center shadow-xl shadow-slate-900/10 ${
         completed
-          ? "border-green-300 bg-green-50 shadow-green-100"
+          ? "border-blue-200 bg-gradient-to-br from-purple-50 via-blue-50 to-teal-50 shadow-teal-100"
           : "border-white/70 bg-white/95"
       }`}
     >
-      <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-r from-blue-600 via-purple-500 to-pink-500 text-3xl font-black text-white shadow-lg shadow-pink-300/30">
+      <div className={`mx-auto flex h-16 w-16 items-center justify-center rounded-2xl ${dashboardGradientClass} text-3xl font-black text-white shadow-lg shadow-teal-300/30`}>
         {section.code}
       </div>
 
@@ -417,7 +509,7 @@ function TcoSectionCard({
 
       <Link
         href={`/dashboard/tco-6/${section.slug}`}
-        className="mt-6 inline-block rounded-xl bg-slate-950 px-5 py-3 text-center text-sm font-black text-white transition hover:opacity-90"
+        className={`mt-6 inline-block rounded-xl ${dashboardGradientClass} px-5 py-3 text-center text-sm font-black text-white shadow-sm shadow-teal-200/60 transition hover:opacity-90`}
       >
         {actionLabel}
       </Link>
@@ -426,7 +518,7 @@ function TcoSectionCard({
         <div className="mt-3 grid gap-2">
           <Link
             href={`/dashboard/tco-6/${section.slug}/practice`}
-            className="inline-block rounded-xl border border-green-200 bg-green-50 px-5 py-3 text-center text-sm font-black text-green-700 transition hover:border-green-300 hover:bg-green-100"
+            className="inline-block rounded-xl border border-blue-200 bg-gradient-to-r from-purple-50 via-blue-50 to-teal-50 px-5 py-3 text-center text-sm font-black text-slate-950 transition hover:shadow-md"
           >
             Preview Interactive Practice Test
           </Link>
@@ -445,9 +537,9 @@ function TcoSectionCard({
 function StatusBadge({ status }: { status: string }) {
   const statusClass =
     status === "Completed" || status === "Mastered"
-      ? "bg-purple-100 text-purple-700"
+      ? "bg-gradient-to-r from-purple-600 via-blue-500 to-teal-400 text-white"
       : status === "In Progress"
-        ? "bg-blue-100 text-blue-700"
+        ? "bg-gradient-to-r from-purple-100 via-blue-100 to-teal-100 text-slate-950"
         : "bg-slate-100 text-slate-700";
 
   return (
@@ -476,7 +568,7 @@ function ProgressBar({
         role="img"
       >
         <div
-          className="h-3 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
+          className={`h-3 rounded-full ${dashboardGradientClass}`}
           style={{ width: `${progress}%` }}
         />
       </div>

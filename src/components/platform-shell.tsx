@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { AuthProvider, useAuth } from "@/components/auth-provider";
 import { DailyDurationTracker } from "@/components/daily-duration-tracker";
@@ -101,18 +102,20 @@ function PlatformShellContent({ children }: { children: React.ReactNode }) {
   const showSidebar = Boolean(user) && isAuthenticatedAppRoute(pathname);
 
   return (
-    <div className="relative flex min-h-screen overflow-x-hidden bg-[radial-gradient(circle_at_12%_18%,rgba(255,255,255,0.95),transparent_28%),radial-gradient(circle_at_88%_12%,rgba(255,227,239,0.85),transparent_30%),linear-gradient(135deg,#dff1ff_0%,#ffffff_50%,#ffe3ef_100%)]">
+    <div className="relative flex min-h-screen overflow-x-hidden bg-[radial-gradient(circle_at_88%_12%,rgba(153,246,228,0.68),transparent_28%),linear-gradient(180deg,#dff1ff_0%,#ccfbf1_34%,#ffffff_82%,#ffffff_100%)]">
       <DailyDurationTracker />
       <SiteHeader />
 
       {showSidebar && (
-        <aside className="relative z-20 w-72 flex-col border-r bg-white p-6 pt-28 shadow-sm lg:flex">
+        <aside className="relative z-20 w-72 flex-col border-r border-white/70 bg-[linear-gradient(180deg,rgba(219,234,254,0.14)_0%,rgba(204,251,241,0.10)_36%,rgba(255,255,255,0.92)_100%)] p-6 pt-28 shadow-sm backdrop-blur-xl lg:flex">
             <div className="pb-4">
               <Link href="/" aria-label="ABA Mastered home" className="inline-flex">
-                <img
+                <Image
                   src="/images/aba-mastered-hero-logo.png"
                   alt="ABA Mastered"
-                  className="h-auto w-full max-w-[220px] object-contain"
+                  width={220}
+                  height={147}
+                  className="h-auto w-full max-w-[220px] object-contain p-1"
                 />
               </Link>
             </div>
@@ -123,10 +126,10 @@ function PlatformShellContent({ children }: { children: React.ReactNode }) {
                 const isPrimary = item.prominence === "primary";
                 const prominenceClass = isPrimary
                   ? "text-lg font-extrabold text-slate-950"
-                  : "text-sm font-semibold text-slate-600";
+                  : "text-sm font-semibold text-slate-950";
                 const activeClass = isActive
-                  ? "border border-blue-200 bg-blue-100 text-blue-800 shadow-sm"
-                  : "border border-transparent hover:bg-blue-50 hover:text-blue-700";
+                  ? "border border-blue-200 bg-gradient-to-r from-purple-100 via-blue-100 to-teal-100 text-slate-950 shadow-sm"
+                  : "border border-transparent hover:bg-gradient-to-r hover:from-purple-50 hover:via-blue-50 hover:to-teal-50 hover:text-slate-950";
 
                 return (
                   <Link
@@ -135,7 +138,7 @@ function PlatformShellContent({ children }: { children: React.ReactNode }) {
                     className={`rounded-xl px-4 py-3 transition ${prominenceClass} ${activeClass}`}
                   >
                     {item.href === "/dashboard" ? (
-                      <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+                      <span className="inline-block bg-gradient-to-r from-purple-600 via-blue-500 to-teal-400 bg-clip-text text-transparent [-webkit-text-fill-color:transparent]">
                         {item.title}
                       </span>
                     ) : (
@@ -146,17 +149,34 @@ function PlatformShellContent({ children }: { children: React.ReactNode }) {
               })}
             </nav>
 
-            <div className="mt-auto flex min-h-40 flex-col items-center justify-center rounded-2xl border border-blue-100 bg-blue-50 p-4 text-center shadow-sm">
-              <p className="text-xs font-black uppercase tracking-wide text-blue-600">
-                Mastery Goal
+            <div className="mt-6 rounded-2xl border border-blue-100 bg-gradient-to-r from-purple-50 via-blue-50 to-teal-50 p-5 text-left shadow-sm">
+              <h2 className="text-lg font-black text-slate-950">
+                Need help?
+              </h2>
+              <p className="mt-3 text-sm font-semibold text-slate-950">
+                Contact Support.
               </p>
-              <p className="mt-2 text-4xl font-black leading-none text-blue-700">
-                90%
-              </p>
-              <p className="mt-3 max-w-48 text-xs font-semibold leading-5 text-slate-950">
-                Practice and mastery checks pass at 90%; mini-lessons require
-                100%.
-              </p>
+              <a
+                href="tel:1-860-316-8415"
+                className="mt-5 flex items-center justify-center gap-3 rounded-xl border border-slate-200 bg-white px-4 py-3 text-center text-sm font-black text-blue-600 shadow-sm transition hover:border-blue-200 hover:bg-blue-50 hover:text-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-100"
+              >
+                <svg
+                  aria-hidden="true"
+                  className="h-7 w-7 shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2.4"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.91.33 1.8.63 2.65a2 2 0 0 1-.45 2.11L8.09 9.69a16 16 0 0 0 6.22 6.22l1.21-1.2a2 2 0 0 1 2.11-.45c.85.3 1.74.51 2.65.63A2 2 0 0 1 22 16.92Z" />
+                </svg>
+                <span>
+                  <span className="block">Contact Support</span>
+                  <span className="block">1-860-316-8415</span>
+                </span>
+              </a>
             </div>
         </aside>
       )}

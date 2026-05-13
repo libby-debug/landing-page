@@ -194,8 +194,8 @@ function VisualComparison({
       </h2>
 
       <div className="mx-auto mt-6 grid max-w-6xl gap-6 lg:grid-cols-[1fr_auto_1fr]">
-        <article className="rounded-3xl border border-pink-200 bg-pink-50 p-8 shadow-sm">
-          <p className="text-sm font-semibold uppercase tracking-wide text-pink-600">
+        <article className="rounded-3xl border border-teal-200 bg-teal-50 p-8 shadow-sm">
+          <p className="text-sm font-semibold uppercase tracking-wide text-teal-600">
             {details.targetLabel}
           </p>
           <h3 className="mt-4 text-3xl font-extrabold tracking-tight text-slate-950">
@@ -386,13 +386,13 @@ function ExamplesLesson({
           </div>
         </section>
 
-        <section className={`${cardBaseClass} border-pink-200 bg-pink-50`}>
-          <p className="text-sm font-semibold uppercase tracking-wide text-pink-700">
+        <section className={`${cardBaseClass} border-teal-200 bg-teal-50`}>
+          <p className="text-sm font-semibold uppercase tracking-wide text-teal-700">
             Nonexamples
           </p>
           <div className="mt-6 grid gap-4">
             {details.nonexamples.map((item) => (
-              <ScenarioCard key={item.title} item={item} tone="pink" />
+              <ScenarioCard key={item.title} item={item} tone="teal" />
             ))}
           </div>
         </section>
@@ -472,7 +472,7 @@ function CommonConfusionsLesson({
                   <HighlightedText text={pair.leftText} />
                 </p>
               </div>
-              <div className="rounded-2xl border border-pink-200 bg-pink-50 p-5">
+              <div className="rounded-2xl border border-teal-200 bg-teal-50 p-5">
                 <h3 className="text-2xl font-extrabold tracking-tight text-slate-950">
                   {pair.rightLabel}
                 </h3>
@@ -555,12 +555,12 @@ function ScenarioCard({
   tone,
 }: {
   item: LessonScenario;
-  tone: "blue" | "green" | "pink";
+  tone: "blue" | "green" | "teal";
 }) {
   const toneClass = {
     blue: "border-blue-200 bg-white",
     green: "border-green-200 bg-white",
-    pink: "border-pink-200 bg-white",
+    teal: "border-teal-200 bg-white",
   };
   return (
     <article className={`rounded-2xl border p-5 shadow-sm ${toneClass[tone]}`}>

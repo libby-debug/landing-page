@@ -59,12 +59,12 @@ export default function DifferentialReinforcementModulePage() {
           </p>
         </div>
 
-        <div className={`${cardBaseClass} border-pink-200 bg-pink-50`}>
-          <p className="text-sm font-semibold uppercase tracking-wide text-pink-600">
+        <div className={`${cardBaseClass} border-teal-200 bg-teal-50`}>
+          <p className="text-sm font-semibold uppercase tracking-wide text-teal-600">
             Procedures
           </p>
 
-          <div className="mt-4 text-6xl font-extrabold tracking-tight text-pink-600">
+          <div className="mt-4 text-6xl font-extrabold tracking-tight text-teal-600">
             {differentialReinforcementProcedures.length}
           </div>
 

@@ -4,6 +4,10 @@ import { PlatformShell } from "@/components/platform-shell";
 export const metadata = {
   title: "ABA Mastered",
   description: "Master the BCBA Task List visually.",
+  icons: {
+    icon: "/favicon.png",
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({

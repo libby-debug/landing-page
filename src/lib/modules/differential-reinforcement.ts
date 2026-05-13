@@ -212,9 +212,9 @@ export const differentialReinforcementProcedures: DifferentialReinforcementProce
       "DRI is a subtype of DRA when the alternative response is physically incompatible with the target behavior.",
     discrimination:
       "Ask whether the reinforced behavior and target behavior are [physically impossible to emit at the same time].",
-    color: "text-pink-600",
-    border: "border-pink-200",
-    bg: "bg-pink-50",
+    color: "text-teal-600",
+    border: "border-teal-200",
+    bg: "bg-teal-50",
     quiz: [
       {
         prompt:

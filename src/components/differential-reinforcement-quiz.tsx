@@ -156,7 +156,7 @@ export function DifferentialReinforcementQuiz({
                       selectedCorrect
                         ? "border-green-300 bg-green-50 text-green-700"
                         : incorrectSelected
-                          ? "border-pink-300 bg-pink-50 text-pink-700"
+                          ? "border-teal-300 bg-teal-50 text-teal-700"
                           : selected
                             ? "border-blue-300 bg-blue-50 text-blue-700"
                             : "border-slate-200 bg-white text-slate-700 hover:border-blue-200 hover:bg-blue-50"
@@ -175,7 +175,7 @@ export function DifferentialReinforcementQuiz({
                     ? "border-green-200 bg-green-50"
                     : (incorrectAttempts[questionIndex] ?? 0) >= 4
                       ? "border-amber-200 bg-amber-50"
-                      : "border-pink-200 bg-pink-50"
+                      : "border-teal-200 bg-teal-50"
                 }`}
               >
                 <p
@@ -184,7 +184,7 @@ export function DifferentialReinforcementQuiz({
                       ? "text-green-700"
                       : (incorrectAttempts[questionIndex] ?? 0) >= 4
                         ? "text-amber-700"
-                        : "text-pink-700"
+                        : "text-teal-700"
                   }`}
                 >
                   {answers[questionIndex] === question.answer
@@ -208,7 +208,7 @@ export function DifferentialReinforcementQuiz({
                 {answers[questionIndex] !== question.answer &&
                 (incorrectAttempts[questionIndex] ?? 0) > 0 &&
                 (incorrectAttempts[questionIndex] ?? 0) < 4 ? (
-                  <p className="mt-2 text-xs font-bold uppercase tracking-wide text-pink-700">
+                  <p className="mt-2 text-xs font-bold uppercase tracking-wide text-teal-700">
                     Incorrect attempt {incorrectAttempts[questionIndex]} of 4
                   </p>
                 ) : null}
@@ -262,7 +262,7 @@ export function DifferentialReinforcementQuiz({
             {mastered && nextHref ? (
               <Link
                 href={nextHref}
-                className="inline-block rounded-xl bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:opacity-90"
+                className="inline-block rounded-xl bg-gradient-to-r from-purple-600 via-blue-500 to-teal-400 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:opacity-90"
               >
                 Continue to next procedure
               </Link>
@@ -283,7 +283,7 @@ export function DifferentialReinforcementQuiz({
           className={`mx-auto mt-6 max-w-2xl rounded-2xl border px-4 py-3 text-center text-sm font-semibold ${
             saveState === "saved"
               ? "border-green-200 bg-green-50 text-green-700"
-              : "border-pink-200 bg-pink-50 text-pink-700"
+              : "border-teal-200 bg-teal-50 text-teal-700"
           }`}
         >
           {message}

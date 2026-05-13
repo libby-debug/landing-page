@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { isSupabaseConfigured, supabase } from "@/lib/supabase/client";
 
 export default function ForgotPasswordPage() {
@@ -64,10 +65,12 @@ export default function ForgotPasswordPage() {
           className="w-full rounded-3xl border border-slate-950 bg-white p-8 text-center shadow-xl"
         >
           <div className="flex justify-center">
-            <img
+            <Image
               src="/images/aba-mastered-hero-logo.png"
               alt="ABA Mastered"
-              className="h-auto w-full max-w-[180px] object-contain"
+              width={180}
+              height={120}
+              className="h-auto w-full max-w-[180px] object-contain p-1"
             />
           </div>
 

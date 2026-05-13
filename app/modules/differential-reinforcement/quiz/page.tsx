@@ -259,7 +259,7 @@ export default function DifferentialReinforcementQuizPage() {
                       ? "border border-green-200 bg-green-50"
                       : (incorrectAttempts[current] ?? 0) >= 4
                         ? "border border-amber-200 bg-amber-50"
-                        : "border border-pink-200 bg-pink-50"
+                        : "border border-teal-200 bg-teal-50"
                   }`}
                 >
                   {selected === question.answer ? (

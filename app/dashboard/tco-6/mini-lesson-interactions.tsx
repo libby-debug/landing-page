@@ -150,7 +150,7 @@ export function InteractiveVisualBlock({
       <div className="mx-auto mt-8 w-full max-w-4xl">
         <div className="mx-auto grid w-full place-items-stretch gap-4 md:grid-cols-2">
           <RevealCard title={visual.leftTitle} text={visual.leftText} tone="blue" />
-          <RevealCard title={visual.rightTitle} text={visual.rightText} tone="pink" />
+          <RevealCard title={visual.rightTitle} text={visual.rightText} tone="teal" />
         </div>
         {visual.cue ? (
           <div className="mx-auto mt-5 max-w-3xl rounded-3xl border border-purple-100 bg-purple-50 p-5">
@@ -257,7 +257,7 @@ export function InteractiveVisualBlock({
   return (
     <div className="mx-auto mt-8 grid w-full max-w-4xl place-items-stretch gap-4 md:grid-cols-2">
       <RevealCard title="Example" text={visual.example} tone="blue" />
-      <RevealCard title="Nonexample" text={visual.nonexample} tone="pink" />
+      <RevealCard title="Nonexample" text={visual.nonexample} tone="teal" />
       <div className="md:col-span-2">
         <CompletionButton onPassedChange={onPassedChange} />
       </div>
@@ -343,7 +343,7 @@ function ConsequenceCard({
   const outcomeClass =
     outcomeTone === "increase"
       ? "border-green-200 bg-green-50 text-green-700"
-      : "border-pink-200 bg-pink-50 text-pink-700";
+      : "border-teal-200 bg-teal-50 text-teal-700";
 
   return (
     <article className="w-full rounded-3xl border border-slate-200 bg-slate-50 p-5 text-center">
@@ -450,7 +450,7 @@ function FlowInteraction({
         stay hidden until you check your answer.
       </p>
 
-      <div className="mx-auto mt-5 grid w-full max-w-4xl place-items-stretch gap-3 md:grid-cols-4">
+      <div className="mx-auto mt-5 flex w-full max-w-4xl flex-wrap justify-center gap-3">
         {shuffledSteps.map((step) => (
           <button
             key={step}
@@ -459,18 +459,18 @@ function FlowInteraction({
             disabled={completed || selectedSteps.includes(step)}
             onDragStart={() => setDraggedStep(step)}
             onClick={() => chooseStep(step)}
-            className="rounded-2xl border border-blue-100 bg-white p-4 text-sm font-black text-slate-950 transition hover:border-blue-300 disabled:cursor-not-allowed disabled:opacity-50"
+            className="w-full rounded-2xl border border-blue-100 bg-white p-4 text-sm font-black text-slate-950 transition hover:border-blue-300 disabled:cursor-not-allowed disabled:opacity-50 sm:w-[calc(50%-0.375rem)] md:w-[calc(25%-0.5625rem)]"
           >
             {step}
           </button>
         ))}
       </div>
 
-      <div className="mx-auto mt-6 grid w-full max-w-4xl place-items-stretch gap-3 md:grid-cols-4">
+      <div className="mx-auto mt-6 flex w-full max-w-4xl flex-wrap justify-center gap-3">
         {visual.steps.map((_step, index) => (
           <div
             key={index}
-            className="min-h-28 rounded-3xl border border-white bg-white/80 p-4"
+            className="min-h-28 w-full rounded-3xl border border-white bg-white/80 p-4 sm:w-[calc(50%-0.375rem)] md:w-[calc(25%-0.5625rem)]"
             onDragOver={(event: DragEvent<HTMLDivElement>) => event.preventDefault()}
             onDrop={() => dropStep(index)}
           >
@@ -685,7 +685,7 @@ function GraphInterpretationInteraction({
   const toneClass = {
     blue: "border-blue-200 bg-blue-50 text-blue-700",
     green: "border-green-200 bg-green-50 text-green-700",
-    pink: "border-pink-200 bg-pink-50 text-pink-700",
+    teal: "border-teal-200 bg-teal-50 text-teal-700",
     purple: "border-purple-200 bg-purple-50 text-purple-700",
   };
 
@@ -1145,7 +1145,7 @@ function SortingInteraction({
   }
 
   return (
-    <div className="mx-auto mt-8 w-full max-w-5xl rounded-3xl border border-pink-100 bg-pink-50 p-5 text-center">
+    <div className="mx-auto mt-8 w-full max-w-5xl rounded-3xl border border-teal-100 bg-teal-50 p-5 text-center">
       <h3 className="text-2xl font-black text-slate-950">
         <FormattedConceptText text={visual.prompt} />
       </h3>
@@ -1166,8 +1166,8 @@ function SortingInteraction({
             }}
             className={`rounded-2xl border p-4 text-sm font-black transition ${
               activeItem === item.label
-                ? "border-pink-300 bg-white text-pink-700"
-                : "border-white bg-white text-slate-950 hover:border-pink-200"
+                ? "border-teal-300 bg-white text-teal-700"
+                : "border-white bg-white text-slate-950 hover:border-teal-200"
             }`}
           >
             <FormattedConceptText text={item.label} />
@@ -1187,7 +1187,7 @@ function SortingInteraction({
             onClick={() => placeItem(category)}
             onDragOver={(event: DragEvent<HTMLButtonElement>) => event.preventDefault()}
             onDrop={() => dropItem(category, activeItem)}
-            className="min-h-28 rounded-3xl border border-white bg-white/80 p-5 text-center text-sm font-black text-slate-950 transition hover:border-pink-200"
+            className="min-h-28 rounded-3xl border border-white bg-white/80 p-5 text-center text-sm font-black text-slate-950 transition hover:border-teal-200"
           >
             <FormattedConceptText text={category} />
             <span className="mt-3 block text-xs font-semibold leading-5 text-slate-700">
@@ -1538,7 +1538,7 @@ function ResetAnswersButton({ onClick }: { onClick: () => void }) {
     <button
       type="button"
       onClick={onClick}
-      className="mt-4 rounded-xl border border-pink-200 bg-white px-5 py-3 text-sm font-black text-pink-700 shadow-sm transition hover:border-pink-300 hover:bg-pink-50 focus:outline-none focus:ring-2 focus:ring-pink-300 focus:ring-offset-2"
+      className="mt-4 rounded-xl border border-teal-200 bg-white px-5 py-3 text-sm font-black text-teal-700 shadow-sm transition hover:border-teal-300 hover:bg-teal-50 focus:outline-none focus:ring-2 focus:ring-teal-300 focus:ring-offset-2"
     >
       Reset Answers
     </button>
@@ -1552,13 +1552,13 @@ function RevealCard({
 }: {
   text: string;
   title: string;
-  tone: "blue" | "pink";
+  tone: "blue" | "teal";
 }) {
   const [revealed, setRevealed] = useState(false);
   const toneClass =
     tone === "blue"
       ? "border-blue-100 bg-blue-50 text-blue-600"
-      : "border-pink-100 bg-pink-50 text-pink-600";
+      : "border-teal-100 bg-teal-50 text-teal-600";
 
   return (
     <div className={`w-full rounded-3xl border p-6 text-center ${toneClass}`}>

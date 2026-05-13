@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { FormattedConceptText } from "@/components/learning-ui";
 import { masteryThreshold } from "./data";
 import { GraphCard } from "./module-d-graphs";
@@ -10,6 +10,7 @@ import {
   practiceAnswersKey,
   practiceResultsKey,
   readSavedModuleProgress,
+  saveModuleProgressSnapshot,
   useModuleProgress,
 } from "./progression";
 import type { QuestionContent } from "./section-b-content";
@@ -152,34 +153,134 @@ function getQuestionLabel(question: QuestionContent) {
 }
 
 function asMasteryQuestion(question: QuestionContent) {
-  if (question.type === "fill-blank") {
-    return question;
+  if (
+    (question.type === "multiple-choice" || question.type === "scenario" || !question.type) &&
+    question.choices?.includes(question.answer)
+  ) {
+    return {
+      ...question,
+      type: "multiple-choice" as const,
+    };
   }
 
   return {
     ...question,
+    answer: getMasteryCorrectAnswer(question),
+    choices: getMasteryChoices(question),
     type: "multiple-choice" as const,
   };
 }
 
 function isSupportedMasteryQuestion(question: QuestionContent) {
-  if (question.type === "fill-blank") {
-    return Boolean(question.answer);
-  }
-
-  const prompt = question.prompt.toLowerCase();
-
-  return Boolean(question.choices?.length)
-    && question.type !== "select-all"
-    && !question.answers?.length
-    && !prompt.includes("select all")
-    && Boolean(question.choices?.includes(question.answer));
+  return getMasteryChoices(question).includes(getMasteryCorrectAnswer(question));
 }
 
 function getMultipleChoiceMasteryQuestions(questions: QuestionContent[]) {
   return questions
     .filter(isSupportedMasteryQuestion)
     .map(asMasteryQuestion);
+}
+
+function getMasteryCorrectAnswer(question: QuestionContent) {
+  if (question.type === "true-false") {
+    return question.answer === "true" || question.answer === "True" ? "True" : "False";
+  }
+
+  if (question.type === "matching" && question.pairs?.length) {
+    return question.pairs
+      .map((pair) => `${pair.term} = ${pair.definition}`)
+      .join("; ");
+  }
+
+  if (question.type === "sorting" && question.items?.length) {
+    return question.categories
+      ?.map((category) => {
+        const labels = question.items
+          ?.filter((item) => item.category === category)
+          .map((item) => item.label)
+          .join(", ");
+
+        return `${category}: ${labels}`;
+      })
+      .join("; ") ?? question.answer;
+  }
+
+  if (question.type === "select-all") {
+    return (question.answers ?? [question.answer]).join("; ");
+  }
+
+  return question.answer;
+}
+
+function getMasteryChoices(question: QuestionContent) {
+  if (
+    (question.type === "multiple-choice" || question.type === "scenario" || !question.type) &&
+    question.choices?.includes(question.answer)
+  ) {
+    return question.choices;
+  }
+
+  const correctAnswer = getMasteryCorrectAnswer(question);
+
+  if (question.type === "true-false") {
+    return ["True", "False"];
+  }
+
+  if (question.type === "matching" && question.pairs?.length) {
+    const firstDefinition = question.pairs[0]?.definition ?? "";
+
+    return uniqueStringValues([
+      correctAnswer,
+      question.pairs
+        .map((pair) => `${pair.term} = ${firstDefinition}`)
+        .join("; "),
+      question.pairs
+        .map((pair) => `${pair.term} = ${pair.term}`)
+        .join("; "),
+      "The terms are matched by surface form rather than by their behavior-analytic relation.",
+    ]).slice(0, 4);
+  }
+
+  if (question.type === "sorting" && question.items?.length && question.categories) {
+    const reversedCategories = [...question.categories].reverse();
+
+    return uniqueStringValues([
+      correctAnswer,
+      reversedCategories
+        .map((category, categoryIndex) => {
+          const labels = question.items
+            ?.filter((_, index) => index % 2 === categoryIndex)
+            .map((item) => item.label)
+            .join(", ");
+
+          return `${category}: ${labels}`;
+        })
+        .join("; "),
+      question.items
+        .map((item) => `${item.label}: ${question.categories?.[0]}`)
+        .join("; "),
+      "All examples belong to the same category because they share surface form.",
+    ]).slice(0, 4);
+  }
+
+  if (question.type === "select-all") {
+    const incorrectChoices =
+      question.choices?.filter((choice) => !question.answers?.includes(choice)) ?? [];
+
+    return uniqueStringValues([
+      correctAnswer,
+      incorrectChoices.join("; ") || "Only the first listed option",
+      question.choices?.slice(0, 2).join("; ") ?? "All listed options",
+      "All listed options",
+    ]).slice(0, 4);
+  }
+
+  return uniqueStringValues([
+    correctAnswer,
+    "reinforcement",
+    "stimulus control",
+    "experimental control",
+  ]).slice(0, 4);
 }
 
 function hashString(value: string) {
@@ -201,6 +302,28 @@ function shuffleQuestions(questions: QuestionContent[], seed: number) {
     }))
     .sort((left, right) => left.sort - right.sort)
     .map((item) => item.question);
+}
+
+function orderQuestionsBySavedPromptOrder(
+  questions: QuestionContent[],
+  savedQuestionOrder?: string[],
+) {
+  if (!savedQuestionOrder?.length) {
+    return questions;
+  }
+
+  const questionsByPrompt = new Map(
+    questions.map((question) => [question.prompt, question]),
+  );
+  const orderedQuestions = savedQuestionOrder
+    .map((prompt) => questionsByPrompt.get(prompt))
+    .filter((question): question is QuestionContent => Boolean(question));
+  const orderedPrompts = new Set(savedQuestionOrder);
+  const remainingQuestions = questions.filter(
+    (question) => !orderedPrompts.has(question.prompt),
+  );
+
+  return [...orderedQuestions, ...remainingQuestions];
 }
 
 function uniqueStringValues(values: string[]) {
@@ -255,6 +378,19 @@ function writeStoredAnswer(sectionSlug: string, index: number, value: string) {
   }
 }
 
+function readStoredAnswers(sectionSlug: string) {
+  if (typeof window === "undefined") {
+    return {};
+  }
+
+  try {
+    const stored = window.localStorage.getItem(practiceAnswersKey(sectionSlug));
+    return stored ? JSON.parse(stored) as Record<string, string> : {};
+  } catch {
+    return {};
+  }
+}
+
 type PracticeFeedbackState = {
   answerRevealVisible: boolean;
   feedbackState: "idle" | "correct" | "hint" | "remediation";
@@ -288,6 +424,19 @@ function readStoredPracticeFeedback(sectionSlug: string, index: number) {
     return { ...emptyPracticeFeedbackState, ...feedback[index] };
   } catch {
     return emptyPracticeFeedbackState;
+  }
+}
+
+function readStoredPracticeResults(sectionSlug: string) {
+  if (typeof window === "undefined") {
+    return {};
+  }
+
+  try {
+    const stored = window.localStorage.getItem(practiceResultsKey(sectionSlug));
+    return stored ? JSON.parse(stored) as Record<string, boolean> : {};
+  } catch {
+    return {};
   }
 }
 
@@ -759,13 +908,17 @@ export function PracticeQuestionCard({
     const answeredCount = Object.keys(results).length;
     const correctCount = Object.values(results).filter(Boolean).length;
     const score = Math.round((correctCount / totalQuestions) * 100);
-    const complete = answeredCount === totalQuestions && score >= masteryThreshold;
+    const complete = answeredCount === totalQuestions && correctCount === totalQuestions;
 
     void persistModuleScore(sectionSlug, score, complete);
-
-    if (complete) {
-      updateProgress({ practiceCompleted: true });
+    if (!complete) {
+      updateProgress({ practiceCompleted: false });
     }
+    window.dispatchEvent(
+      new CustomEvent("aba-mastered-practice-result", {
+        detail: { complete, correctCount, sectionSlug, totalQuestions },
+      }),
+    );
   }
 
   return (
@@ -781,8 +934,16 @@ export function PracticeQuestionCard({
       {question.graphId ? (
         <GraphCard
           className="mt-5"
+          genericPanelLabels={sectionSlug === "c" || sectionSlug === "d"}
           graphId={question.graphId}
+          hideCallouts={sectionSlug === "c" || sectionSlug === "d"}
+          hideDescription={sectionSlug === "c" || sectionSlug === "d"}
           monochrome={mode === "practice" && sectionSlug === "d"}
+          titleOverride={
+            sectionSlug === "c" || sectionSlug === "d"
+              ? `Graph for Question ${index + 1}`
+              : undefined
+          }
         />
       ) : null}
 
@@ -865,6 +1026,134 @@ export function PracticeQuestionCard({
   );
 }
 
+export function PracticeCompletionButton({
+  sectionSlug,
+  totalQuestions,
+}: {
+  sectionSlug: string;
+  totalQuestions: number;
+}) {
+  const { updateProgress } = useModuleProgress(sectionSlug);
+  const [summary, setSummary] = useState(() =>
+    getPracticeCompletionSummary(sectionSlug, totalQuestions),
+  );
+  const [message, setMessage] = useState("");
+  const complete =
+    totalQuestions > 0 &&
+    summary.answeredCount === totalQuestions &&
+    summary.correctCount === totalQuestions;
+
+  useEffect(() => {
+    function sync() {
+      setSummary(getPracticeCompletionSummary(sectionSlug, totalQuestions));
+    }
+
+    sync();
+    window.addEventListener("aba-mastered-practice-result", sync);
+    window.addEventListener("storage", sync);
+
+    return () => {
+      window.removeEventListener("aba-mastered-practice-result", sync);
+      window.removeEventListener("storage", sync);
+    };
+  }, [sectionSlug, totalQuestions]);
+
+  function completePracticeTest() {
+    const latestSummary = getPracticeCompletionSummary(sectionSlug, totalQuestions);
+    const latestComplete =
+      totalQuestions > 0 &&
+      latestSummary.answeredCount === totalQuestions &&
+      latestSummary.correctCount === totalQuestions;
+    const score =
+      totalQuestions > 0
+        ? Math.round((latestSummary.correctCount / totalQuestions) * 100)
+        : 0;
+
+    setSummary(latestSummary);
+
+    if (!latestComplete) {
+      updateProgress({ practiceCompleted: false });
+      saveModuleProgressSnapshot(sectionSlug, {
+        activity: "practice",
+        completedQuestions: Object.entries(latestSummary.results)
+          .filter(([, result]) => result)
+          .map(([index]) => index),
+        currentLocation: `/dashboard/tco-6/${sectionSlug}/practice`,
+        passed: false,
+        questionResults: latestSummary.results,
+        score,
+        selectedAnswers: readStoredAnswers(sectionSlug),
+        submitted: latestSummary.answeredCount > 0,
+        totalQuestions,
+      });
+      setMessage(
+        `Correct the remaining missed questions before completing Practice. ${latestSummary.correctCount} of ${totalQuestions} are correct.`,
+      );
+      return;
+    }
+
+    updateProgress({ practiceCompleted: true });
+    void persistModuleScore(sectionSlug, 100, true);
+    saveModuleProgressSnapshot(sectionSlug, {
+      activity: "practice",
+      completedQuestions: Object.keys(latestSummary.results),
+      currentLocation: `/dashboard/tco-6/${sectionSlug}/practice`,
+      passed: true,
+      questionResults: latestSummary.results,
+      score: 100,
+      selectedAnswers: readStoredAnswers(sectionSlug),
+      submitted: true,
+      totalQuestions,
+    });
+    setMessage("Practice Test complete. Mastery Check is now unlocked.");
+  }
+
+  return (
+    <section className="mx-auto mt-8 w-full max-w-4xl rounded-3xl border border-green-200 bg-green-50 p-6 text-center">
+      <p className="text-sm font-black uppercase tracking-wide text-green-700">
+        Practice Test Completion
+      </p>
+      <p className="mt-2 text-base font-semibold leading-7 text-slate-950">
+        {summary.correctCount} of {totalQuestions} questions are currently
+        correct. Complete Practice requires 100% correct.
+      </p>
+      <button
+        type="button"
+        className="mt-5 rounded-xl bg-green-600 px-6 py-3 text-sm font-black text-white shadow-sm transition hover:bg-green-700 focus:outline-none focus:ring-4 focus:ring-green-200"
+        onClick={completePracticeTest}
+      >
+        Complete Practice Test
+      </button>
+      {message ? (
+        <p
+          className={`mx-auto mt-4 max-w-2xl rounded-2xl border p-4 text-sm font-black ${
+            complete
+              ? "border-green-200 bg-white text-green-800"
+              : "border-amber-200 bg-amber-50 text-amber-800"
+          }`}
+          role="status"
+        >
+          {message}
+        </p>
+      ) : null}
+    </section>
+  );
+}
+
+function getPracticeCompletionSummary(sectionSlug: string, totalQuestions: number) {
+  const results = readStoredPracticeResults(sectionSlug);
+  const resultEntries = Object.entries(results).filter(([index]) => {
+    const numericIndex = Number(index);
+    return Number.isInteger(numericIndex) && numericIndex >= 0 && numericIndex < totalQuestions;
+  });
+
+  return {
+    answeredCount: resultEntries.length,
+    correctCount: resultEntries.filter(([, result]) => result).length,
+    results: Object.fromEntries(resultEntries),
+  };
+}
+
 export function MasteryCheckQuiz({
   questions,
   sectionCode,
@@ -884,18 +1173,30 @@ export function MasteryCheckQuiz({
     Boolean(savedMasterySnapshot?.submitted),
   );
   const [attemptKey, setAttemptKey] = useState(0);
+  const [restoredQuestionOrder, setRestoredQuestionOrder] = useState<
+    string[] | undefined
+  >(() =>
+    savedMasterySnapshot?.submitted
+      ? savedMasterySnapshot.questionOrder
+      : undefined,
+  );
   const multipleChoiceQuestions = useMemo(
     () => getMultipleChoiceMasteryQuestions(questions),
     [questions],
   );
-  const displayQuestions = useMemo(
-    () =>
-      shuffleQuestions(
+  const displayQuestions = useMemo(() => {
+    if (restoredQuestionOrder?.length) {
+      return orderQuestionsBySavedPromptOrder(
         multipleChoiceQuestions,
-        attemptKey + hashString(sectionSlug),
-      ),
-    [attemptKey, multipleChoiceQuestions, sectionSlug],
-  );
+        restoredQuestionOrder,
+      );
+    }
+
+    return shuffleQuestions(
+      multipleChoiceQuestions,
+      attemptKey + hashString(sectionSlug),
+    );
+  }, [attemptKey, multipleChoiceQuestions, restoredQuestionOrder, sectionSlug]);
 
   const correctCount = useMemo(
     () =>
@@ -926,12 +1227,23 @@ export function MasteryCheckQuiz({
 
   function retry() {
     setAttemptKey((current) => current + 1);
+    setRestoredQuestionOrder(undefined);
     setResponses({});
     setIncorrectAttempts({});
     setCompleted(false);
   }
 
   function submitMasteryCheck() {
+    const questionResults = Object.fromEntries(
+      displayQuestions.map((question, index) => [
+        index,
+        isCorrect(question, responses[index] ?? ""),
+      ]),
+    );
+    const selectedAnswers = Object.fromEntries(
+      Object.entries(responses).map(([index, response]) => [index, response]),
+    );
+
     setIncorrectAttempts((current) => {
       const next = { ...current };
       displayQuestions.forEach((question, index) => {
@@ -942,12 +1254,25 @@ export function MasteryCheckQuiz({
       return next;
     });
     setCompleted(true);
+    setRestoredQuestionOrder(displayQuestions.map((question) => question.prompt));
 
     if (passed) {
       updateProgress({ masteryCompleted: true });
     }
 
     void persistModuleScore(sectionSlug, score, passed);
+    saveModuleProgressSnapshot(sectionSlug, {
+      activity: "mastery-check",
+      completedQuestions: Object.keys(selectedAnswers),
+      currentLocation: `/dashboard/tco-6/${sectionSlug}/mastery-check`,
+      passed,
+      questionOrder: displayQuestions.map((question) => question.prompt),
+      questionResults,
+      score,
+      selectedAnswers,
+      submitted: true,
+      totalQuestions: displayQuestions.length,
+    });
   }
 
   return (
@@ -969,6 +1294,7 @@ export function MasteryCheckQuiz({
           .map(([index]) => index)}
         currentLocation={`/dashboard/tco-6/${sectionSlug}/mastery-check`}
         passed={completed ? passed : undefined}
+        questionOrder={displayQuestions.map((question) => question.prompt)}
         score={score}
         sectionSlug={sectionSlug}
         selectedAnswers={Object.fromEntries(
@@ -994,7 +1320,9 @@ export function MasteryCheckQuiz({
           {question.graphId ? (
             <GraphCard
               className="mt-5"
+              genericPanelLabels
               graphId={question.graphId}
+              hideCallouts
               hideDescription
               monochrome
               titleOverride={`Graph for Question ${index + 1}`}
@@ -1037,7 +1365,7 @@ export function MasteryCheckQuiz({
             </p>
             <div className="mt-6 h-4 rounded-full bg-white">
               <div
-                className="h-4 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
+                className="h-4 rounded-full bg-gradient-to-r from-purple-600 via-blue-500 to-teal-400"
                 style={{ width: `${score}%` }}
               />
             </div>

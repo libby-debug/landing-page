@@ -11,7 +11,6 @@ import {
 } from "@/components/learning-ui";
 import {
   getTcoSection,
-  masteryThreshold,
   tcoSections,
   type TcoSection,
 } from "../../data";
@@ -20,6 +19,7 @@ import { MiniLessonView } from "../../mini-lesson-ui";
 import { getModuleContent } from "../../module-content";
 import {
   MasteryCheckQuiz,
+  PracticeCompletionButton,
   PracticeQuestionCard,
 } from "../../question-interactions";
 import {
@@ -159,7 +159,7 @@ function PracticeView({ section }: { section: TcoSection }) {
       </h2>
 
       <p className="mx-auto mt-3 max-w-2xl rounded-2xl border border-blue-100 bg-blue-50 p-4 text-sm font-black text-blue-700">
-        Passing score: {masteryThreshold}%.
+        Practice completion requires 100% correct.
       </p>
 
       <SaveProgressButton
@@ -185,6 +185,11 @@ function PracticeView({ section }: { section: TcoSection }) {
           />
         ))}
       </div>
+
+      <PracticeCompletionButton
+        sectionSlug={section.slug}
+        totalQuestions={practiceQuestions.length}
+      />
     </section>
   );
 }

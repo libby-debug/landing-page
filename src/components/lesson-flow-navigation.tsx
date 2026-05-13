@@ -38,7 +38,7 @@ export function ProgressIndicator({
       </div>
       <div className="mt-3 h-3 overflow-hidden rounded-full bg-slate-100">
         <div
-          className="h-full rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 transition-all"
+          className="h-full rounded-full bg-gradient-to-r from-purple-600 via-blue-500 to-teal-400 transition-all"
           style={{ width: `${progress}%` }}
         />
       </div>
@@ -107,7 +107,7 @@ export function LessonNavigation({
       {nextHref ? (
         <Link
           href={nextHref}
-          className="inline-block rounded-xl bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:opacity-90"
+          className="inline-block rounded-xl bg-gradient-to-r from-purple-600 via-blue-500 to-teal-400 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:opacity-90"
         >
           {nextLabel}
         </Link>

@@ -49,6 +49,30 @@ function readDailyDurationMs(userId: string) {
   }
 }
 
+function readDailyDurationMsForDate(userId: string, dateKey: string) {
+  if (typeof window === "undefined") {
+    return 0;
+  }
+
+  const stored = window.localStorage.getItem(getStorageKey(userId, dateKey));
+
+  if (!stored) {
+    return 0;
+  }
+
+  try {
+    const parsed = JSON.parse(stored) as Partial<DailyDurationRecord>;
+
+    if (parsed.date !== dateKey || typeof parsed.totalMs !== "number") {
+      return 0;
+    }
+
+    return Math.max(0, parsed.totalMs);
+  } catch {
+    return 0;
+  }
+}
+
 function writeDailyDurationMs(userId: string, totalMs: number) {
   const dateKey = getLocalDateKey();
   const record: DailyDurationRecord = {
@@ -62,6 +86,23 @@ function writeDailyDurationMs(userId: string, totalMs: number) {
     JSON.stringify(record),
   );
   window.dispatchEvent(new CustomEvent(DAILY_DURATION_EVENT));
+}
+
+function getLastSevenDailyDurations(userId: string) {
+  const today = new Date();
+
+  return Array.from({ length: 7 }, (_, index) => {
+    const date = new Date(today);
+    date.setHours(12, 0, 0, 0);
+    date.setDate(today.getDate() - (6 - index));
+    const dateKey = getLocalDateKey(date);
+
+    return {
+      dateKey,
+      dayLabel: date.toLocaleDateString(undefined, { weekday: "short" }),
+      minutes: Math.floor(readDailyDurationMsForDate(userId, dateKey) / 60000),
+    };
+  });
 }
 
 export function formatDailyDuration(totalMs: number) {
@@ -85,6 +126,42 @@ export function formatDailyDuration(totalMs: number) {
   return `${hours} ${hours === 1 ? "hour" : "hours"} ${minutes} ${
     minutes === 1 ? "minute" : "minutes"
   }`;
+}
+
+export function useWeeklyDailyDuration() {
+  const { user, loading } = useAuth();
+  const userId = user?.id;
+  const [days, setDays] = useState<
+    Array<{ dateKey: string; dayLabel: string; minutes: number }>
+  >([]);
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    if (loading || !userId) {
+      return;
+    }
+
+    const activeUserId = userId;
+
+    function syncDuration() {
+      setDays(getLastSevenDailyDurations(activeUserId));
+      setLoaded(true);
+    }
+
+    syncDuration();
+    window.addEventListener(DAILY_DURATION_EVENT, syncDuration);
+    window.addEventListener("storage", syncDuration);
+
+    return () => {
+      window.removeEventListener(DAILY_DURATION_EVENT, syncDuration);
+      window.removeEventListener("storage", syncDuration);
+    };
+  }, [loading, userId]);
+
+  return {
+    loaded: userId ? loaded : !loading,
+    days: userId ? days : [],
+  };
 }
 
 export function useDailyDuration() {

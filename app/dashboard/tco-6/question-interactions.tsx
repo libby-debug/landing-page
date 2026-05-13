@@ -153,6 +153,17 @@ function getQuestionLabel(question: QuestionContent) {
   return labels[question.type ?? "multiple-choice"];
 }
 
+function getPracticeQuestionHeadingColor(index: number) {
+  const headingColors = [
+    "text-purple-600",
+    "text-blue-600",
+    "text-teal-600",
+    "text-emerald-500",
+  ];
+
+  return headingColors[index % headingColors.length];
+}
+
 function shouldHideGraphMetadata(sectionSlug: string) {
   return ["c", "d", "e"].includes(sectionSlug);
 }
@@ -867,7 +878,9 @@ export function PracticeQuestionCard({
 
   return (
     <article className="rounded-3xl border border-slate-200 bg-slate-50 p-5 text-left">
-      <p className="text-sm font-black uppercase tracking-wide text-purple-600">
+      <p
+        className={`text-sm font-black uppercase tracking-wide ${getPracticeQuestionHeadingColor(index)}`}
+      >
         Question {index + 1} / {getQuestionLabel(question)}
       </p>
 
@@ -1069,7 +1082,7 @@ export function PracticeCompletionButton({
       </p>
       <button
         type="button"
-        className="mt-5 rounded-xl bg-green-600 px-6 py-3 text-sm font-black text-white shadow-sm transition hover:bg-green-700 focus:outline-none focus:ring-4 focus:ring-green-200"
+        className="mt-5 rounded-xl bg-emerald-600 px-6 py-3 text-sm font-black text-white shadow-sm shadow-emerald-600/20 transition hover:bg-emerald-700 active:bg-emerald-800 focus:outline-none focus:ring-4 focus:ring-emerald-200"
         onClick={completePracticeTest}
       >
         Complete Practice Test
@@ -1287,7 +1300,7 @@ export function MasteryCheckQuiz({
           key={question.prompt}
           className="rounded-3xl border border-slate-200 bg-slate-50 p-5 text-left"
         >
-          <p className="text-sm font-black uppercase tracking-wide text-purple-600">
+          <p className="text-sm font-black uppercase tracking-wide text-black">
             Question {index + 1} / {getQuestionLabel(question)}
           </p>
 
@@ -1358,7 +1371,7 @@ export function MasteryCheckQuiz({
         <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <button
             type="button"
-            className="rounded-xl bg-slate-950 px-6 py-3 text-sm font-black text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+            className="rounded-xl bg-emerald-600 px-6 py-3 text-sm font-black text-white shadow-sm shadow-emerald-600/20 transition hover:bg-emerald-700 active:bg-emerald-800 disabled:cursor-not-allowed disabled:opacity-50"
             disabled={!allAnswered || displayQuestions.length === 0}
             onClick={submitMasteryCheck}
           >

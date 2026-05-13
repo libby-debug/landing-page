@@ -914,7 +914,7 @@ export function SaveProgressButton({
       <button
         type="button"
         onClick={saveProgress}
-        className="rounded-xl border border-[#16a34a] bg-[#16a34a] px-6 py-3 text-sm font-black text-white shadow-sm shadow-[#16a34a]/20 transition hover:border-[#15803d] hover:bg-[#15803d] active:border-[#166534] active:bg-[#166534] focus:outline-none focus:ring-2 focus:ring-[#86efac] focus:ring-offset-2"
+        className="rounded-xl border border-emerald-600 bg-emerald-600 px-6 py-3 text-sm font-black text-white shadow-sm shadow-emerald-600/20 transition hover:border-emerald-700 hover:bg-emerald-700 active:border-emerald-800 active:bg-emerald-800 focus:outline-none focus:ring-2 focus:ring-emerald-200 focus:ring-offset-2"
       >
         Save Progress
       </button>

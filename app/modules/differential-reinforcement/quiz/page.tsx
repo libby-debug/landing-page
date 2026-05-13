@@ -333,7 +333,7 @@ export default function DifferentialReinforcementQuizPage() {
 
                   <Link
                     href="/modules"
-                    className="mt-4 inline-block rounded-xl bg-green-600 px-5 py-3 font-semibold text-white"
+                    className="mt-4 inline-block rounded-xl bg-emerald-600 px-5 py-3 font-semibold text-white shadow-sm shadow-emerald-600/20 transition hover:bg-emerald-700 active:bg-emerald-800"
                   >
                     Continue to Modules →
                   </Link>

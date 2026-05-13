@@ -33,7 +33,7 @@ function replaceSortingPracticeQuestions(questions: QuestionContent[]) {
 const sectionAMiniLessons: MiniLessonContent[] = [
   {
     slug: "what-is-behavior-analysis",
-    label: "A.1",
+    label: "A.4",
     title: "What Is Behavior Analysis?",
     body: [
       "Behavior analysis studies [behavior-environment relations].",
@@ -57,7 +57,7 @@ const sectionAMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "prediction-vs-control",
-    label: "A.2",
+    label: "A.1",
     title: "Prediction vs Control",
     body: [
       "Prediction means behavior reliably changes with [other events].",
@@ -75,7 +75,7 @@ const sectionAMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "determinism",
-    label: "A.3",
+    label: "A.2",
     title: "Determinism",
     body: [
       "Determinism assumes behavior is [lawful].",
@@ -99,7 +99,7 @@ const sectionAMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "selectionism",
-    label: "A.4",
+    label: "A.2",
     title: "Selectionism",
     body: [
       "Selectionism explains behavior through [selection by consequences across history].",
@@ -116,7 +116,7 @@ const sectionAMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "empiricism",
-    label: "A.5",
+    label: "A.2",
     title: "Empiricism",
     body: [
       "Empiricism relies on [objective observation and data].",
@@ -140,7 +140,7 @@ const sectionAMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "parsimony",
-    label: "A.6",
+    label: "A.2",
     title: "Parsimony",
     body: [
       "Parsimony starts with [the simplest adequate explanation].",
@@ -164,7 +164,7 @@ const sectionAMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "pragmatism",
-    label: "A.7",
+    label: "A.2",
     title: "Pragmatism",
     body: [
       "Pragmatism asks whether an explanation [works in practice].",
@@ -182,7 +182,7 @@ const sectionAMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "radical-behaviorism",
-    label: "A.8",
+    label: "A.3",
     title: "Radical Behaviorism",
     body: [
       "Radical behaviorism analyzes [public behavior and private events].",
@@ -206,7 +206,7 @@ const sectionAMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "private-events",
-    label: "A.9",
+    label: "A.3",
     title: "Private Events",
     body: [
       "Private events are [accessible mainly to the person experiencing them].",
@@ -224,7 +224,7 @@ const sectionAMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "mentalism-vs-behaviorism",
-    label: "A.10",
+    label: "A.3",
     title: "Mentalism vs Behaviorism",
     body: [
       "Mentalism explains behavior by [hypothetical inner causes].",
@@ -244,7 +244,7 @@ const sectionAMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "experimental-analysis-of-behavior",
-    label: "A.11",
+    label: "A.4",
     title: "Experimental Analysis of Behavior (EAB)",
     body: [
       "EAB is the [basic research] branch of behavior analysis.",
@@ -268,7 +268,7 @@ const sectionAMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "applied-behavior-analysis",
-    label: "A.12",
+    label: "A.4",
     title: "Applied Behavior Analysis (ABA)",
     body: [
       "Applied Behavior Analysis (ABA) applies behavioral principles to [socially significant behavior].",
@@ -293,7 +293,7 @@ const sectionAMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "dimensions-of-aba",
-    label: "A.13",
+    label: "A.5",
     title: "What Are the 7 Dimensions of ABA?",
     body: [
       "The 7 dimensions define [high-quality ABA practice].",
@@ -314,7 +314,7 @@ const sectionAMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "applied-dimension",
-    label: "A.14",
+    label: "A.5",
     title: "Applied",
     body: [
       "Applied means the target has [social importance].",
@@ -338,7 +338,7 @@ const sectionAMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "behavioral-dimension",
-    label: "A.15",
+    label: "A.5",
     title: "Behavioral",
     body: [
       "Behavioral means the target is [observable and measurable behavior].",
@@ -363,7 +363,7 @@ const sectionAMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "analytic-dimension",
-    label: "A.16",
+    label: "A.5",
     title: "Analytic",
     body: [
       "Analytic means data show [experimental control].",
@@ -388,7 +388,7 @@ const sectionAMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "technological-dimension",
-    label: "A.17",
+    label: "A.5",
     title: "Technological",
     body: [
       "Technological means procedures are [clear enough to replicate].",
@@ -409,7 +409,7 @@ const sectionAMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "conceptually-systematic-dimension",
-    label: "A.18",
+    label: "A.5",
     title: "Conceptually Systematic",
     body: [
       "Conceptually systematic means procedures are linked to [behavior-analytic principles].",
@@ -434,7 +434,7 @@ const sectionAMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "effective-dimension",
-    label: "A.19",
+    label: "A.5",
     title: "Effective",
     body: [
       "Effective means behavior change is [large enough to matter].",
@@ -459,7 +459,7 @@ const sectionAMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "generality-dimension",
-    label: "A.20",
+    label: "A.5",
     title: "Generality",
     body: [
       "Generality means behavior change [maintains or transfers].",
@@ -484,7 +484,7 @@ const sectionAMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "applied-vs-behavioral",
-    label: "A.21",
+    label: "A.5",
     title: "Applied vs Behavioral",
     body: [
       "Applied means the goal is [socially significant].",
@@ -501,7 +501,7 @@ const sectionAMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "analytic-vs-technological",
-    label: "A.22",
+    label: "A.5",
     title: "Analytic vs Technological",
     body: [
       "Analytic means data show [experimental control].",
@@ -519,7 +519,7 @@ const sectionAMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "technological-vs-conceptually-systematic",
-    label: "A.23",
+    label: "A.5",
     title: "Technological vs Conceptually Systematic",
     body: [
       "Technological asks whether procedures are [replicable].",
@@ -536,7 +536,7 @@ const sectionAMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "effective-vs-generality",
-    label: "A.24",
+    label: "A.5",
     title: "Effective vs Generality",
     body: [
       "Effective means behavior change is [large enough to matter].",
@@ -555,7 +555,7 @@ const sectionAMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "dimension-discrimination-practice",
-    label: "A.25",
+    label: "A.5",
     title: "Dimension Discrimination Practice",
     body: [
       "Dimension questions often use similar wording.",
@@ -1234,7 +1234,7 @@ const sectionCExpandedMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "trial-by-trial-recording",
-    label: "C.8",
+    label: "C.5",
     title: "Trial-by-Trial Recording",
     body: [
       "Trial-by-trial recording scores [whether each teaching trial is correct or incorrect].",
@@ -1250,7 +1250,7 @@ const sectionCExpandedMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "percentage-and-ratio",
-    label: "C.9",
+    label: "C.3",
     title: "Percentage and Ratio Measures",
     body: [
       "Percentage shows [part divided by whole times 100].",
@@ -1267,7 +1267,7 @@ const sectionCExpandedMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "ioa-purpose",
-    label: "C.10",
+    label: "C.8",
     title: "Interobserver Agreement (IOA)",
     body: [
       "Interobserver agreement (IOA) compares [two observers' records of the same event].",
@@ -1290,7 +1290,7 @@ const sectionCExpandedMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "count-ioa",
-    label: "C.11",
+    label: "C.8",
     title: "Count IOA: Total, Exact, and Mean Count-per-Interval",
     body: [
       "Total count IOA compares [overall counts].",
@@ -1308,7 +1308,7 @@ const sectionCExpandedMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "duration-ioa",
-    label: "C.12",
+    label: "C.8",
     title: "Duration IOA",
     body: [
       "Total duration IOA compares [total time recorded by each observer].",
@@ -1325,7 +1325,7 @@ const sectionCExpandedMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "trial-by-trial-ioa",
-    label: "C.13",
+    label: "C.8",
     title: "Trial-by-Trial IOA",
     body: [
       "Trial-by-trial IOA compares observer agreement [for each trial].",
@@ -1342,7 +1342,7 @@ const sectionCExpandedMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "graph-types",
-    label: "C.14",
+    label: "C.10",
     title: "Graph Types and Data Display",
     body: [
       "Line graphs show [behavior over time].",
@@ -1362,7 +1362,7 @@ const sectionCExpandedMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "visual-analysis-level-trend-variability",
-    label: "C.15",
+    label: "C.11",
     title: "Level, Trend, and Variability",
     body: [
       "Level asks [how high or low] data are.",
@@ -1380,7 +1380,7 @@ const sectionCExpandedMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "immediacy-overlap-functional-relation",
-    label: "C.16",
+    label: "C.11",
     title: "Immediacy, Overlap, and Data Interpretation",
     body: [
       "Immediacy asks whether behavior changes [right after a condition change].",
@@ -1403,7 +1403,7 @@ const sectionCExpandedMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "baseline-intervention-maintenance-generalization",
-    label: "C.17",
+    label: "C.11",
     title: "Baseline, Intervention, Maintenance, and Generalization Data",
     body: [
       "Baseline data support [prediction before intervention].",
@@ -1422,7 +1422,7 @@ const sectionCExpandedMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "data-based-decision-making",
-    label: "C.20",
+    label: "C.11",
     title: "Data-Based Decision Making",
     body: [
       "Data-based decisions require matching the decision to [the data pattern].",
@@ -1790,7 +1790,7 @@ const sectionDMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "baseline-intervention-phase-lines",
-    label: "D.2",
+    label: "D.4",
     title: "Baseline, Intervention, and Phase Change Lines",
     body: [
       "Baseline shows [prediction] before the intervention is introduced.",
@@ -1822,7 +1822,7 @@ const sectionDMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "reversal-vs-withdrawal",
-    label: "D.3",
+    label: "D.7",
     title: "Reversal vs Withdrawal Designs",
     body: [
       "Reversal Designs compare [repeated baseline and intervention conditions].",
@@ -1854,7 +1854,7 @@ const sectionDMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "ab-aba-abab-logic",
-    label: "D.4",
+    label: "D.7",
     title: "A-B, A-B-A, and A-B-A-B Logic",
     body: [
       "A-B shows [baseline followed by intervention], but it does not replicate the effect.",
@@ -1886,7 +1886,7 @@ const sectionDMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "prediction-verification-replication",
-    label: "D.5",
+    label: "D.4",
     title: "Withdrawal Design",
     body: [
       "Prediction uses baseline data to estimate [future responding without intervention].",
@@ -1916,8 +1916,25 @@ const sectionDMiniLessons: MiniLessonContent[] = [
     },
   },
   {
+    slug: "single-case-vs-group-design-strengths",
+    label: "D.5",
+    title: "Single-Case and Group Design Strengths",
+    body: [
+      "Single-case designs show behavior change through [repeated measurement of individual behavior].",
+      "Group designs summarize [aggregate performance across participants].",
+    ],
+    visual: {
+      type: "comparison",
+      leftTitle: "Single-case design",
+      leftText: "Individual serves as their own control through repeated measures",
+      rightTitle: "Group design",
+      rightText: "Compares or summarizes performance across participants",
+      cue: "D.5 asks for the [relative strengths] of each design approach.",
+    },
+  },
+  {
     slug: "multiple-baseline-participants",
-    label: "D.6",
+    label: "D.7",
     title: "Multiple Baseline Across Participants",
     body: [
       "Across participants means the same intervention is staggered across [different learners].",
@@ -1980,7 +1997,7 @@ const sectionDMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "multiple-baseline-behaviors",
-    label: "D.8",
+    label: "D.7",
     title: "Multiple Baseline Across Behaviors",
     body: [
       "Across behaviors means intervention is staggered across [different response classes or skills].",
@@ -2012,7 +2029,7 @@ const sectionDMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "alternating-multielement",
-    label: "D.9",
+    label: "D.7",
     title: "Alternating Treatments / Multielement Designs",
     body: [
       "Alternating Treatments / Multielement Designs compare conditions through [rapid alternation].",
@@ -2044,7 +2061,7 @@ const sectionDMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "adapted-alternating-treatments",
-    label: "D.10",
+    label: "D.7",
     title: "Adapted Alternating Treatments",
     body: [
       "Adapted Alternating Treatments compare interventions across [different but equivalent response sets].",
@@ -2077,7 +2094,7 @@ const sectionDMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "changing-criterion-components",
-    label: "D.11",
+    label: "D.7",
     title: "Changing Criterion Design Components",
     body: [
       "Changing Criterion Designs require [baseline, stepwise criteria, and behavior tracking each criterion].",
@@ -2110,7 +2127,7 @@ const sectionDMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "increasing-decreasing-criteria",
-    label: "D.12",
+    label: "D.7",
     title: "Increasing vs Decreasing Criteria",
     body: [
       "Criteria can [increase behavior], such as on-task duration.",
@@ -2143,7 +2160,7 @@ const sectionDMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "visual-analysis-level-trend-variability",
-    label: "D.13",
+    label: "D.6",
     title: "Visual Analysis: Level, Trend, Variability",
     body: [
       "Level asks [how high or low] the data are.",
@@ -2169,7 +2186,7 @@ const sectionDMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "visual-analysis-immediacy-overlap-consistency",
-    label: "D.14",
+    label: "D.6",
     title: "Visual Analysis: Immediacy, Overlap, Consistency",
     body: [
       "Immediacy asks whether change occurs [right after a phase change].",
@@ -2200,7 +2217,7 @@ const sectionDMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "experimental-control",
-    label: "D.15",
+    label: "D.4",
     title: "Experimental Control",
     body: [
       "Experimental control means [behavior changes when and only when the independent variable changes].",
@@ -2225,7 +2242,7 @@ const sectionDMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "internal-vs-external-validity",
-    label: "D.16",
+    label: "D.2",
     title: "Internal Validity vs External Validity",
     body: [
       "Internal validity asks whether [the independent variable caused the change].",
@@ -2250,7 +2267,7 @@ const sectionDMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "threats-to-validity",
-    label: "D.17",
+    label: "D.3",
     title: "Threats to Validity",
     body: [
       "Threats to Validity are [alternative explanations] for behavior change.",
@@ -2270,7 +2287,7 @@ const sectionDMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "choosing-best-design",
-    label: "D.18",
+    label: "D.9",
     title: "Choosing the Best Design",
     body: [
       "Choose the design based on [behavior reversibility, ethics, measurement, and treatment goals].",
@@ -2670,6 +2687,258 @@ const sectionDAnalysisApplicationMiniLessons: MiniLessonContent[] = [
         "Look for a question about [parts of a package], not values of one variable or generality.",
       feedback:
         "Component analysis asks which elements of a treatment package are [active, necessary, sufficient, or efficient].",
+    },
+  },
+];
+
+const sectionDAdditionalMiniLessons: MiniLessonContent[] = [
+  {
+    slug: "prediction-verification-replication-deep-dive",
+    label: "D.4",
+    title: "Prediction, Verification, and Replication",
+    body: [
+      "Prediction estimates [what behavior would do without intervention].",
+      "Verification and replication strengthen confidence that [the independent variable produced the behavior change].",
+    ],
+    visual: {
+      type: "graph",
+      graphId: "reversal-pvr",
+      graphTitle: "Withdrawal Design Logic",
+      phases: [
+        { label: "Prediction", detail: "Baseline predicts [future responding].", tone: "blue" },
+        { label: "Verification", detail: "Return to baseline tests [that prediction].", tone: "teal" },
+        { label: "Replication", detail: "Reintroduction repeats [the intervention effect].", tone: "green" },
+      ],
+      cue: "Note: experimental control is stronger when behavior changes [with repeated condition changes].",
+      prompt: "Which feature best shows replication?",
+      choices: [
+        "Behavior changes again when the intervention is reintroduced",
+        "Baseline has one data point",
+        "The graph has a y-axis label",
+        "The first intervention phase starts after baseline",
+      ],
+      answer: "Behavior changes again when the intervention is reintroduced",
+      hint:
+        "Replication means the effect is [reproduced], not just observed once.",
+      feedback:
+        "Replication supports a functional relation when the behavior change [occurs again] after reintroduction of the independent variable.",
+    },
+  },
+  {
+    slug: "internal-vs-external-validity-deep-dive",
+    label: "D.2",
+    title: "Internal vs External Validity",
+    body: [
+      "Internal validity asks whether [the independent variable caused the behavior change].",
+      "External validity asks whether the finding [generalizes beyond the original conditions].",
+    ],
+    visual: {
+      type: "comparison",
+      leftTitle: "Internal validity",
+      leftText: "Can we rule out alternative explanations inside this study?",
+      rightTitle: "External validity",
+      rightText: "Will the effect generalize across people, settings, behaviors, or time?",
+      cue: "Internal = [causal control]. External = [generality].",
+    },
+  },
+  {
+    slug: "threats-to-internal-validity-expanded",
+    label: "D.3",
+    title: "Threats to Internal Validity",
+    body: [
+      "Threats to internal validity are [alternative explanations] for behavior change.",
+      "Common threats include history, maturation, instrumentation, testing effects, sequence effects, and observer drift.",
+    ],
+    visual: {
+      type: "matching",
+      prompt: "Match each threat to its cue.",
+      pairs: [
+        { term: "History", definition: "An outside event occurs during the study." },
+        { term: "Maturation", definition: "Natural change over time may explain change." },
+        { term: "Instrumentation", definition: "Measurement procedures change." },
+        { term: "Observer drift", definition: "Observers gradually score differently from the definition." },
+      ],
+    },
+  },
+  {
+    slug: "repeated-measurement",
+    label: "D.4",
+    title: "Repeated Measurement",
+    body: [
+      "Repeated measurement shows [patterns over time], not just one before-and-after snapshot.",
+      "It helps detect trend, variability, treatment effects, and ongoing behavior change.",
+    ],
+    visual: {
+      type: "graph",
+      graphId: "reversal-aba",
+      graphTitle: "Repeated Measures Across Sessions",
+      phases: [
+        { label: "Trend", detail: "Repeated points show [direction].", tone: "blue" },
+        { label: "Variability", detail: "Repeated points show [fluctuation].", tone: "teal" },
+        { label: "Effect", detail: "Condition changes can be compared [across time].", tone: "green" },
+      ],
+      cue: "Note: repeated data points make visual analysis possible.",
+      prompt: "Why does repeated measurement matter in single-case design?",
+      choices: [
+        "It reveals data patterns across time and condition changes",
+        "It replaces the need to define behavior",
+        "It proves external validity without replication",
+        "It removes all threats to validity automatically",
+      ],
+      answer: "It reveals data patterns across time and condition changes",
+      hint:
+        "Think about what several data points show that one pre/post score cannot show.",
+      feedback:
+        "Repeated measurement supports visual analysis by showing [level, trend, variability, and change across conditions].",
+    },
+  },
+  {
+    slug: "stability-before-intervention",
+    label: "D.4-D.6",
+    title: "Stability Before Intervention",
+    body: [
+      "A stable baseline improves prediction because data show [limited trend and manageable variability].",
+      "A strongly improving or highly variable baseline can weaken conclusions about the intervention effect.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which baseline pattern gives the clearest prediction before intervention?",
+      choices: [
+        "Stable responding with little trend in the direction of treatment",
+        "A steep improving trend before treatment begins",
+        "Highly variable data with no interpretable pattern",
+        "No baseline data before intervention",
+      ],
+      answer: "Stable responding with little trend in the direction of treatment",
+      hint:
+        "Look for a baseline that supports [a clear prediction] of future responding.",
+      feedback:
+        "Stable baseline data make it easier to judge whether later behavior change is tied to [the intervention].",
+    },
+  },
+  {
+    slug: "comparative-analyses-expanded",
+    label: "D.8",
+    title: "Comparative Analyses",
+    body: [
+      "Comparative analysis asks [which intervention or condition produces the stronger effect].",
+      "It can also consider efficiency, side effects, feasibility, and clinical fit.",
+    ],
+    visual: {
+      type: "graph",
+      graphId: "alternating-standard",
+      graphTitle: "Comparative Analysis Cue",
+      phases: [
+        { label: "Condition A", detail: "One intervention produces [one data path].", tone: "blue" },
+        { label: "Condition B", detail: "Another intervention produces [a second data path].", tone: "teal" },
+        { label: "Decision", detail: "Choose based on [effects and efficiency].", tone: "green" },
+      ],
+      cue: "Note: comparative analysis compares [whole conditions or interventions].",
+      prompt: "What is the main question in comparative analysis?",
+      choices: [
+        "Which intervention or condition produces the better outcome?",
+        "Which single component inside a package is necessary?",
+        "Which value of one variable is optimal?",
+        "Will effects generalize to a new setting?",
+      ],
+      answer: "Which intervention or condition produces the better outcome?",
+      hint:
+        "Look for a comparison across [whole interventions or conditions].",
+      feedback:
+        "Comparative analysis evaluates [relative treatment effects] and can guide efficient intervention selection.",
+    },
+  },
+  {
+    slug: "component-analyses-expanded",
+    label: "D.8",
+    title: "Component Analyses",
+    body: [
+      "Component analysis identifies [which treatment elements are active or necessary].",
+      "Elements may be added, removed, or isolated to simplify treatment responsibly.",
+    ],
+    visual: {
+      type: "flow",
+      prompt: "Order a component analysis logic chain.",
+      steps: [
+        "Start with treatment package",
+        "Remove or isolate one element",
+        "Compare behavior change",
+        "Keep necessary components",
+      ],
+      feedback:
+        "Component analysis asks which parts of a package are [necessary, sufficient, efficient, or effective].",
+    },
+  },
+  {
+    slug: "parametric-analyses-expanded",
+    label: "D.8",
+    title: "Parametric Analyses",
+    body: [
+      "Parametric analysis manipulates [different values of one independent variable].",
+      "Examples include schedule value, dosage, duration, intensity, magnitude, or frequency.",
+    ],
+    visual: {
+      type: "choice",
+      prompt:
+        "A BCBA compares 30-second, 60-second, and 120-second reinforcement durations. Which analysis is described?",
+      choices: [
+        "Parametric analysis",
+        "Component analysis",
+        "External validity analysis",
+        "History threat analysis",
+      ],
+      answer: "Parametric analysis",
+      hint:
+        "Look for [different values of one variable] while the rest of the procedure stays constant.",
+      feedback:
+        "Parametric analysis evaluates [which value or amount] of one independent variable works best.",
+    },
+  },
+  {
+    slug: "experimental-design-selection-expanded",
+    label: "D.9",
+    title: "Experimental Design Selection",
+    body: [
+      "Design selection depends on [reversibility, ethics, speed of comparison, and the clinical question].",
+      "Choose the design that can demonstrate experimental control without compromising client welfare.",
+    ],
+    visual: {
+      type: "choice",
+      prompt:
+        "An effective intervention should not be withdrawn because the behavior is dangerous. Which design is often strongest?",
+      choices: [
+        "Multiple Baseline Design",
+        "A-B-A-B Withdrawal Design",
+        "Simple A-B Design only",
+        "Changing Criterion Design only because all behavior is irreversible",
+      ],
+      answer: "Multiple Baseline Design",
+      hint:
+        "Choose a design that can show control [without removing an effective intervention].",
+      feedback:
+        "Multiple Baseline Designs can show experimental control through [staggered intervention] when withdrawal is unethical or impractical.",
+    },
+  },
+  {
+    slug: "visual-analysis-practice-expanded",
+    label: "D.6",
+    title: "Visual Analysis Practice",
+    body: [
+      "Visual analysis integrates [level, trend, variability, immediacy, overlap, and consistency].",
+      "Strong interpretation depends on patterns within phases and across similar phases.",
+    ],
+    visual: {
+      type: "select-all",
+      prompt: "Select visual-analysis features used to judge treatment effects.",
+      choices: [
+        { label: "Level", correct: true },
+        { label: "Trend", correct: true },
+        { label: "Immediacy of effect", correct: true },
+        { label: "Overlap", correct: true },
+        { label: "Client age as the only graph feature", correct: false },
+      ],
+      feedback:
+        "Visual analysis examines [level, trend, variability, immediacy, overlap, and consistency] to evaluate treatment effects.",
     },
   },
 ];
@@ -6204,84 +6473,2728 @@ const sectionDRelocatedFromCMasteryQuestions: QuestionContent[] = [
   },
 ];
 
+const sectionDAdditionalPracticeQuestions: QuestionContent[] = [
+  {
+    type: "matching",
+    prompt: "Match each experimental-control term to its discrimination cue.",
+    pairs: [
+      { term: "Prediction", definition: "Baseline estimates future responding without intervention." },
+      { term: "Verification", definition: "A return or comparison tests whether the prediction holds." },
+      { term: "Replication", definition: "The effect occurs again when the independent variable returns." },
+      { term: "Functional relation", definition: "Behavior changes systematically with manipulation of the independent variable." },
+    ],
+    answer: "All experimental-control terms matched correctly",
+    explanation:
+      "Prediction, verification, and replication support [experimental control] and help demonstrate [functional relations].",
+    hint:
+      "Separate baseline forecasting, testing the forecast, and reproducing the effect.",
+  },
+  {
+    type: "scenario",
+    graphId: "reversal-pvr",
+    prompt:
+      "A baseline predicts continued responding, withdrawal produces a return toward baseline, and reintroduction repeats the intervention effect. What is the strongest interpretation?",
+    choices: [
+      "The pattern strengthens experimental control through prediction, verification, and replication",
+      "Only external validity has been demonstrated",
+      "A single A-B comparison is sufficient",
+      "The pattern is unrelated to functional relations",
+    ],
+    answer:
+      "The pattern strengthens experimental control through prediction, verification, and replication",
+    explanation:
+      "A functional relation is strengthened when behavior changes [predictably and repeatedly] with the independent variable.",
+    hint:
+      "Look for repeated behavior change tied to condition changes.",
+  },
+  {
+    type: "sorting",
+    prompt: "Sort each validity example.",
+    categories: ["Internal validity", "External validity"],
+    items: [
+      { label: "Did the intervention cause the behavior change?", category: "Internal validity" },
+      { label: "Will the effect occur in a different setting?", category: "External validity" },
+      { label: "Were history threats ruled out?", category: "Internal validity" },
+      { label: "Will the effect generalize to another learner?", category: "External validity" },
+    ],
+    answer: "All validity examples sorted correctly",
+    explanation:
+      "Internal validity concerns [causal control]; external validity concerns [generality beyond the original conditions].",
+    hint:
+      "Separate causation within the study from generality outside the study.",
+  },
+  {
+    type: "matching",
+    prompt: "Match each internal-validity threat to the scenario cue.",
+    pairs: [
+      { term: "History", definition: "A school-wide reward program starts during treatment." },
+      { term: "Maturation", definition: "Behavior changes gradually as the learner grows or develops." },
+      { term: "Instrumentation", definition: "Observers change definitions or scoring rules mid-study." },
+      { term: "Sequence effect", definition: "An earlier condition changes responding in a later condition." },
+    ],
+    answer: "All validity threats matched correctly",
+    explanation:
+      "Threats to internal validity are [alternative explanations] for behavior change.",
+    hint:
+      "Match the threat by what changed besides the planned independent variable.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "An observer slowly begins counting shorter and shorter instances of behavior across sessions. Which threat is most relevant?",
+    choices: [
+      "Observer drift",
+      "External validity",
+      "Parametric analysis",
+      "Replication",
+    ],
+    answer: "Observer drift",
+    explanation:
+      "Observer drift occurs when scoring gradually shifts away from [the original measurement definition].",
+    hint:
+      "Focus on gradual measurement change by the observer.",
+  },
+  {
+    type: "select-all",
+    prompt: "Select reasons repeated measurement matters in single-case experimental design.",
+    choices: [
+      "It reveals trend across sessions",
+      "It shows variability within phases",
+      "It allows comparison before and after condition changes",
+      "It eliminates the need for operational definitions",
+    ],
+    answers: [
+      "It reveals trend across sessions",
+      "It shows variability within phases",
+      "It allows comparison before and after condition changes",
+    ],
+    answer:
+      "Repeated measurement reveals trend, variability, and behavior change across conditions.",
+    explanation:
+      "Repeated measurement provides the data patterns needed for [visual analysis and experimental control].",
+    hint:
+      "Look for what multiple data points show over time.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "Baseline data are already improving steeply before intervention begins. What is the main interpretive concern?",
+    choices: [
+      "The baseline may not support a clear prediction of future responding",
+      "The dependent variable has been manipulated",
+      "External validity has been proven",
+      "The graph must be a multielement design",
+    ],
+    answer: "The baseline may not support a clear prediction of future responding",
+    explanation:
+      "A strongly improving baseline can weaken confidence that later change was caused by [the intervention].",
+    hint:
+      "Ask whether baseline supports a stable prediction before treatment starts.",
+  },
+  {
+    type: "scenario",
+    graphId: "alternating-standard",
+    prompt:
+      "Two intervention packages are rapidly alternated, and one produces consistently better outcomes with similar effort. Which analysis is most directly represented?",
+    choices: [
+      "Comparative analysis",
+      "Component analysis",
+      "Parametric analysis",
+      "Maturation analysis",
+    ],
+    answer: "Comparative analysis",
+    explanation:
+      "Comparative analysis evaluates [the relative effects of two or more interventions or conditions].",
+    hint:
+      "Look for comparison of whole interventions rather than treatment parts or dosage values.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A treatment package includes visual prompts, praise, and tokens. The BCBA systematically removes one element at a time to find what is necessary. Which analysis is this?",
+    choices: [
+      "Component analysis",
+      "Parametric analysis",
+      "External validity analysis",
+      "History analysis",
+    ],
+    answer: "Component analysis",
+    explanation:
+      "Component analysis identifies [active or necessary treatment elements].",
+    hint:
+      "Ask whether the analyst is testing parts of one package.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A BCBA compares 2-minute, 5-minute, and 10-minute breaks while keeping the procedure otherwise constant. Which analysis is this?",
+    choices: [
+      "Parametric analysis",
+      "Component analysis",
+      "Comparative analysis of unrelated packages",
+      "Instrumentation analysis",
+    ],
+    answer: "Parametric analysis",
+    explanation:
+      "Parametric analysis evaluates [different values of one independent variable].",
+    hint:
+      "Look for one variable varied by amount, duration, magnitude, intensity, or frequency.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A learner's severe behavior is likely irreversible once reduced, and withdrawing treatment would be unsafe. Which design-selection consideration matters most?",
+    choices: [
+      "Avoid designs requiring withdrawal of effective treatment",
+      "Use A-B-A-B because withdrawal is always strongest",
+      "Ignore ethics because experimental control is the only goal",
+      "Use a simple A-B design because repeated measurement is unnecessary",
+    ],
+    answer: "Avoid designs requiring withdrawal of effective treatment",
+    explanation:
+      "Design selection should account for [ethics, reversibility, and client safety].",
+    hint:
+      "Focus on whether the design requires removing an effective intervention.",
+  },
+  {
+    type: "select-all",
+    prompt: "Select visual-analysis features that support a stronger treatment effect.",
+    choices: [
+      "Immediate change after phase change",
+      "Low overlap between baseline and intervention",
+      "Consistent patterns in similar phases",
+      "A descriptive title that names the design",
+    ],
+    answers: [
+      "Immediate change after phase change",
+      "Low overlap between baseline and intervention",
+      "Consistent patterns in similar phases",
+    ],
+    answer:
+      "Immediacy, low overlap, and consistency strengthen visual interpretation.",
+    explanation:
+      "Visual analysis integrates [level, trend, variability, immediacy, overlap, and consistency].",
+    hint:
+      "Look for graph features that show behavior changed with the condition.",
+  },
+];
+
+const sectionDAdditionalMasteryQuestions: QuestionContent[] = [
+  {
+    type: "scenario",
+    graphId: "reversal-pvr",
+    prompt:
+      "Which statement best describes how prediction, verification, and replication support experimental control?",
+    choices: [
+      "They show that behavior changes predictably and repeatedly with manipulation of the independent variable.",
+      "They show that behavior changed once after treatment started.",
+      "They show that findings generalize to every setting.",
+      "They replace the need for repeated measurement.",
+    ],
+    answer:
+      "They show that behavior changes predictably and repeatedly with manipulation of the independent variable.",
+    explanation:
+      "Prediction, verification, and replication strengthen interpretation of [functional relations].",
+    hint:
+      "Focus on repeated condition-linked behavior change.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A study shows clear experimental control for one learner, and the team asks whether the same effect will occur with another learner. Which validity issue is being evaluated?",
+    choices: [
+      "External validity",
+      "Internal validity",
+      "Instrumentation",
+      "Maturation",
+    ],
+    answer: "External validity",
+    explanation:
+      "External validity concerns whether findings [generalize beyond the original conditions].",
+    hint:
+      "Decide whether the question is about causation inside the study or generality outside it.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A new data collector begins using a different response definition during the intervention phase. Which threat is most relevant?",
+    choices: [
+      "Instrumentation",
+      "History",
+      "External validity",
+      "Parametric analysis",
+    ],
+    answer: "Instrumentation",
+    explanation:
+      "Instrumentation threats involve [changes in measurement procedures, observers, or definitions].",
+    hint:
+      "Look for a change in how data are measured.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "Why is repeated measurement essential in single-case experimental designs?",
+    choices: [
+      "It allows analysis of level, trend, variability, and behavior change across conditions.",
+      "It guarantees generalization across settings.",
+      "It removes the need for baseline data.",
+      "It makes observer drift impossible.",
+    ],
+    answer:
+      "It allows analysis of level, trend, variability, and behavior change across conditions.",
+    explanation:
+      "Repeated measurement provides [data patterns over time] needed for visual analysis.",
+    hint:
+      "Think about what repeated data points make visible.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A baseline is highly variable and trending in the desired direction before treatment. Which concern is strongest?",
+    choices: [
+      "The baseline may not support a clear prediction of future behavior without treatment.",
+      "The baseline proves external validity.",
+      "The design must be a component analysis.",
+      "The independent variable is already replicated.",
+    ],
+    answer:
+      "The baseline may not support a clear prediction of future behavior without treatment.",
+    explanation:
+      "Baseline stability improves prediction because data show [limited trend and interpretable variability].",
+    hint:
+      "Ask whether baseline makes future responding predictable.",
+  },
+  {
+    type: "scenario",
+    graphId: "alternating-standard",
+    prompt:
+      "A BCBA compares two complete treatment packages and selects the one with clearer effects and easier implementation. Which analysis is represented?",
+    choices: [
+      "Comparative analysis",
+      "Component analysis",
+      "Parametric analysis",
+      "Observer drift analysis",
+    ],
+    answer: "Comparative analysis",
+    explanation:
+      "Comparative analysis evaluates [relative effects of whole conditions or interventions].",
+    hint:
+      "Look for comparison across complete intervention options.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A treatment package is tested with and without response prompts to determine whether prompts are necessary. Which analysis is represented?",
+    choices: [
+      "Component analysis",
+      "Parametric analysis",
+      "External validity analysis",
+      "Maturation analysis",
+    ],
+    answer: "Component analysis",
+    explanation:
+      "Component analysis evaluates [which elements of a treatment package are necessary].",
+    hint:
+      "Focus on whether one part of a package is being isolated or removed.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A BCBA compares 10-second, 20-second, and 30-second prompts while keeping the intervention otherwise constant. Which analysis is represented?",
+    choices: [
+      "Parametric analysis",
+      "Component analysis",
+      "Multiple Baseline Design",
+      "History threat",
+    ],
+    answer: "Parametric analysis",
+    explanation:
+      "Parametric analysis manipulates [different values of one independent variable].",
+    hint:
+      "Look for one feature changing by value or amount.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "Which design is often appropriate when treatment withdrawal is unethical but staggered introduction is feasible?",
+    choices: [
+      "Multiple Baseline Design",
+      "A-B-A-B Withdrawal Design",
+      "Simple A-B Design only",
+      "Reversal Design with repeated withdrawal",
+    ],
+    answer: "Multiple Baseline Design",
+    explanation:
+      "Multiple Baseline Designs can show control [without withdrawing an effective intervention].",
+    hint:
+      "Choose the design that avoids removing treatment while still demonstrating control.",
+  },
+  {
+    type: "scenario",
+    graphId: "reversal-aba",
+    prompt:
+      "During visual analysis, intervention data show an immediate level change, minimal overlap, and a consistent pattern across comparisons. Which interpretation is strongest?",
+    choices: [
+      "The visual pattern supports a stronger treatment effect.",
+      "The graph cannot support experimental control because it has phase lines.",
+      "Only external validity is shown.",
+      "The pattern shows observer drift.",
+    ],
+    answer: "The visual pattern supports a stronger treatment effect.",
+    explanation:
+      "Immediacy, low overlap, and consistency across similar phases support [stronger visual evidence of an effect].",
+    hint:
+      "Use level, immediacy, overlap, and consistency to interpret the graph.",
+  },
+];
+
 const sectionFMiniLessons: MiniLessonContent[] = [
   {
-    slug: "assessment-sources",
-    label: "F.1-F.2",
-    title: "Assessment sources",
+    slug: "purpose-of-assessment",
+    label: "F.8",
+    title: "Purpose of Assessment",
     body: [
-      "Records, interviews, and direct observation answer different questions.",
-      "Assessment should include [cultural variables and context].",
+      "Behavior assessment identifies [socially significant behavior] and the conditions related to it.",
+      "Assessment results should guide [target selection, treatment decisions, and progress evaluation].",
+    ],
+    visual: {
+      type: "flow",
+      prompt: "Order the assessment-to-treatment logic.",
+      steps: [
+        "Identify socially significant behavior",
+        "Define the behavior objectively",
+        "Select assessment methods",
+        "Use results to guide treatment decisions",
+      ],
+      feedback:
+        "Assessment connects [behavioral need] to [function-based and skill-building decisions].",
+    },
+  },
+  {
+    slug: "defining-observable-behavior",
+    label: "F.8",
+    title: "Defining Behavior",
+    body: [
+      "Behavior definitions should describe [observable and measurable responses].",
+      "Avoid labels that describe presumed feelings, traits, or intent without a measurable response.",
     ],
     visual: {
       type: "sorting",
-      prompt: "Sort each assessment source.",
-      categories: ["Indirect", "Direct"],
+      prompt: "Sort each definition by assessment quality.",
+      categories: ["Objective", "Subjective"],
       items: [
-        { label: "Caregiver interview", category: "Indirect" },
-        { label: "ABC observation", category: "Direct" },
-        { label: "Record review", category: "Indirect" },
-        { label: "Functional analysis session", category: "Direct" },
+        { label: "Hits peer with open hand", category: "Objective" },
+        { label: "Acts disrespectful", category: "Subjective" },
+        { label: "Leaves seat for more than 3 seconds", category: "Objective" },
+        { label: "Refuses because they are lazy", category: "Subjective" },
       ],
     },
   },
   {
-    slug: "preference-assessment",
-    label: "F.3-F.6",
-    title: "Preference assessment",
+    slug: "operational-definitions",
+    label: "F.8",
+    title: "Operational Definitions",
     body: [
-      "Preference assessment identifies stimuli that may function as reinforcers.",
-      "A reinforcer is confirmed only by [increased future responding].",
-    ],
-    visual: {
-      type: "matching",
-      prompt: "Match preference assessment formats to their definitions.",
-      pairs: [
-        { term: "Paired stimulus", definition: "Choose between two items at a time." },
-        { term: "MSWO", definition: "Choose from an array, then remove selected item." },
-        { term: "Free operant", definition: "Observe allocation of time with items." },
-      ],
-    },
-  },
-  {
-    slug: "functional-assessment-analysis",
-    label: "F.3-F.8",
-    title: "Functional assessment vs functional analysis",
-    body: [
-      "Functional assessment gathers information about [behavior-environment relations].",
-      "Functional analysis manipulates conditions to test behavioral function.",
-    ],
-    visual: {
-      type: "comparison",
-      leftTitle: "Descriptive assessment",
-      leftText: "Observe natural events",
-      rightTitle: "Functional analysis",
-      rightText: "Manipulate conditions",
-      cue: "Descriptive = observe correlations. Functional analysis = test function experimentally.",
-    },
-  },
-  {
-    slug: "socially-significant-goals",
-    label: "F.7-F.8",
-    title: "Socially significant goals",
-    body: [
-      "Goals should improve [meaningful outcomes for the client].",
-      "Prioritize skills that affect safety, independence, access, or quality of life.",
+      "An operational definition describes behavior in [observable and measurable terms].",
+      "Strong definitions include examples, nonexamples, and clear boundaries for scoring.",
     ],
     visual: {
       type: "choice",
-      prompt: "Which goal is most socially significant?",
+      prompt: "Which definition is most operational?",
       choices: [
-        "Teach a functional mand that reduces unsafe escape-maintained behavior.",
-        "Teach a rote response because it is easy to graph.",
-        "Select a goal because materials are already printed.",
-        "Prioritize a behavior without caregiver or client context.",
+        "Aggression = hitting, kicking, biting, or scratching another person with force",
+        "Aggression = being mean",
+        "Aggression = acting out when frustrated",
+        "Aggression = unsafe behavior that staff dislike",
       ],
       answer:
-        "Teach a functional mand that reduces unsafe escape-maintained behavior.",
+        "Aggression = hitting, kicking, biting, or scratching another person with force",
+      hint:
+        "Look for [observable responses] and boundaries that two observers could score.",
       feedback:
-        "Socially significant goals matter in the learner's everyday life and match assessment results.",
+        "Operational definitions use [observable and measurable terms] rather than labels.",
     },
+  },
+  {
+    slug: "indirect-assessment",
+    label: "F.1",
+    title: "Indirect Assessment",
+    body: [
+      "Indirect assessments rely on [reports and interviews].",
+      "They are efficient, but they may be affected by memory, interpretation, or incomplete information.",
+    ],
+    visual: {
+      type: "matching",
+      prompt: "Match each indirect source to its cue.",
+      pairs: [
+        { term: "Interview", definition: "Caregiver or staff describes patterns and concerns." },
+        { term: "Rating scale", definition: "Structured ratings summarize reported behavior." },
+        { term: "Questionnaire", definition: "Written responses identify possible variables." },
+        { term: "Record review", definition: "Existing documents provide history and context." },
+      ],
+    },
+  },
+  {
+    slug: "descriptive-assessment",
+    label: "F.5",
+    title: "Descriptive Assessment",
+    body: [
+      "Descriptive assessments involve [direct observation without experimental manipulation].",
+      "They can identify correlations between antecedents, behavior, and consequences.",
+    ],
+    visual: {
+      type: "comparison",
+      leftTitle: "Descriptive",
+      leftText: "Observe behavior in natural routines",
+      rightTitle: "Functional analysis",
+      rightText: "Manipulate conditions experimentally",
+      cue: "Descriptive assessment suggests relations; functional analysis tests relations.",
+    },
+  },
+  {
+    slug: "abc-recording",
+    label: "F.5",
+    title: "ABC Recording",
+    body: [
+      "ABC recording organizes [antecedent, behavior, and consequence] events.",
+      "It supports hypotheses, but it does not prove function by itself.",
+    ],
+    visual: {
+      type: "matching",
+      prompt: "Match each ABC component.",
+      pairs: [
+        { term: "Antecedent", definition: "Event or condition before behavior." },
+        { term: "Behavior", definition: "Observable response being measured." },
+        { term: "Consequence", definition: "Event following behavior." },
+        { term: "Hypothesis", definition: "Possible relation suggested by patterns." },
+      ],
+    },
+  },
+  {
+    slug: "scatterplots-and-patterns",
+    label: "F.5",
+    title: "Scatterplots and Conditional Probability",
+    body: [
+      "Scatterplots show [when behavior occurs] across time, routines, or settings.",
+      "Conditional probability estimates how often one event occurs given another event.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "A scatterplot shows aggression mostly during transitions. What is the best next step?",
+      choices: [
+        "Use the pattern to form a hypothesis and collect more assessment data",
+        "Declare transition escape as proven without more data",
+        "Ignore the pattern because scatterplots are never useful",
+        "Stop assessment and begin punishment procedures",
+      ],
+      answer:
+        "Use the pattern to form a hypothesis and collect more assessment data",
+      hint:
+        "Scatterplots suggest [time-based patterns], but interpretation still requires caution.",
+      feedback:
+        "Scatterplots support [hypothesis development], not unsupported conclusions.",
+    },
+  },
+  {
+    slug: "functional-analysis",
+    label: "F.6",
+    title: "Functional Analysis",
+    body: [
+      "Functional analyses manipulate [environmental variables experimentally].",
+      "They test whether attention, escape, tangible access, or automatic reinforcement maintains behavior.",
+    ],
+    visual: {
+      type: "select-all",
+      prompt: "Select features of functional analysis.",
+      choices: [
+        { label: "Systematic manipulation of antecedents and consequences", correct: true },
+        { label: "Direct tests of possible maintaining variables", correct: true },
+        { label: "Safety planning before assessment sessions", correct: true },
+        { label: "Only caregiver opinion with no observation", correct: false },
+      ],
+      feedback:
+        "Functional analysis uses [experimental manipulation] with safety and ethical safeguards.",
+    },
+  },
+  {
+    slug: "functional-analysis-conditions",
+    label: "F.6",
+    title: "Functional Analysis Conditions",
+    body: [
+      "FA conditions test different [contingency arrangements].",
+      "The highest responding in a test condition suggests the maintaining variable for that behavior.",
+    ],
+    visual: {
+      type: "matching",
+      prompt: "Match each FA condition to the tested contingency.",
+      pairs: [
+        { term: "Attention", definition: "Social attention follows behavior." },
+        { term: "Escape", definition: "Demands are removed following behavior." },
+        { term: "Tangible", definition: "Access to items follows behavior." },
+        { term: "Alone/Ignore", definition: "Responding persists without social consequences." },
+      ],
+    },
+  },
+  {
+    slug: "preference-assessment-purpose",
+    label: "F.4",
+    title: "Preference Assessments",
+    body: [
+      "Preference assessments identify [potential reinforcers].",
+      "A stimulus becomes a demonstrated reinforcer only if it [increases future responding].",
+    ],
+    visual: {
+      type: "comparison",
+      leftTitle: "Preferred item",
+      leftText: "Selected or approached during assessment",
+      rightTitle: "Reinforcer",
+      rightText: "Increases future responding when delivered contingently",
+      cue: "Preference suggests possibilities; reinforcement is shown by behavior change.",
+    },
+  },
+  {
+    slug: "preference-assessment-formats",
+    label: "F.4",
+    title: "Preference Assessment Formats",
+    body: [
+      "Preference format affects efficiency, choice opportunities, and assessment fit.",
+      "Choose formats based on client skills, time, setting, and assessment purpose.",
+    ],
+    visual: {
+      type: "matching",
+      prompt: "Match each preference format.",
+      pairs: [
+        { term: "Single-stimulus", definition: "Present one item at a time and record approach." },
+        { term: "Paired-stimulus", definition: "Present two items and record the selection." },
+        { term: "MSW", definition: "Selected item returns to the array." },
+        { term: "MSWO", definition: "Selected item is removed from the array." },
+      ],
+    },
+  },
+  {
+    slug: "free-operant-preference-assessment",
+    label: "F.4",
+    title: "Free-Operant Preference Assessment",
+    body: [
+      "Free-operant preference assessment measures [allocation of time] among available stimuli.",
+      "It can be efficient and may reduce forced-choice demands.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which example best fits free-operant preference assessment?",
+      choices: [
+        "The learner moves freely among items while the BCBA records duration of engagement",
+        "The learner chooses between exactly two items on each trial",
+        "The caregiver completes a rating scale only",
+        "The BCBA tests attention and escape conditions",
+      ],
+      answer:
+        "The learner moves freely among items while the BCBA records duration of engagement",
+      hint:
+        "Look for [free access] and measured engagement with available items.",
+      feedback:
+        "Free-operant assessment measures [time allocation] across available stimuli.",
+    },
+  },
+  {
+    slug: "skill-assessments",
+    label: "F.3",
+    title: "Skill Assessments",
+    body: [
+      "Skill assessments identify [skill deficits and prerequisite skills].",
+      "They help choose teaching goals, prompting needs, and curriculum priorities.",
+    ],
+    visual: {
+      type: "sorting",
+      prompt: "Sort each assessment target.",
+      categories: ["Skill assessment", "Behavior function assessment"],
+      items: [
+        { label: "Prerequisite imitation skills", category: "Skill assessment" },
+        { label: "Mand repertoire gaps", category: "Skill assessment" },
+        { label: "Escape-maintained aggression hypothesis", category: "Behavior function assessment" },
+        { label: "Attention as a maintaining consequence", category: "Behavior function assessment" },
+      ],
+    },
+  },
+  {
+    slug: "selecting-assessment-methods",
+    label: "F.7",
+    title: "Selecting Assessment Methods",
+    body: [
+      "Assessment selection balances [efficiency, accuracy, ethics, and contextual fit].",
+      "The best method depends on the assessment question and risk level.",
+    ],
+    visual: {
+      type: "flow",
+      prompt: "Order assessment selection decisions.",
+      steps: [
+        "Clarify the assessment question",
+        "Consider risk, context, and consent",
+        "Choose efficient and accurate methods",
+        "Interpret results with limitations",
+      ],
+      feedback:
+        "Assessment selection should fit [purpose, risk, context, and data needs].",
+    },
+  },
+  {
+    slug: "assessment-interpretation",
+    label: "F.7",
+    title: "Assessment Interpretation",
+    body: [
+      "Assessment interpretation links data patterns to [treatment implications].",
+      "Avoid unsupported inferences when assessment data are indirect, incomplete, or correlational.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which interpretation is most cautious and behavior analytic?",
+      choices: [
+        "ABC data suggest attention may be related, so additional assessment or a function-based test may be needed",
+        "ABC data prove attention is the function in all settings",
+        "Caregiver reports are enough to confirm all functions",
+        "One observation rules out automatic reinforcement",
+      ],
+      answer:
+        "ABC data suggest attention may be related, so additional assessment or a function-based test may be needed",
+      hint:
+        "Separate [suggested correlations] from experimentally demonstrated functional relations.",
+      feedback:
+        "Interpretation should state [what the data support] and [what they do not prove].",
+    },
+  },
+  {
+    slug: "assessment-ethics",
+    label: "F.2",
+    title: "Assessment Ethics",
+    body: [
+      "Assessment ethics include [consent, confidentiality, cultural responsiveness, competence, and least intrusive methods].",
+      "Assessment should protect client dignity while producing useful data for treatment decisions.",
+    ],
+    visual: {
+      type: "select-all",
+      prompt: "Select ethical assessment practices.",
+      choices: [
+        { label: "Obtain consent and explain assessment procedures", correct: true },
+        { label: "Adapt assessment to language and cultural context", correct: true },
+        { label: "Protect records and assessment data", correct: true },
+        { label: "Use the most intrusive assessment first for convenience", correct: false },
+      ],
+      feedback:
+        "Ethical assessment protects [dignity, consent, privacy, cultural context, and safety].",
+    },
+  },
+];
+
+const sectionFExpandedMiniLessons: MiniLessonContent[] = [
+  {
+    slug: "educational-records",
+    label: "F.1",
+    title: "Educational Records",
+    body: [
+      "Educational records can show [skill history, supports, placement, and intervention response].",
+      "Use records to guide questions, not to replace current assessment data.",
+    ],
+    visual: {
+      type: "select-all",
+      prompt: "Select educational records likely relevant to behavior assessment.",
+      choices: [
+        { label: "IEP goals and progress data", correct: true },
+        { label: "Prior behavior intervention plans", correct: true },
+        { label: "Attendance or transition history", correct: true },
+        { label: "A staff member's unrelated vacation schedule", correct: false },
+      ],
+      feedback:
+        "Relevant educational records help identify [skill history, context, and prior intervention response].",
+    },
+  },
+  {
+    slug: "medical-historical-records",
+    label: "F.1",
+    title: "Medical and Historical Records",
+    body: [
+      "Medical records may identify [health, medication, sleep, sensory, or safety variables] that affect assessment.",
+      "Historical records help identify patterns across settings and time.",
+    ],
+    visual: {
+      type: "sorting",
+      prompt: "Sort each record by likely assessment relevance.",
+      categories: ["Relevant", "Not relevant"],
+      items: [
+        { label: "Medication change near behavior increase", category: "Relevant" },
+        { label: "History of seizures and sleep disruption", category: "Relevant" },
+        { label: "Old cafeteria menu for a non-food behavior", category: "Not relevant" },
+        { label: "Prior incident reports for the same target behavior", category: "Relevant" },
+      ],
+    },
+  },
+  {
+    slug: "caregiver-interviews",
+    label: "F.1",
+    title: "Caregiver Interviews",
+    body: [
+      "Caregiver interviews gather [reported patterns, routines, priorities, and concerns].",
+      "Interview data are useful, but they remain indirect until checked against observation or other data.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which interview question is strongest for assessment?",
+      choices: [
+        "What happens right before and after the behavior in daily routines?",
+        "Why do you think the child is choosing to be difficult?",
+        "Can you confirm attention is the proven function?",
+        "Which diagnosis explains the behavior completely?",
+      ],
+      answer:
+        "What happens right before and after the behavior in daily routines?",
+      hint:
+        "Look for questions about [observable antecedent-behavior-consequence patterns].",
+      feedback:
+        "Caregiver interviews should gather [contextual and behavioral information] without assuming function.",
+    },
+  },
+  {
+    slug: "interdisciplinary-information",
+    label: "F.1",
+    title: "Interdisciplinary Information",
+    body: [
+      "Other professionals may provide information about [communication, medical, educational, or environmental variables].",
+      "Integrate interdisciplinary information within behavior-analytic scope and confidentiality requirements.",
+    ],
+    visual: {
+      type: "matching",
+      prompt: "Match each source to a possible assessment contribution.",
+      pairs: [
+        { term: "Speech-language pathologist", definition: "Communication needs and response forms." },
+        { term: "Occupational therapist", definition: "Sensory or motor participation variables." },
+        { term: "Teacher", definition: "Classroom routines and skill demands." },
+        { term: "Medical provider", definition: "Health variables needing referral or coordination." },
+      ],
+    },
+  },
+  {
+    slug: "relevant-vs-irrelevant-records",
+    label: "F.1",
+    title: "Relevant vs Irrelevant Records",
+    body: [
+      "Relevant records clarify [assessment questions, context, risk, or treatment planning].",
+      "Irrelevant records add noise and can increase bias or confidentiality risk.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which record is most relevant before assessing aggression during transitions?",
+      choices: [
+        "Recent transition incident reports with antecedents and consequences",
+        "A two-year-old unrelated art grade",
+        "A staff birthday calendar",
+        "A generic school newsletter",
+      ],
+      answer:
+        "Recent transition incident reports with antecedents and consequences",
+      hint:
+        "Choose the source most connected to [the target behavior and assessment question].",
+      feedback:
+        "Relevant records help answer [the specific assessment question].",
+    },
+  },
+  {
+    slug: "culturally-responsive-assessment",
+    label: "F.2",
+    title: "Culturally Responsive Assessment",
+    body: [
+      "Culturally responsive assessment considers [client values, routines, language, and context].",
+      "It improves assessment validity by reducing assumptions about what behavior means.",
+    ],
+    visual: {
+      type: "select-all",
+      prompt: "Select culturally responsive assessment actions.",
+      choices: [
+        { label: "Ask how family routines affect behavior and goals", correct: true },
+        { label: "Use interpreters or accessible materials when needed", correct: true },
+        { label: "Check whether examples fit the client's context", correct: true },
+        { label: "Apply one standard goal without stakeholder input", correct: false },
+      ],
+      feedback:
+        "Culturally responsive assessment attends to [values, language, routines, and context].",
+    },
+  },
+  {
+    slug: "culturally-relevant-interviewing",
+    label: "F.2",
+    title: "Culturally Relevant Interviewing",
+    body: [
+      "Culturally relevant interviewing uses [respectful questions and active listening].",
+      "The goal is to understand context without treating culture as a stereotype.",
+    ],
+    visual: {
+      type: "comparison",
+      leftTitle: "Responsive question",
+      leftText: "How do routines and family priorities affect this goal?",
+      rightTitle: "Biased question",
+      rightText: "Is this behavior just part of your culture?",
+      cue: "Ask about [individual context], not assumptions.",
+    },
+  },
+  {
+    slug: "avoiding-cultural-bias",
+    label: "F.2",
+    title: "Avoiding Cultural Bias",
+    body: [
+      "Bias can make assessors misread [communication style, routines, preferences, or priorities].",
+      "Use data, consultation, and stakeholder input to reduce biased interpretation.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which action best reduces cultural bias?",
+      choices: [
+        "Verify assumptions with the client, caregiver, data, and consultation",
+        "Assume the assessor's routines define appropriate behavior",
+        "Ignore language access because the assessment form is standardized",
+        "Treat caregiver disagreement as noncompliance",
+      ],
+      answer:
+        "Verify assumptions with the client, caregiver, data, and consultation",
+      hint:
+        "Look for a response that checks [assumptions] against data and stakeholder context.",
+      feedback:
+        "Bias is reduced through [data, consultation, and culturally relevant input].",
+    },
+  },
+  {
+    slug: "language-access-assessment",
+    label: "F.2",
+    title: "Language and Access Considerations",
+    body: [
+      "Language access affects [consent, interview accuracy, and assessment validity].",
+      "Accessible materials and interpreters can improve participation and reduce misunderstanding.",
+    ],
+    visual: {
+      type: "fill-blank",
+      prompt: "Complete the language access cue.",
+      sentence: "Assessment materials should be understandable and ____ to the client or caregiver.",
+      answer: "accessible",
+      feedback:
+        "Language access supports [accurate assessment and informed participation].",
+    },
+  },
+  {
+    slug: "prerequisite-skill-assessment",
+    label: "F.3",
+    title: "Prerequisite Skill Assessment",
+    body: [
+      "Prerequisite skill assessment identifies [skills needed before teaching a target].",
+      "Missing prerequisites may explain slow acquisition even when reinforcement is strong.",
+    ],
+    visual: {
+      type: "matching",
+      prompt: "Match each target skill to a likely prerequisite.",
+      pairs: [
+        { term: "Imitation training", definition: "Attending and motor imitation readiness." },
+        { term: "Matching-to-sample", definition: "Scanning and conditional discrimination." },
+        { term: "Mand training", definition: "Motivating operation and response form." },
+        { term: "Chained task", definition: "Component steps and transition skills." },
+      ],
+    },
+  },
+  {
+    slug: "curriculum-based-assessment",
+    label: "F.3",
+    title: "Curriculum-Based Assessment",
+    body: [
+      "Curriculum-based assessment compares current performance to [instructional sequences or curriculum goals].",
+      "It helps select teaching targets that are useful and appropriately sequenced.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which example best fits curriculum-based assessment?",
+      choices: [
+        "Assessing mastered and missing skills within a language curriculum sequence",
+        "Testing whether problem behavior is maintained by escape",
+        "Recording behavior at the end of each interval",
+        "Ranking edible items from most to least selected",
+      ],
+      answer:
+        "Assessing mastered and missing skills within a language curriculum sequence",
+      hint:
+        "Look for assessment tied to [instructional scope and sequence].",
+      feedback:
+        "Curriculum-based assessment identifies [current skill levels within a teaching sequence].",
+    },
+  },
+  {
+    slug: "developmental-considerations",
+    label: "F.3",
+    title: "Developmental Assessment Considerations",
+    body: [
+      "Developmental considerations help interpret [age, prerequisite skills, and functional independence].",
+      "Use them to guide instruction while still individualizing assessment decisions.",
+    ],
+    visual: {
+      type: "sorting",
+      prompt: "Sort each item by assessment focus.",
+      categories: ["Developmental consideration", "Behavior function"],
+      items: [
+        { label: "Current listener responding compared with daily needs", category: "Developmental consideration" },
+        { label: "Escape follows aggression during demands", category: "Behavior function" },
+        { label: "Prerequisite matching skills for a new program", category: "Developmental consideration" },
+        { label: "Tangible access follows screaming", category: "Behavior function" },
+      ],
+    },
+  },
+  {
+    slug: "strengths-vs-deficits",
+    label: "F.3",
+    title: "Strengths vs Deficits",
+    body: [
+      "Skill assessment should identify [strengths and deficits].",
+      "Strengths can guide teaching format, response mode, and reinforcement planning.",
+    ],
+    visual: {
+      type: "comparison",
+      leftTitle: "Strength",
+      leftText: "Existing skill that can support teaching",
+      rightTitle: "Deficit",
+      rightText: "Missing or weak skill that may become a target",
+      cue: "Assessment should not be a deficit-only list.",
+    },
+  },
+  {
+    slug: "single-stimulus-preference",
+    label: "F.4",
+    title: "Single-Stimulus Preference Assessment",
+    body: [
+      "Single-stimulus assessment presents [one item at a time].",
+      "Approach, rejection, or engagement helps estimate preference for each stimulus.",
+    ],
+    visual: {
+      type: "flow",
+      prompt: "Order a single-stimulus assessment trial.",
+      steps: [
+        "Present one stimulus",
+        "Record approach or engagement",
+        "Remove item after trial",
+        "Present the next stimulus",
+      ],
+      feedback:
+        "Single-stimulus assessment evaluates [one stimulus at a time].",
+    },
+  },
+  {
+    slug: "paired-stimulus-preference",
+    label: "F.4",
+    title: "Paired-Stimulus Preference Assessment",
+    body: [
+      "Paired-stimulus assessment presents [two stimuli at a time].",
+      "It can produce a clear rank order, but it may take more trials.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which cue identifies paired-stimulus assessment?",
+      choices: [
+        "The learner chooses between two items on each trial",
+        "The learner roams freely among all items",
+        "The selected item always returns to the full array",
+        "The assessor manipulates attention and escape conditions",
+      ],
+      answer: "The learner chooses between two items on each trial",
+      hint:
+        "The key cue is [two items presented together].",
+      feedback:
+        "Paired-stimulus assessment uses [two-choice trials].",
+    },
+  },
+  {
+    slug: "msw-vs-mswo",
+    label: "F.4",
+    title: "MSW vs MSWO",
+    body: [
+      "Multiple-Stimulus With Replacement (MSW) returns the selected item [to the array].",
+      "Multiple-Stimulus Without Replacement (MSWO) removes the selected item [after selection].",
+    ],
+    visual: {
+      type: "comparison",
+      leftTitle: "MSW",
+      leftText: "Selected item returns",
+      rightTitle: "MSWO",
+      rightText: "Selected item is removed",
+      cue: "With replacement = returns; without replacement = removed.",
+    },
+  },
+  {
+    slug: "preference-data-to-reinforcers",
+    label: "F.4",
+    title: "From Preference Data to Reinforcers",
+    body: [
+      "Preference assessments identify [potential reinforcers].",
+      "A reinforcer is confirmed only when contingent delivery [increases future responding].",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which conclusion is strongest after a learner selects music most often?",
+      choices: [
+        "Music is a potential reinforcer that should be tested in a contingency",
+        "Music is proven to reinforce all behavior",
+        "Music is a punisher because it was selected",
+        "Music is an establishing operation",
+      ],
+      answer:
+        "Music is a potential reinforcer that should be tested in a contingency",
+      hint:
+        "Separate [preference] from demonstrated reinforcement effects.",
+      feedback:
+        "Preference data identify [candidates], not guaranteed reinforcers.",
+    },
+  },
+  {
+    slug: "preference-assessment-limitations",
+    label: "F.4",
+    title: "Preference Assessment Limitations",
+    body: [
+      "Preference can shift with [motivation, satiation, context, and recent access].",
+      "Preference assessment results should be updated and tested against response data.",
+    ],
+    visual: {
+      type: "select-all",
+      prompt: "Select limitations of preference assessments.",
+      choices: [
+        { label: "Preferences can change across time and context", correct: true },
+        { label: "Selection does not prove reinforcement", correct: true },
+        { label: "Satiation can affect responding", correct: true },
+        { label: "One assessment permanently identifies all reinforcers", correct: false },
+      ],
+      feedback:
+        "Preference assessments are useful but limited by [context, motivation, and reinforcement effects].",
+    },
+  },
+  {
+    slug: "narrative-recording",
+    label: "F.5",
+    title: "Narrative Recording",
+    body: [
+      "Narrative recording describes [ongoing events during direct observation].",
+      "It can capture rich context, but it may be less structured than ABC recording.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which example best fits narrative recording?",
+      choices: [
+        "Writing a running description of events before, during, and after behavior",
+        "Ranking items from most to least selected",
+        "Testing escape in a demand condition",
+        "Scoring correct responses across teaching trials",
+      ],
+      answer:
+        "Writing a running description of events before, during, and after behavior",
+      hint:
+        "Look for [a descriptive running account] of observed events.",
+      feedback:
+        "Narrative recording captures [direct observation context].",
+    },
+  },
+  {
+    slug: "descriptive-assessment-limits",
+    label: "F.5",
+    title: "Correlation vs Causation",
+    body: [
+      "Descriptive assessment can show [correlations among events].",
+      "It cannot by itself demonstrate that a consequence causes or maintains behavior.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "ABC data show attention often follows aggression. What is the safest conclusion?",
+      choices: [
+        "Attention may be related and should guide further assessment",
+        "Attention is experimentally proven as the function",
+        "Aggression is automatically maintained in all contexts",
+        "The observation proves a treatment package is effective",
+      ],
+      answer:
+        "Attention may be related and should guide further assessment",
+      hint:
+        "Descriptive data suggest [relations]; they do not prove causation.",
+      feedback:
+        "Descriptive assessment supports [hypotheses], not unsupported causal claims.",
+    },
+  },
+  {
+    slug: "conditional-probability-basics",
+    label: "F.5",
+    title: "Conditional Probability Basics",
+    body: [
+      "Conditional probability asks how often one event occurs [given another event].",
+      "It can help identify patterns, but interpretation remains correlational.",
+    ],
+    visual: {
+      type: "fill-blank",
+      prompt: "Complete the conditional probability cue.",
+      sentence: "Conditional probability examines one event given another ____.",
+      answer: "event",
+      feedback:
+        "Conditional probability summarizes [event relations] in descriptive data.",
+    },
+  },
+  {
+    slug: "fa-attention-escape-tangible",
+    label: "F.6",
+    title: "Attention, Escape, and Tangible Functions",
+    body: [
+      "Attention conditions test whether behavior is maintained by [social attention].",
+      "Escape and tangible conditions test [demand removal] and [item access].",
+    ],
+    visual: {
+      type: "matching",
+      prompt: "Match each FA condition to the tested consequence.",
+      pairs: [
+        { term: "Attention", definition: "Attention follows behavior." },
+        { term: "Escape", definition: "Demands are removed after behavior." },
+        { term: "Tangible", definition: "Items or activities follow behavior." },
+        { term: "Control", definition: "Potential establishing operations are minimized." },
+      ],
+    },
+  },
+  {
+    slug: "automatic-reinforcement-fa",
+    label: "F.6",
+    title: "Automatic Reinforcement in FA",
+    body: [
+      "Automatic reinforcement is suggested when behavior persists [without socially mediated consequences].",
+      "Alone or ignore conditions can help evaluate automatic reinforcement.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which FA pattern most suggests automatic reinforcement?",
+      choices: [
+        "High responding in alone/ignore with no programmed social consequence",
+        "High responding only when attention is delivered",
+        "High responding only when demands are removed",
+        "High selection of an item in MSWO",
+      ],
+      answer:
+        "High responding in alone/ignore with no programmed social consequence",
+      hint:
+        "Look for behavior maintained by [nonsocial consequences].",
+      feedback:
+        "Automatic reinforcement is suggested by responding that persists [without social mediation].",
+    },
+  },
+  {
+    slug: "synthesized-contingencies",
+    label: "F.6",
+    title: "Synthesized Contingencies",
+    body: [
+      "Synthesized contingencies combine [multiple suspected reinforcers] in one test condition.",
+      "They may fit natural contexts but require careful interpretation.",
+    ],
+    visual: {
+      type: "comparison",
+      leftTitle: "Isolated contingency",
+      leftText: "One suspected variable tested at a time",
+      rightTitle: "Synthesized contingency",
+      rightText: "Multiple suspected variables combined",
+      cue: "Synthesized tests can improve context fit but may reduce precision about each variable.",
+    },
+  },
+  {
+    slug: "fa-safety-considerations",
+    label: "F.6",
+    title: "FA Safety Considerations",
+    body: [
+      "Functional analysis may evoke [dangerous or high-risk behavior].",
+      "Safety planning includes consent, termination criteria, trained staff, and protective procedures.",
+    ],
+    visual: {
+      type: "select-all",
+      prompt: "Select FA safety considerations.",
+      choices: [
+        { label: "Consent and risk explanation", correct: true },
+        { label: "Clear session termination criteria", correct: true },
+        { label: "Trained staff and protective procedures", correct: true },
+        { label: "Run high-risk sessions without a plan to get clean data", correct: false },
+      ],
+      feedback:
+        "FA safety requires [consent, planning, competence, and risk reduction].",
+    },
+  },
+  {
+    slug: "experimental-control-in-fa",
+    label: "F.6",
+    title: "Experimental Control in FA",
+    body: [
+      "Experimental control in FA is shown when responding is [differentiated across test and control conditions].",
+      "The pattern should correspond to the contingency being tested.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "What FA pattern best supports experimental control?",
+      choices: [
+        "High responding in one test condition and low responding in control",
+        "Equal responding in every condition with no differentiation",
+        "One caregiver report without direct observation",
+        "A preference ranking with no behavior change test",
+      ],
+      answer:
+        "High responding in one test condition and low responding in control",
+      hint:
+        "Look for [differentiated responding] tied to manipulated conditions.",
+      feedback:
+        "FA interpretation depends on [differentiation across conditions].",
+    },
+  },
+  {
+    slug: "fa-interpretation",
+    label: "F.6",
+    title: "FA Interpretation",
+    body: [
+      "FA interpretation connects [data patterns] to the tested contingency.",
+      "Undifferentiated data may require revised conditions, more data, or alternative assessment.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "An FA shows similar moderate responding across all conditions. What is the best interpretation?",
+      choices: [
+        "The data are undifferentiated and may require additional assessment",
+        "Attention is clearly proven",
+        "Escape is ruled out permanently",
+        "The preference assessment is complete",
+      ],
+      answer:
+        "The data are undifferentiated and may require additional assessment",
+      hint:
+        "Ask whether one condition is clearly higher than the others.",
+      feedback:
+        "Undifferentiated FA data require [cautious interpretation and possible revision].",
+    },
+  },
+  {
+    slug: "services-referral-needs",
+    label: "F.7",
+    title: "Determining Service and Referral Needs",
+    body: [
+      "Assessment data help determine [whether behavior-analytic services are indicated].",
+      "Some findings suggest referral to medical, mental health, speech, occupational, or educational professionals.",
+    ],
+    visual: {
+      type: "sorting",
+      prompt: "Sort each finding by likely next step.",
+      categories: ["ABA service planning", "Referral/consultation"],
+      items: [
+        { label: "Functional communication deficit with clear teaching targets", category: "ABA service planning" },
+        { label: "Possible pain or sudden sleep disruption", category: "Referral/consultation" },
+        { label: "Need for AAC evaluation", category: "Referral/consultation" },
+        { label: "Escape-maintained task refusal with teachable replacement behavior", category: "ABA service planning" },
+      ],
+    },
+  },
+  {
+    slug: "insufficient-assessment-data",
+    label: "F.7",
+    title: "Insufficient Data Scenarios",
+    body: [
+      "Insufficient data means conclusions exceed [what the assessment supports].",
+      "The ethical response is to collect more relevant data or seek consultation.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which statement best handles insufficient assessment data?",
+      choices: [
+        "The current data do not support a firm conclusion, so more assessment is needed",
+        "The first hypothesis should be treated as proven",
+        "Indirect reports should override all future direct data",
+        "Referral is never needed when behavior is measurable",
+      ],
+      answer:
+        "The current data do not support a firm conclusion, so more assessment is needed",
+      hint:
+        "Look for a conclusion that stays within [the limits of the data].",
+      feedback:
+        "Assessment interpretation should avoid [unsupported conclusions].",
+    },
+  },
+  {
+    slug: "socially-significant-goal-selection",
+    label: "F.8",
+    title: "Socially Significant Goal Selection",
+    body: [
+      "Socially significant goals improve [safety, independence, access, communication, or quality of life].",
+      "Goal selection should reflect assessment data and client/stakeholder priorities.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which target is most socially significant?",
+      choices: [
+        "Teaching functional communication to replace dangerous behavior",
+        "Teaching a trivial response because it is easy to graph",
+        "Selecting a goal only because the worksheet is available",
+        "Choosing a target unrelated to daily routines",
+      ],
+      answer:
+        "Teaching functional communication to replace dangerous behavior",
+      hint:
+        "Look for improvement in [meaningful everyday outcomes].",
+      feedback:
+        "Social significance is about [meaningful benefit] for the client and context.",
+    },
+  },
+  {
+    slug: "client-informed-goals",
+    label: "F.8",
+    title: "Client-Informed Goals",
+    body: [
+      "Client-informed goals reflect [client needs, assent, preferences, and stakeholder priorities].",
+      "Assessment should not select goals based only on provider convenience.",
+    ],
+    visual: {
+      type: "select-all",
+      prompt: "Select inputs that should inform goal selection.",
+      choices: [
+        { label: "Client assent and preferences when possible", correct: true },
+        { label: "Caregiver and stakeholder priorities", correct: true },
+        { label: "Assessment data and risk level", correct: true },
+        { label: "Provider convenience alone", correct: false },
+      ],
+      feedback:
+        "Client-informed goals integrate [data, priorities, assent, and context].",
+    },
+  },
+  {
+    slug: "prioritizing-target-behaviors",
+    label: "F.8",
+    title: "Prioritizing Target Behaviors",
+    body: [
+      "Prioritization considers [risk, social significance, frequency, severity, and feasibility].",
+      "High-risk or high-impact behaviors may need priority even if they are harder to treat.",
+    ],
+    visual: {
+      type: "flow",
+      prompt: "Order target-prioritization decisions.",
+      steps: [
+        "Evaluate safety and risk",
+        "Consider social significance and client priorities",
+        "Check feasibility and contextual fit",
+        "Select measurable goals and procedures",
+      ],
+      feedback:
+        "Target prioritization balances [risk, impact, feasibility, and context].",
+    },
+  },
+  {
+    slug: "contextual-fit-feasibility",
+    label: "F.8",
+    title: "Contextual Fit, Feasibility, and Effectiveness",
+    body: [
+      "Contextual fit asks whether goals and procedures match [the setting, people, resources, and routines].",
+      "Feasible procedures still must be effective; effective procedures still need implementation fit.",
+    ],
+    visual: {
+      type: "comparison",
+      leftTitle: "Feasible",
+      leftText: "Can be implemented with available supports",
+      rightTitle: "Effective",
+      rightText: "Produces meaningful behavior change",
+      cue: "Goal/procedure selection balances [feasibility and effectiveness].",
+    },
+  },
+];
+
+const sectionFPracticeQuestions: QuestionContent[] = [
+  {
+    type: "scenario",
+    prompt:
+      "A BCBA interviews caregivers and reviews records before observing behavior. What type of assessment information is being gathered first?",
+    choices: ["Indirect assessment", "Functional analysis", "Continuous measurement", "Treatment integrity"],
+    answer: "Indirect assessment",
+    explanation:
+      "Indirect assessments rely on [reports and interviews] rather than direct observation of behavior as it occurs.",
+    hint:
+      "Think about whether the analyst is observing behavior directly or gathering information from other sources.",
+  },
+  {
+    type: "matching",
+    prompt: "Match each function to the maintaining reinforcer.",
+    pairs: [
+      { term: "Attention", definition: "Social interaction follows behavior." },
+      { term: "Escape", definition: "Demands are removed or delayed." },
+      { term: "Tangible", definition: "Access to items or activities follows behavior." },
+      { term: "Automatic", definition: "Sensory consequences are produced directly." },
+    ],
+    answer: "All functions matched correctly",
+    explanation:
+      "Behavioral function is identified by the [maintaining consequence], not response topography alone.",
+    hint:
+      "Match each function by what consequence follows behavior.",
+  },
+  {
+    type: "sorting",
+    prompt: "Sort the assessment examples.",
+    categories: ["Preference assessment", "Functional analysis"],
+    items: [
+      { label: "MSWO array", category: "Preference assessment" },
+      { label: "Paired stimulus choices", category: "Preference assessment" },
+      { label: "Attention condition", category: "Functional analysis" },
+      { label: "Escape condition", category: "Functional analysis" },
+    ],
+    answer: "All assessment examples sorted correctly",
+    explanation:
+      "Preference assessments identify [potential reinforcers]; functional analysis tests behavioral function.",
+    hint:
+      "Separate assessments that rank stimuli from assessments that manipulate environmental variables.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A BCBA writes, 'noncompliance means failure to begin the requested task within 10 seconds of a clear instruction.' What feature is strongest?",
+    choices: [
+      "The definition is observable and measurable",
+      "The definition explains the learner's motivation",
+      "The definition proves escape function",
+      "The definition is subjective",
+    ],
+    answer: "The definition is observable and measurable",
+    explanation:
+      "Operational definitions describe behavior in [observable and measurable terms].",
+    hint:
+      "Look for whether two observers could identify the response the same way.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "During observation, aggression is most likely when staff remove tablets, but no conditions are manipulated. Which conclusion is most appropriate?",
+    choices: [
+      "The data suggest a possible relation that needs further assessment",
+      "The descriptive data prove tangible function",
+      "The assessment is an MSWO",
+      "The data show treatment integrity",
+    ],
+    answer: "The data suggest a possible relation that needs further assessment",
+    explanation:
+      "Descriptive assessment can show [correlations], but functional analysis is needed to test function experimentally.",
+    hint:
+      "Ask whether the analyst manipulated conditions or only observed natural events.",
+  },
+  {
+    type: "select-all",
+    prompt: "Select limitations of indirect assessment.",
+    choices: [
+      "Reports may be affected by memory or interpretation",
+      "Respondents may not observe all relevant events",
+      "Indirect data may miss actual antecedent-consequence patterns",
+      "Indirect assessment always experimentally demonstrates function",
+    ],
+    answers: [
+      "Reports may be affected by memory or interpretation",
+      "Respondents may not observe all relevant events",
+      "Indirect data may miss actual antecedent-consequence patterns",
+    ],
+    answer:
+      "Memory/interpretation effects, incomplete observation, and missed event patterns are limitations.",
+    explanation:
+      "Indirect assessment is efficient but relies on [reported information] rather than direct tests.",
+    hint:
+      "Look for risks that come from relying on reports instead of observing or testing behavior-environment relations.",
+  },
+  {
+    type: "fill-blank",
+    prompt: "Complete the preference assessment cue.",
+    answer: "potential reinforcers",
+    explanation:
+      "Preference assessments identify [potential reinforcers]; reinforcement is confirmed by increased future responding.",
+  },
+  {
+    type: "scenario",
+    graphId: "multielement-functional-analysis",
+    prompt:
+      "A functional analysis graph shows consistently highest responding in the attention condition. Which interpretation is most supported?",
+    choices: [
+      "Attention may be maintaining the behavior",
+      "Escape from demands is confirmed because data are high",
+      "The item is a reinforcer because it was selected",
+      "The graph shows skill acquisition",
+    ],
+    answer: "Attention may be maintaining the behavior",
+    explanation:
+      "High responding in the attention condition suggests behavior may be maintained by [social attention].",
+    hint:
+      "Focus on which consequence is tested in the condition with the highest responding.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A learner can imitate actions but has few mands and limited listener responding. Which assessment focus best guides instruction?",
+    choices: [
+      "Skill assessment",
+      "Functional analysis of problem behavior",
+      "Scatterplot for time of day",
+      "Paired-stimulus preference assessment only",
+    ],
+    answer: "Skill assessment",
+    explanation:
+      "Skill assessments identify [skill deficits and prerequisite skills] to guide teaching goals.",
+    hint:
+      "Look for missing instructional repertoires rather than maintaining consequences for problem behavior.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A BCBA needs quick information about which activities a learner approaches during free time without requiring forced choices. Which method fits best?",
+    choices: [
+      "Free-operant preference assessment",
+      "Functional analysis",
+      "Whole interval recording",
+      "ABC narrative recording",
+    ],
+    answer: "Free-operant preference assessment",
+    explanation:
+      "Free-operant preference assessment measures [allocation of time] with available stimuli.",
+    hint:
+      "Look for free access and measured engagement with items.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A descriptive assessment shows attention often follows behavior. The team immediately states attention is the proven function. What is the problem?",
+    choices: [
+      "They made an unsupported inference from correlational data",
+      "They used too many operational definitions",
+      "They selected too many potential reinforcers",
+      "They violated graphing conventions",
+    ],
+    answer: "They made an unsupported inference from correlational data",
+    explanation:
+      "Descriptive assessment suggests [correlations], but it does not experimentally demonstrate function.",
+    hint:
+      "Separate what the data suggest from what has been experimentally tested.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "Before a functional analysis, the BCBA explains procedures and risks to the caregiver and plans lower-risk conditions first. Which concern is most directly addressed?",
+    choices: [
+      "Assessment ethics and safety",
+      "Generalized conditioned reinforcement",
+      "Respondent extinction",
+      "Exact count IOA",
+    ],
+    answer: "Assessment ethics and safety",
+    explanation:
+      "Assessment ethics include [consent, safety planning, competence, and least intrusive methods].",
+    hint:
+      "Focus on consent, risk, and client protection during assessment.",
+  },
+];
+
+const sectionFExpandedPracticeQuestions: QuestionContent[] = [
+  {
+    type: "matching",
+    prompt: "Match each information source to the assessment question it can help answer.",
+    pairs: [
+      { term: "Educational record", definition: "What skills, supports, and interventions have been tried?" },
+      { term: "Medical record", definition: "Are health variables or referrals relevant?" },
+      { term: "Caregiver interview", definition: "What routines and priorities matter day to day?" },
+      { term: "Interdisciplinary input", definition: "What communication, motor, or contextual variables may affect assessment?" },
+    ],
+    answer: "All information sources matched correctly",
+    explanation:
+      "F.1 requires selecting [relevant sources of information] rather than collecting every possible record.",
+    hint:
+      "Think about the assessment question each source can answer.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A caregiver reports that mealtimes follow religious fasting routines. What should the BCBA do with this information during assessment?",
+    choices: [
+      "Consider it as a contextual variable that may affect assessment and goals",
+      "Ignore it because cultural routines are not behavioral variables",
+      "Treat it as proof of noncompliance",
+      "Use only the clinic's standard mealtime goal",
+    ],
+    answer:
+      "Consider it as a contextual variable that may affect assessment and goals",
+    explanation:
+      "Culturally responsive assessment considers [client values, routines, language, and context].",
+    hint:
+      "Ask whether the information affects routines, access, priorities, or interpretation.",
+  },
+  {
+    type: "select-all",
+    prompt: "Select actions that reduce cultural bias during assessment.",
+    choices: [
+      "Use accessible language or interpreters when needed",
+      "Ask caregivers about routines and priorities",
+      "Check assumptions against data and consultation",
+      "Assume the assessor's norms define the correct goal",
+    ],
+    answers: [
+      "Use accessible language or interpreters when needed",
+      "Ask caregivers about routines and priorities",
+      "Check assumptions against data and consultation",
+    ],
+    answer:
+      "Accessible language, caregiver input, and checking assumptions reduce bias.",
+    explanation:
+      "F.2 emphasizes [cultural variables] that may affect assessment and service delivery.",
+    hint:
+      "Look for actions that improve access, context, and data-based interpretation.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A learner fails a dressing program because they cannot yet imitate motor actions. Which assessment issue is most relevant?",
+    choices: [
+      "A prerequisite skill deficit",
+      "A tangible function",
+      "A paired-stimulus preference result",
+      "A scatterplot correlation",
+    ],
+    answer: "A prerequisite skill deficit",
+    explanation:
+      "Skill assessment should identify [prerequisite skills] before selecting teaching procedures.",
+    hint:
+      "Focus on whether a missing skill is needed before the target can be taught.",
+  },
+  {
+    type: "matching",
+    prompt: "Match each preference assessment format to its key cue.",
+    pairs: [
+      { term: "Single-stimulus", definition: "One item presented at a time." },
+      { term: "Paired-stimulus", definition: "Two items presented on each trial." },
+      { term: "MSW", definition: "Selected item returns to the array." },
+      { term: "MSWO", definition: "Selected item is removed after selection." },
+    ],
+    answer: "All preference formats matched correctly",
+    explanation:
+      "Preference assessment formats differ by [array size and replacement rules].",
+    hint:
+      "Compare how many items are presented and whether selected items return.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "ABC data show problem behavior is often followed by peer attention. No conditions were manipulated. Which statement is most accurate?",
+    choices: [
+      "Peer attention is a hypothesis to evaluate further",
+      "Peer attention is experimentally proven as the function",
+      "The behavior is automatically reinforced",
+      "Preference assessment is invalid",
+    ],
+    answer: "Peer attention is a hypothesis to evaluate further",
+    explanation:
+      "Descriptive assessment shows [correlation], not experimental causation.",
+    hint:
+      "Ask whether the analyst observed natural events or manipulated variables.",
+  },
+  {
+    type: "scenario",
+    graphId: "multielement-functional-analysis",
+    prompt:
+      "A functional analysis shows high responding in attention and low responding in control. Which interpretation is strongest?",
+    choices: [
+      "Attention may be maintaining the behavior",
+      "Automatic reinforcement is clearly maintaining the behavior",
+      "Escape is proven because demands were absent",
+      "Preference assessment results are invalid",
+    ],
+    answer: "Attention may be maintaining the behavior",
+    explanation:
+      "Differentiated responding in the attention condition suggests behavior may contact [social attention].",
+    hint:
+      "Look for the condition with the clearest separation from control and what consequence it arranges.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A BCBA combines escape and tangible access in one test condition because interviews suggest both occur together naturally. What is being tested?",
+    choices: [
+      "A synthesized contingency",
+      "A single-stimulus preference assessment",
+      "A skill deficit",
+      "A medical record review",
+    ],
+    answer: "A synthesized contingency",
+    explanation:
+      "Synthesized contingencies combine [multiple suspected reinforcers] in one test condition.",
+    hint:
+      "Look for multiple suspected consequences arranged together.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A severe behavior may cause injury during FA sessions. Which planning step is most important before assessment?",
+    choices: [
+      "Establish consent, safety procedures, trained staff, and termination criteria",
+      "Run sessions quickly without safeguards",
+      "Avoid all assessment forever",
+      "Use only a preference assessment",
+    ],
+    answer:
+      "Establish consent, safety procedures, trained staff, and termination criteria",
+    explanation:
+      "FA safety requires [consent, planning, competence, and risk reduction].",
+    hint:
+      "Focus on protecting the client while collecting useful data.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "Assessment suggests possible pain, sudden sleep disruption, and behavior that changed abruptly. What is the best next step?",
+    choices: [
+      "Seek medical consultation or referral while continuing appropriate behavioral assessment",
+      "Assume escape is the only function",
+      "Ignore health variables because behavior is measurable",
+      "Select goals without additional information",
+    ],
+    answer:
+      "Seek medical consultation or referral while continuing appropriate behavioral assessment",
+    explanation:
+      "F.7 includes interpreting assessment data to determine [referral needs].",
+    hint:
+      "Look for assessment findings outside behavior-analytic scope that could affect services.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A team has only one caregiver report and no direct observation. They want to select a restrictive procedure immediately. What should the BCBA recommend?",
+    choices: [
+      "Collect more relevant data before drawing strong conclusions",
+      "Use the restrictive procedure because one report is enough",
+      "Skip consent because assessment is incomplete",
+      "Treat preference data as functional analysis",
+    ],
+    answer: "Collect more relevant data before drawing strong conclusions",
+    explanation:
+      "Insufficient assessment data require [cautious interpretation] and additional relevant information.",
+    hint:
+      "Ask whether the conclusion exceeds the available data.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "Assessment shows unsafe elopement, caregiver priority for community safety, and a feasible teaching context. Which goal is most appropriate?",
+    choices: [
+      "Teach a functional safety response and reduce elopement in community routines",
+      "Teach a trivial table task because it is easy to count",
+      "Select a goal unrelated to caregiver priorities",
+      "Delay all goals until every preference item is ranked",
+    ],
+    answer:
+      "Teach a functional safety response and reduce elopement in community routines",
+    explanation:
+      "F.8 goal selection should prioritize [social significance, client context, risk, and feasibility].",
+    hint:
+      "Look for the target with meaningful safety and daily-life impact.",
+  },
+];
+
+const sectionFAdditionalPracticeQuestions: QuestionContent[] = [
+  {
+    type: "sorting",
+    prompt:
+      "Sort each record or source by whether it is likely relevant to a referral for aggression during classroom transitions.",
+    categories: ["Relevant source", "Less relevant source"],
+    items: [
+      { label: "Recent transition incident reports with ABC notes", category: "Relevant source" },
+      { label: "Current IEP transition supports and progress data", category: "Relevant source" },
+      { label: "Medication or sleep changes around the behavior increase", category: "Relevant source" },
+      { label: "A school newsletter unrelated to the learner or target behavior", category: "Less relevant source" },
+    ],
+    answer: "All records sorted by relevance",
+    explanation:
+      "Relevant sources are connected to [the target behavior, context, risk, or assessment question].",
+    hint:
+      "Focus on sources that could change assessment decisions for this referral.",
+  },
+  {
+    type: "select-all",
+    prompt:
+      "Select information that may be useful from interdisciplinary sources during behavior assessment.",
+    choices: [
+      "Communication response forms used by the learner",
+      "Motor or sensory variables that affect participation",
+      "Medical variables that may require referral or coordination",
+      "A professional's unsupported opinion that replaces behavioral data",
+    ],
+    answers: [
+      "Communication response forms used by the learner",
+      "Motor or sensory variables that affect participation",
+      "Medical variables that may require referral or coordination",
+    ],
+    answer:
+      "Communication forms, participation variables, and medical referral needs may be useful.",
+    explanation:
+      "Interdisciplinary information can identify [communication, motor, medical, and contextual variables] while behavioral conclusions still require appropriate data.",
+    hint:
+      "Look for information that affects assessment conditions or interpretation without replacing direct data.",
+  },
+  {
+    type: "matching",
+    prompt: "Match each cultural or access variable to an assessment adjustment.",
+    pairs: [
+      { term: "Home language", definition: "Use accessible communication supports." },
+      { term: "Family routine", definition: "Ask how daily context affects goals and behavior." },
+      { term: "Caregiver priority", definition: "Include stakeholder input in goal selection." },
+      { term: "Assessor assumption", definition: "Check interpretation against data and consultation." },
+    ],
+    answer: "All cultural variables matched correctly",
+    explanation:
+      "Culturally responsive assessment adjusts for [language access, routines, stakeholder priorities, and bias risk].",
+    hint:
+      "Match each variable to the step that improves access, context, or data-based interpretation.",
+  },
+  {
+    type: "fill-blank",
+    prompt: "Complete the culturally responsive assessment cue.",
+    answer: "context",
+    explanation:
+      "Culturally responsive assessment considers [client values, language, routines, and context].",
+    hint:
+      "The missing word refers to the setting, routines, and circumstances that affect behavior and services.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A BCBA uses a curriculum sequence to identify mastered listener skills, missing tact targets, and next teachable steps. Which assessment type is most directly described?",
+    choices: [
+      "Curriculum-based skill assessment",
+      "Functional analysis",
+      "Scatterplot assessment",
+      "Free-operant preference assessment",
+    ],
+    answer: "Curriculum-based skill assessment",
+    explanation:
+      "Curriculum-based assessment compares performance to [instructional sequences or curriculum goals].",
+    hint:
+      "Look for an assessment tied to a teaching sequence rather than maintaining consequences.",
+  },
+  {
+    type: "sorting",
+    prompt: "Sort each skill assessment finding.",
+    categories: ["Strength", "Deficit"],
+    items: [
+      { label: "Independently imitates gross motor actions", category: "Strength" },
+      { label: "Does not request preferred items", category: "Deficit" },
+      { label: "Matches identical objects reliably", category: "Strength" },
+      { label: "Cannot follow one-step listener directions", category: "Deficit" },
+    ],
+    answer: "All skill findings sorted correctly",
+    explanation:
+      "Skill assessment identifies both [strengths that support teaching] and [deficits that may become targets].",
+    hint:
+      "Separate skills already in the repertoire from skills that are missing or weak.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A BCBA presents one item at a time, records approach or rejection, and then presents the next item. Which preference assessment format is this?",
+    choices: [
+      "Single-stimulus preference assessment",
+      "Paired-stimulus preference assessment",
+      "MSWO",
+      "Functional analysis",
+    ],
+    answer: "Single-stimulus preference assessment",
+    explanation:
+      "Single-stimulus preference assessment presents [one stimulus at a time] and records approach, rejection, or engagement.",
+    hint:
+      "Attend to how many stimuli are available on each trial.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A learner moves freely among toys for 10 minutes while the assessor records time allocated to each item. Which preference assessment format is described?",
+    choices: [
+      "Free-operant preference assessment",
+      "Single-stimulus preference assessment",
+      "MSW",
+      "ABC recording",
+    ],
+    answer: "Free-operant preference assessment",
+    explanation:
+      "Free-operant preference assessment measures [allocation of time] among freely available stimuli.",
+    hint:
+      "Look for free access rather than forced-choice trials.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A learner chooses a tablet first on an MSWO. The tablet is removed, and the remaining items are represented. Which feature distinguishes this procedure?",
+    choices: [
+      "The selected item is removed after selection",
+      "Only one item is presented per trial",
+      "Two items are compared on every trial",
+      "An FA condition is manipulated",
+    ],
+    answer: "The selected item is removed after selection",
+    explanation:
+      "Multiple-Stimulus Without Replacement (MSWO) removes the selected item [after selection].",
+    hint:
+      "Focus on what happens to the selected item before the next choice.",
+  },
+  {
+    type: "matching",
+    prompt: "Match each descriptive assessment method to its key feature.",
+    pairs: [
+      { term: "ABC recording", definition: "Records antecedent, behavior, and consequence events." },
+      { term: "Narrative recording", definition: "Provides a running description of observed events." },
+      { term: "Scatterplot", definition: "Shows behavior patterns by time or routine." },
+      { term: "Direct observation", definition: "Records behavior as it occurs in context." },
+    ],
+    answer: "All descriptive methods matched correctly",
+    explanation:
+      "Descriptive assessment methods involve [direct observation without experimental manipulation].",
+    hint:
+      "Match each method by the type of observational information it produces.",
+  },
+  {
+    type: "fill-blank",
+    prompt: "Complete the descriptive assessment cue.",
+    answer: "correlation",
+    explanation:
+      "Descriptive assessment can show [correlation], but it does not demonstrate causation by itself.",
+    hint:
+      "The missing term means events covary without proving one causes the other.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "An observer writes a running account of classroom events for 30 minutes, including staff directions, peer interaction, target behavior, and follow-up events. Which method is this?",
+    choices: [
+      "Narrative recording",
+      "Paired-stimulus preference assessment",
+      "Functional analysis",
+      "Curriculum-based assessment",
+    ],
+    answer: "Narrative recording",
+    explanation:
+      "Narrative recording captures [ongoing observed events] in a less structured running account.",
+    hint:
+      "Look for a written description of naturally occurring events across time.",
+  },
+  {
+    type: "matching",
+    prompt: "Match each FA test condition to the programmed consequence.",
+    pairs: [
+      { term: "Attention condition", definition: "Attention follows target behavior." },
+      { term: "Escape condition", definition: "Demands are removed after target behavior." },
+      { term: "Tangible condition", definition: "Access to items follows target behavior." },
+      { term: "Alone/ignore condition", definition: "No programmed social consequence follows behavior." },
+    ],
+    answer: "All FA conditions matched correctly",
+    explanation:
+      "Functional analysis conditions test [which environmental consequence maintains behavior].",
+    hint:
+      "Match each condition by what consequence follows target behavior.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "In a tangible condition, problem behavior produces brief access to a preferred tablet. Responding is high only in that condition. What interpretation is most supported?",
+    choices: [
+      "Access to tangibles may be maintaining the behavior",
+      "Escape from demands is the likely maintaining reinforcer",
+      "Automatic reinforcement is proven",
+      "The result is a curriculum-based assessment outcome",
+    ],
+    answer: "Access to tangibles may be maintaining the behavior",
+    explanation:
+      "High responding in a tangible condition suggests behavior may be maintained by [access to items or activities].",
+    hint:
+      "Focus on the programmed consequence in the differentiated test condition.",
+  },
+  {
+    type: "select-all",
+    prompt:
+      "Select reasons FA safety planning may be needed before assessment sessions.",
+    choices: [
+      "The assessment may evoke dangerous behavior",
+      "The team needs termination criteria",
+      "Staff need training on session procedures",
+      "Safety planning is unnecessary if the graph will be useful",
+    ],
+    answers: [
+      "The assessment may evoke dangerous behavior",
+      "The team needs termination criteria",
+      "Staff need training on session procedures",
+    ],
+    answer:
+      "Dangerous behavior risk, termination criteria, and trained staff support FA safety.",
+    explanation:
+      "Functional analysis safety planning includes [risk reduction, trained staff, and termination criteria].",
+    hint:
+      "Look for steps that protect the client while preserving useful assessment data.",
+  },
+  {
+    type: "sorting",
+    prompt: "Sort each assessment conclusion by whether it is supported or unsupported.",
+    categories: ["Supported conclusion", "Unsupported conclusion"],
+    items: [
+      { label: "More data are needed before confirming function", category: "Supported conclusion" },
+      { label: "One caregiver report proves the function", category: "Unsupported conclusion" },
+      { label: "Medical consultation may be needed after sudden sleep-related behavior changes", category: "Supported conclusion" },
+      { label: "ABC correlation proves causation", category: "Unsupported conclusion" },
+    ],
+    answer: "All conclusions sorted correctly",
+    explanation:
+      "F.7 interpretation requires [conclusions that match the strength and limits of the data].",
+    hint:
+      "Separate cautious interpretation from claims that exceed the available data.",
+  },
+  {
+    type: "select-all",
+    prompt: "Select features of strong assessment-based goal selection.",
+    choices: [
+      "Targets socially significant behavior",
+      "Uses client and caregiver priorities when appropriate",
+      "Considers contextual fit and feasibility",
+      "Selects goals only because they are easy to score",
+    ],
+    answers: [
+      "Targets socially significant behavior",
+      "Uses client and caregiver priorities when appropriate",
+      "Considers contextual fit and feasibility",
+    ],
+    answer:
+      "Social significance, client input, and contextual fit support strong goal selection.",
+    explanation:
+      "F.8 goal selection should reflect [social significance, client-informed priorities, cultural context, and feasibility].",
+    hint:
+      "Look for goals that matter in context and can be implemented effectively.",
+  },
+];
+
+const sectionFMasteryQuestions: QuestionContent[] = [
+  {
+    type: "scenario",
+    prompt:
+      "Which statement best differentiates descriptive assessment from functional analysis?",
+    choices: [
+      "Descriptive assessment observes natural events; functional analysis manipulates environmental variables experimentally.",
+      "Descriptive assessment proves function; functional analysis only interviews caregivers.",
+      "Descriptive assessment is indirect; functional analysis never involves direct observation.",
+      "Descriptive assessment is used only for skill deficits; functional analysis is used only for preference.",
+    ],
+    answer:
+      "Descriptive assessment observes natural events; functional analysis manipulates environmental variables experimentally.",
+    explanation:
+      "Descriptive assessment involves [direct observation without experimental manipulation]; functional analysis manipulates [environmental variables experimentally].",
+    hint:
+      "Compare observation of natural events with experimental manipulation.",
+  },
+  {
+    prompt: "Which definition is most appropriate for a target behavior?",
+    choices: [
+      "Tantrum = screaming above conversational volume, dropping to the floor, or kicking furniture",
+      "Tantrum = being defiant",
+      "Tantrum = trying to escape work",
+      "Tantrum = behaving badly when upset",
+    ],
+    answer:
+      "Tantrum = screaming above conversational volume, dropping to the floor, or kicking furniture",
+    explanation:
+      "Operational definitions use [observable and measurable terms].",
+    hint:
+      "Look for a response definition that observers can score consistently.",
+  },
+  {
+    type: "scenario",
+    graphId: "multielement-functional-analysis",
+    prompt:
+      "In a functional analysis graph, responding is consistently highest in the attention condition and low in control. Which interpretation is most accurate?",
+    choices: [
+      "Attention may be the maintaining reinforcer",
+      "Escape is proven because behavior occurred",
+      "The graph ranks preferred stimuli",
+      "The behavior is automatically maintained because all data paths are shown",
+    ],
+    answer: "Attention may be the maintaining reinforcer",
+    explanation:
+      "Differentiated responding in the attention condition suggests behavior may be maintained by [social attention].",
+    hint:
+      "Attend to the condition with the differentiated high data path.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A child selects bubbles most often during MSWO. Later, task completion increases when bubbles follow completed tasks. What is demonstrated after the task-completion increase?",
+    choices: [
+      "Bubbles functioned as a reinforcer for task completion",
+      "Bubbles were only a neutral stimulus",
+      "The MSWO alone proved reinforcement",
+      "Bubbles functioned as a punisher",
+    ],
+    answer: "Bubbles functioned as a reinforcer for task completion",
+    explanation:
+      "A reinforcer is demonstrated when a consequence [increases future responding].",
+    hint:
+      "Preference suggests candidates; reinforcement requires a behavior change effect.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "Which method presents an array, removes the selected item after each choice, and continues until items are ranked?",
+    choices: [
+      "Multiple-stimulus without replacement",
+      "Multiple-stimulus with replacement",
+      "Single-stimulus preference assessment",
+      "Free-operant preference assessment",
+    ],
+    answer: "Multiple-stimulus without replacement",
+    explanation:
+      "MSWO removes the selected item after each selection to rank preference across the array.",
+    hint:
+      "Focus on whether selected items return to the array.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A BCBA presents two items at a time and records which one the learner selects across many trials. Which assessment is described?",
+    choices: [
+      "Paired-stimulus preference assessment",
+      "Free-operant preference assessment",
+      "Scatterplot assessment",
+      "Functional analysis",
+    ],
+    answer: "Paired-stimulus preference assessment",
+    explanation:
+      "Paired-stimulus preference assessment presents [two stimuli at a time] and records selections.",
+    hint:
+      "Look for choice trials with exactly two items.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "ABC data show problem behavior often occurs after difficult tasks and is followed by task removal. What conclusion is most appropriate?",
+    choices: [
+      "The pattern suggests escape may be related and should guide further assessment or treatment planning",
+      "Escape is experimentally proven in every setting",
+      "Automatic reinforcement is ruled out permanently",
+      "Preference assessment is no longer needed for any treatment planning",
+    ],
+    answer:
+      "The pattern suggests escape may be related and should guide further assessment or treatment planning",
+    explanation:
+      "ABC data can support hypotheses about [antecedent-behavior-consequence patterns] but should be interpreted cautiously.",
+    hint:
+      "Notice whether the data are correlational or experimentally manipulated.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A scatterplot shows problem behavior concentrated during the last 20 minutes before lunch. What is the best interpretation?",
+    choices: [
+      "There is a time-based pattern that may guide further assessment",
+      "The scatterplot proves the function is attention",
+      "The behavior has no environmental relation",
+      "A reinforcer has been experimentally demonstrated",
+    ],
+    answer:
+      "There is a time-based pattern that may guide further assessment",
+    explanation:
+      "Scatterplots help identify [time, routine, or setting patterns] for further analysis.",
+    hint:
+      "Scatterplots show when behavior occurs, not a proven maintaining consequence.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A learner has strong matching skills but cannot request preferred items. Which assessment result most directly informs treatment planning?",
+    choices: [
+      "A skill deficit in manding should be targeted",
+      "Attention is proven as the function",
+      "Whole interval recording is required",
+      "The learner has generalized conditioned punishers",
+    ],
+    answer: "A skill deficit in manding should be targeted",
+    explanation:
+      "Skill assessment results guide [instructional targets and prerequisite teaching].",
+    hint:
+      "Focus on missing skills that should be taught.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A BCBA has limited time, low-risk behavior, and needs preliminary hypotheses before direct observation. Which first step is most efficient?",
+    choices: [
+      "Use indirect assessment to gather reported patterns and context",
+      "Run a high-risk functional analysis immediately",
+      "Skip assessment and select punishment",
+      "Use only mastery check scores",
+    ],
+    answer: "Use indirect assessment to gather reported patterns and context",
+    explanation:
+      "Assessment selection balances [efficiency, accuracy, ethics, and contextual fit].",
+    hint:
+      "Choose a method that fits the risk level and purpose.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "Which action best reflects culturally responsive assessment?",
+    choices: [
+      "Ask about routines, language, values, and context before selecting targets",
+      "Use the same targets for all clients because the form is standardized",
+      "Ignore caregiver priorities to avoid bias",
+      "Assess only in English because the data sheet is already made",
+    ],
+    answer:
+      "Ask about routines, language, values, and context before selecting targets",
+    explanation:
+      "Culturally responsive assessment considers [client values, context, language, and preferences].",
+    hint:
+      "Look for assessment decisions that fit the client’s context and protect dignity.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "Which assessment interpretation is strongest when evidence is indirect and descriptive but no experimental test has occurred?",
+    choices: [
+      "State a hypothesis and describe the limits of the conclusion",
+      "Say the function is proven",
+      "Ignore all descriptive patterns",
+      "Treat the behavior as maintained by every reinforcer",
+    ],
+    answer: "State a hypothesis and describe the limits of the conclusion",
+    explanation:
+      "Assessment interpretation should distinguish [supported hypotheses] from unsupported claims.",
+    hint:
+      "Avoid conclusions that exceed the assessment method.",
+  },
+];
+
+const sectionFExpandedMasteryQuestions: QuestionContent[] = [
+  {
+    type: "scenario",
+    prompt:
+      "A BCBA reviews an IEP, caregiver interview, physician note, and speech-language report before assessment. Which use of those sources best fits F.1?",
+    choices: [
+      "Use each source to identify variables relevant to the referral question and assessment plan",
+      "Collect every available document even if it has no relation to assessment decisions",
+      "Use only caregiver report because records can be lengthy",
+      "Treat interdisciplinary notes as behavior-analytic conclusions",
+    ],
+    answer:
+      "Use each source to identify variables relevant to the referral question and assessment plan",
+    explanation:
+      "F.1 focuses on [relevant sources of information] from records, clients, caregivers, and other professionals.",
+    hint:
+      "Look for a response that connects records to the assessment question without overgeneralizing.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A family uses a language at home that the assessor does not speak fluently. Which action best supports culturally responsive assessment?",
+    choices: [
+      "Arrange accessible communication supports and ask about language, routines, and priorities",
+      "Continue only in English because the assessment forms are standardized",
+      "Avoid caregiver interviews because language differences may affect reliability",
+      "Select targets before considering communication access",
+    ],
+    answer:
+      "Arrange accessible communication supports and ask about language, routines, and priorities",
+    explanation:
+      "F.2 requires attention to [cultural variables, language access, and contextual variables] that may affect assessment.",
+    hint:
+      "Focus on access and context before interpreting behavior or selecting goals.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A learner is referred for a group instruction goal, but assessment shows limited listener responding and imitation. What should the BCBA consider first?",
+    choices: [
+      "Prerequisite skill deficits that may affect the selected goal",
+      "A tangible function because group instruction is difficult",
+      "A paired-stimulus preference hierarchy as the only needed assessment",
+      "A scatterplot because the concern is always time-based",
+    ],
+    answer: "Prerequisite skill deficits that may affect the selected goal",
+    explanation:
+      "Skill assessments identify [prerequisite skills, strengths, and deficits] that guide instructional goals.",
+    hint:
+      "Ask whether the learner has component skills needed for the proposed goal.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A BCBA presents two items per trial until each item has been compared with every other item. Which preference assessment is being used?",
+    choices: [
+      "Paired-stimulus preference assessment",
+      "Multiple-stimulus without replacement",
+      "Free-operant preference assessment",
+      "Functional analysis",
+    ],
+    answer: "Paired-stimulus preference assessment",
+    explanation:
+      "A paired-stimulus preference assessment uses [two-item choice trials] across stimulus pairs.",
+    hint:
+      "Attend to the number of stimuli presented on each trial.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A learner selects crackers first in MSWO, but task completion does not increase when crackers follow completed work. Which interpretation is best?",
+    choices: [
+      "Crackers were highly preferred but were not demonstrated as reinforcers for that response",
+      "The MSWO proves crackers are reinforcers in all contexts",
+      "The task completion decrease proves crackers are punishers",
+      "Preference assessment and reinforcement are the same assessment outcome",
+    ],
+    answer:
+      "Crackers were highly preferred but were not demonstrated as reinforcers for that response",
+    explanation:
+      "Preference assessments identify [potential reinforcers]; reinforcement is demonstrated by [increased future responding].",
+    hint:
+      "Separate selection during assessment from a later behavior-change effect.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "ABC recording shows aggression often follows denied access and is followed by item delivery. Which conclusion is most appropriate?",
+    choices: [
+      "Tangible access is a hypothesis to evaluate further because descriptive data are correlational",
+      "Tangible function is experimentally proven by ABC recording alone",
+      "Automatic reinforcement is the only possible interpretation",
+      "The behavior must be ignored because ABC data are never useful",
+    ],
+    answer:
+      "Tangible access is a hypothesis to evaluate further because descriptive data are correlational",
+    explanation:
+      "Descriptive assessments can identify [patterns and correlations], but they do not demonstrate experimental control.",
+    hint:
+      "Ask whether the assessor manipulated antecedents and consequences or only observed them.",
+  },
+  {
+    type: "scenario",
+    graphId: "multielement-functional-analysis",
+    prompt:
+      "An FA shows elevated responding in attention and low responding in alone, demand, and control. Which interpretation is most supported?",
+    choices: [
+      "Attention may be maintaining the behavior",
+      "Escape from demands is the likely reinforcer because demands were tested",
+      "Tangible access is proven because tangible was a condition",
+      "Automatic reinforcement is proven because all conditions were included",
+    ],
+    answer: "Attention may be maintaining the behavior",
+    explanation:
+      "Differentiated responding in the attention condition suggests behavior may contact [social attention].",
+    hint:
+      "Focus on the condition with differentiated high responding and what consequence it tests.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A functional analysis condition combines escape from tasks and access to attention because both commonly follow behavior in the natural setting. Which concept is illustrated?",
+    choices: [
+      "Synthesized contingency",
+      "Single-stimulus preference assessment",
+      "Narrative recording",
+      "Prerequisite skill assessment",
+    ],
+    answer: "Synthesized contingency",
+    explanation:
+      "Synthesized contingencies arrange [multiple suspected reinforcers together] during assessment.",
+    hint:
+      "Look for more than one suspected consequence being tested as a combined condition.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A behavior analyst sees sudden severe behavior after medication changes and sleep disruption. What assessment interpretation is most appropriate?",
+    choices: [
+      "Consider referral or consultation while continuing behavior-analytic assessment within scope",
+      "Conclude escape function without further information",
+      "Ignore medical variables because behavior is observable",
+      "Begin intensive treatment before reviewing relevant records",
+    ],
+    answer:
+      "Consider referral or consultation while continuing behavior-analytic assessment within scope",
+    explanation:
+      "F.7 includes using assessment data to determine [service needs, referral needs, and limits of conclusions].",
+    hint:
+      "Look for a response that respects scope and avoids unsupported conclusions.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "Assessment shows severe elopement in parking lots, caregiver concern about safety, and available practice routines. Which goal-selection decision best fits F.8?",
+    choices: [
+      "Prioritize a measurable safety goal with procedures that fit daily routines and available support",
+      "Choose a low-priority academic target because it is easier to score",
+      "Delay goal selection until every possible skill deficit is assessed",
+      "Select a standard goal without considering client context",
+    ],
+    answer:
+      "Prioritize a measurable safety goal with procedures that fit daily routines and available support",
+    explanation:
+      "F.8 uses assessment data to select [socially significant, feasible, and contextually fit goals and procedures].",
+    hint:
+      "Consider risk, social significance, client context, and feasibility together.",
+  },
+];
+
+const sectionFAdditionalMasteryQuestions: QuestionContent[] = [
+  {
+    type: "scenario",
+    prompt:
+      "A referral asks why self-injury increased after a recent schedule change. Which record review decision is strongest?",
+    choices: [
+      "Review records connected to the target behavior, routines, health variables, and prior interventions",
+      "Review all available records equally regardless of relation to the referral",
+      "Avoid records because only direct observation can ever be useful",
+      "Use only the oldest historical record to avoid current bias",
+    ],
+    answer:
+      "Review records connected to the target behavior, routines, health variables, and prior interventions",
+    explanation:
+      "F.1 emphasizes [relevant records and information sources] that clarify assessment questions and risk.",
+    hint:
+      "Look for information sources tied to the referral question and assessment decisions.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A caregiver's description of appropriate mealtime behavior differs from the clinic's default expectations. Which response best reflects F.2?",
+    choices: [
+      "Ask about family routines and values before interpreting the behavior or selecting goals",
+      "Treat the difference as noncompliance because clinic expectations are standard",
+      "Remove caregiver input to avoid cultural bias",
+      "Select the clinic goal because it is easier to measure",
+    ],
+    answer:
+      "Ask about family routines and values before interpreting the behavior or selecting goals",
+    explanation:
+      "Culturally responsive assessment considers [values, routines, language, and contextual variables].",
+    hint:
+      "Focus on understanding context before making assessment interpretations.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A learner communicates with an AAC device, but the assessment materials require vocal responses only. Which concern is most relevant?",
+    choices: [
+      "The response format may create an access barrier and distort assessment results",
+      "AAC use proves the learner has no skill deficits",
+      "The assessor should ignore communication mode to keep procedures standardized",
+      "The assessment automatically becomes a functional analysis",
+    ],
+    answer:
+      "The response format may create an access barrier and distort assessment results",
+    explanation:
+      "Language and access considerations affect [participation, validity, and interpretation].",
+    hint:
+      "Look for the option that protects accurate assessment of the learner's repertoire.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A BCBA assesses a learner's current math responses against a curriculum sequence to select the next teachable targets. Which assessment best fits?",
+    choices: [
+      "Curriculum-based skill assessment",
+      "Narrative recording",
+      "Functional analysis",
+      "Free-operant preference assessment",
+    ],
+    answer: "Curriculum-based skill assessment",
+    explanation:
+      "Curriculum-based assessment identifies [current performance within an instructional sequence].",
+    hint:
+      "Look for assessment of skills against a teaching scope and sequence.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "Which assessment finding is best classified as a strength rather than a deficit?",
+    choices: [
+      "The learner independently matches identical pictures across 20 trials",
+      "The learner does not request breaks when tasks are difficult",
+      "The learner cannot follow one-step instructions",
+      "The learner does not imitate gross motor actions",
+    ],
+    answer:
+      "The learner independently matches identical pictures across 20 trials",
+    explanation:
+      "Strengths are [existing skills that can support teaching]; deficits are missing or weak skills.",
+    hint:
+      "Choose the option that describes a demonstrated repertoire.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A BCBA needs a preference assessment that may produce a clear rank order but can require many choice trials. Which format best fits?",
+    choices: [
+      "Paired-stimulus preference assessment",
+      "Single-stimulus preference assessment",
+      "Scatterplot recording",
+      "Functional analysis",
+    ],
+    answer: "Paired-stimulus preference assessment",
+    explanation:
+      "Paired-stimulus assessments use [two-stimulus choice trials] and can produce a clear hierarchy.",
+    hint:
+      "Look for the preference format built around repeated two-option choices.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A BCBA wants a brief array-based preference assessment in which selected items return to the array after each choice. Which method is described?",
+    choices: [
+      "Multiple-Stimulus With Replacement (MSW)",
+      "Multiple-Stimulus Without Replacement (MSWO)",
+      "Free-operant preference assessment",
+      "Single-stimulus preference assessment",
+    ],
+    answer: "Multiple-Stimulus With Replacement (MSW)",
+    explanation:
+      "Multiple-Stimulus With Replacement (MSW) returns selected items [to the array].",
+    hint:
+      "Focus on whether the selected item remains available for later selections.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A learner selected a ball most often in a preference assessment, but throwing the ball after homework does not increase homework completion. Which statement is most accurate?",
+    choices: [
+      "The ball was preferred in assessment but was not demonstrated as a reinforcer for homework completion",
+      "The ball must be a reinforcer because it was selected most often",
+      "Preference assessment data always override response data",
+      "The ball functioned as a punisher because homework did not increase",
+    ],
+    answer:
+      "The ball was preferred in assessment but was not demonstrated as a reinforcer for homework completion",
+    explanation:
+      "Preference assessment identifies [potential reinforcers], but reinforcement requires [increased future responding].",
+    hint:
+      "Separate stimulus selection from behavior change produced by contingent delivery.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "Which statement best differentiates ABC recording from narrative recording?",
+    choices: [
+      "ABC recording organizes antecedents, behavior, and consequences; narrative recording gives a running description of events",
+      "ABC recording experimentally manipulates consequences; narrative recording ranks stimuli",
+      "ABC recording is a preference assessment; narrative recording is a skill assessment",
+      "ABC recording proves function; narrative recording proves intervention effects",
+    ],
+    answer:
+      "ABC recording organizes antecedents, behavior, and consequences; narrative recording gives a running description of events",
+    explanation:
+      "Both are descriptive methods, but ABC recording structures [antecedent-behavior-consequence events] while narrative recording captures [a running account].",
+    hint:
+      "Compare the structure of the observation record, not the function of behavior.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "Scatterplot data show problem behavior during independent work on most afternoons. What conclusion is most appropriate?",
+    choices: [
+      "There is a time or routine pattern that can guide further assessment",
+      "Independent work is experimentally proven as the cause",
+      "The function is automatically reinforcement because behavior repeats",
+      "The pattern rules out the need for direct observation",
+    ],
+    answer:
+      "There is a time or routine pattern that can guide further assessment",
+    explanation:
+      "Scatterplots show [time or routine patterns], not experimental causation.",
+    hint:
+      "Look for the conclusion that describes a pattern without overclaiming function.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A descriptive assessment shows problem behavior is followed by escape on 70% of observed occurrences. What is the best interpretation?",
+    choices: [
+      "Escape is a strong hypothesis, but causation has not been experimentally demonstrated",
+      "Escape is proven as the function because the percentage is high",
+      "The assessment is invalid because percentages cannot be used descriptively",
+      "The behavior must be maintained by attention because escape was observed",
+    ],
+    answer:
+      "Escape is a strong hypothesis, but causation has not been experimentally demonstrated",
+    explanation:
+      "Conditional probability can summarize [event relations], but descriptive data remain correlational.",
+    hint:
+      "Notice whether the assessment measured a relation or manipulated the contingency.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A functional analysis shows high responding only when demands are removed after target behavior. Which function is most supported?",
+    choices: [
+      "Escape",
+      "Attention",
+      "Tangible",
+      "Automatic reinforcement",
+    ],
+    answer: "Escape",
+    explanation:
+      "High responding when demands are removed suggests behavior is maintained by [escape from demands].",
+    hint:
+      "Identify the consequence arranged after behavior in the differentiated condition.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A functional analysis shows high responding in alone/ignore and low responding when social consequences are arranged. Which function is most supported?",
+    choices: [
+      "Automatic reinforcement",
+      "Attention",
+      "Escape",
+      "Tangible",
+    ],
+    answer: "Automatic reinforcement",
+    explanation:
+      "Responding that persists without programmed social consequences suggests [automatic reinforcement].",
+    hint:
+      "Look for behavior that does not depend on another person's consequence.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "Before conducting an FA for severe aggression, the BCBA obtains consent, trains staff, sets termination criteria, and prepares protective procedures. Which issue is most directly addressed?",
+    choices: [
+      "Functional analysis safety",
+      "Preference assessment ranking",
+      "Curriculum-based assessment",
+      "Scatterplot interpretation",
+    ],
+    answer: "Functional analysis safety",
+    explanation:
+      "FA safety requires [consent, trained staff, termination criteria, and risk reduction].",
+    hint:
+      "Focus on steps that protect the client during experimental assessment.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "Assessment data suggest severe sleep disruption and possible seizures may be related to new behavior. Which action is most appropriate?",
+    choices: [
+      "Seek appropriate medical referral or consultation while staying within behavior-analytic scope",
+      "Treat the behavior as escape-maintained without further review",
+      "Ignore health variables because they are outside behavioral assessment",
+      "Select intervention goals based only on staff convenience",
+    ],
+    answer:
+      "Seek appropriate medical referral or consultation while staying within behavior-analytic scope",
+    explanation:
+      "F.7 includes identifying [referral needs] and avoiding unsupported conclusions from insufficient data.",
+    hint:
+      "Look for the action that protects scope and client safety.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A team wants to target a low-priority worksheet skill, but assessment shows unsafe street elopement and caregiver concern about community access. Which decision best fits F.8?",
+    choices: [
+      "Prioritize a measurable safety and community-access goal with contextual fit",
+      "Select the worksheet skill because it is easier to teach",
+      "Ignore caregiver priorities because they are not data",
+      "Postpone all goals until every possible preference item is tested",
+    ],
+    answer:
+      "Prioritize a measurable safety and community-access goal with contextual fit",
+    explanation:
+      "Goal selection should prioritize [social significance, risk, client-informed priorities, and contextual fit].",
+    hint:
+      "Consider impact on safety, daily routines, and meaningful access.",
   },
 ];
 
@@ -6928,9 +9841,11 @@ const moduleContent: Record<string, ModuleContent> = {
       ...sectionDRelocatedFromCMiniLessons,
       ...sectionDMiniLessons,
       ...sectionDAnalysisApplicationMiniLessons,
+      ...sectionDAdditionalMiniLessons,
     ],
     practiceQuestions: [
       ...sectionDRelocatedFromCPracticeQuestions,
+      ...sectionDAdditionalPracticeQuestions,
       {
         type: "matching",
         prompt: "Match each design to the graph pattern that shows experimental control.",
@@ -6998,6 +9913,23 @@ const moduleContent: Record<string, ModuleContent> = {
         answer: "True",
         explanation:
           "Multiple Baseline Designs can demonstrate control [without withdrawing intervention].",
+      },
+      {
+        type: "scenario",
+        prompt:
+          "A researcher needs strong individual-level analysis of one learner's responding across repeated sessions. Which relative design strength is most relevant?",
+        choices: [
+          "Single-case designs can show change in individual behavior through repeated measurement.",
+          "Group designs always show the cause for each individual participant.",
+          "Single-case designs avoid the need for repeated data collection.",
+          "Group designs are the only designs that can use baseline data.",
+        ],
+        answer:
+          "Single-case designs can show change in individual behavior through repeated measurement.",
+        explanation:
+          "D.5 asks learners to distinguish [relative strengths] of single-case and group designs.",
+        hint:
+          "Focus on whether the question values individual behavior patterns or aggregate group comparisons.",
       },
       {
         type: "fill-blank",
@@ -7395,6 +10327,7 @@ const moduleContent: Record<string, ModuleContent> = {
     ],
     masteryQuestions: [
       ...sectionDRelocatedFromCMasteryQuestions,
+      ...sectionDAdditionalMasteryQuestions,
       {
         type: "scenario",
         graphId: "withdrawal-problem-behavior",
@@ -7414,6 +10347,21 @@ const moduleContent: Record<string, ModuleContent> = {
         answer: "Experimental control",
         explanation:
           "Staggered behavior change across tiers supports [a functional relation] in a multiple baseline design.",
+      },
+      {
+        type: "scenario",
+        prompt:
+          "A BCBA wants to know whether one client's behavior changes when the intervention is introduced, withdrawn, and reintroduced across repeated sessions. Which relative design strength is most relevant?",
+        choices: [
+          "Single-case designs evaluate individual behavior change through repeated measurement.",
+          "Group designs always show experimental control for each participant.",
+          "Single-case designs avoid visual analysis.",
+          "Group designs replace the need for operational definitions.",
+        ],
+        answer:
+          "Single-case designs evaluate individual behavior change through repeated measurement.",
+        explanation:
+          "Single-case experimental designs are strong for evaluating [individual behavior patterns across repeated measures].",
       },
       {
         type: "scenario",
@@ -7681,81 +10629,16 @@ const moduleContent: Record<string, ModuleContent> = {
     ],
   },
   f: {
-    miniLessons: sectionFMiniLessons,
+    miniLessons: [...sectionFMiniLessons, ...sectionFExpandedMiniLessons],
     practiceQuestions: [
-      {
-        type: "scenario",
-        prompt:
-          "A BCBA interviews caregivers and reviews records before observing behavior. What type of assessment information is being gathered first?",
-        choices: ["Indirect assessment", "Functional analysis", "Continuous measurement", "Treatment integrity"],
-        answer: "Indirect assessment",
-        explanation:
-          "Interviews and record reviews are indirect sources because they do not directly observe behavior as it occurs.",
-      },
-      {
-        type: "matching",
-        prompt: "Match each function to the maintaining reinforcer.",
-        pairs: [
-          { term: "Attention", definition: "Social interaction follows behavior." },
-          { term: "Escape", definition: "Demands are removed or delayed." },
-          { term: "Tangible", definition: "Access to items or activities follows behavior." },
-          { term: "Automatic", definition: "Sensory consequences are produced directly." },
-        ],
-        answer: "All functions matched correctly",
-        explanation:
-          "Behavioral function is identified by the maintaining consequence, not by response topography alone.",
-      },
-      {
-        type: "sorting",
-        prompt: "Sort the assessment examples.",
-        categories: ["Preference assessment", "Functional analysis"],
-        items: [
-          { label: "MSWO array", category: "Preference assessment" },
-          { label: "Paired stimulus choices", category: "Preference assessment" },
-          { label: "Attention condition", category: "Functional analysis" },
-          { label: "Escape condition", category: "Functional analysis" },
-        ],
-        answer: "All assessment examples sorted correctly",
-        explanation:
-          "Preference assessments identify likely reinforcers; functional analysis tests behavioral function.",
-      },
+      ...sectionFPracticeQuestions,
+      ...sectionFExpandedPracticeQuestions,
+      ...sectionFAdditionalPracticeQuestions,
     ],
     masteryQuestions: [
-      {
-        prompt:
-          "Which statement best distinguishes descriptive assessment from functional analysis?",
-        choices: [
-          "Descriptive assessment observes natural events; functional analysis manipulates conditions.",
-          "Descriptive assessment proves function; functional analysis only interviews caregivers.",
-          "Descriptive assessment is always direct; functional analysis is always indirect.",
-          "Descriptive assessment replaces the need for data.",
-        ],
-        answer:
-          "Descriptive assessment observes natural events; functional analysis manipulates conditions.",
-        explanation:
-          "Descriptive assessment can show correlations. Functional analysis experimentally tests function.",
-      },
-      {
-        type: "scenario",
-        prompt:
-          "A learner repeatedly selects the same item during MSWO, then responses increase when that item follows behavior. What has been shown?",
-        choices: [
-          "The item may be a reinforcer because it increased behavior.",
-          "Preference alone proves reinforcement.",
-          "The item is a Discriminative Stimulus (SD).",
-          "The item is a punisher because it was selected.",
-        ],
-        answer: "The item may be a reinforcer because it increased behavior.",
-        explanation:
-          "Preference assessment identifies candidates; a reinforcer is demonstrated by increased responding.",
-      },
-      {
-        type: "fill-blank",
-        prompt: "Complete the statement: Functional analysis tests function by manipulating ____.",
-        answer: "conditions",
-        explanation:
-          "Functional analysis manipulates antecedent and consequence conditions to test behavioral function.",
-      },
+      ...sectionFMasteryQuestions,
+      ...sectionFExpandedMasteryQuestions,
+      ...sectionFAdditionalMasteryQuestions,
     ],
   },
   g: {

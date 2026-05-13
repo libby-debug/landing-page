@@ -165,7 +165,7 @@ function getPracticeQuestionHeadingColor(index: number) {
 }
 
 function shouldHideGraphMetadata(sectionSlug: string) {
-  return ["c", "d", "e"].includes(sectionSlug);
+  return ["c", "d", "e", "f"].includes(sectionSlug);
 }
 
 function getMultipleChoiceMasteryQuestions(questions: QuestionContent[]) {

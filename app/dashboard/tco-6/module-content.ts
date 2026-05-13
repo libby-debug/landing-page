@@ -7895,6 +7895,98 @@ const sectionFExpandedMiniLessons: MiniLessonContent[] = [
   },
 ];
 
+const sectionFTcoAuditMiniLessons: MiniLessonContent[] = [
+  {
+    slug: "descriptive-assessment-vs-fa-decision",
+    label: "F.5-F.6",
+    title: "Descriptive Assessment vs Functional Analysis",
+    body: [
+      "Descriptive assessment identifies [patterns in naturally occurring events].",
+      "Functional analysis evaluates [environmental variables through experimental manipulation].",
+    ],
+    visual: {
+      type: "choice",
+      prompt:
+        "Which statement best keeps descriptive assessment and functional analysis separate?",
+      choices: [
+        "Descriptive assessment suggests hypotheses; functional analysis tests variables experimentally",
+        "Descriptive assessment proves function; functional analysis only reviews records",
+        "Descriptive assessment is a preference assessment; functional analysis ranks stimuli",
+        "Descriptive assessment and functional analysis use the same procedures",
+      ],
+      answer:
+        "Descriptive assessment suggests hypotheses; functional analysis tests variables experimentally",
+      hint:
+        "Compare [natural observation] with [experimental manipulation].",
+      feedback:
+        "The critical discrimination is [correlational patterns] versus [experimental tests of function].",
+    },
+  },
+  {
+    slug: "service-need-vs-referral",
+    label: "F.7",
+    title: "Service Need vs Referral",
+    body: [
+      "F.7 asks whether assessment data support [behavior-analytic services, referral, or more assessment].",
+      "Referral is indicated when findings involve [needs outside the behavior analyst's scope or competence].",
+    ],
+    visual: {
+      type: "sorting",
+      prompt: "Sort each finding by the most appropriate next step.",
+      categories: ["ABA service planning", "Referral or consultation"],
+      items: [
+        {
+          label: "Clear skill deficit with teachable communication targets",
+          category: "ABA service planning",
+        },
+        {
+          label: "Sudden behavior change with possible seizure activity",
+          category: "Referral or consultation",
+        },
+        {
+          label: "Escape-maintained behavior with feasible replacement response",
+          category: "ABA service planning",
+        },
+        {
+          label: "Speech access concern requiring AAC evaluation",
+          category: "Referral or consultation",
+        },
+      ],
+    },
+  },
+  {
+    slug: "assessment-data-to-procedures",
+    label: "F.8",
+    title: "Assessment Data to Procedures",
+    body: [
+      "Assessment-based procedures should match [behavioral function, skill needs, preference data, risk, and contextual fit].",
+      "A socially significant goal still needs procedures that are [effective, feasible, and culturally responsive].",
+    ],
+    visual: {
+      type: "matching",
+      prompt: "Match each assessment result to the procedure-selection implication.",
+      pairs: [
+        {
+          term: "Escape-maintained behavior",
+          definition: "Teach an appropriate break/request response and adjust demands.",
+        },
+        {
+          term: "Skill deficit",
+          definition: "Select teaching procedures for missing prerequisite or target skills.",
+        },
+        {
+          term: "High-preference items",
+          definition: "Test potential reinforcers within intervention contingencies.",
+        },
+        {
+          term: "Low contextual fit",
+          definition: "Revise procedures so caregivers or staff can implement them.",
+        },
+      ],
+    },
+  },
+];
+
 const sectionFPracticeQuestions: QuestionContent[] = [
   {
     type: "scenario",
@@ -8560,6 +8652,87 @@ const sectionFAdditionalPracticeQuestions: QuestionContent[] = [
   },
 ];
 
+const sectionFTcoAuditPracticeQuestions: QuestionContent[] = [
+  {
+    type: "scenario",
+    prompt:
+      "A BCBA has caregiver interview data suggesting behavior occurs during transitions, but no direct observation has occurred. Which next step best fits assessment interpretation?",
+    choices: [
+      "Use the interview data as a hypothesis and collect direct assessment data",
+      "Treat transition escape as experimentally demonstrated",
+      "Select a restrictive procedure because the caregiver report is enough",
+      "Ignore the caregiver report because indirect data are never useful",
+    ],
+    answer:
+      "Use the interview data as a hypothesis and collect direct assessment data",
+    explanation:
+      "F.7 requires [interpreting assessment data within the limits of the evidence]. Indirect data can guide next steps without proving function.",
+    hint:
+      "Ask whether the current information is enough to support a firm functional conclusion.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "Assessment shows behavior is likely escape-maintained during writing tasks, and occupational therapy notes indicate fine-motor demands may be difficult. Which procedure-selection plan best uses the assessment data?",
+    choices: [
+      "Teach an appropriate break/request response while coordinating about task demands",
+      "Use attention extinction because all problem behavior is attention maintained",
+      "Ignore the motor information because it is not from a behavior analyst",
+      "Choose a worksheet goal because it is easy to score",
+    ],
+    answer:
+      "Teach an appropriate break/request response while coordinating about task demands",
+    explanation:
+      "F.8 procedure selection should integrate [behavioral function, relevant interdisciplinary information, and contextual fit].",
+    hint:
+      "Look for the option that matches the likely function and uses relevant assessment context.",
+  },
+  {
+    type: "matching",
+    prompt: "Match each assessment result to the strongest treatment-planning implication.",
+    pairs: [
+      {
+        term: "Preferred item ranked high",
+        definition: "Test as a potential reinforcer in a contingency.",
+      },
+      {
+        term: "Undifferentiated FA",
+        definition: "Revise assessment conditions or collect more data.",
+      },
+      {
+        term: "Skill prerequisite missing",
+        definition: "Teach the component skill before expecting the target response.",
+      },
+      {
+        term: "Medical concern identified",
+        definition: "Seek referral or consultation while staying within scope.",
+      },
+    ],
+    answer: "All assessment implications matched correctly",
+    explanation:
+      "Assessment results should guide [procedures, referrals, and cautious interpretation] without exceeding what the data support.",
+    hint:
+      "Match each result to the decision it can most directly support.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A descriptive assessment shows attention follows behavior frequently, but an FA shows undifferentiated responding across conditions. Which interpretation is strongest?",
+    choices: [
+      "Attention remains a hypothesis, but the FA data do not clearly demonstrate that function",
+      "Attention is proven because descriptive data always override FA data",
+      "The behavior is automatically reinforced because the FA was undifferentiated",
+      "The assessment proves no intervention is needed",
+    ],
+    answer:
+      "Attention remains a hypothesis, but the FA data do not clearly demonstrate that function",
+    explanation:
+      "Descriptive data can suggest [correlational hypotheses], while undifferentiated FA data require [cautious interpretation and possible revision].",
+    hint:
+      "Consider the strength and limits of each assessment method before drawing a conclusion.",
+  },
+];
+
 const sectionFMasteryQuestions: QuestionContent[] = [
   {
     type: "scenario",
@@ -9195,6 +9368,77 @@ const sectionFAdditionalMasteryQuestions: QuestionContent[] = [
       "Goal selection should prioritize [social significance, risk, client-informed priorities, and contextual fit].",
     hint:
       "Consider impact on safety, daily routines, and meaningful access.",
+  },
+];
+
+const sectionFTcoAuditMasteryQuestions: QuestionContent[] = [
+  {
+    type: "scenario",
+    prompt:
+      "A BCBA reviews records and sees a sudden increase in self-injury after medication changes, sleep disruption, and school schedule changes. Which interpretation is most appropriate?",
+    choices: [
+      "The data suggest both behavioral assessment needs and possible referral or consultation needs",
+      "The behavior is automatically maintained because medication changed",
+      "The school schedule change proves escape function",
+      "Medical and sleep variables should be ignored during behavior assessment",
+    ],
+    answer:
+      "The data suggest both behavioral assessment needs and possible referral or consultation needs",
+    explanation:
+      "F.7 requires determining [need for behavior-analytic services, referral needs, and the limits of assessment conclusions].",
+    hint:
+      "Look for the option that uses relevant sources without making a conclusion beyond the data.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A learner's behavior occurs during hard tasks and decreases when an appropriate break response contacts reinforcement. Which procedure-selection statement best fits F.8?",
+    choices: [
+      "Assessment supports a function-based procedure that teaches an alternative response and arranges reinforcement",
+      "Assessment supports selecting goals unrelated to daily routines",
+      "Assessment proves all future behavior should be treated with punishment",
+      "Assessment should be ignored once a preferred item has been identified",
+    ],
+    answer:
+      "Assessment supports a function-based procedure that teaches an alternative response and arranges reinforcement",
+    explanation:
+      "F.8 links assessment data to [socially significant goals and behavior-change procedures].",
+    hint:
+      "Focus on whether the procedure follows from the function and teaches a useful response.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "Which statement best differentiates a culturally responsive assessment decision from a biased assessment decision?",
+    choices: [
+      "Responsive decisions check client context, language access, and stakeholder priorities against data",
+      "Responsive decisions use the assessor's routines as the standard for all clients",
+      "Responsive decisions avoid caregiver input to prevent disagreement",
+      "Responsive decisions select goals before reviewing cultural or contextual variables",
+    ],
+    answer:
+      "Responsive decisions check client context, language access, and stakeholder priorities against data",
+    explanation:
+      "F.2 emphasizes [cultural variables, language access, contextual variables, and bias reduction] during assessment.",
+    hint:
+      "Look for the option that improves access and interpretation without relying on assumptions.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A team has scatterplot patterns, ABC correlations, and interviews, but no experimental test. Which conclusion is most accurate?",
+    choices: [
+      "The data can guide hypotheses, but function has not been experimentally demonstrated",
+      "The data prove the maintaining variable because several descriptive sources agree",
+      "Functional analysis is unnecessary because correlations are stronger than experiments",
+      "The behavior must be maintained by every consequence observed",
+    ],
+    answer:
+      "The data can guide hypotheses, but function has not been experimentally demonstrated",
+    explanation:
+      "F.5 descriptive assessment identifies [patterns and correlations]; F.6 functional analysis tests [environmental variables experimentally].",
+    hint:
+      "Compare hypothesis development with experimental demonstration.",
   },
 ];
 
@@ -10629,16 +10873,22 @@ const moduleContent: Record<string, ModuleContent> = {
     ],
   },
   f: {
-    miniLessons: [...sectionFMiniLessons, ...sectionFExpandedMiniLessons],
+    miniLessons: [
+      ...sectionFMiniLessons,
+      ...sectionFExpandedMiniLessons,
+      ...sectionFTcoAuditMiniLessons,
+    ],
     practiceQuestions: [
       ...sectionFPracticeQuestions,
       ...sectionFExpandedPracticeQuestions,
       ...sectionFAdditionalPracticeQuestions,
+      ...sectionFTcoAuditPracticeQuestions,
     ],
     masteryQuestions: [
       ...sectionFMasteryQuestions,
       ...sectionFExpandedMasteryQuestions,
       ...sectionFAdditionalMasteryQuestions,
+      ...sectionFTcoAuditMasteryQuestions,
     ],
   },
   g: {

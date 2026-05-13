@@ -7,6 +7,7 @@ import {
   FormattedConceptText,
 } from "@/components/learning-ui";
 import { GraphCard } from "./module-d-graphs";
+import { persistProgressValueSoon } from "./progression";
 import type { VisualKind } from "./section-b-content";
 
 type LearnInteractionState = {
@@ -54,10 +55,9 @@ function writeSavedLearnInteractionState(
     return;
   }
 
-  window.localStorage.setItem(
-    learnInteractionKey(sectionSlug, lessonSlug),
-    JSON.stringify(state),
-  );
+  const key = learnInteractionKey(sectionSlug, lessonSlug);
+  window.localStorage.setItem(key, JSON.stringify(state));
+  persistProgressValueSoon(key, state);
 }
 
 function useLearnInteractionState(sectionSlug: string, lessonSlug: string) {

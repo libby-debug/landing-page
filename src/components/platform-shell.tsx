@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { AuthProvider, useAuth } from "@/components/auth-provider";
 import { DailyDurationTracker } from "@/components/daily-duration-tracker";
 import { SiteHeader } from "@/components/site-header";
+import { ProgressStorageHydrator } from "../../app/dashboard/tco-6/progression";
 
 const taskListSections = [
   { title: "Main Dashboard", href: "/dashboard", prominence: "primary" },
@@ -31,7 +32,7 @@ const taskListSections = [
     prominence: "section",
   },
   {
-    title: "E. Measurement, Data Display, and Interpretation",
+    title: "E. Ethical and Professional Issues",
     href: "/dashboard/tco-6/e",
     prominence: "section",
   },
@@ -114,10 +115,11 @@ function PlatformShellContent({ children }: { children: React.ReactNode }) {
   return (
     <div className="relative flex min-h-screen overflow-x-hidden bg-[radial-gradient(circle_at_88%_12%,rgba(153,246,228,0.68),transparent_28%),linear-gradient(180deg,#dff1ff_0%,#ccfbf1_34%,#ffffff_82%,#ffffff_100%)]">
       <DailyDurationTracker />
+      {user ? <ProgressStorageHydrator /> : null}
       <SiteHeader />
 
       {showSidebar && (
-        <aside className="relative z-20 w-72 flex-col border-r border-white/70 bg-[linear-gradient(180deg,rgba(219,234,254,0.14)_0%,rgba(204,251,241,0.10)_36%,rgba(255,255,255,0.92)_100%)] p-6 pt-28 shadow-sm backdrop-blur-xl lg:flex">
+        <aside className="relative z-20 w-72 flex-col border-r border-cyan-200/80 bg-[linear-gradient(180deg,rgba(56,189,248,0.22)_0%,rgba(34,211,238,0.18)_34%,rgba(186,230,253,0.60)_68%,rgba(255,255,255,0.92)_100%)] p-6 pt-28 shadow-[0_24px_70px_rgba(14,165,233,0.14)] backdrop-blur-2xl lg:flex">
             <div className="pb-4">
               <Link href="/" aria-label="ABA Mastered home" className="inline-flex">
                 <Image

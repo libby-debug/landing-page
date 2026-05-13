@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useAuth } from "@/components/auth-provider";
+import { persistProgressValueSoon } from "../../app/dashboard/tco-6/progression";
 
 const DAILY_DURATION_EVENT = "aba-mastered-daily-duration-updated";
 const SAVE_INTERVAL_MS = 5000;
@@ -81,10 +82,9 @@ function writeDailyDurationMs(userId: string, totalMs: number) {
     updatedAt: new Date().toISOString(),
   };
 
-  window.localStorage.setItem(
-    getStorageKey(userId, dateKey),
-    JSON.stringify(record),
-  );
+  const key = getStorageKey(userId, dateKey);
+  window.localStorage.setItem(key, JSON.stringify(record));
+  persistProgressValueSoon(key, record);
   window.dispatchEvent(new CustomEvent(DAILY_DURATION_EVENT));
 }
 
@@ -150,10 +150,12 @@ export function useWeeklyDailyDuration() {
 
     syncDuration();
     window.addEventListener(DAILY_DURATION_EVENT, syncDuration);
+    window.addEventListener("aba-mastered-remote-progress-hydrated", syncDuration);
     window.addEventListener("storage", syncDuration);
 
     return () => {
       window.removeEventListener(DAILY_DURATION_EVENT, syncDuration);
+      window.removeEventListener("aba-mastered-remote-progress-hydrated", syncDuration);
       window.removeEventListener("storage", syncDuration);
     };
   }, [loading, userId]);
@@ -184,10 +186,12 @@ export function useDailyDuration() {
 
     syncDuration();
     window.addEventListener(DAILY_DURATION_EVENT, syncDuration);
+    window.addEventListener("aba-mastered-remote-progress-hydrated", syncDuration);
     window.addEventListener("storage", syncDuration);
 
     return () => {
       window.removeEventListener(DAILY_DURATION_EVENT, syncDuration);
+      window.removeEventListener("aba-mastered-remote-progress-hydrated", syncDuration);
       window.removeEventListener("storage", syncDuration);
     };
   }, [loading, userId]);

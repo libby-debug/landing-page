@@ -6,6 +6,7 @@ import { masteryThreshold } from "./data";
 import { GraphCard } from "./module-d-graphs";
 import {
   SaveProgressButton,
+  persistProgressValueSoon,
   persistModuleScore,
   practiceAnswersKey,
   practiceResultsKey,
@@ -156,135 +157,23 @@ function shouldHideGraphMetadata(sectionSlug: string) {
   return ["c", "d", "e"].includes(sectionSlug);
 }
 
-function asMasteryQuestion(question: QuestionContent) {
-  if (
-    (question.type === "multiple-choice" || question.type === "scenario" || !question.type) &&
-    question.choices?.includes(question.answer)
-  ) {
-    return {
-      ...question,
-      type: "multiple-choice" as const,
-    };
-  }
-
-  return {
-    ...question,
-    answer: getMasteryCorrectAnswer(question),
-    choices: getMasteryChoices(question),
-    type: "multiple-choice" as const,
-  };
-}
-
-function isSupportedMasteryQuestion(question: QuestionContent) {
-  return getMasteryChoices(question).includes(getMasteryCorrectAnswer(question));
-}
-
 function getMultipleChoiceMasteryQuestions(questions: QuestionContent[]) {
   return questions
-    .filter(isSupportedMasteryQuestion)
-    .map(asMasteryQuestion);
-}
-
-function getMasteryCorrectAnswer(question: QuestionContent) {
-  if (question.type === "true-false") {
-    return question.answer === "true" || question.answer === "True" ? "True" : "False";
-  }
-
-  if (question.type === "matching" && question.pairs?.length) {
-    return question.pairs
-      .map((pair) => `${pair.term} = ${pair.definition}`)
-      .join("; ");
-  }
-
-  if (question.type === "sorting" && question.items?.length) {
-    return question.categories
-      ?.map((category) => {
-        const labels = question.items
-          ?.filter((item) => item.category === category)
-          .map((item) => item.label)
-          .join(", ");
-
-        return `${category}: ${labels}`;
-      })
-      .join("; ") ?? question.answer;
-  }
-
-  if (question.type === "select-all") {
-    return (question.answers ?? [question.answer]).join("; ");
-  }
-
-  return question.answer;
-}
-
-function getMasteryChoices(question: QuestionContent) {
-  if (
-    (question.type === "multiple-choice" || question.type === "scenario" || !question.type) &&
-    question.choices?.includes(question.answer)
-  ) {
-    return question.choices;
-  }
-
-  const correctAnswer = getMasteryCorrectAnswer(question);
-
-  if (question.type === "true-false") {
-    return ["True", "False"];
-  }
-
-  if (question.type === "matching" && question.pairs?.length) {
-    const firstDefinition = question.pairs[0]?.definition ?? "";
-
-    return uniqueStringValues([
-      correctAnswer,
-      question.pairs
-        .map((pair) => `${pair.term} = ${firstDefinition}`)
-        .join("; "),
-      question.pairs
-        .map((pair) => `${pair.term} = ${pair.term}`)
-        .join("; "),
-      "The terms are matched by surface form rather than by their behavior-analytic relation.",
-    ]).slice(0, 4);
-  }
-
-  if (question.type === "sorting" && question.items?.length && question.categories) {
-    const reversedCategories = [...question.categories].reverse();
-
-    return uniqueStringValues([
-      correctAnswer,
-      reversedCategories
-        .map((category, categoryIndex) => {
-          const labels = question.items
-            ?.filter((_, index) => index % 2 === categoryIndex)
-            .map((item) => item.label)
-            .join(", ");
-
-          return `${category}: ${labels}`;
-        })
-        .join("; "),
-      question.items
-        .map((item) => `${item.label}: ${question.categories?.[0]}`)
-        .join("; "),
-      "All examples belong to the same category because they share surface form.",
-    ]).slice(0, 4);
-  }
-
-  if (question.type === "select-all") {
-    const incorrectChoices =
-      question.choices?.filter((choice) => !question.answers?.includes(choice)) ?? [];
-
-    return uniqueStringValues([
-      correctAnswer,
-      incorrectChoices.join("; ") || "Only the first listed option",
-      question.choices?.slice(0, 2).join("; ") ?? "All listed options",
-      "All listed options",
-    ]).slice(0, 4);
-  }
-
-  return uniqueStringValues([
-    correctAnswer,
-    "reinforcement",
-    "stimulus control",
-    "experimental control",
-  ]).slice(0, 4);
+    .filter((question) => {
+      const authoredMultipleChoice =
+        question.type === "multiple-choice" ||
+        question.type === "scenario" ||
+        !question.type;
+      return Boolean(
+        authoredMultipleChoice &&
+          question.choices?.includes(question.answer) &&
+          question.choices.filter((choice) => choice === question.answer).length === 1,
+      );
+    })
+    .map((question) => ({
+      ...question,
+      type: "multiple-choice" as const,
+    }));
 }
 
 function hashString(value: string) {
@@ -377,15 +266,20 @@ function writeStoredAnswer(sectionSlug: string, index: number, value: string) {
   }
 
   try {
-    const stored = window.localStorage.getItem(practiceAnswersKey(sectionSlug));
+    const key = practiceAnswersKey(sectionSlug);
+    const stored = window.localStorage.getItem(key);
     const answers = stored ? JSON.parse(stored) as Record<string, string> : {};
     answers[index] = value;
-    window.localStorage.setItem(practiceAnswersKey(sectionSlug), JSON.stringify(answers));
+    window.localStorage.setItem(key, JSON.stringify(answers));
+    persistProgressValueSoon(key, answers);
   } catch {
+    const key = practiceAnswersKey(sectionSlug);
+    const answers = { [index]: value };
     window.localStorage.setItem(
-      practiceAnswersKey(sectionSlug),
-      JSON.stringify({ [index]: value }),
+      key,
+      JSON.stringify(answers),
     );
+    persistProgressValueSoon(key, answers);
   }
 }
 
@@ -461,17 +355,22 @@ function writeStoredPracticeFeedback(
   }
 
   try {
-    const stored = window.localStorage.getItem(practiceFeedbackKey(sectionSlug));
+    const key = practiceFeedbackKey(sectionSlug);
+    const stored = window.localStorage.getItem(key);
     const feedback = stored
       ? JSON.parse(stored) as Record<string, PracticeFeedbackState>
       : {};
     feedback[index] = state;
-    window.localStorage.setItem(practiceFeedbackKey(sectionSlug), JSON.stringify(feedback));
+    window.localStorage.setItem(key, JSON.stringify(feedback));
+    persistProgressValueSoon(key, feedback);
   } catch {
+    const key = practiceFeedbackKey(sectionSlug);
+    const feedback = { [index]: state };
     window.localStorage.setItem(
-      practiceFeedbackKey(sectionSlug),
-      JSON.stringify({ [index]: state }),
+      key,
+      JSON.stringify(feedback),
     );
+    persistProgressValueSoon(key, feedback);
   }
 }
 
@@ -742,17 +641,17 @@ function QuestionResponseInput({
     const record = parseRecordResponse(response);
 
     return (
-      <div className={centeredWideResponseGroupClass}>
+      <div className="mx-auto mt-5 flex w-full max-w-4xl flex-col items-stretch gap-3">
         {question.pairs.map((pair) => (
           <label
-            className={`${wideResponseCardClass} grid gap-2 rounded-2xl border border-slate-200 bg-white p-4 text-sm font-bold text-slate-950 sm:grid-cols-[0.8fr_1.2fr] sm:items-center`}
+            className="grid min-h-20 w-full items-center gap-3 rounded-2xl border border-slate-200 bg-white p-4 text-sm font-bold text-slate-950 shadow-sm sm:grid-cols-[minmax(10rem,0.9fr)_minmax(16rem,1.35fr)] sm:gap-5"
             key={pair.term}
           >
-            <span>
+            <span className="flex min-h-10 items-center leading-6">
               <FormattedConceptText text={pair.term} />
             </span>
             <select
-              className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm font-bold text-slate-950"
+              className="min-h-11 w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm font-bold leading-6 text-slate-950 outline-none transition focus:border-blue-400 focus:ring-4 focus:ring-blue-100"
               disabled={disabled}
               onChange={(event) =>
                 updateRecordResponse(response, pair.term, event.target.value, onChange)
@@ -905,6 +804,39 @@ export function PracticeQuestionCard({
   const correct = isCorrect(question, response);
   const remediationAttemptLimit = getPracticeRemediationAttemptLimit(sectionSlug);
 
+  useEffect(() => {
+    if (mode !== "practice") {
+      return;
+    }
+
+    function syncSavedPracticeState() {
+      const savedAnswer = readStoredAnswer(sectionSlug, index);
+      const savedFeedback = readStoredPracticeFeedback(sectionSlug, index);
+
+      setResponse(savedAnswer);
+      setSubmitted(
+        Boolean(
+          savedAnswer &&
+            savedFeedback.submitted &&
+            savedFeedback.feedbackState !== "idle",
+        ),
+      );
+      setIncorrectAttempts(savedFeedback.incorrectAttempts);
+      setAnswerRevealVisible(savedFeedback.answerRevealVisible);
+    }
+
+    window.addEventListener(
+      "aba-mastered-remote-progress-hydrated",
+      syncSavedPracticeState,
+    );
+
+    return () =>
+      window.removeEventListener(
+        "aba-mastered-remote-progress-hydrated",
+        syncSavedPracticeState,
+      );
+  }, [index, mode, sectionSlug]);
+
   function updatePracticeResult(result: boolean) {
     if (mode !== "practice" || !totalQuestions || typeof window === "undefined") {
       return;
@@ -915,6 +847,7 @@ export function PracticeQuestionCard({
     const results = stored ? JSON.parse(stored) as Record<string, boolean> : {};
     results[index] = result;
     window.localStorage.setItem(key, JSON.stringify(results));
+    persistProgressValueSoon(key, results);
 
     const answeredCount = Object.keys(results).length;
     const correctCount = Object.values(results).filter(Boolean).length;
@@ -945,13 +878,17 @@ export function PracticeQuestionCard({
       {question.graphId ? (
         <GraphCard
           className="mt-5"
-          genericPanelLabels={shouldHideGraphMetadata(sectionSlug)}
+          genericPanelLabels={
+            mode === "practice" || shouldHideGraphMetadata(sectionSlug)
+          }
           graphId={question.graphId}
-          hideCallouts={shouldHideGraphMetadata(sectionSlug)}
-          hideDescription={shouldHideGraphMetadata(sectionSlug)}
-          monochrome={mode === "practice" && sectionSlug === "d"}
+          hideCallouts={mode === "practice" || shouldHideGraphMetadata(sectionSlug)}
+          hideDescription={
+            mode === "practice" || shouldHideGraphMetadata(sectionSlug)
+          }
+          monochrome={mode === "practice"}
           titleOverride={
-            shouldHideGraphMetadata(sectionSlug)
+            mode === "practice" || shouldHideGraphMetadata(sectionSlug)
               ? `Graph for Question ${index + 1}`
               : undefined
           }
@@ -1061,10 +998,12 @@ export function PracticeCompletionButton({
 
     sync();
     window.addEventListener("aba-mastered-practice-result", sync);
+    window.addEventListener("aba-mastered-remote-progress-hydrated", sync);
     window.addEventListener("storage", sync);
 
     return () => {
       window.removeEventListener("aba-mastered-practice-result", sync);
+      window.removeEventListener("aba-mastered-remote-progress-hydrated", sync);
       window.removeEventListener("storage", sync);
     };
   }, [sectionSlug, totalQuestions]);
@@ -1228,6 +1167,32 @@ export function MasteryCheckQuiz({
   );
   const { updateProgress } = useModuleProgress(sectionSlug);
 
+  useEffect(() => {
+    function syncSavedMasteryState() {
+      const snapshot =
+        readSavedModuleProgress(sectionSlug).snapshots["mastery-check"];
+
+      if (!snapshot?.submitted) {
+        return;
+      }
+
+      setResponses(snapshot.selectedAnswers ?? {});
+      setCompleted(Boolean(snapshot.submitted));
+      setRestoredQuestionOrder(snapshot.questionOrder);
+    }
+
+    window.addEventListener(
+      "aba-mastered-remote-progress-hydrated",
+      syncSavedMasteryState,
+    );
+
+    return () =>
+      window.removeEventListener(
+        "aba-mastered-remote-progress-hydrated",
+        syncSavedMasteryState,
+      );
+  }, [sectionSlug]);
+
   function updateAnswer(index: number, value: string) {
     setResponses((current) => ({
       ...current,
@@ -1293,8 +1258,10 @@ export function MasteryCheckQuiz({
           Mastery requirement
         </p>
         <p className="mt-2 text-base font-semibold leading-7 text-slate-950">
-          Complete the mastery questions, then submit your mastery
-          check. Passing score: {masteryThreshold}% for Module {sectionCode}.
+          Complete the mastery questions, then submit your mastery check.
+          <br />
+          <br />
+          Passing score: {masteryThreshold}% for Module {sectionCode}.
         </p>
       </div>
 

@@ -38,11 +38,25 @@ export type SavedModuleProgress = {
   updatedAt: string;
 };
 
+export type LastSavedProgressLocation = {
+  currentLocation: string;
+  sectionSlug: string;
+  updatedAt: string;
+};
+
+type PersistedProgressRow = {
+  progress_data: unknown;
+  progress_key: string;
+};
+
 const emptyProgress: ModuleProgress = {
   learnCompleted: false,
   practiceCompleted: false,
   masteryCompleted: false,
 };
+
+const remoteProgressStateTable = "user_progress_state";
+const remoteProgressHydratedEvent = "aba-mastered-remote-progress-hydrated";
 
 function progressKey(sectionSlug: string) {
   return `aba-mastered:tco6:${sectionSlug}:progress`;
@@ -50,6 +64,10 @@ function progressKey(sectionSlug: string) {
 
 function savedProgressKey(sectionSlug: string) {
   return `aba-mastered:tco6:${sectionSlug}:saved-progress`;
+}
+
+function lastSavedProgressLocationKey() {
+  return "aba-mastered:tco6:last-saved-progress-location";
 }
 
 function learnCompletionKey(sectionSlug: string) {
@@ -74,6 +92,120 @@ export function practiceAnswersKey(sectionSlug: string) {
 
 export function practiceResultsKey(sectionSlug: string) {
   return `aba-mastered:tco6:${sectionSlug}:practice-results`;
+}
+
+export function persistProgressValueSoon(
+  progressStorageKey: string,
+  progressData: unknown,
+) {
+  if (typeof window === "undefined") {
+    return;
+  }
+
+  void persistProgressValue(progressStorageKey, progressData);
+}
+
+async function persistProgressValue(
+  progressStorageKey: string,
+  progressData: unknown,
+) {
+  if (!isSupabaseConfigured) {
+    return;
+  }
+
+  try {
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    if (!user) {
+      return;
+    }
+
+    await supabase.from(remoteProgressStateTable).upsert(
+      {
+        progress_data: progressData ?? null,
+        progress_key: progressStorageKey,
+        updated_at: new Date().toISOString(),
+        user_id: user.id,
+      },
+      { onConflict: "user_id,progress_key" },
+    );
+  } catch {
+    // Local progress remains the offline fallback if remote sync is unavailable.
+  }
+}
+
+export async function hydrateUserProgressFromSupabase() {
+  if (typeof window === "undefined" || !isSupabaseConfigured) {
+    return 0;
+  }
+
+  try {
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    if (!user) {
+      return 0;
+    }
+
+    const { data, error } = await supabase
+      .from(remoteProgressStateTable)
+      .select("progress_key, progress_data")
+      .eq("user_id", user.id);
+
+    if (error || !data) {
+      return 0;
+    }
+
+    const rows = data as PersistedProgressRow[];
+
+    rows.forEach((row) => {
+      if (typeof row.progress_key === "string") {
+        window.localStorage.setItem(
+          row.progress_key,
+          JSON.stringify(row.progress_data),
+        );
+
+        const moduleProgressMatch = row.progress_key.match(
+          /^aba-mastered:tco6:([^:]+):progress$/,
+        );
+        if (moduleProgressMatch) {
+          window.dispatchEvent(
+            new CustomEvent("aba-mastered-progress", {
+              detail: {
+                progress: row.progress_data as ModuleProgress,
+                sectionSlug: moduleProgressMatch[1],
+              },
+            }),
+          );
+        }
+      }
+    });
+
+    window.dispatchEvent(
+      new CustomEvent(remoteProgressHydratedEvent, {
+        detail: { count: rows.length },
+      }),
+    );
+    window.dispatchEvent(new Event("aba-mastered-progress-saved"));
+    window.dispatchEvent(new Event("aba-mastered-progress"));
+    window.dispatchEvent(new Event("aba-mastered-learn-progress"));
+    window.dispatchEvent(new Event("aba-mastered-daily-learn-progress"));
+
+    return rows.length;
+  } catch {
+    return 0;
+  }
+}
+
+export function ProgressStorageHydrator() {
+  useEffect(() => {
+    void hydrateUserProgressFromSupabase();
+  }, []);
+
+  return null;
 }
 
 function safeReadRecord(key?: string) {
@@ -105,7 +237,9 @@ export function readProgress(sectionSlug: string): ModuleProgress {
 }
 
 function writeProgress(sectionSlug: string, progress: ModuleProgress) {
-  window.localStorage.setItem(progressKey(sectionSlug), JSON.stringify(progress));
+  const key = progressKey(sectionSlug);
+  window.localStorage.setItem(key, JSON.stringify(progress));
+  persistProgressValueSoon(key, progress);
   window.dispatchEvent(
     new CustomEvent("aba-mastered-progress", {
       detail: { sectionSlug, progress },
@@ -192,6 +326,7 @@ function writeDailyCompletedLearnLesson(sectionSlug: string, lessonSlug: string)
     dailyLearnCompletionKey(),
     JSON.stringify(completedToday),
   );
+  persistProgressValueSoon(dailyLearnCompletionKey(), completedToday);
   window.dispatchEvent(
     new CustomEvent("aba-mastered-daily-learn-progress", {
       detail: { completedLessons: completedToday },
@@ -204,10 +339,9 @@ function writeCompletedLearnLessonSlugs(
   lessonSlugs: string[],
 ) {
   const uniqueLessonSlugs = Array.from(new Set(lessonSlugs));
-  window.localStorage.setItem(
-    learnCompletionKey(sectionSlug),
-    JSON.stringify(uniqueLessonSlugs),
-  );
+  const key = learnCompletionKey(sectionSlug);
+  window.localStorage.setItem(key, JSON.stringify(uniqueLessonSlugs));
+  persistProgressValueSoon(key, uniqueLessonSlugs);
   window.dispatchEvent(
     new CustomEvent("aba-mastered-learn-progress", {
       detail: { completedLessons: uniqueLessonSlugs, sectionSlug },
@@ -317,6 +451,74 @@ export function readSavedModuleProgress(sectionSlug: string): SavedModuleProgres
   }
 }
 
+function isDashboardModuleLocation(location?: string) {
+  return Boolean(location?.startsWith("/dashboard/tco-6/"));
+}
+
+function writeLastSavedProgressLocation(
+  sectionSlug: string,
+  currentLocation: string,
+  updatedAt: string,
+) {
+  if (
+    typeof window === "undefined" ||
+    !isDashboardModuleLocation(currentLocation)
+  ) {
+    return;
+  }
+
+  const lastSavedLocation: LastSavedProgressLocation = {
+    currentLocation,
+    sectionSlug,
+    updatedAt,
+  };
+
+  window.localStorage.setItem(
+    lastSavedProgressLocationKey(),
+    JSON.stringify(lastSavedLocation),
+  );
+  persistProgressValueSoon(lastSavedProgressLocationKey(), lastSavedLocation);
+}
+
+export function readMostRecentSavedProgressLocation(sectionSlugs: string[]) {
+  if (typeof window === "undefined") {
+    return null;
+  }
+
+  try {
+    const stored = window.localStorage.getItem(lastSavedProgressLocationKey());
+    const parsed = stored
+      ? JSON.parse(stored) as Partial<LastSavedProgressLocation>
+      : null;
+
+    if (
+      parsed?.currentLocation &&
+      parsed.sectionSlug &&
+      sectionSlugs.includes(parsed.sectionSlug) &&
+      isDashboardModuleLocation(parsed.currentLocation)
+    ) {
+      return parsed as LastSavedProgressLocation;
+    }
+  } catch {
+    // Fall back to existing per-module snapshots below.
+  }
+
+  const savedLocations = sectionSlugs
+    .flatMap((sectionSlug) => {
+      const savedProgress = readSavedModuleProgress(sectionSlug);
+      return Object.values(savedProgress.snapshots)
+        .filter((snapshot) => isDashboardModuleLocation(snapshot.currentLocation))
+        .map((snapshot) => ({
+          currentLocation: snapshot.currentLocation,
+          sectionSlug,
+          updatedAt: snapshot.updatedAt,
+        }));
+    })
+    .sort((left, right) => right.updatedAt.localeCompare(left.updatedAt));
+
+  return savedLocations[0] ?? null;
+}
+
 export function saveModuleProgressSnapshot(
   sectionSlug: string,
   snapshot: Omit<SavedProgressSnapshot, "masteryProgress" | "updatedAt">,
@@ -340,7 +542,10 @@ export function saveModuleProgressSnapshot(
     updatedAt,
   };
 
-  window.localStorage.setItem(savedProgressKey(sectionSlug), JSON.stringify(nextState));
+  const key = savedProgressKey(sectionSlug);
+  window.localStorage.setItem(key, JSON.stringify(nextState));
+  persistProgressValueSoon(key, nextState);
+  writeLastSavedProgressLocation(sectionSlug, snapshot.currentLocation, updatedAt);
   window.dispatchEvent(
     new CustomEvent("aba-mastered-progress-saved", {
       detail: { sectionSlug, savedProgress: nextState },
@@ -443,7 +648,7 @@ function hasDeveloperPreviewAccess(
   // normal Learn -> Practice -> Mastery Check progression.
   return (
     process.env.NODE_ENV === "development" &&
-    ["a", "b", "c", "d"].includes(sectionSlug) &&
+    ["a", "b", "c", "d", "e", "f", "g", "h", "i"].includes(sectionSlug) &&
     (activity === "practice" || activity === "mastery-check")
   );
 }

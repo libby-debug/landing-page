@@ -27,11 +27,12 @@ import { getMiniLessons } from "./tco-6/mini-lesson-data";
 import {
   calculateSavedModuleProgressPercent,
   countTodaysCompletedLearnLessons,
+  readMostRecentSavedProgressLocation,
   useModuleProgress,
 } from "./tco-6/progression";
 
 const developerShortcutSections = tcoSections.filter((section) =>
-  ["a", "b", "c", "d"].includes(section.slug),
+  ["a", "b", "c", "d", "e", "f", "g", "h", "i"].includes(section.slug),
 );
 
 const dashboardGradientTextClass =
@@ -58,6 +59,9 @@ function DashboardContent() {
   const [progressLoaded, setProgressLoaded] = useState(false);
   const [moduleProgress, setModuleProgress] = useState<Record<string, number>>(
     {},
+  );
+  const [lastSavedLocation, setLastSavedLocation] = useState<string | null>(
+    null,
   );
   const [todaysCompletedLessons, setTodaysCompletedLessons] = useState(0);
 
@@ -104,6 +108,11 @@ function DashboardContent() {
 
     function syncSavedModuleProgress() {
       setTodaysCompletedLessons(countTodaysCompletedLearnLessons());
+      setLastSavedLocation(
+        readMostRecentSavedProgressLocation(
+          tcoSections.map((section) => section.slug),
+        )?.currentLocation ?? null,
+      );
       void loadSavedModuleProgress();
     }
 
@@ -150,11 +159,17 @@ function DashboardContent() {
       0,
     ) / tcoSections.length,
   );
-  const continueSection =
-    tcoSections
-      .filter((section) => getSectionProgress(section) < masteryThreshold)
-      .sort((a, b) => getSectionProgress(b) - getSectionProgress(a))[0] ??
+  const firstIncompleteSection =
+    tcoSections.find((section) => getSectionProgress(section) < masteryThreshold) ??
     tcoSections[0];
+  const lastSavedSection = lastSavedLocation
+    ? tcoSections.find((section) =>
+        lastSavedLocation.startsWith(`/dashboard/tco-6/${section.slug}`),
+      )
+    : undefined;
+  const continueSection = lastSavedSection ?? firstIncompleteSection;
+  const continueHref =
+    lastSavedLocation ?? `/dashboard/tco-6/${firstIncompleteSection.slug}`;
   const continueSectionProgress = getSectionProgress(continueSection);
   const startedCount = tcoSections.filter(
     (section) => getSectionProgress(section) > 0,
@@ -294,7 +309,7 @@ function DashboardContent() {
           </div>
 
           <Link
-            href={`/dashboard/tco-6/${continueSection.slug}`}
+            href={continueHref}
             className={`inline-block rounded-xl ${dashboardGradientClass} px-5 py-3 text-center text-sm font-semibold text-white shadow-sm shadow-teal-200/60 transition hover:opacity-90`}
           >
             Continue
@@ -462,7 +477,8 @@ function TcoSectionCard({
 }) {
   const { progress: savedProgress } = useModuleProgress(section.slug);
   const showDeveloperAccess =
-    process.env.NODE_ENV === "development" && ["a", "b", "c", "d"].includes(section.slug);
+    process.env.NODE_ENV === "development" &&
+    ["a", "b", "c", "d", "e", "f", "g", "h", "i"].includes(section.slug);
   const completed = savedProgress.masteryCompleted;
   const status = getMasteryStatus(progressPercent);
   const displayedStatus = completed ? "Completed" : status;

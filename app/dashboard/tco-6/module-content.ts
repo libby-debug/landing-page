@@ -33,7 +33,7 @@ function replaceSortingPracticeQuestions(questions: QuestionContent[]) {
 const sectionAMiniLessons: MiniLessonContent[] = [
   {
     slug: "what-is-behavior-analysis",
-    label: "A1",
+    label: "A.1",
     title: "What Is Behavior Analysis?",
     body: [
       "Behavior analysis studies [behavior-environment relations].",
@@ -57,7 +57,7 @@ const sectionAMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "prediction-vs-control",
-    label: "A2",
+    label: "A.2",
     title: "Prediction vs Control",
     body: [
       "Prediction means behavior reliably changes with [other events].",
@@ -75,7 +75,7 @@ const sectionAMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "determinism",
-    label: "A3",
+    label: "A.3",
     title: "Determinism",
     body: [
       "Determinism assumes behavior is [lawful].",
@@ -99,7 +99,7 @@ const sectionAMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "selectionism",
-    label: "A4",
+    label: "A.4",
     title: "Selectionism",
     body: [
       "Selectionism explains behavior through [selection by consequences across history].",
@@ -116,7 +116,7 @@ const sectionAMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "empiricism",
-    label: "A5",
+    label: "A.5",
     title: "Empiricism",
     body: [
       "Empiricism relies on [objective observation and data].",
@@ -140,7 +140,7 @@ const sectionAMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "parsimony",
-    label: "A6",
+    label: "A.6",
     title: "Parsimony",
     body: [
       "Parsimony starts with [the simplest adequate explanation].",
@@ -164,7 +164,7 @@ const sectionAMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "pragmatism",
-    label: "A7",
+    label: "A.7",
     title: "Pragmatism",
     body: [
       "Pragmatism asks whether an explanation [works in practice].",
@@ -182,7 +182,7 @@ const sectionAMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "radical-behaviorism",
-    label: "A8",
+    label: "A.8",
     title: "Radical Behaviorism",
     body: [
       "Radical behaviorism analyzes [public behavior and private events].",
@@ -206,7 +206,7 @@ const sectionAMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "private-events",
-    label: "A9",
+    label: "A.9",
     title: "Private Events",
     body: [
       "Private events are [accessible mainly to the person experiencing them].",
@@ -224,7 +224,7 @@ const sectionAMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "mentalism-vs-behaviorism",
-    label: "A10",
+    label: "A.10",
     title: "Mentalism vs Behaviorism",
     body: [
       "Mentalism explains behavior by [hypothetical inner causes].",
@@ -244,7 +244,7 @@ const sectionAMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "experimental-analysis-of-behavior",
-    label: "A11",
+    label: "A.11",
     title: "Experimental Analysis of Behavior (EAB)",
     body: [
       "EAB is the [basic research] branch of behavior analysis.",
@@ -268,7 +268,7 @@ const sectionAMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "applied-behavior-analysis",
-    label: "A12",
+    label: "A.12",
     title: "Applied Behavior Analysis (ABA)",
     body: [
       "Applied Behavior Analysis (ABA) applies behavioral principles to [socially significant behavior].",
@@ -293,7 +293,7 @@ const sectionAMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "dimensions-of-aba",
-    label: "A13",
+    label: "A.13",
     title: "What Are the 7 Dimensions of ABA?",
     body: [
       "The 7 dimensions define [high-quality ABA practice].",
@@ -314,7 +314,7 @@ const sectionAMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "applied-dimension",
-    label: "A14",
+    label: "A.14",
     title: "Applied",
     body: [
       "Applied means the target has [social importance].",
@@ -338,7 +338,7 @@ const sectionAMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "behavioral-dimension",
-    label: "A15",
+    label: "A.15",
     title: "Behavioral",
     body: [
       "Behavioral means the target is [observable and measurable behavior].",
@@ -363,7 +363,7 @@ const sectionAMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "analytic-dimension",
-    label: "A16",
+    label: "A.16",
     title: "Analytic",
     body: [
       "Analytic means data show [experimental control].",
@@ -388,7 +388,7 @@ const sectionAMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "technological-dimension",
-    label: "A17",
+    label: "A.17",
     title: "Technological",
     body: [
       "Technological means procedures are [clear enough to replicate].",
@@ -409,7 +409,7 @@ const sectionAMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "conceptually-systematic-dimension",
-    label: "A18",
+    label: "A.18",
     title: "Conceptually Systematic",
     body: [
       "Conceptually systematic means procedures are linked to [behavior-analytic principles].",
@@ -434,7 +434,7 @@ const sectionAMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "effective-dimension",
-    label: "A19",
+    label: "A.19",
     title: "Effective",
     body: [
       "Effective means behavior change is [large enough to matter].",
@@ -459,7 +459,7 @@ const sectionAMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "generality-dimension",
-    label: "A20",
+    label: "A.20",
     title: "Generality",
     body: [
       "Generality means behavior change [maintains or transfers].",
@@ -484,7 +484,7 @@ const sectionAMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "applied-vs-behavioral",
-    label: "A21",
+    label: "A.21",
     title: "Applied vs Behavioral",
     body: [
       "Applied means the goal is [socially significant].",
@@ -501,7 +501,7 @@ const sectionAMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "analytic-vs-technological",
-    label: "A22",
+    label: "A.22",
     title: "Analytic vs Technological",
     body: [
       "Analytic means data show [experimental control].",
@@ -519,7 +519,7 @@ const sectionAMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "technological-vs-conceptually-systematic",
-    label: "A23",
+    label: "A.23",
     title: "Technological vs Conceptually Systematic",
     body: [
       "Technological asks whether procedures are [replicable].",
@@ -536,7 +536,7 @@ const sectionAMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "effective-vs-generality",
-    label: "A24",
+    label: "A.24",
     title: "Effective vs Generality",
     body: [
       "Effective means behavior change is [large enough to matter].",
@@ -555,7 +555,7 @@ const sectionAMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "dimension-discrimination-practice",
-    label: "A25",
+    label: "A.25",
     title: "Dimension Discrimination Practice",
     body: [
       "Dimension questions often use similar wording.",
@@ -574,10 +574,540 @@ const sectionAMiniLessons: MiniLessonContent[] = [
   },
 ];
 
+const sectionAExpandedMiniLessons: MiniLessonContent[] = [
+  {
+    slug: "methodological-vs-radical-behaviorism",
+    label: "A.3",
+    title: "Methodological vs Radical Behaviorism",
+    body: [
+      "Methodological behaviorism emphasizes [publicly observable behavior].",
+      "Radical behaviorism includes [private events] while still explaining behavior through behavior-environment relations.",
+    ],
+    visual: {
+      type: "comparison",
+      leftTitle: "Methodological behaviorism",
+      leftText: "Public behavior only",
+      rightTitle: "Radical behaviorism",
+      rightText: "Public behavior plus [private events]",
+      cue: "Both avoid mentalism; radical behaviorism treats private events as behavior to be explained.",
+    },
+  },
+  {
+    slug: "environmental-determinism",
+    label: "A.2",
+    title: "Environmental Determinism",
+    body: [
+      "Environmental determinism means behavior occurs in [lawful relations with environmental variables].",
+      "It does not mean one event always causes behavior in a simple one-to-one way.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which statement best reflects environmental determinism?",
+      choices: [
+        "Behavior is influenced by lawful environmental relations across history and context.",
+        "Behavior is random until personality variables are measured.",
+        "Behavior is caused only by inner thoughts.",
+        "Environmental events matter only after a diagnosis is assigned.",
+      ],
+      answer:
+        "Behavior is influenced by lawful environmental relations across history and context.",
+      hint:
+        "Look for [lawful environmental relations], not randomness or inner causes.",
+      feedback:
+        "Environmental determinism supports studying behavior as [lawful and analyzable].",
+    },
+  },
+  {
+    slug: "philosophic-doubt",
+    label: "A.2",
+    title: "Philosophic Doubt",
+    body: [
+      "Philosophic doubt means conclusions remain [open to revision].",
+      "New data can strengthen, refine, or replace an explanation.",
+    ],
+    visual: {
+      type: "fill-blank",
+      prompt: "Complete the philosophic doubt cue.",
+      sentence: "Philosophic doubt keeps conclusions open to ____ when new data appear.",
+      answer: "revision",
+      feedback:
+        "Philosophic doubt means scientific conclusions are [tentative and revisable].",
+    },
+  },
+  {
+    slug: "selectionism-levels",
+    label: "A.2",
+    title: "Selectionism Across Levels",
+    body: [
+      "Selectionism explains behavior through [selection by consequences].",
+      "Selection can occur across phylogenic, ontogenic, and cultural histories.",
+    ],
+    visual: {
+      type: "matching",
+      prompt: "Match each selection level to its cue.",
+      pairs: [
+        { term: "Phylogenic", definition: "Species history across evolution." },
+        { term: "Ontogenic", definition: "Individual learning history." },
+        { term: "Cultural", definition: "Practices selected across groups." },
+      ],
+    },
+  },
+  {
+    slug: "assumption-discrimination-grid",
+    label: "A.2",
+    title: "Assumption Discrimination",
+    body: [
+      "Philosophical assumptions are easy to confuse because they all support scientific reasoning.",
+      "Discriminate by asking whether the cue is about [data], [simplicity], [usefulness], [lawfulness], or [revision].",
+    ],
+    visual: {
+      type: "matching",
+      prompt: "Match each assumption to its fastest cue.",
+      pairs: [
+        { term: "Empiricism", definition: "Objective observation and data." },
+        { term: "Parsimony", definition: "Simplest adequate explanation." },
+        { term: "Pragmatism", definition: "Useful for prediction and action." },
+        { term: "Philosophic doubt", definition: "Open to revision with new data." },
+      ],
+    },
+  },
+  {
+    slug: "behaviorism-discipline",
+    label: "A.4",
+    title: "Behaviorism as Philosophy",
+    body: [
+      "Behaviorism is the [philosophy] of the science of behavior.",
+      "It asks how behavior should be understood, explained, and studied.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which statement best describes behaviorism?",
+      choices: [
+        "The philosophical foundation for explaining behavior scientifically.",
+        "Only direct service delivery with clients.",
+        "Only laboratory research on reinforcement schedules.",
+        "A data display method used in practice.",
+      ],
+      answer:
+        "The philosophical foundation for explaining behavior scientifically.",
+      hint:
+        "Behaviorism is the philosophical lens, not the applied service branch.",
+      feedback:
+        "Behaviorism is the [philosophy] underlying behavior analysis.",
+    },
+  },
+  {
+    slug: "eab-aba-practice-map",
+    label: "A.4",
+    title: "EAB, ABA, and Professional Practice",
+    body: [
+      "Experimental Analysis of Behavior (EAB) is [basic research].",
+      "Applied Behavior Analysis (ABA) applies principles to [socially significant behavior].",
+      "Professional practice is the [delivery of behavior-analytic services].",
+    ],
+    visual: {
+      type: "sorting",
+      prompt: "Sort each activity by discipline.",
+      categories: ["EAB/basic research", "ABA/professional practice"],
+      items: [
+        { label: "Laboratory study of reinforcement schedules", category: "EAB/basic research" },
+        { label: "Teaching communication in a school program", category: "ABA/professional practice" },
+        { label: "Testing behavior principles under controlled conditions", category: "EAB/basic research" },
+        { label: "Training caregivers to implement a behavior plan", category: "ABA/professional practice" },
+      ],
+    },
+  },
+  {
+    slug: "description-prediction-control",
+    label: "A.1",
+    title: "Description, Prediction, and Control",
+    body: [
+      "Description identifies [what behavior occurs].",
+      "Prediction identifies [reliable covariation].",
+      "Control shows behavior changes when [a variable is manipulated].",
+    ],
+    visual: {
+      type: "flow",
+      prompt: "Order the goals of science.",
+      steps: [
+        "Description: measure what occurs",
+        "Prediction: identify reliable relations",
+        "Control: manipulate variables to change behavior",
+      ],
+      feedback:
+        "Behavior analysis moves from [description] to [prediction] to [control].",
+    },
+  },
+  {
+    slug: "explanation-vs-prediction",
+    label: "A.1",
+    title: "Explanation vs Prediction",
+    body: [
+      "Prediction says behavior [covaries with another event].",
+      "Explanation requires a coherent account of [why the relation occurs] within behavior-environment relations.",
+    ],
+    visual: {
+      type: "comparison",
+      leftTitle: "Prediction",
+      leftText: "When X occurs, behavior is more likely",
+      rightTitle: "Explanation",
+      rightText: "Why the relation fits behavior principles",
+      cue: "Prediction can occur without a full explanation.",
+    },
+  },
+  {
+    slug: "correlation-vs-causation",
+    label: "A.1",
+    title: "Correlation vs Causation",
+    body: [
+      "Correlation means events [covary].",
+      "Causation in behavior analysis requires [experimental control].",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "A BCBA notices problem behavior is higher on noisy days but has not manipulated noise. What has been shown?",
+      choices: ["Correlation or prediction", "Experimental control", "Technological replication", "Generality"],
+      answer: "Correlation or prediction",
+      hint:
+        "Ask whether a variable was manipulated or only observed with behavior.",
+      feedback:
+        "Covariation supports [prediction], but causation requires [experimental control].",
+    },
+  },
+  {
+    slug: "objective-observation",
+    label: "A.2",
+    title: "Objective Observation",
+    body: [
+      "Objective observation means recording events as [observable and measurable].",
+      "It reduces reliance on labels, impressions, or inferred states.",
+    ],
+    visual: {
+      type: "sorting",
+      prompt: "Sort each statement by observation quality.",
+      categories: ["Objective", "Needs revision"],
+      items: [
+        { label: "Left seat for 12 seconds after worksheet delivery", category: "Objective" },
+        { label: "Was manipulative during math", category: "Needs revision" },
+        { label: "Said 'help' within 5 seconds of the task direction", category: "Objective" },
+        { label: "Had a bad attitude", category: "Needs revision" },
+      ],
+    },
+  },
+  {
+    slug: "replication-scientific-thinking",
+    label: "A.1",
+    title: "Replication",
+    body: [
+      "Replication means an effect is [reproduced].",
+      "Replication strengthens confidence that behavior change is not accidental or limited to one situation.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which example best reflects replication?",
+      choices: [
+        "The intervention effect occurs again when the condition is reintroduced.",
+        "A single data point improves after one session.",
+        "A behavior is described but not measured.",
+        "A procedure is popular with staff.",
+      ],
+      answer:
+        "The intervention effect occurs again when the condition is reintroduced.",
+      hint:
+        "Replication means the effect happens again under relevant conditions.",
+      feedback:
+        "Replication strengthens confidence through [repeated demonstration].",
+    },
+  },
+  {
+    slug: "measurement-protects-science",
+    label: "A.1",
+    title: "Why Measurement Matters",
+    body: [
+      "Measurement turns behavior change into [observable evidence].",
+      "Without measurement, decisions drift toward opinion, preference, or authority.",
+    ],
+    visual: {
+      type: "select-all",
+      prompt: "Select reasons measurement supports scientific practice.",
+      choices: [
+        { label: "It allows data-based decisions.", correct: true },
+        { label: "It helps detect whether intervention is effective.", correct: true },
+        { label: "It replaces the need for operational definitions.", correct: false },
+        { label: "It helps evaluate functional relations.", correct: true },
+      ],
+      feedback:
+        "Measurement supports [data-based decisions] and protects against opinion-only practice.",
+    },
+  },
+  {
+    slug: "functional-relations-foundation",
+    label: "A.1",
+    title: "Functional Relations",
+    body: [
+      "A functional relation means behavior changes because of [systematic manipulation of a variable].",
+      "It is stronger than noticing that two events happen together.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which example best supports a functional relation?",
+      choices: [
+        "Behavior changes repeatedly when the intervention is introduced and withdrawn.",
+        "Behavior is high on days when the room is loud.",
+        "Caregivers report behavior is improving.",
+        "The behavior is socially important.",
+      ],
+      answer:
+        "Behavior changes repeatedly when the intervention is introduced and withdrawn.",
+      hint:
+        "Look for systematic manipulation plus behavior change.",
+      feedback:
+        "Functional relations require [condition-linked behavior change].",
+    },
+  },
+  {
+    slug: "applied-dimension-expanded",
+    label: "A.5",
+    title: "Applied Dimension: Examples and Nonexamples",
+    body: [
+      "Applied targets are selected because they are [socially significant].",
+      "The exam trap is confusing an easy-to-measure behavior with an important behavior.",
+    ],
+    visual: {
+      type: "example",
+      example:
+        "Teaching a learner to request a break because it reduces dangerous elopement.",
+      nonexample:
+        "Measuring pencil taps because they are easy to count but not clinically important.",
+    },
+  },
+  {
+    slug: "behavioral-dimension-expanded",
+    label: "A.5",
+    title: "Behavioral Dimension: Examples and Nonexamples",
+    body: [
+      "Behavioral targets must be [observable and measurable].",
+      "Replace labels with response definitions that can be counted, timed, or otherwise measured.",
+    ],
+    visual: {
+      type: "example",
+      example:
+        "Raises hand above shoulder before speaking during group instruction.",
+      nonexample: "Shows better self-esteem during class.",
+    },
+  },
+  {
+    slug: "analytic-dimension-expanded",
+    label: "A.5",
+    title: "Analytic Dimension: Examples and Nonexamples",
+    body: [
+      "Analytic work demonstrates [experimental control].",
+      "A behavior change alone is not analytic unless the data support a functional relation.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which scenario best reflects the analytic dimension?",
+      choices: [
+        "Behavior changes only when the intervention is systematically introduced across tiers.",
+        "A parent reports the child liked the intervention.",
+        "The target behavior is socially important.",
+        "The procedure is written in detailed steps.",
+      ],
+      answer:
+        "Behavior changes only when the intervention is systematically introduced across tiers.",
+      hint:
+        "Analytic asks whether the data show experimental control.",
+      feedback:
+        "Analytic means the data support [a functional relation].",
+    },
+  },
+  {
+    slug: "technological-dimension-expanded",
+    label: "A.5",
+    title: "Technological Dimension: Examples and Nonexamples",
+    body: [
+      "Technological procedures are [clear enough to replicate].",
+      "Vague phrases like 'prompt as needed' usually weaken this dimension.",
+    ],
+    visual: {
+      type: "select-all",
+      prompt: "Select details that strengthen technological writing.",
+      choices: [
+        { label: "When to present the antecedent", correct: true },
+        { label: "Exact response definition", correct: true },
+        { label: "Prompting and consequence steps", correct: true },
+        { label: "A statement that the procedure should feel natural", correct: false },
+      ],
+      feedback:
+        "Technological writing includes [clear procedural steps] that others can replicate.",
+    },
+  },
+  {
+    slug: "conceptually-systematic-expanded",
+    label: "A.5",
+    title: "Conceptually Systematic: Examples and Nonexamples",
+    body: [
+      "Conceptually systematic procedures are tied to [behavior-analytic principles].",
+      "A procedure can be technological but not conceptually systematic if it lacks a behavioral rationale.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which statement is most conceptually systematic?",
+      choices: [
+        "Differential reinforcement will strengthen functional communication by arranging reinforcement for the alternative response.",
+        "Use the program because it is popular.",
+        "Follow the steps exactly as written.",
+        "The target matters to the family.",
+      ],
+      answer:
+        "Differential reinforcement will strengthen functional communication by arranging reinforcement for the alternative response.",
+      hint:
+        "Look for a connection to behavior-analytic principles.",
+      feedback:
+        "Conceptually systematic means the procedure is [principle-based].",
+    },
+  },
+  {
+    slug: "effective-dimension-expanded",
+    label: "A.5",
+    title: "Effective Dimension: Examples and Nonexamples",
+    body: [
+      "Effective change is [large enough to matter].",
+      "Small data movement may not be effective if daily life does not improve.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which example best demonstrates effectiveness?",
+      choices: [
+        "Aggression drops from 20 episodes per week to 1 and family routines resume.",
+        "Aggression drops from 20 episodes per week to 19.",
+        "The procedure is linked to reinforcement.",
+        "The behavior is measured with frequency.",
+      ],
+      answer:
+        "Aggression drops from 20 episodes per week to 1 and family routines resume.",
+      hint:
+        "Effective asks whether the size of change is meaningful.",
+      feedback:
+        "Effective means behavior change has [practical importance].",
+    },
+  },
+  {
+    slug: "generality-dimension-expanded",
+    label: "A.5",
+    title: "Generality Dimension: Examples and Nonexamples",
+    body: [
+      "Generality means change [maintains or transfers].",
+      "Look for new settings, people, materials, related behaviors, or time after teaching ends.",
+    ],
+    visual: {
+      type: "select-all",
+      prompt: "Select examples of generality.",
+      choices: [
+        { label: "The skill occurs with a new caregiver.", correct: true },
+        { label: "The skill maintains after intervention is faded.", correct: true },
+        { label: "The skill occurs only during prompted teaching trials.", correct: false },
+        { label: "A related untrained response improves.", correct: true },
+      ],
+      feedback:
+        "Generality includes [maintenance], [setting/person transfer], and related behavior change.",
+    },
+  },
+  {
+    slug: "dimension-scenario-sort",
+    label: "A.5",
+    title: "7 Dimensions Scenario Sort",
+    body: [
+      "Dimension scenarios require identifying the [critical feature].",
+      "Do not choose a dimension because the scenario sounds generally positive.",
+    ],
+    visual: {
+      type: "sorting",
+      prompt: "Sort each scenario by the dimension cue.",
+      categories: ["Social/measurement", "Control/replication"],
+      items: [
+        { label: "Target improves independence", category: "Social/measurement" },
+        { label: "Response is directly countable", category: "Social/measurement" },
+        { label: "Data show intervention caused change", category: "Control/replication" },
+        { label: "Procedure can be implemented by another clinician", category: "Control/replication" },
+      ],
+    },
+  },
+  {
+    slug: "science-protects-clients",
+    label: "A.1",
+    title: "Scientific Rigor Protects Clients",
+    body: [
+      "Scientific rigor protects clients by requiring [evidence before confidence].",
+      "Measurement, replication, and functional relations reduce ineffective or harmful practice.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Why does scientific rigor matter ethically?",
+      choices: [
+        "It reduces harm by requiring data before claiming that treatment works.",
+        "It makes client preference unnecessary.",
+        "It replaces informed consent.",
+        "It allows clinicians to avoid collaboration.",
+      ],
+      answer:
+        "It reduces harm by requiring data before claiming that treatment works.",
+      hint:
+        "Connect science to client protection and treatment benefit.",
+      feedback:
+        "Scientific rigor supports ethical care by requiring [evidence before confidence].",
+    },
+  },
+  {
+    slug: "evidence-based-foundations",
+    label: "A.1",
+    title: "Evidence-Based Practice Foundations",
+    body: [
+      "Evidence-based practice depends on [behavior-analytic principles, data, client values, and context].",
+      "The philosophical foundation matters because it keeps practice observable, testable, and revisable.",
+    ],
+    visual: {
+      type: "matching",
+      prompt: "Match each foundation to its ethical value.",
+      pairs: [
+        { term: "Empiricism", definition: "Use objective data before deciding." },
+        { term: "Philosophic doubt", definition: "Revise plans when evidence changes." },
+        { term: "Pragmatism", definition: "Use explanations that improve action." },
+        { term: "Parsimony", definition: "Avoid unnecessary assumptions." },
+      ],
+    },
+  },
+  {
+    slug: "socially-significant-behavior",
+    label: "A.5",
+    title: "Socially Significant Behavior",
+    body: [
+      "Socially significant behavior improves [health, independence, access, safety, or quality of life].",
+      "It links the applied dimension to ethical client-centered practice.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which target is most socially significant?",
+      choices: [
+        "Using a communication response to access help instead of severe problem behavior",
+        "Completing a worksheet color preference survey because it is easy to graph",
+        "Sitting in a preferred chair selected by staff",
+        "Repeating a phrase that has no use outside teaching sessions",
+      ],
+      answer:
+        "Using a communication response to access help instead of severe problem behavior",
+      hint:
+        "Look for meaningful improvement in safety, access, independence, or quality of life.",
+      feedback:
+        "Social significance is about [meaningful benefit in the learner's life].",
+    },
+  },
+];
+
 const sectionCExpandedMiniLessons: MiniLessonContent[] = [
   {
     slug: "operational-definitions-and-measurement",
-    label: "C1",
+    label: "C.1",
     title: "Operational Definitions and Measurement",
     body: [
       "An operational definition describes behavior in [observable and measurable terms].",
@@ -591,7 +1121,7 @@ const sectionCExpandedMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "direct-indirect-permanent-product",
-    label: "C2",
+    label: "C.2",
     title: "Direct, Indirect, and Permanent Product Measurement",
     body: [
       "Direct measurement observes [the behavior as it occurs].",
@@ -611,7 +1141,7 @@ const sectionCExpandedMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "frequency-rate-duration",
-    label: "C3",
+    label: "C.3",
     title: "Frequency, Rate, and Duration",
     body: [
       "Frequency counts [how many responses occurred].",
@@ -629,7 +1159,7 @@ const sectionCExpandedMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "latency-vs-irt",
-    label: "C4",
+    label: "C.4",
     title: "Latency vs IRT",
     body: [
       "Latency measures [time from stimulus to response].",
@@ -646,7 +1176,7 @@ const sectionCExpandedMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "continuous-measurement-procedures",
-    label: "C5",
+    label: "C.5",
     title: "Continuous Measurement Procedures",
     body: [
       "Continuous measurement attempts to capture [every response or response dimension].",
@@ -667,7 +1197,7 @@ const sectionCExpandedMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "discontinuous-measurement-procedures",
-    label: "C6",
+    label: "C.6",
     title: "Discontinuous Measurement Procedures",
     body: [
       "Discontinuous measurement samples behavior during [observation intervals].",
@@ -684,7 +1214,7 @@ const sectionCExpandedMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "momentary-time-sampling",
-    label: "C7",
+    label: "C.7",
     title: "Momentary Time Sampling",
     body: [
       "Momentary time sampling records whether behavior occurs [at the instant the interval ends].",
@@ -704,7 +1234,7 @@ const sectionCExpandedMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "trial-by-trial-recording",
-    label: "C8",
+    label: "C.8",
     title: "Trial-by-Trial Recording",
     body: [
       "Trial-by-trial recording scores [whether each teaching trial is correct or incorrect].",
@@ -720,7 +1250,7 @@ const sectionCExpandedMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "percentage-and-ratio",
-    label: "C9",
+    label: "C.9",
     title: "Percentage and Ratio Measures",
     body: [
       "Percentage shows [part divided by whole times 100].",
@@ -737,7 +1267,7 @@ const sectionCExpandedMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "ioa-purpose",
-    label: "C10",
+    label: "C.10",
     title: "Interobserver Agreement (IOA)",
     body: [
       "Interobserver agreement (IOA) compares [two observers' records of the same event].",
@@ -760,7 +1290,7 @@ const sectionCExpandedMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "count-ioa",
-    label: "C11",
+    label: "C.11",
     title: "Count IOA: Total, Exact, and Mean Count-per-Interval",
     body: [
       "Total count IOA compares [overall counts].",
@@ -778,7 +1308,7 @@ const sectionCExpandedMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "duration-ioa",
-    label: "C12",
+    label: "C.12",
     title: "Duration IOA",
     body: [
       "Total duration IOA compares [total time recorded by each observer].",
@@ -795,7 +1325,7 @@ const sectionCExpandedMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "trial-by-trial-ioa",
-    label: "C13",
+    label: "C.13",
     title: "Trial-by-Trial IOA",
     body: [
       "Trial-by-trial IOA compares observer agreement [for each trial].",
@@ -812,7 +1342,7 @@ const sectionCExpandedMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "graph-types",
-    label: "C14",
+    label: "C.14",
     title: "Graph Types and Data Display",
     body: [
       "Line graphs show [behavior over time].",
@@ -832,21 +1362,14 @@ const sectionCExpandedMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "visual-analysis-level-trend-variability",
-    label: "C15",
+    label: "C.15",
     title: "Level, Trend, and Variability",
     body: [
       "Level asks [how high or low] data are.",
       "Trend asks [direction]; variability asks [how much data fluctuate].",
     ],
     visual: {
-      type: "graph",
-      graphId: "reversal-aba",
-      graphTitle: "Visual analysis cue",
-      phases: [
-        { label: "Level", detail: "How high or low?", tone: "blue" },
-        { label: "Trend", detail: "Upward, downward, or flat?", tone: "purple" },
-        { label: "Variability", detail: "Stable or bouncing?", tone: "teal" },
-      ],
+      type: "choice",
       prompt:
         "Which visual analysis feature asks whether the data path is moving upward, downward, or flat?",
       choices: ["Trend", "Level", "Overlap", "Trial-by-trial IOA"],
@@ -857,37 +1380,30 @@ const sectionCExpandedMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "immediacy-overlap-functional-relation",
-    label: "C16",
-    title: "Immediacy, Overlap, and Functional Relation",
+    label: "C.16",
+    title: "Immediacy, Overlap, and Data Interpretation",
     body: [
       "Immediacy asks whether behavior changes [right after a condition change].",
-      "A functional relation is supported when behavior changes with [systematic manipulation of the independent variable].",
+      "Overlap asks how much data from one condition [share the same range] as data from another condition.",
     ],
     visual: {
-      type: "graph",
-      graphId: "reversal-pvr",
-      graphTitle: "Functional relation cue",
-      phases: [
-        { label: "Baseline", detail: "Prediction from baseline data.", tone: "blue" },
-        { label: "Intervention", detail: "Immediate behavior change.", tone: "green" },
-        { label: "Return", detail: "Verification when condition changes.", tone: "teal" },
-      ],
-      prompt: "Which feature strengthens evidence of a functional relation?",
+      type: "choice",
+      prompt: "Which visual-analysis cue focuses on data right around a condition change?",
       choices: [
-        "Repeated behavior change when conditions change",
-        "One data point higher than baseline",
-        "A colorful graph title",
-        "A longer session name",
+        "Immediacy",
+        "Level",
+        "Legend",
+        "Trial-by-trial IOA",
       ],
-      answer: "Repeated behavior change when conditions change",
-      hint: "Look for replicated change tied to condition changes.",
+      answer: "Immediacy",
+      hint: "Look for the cue that compares data immediately before and after the condition changes.",
       feedback:
-        "A functional relation is supported when behavior changes predictably with the independent variable.",
+        "Immediacy evaluates [how quickly data change] after a condition change.",
     },
   },
   {
     slug: "baseline-intervention-maintenance-generalization",
-    label: "C17",
+    label: "C.17",
     title: "Baseline, Intervention, Maintenance, and Generalization Data",
     body: [
       "Baseline data support [prediction before intervention].",
@@ -905,48 +1421,8 @@ const sectionCExpandedMiniLessons: MiniLessonContent[] = [
     },
   },
   {
-    slug: "single-subject-design-basics",
-    label: "C18",
-    title: "Single-Subject Design Basics",
-    body: [
-      "Single-subject designs use repeated measurement to evaluate [individual behavior change].",
-      "Experimental control is shown when data patterns change with experimental conditions.",
-    ],
-    visual: {
-      type: "select-all",
-      prompt: "Select design features that help demonstrate experimental control.",
-      choices: [
-        { label: "Repeated measurement", correct: true },
-        { label: "Clear phase changes or design logic", correct: true },
-        { label: "Only one pretest and one posttest", correct: false },
-        { label: "Behavior change linked to the independent variable", correct: true },
-      ],
-      feedback:
-        "Single-subject designs rely on repeated measurement and systematic condition changes.",
-    },
-  },
-  {
-    slug: "single-subject-design-types",
-    label: "C19",
-    title: "Reversal, Multiple Baseline, Alternating Treatments, and Changing Criterion",
-    body: [
-      "Each single-subject design shows experimental control through [a different data pattern].",
-      "Choose the design that fits the behavior, ethics, and intervention question.",
-    ],
-    visual: {
-      type: "matching",
-      prompt: "Match each design to its visual logic.",
-      pairs: [
-        { term: "Reversal Design", definition: "Behavior changes as conditions repeat or withdraw." },
-        { term: "Multiple Baseline Design", definition: "Behavior changes after staggered intervention across tiers." },
-        { term: "Alternating Treatments / Multielement Design", definition: "Rapid alternation creates separated data paths." },
-        { term: "Changing Criterion Design", definition: "Behavior tracks stepwise criterion changes." },
-      ],
-    },
-  },
-  {
     slug: "data-based-decision-making",
-    label: "C20",
+    label: "C.20",
     title: "Data-Based Decision Making",
     body: [
       "Data-based decisions require matching the decision to [the data pattern].",
@@ -1087,84 +1563,13 @@ const sectionCPracticeQuestions: QuestionContent[] = [
     type: "scenario",
     graphId: "reversal-aba",
     prompt:
-      "Baseline data are high and stable. Intervention starts and behavior immediately drops to a lower, stable level with little overlap. Which interpretation is strongest?",
-    choices: ["Clear intervention effect", "No functional relation", "High variability blocks interpretation", "Only external validity is shown"],
-    answer: "Clear intervention effect",
+      "Initial data are high and stable. After a condition change, behavior immediately drops to a lower, stable level with little overlap. Which data-interpretation statement is strongest?",
+    choices: ["Clear level change with strong immediacy", "No interpretable data pattern", "High variability blocks interpretation", "Only external validity is shown"],
+    answer: "Clear level change with strong immediacy",
     explanation:
-      "A clear level change with immediacy and low overlap supports an intervention effect.",
+      "A clear level change with immediacy and low overlap supports a stronger [visual-analysis interpretation].",
     hint:
       "Compare level, immediacy, overlap, and stability across the phase change.",
-  },
-  {
-    type: "scenario",
-    graphId: "multiple-baseline-settings",
-    prompt:
-      "Behavior changes only after intervention is introduced at staggered times across settings. Which design is represented?",
-    choices: ["Multiple Baseline Design", "Reversal Design", "Changing Criterion Design", "Alternating Treatments / Multielement Design"],
-    answer: "Multiple Baseline Design",
-    explanation:
-      "Multiple Baseline Designs show behavior change after staggered intervention across tiers.",
-    hint:
-      "Look for staggered intervention rather than withdrawal or rapid alternation.",
-  },
-  {
-    type: "scenario",
-    graphId: "alternating-standard",
-    prompt:
-      "Two interventions are rapidly alternated, and one data path is consistently higher than the other. Which design feature is being evaluated?",
-    choices: ["Differentiated data paths", "Criterion tracking", "Return to baseline", "Exact count IOA"],
-    answer: "Differentiated data paths",
-    explanation:
-      "Alternating Treatments / Multielement Designs compare conditions through rapid alternation and separated data paths.",
-    hint:
-      "Focus on rapid alternation and whether the paths separate by condition.",
-  },
-  {
-    type: "scenario",
-    graphId: "changing-criterion-on-task",
-    prompt:
-      "On-task duration increases each time the criterion line increases. Which graph feature supports experimental control?",
-    choices: ["Behavior tracks criterion shifts", "Behavior reverses after withdrawal", "All tiers change at once", "Data paths overlap completely"],
-    answer: "Behavior tracks criterion shifts",
-    explanation:
-      "Changing Criterion Designs show control when behavior shifts with each criterion change.",
-    hint:
-      "Look for behavior moving step-by-step with the criterion line.",
-  },
-  {
-    type: "scenario",
-    graphId: "reversal-pvr",
-    prompt:
-      "A graph shows baseline responding, behavior change during intervention, return toward baseline when the intervention is withdrawn, and behavior change again when intervention returns. What is the strongest interpretation?",
-    choices: [
-      "Prediction, verification, and replication strengthen experimental control",
-      "Only external validity is demonstrated",
-      "A single phase change is enough to demonstrate control",
-      "IOA has replaced the need for repeated measurement",
-    ],
-    answer:
-      "Prediction, verification, and replication strengthen experimental control",
-    explanation:
-      "Experimental control is strengthened when baseline prediction is tested, verified by withdrawal or return, and replicated when the independent variable is reintroduced.",
-    hint:
-      "Look for repeated behavior change tied to condition changes, not one isolated improvement.",
-  },
-  {
-    type: "scenario",
-    graphId: "multiple-baseline-settings",
-    prompt:
-      "Across three settings, behavior changes only after the intervention begins in each setting while untreated settings remain near baseline. What does this pattern support?",
-    choices: [
-      "Experimental control through staggered intervention",
-      "A history threat affecting all settings at once",
-      "Treatment withdrawal as the required control tactic",
-      "Momentary time sampling as the dependent variable",
-    ],
-    answer: "Experimental control through staggered intervention",
-    explanation:
-      "A staggered pattern supports experimental control when each tier changes only after the independent variable is introduced.",
-    hint:
-      "Compare when each tier changes relative to when intervention begins in that tier.",
   },
   {
     type: "matching",
@@ -1180,44 +1585,6 @@ const sectionCPracticeQuestions: QuestionContent[] = [
       "Visual analysis inspects level, trend, variability, immediacy, overlap, and consistency.",
     hint:
       "Ask what each cue tells you to inspect in the graph.",
-  },
-  {
-    type: "select-all",
-    prompt: "Select all features that strengthen evidence for a functional relation.",
-    choices: [
-      "Repeated behavior change when the independent variable changes",
-      "Low overlap between baseline and intervention data",
-      "Immediate change after phase change",
-      "A single improved data point with no replication",
-    ],
-    answers: [
-      "Repeated behavior change when the independent variable changes",
-      "Low overlap between baseline and intervention data",
-      "Immediate change after phase change",
-    ],
-    answer:
-      "Repeated condition-linked change, low overlap, and immediacy strengthen evidence for a functional relation.",
-    explanation:
-      "Functional relation identification relies on replicated, condition-linked behavior change and visual analysis features.",
-    hint:
-      "Look for replicated change tied to the independent variable, not one isolated data point.",
-  },
-  {
-    type: "scenario",
-    graphId: "alternating-standard",
-    prompt:
-      "Two rapidly alternated conditions produce consistently separated data paths with little overlap. Which visual-analysis conclusion is best supported?",
-    choices: [
-      "One condition is associated with a different level of responding",
-      "Behavior is maintained only because baseline was withdrawn",
-      "The criterion line controlled the behavior step by step",
-      "The data show generalization across settings",
-    ],
-    answer: "One condition is associated with a different level of responding",
-    explanation:
-      "In Alternating Treatments / Multielement Designs, separated data paths with low overlap support a condition-linked difference in responding.",
-    hint:
-      "Focus on level separation and overlap across rapidly alternated conditions.",
   },
   {
     type: "scenario",
@@ -1343,103 +1710,11 @@ const sectionCMasteryQuestions: QuestionContent[] = [
     type: "scenario",
     graphId: "reversal-aba",
     prompt:
-      "In a graph, data shift from high baseline levels to low intervention levels immediately after the phase change, with little overlap. Which visual analysis feature is most directly described?",
+      "In a graph, data shift from high initial levels to lower levels immediately after a phase change, with little overlap. Which visual analysis feature is most directly described?",
     choices: ["Immediacy of effect", "Generalization", "Total count IOA", "Momentary time sampling"],
     answer: "Immediacy of effect",
     explanation:
       "Immediacy of effect evaluates whether behavior changes right after a condition change.",
-  },
-  {
-    type: "scenario",
-    graphId: "reversal-pvr",
-    prompt:
-      "Which option best supports a functional relation in a single-subject graph?",
-    choices: [
-      "Behavior changes repeatedly when the independent variable changes.",
-      "Behavior improves once without replication.",
-      "The y-axis has a clinical label.",
-      "The graph contains three colors.",
-    ],
-    answer: "Behavior changes repeatedly when the independent variable changes.",
-    explanation:
-      "Functional relation identification requires replicated, condition-linked behavior change.",
-  },
-  {
-    type: "scenario",
-    graphId: "multiple-baseline-participants",
-    prompt:
-      "A graph shows three participants with intervention introduced at different sessions. Each participant changes only after intervention begins. Which design is shown?",
-    choices: ["Multiple Baseline Design", "Reversal Design", "Changing Criterion Design", "Alternating Treatments / Multielement Design"],
-    answer: "Multiple Baseline Design",
-    explanation:
-      "Multiple Baseline Designs use staggered intervention across participants, settings, or behaviors.",
-  },
-  {
-    type: "scenario",
-    graphId: "alternating-standard",
-    prompt:
-      "A graph rapidly alternates Intervention A and Intervention B and shows separated data paths. Which design is shown?",
-    choices: ["Alternating Treatments / Multielement Design", "Multiple Baseline Design", "Withdrawal Design", "Changing Criterion Design"],
-    answer: "Alternating Treatments / Multielement Design",
-    explanation:
-      "Alternating Treatments / Multielement Designs compare rapidly alternated conditions through differentiated data paths.",
-  },
-  {
-    type: "scenario",
-    graphId: "changing-criterion-on-task",
-    prompt:
-      "A learner's behavior changes stepwise each time the performance criterion changes. Which design is shown?",
-    choices: ["Changing Criterion Design", "Multiple Baseline Design", "Reversal Design", "Alternating Treatments / Multielement Design"],
-    answer: "Changing Criterion Design",
-    explanation:
-      "Changing Criterion Designs show control when behavior tracks criterion shifts.",
-  },
-  {
-    type: "scenario",
-    graphId: "reversal-pvr",
-    prompt:
-      "Which statement best describes how experimental control is demonstrated in this kind of single-subject graph?",
-    choices: [
-      "Behavior changes when the independent variable is introduced, withdrawn or changed, and reintroduced.",
-      "The title names the design, so the effect is experimentally controlled.",
-      "One improved data point after intervention is enough to rule out alternative explanations.",
-      "The same intervention is used with a group average instead of repeated measurement.",
-    ],
-    answer:
-      "Behavior changes when the independent variable is introduced, withdrawn or changed, and reintroduced.",
-    explanation:
-      "Experimental control is demonstrated when behavior changes systematically with manipulation of the independent variable across repeated comparisons.",
-  },
-  {
-    type: "scenario",
-    graphId: "multiple-baseline-participants",
-    prompt:
-      "Which pattern most strongly supports experimental control when withdrawal is not appropriate?",
-    choices: [
-      "Staggered intervention with behavior change only after intervention begins in each tier",
-      "All participants improve before intervention begins",
-      "Only one participant is measured before and after intervention",
-      "Behavior changes in every tier at the same calendar time",
-    ],
-    answer:
-      "Staggered intervention with behavior change only after intervention begins in each tier",
-    explanation:
-      "Staggered intervention reduces threats to validity because untreated tiers continue to serve as comparisons until intervention is introduced.",
-  },
-  {
-    type: "scenario",
-    graphId: "alternating-standard",
-    prompt:
-      "Which visual-analysis feature best supports a condition difference in a rapidly alternated design?",
-    choices: [
-      "Consistent separation between data paths with low overlap",
-      "A return to baseline after every intervention session",
-      "The same criterion line across all phases",
-      "Only one data point in each condition",
-    ],
-    answer: "Consistent separation between data paths with low overlap",
-    explanation:
-      "Alternating Treatments / Multielement Designs rely on differentiation between rapidly alternated data paths.",
   },
   {
     type: "scenario",
@@ -1485,26 +1760,12 @@ const sectionCMasteryQuestions: QuestionContent[] = [
     explanation:
       "Level describes the vertical value of data within a phase.",
   },
-  {
-    prompt:
-      "Which statement best describes a functional relation?",
-    choices: [
-      "Behavior changes systematically with manipulation of the independent variable.",
-      "Behavior changes once after a preferred item is delivered.",
-      "Two observers agree on measurement during one session.",
-      "A skill appears in a new setting after teaching.",
-    ],
-    answer:
-      "Behavior changes systematically with manipulation of the independent variable.",
-    explanation:
-      "A functional relation is supported when behavior changes systematically with manipulation of the independent variable.",
-  },
 ];
 
 const sectionDMiniLessons: MiniLessonContent[] = [
   {
     slug: "single-case-design-measures",
-    label: "D1",
+    label: "D.1",
     title: "What Single-Case Experimental Design Measures",
     body: [
       "Single-case experimental design measures [individual behavior over time].",
@@ -1529,7 +1790,7 @@ const sectionDMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "baseline-intervention-phase-lines",
-    label: "D2",
+    label: "D.2",
     title: "Baseline, Intervention, and Phase Change Lines",
     body: [
       "Baseline shows [prediction] before the intervention is introduced.",
@@ -1561,7 +1822,7 @@ const sectionDMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "reversal-vs-withdrawal",
-    label: "D3",
+    label: "D.3",
     title: "Reversal vs Withdrawal Designs",
     body: [
       "Reversal Designs compare [repeated baseline and intervention conditions].",
@@ -1593,7 +1854,7 @@ const sectionDMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "ab-aba-abab-logic",
-    label: "D4",
+    label: "D.4",
     title: "A-B, A-B-A, and A-B-A-B Logic",
     body: [
       "A-B shows [baseline followed by intervention], but it does not replicate the effect.",
@@ -1625,7 +1886,7 @@ const sectionDMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "prediction-verification-replication",
-    label: "D5",
+    label: "D.5",
     title: "Withdrawal Design",
     body: [
       "Prediction uses baseline data to estimate [future responding without intervention].",
@@ -1656,7 +1917,7 @@ const sectionDMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "multiple-baseline-participants",
-    label: "D6",
+    label: "D.6",
     title: "Multiple Baseline Across Participants",
     body: [
       "Across participants means the same intervention is staggered across [different learners].",
@@ -1687,7 +1948,7 @@ const sectionDMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "multiple-baseline-settings",
-    label: "D7",
+    label: "D.7",
     title: "Multiple Baseline Across Settings",
     body: [
       "Across settings means intervention is staggered across [different environments].",
@@ -1719,7 +1980,7 @@ const sectionDMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "multiple-baseline-behaviors",
-    label: "D8",
+    label: "D.8",
     title: "Multiple Baseline Across Behaviors",
     body: [
       "Across behaviors means intervention is staggered across [different response classes or skills].",
@@ -1751,7 +2012,7 @@ const sectionDMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "alternating-multielement",
-    label: "D9",
+    label: "D.9",
     title: "Alternating Treatments / Multielement Designs",
     body: [
       "Alternating Treatments / Multielement Designs compare conditions through [rapid alternation].",
@@ -1783,7 +2044,7 @@ const sectionDMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "adapted-alternating-treatments",
-    label: "D10",
+    label: "D.10",
     title: "Adapted Alternating Treatments",
     body: [
       "Adapted Alternating Treatments compare interventions across [different but equivalent response sets].",
@@ -1816,7 +2077,7 @@ const sectionDMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "changing-criterion-components",
-    label: "D11",
+    label: "D.11",
     title: "Changing Criterion Design Components",
     body: [
       "Changing Criterion Designs require [baseline, stepwise criteria, and behavior tracking each criterion].",
@@ -1849,7 +2110,7 @@ const sectionDMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "increasing-decreasing-criteria",
-    label: "D12",
+    label: "D.12",
     title: "Increasing vs Decreasing Criteria",
     body: [
       "Criteria can [increase behavior], such as on-task duration.",
@@ -1882,7 +2143,7 @@ const sectionDMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "visual-analysis-level-trend-variability",
-    label: "D13",
+    label: "D.13",
     title: "Visual Analysis: Level, Trend, Variability",
     body: [
       "Level asks [how high or low] the data are.",
@@ -1908,7 +2169,7 @@ const sectionDMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "visual-analysis-immediacy-overlap-consistency",
-    label: "D14",
+    label: "D.14",
     title: "Visual Analysis: Immediacy, Overlap, Consistency",
     body: [
       "Immediacy asks whether change occurs [right after a phase change].",
@@ -1939,7 +2200,7 @@ const sectionDMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "experimental-control",
-    label: "D15",
+    label: "D.15",
     title: "Experimental Control",
     body: [
       "Experimental control means [behavior changes when and only when the independent variable changes].",
@@ -1964,7 +2225,7 @@ const sectionDMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "internal-vs-external-validity",
-    label: "D16",
+    label: "D.16",
     title: "Internal Validity vs External Validity",
     body: [
       "Internal validity asks whether [the independent variable caused the change].",
@@ -1989,7 +2250,7 @@ const sectionDMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "threats-to-validity",
-    label: "D17",
+    label: "D.17",
     title: "Threats to Validity",
     body: [
       "Threats to Validity are [alternative explanations] for behavior change.",
@@ -2009,7 +2270,7 @@ const sectionDMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "choosing-best-design",
-    label: "D18",
+    label: "D.18",
     title: "Choosing the Best Design",
     body: [
       "Choose the design based on [behavior reversibility, ethics, measurement, and treatment goals].",
@@ -2413,10 +2674,10 @@ const sectionDAnalysisApplicationMiniLessons: MiniLessonContent[] = [
   },
 ];
 
-const sectionEMiniLessons: MiniLessonContent[] = [
+const sectionCMeasurementExpansionMiniLessons: MiniLessonContent[] = [
   {
     slug: "repeatability",
-    label: "E.1",
+    label: "C.1",
     title: "Repeatability",
     body: [
       "Repeatability means behavior can occur [more than once].",
@@ -2440,7 +2701,7 @@ const sectionEMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "temporal-locus",
-    label: "E.1",
+    label: "C.1",
     title: "Temporal Locus",
     body: [
       "Temporal locus refers to [when behavior occurs] in time.",
@@ -2457,7 +2718,7 @@ const sectionEMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "temporal-extent",
-    label: "E.1",
+    label: "C.1",
     title: "Temporal Extent",
     body: [
       "Temporal extent means behavior occupies [an amount of time].",
@@ -2474,7 +2735,7 @@ const sectionEMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "countability",
-    label: "E.1",
+    label: "C.1",
     title: "Countability",
     body: [
       "Countability requires a clear response definition with [discrete beginnings and endings].",
@@ -2494,7 +2755,7 @@ const sectionEMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "dimensional-quantities",
-    label: "E.1",
+    label: "C.1",
     title: "Dimensional Quantities",
     body: [
       "Dimensional quantities describe measurable features of behavior.",
@@ -2515,7 +2776,7 @@ const sectionEMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "measurable-vs-nonmeasurable",
-    label: "E.1",
+    label: "C.1",
     title: "Measurable vs Non-Measurable Behavior",
     body: [
       "Measurable behavior is observable enough for consistent recording.",
@@ -2535,7 +2796,7 @@ const sectionEMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "frequency-vs-rate",
-    label: "E.2",
+    label: "C.2",
     title: "Frequency vs Rate",
     body: [
       "Frequency is [count only].",
@@ -2552,7 +2813,7 @@ const sectionEMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "duration",
-    label: "E.2",
+    label: "C.2",
     title: "Duration",
     body: [
       "Duration measures time from [response onset to response offset].",
@@ -2576,7 +2837,7 @@ const sectionEMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "latency",
-    label: "E.2",
+    label: "C.2",
     title: "Latency",
     body: [
       "Latency measures time from [stimulus or instruction to response onset].",
@@ -2597,7 +2858,7 @@ const sectionEMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "interresponse-time",
-    label: "E.2",
+    label: "C.2",
     title: "Interresponse Time",
     body: [
       "Interresponse Time (IRT) measures time [between consecutive responses].",
@@ -2615,7 +2876,7 @@ const sectionEMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "percentage-correct",
-    label: "E.2",
+    label: "C.2",
     title: "Percentage Correct",
     body: [
       "Percentage correct converts performance into [correct responses divided by opportunities].",
@@ -2634,7 +2895,7 @@ const sectionEMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "trials-to-criterion",
-    label: "E.2",
+    label: "C.2",
     title: "Trials to Criterion",
     body: [
       "Trials to criterion measures [how many learning opportunities] are needed to meet a performance standard.",
@@ -2651,7 +2912,7 @@ const sectionEMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "continuous-measurement-selection",
-    label: "E.2",
+    label: "C.2",
     title: "Choosing Continuous Measurement",
     body: [
       "Continuous measurement records every occurrence during observation.",
@@ -2670,7 +2931,7 @@ const sectionEMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "partial-interval",
-    label: "E.3",
+    label: "C.3",
     title: "Partial Interval Recording",
     body: [
       "Partial interval scores an interval if behavior occurs [at any time].",
@@ -2694,7 +2955,7 @@ const sectionEMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "whole-interval",
-    label: "E.3",
+    label: "C.3",
     title: "Whole Interval Recording",
     body: [
       "Whole interval scores an interval only if behavior occurs [for the entire interval].",
@@ -2718,7 +2979,7 @@ const sectionEMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "partial-vs-whole-interval",
-    label: "E.3",
+    label: "C.3",
     title: "Partial vs Whole Interval",
     body: [
       "Partial interval asks whether behavior occurred [at all].",
@@ -2735,7 +2996,7 @@ const sectionEMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "momentary-time-sampling",
-    label: "E.3",
+    label: "C.3",
     title: "Momentary Time Sampling",
     body: [
       "Momentary time sampling records whether behavior occurs [at the end of an interval].",
@@ -2756,7 +3017,7 @@ const sectionEMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "placheck",
-    label: "E.3",
+    label: "C.3",
     title: "PLACHECK",
     body: [
       "PLACHECK records [how many people are engaged at a moment].",
@@ -2780,7 +3041,7 @@ const sectionEMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "discontinuous-measurement-discrimination",
-    label: "E.3",
+    label: "C.3",
     title: "Discontinuous Measurement Discrimination",
     body: [
       "Discontinuous systems sample behavior instead of capturing every response.",
@@ -2799,7 +3060,7 @@ const sectionEMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "choosing-measurement-systems",
-    label: "E.2-E.3",
+    label: "C.2-C.3",
     title: "Choosing Correct Measurement Systems",
     body: [
       "Choose measurement from the clinical question, not from habit.",
@@ -2819,7 +3080,7 @@ const sectionEMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "permanent-product-recording",
-    label: "E.4",
+    label: "C.4",
     title: "Permanent Product Recording",
     body: [
       "Permanent product recording measures [lasting environmental effects] of behavior.",
@@ -2833,7 +3094,7 @@ const sectionEMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "permanent-product-limits",
-    label: "E.4",
+    label: "C.4",
     title: "Permanent Product Limits",
     body: [
       "Permanent products are efficient when the product is [durable and clearly linked to behavior].",
@@ -2854,7 +3115,7 @@ const sectionEMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "ioa-methods",
-    label: "E.5",
+    label: "C.5",
     title: "IOA Methods",
     body: [
       "Interobserver agreement (IOA) estimates [agreement between independent observers].",
@@ -2873,7 +3134,7 @@ const sectionEMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "graph-components",
-    label: "E.5",
+    label: "C.5",
     title: "Graph Components",
     body: [
       "Line graphs show repeated measurement across time.",
@@ -2892,7 +3153,7 @@ const sectionEMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "graph-construction",
-    label: "E.5",
+    label: "C.5",
     title: "Graph Construction",
     body: [
       "A clear graph shows [what was measured] and [when conditions changed].",
@@ -2913,7 +3174,7 @@ const sectionEMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "data-display-types",
-    label: "E.5",
+    label: "C.5",
     title: "Data Display Types",
     body: [
       "Different displays answer different questions.",
@@ -2933,21 +3194,14 @@ const sectionEMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "level",
-    label: "E.6",
+    label: "C.6",
     title: "Level",
     body: [
       "Level is the [vertical position] of data.",
       "Compare level within and across phases to judge behavior change.",
     ],
     visual: {
-      type: "graph",
-      graphTitle: "Level",
-      phases: [
-        { label: "Low level", detail: "Data cluster [lower] on the y-axis.", tone: "blue" },
-        { label: "High level", detail: "Data cluster [higher] on the y-axis.", tone: "teal" },
-        { label: "Compare phases", detail: "Ask whether level changes after the condition change.", tone: "purple" },
-      ],
-      graphId: "reversal-positive-attention",
+      type: "choice",
       prompt: "Which cue best describes level?",
       choices: [
         "The vertical position of the data",
@@ -2964,21 +3218,14 @@ const sectionEMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "trend",
-    label: "E.6",
+    label: "C.6",
     title: "Trend",
     body: [
       "Trend is the [overall direction], and variability is [how much data fluctuate].",
       "Trend may be increasing, decreasing, zero, or variable.",
     ],
     visual: {
-      type: "graph",
-      graphTitle: "Trend",
-      phases: [
-        { label: "Increasing", detail: "Data move [upward] over time.", tone: "blue" },
-        { label: "Decreasing", detail: "Data move [downward] over time.", tone: "teal" },
-        { label: "Zero trend", detail: "Data remain [flat] over time.", tone: "purple" },
-      ],
-      graphId: "changing-criterion-increasing",
+      type: "choice",
       prompt: "Which visual-analysis feature describes the direction of the data path?",
       choices: ["Trend", "Level", "Variability", "Legend"],
       answer: "Trend",
@@ -2990,7 +3237,7 @@ const sectionEMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "variability",
-    label: "E.6",
+    label: "C.6",
     title: "Variability",
     body: [
       "Variability is [how much data fluctuate] around a level or trend.",
@@ -3014,22 +3261,14 @@ const sectionEMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "level-trend-variability",
-    label: "E.6",
+    label: "C.6",
     title: "Level, Trend, and Variability",
     body: [
       "Level, trend, and variability are read together during visual analysis.",
       "Separate [vertical position], [direction], and [bounce] before judging effect.",
     ],
     visual: {
-      type: "graph",
-      graphTitle: "Visual Analysis Components",
-      phases: [
-        { label: "Level", detail: "Vertical position of data.", tone: "blue" },
-        { label: "Trend", detail: "[Overall direction] of data.", tone: "teal" },
-        { label: "Variability", detail: "[How much data fluctuate].", tone: "purple" },
-        { label: "Immediacy", detail: "Speed of change [after condition change].", tone: "green" },
-      ],
-      graphId: "reversal-aba",
+      type: "choice",
       prompt: "Which visual-analysis feature describes the overall direction of the data path?",
       choices: ["Trend", "Level", "Variability", "Legend"],
       answer: "Trend",
@@ -3041,21 +3280,14 @@ const sectionEMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "immediacy-of-effect",
-    label: "E.6",
+    label: "C.6",
     title: "Immediacy of Effect",
     body: [
       "Immediate behavior change occurs [quickly after a condition change].",
       "Strong immediacy means the data shift right after the phase change line.",
     ],
     visual: {
-      type: "graph",
-      graphTitle: "Immediacy of Effect",
-      phases: [
-        { label: "Before change", detail: "Inspect data just before the phase line.", tone: "blue" },
-        { label: "Phase line", detail: "Condition changes here.", tone: "purple" },
-        { label: "After change", detail: "Inspect data just after the phase line.", tone: "teal" },
-      ],
-      graphId: "reversal-aba",
+      type: "choice",
       prompt: "Where do you look to judge immediacy of effect?",
       choices: [
         "Data immediately before and after the phase change line",
@@ -3072,23 +3304,15 @@ const sectionEMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "immediate-vs-delayed-change",
-    label: "E.6",
+    label: "C.6",
     title: "Immediate vs Delayed Change",
     body: [
       "Immediate behavior change occurs [right after a condition change].",
       "Delayed change means the data shift [only after additional sessions].",
     ],
     visual: {
-      type: "graph",
-      graphTitle: "Interpreting Treatment Effects",
-      phases: [
-        { label: "Baseline", detail: "Data before intervention.", tone: "blue" },
-        { label: "Condition change", detail: "Intervention begins.", tone: "purple" },
-        { label: "Effect", detail: "Data shift [after the condition change].", tone: "teal" },
-        { label: "Decision", detail: "Interpret [level, trend, and variability].", tone: "green" },
-      ],
-      graphId: "reversal-positive-attention",
-      prompt: "What best supports an immediate treatment effect?",
+      type: "choice",
+      prompt: "What best supports an immediate data-pattern change?",
       choices: [
         "A clear data shift right after the phase change line",
         "A label above the graph",
@@ -3104,7 +3328,7 @@ const sectionEMiniLessons: MiniLessonContent[] = [
   },
   {
     slug: "data-based-decision-making",
-    label: "E.7",
+    label: "C.7",
     title: "Data-Based Decision Making",
     body: [
       "Decisions should follow the data pattern, not preference alone.",
@@ -3125,6 +3349,2858 @@ const sectionEMiniLessons: MiniLessonContent[] = [
       feedback:
         "Data-based decisions consider [level, trend, variability, overlap, and immediacy] before changing course.",
     },
+  },
+];
+
+const sectionEMiniLessons: MiniLessonContent[] = [
+  {
+    slug: "ethics-code-foundations",
+    label: "E.1",
+    title: "BACB Ethics Code Foundations",
+    body: [
+      "Ethical practice protects [client welfare, dignity, and rights].",
+      "Ethical decisions use the [BACB Ethics Code], [clinical data], [supervision], [documentation], and [applicable law].",
+    ],
+    visual: {
+      type: "select-all",
+      prompt: "Select anchors for ethical decision making.",
+      choices: [
+        { label: "Client dignity and welfare", correct: true },
+        { label: "Informed consent and assent when applicable", correct: true },
+        { label: "Accurate documentation of decisions", correct: true },
+        { label: "Convenience for the provider before client rights", correct: false },
+      ],
+      feedback:
+        "Ethics starts with [client welfare and dignity], [informed consent], [accurate records], and [professional responsibility].",
+    },
+  },
+  {
+    slug: "client-dignity",
+    label: "E.1",
+    title: "Client Dignity",
+    body: [
+      "Client dignity means services protect [respect, privacy, autonomy, and humane care].",
+      "Dignity is evaluated in how goals are selected, procedures are implemented, and [people are discussed respectfully].",
+    ],
+    visual: {
+      type: "example",
+      example:
+        "A team teaches functional communication and offers choices before using more intrusive procedures.",
+      nonexample:
+        "A team discusses a learner's behavior loudly in a public hallway.",
+    },
+  },
+  {
+    slug: "informed-consent",
+    label: "E.4",
+    title: "Informed Consent",
+    body: [
+      "Informed consent requires [voluntary agreement] after understanding procedures and risks.",
+      "Explain goals, procedures, risks, benefits, alternatives, data use, and [the right to withdraw consent].",
+    ],
+    visual: {
+      type: "flow",
+      prompt: "Order an informed-consent sequence.",
+      steps: [
+        "Describe the service or procedure",
+        "Explain risks, benefits, and alternatives",
+        "Check understanding and answer questions",
+        "Document voluntary consent",
+      ],
+      feedback:
+        "Informed consent is a [voluntary process], not just a signature.",
+    },
+  },
+  {
+    slug: "confidentiality",
+    label: "E.4",
+    title: "Confidentiality",
+    body: [
+      "Confidentiality protects [private client information].",
+      "Share information only with [authorization or legal/ethical requirement].",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which action best protects confidentiality?",
+      choices: [
+        "Discussing client progress in a private team meeting with authorized people",
+        "Posting a client success story with identifying details",
+        "Texting a full treatment plan to a personal phone",
+        "Talking about a client in a waiting room without names but with details",
+      ],
+      answer:
+        "Discussing client progress in a private team meeting with authorized people",
+      hint:
+        "Ask who is [authorized to access private client information] and whether identifying information is protected.",
+      feedback:
+        "Confidentiality requires [authorized access to private client information].",
+    },
+  },
+  {
+    slug: "scope-of-competence",
+    label: "E.3",
+    title: "Scope of Competence",
+    body: [
+      "Scope of competence means working within [training, supervised experience, and current skills].",
+      "When a case requires skills outside competence, obtain [supervision, training, consultation, or referral].",
+    ],
+    visual: {
+      type: "sorting",
+      prompt: "Sort each action by ethical fit.",
+      categories: ["Within scope process", "Needs correction"],
+      items: [
+        { label: "Seek consultation before treating a new specialty area", category: "Within scope process" },
+        { label: "Accept a case without relevant training because the family is urgent", category: "Needs correction" },
+        { label: "Document supervised competency before implementing a new assessment", category: "Within scope process" },
+        { label: "Advertise expertise based only on one webinar", category: "Needs correction" },
+      ],
+    },
+  },
+  {
+    slug: "conflicts-of-interest",
+    label: "E.7",
+    title: "Conflicts of Interest",
+    body: [
+      "A conflict of interest occurs when another interest could [bias professional judgment].",
+      "Identify, disclose, avoid, or manage conflicts before they [affect client-centered services].",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which scenario most clearly creates a conflict of interest?",
+      choices: [
+        "A BCBA recommends a service provider owned by their spouse without disclosure",
+        "A BCBA reviews data with a supervisor",
+        "A BCBA uses a signed consent form before assessment",
+        "A BCBA adjusts a plan based on treatment integrity data",
+      ],
+      answer:
+        "A BCBA recommends a service provider owned by their spouse without disclosure",
+      hint:
+        "Look for a personal, financial, or organizational interest that could [bias professional judgment].",
+      feedback:
+        "Conflicts require [disclosure and management] so professional judgment stays client-centered.",
+    },
+  },
+  {
+    slug: "multiple-relationships",
+    label: "E.7",
+    title: "Multiple Relationships",
+    body: [
+      "Multiple relationships occur when a professional relationship overlaps with [another professional or personal role].",
+      "The risk is [impaired objectivity], exploitation, or harm.",
+    ],
+    visual: {
+      type: "matching",
+      prompt: "Match each ethics term to its cue.",
+      pairs: [
+        { term: "Conflict of interest", definition: "Another interest may [bias professional judgment]." },
+        { term: "Multiple relationship", definition: "The BCBA has [overlapping professional and personal roles] with the same person." },
+        { term: "Boundary", definition: "A professional limit that [protects objective, client-centered services]." },
+        { term: "Referral", definition: "A safer option when [objectivity or competence] is compromised." },
+      ],
+    },
+  },
+  {
+    slug: "professional-boundaries",
+    label: "E.7",
+    title: "Professional Boundaries",
+    body: [
+      "Professional boundaries keep services [objective, safe, and client-centered].",
+      "Warm rapport is appropriate; [blurred personal roles] can create ethical risk.",
+    ],
+    visual: {
+      type: "comparison",
+      leftTitle: "Professional rapport",
+      leftText: "Kind, [respectful and service-focused]",
+      rightTitle: "Boundary risk",
+      rightText: "Personal role overlap that may [impair professional judgment]",
+      cue: "Boundary decisions protect [client welfare and professional objectivity], not practitioner personal interests.",
+    },
+  },
+  {
+    slug: "documentation-record-keeping",
+    label: "E.3",
+    title: "Documentation and Record Keeping",
+    body: [
+      "Documentation should be [accurate, timely, objective, and secure].",
+      "Records support continuity of care, accountability, billing accuracy, and [ethical decision making].",
+    ],
+    visual: {
+      type: "select-all",
+      prompt: "Select ethical documentation practices.",
+      choices: [
+        { label: "Record objective data and service changes promptly", correct: true },
+        { label: "Store records using secure systems", correct: true },
+        { label: "Document consent, risks, decisions, and follow-up", correct: true },
+        { label: "Change old data to make a graph look more effective", correct: false },
+      ],
+      feedback:
+        "Ethical records are [accurate, secure, and clinically useful].",
+    },
+  },
+  {
+    slug: "supervision-ethics",
+    label: "E.10",
+    title: "Supervision Ethics",
+    body: [
+      "Supervision must match [supervisee competence and client needs].",
+      "Ethical supervisors train, observe, give feedback, document performance, and [monitor client outcomes].",
+    ],
+    visual: {
+      type: "matching",
+      prompt: "Match each supervision responsibility to its cue.",
+      pairs: [
+        { term: "Competence", definition: "Assign tasks the supervisee can perform with [appropriate training for assigned duties]." },
+        { term: "Observation", definition: "Watch implementation [directly or through reliable review]." },
+        { term: "Feedback", definition: "Give [behavior-specific correction and reinforcement]." },
+        { term: "Documentation", definition: "Record supervision activities and [supervisee performance concerns]." },
+      ],
+    },
+  },
+  {
+    slug: "treatment-integrity",
+    label: "E.10",
+    title: "Treatment Integrity",
+    body: [
+      "Treatment integrity means procedures are [implemented as designed].",
+      "Low integrity can make [outcome data hard to interpret] and may harm client progress.",
+    ],
+    visual: {
+      type: "fill-blank",
+      prompt: "Complete the treatment integrity cue.",
+      sentence: "Treatment integrity means the plan is implemented as ____.",
+      answer: "designed",
+      feedback:
+        "Treatment integrity protects [client outcomes and behavior-change interpretation].",
+    },
+  },
+  {
+    slug: "least-restrictive-effective",
+    label: "E.9",
+    title: "Least Restrictive and Effective Procedures",
+    body: [
+      "Ethical intervention balances [effective procedures] with [minimally intrusive procedures].",
+      "Use function-based, reinforcement-based, and consented procedures before considering [more intrusive options].",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which decision best reflects least restrictive effective practice?",
+      choices: [
+        "Start with a function-based reinforcement procedure and monitor data before adding intrusive components",
+        "Use the most intrusive procedure first because it may work faster",
+        "Avoid data collection if the procedure feels acceptable",
+        "Continue an ineffective plan because it is less restrictive",
+      ],
+      answer:
+        "Start with a function-based reinforcement procedure and monitor data before adding intrusive components",
+      hint:
+        "Balance [clinical effect and procedural restrictiveness] with consent, function, and ongoing data.",
+      feedback:
+        "Least restrictive effective practice requires [data-based benefit and ethical safeguards].",
+    },
+  },
+  {
+    slug: "behavior-change-consent",
+    label: "E.4",
+    title: "Behavior-Change Procedures and Consent",
+    body: [
+      "Behavior-change plans require consent for [goals, procedures, risks, benefits, and alternatives].",
+      "Consent should be revisited when [procedures change or risk increases].",
+    ],
+    visual: {
+      type: "flow",
+      prompt: "Order ethical behavior-change planning.",
+      steps: [
+        "Assess function and social significance",
+        "Select effective and least restrictive procedures",
+        "Explain risks, benefits, and alternatives",
+        "Obtain and document consent before implementation",
+      ],
+      feedback:
+        "Ethical behavior-change planning joins [assessment, effectiveness, least restriction, and consent].",
+    },
+  },
+  {
+    slug: "cultural-responsiveness",
+    label: "E.9",
+    title: "Cultural Responsiveness",
+    body: [
+      "Cultural responsiveness means services account for [client values, context, language, and preferences].",
+      "It does not mean abandoning data; it means selecting goals and procedures with [cultural humility and collaboration].",
+    ],
+    visual: {
+      type: "sorting",
+      prompt: "Sort each action by cultural responsiveness.",
+      categories: ["Responsive", "Needs revision"],
+      items: [
+        { label: "Ask caregivers how routines and values affect goals", category: "Responsive" },
+        { label: "Assume one family routine should apply to all clients", category: "Needs revision" },
+        { label: "Use interpreters or translated materials when needed", category: "Responsive" },
+        { label: "Dismiss client preference because the protocol is familiar", category: "Needs revision" },
+      ],
+    },
+  },
+  {
+    slug: "reporting-concerns",
+    label: "E.12",
+    title: "Reporting Concerns",
+    body: [
+      "Reporting concerns means responding when [client welfare, rights, or professional standards] may be at risk.",
+      "Use documentation, consultation, supervision, mandated reporting rules, and [organizational reporting channels] as appropriate.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "A supervisee reports that data are being changed before billing reports are sent. What should the BCBA do first?",
+      choices: [
+        "Document the concern, protect client records, and follow ethical and organizational reporting steps",
+        "Ignore it because no client complained",
+        "Change the data back without telling anyone",
+        "Post about the agency online to warn families",
+      ],
+      answer:
+        "Document the concern, protect client records, and follow ethical and organizational reporting steps",
+      hint:
+        "Think about [client welfare, accurate records, confidentiality, and responsible reporting].",
+      feedback:
+        "Ethical reporting uses [documentation, confidentiality, and appropriate reporting channels].",
+    },
+  },
+  {
+    slug: "ethical-decision-making",
+    label: "E.1",
+    title: "Ethical Decision-Making Sequence",
+    body: [
+      "Ethical decision making is [systematic, documented, and consultative].",
+      "A defensible decision considers [code requirements, risks, stakeholders, data, consultation, and follow-up].",
+    ],
+    visual: {
+      type: "flow",
+      prompt: "Order an ethical decision-making sequence.",
+      steps: [
+        "Identify the ethical concern and affected parties",
+        "Review code, law, data, and relevant policies",
+        "Consult appropriately while protecting confidentiality",
+        "Act, document, monitor, and follow up",
+      ],
+      feedback:
+        "Ethical decision making prioritizes [client dignity and safety] from concern to follow-up.",
+    },
+  },
+];
+
+const sectionEPracticeQuestions: QuestionContent[] = [
+  {
+    type: "scenario",
+    prompt:
+      "A family asks to begin a new punishment-based procedure immediately, but the BCBA has not reviewed risks, benefits, alternatives, or consent. What is the best next action?",
+    choices: [
+      "Review the procedure, risks, benefits, alternatives, and obtain informed consent before implementation",
+      "Start immediately because the family requested it",
+      "Ask the RBT to implement it without documentation",
+      "Avoid all behavior-change procedures because consent is complicated",
+    ],
+    answer:
+      "Review the procedure, risks, benefits, alternatives, and obtain informed consent before implementation",
+    explanation:
+      "Ethical behavior-change procedures require [informed consent], data-based selection, and safeguards before implementation.",
+    hint:
+      "Focus on [consent, risk, alternatives, and documentation] before changing procedures.",
+  },
+  {
+    type: "matching",
+    prompt: "Match each ethics concept to its discrimination cue.",
+    pairs: [
+      { term: "Confidentiality", definition: "Protect [private client information]." },
+      { term: "Scope of competence", definition: "Work within [training, supervised experience, and current skills]." },
+      { term: "Conflict of interest", definition: "Another interest may [bias professional judgment]." },
+      { term: "Treatment integrity", definition: "Procedures are [implemented as designed]." },
+    ],
+    answer: "All ethics concepts matched correctly",
+    explanation:
+      "Ethical discrimination depends on whether the issue involves [information protection], [provider competence], [judgment bias], or [implementation accuracy].",
+    hint:
+      "Separate [information protection], [provider skill], [judgment bias], and [fidelity to the plan].",
+  },
+  {
+    type: "select-all",
+    prompt: "Select ethical documentation practices.",
+    choices: [
+      "Document consent and major treatment changes",
+      "Record objective data and service decisions promptly",
+      "Secure records from unauthorized access",
+      "Rewrite data later if the intervention should have worked",
+    ],
+    answers: [
+      "Document consent and major treatment changes",
+      "Record objective data and service decisions promptly",
+      "Secure records from unauthorized access",
+    ],
+    answer:
+      "Consent, objective data, service decisions, and secure records are ethical documentation practices",
+    explanation:
+      "Documentation should be [accurate, timely, objective, and secure].",
+    hint:
+      "Look for practices that protect [accuracy, security, and continuity of care].",
+  },
+  {
+    type: "sorting",
+    prompt: "Sort each scenario by the primary ethics issue.",
+    categories: ["Competence or boundaries", "Confidentiality or records"],
+    items: [
+      { label: "Accepting a specialty case without training or consultation", category: "Competence or boundaries" },
+      { label: "Discussing a client in a public hallway", category: "Confidentiality or records" },
+      { label: "Becoming a paid babysitter for a current client", category: "Competence or boundaries" },
+      { label: "Changing session notes after billing review", category: "Confidentiality or records" },
+    ],
+    answer: "Ethics scenarios sorted by primary issue",
+    explanation:
+      "Competence and boundaries involve [professional role and skill]; confidentiality and records involve [information protection and accuracy].",
+    hint:
+      "Ask whether the concern is about [professional role and boundary concerns] or about client information and records.",
+  },
+  {
+    type: "fill-blank",
+    prompt:
+      "Complete the cue: Treatment integrity means procedures are implemented as ____.",
+    answer: "designed",
+    explanation:
+      "Treatment integrity means procedures are [implemented as designed], which protects outcomes and interpretation.",
+    hint:
+      "This term asks whether implementation matched the written plan.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A BCBA is offered a referral bonus for recommending one therapy product to all clients. What is the main ethical concern?",
+    choices: [
+      "A conflict of interest may bias recommendations",
+      "The procedure automatically has high treatment integrity",
+      "The product is confidential information",
+      "The referral bonus proves external validity",
+    ],
+    answer: "A conflict of interest may bias recommendations",
+    explanation:
+      "A conflict of interest occurs when another interest may [bias professional judgment].",
+    hint:
+      "Look for a financial or personal interest that could [influence clinical recommendations].",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A supervisor assigns an RBT to implement a new procedure after modeling it once, without observing performance or giving feedback. What is the strongest concern?",
+    choices: [
+      "Supervision ethics and treatment integrity",
+      "External validity",
+      "Permanent product recording",
+      "Generalized conditioned reinforcement",
+    ],
+    answer: "Supervision ethics and treatment integrity",
+    explanation:
+      "Ethical supervision includes [training, observation, feedback, documentation, and monitoring implementation].",
+    hint:
+      "Focus on whether the supervisee was [trained and monitored] sufficiently for accurate implementation.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A team selects a goal without asking the client or family about priorities, culture, routines, or language needs. Which ethical area is most directly weak?",
+    choices: [
+      "Cultural responsiveness and client dignity",
+      "Rate measurement",
+      "Multiple baseline logic",
+      "Schedule thinning",
+    ],
+    answer: "Cultural responsiveness and client dignity",
+    explanation:
+      "Culturally responsive services consider [values, context, language, preferences, and collaboration].",
+    hint:
+      "Look for missing collaboration with [client values and contextual variables].",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A behavior plan is less intrusive but has produced no meaningful improvement after adequate implementation. What is the best ethical interpretation?",
+    choices: [
+      "Least restrictive procedures must also be effective, so the plan should be reviewed",
+      "Least restrictive always means continuing the same plan",
+      "Effectiveness is irrelevant when procedures are mild",
+      "Consent is no longer needed after the first plan",
+    ],
+    answer:
+      "Least restrictive procedures must also be effective, so the plan should be reviewed",
+    explanation:
+      "Ethical treatment balances [least restrictive procedures] with [effective procedures].",
+    hint:
+      "Consider both [procedural restrictiveness] and whether the data show meaningful benefit.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A BCBA notices possible billing fraud and altered data in client records. What should guide the response?",
+    choices: [
+      "Document, protect confidentiality, consult/report through appropriate channels, and follow up",
+      "Ignore it if services are still occurring",
+      "Post identifying details publicly",
+      "Delete the records to prevent harm",
+    ],
+    answer:
+      "Document, protect confidentiality, consult/report through appropriate channels, and follow up",
+    explanation:
+      "Ethical concern reporting requires [documentation, confidentiality, appropriate channels, and follow-up].",
+    hint:
+      "Think systematic response: [protect records and report appropriately], consult/report appropriately, and document.",
+  },
+];
+
+const sectionEMasteryQuestions: QuestionContent[] = [
+  {
+    type: "scenario",
+    prompt:
+      "A BCBA explains a proposed intervention, risks, benefits, alternatives, data use, and the right to withdraw before the caregiver agrees. Which ethical process is best described?",
+    choices: ["Informed consent", "Treatment integrity", "Multiple relationship", "External validity"],
+    answer: "Informed consent",
+    explanation:
+      "Informed consent requires [voluntary agreement] after clear information about procedures and risks.",
+    hint:
+      "Focus on [agreement after risks, benefits, alternatives, and rights are explained].",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A BCBA discusses a client's treatment details with a friend in a restaurant, without using the client's name but with enough details to identify them. Which issue is most relevant?",
+    choices: ["Confidentiality", "Parametric analysis", "Treatment generality", "Frequency recording"],
+    answer: "Confidentiality",
+    explanation:
+      "Confidentiality protects [private client information], even when names are omitted.",
+    hint:
+      "Ask whether client information could be [identified or accessed by unauthorized people].",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A BCBA is asked to treat severe feeding concerns but has no training, supervised experience, or consultation in feeding intervention. What is the best ethical action?",
+    choices: [
+      "Seek training, supervision, consultation, or referral before providing the service",
+      "Accept the case because all BCBAs can treat every behavior",
+      "Implement a plan from the internet and monitor later",
+      "Ask the family to sign a waiver so competence is not required",
+    ],
+    answer:
+      "Seek training, supervision, consultation, or referral before providing the service",
+    explanation:
+      "Scope of competence depends on [training, supervised experience, and current skills].",
+    hint:
+      "Focus on whether the provider has [competence for this specialty area].",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A provider recommends a clinic owned by a close family member without disclosing the relationship. Which ethical concern is strongest?",
+    choices: ["Conflict of interest", "Momentary time sampling", "Response generalization", "Permanent product recording"],
+    answer: "Conflict of interest",
+    explanation:
+      "A conflict of interest exists when another interest may [bias professional judgment].",
+    hint:
+      "Look for a personal or financial relationship that could [influence professional recommendations].",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A current client's caregiver asks the BCBA to become the child's paid weekend tutor outside services. Which concept should the BCBA evaluate first?",
+    choices: ["Multiple relationship and professional boundaries", "External validity only", "Total count IOA", "Line graph construction"],
+    answer: "Multiple relationship and professional boundaries",
+    explanation:
+      "Multiple relationships create overlapping roles that may impair [professional objectivity] or create harm.",
+    hint:
+      "Ask whether a [second role overlaps with the existing professional relationship].",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "An RBT implements a teaching procedure differently from the written plan, and progress data become difficult to interpret. Which issue is most directly involved?",
+    choices: ["Treatment integrity", "Cultural responsiveness", "External validity", "Unconditioned reinforcement"],
+    answer: "Treatment integrity",
+    explanation:
+      "Treatment integrity means procedures are [implemented as designed].",
+    hint:
+      "Focus on whether implementation [matched the written procedure].",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A less intrusive function-based procedure is producing meaningful improvement. A team member suggests adding a more intrusive procedure to make progress faster. Which ethical principle should guide the decision?",
+    choices: [
+      "Use effective procedures with the least restrictive approach needed",
+      "Always use the most intrusive option first",
+      "Ignore function when treatment is working",
+      "Remove consent after data improve",
+    ],
+    answer:
+      "Use effective procedures with the least restrictive approach needed",
+    explanation:
+      "Ethical intervention balances [effective procedures] with [minimally intrusive procedures].",
+    hint:
+      "Consider whether a [more intrusive option is clinically necessary] when the current plan is effective.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A supervisor gives a supervisee responsibilities beyond their skill level and does not observe or provide feedback. Which area is most directly implicated?",
+    choices: ["Supervision ethics", "Visual analysis", "Rate vs frequency", "Matching law"],
+    answer: "Supervision ethics",
+    explanation:
+      "Supervision ethics requires [competent delegation, observation, feedback, documentation, and monitoring].",
+    hint:
+      "Look at [task assignment, observation, and performance feedback].",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A team chooses goals without considering the client's language, family routines, cultural values, or preferences. Which ethical area is most directly weak?",
+    choices: ["Cultural responsiveness", "Changing Criterion Design", "Exact count IOA", "Behavioral momentum"],
+    answer: "Cultural responsiveness",
+    explanation:
+      "Cultural responsiveness considers [values, context, language, and preferences] while maintaining data-based practice.",
+    hint:
+      "Look for missing attention to [cultural and contextual variables].",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A BCBA identifies a possible ethical violation involving altered records. Which response is most appropriate?",
+    choices: [
+      "Document facts, protect confidentiality, consult or report through appropriate channels, and follow up",
+      "Discuss identifying details with friends to get quick advice",
+      "Ignore the concern until a caregiver asks about it",
+      "Delete related records to prevent conflict",
+    ],
+    answer:
+      "Document facts, protect confidentiality, consult or report through appropriate channels, and follow up",
+    explanation:
+      "Ethical concern response should be [systematic, confidential, documented, and followed up].",
+    hint:
+      "Think about a responsible process from [identification through follow-up].",
+  },
+];
+
+const sectionEExpandedMiniLessons: MiniLessonContent[] = [
+  {
+    slug: "benefit-others",
+    label: "E.1",
+    title: "Benefit Others",
+    body: [
+      "Benefit others means maximizing [client welfare and rights] while minimizing harm.",
+      "The client’s interests come first when professional, financial, or organizational pressures compete.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which action best reflects benefit others?",
+      choices: [
+        "Revising services when data show limited benefit and risk is increasing",
+        "Continuing a profitable service package without reviewing outcomes",
+        "Prioritizing staff convenience over client welfare",
+        "Using a familiar procedure even when it increases risk",
+      ],
+      answer:
+        "Revising services when data show limited benefit and risk is increasing",
+      hint:
+        "Look for the action that prioritizes [client welfare and risk reduction].",
+      feedback:
+        "Benefit others requires [maximizing client benefit and minimizing harm].",
+    },
+  },
+  {
+    slug: "compassion-dignity-respect",
+    label: "E.1",
+    title: "Compassion, Dignity, and Respect",
+    body: [
+      "Compassion means responding with [care and humane treatment].",
+      "Respect includes privacy, self-determination, equitable treatment, and informed choices.",
+    ],
+    visual: {
+      type: "sorting",
+      prompt: "Sort each action by whether it protects dignity.",
+      categories: ["Protects dignity", "Needs revision"],
+      items: [
+        { label: "Offer choices and explain procedures in understandable language", category: "Protects dignity" },
+        { label: "Discuss a client’s hygiene needs in a public hallway", category: "Needs revision" },
+        { label: "Adapt communication for the client’s language needs", category: "Protects dignity" },
+        { label: "Use embarrassing materials because they are easy to find", category: "Needs revision" },
+      ],
+    },
+  },
+  {
+    slug: "behave-with-integrity",
+    label: "E.1",
+    title: "Behave With Integrity",
+    body: [
+      "Integrity means being [truthful, accountable, and trustworthy].",
+      "It includes correcting errors, following through on obligations, and avoiding misrepresentation.",
+    ],
+    visual: {
+      type: "select-all",
+      prompt: "Select actions that show professional integrity.",
+      choices: [
+        { label: "Correct an inaccurate report promptly", correct: true },
+        { label: "Represent credentials accurately", correct: true },
+        { label: "Follow through on agreed service obligations", correct: true },
+        { label: "Leave out unfavorable data from a graph", correct: false },
+      ],
+      feedback:
+        "Integrity requires [truthfulness, accountability, and correction of errors].",
+    },
+  },
+  {
+    slug: "ensure-competence",
+    label: "E.1",
+    title: "Ensure Competence",
+    body: [
+      "Ensure competence means staying within [scope of practice and scope of competence].",
+      "It also requires ongoing professional development and awareness of personal limits.",
+    ],
+    visual: {
+      type: "comparison",
+      leftTitle: "Scope of practice",
+      leftText: "What the profession and role permit",
+      rightTitle: "Scope of competence",
+      rightText: "What this analyst is [trained and skilled] to do",
+      cue: "Practice asks [what the professional role permits]; competence asks [what this BCBA can perform responsibly].",
+    },
+  },
+  {
+    slug: "scope-of-practice",
+    label: "E.3",
+    title: "Scope of Practice vs Scope of Competence",
+    body: [
+      "Scope of practice is the profession’s [authorized service area].",
+      "Scope of competence is the analyst’s [demonstrated ability within that service area].",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which statement best differentiates scope of practice and scope of competence?",
+      choices: [
+        "Practice defines what the role may include; competence defines what the individual can perform responsibly",
+        "Practice and competence are identical once someone is certified",
+        "Competence refers to billing codes; practice refers only to supervision hours",
+        "Practice applies only to research; competence applies only to direct therapy",
+      ],
+      answer:
+        "Practice defines what the role may include; competence defines what the individual can perform responsibly",
+      hint:
+        "Separate [professional role boundaries] from [individual skill boundaries].",
+      feedback:
+        "The key discrimination is [professional role authorization] versus [individual demonstrated competence].",
+    },
+  },
+  {
+    slug: "maintaining-competence",
+    label: "E.3",
+    title: "Maintaining Competence",
+    body: [
+      "Maintaining competence requires [continuing education and current practice knowledge].",
+      "Competence can change when science, client needs, technology, or practice areas change.",
+    ],
+    visual: {
+      type: "fill-blank",
+      prompt: "Complete the competence cue.",
+      sentence: "Maintaining competence requires ongoing ____ development.",
+      answer: "professional",
+      feedback:
+        "Maintaining competence requires [ongoing professional development] and current knowledge.",
+    },
+  },
+  {
+    slug: "accurate-credentials",
+    label: "E.3",
+    title: "Accurate Representation of Credentials",
+    body: [
+      "Accurate representation means describing credentials, roles, training, and services [truthfully and accurately].",
+      "Do not imply specialty competence, certification, or outcomes that are not supported.",
+    ],
+    visual: {
+      type: "example",
+      example:
+        "A BCBA states they are trained in early intervention and seeking consultation for feeding cases.",
+      nonexample:
+        "A BCBA advertises as a feeding specialist after attending one introductory webinar.",
+    },
+  },
+  {
+    slug: "professional-accountability",
+    label: "E.3",
+    title: "Professional Accountability",
+    body: [
+      "Professional accountability means taking responsibility for [your work and delegated work].",
+      "Accountability includes correcting errors, documenting decisions, and monitoring supervisee implementation.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which action best reflects professional accountability?",
+      choices: [
+        "Correcting an incorrect report and documenting the correction",
+        "Blaming the RBT without reviewing supervision practices",
+        "Ignoring a parent concern because data collection is inconvenient",
+        "Continuing an ineffective plan without review",
+      ],
+      answer: "Correcting an incorrect report and documenting the correction",
+      hint:
+        "Look for ownership, correction, and documentation.",
+      feedback:
+        "Accountability requires [owning and correcting professional errors].",
+    },
+  },
+  {
+    slug: "record-retention-security",
+    label: "E.3",
+    title: "Record Retention and Security",
+    body: [
+      "Record retention means keeping documentation for [required time frames].",
+      "Security means protecting records from unauthorized access, loss, alteration, or disclosure.",
+    ],
+    visual: {
+      type: "matching",
+      prompt: "Match each records term to its cue.",
+      pairs: [
+        { term: "Retention", definition: "Keep records for required time frames." },
+        { term: "Security", definition: "Protect records from unauthorized access." },
+        { term: "Accuracy", definition: "Record services and data truthfully." },
+        { term: "Access", definition: "Release records only through authorized processes." },
+      ],
+    },
+  },
+  {
+    slug: "client-welfare-vulnerable-clients",
+    label: "E.4",
+    title: "Client Welfare and Vulnerable Clients",
+    body: [
+      "Client welfare includes [safety, rights, dignity, and effective services].",
+      "Vulnerable clients may need extra safeguards for communication, consent, assent, choice, and protection from coercion.",
+    ],
+    visual: {
+      type: "select-all",
+      prompt: "Select safeguards for vulnerable clients.",
+      choices: [
+        { label: "Use assent and withdrawal cues when possible", correct: true },
+        { label: "Provide choices and understandable explanations", correct: true },
+        { label: "Monitor risk and treatment effects closely", correct: true },
+        { label: "Ignore refusal behavior because consent was signed", correct: false },
+      ],
+      feedback:
+        "Vulnerable clients require safeguards for [safety, assent, dignity, and choice].",
+    },
+  },
+  {
+    slug: "assent-vs-consent",
+    label: "E.4",
+    title: "Assent vs Informed Consent",
+    body: [
+      "Informed consent is [authorized voluntary agreement].",
+      "Assent is behavior indicating [willingness to participate] from someone who cannot provide full informed consent.",
+    ],
+    visual: {
+      type: "comparison",
+      leftTitle: "Consent",
+      leftText: "Authorized agreement after understanding procedures and risks",
+      rightTitle: "Assent",
+      rightText: "Willing participation shown through behavior",
+      cue: "Consent authorizes services; assent monitors [ongoing willingness to participate].",
+    },
+  },
+  {
+    slug: "hipaa-privacy-basics",
+    label: "E.4",
+    title: "HIPAA and Privacy Basics",
+    body: [
+      "Privacy rules protect [health and service information].",
+      "Use secure systems, minimum necessary sharing, and authorization procedures when applicable.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which practice best supports privacy?",
+      choices: [
+        "Use secure systems and share only the minimum necessary information with authorized parties",
+        "Send full reports through personal text messages for convenience",
+        "Discuss client details in public if names are not used",
+        "Store session notes on a shared personal laptop",
+      ],
+      answer:
+        "Use secure systems and share only the minimum necessary information with authorized parties",
+      hint:
+        "Look for secure storage and [minimum necessary information sharing].",
+      feedback:
+        "Privacy protection uses [secure systems and authorized limited disclosure].",
+    },
+  },
+  {
+    slug: "gifts-financial-relationships",
+    label: "E.7",
+    title: "Gifts and Financial Relationships",
+    body: [
+      "Gifts and financial relationships can create [undue influence or conflicts of interest].",
+      "Evaluate whether the exchange could affect objectivity, service access, or client trust.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which gift situation creates the highest ethical risk?",
+      choices: [
+        "A caregiver offers an expensive vacation package after the BCBA recommends continued services",
+        "A caregiver sends a thank-you note to the clinic office",
+        "A client draws a card during art time and gives it to the team",
+        "A team receives agency-approved snacks at a staff meeting",
+      ],
+      answer:
+        "A caregiver offers an expensive vacation package after the BCBA recommends continued services",
+      hint:
+        "Look for value, timing, and whether the gift could [bias professional judgment].",
+      feedback:
+        "Gift concerns increase when they create [undue influence or conflicts of interest].",
+    },
+  },
+  {
+    slug: "social-media-conduct",
+    label: "E.5",
+    title: "Social Media and Professional Conduct",
+    body: [
+      "Professional conduct applies across [in-person and digital settings].",
+      "Social media risks include confidentiality breaches, boundary crossings, testimonials, and misrepresentation.",
+    ],
+    visual: {
+      type: "sorting",
+      prompt: "Sort each social media action.",
+      categories: ["Lower risk", "Ethical risk"],
+      items: [
+        { label: "Post a general educational article with no client details", category: "Lower risk" },
+        { label: "Share a client video from session without proper authorization", category: "Ethical risk" },
+        { label: "Accept a current caregiver's friend request on a personal account", category: "Ethical risk" },
+        { label: "Use an agency-approved page for general service information", category: "Lower risk" },
+      ],
+    },
+  },
+  {
+    slug: "exploitative-relationships",
+    label: "E.7",
+    title: "Exploitative Relationships",
+    body: [
+      "Exploitative relationships use power, access, or trust for [personal advantage from professional power].",
+      "The ethical concern is harm, coercion, impaired judgment, or compromised client welfare.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which scenario most clearly shows an exploitative relationship?",
+      choices: [
+        "A BCBA pressures a caregiver to buy products from the BCBA's side business",
+        "A BCBA explains a service agreement before assessment",
+        "A BCBA consults a supervisor about a difficult case",
+        "A BCBA documents a caregiver's concerns objectively",
+      ],
+      answer:
+        "A BCBA pressures a caregiver to buy products from the BCBA's side business",
+      hint:
+        "Look for use of professional power for [personal advantage from the service relationship].",
+      feedback:
+        "Exploitative relationships involve [power used for personal benefit] and risk harm.",
+    },
+  },
+  {
+    slug: "supervisor-feedback-responsibilities",
+    label: "E.10",
+    title: "Feedback Responsibilities",
+    body: [
+      "Supervision feedback should be [timely, behavior-specific, and data-informed].",
+      "Feedback protects clients by improving implementation, competence, and treatment integrity.",
+    ],
+    visual: {
+      type: "fill-blank",
+      prompt: "Complete the supervision cue.",
+      sentence: "Effective supervision feedback should be timely, behavior-specific, and ____-informed.",
+      answer: "data",
+      feedback:
+        "Feedback is strongest when it is [observable, timely, and data-informed].",
+    },
+  },
+  {
+    slug: "supervisor-competence",
+    label: "E.10",
+    title: "Supervisor Competence",
+    body: [
+      "Supervisor competence means supervising only within [areas of qualified expertise].",
+      "Supervisors must be competent in the services, populations, procedures, and supervision practices involved.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which supervision arrangement is most ethical?",
+      choices: [
+        "A supervisor seeks consultation before supervising a procedure outside their experience",
+        "A supervisor accepts all cases because they hold a BCBA credential",
+        "A supervisor delegates high-risk procedures without direct observation",
+        "A supervisor stops documenting sessions once rapport is strong",
+      ],
+      answer:
+        "A supervisor seeks consultation before supervising a procedure outside their experience",
+      hint:
+        "Focus on [qualified expertise and client protection].",
+      feedback:
+        "Supervisor competence requires [qualified expertise and appropriate consultation] when needed.",
+    },
+  },
+  {
+    slug: "delegation-oversight",
+    label: "E.10",
+    title: "Delegation and Oversight",
+    body: [
+      "Delegation is ethical when tasks match [training, competence, and supervision].",
+      "Oversight means monitoring implementation and outcomes after tasks are assigned.",
+    ],
+    visual: {
+      type: "flow",
+      prompt: "Order ethical delegation.",
+      steps: [
+        "Assess supervisee competence",
+        "Train and model the task",
+        "Observe implementation and give feedback",
+        "Monitor treatment integrity and client outcomes",
+      ],
+      feedback:
+        "Delegation requires [training, observation, feedback, and monitoring].",
+    },
+  },
+  {
+    slug: "data-falsification",
+    label: "E.3",
+    title: "Data Falsification Concerns",
+    body: [
+      "Data falsification means altering, inventing, or omitting data in a way that [misrepresents services or outcomes].",
+      "It is an integrity, documentation, billing, and client-welfare concern.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which action is data falsification?",
+      choices: [
+        "Changing missed-session data to show treatment was implemented",
+        "Correcting a typo and documenting the correction",
+        "Adding a note that data were not collected due to illness",
+        "Reviewing raw data with a supervisor",
+      ],
+      answer: "Changing missed-session data to show treatment was implemented",
+      hint:
+        "Look for a change that [misrepresents what occurred].",
+      feedback:
+        "Data falsification misrepresents [services, data, or outcomes].",
+    },
+  },
+  {
+    slug: "evidence-based-practice",
+    label: "E.9",
+    title: "Evidence-Based Practice",
+    body: [
+      "Evidence-based practice uses [best available evidence], clinical expertise, client values, and contextual fit.",
+      "It does not mean using a preferred procedure without data or ignoring client context.",
+    ],
+    visual: {
+      type: "select-all",
+      prompt: "Select components of evidence-based ethical service delivery.",
+      choices: [
+        { label: "Best available evidence", correct: true },
+        { label: "Client values and contextual fit", correct: true },
+        { label: "Clinical expertise and ongoing data", correct: true },
+        { label: "Provider preference without outcome data", correct: false },
+      ],
+      feedback:
+        "Evidence-based practice integrates [best available evidence], [clinical expertise], [client values and context], and data.",
+    },
+  },
+  {
+    slug: "collaboration-caregivers-professionals",
+    label: "E.8",
+    title: "Collaboration With Caregivers and Professionals",
+    body: [
+      "Collaboration means communicating respectfully with [clients, stakeholders, and other providers].",
+      "The goal is coordinated care while protecting confidentiality and professional role boundaries.",
+    ],
+    visual: {
+      type: "matching",
+      prompt: "Match each collaboration action to its ethics cue.",
+      pairs: [
+        { term: "Caregiver input", definition: "Improves social validity and contextual fit." },
+        { term: "Provider collaboration", definition: "Coordinates services across disciplines." },
+        { term: "Confidentiality", definition: "Limits information sharing to authorized purposes." },
+        { term: "Role clarity", definition: "Prevents confusion about professional responsibilities." },
+      ],
+    },
+  },
+  {
+    slug: "environmental-barriers",
+    label: "E.9",
+    title: "Environmental Conditions Interfering With Services",
+    body: [
+      "Environmental barriers are conditions that interfere with [effective and ethical service delivery].",
+      "Examples include unsafe settings, insufficient staffing, lack of materials, or policies that prevent treatment integrity.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "A clinic requires sessions in a room where severe aggression cannot be managed safely. What is the ethical priority?",
+      choices: [
+        "Address the environmental barrier before continuing services in that setting",
+        "Continue because the schedule is already approved",
+        "Ignore safety because the intervention plan is evidence based",
+        "Change the data sheet but keep the procedures the same",
+      ],
+      answer:
+        "Address the environmental barrier before continuing services in that setting",
+      hint:
+        "Ask whether the environment allows [safe and effective implementation].",
+      feedback:
+        "Environmental barriers must be addressed when they threaten [safety, integrity, or effectiveness].",
+    },
+  },
+  {
+    slug: "self-reporting-obligations",
+    label: "E.12",
+    title: "Self-Reporting Obligations",
+    body: [
+      "Self-reporting means notifying appropriate bodies when required by [BACB, legal, or regulatory requirements].",
+      "It may apply to critical information that affects certification, practice, or public protection.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which action best fits self-reporting obligations?",
+      choices: [
+        "Review reporting requirements and submit required information through the appropriate channel",
+        "Wait until a client asks about the issue",
+        "Post the issue publicly before consulting requirements",
+        "Ask a coworker to report it without documentation",
+      ],
+      answer:
+        "Review reporting requirements and submit required information through the appropriate channel",
+      hint:
+        "Focus on [required reporting channels] and documentation.",
+      feedback:
+        "Self-reporting is guided by [professional and regulatory requirements].",
+    },
+  },
+  {
+    slug: "bacb-reporting-responsibilities",
+    label: "E.12",
+    title: "BACB Reporting Responsibilities",
+    body: [
+      "BACB reporting responsibilities involve serious concerns that may affect [client protection or professional standards].",
+      "Some urgent risks may require immediate reporting to authorities before BACB or licensure reporting.",
+    ],
+    visual: {
+      type: "sorting",
+      prompt: "Sort each concern by likely first response.",
+      categories: ["Immediate protection first", "Consult and document first"],
+      items: [
+        { label: "Client is at immediate risk of serious harm", category: "Immediate protection first" },
+        { label: "A minor documentation inconsistency is unclear", category: "Consult and document first" },
+        { label: "Possible abuse or mandated reporting concern", category: "Immediate protection first" },
+        { label: "Question about whether a boundary issue occurred", category: "Consult and document first" },
+      ],
+    },
+  },
+  {
+    slug: "ethical-decision-tree",
+    label: "E.1",
+    title: "Ethical Decision Tree",
+    body: [
+      "An ethical decision tree helps organize [risk, stakeholders, standards, consultation, action, and follow-up].",
+      "The purpose is not to memorize a script; it is to reduce harm through systematic action.",
+    ],
+    visual: {
+      type: "flow",
+      prompt: "Order the ethical decision tree.",
+      steps: [
+        "Define the concern and immediate risk",
+        "Identify stakeholders and relevant standards",
+        "Consult and document while protecting confidentiality",
+        "Act, monitor outcomes, and follow up",
+      ],
+      feedback:
+        "Ethical problem solving is [systematic, documented, and client-centered].",
+    },
+  },
+];
+
+const sectionEExpandedPracticeQuestions: QuestionContent[] = [
+  {
+    type: "matching",
+    prompt: "Match each core ethics principle to its discrimination cue.",
+    pairs: [
+      { term: "Benefit others", definition: "Maximize welfare and minimize harm." },
+      { term: "Compassion, dignity, and respect", definition: "Promote privacy, self-determination, and equitable treatment." },
+      { term: "Integrity", definition: "Be truthful, accountable, and trustworthy." },
+      { term: "Ensure competence", definition: "Work within practice and competence boundaries." },
+    ],
+    answer: "All core principles matched correctly",
+    explanation:
+      "The core principles separate [client welfare], [dignity and respect], [truthfulness and accountability], and [professional competence].",
+    hint:
+      "Sort by the main ethical function: welfare, respect, honesty, or skill boundaries.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A BCBA is asked to supervise a procedure they have never implemented or supervised. What should guide the decision?",
+    choices: [
+      "Supervisor competence and consultation before accepting responsibility",
+      "Certification alone is enough to supervise all ABA procedures",
+      "Supervision documentation can replace competence",
+      "The supervisee's confidence is the only factor",
+    ],
+    answer: "Supervisor competence and consultation before accepting responsibility",
+    explanation:
+      "Supervisor competence requires [qualified expertise and consultation or referral] when needed.",
+    hint:
+      "Focus on whether the supervisor has qualified expertise for the procedure.",
+  },
+  {
+    type: "select-all",
+    prompt: "Select examples of boundary or exploitation risk.",
+    choices: [
+      "Pressuring a caregiver to buy products from the BCBA's side business",
+      "Accepting an expensive gift after recommending more services",
+      "Becoming a current client's paid babysitter",
+      "Providing a written service agreement before assessment",
+    ],
+    answers: [
+      "Pressuring a caregiver to buy products from the BCBA's side business",
+      "Accepting an expensive gift after recommending more services",
+      "Becoming a current client's paid babysitter",
+    ],
+    answer:
+      "Side-business pressure, expensive gifts, and babysitting a current client are boundary or exploitation risks",
+    explanation:
+      "Boundary risks involve [role overlap], [undue influence], or [personal advantage within a professional relationship].",
+    hint:
+      "Look for personal gain, second roles, or pressure inside a professional relationship.",
+  },
+  {
+    type: "fill-blank",
+    prompt:
+      "Complete the ethical service cue: Evidence-based practice integrates evidence, client values, clinical expertise, and ongoing ____.",
+    answer: "data",
+    explanation:
+      "Evidence-based practice requires [ongoing client data] rather than relying only on preference or habit.",
+    hint:
+      "The missing word is what lets the team evaluate whether treatment is working.",
+  },
+  {
+    type: "sorting",
+    prompt: "Sort each responsibility.",
+    categories: ["Client protection", "Professional accountability"],
+    items: [
+      { label: "Use assent and withdrawal cues when possible", category: "Client protection" },
+      { label: "Correct an inaccurate report promptly", category: "Professional accountability" },
+      { label: "Address unsafe environmental conditions", category: "Client protection" },
+      { label: "Represent credentials truthfully", category: "Professional accountability" },
+    ],
+    answer: "Responsibilities sorted by protection or accountability",
+    explanation:
+      "Client protection focuses on [client safety and rights]; accountability focuses on [truthfulness and professional responsibility].",
+    hint:
+      "Ask whether the action mainly protects the client or corrects/represents professional conduct.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A caregiver posts a positive review and asks the BCBA to share it on the clinic page while services are ongoing. What is the primary ethical concern?",
+    choices: [
+      "Testimonials and public statements involving current clients",
+      "Momentary time sampling",
+      "Trial-by-trial IOA",
+      "Parametric analysis",
+    ],
+    answer: "Testimonials and public statements involving current clients",
+    explanation:
+      "Social media and testimonials can create [confidentiality, undue influence, and public statement] risks.",
+    hint:
+      "Think about public statements and the power difference in a current service relationship.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "An agency policy prevents staff from collecting treatment-integrity data even though outcomes are not improving. What should the BCBA address?",
+    choices: [
+      "Environmental conditions interfering with effective service delivery",
+      "A generalized conditioned punisher",
+      "A multiple baseline design",
+      "Permanent product recording",
+    ],
+    answer:
+      "Environmental conditions interfering with effective service delivery",
+    explanation:
+      "Environmental barriers must be addressed when they threaten [integrity, safety, or effectiveness].",
+    hint:
+      "Look for a setting condition that blocks ethical and effective implementation.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A supervisee repeatedly implements a procedure incorrectly. The supervisor has not observed sessions or provided behavior-specific feedback. Which responsibility is weakest?",
+    choices: [
+      "Performance monitoring and feedback",
+      "Confidentiality in public statements",
+      "Client financial agreement",
+      "Research review",
+    ],
+    answer: "Performance monitoring and feedback",
+    explanation:
+      "Supervision ethics requires [monitoring supervisee performance] and providing timely feedback.",
+    hint:
+      "Focus on observation and feedback after delegation.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A client shows clear refusal behavior during sessions even though a guardian signed consent. What should the team consider?",
+    choices: [
+      "Assent, withdrawal cues, dignity, and possible procedure modification",
+      "Consent means refusal behavior can be ignored",
+      "Assent applies only to research with adults",
+      "Treatment integrity is irrelevant once consent is signed",
+    ],
+    answer:
+      "Assent, withdrawal cues, dignity, and possible procedure modification",
+    explanation:
+      "Consent authorizes services, but assent and withdrawal cues support [ongoing willingness and dignity].",
+    hint:
+      "Separate legal authorization from the client's ongoing behavior indicating willingness.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A BCBA learns of a possible mandated reporting concern that may involve immediate client risk. What is the strongest first priority?",
+    choices: [
+      "Protect the client and follow required immediate reporting procedures",
+      "Wait until the next supervision meeting",
+      "Post a general warning online",
+      "Only report to the BACB after several months",
+    ],
+    answer:
+      "Protect the client and follow required immediate reporting procedures",
+    explanation:
+      "Immediate risk requires [immediate client protection] and required reporting channels.",
+    hint:
+      "Prioritize immediate safety and required reporting obligations.",
+  },
+  {
+    type: "select-all",
+    prompt: "Select steps in a structured ethical decision-making process.",
+    choices: [
+      "Define the issue and potential risk",
+      "Identify stakeholders and relevant standards",
+      "Consult and document while protecting confidentiality",
+      "Choose the easiest action without considering consequences",
+    ],
+    answers: [
+      "Define the issue and potential risk",
+      "Identify stakeholders and relevant standards",
+      "Consult and document while protecting confidentiality",
+    ],
+    answer:
+      "Define risk, identify stakeholders and standards, consult, document, and protect confidentiality",
+    explanation:
+      "Ethical decision making is [structured, documented, consultative, and client-centered].",
+    hint:
+      "Look for steps that reduce harm and create a documented decision trail.",
+  },
+];
+
+const sectionEExpandedMasteryQuestions: QuestionContent[] = [
+  {
+    type: "scenario",
+    prompt:
+      "A service package benefits the agency financially, but client data show no meaningful improvement and risk is increasing. Which core principle is most directly at issue?",
+    choices: ["Benefit others", "Momentary time sampling", "Scope of practice only", "External validity"],
+    answer: "Benefit others",
+    explanation:
+      "Benefit others requires prioritizing [client welfare and risk reduction] over competing interests.",
+    hint:
+      "Look for the principle centered on maximizing benefit and minimizing harm.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A BCBA is legally allowed to provide ABA services but lacks training in a specialized feeding protocol. Which distinction is most relevant?",
+    choices: [
+      "Scope of practice vs scope of competence",
+      "Consent vs confidentiality",
+      "Rate vs duration",
+      "Internal vs external validity",
+    ],
+    answer: "Scope of practice vs scope of competence",
+    explanation:
+      "Scope of practice concerns [professional role authorization]; scope of competence concerns [individual demonstrated skill].",
+    hint:
+      "Separate what the professional role may include from what this analyst can perform responsibly.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A BCBA advertises expertise in a treatment area after one introductory webinar and no supervised practice. Which ethical concern is strongest?",
+    choices: [
+      "Inaccurate representation of credentials or competence",
+      "Client assent",
+      "Momentary time sampling",
+      "Visual analysis",
+    ],
+    answer: "Inaccurate representation of credentials or competence",
+    explanation:
+      "Accurate representation requires [truthful description of credentials, training, and competence].",
+    hint:
+      "Focus on whether the public claim overstates training or expertise.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A current caregiver offers an expensive gift after the BCBA recommends continuing services. Which ethical risk is most relevant?",
+    choices: [
+      "Gift or financial relationship creating undue influence",
+      "Data path construction",
+      "Response effort",
+      "Trial-by-trial IOA",
+    ],
+    answer: "Gift or financial relationship creating undue influence",
+    explanation:
+      "High-value gifts can create [undue influence or conflicts of interest].",
+    hint:
+      "Look at value, timing, and whether judgment could be biased.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A client lacks capacity for informed consent but consistently approaches materials, participates willingly, and stops participating when overwhelmed. What should the team monitor?",
+    choices: ["Assent and withdrawal cues", "Only billing accuracy", "A changing criterion line", "Social media testimonials"],
+    answer: "Assent and withdrawal cues",
+    explanation:
+      "Assent reflects [willingness to participate] when full informed consent is not possible.",
+    hint:
+      "Focus on ongoing behavior that indicates willingness or refusal.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A BCBA deletes low treatment-integrity scores before sending a report to a funder. Which concern is most directly represented?",
+    choices: ["Data falsification", "Cultural responsiveness", "Assent", "Scope of practice"],
+    answer: "Data falsification",
+    explanation:
+      "Data falsification misrepresents [services, implementation, or outcomes].",
+    hint:
+      "Look for altering records so they no longer represent what occurred.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A supervisor delegates a complex protocol to a trainee without training, observation, or feedback. Which supervision issue is most relevant?",
+    choices: [
+      "Delegation and oversight",
+      "Permanent product recording",
+      "Multiple baseline across settings",
+      "Unconditioned reinforcement",
+    ],
+    answer: "Delegation and oversight",
+    explanation:
+      "Ethical delegation requires [training, competence, observation, feedback, and monitoring].",
+    hint:
+      "Focus on what must happen before and after assigning tasks.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A behavior plan is evidence based in the literature, but the team has no data showing it works for this client and ignores family values. What is missing?",
+    choices: [
+      "Evidence-based practice integrated with client values and ongoing data",
+      "A gift policy only",
+      "A standard celeration chart",
+      "A public testimonial",
+    ],
+    answer:
+      "Evidence-based practice integrated with client values and ongoing data",
+    explanation:
+      "Evidence-based practice integrates [research evidence, clinical expertise, client values, context, and ongoing data].",
+    hint:
+      "Look beyond published support to client context and data-based evaluation.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A classroom lacks safe space and staffing for a high-risk procedure, making treatment integrity unlikely. What should the BCBA address?",
+    choices: [
+      "Environmental conditions interfering with service delivery",
+      "A generalized conditioned reinforcer",
+      "Latency measurement",
+      "A chained schedule",
+    ],
+    answer: "Environmental conditions interfering with service delivery",
+    explanation:
+      "Environmental conditions must be addressed when they interfere with [safe and effective service delivery].",
+    hint:
+      "Focus on setting barriers that prevent safe or accurate implementation.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A BCBA identifies a complex ethical dilemma with multiple stakeholders and possible harm. Which action best fits ethical decision-making guidance?",
+    choices: [
+      "Define the risk, identify stakeholders and standards, consult, document, act, and follow up",
+      "Choose the fastest action and avoid documentation",
+      "Ask social media for advice with details removed",
+      "Delay action until everyone agrees there is no risk",
+    ],
+    answer:
+      "Define the risk, identify stakeholders and standards, consult, document, act, and follow up",
+    explanation:
+      "Ethical decision making should be [systematic, documented, consultative, and client-centered].",
+    hint:
+      "Look for a structured process from defining risk through follow-up.",
+  },
+];
+
+const sectionETcoMappingMiniLessons: MiniLessonContent[] = [
+  {
+    slug: "risks-from-unethical-behavior",
+    label: "E.2",
+    title: "Risks From Unethical Behavior",
+    body: [
+      "Unethical behavior can harm [clients, supervisees, the practitioner, organizations, and the profession].",
+      "Ethical risk affects trust, safety, treatment outcomes, documentation accuracy, and professional credibility.",
+    ],
+    visual: {
+      type: "select-all",
+      prompt: "Select possible risks from unethical behavior.",
+      choices: [
+        { label: "Client safety and welfare are compromised", correct: true },
+        { label: "Supervisees learn unsafe or inaccurate practices", correct: true },
+        { label: "Organizations lose trust and credibility", correct: true },
+        { label: "The profession is protected from reputational harm", correct: false },
+      ],
+      feedback:
+        "Unethical behavior can harm [clients, supervisees, practitioners, organizations, and the profession].",
+    },
+  },
+  {
+    slug: "unethical-risk-discrimination",
+    label: "E.2",
+    title: "Who Is at Risk?",
+    body: [
+      "Client risk includes [harm, loss of dignity, ineffective treatment, and rights violations].",
+      "Professional risk includes [loss of credibility, disciplinary action, and damaged public trust].",
+    ],
+    visual: {
+      type: "matching",
+      prompt: "Match each risk target to its cue.",
+      pairs: [
+        { term: "Client", definition: "Safety, dignity, rights, and outcomes may be harmed." },
+        { term: "Supervisee", definition: "Poor modeling or feedback may shape unsafe practice." },
+        { term: "Organization", definition: "Trust, compliance, and service quality may be damaged." },
+        { term: "Profession", definition: "Public credibility of behavior analysis may be weakened." },
+      ],
+    },
+  },
+  {
+    slug: "discontinuing-services-ethically",
+    label: "E.6",
+    title: "Discontinuing Services Ethically",
+    body: [
+      "Discontinuing services requires [transition planning and avoidance of abandonment].",
+      "Protect clients through notice, referrals, documentation, and continuity-of-care planning when possible.",
+    ],
+    visual: {
+      type: "flow",
+      prompt: "Order an ethical discontinuation process.",
+      steps: [
+        "Identify reason and immediate risk",
+        "Notify stakeholders and discuss transition needs",
+        "Provide referrals or continuity-of-care supports",
+        "Document the transition plan and follow-up steps",
+      ],
+      feedback:
+        "Ethical discontinuation protects [client welfare and continuity of care].",
+    },
+  },
+  {
+    slug: "discontinuing-supervision-ethically",
+    label: "E.6",
+    title: "Discontinuing Supervision Ethically",
+    body: [
+      "Discontinuing supervision requires [supervisee protection, client protection, and transition documentation].",
+      "Avoid abrupt changes that leave supervisees practicing without competent oversight.",
+    ],
+    visual: {
+      type: "choice",
+      prompt:
+        "A supervisor must end supervision in two weeks. Which action best protects the supervisee and clients?",
+      choices: [
+        "Create a documented transition plan, identify replacement supervision, and communicate responsibilities",
+        "Stop signing supervision records immediately without notice",
+        "Tell the supervisee to continue independently until a new supervisor appears",
+        "Delete supervision notes to avoid confusion",
+      ],
+      answer:
+        "Create a documented transition plan, identify replacement supervision, and communicate responsibilities",
+      hint:
+        "Focus on [continuity, documentation, and protection during role changes].",
+      feedback:
+        "Ethical supervision transitions require [planned continuity and documented responsibilities].",
+    },
+  },
+  {
+    slug: "interpersonal-skills-ethical-practice",
+    label: "E.8",
+    title: "Interpersonal Skills in Ethical Practice",
+    body: [
+      "Ethical collaboration includes [active listening, accepting feedback, and seeking input].",
+      "Respectful communication helps teams address disagreement without losing client focus.",
+    ],
+    visual: {
+      type: "sorting",
+      prompt: "Sort each response by interpersonal skill quality.",
+      categories: ["Supports ethical collaboration", "Needs revision"],
+      items: [
+        { label: "Reflect caregiver concern before explaining the data", category: "Supports ethical collaboration" },
+        { label: "Dismiss feedback because the caregiver is upset", category: "Needs revision" },
+        { label: "Ask another provider for relevant context with authorization", category: "Supports ethical collaboration" },
+        { label: "Respond defensively when a supervisee asks a question", category: "Needs revision" },
+      ],
+    },
+  },
+  {
+    slug: "professional-disagreement",
+    label: "E.8",
+    title: "Responding to Disagreement",
+    body: [
+      "Professional disagreement should be handled with [respectful communication and client-centered reasoning].",
+      "Use data, ethics standards, and stakeholder input rather than defensiveness or authority alone.",
+    ],
+    visual: {
+      type: "choice",
+      prompt:
+        "A caregiver disagrees with a recommendation and says the plan does not fit family routines. What should the BCBA do first?",
+      choices: [
+        "Listen, clarify the concern, review data and values, and collaborate on next steps",
+        "End services because disagreement means noncompliance",
+        "Tell the caregiver certification makes discussion unnecessary",
+        "Ignore the concern unless data collection stops",
+      ],
+      answer:
+        "Listen, clarify the concern, review data and values, and collaborate on next steps",
+      hint:
+        "Look for [active listening, data review, and collaborative problem solving].",
+      feedback:
+        "Respectful disagreement uses [listening, data, ethics, and collaboration].",
+    },
+  },
+  {
+    slug: "personal-biases",
+    label: "E.11",
+    title: "Personal Biases",
+    body: [
+      "Bias must not interfere with [professional judgment or client welfare].",
+      "Reduce bias by using data, ethical standards, cultural responsiveness, consultation, and reflective practice.",
+    ],
+    visual: {
+      type: "select-all",
+      prompt: "Select actions that reduce bias in ethical decision making.",
+      choices: [
+        { label: "Review objective data before recommending services", correct: true },
+        { label: "Seek consultation when personal reactions may affect judgment", correct: true },
+        { label: "Consider client culture, values, and context", correct: true },
+        { label: "Base recommendations on personal preference alone", correct: false },
+      ],
+      feedback:
+        "Bias is reduced through [data, consultation, cultural responsiveness, and ethical standards].",
+    },
+  },
+  {
+    slug: "bias-and-treatment-recommendations",
+    label: "E.11",
+    title: "Bias and Treatment Recommendations",
+    body: [
+      "Biased recommendations may overvalue [provider preference] and undervalue [client context, data, and welfare].",
+      "Culturally responsive decision making checks whether recommendations fit client needs and ethical standards.",
+    ],
+    visual: {
+      type: "comparison",
+      leftTitle: "Bias risk",
+      leftText: "Recommendation driven by [personal assumptions or convenience]",
+      rightTitle: "Ethical recommendation",
+      rightText: "Recommendation guided by [data, client values, and ethical standards]",
+      cue: "The key discrimination is [personal assumption] versus [data-informed client welfare].",
+    },
+  },
+  {
+    slug: "legal-regulatory-practice-requirements",
+    label: "E.12",
+    title: "Legal, Regulatory, and Practice Requirements",
+    body: [
+      "Ethical practice must follow [applicable law, regulation, and practice requirements].",
+      "When requirements are unclear or high risk, seek legal, administrative, supervisory, or regulatory guidance.",
+    ],
+    visual: {
+      type: "matching",
+      prompt: "Match each requirement area to its cue.",
+      pairs: [
+        { term: "Law", definition: "Legal requirements that apply to services or reporting." },
+        { term: "Regulation", definition: "Rules from licensing, certification, or oversight bodies." },
+        { term: "Policy", definition: "Service setting requirements that guide documentation and practice." },
+        { term: "Guidance", definition: "Consultation when requirements are unclear or high risk." },
+      ],
+    },
+  },
+  {
+    slug: "mandated-reporting-and-documentation",
+    label: "E.12",
+    title: "Mandated Reporting and Documentation",
+    body: [
+      "Mandated reporting applies when [law or regulation requires reporting specific concerns].",
+      "Documentation should show what was observed, what standards applied, consultation sought, actions taken, and follow-up.",
+    ],
+    visual: {
+      type: "choice",
+      prompt:
+        "A BCBA suspects a legally reportable safety concern. What should guide the response?",
+      choices: [
+        "Follow applicable mandated reporting requirements and document actions objectively",
+        "Wait until the family asks for help",
+        "Post a vague warning online without details",
+        "Ignore the concern if services are otherwise effective",
+      ],
+      answer:
+        "Follow applicable mandated reporting requirements and document actions objectively",
+      hint:
+        "Focus on [required reporting], [client protection], and [objective documentation].",
+      feedback:
+        "Legal and regulatory requirements guide [mandated reporting and documentation].",
+    },
+  },
+];
+
+const sectionETcoMappingPracticeQuestions: QuestionContent[] = [
+  {
+    type: "select-all",
+    prompt: "Select groups that may be harmed by unethical behavior.",
+    choices: [
+      "Clients receiving services",
+      "Supervisees learning professional practice",
+      "The behavior analyst and organization",
+      "The profession of behavior analysis",
+      "Only the person who committed the violation",
+    ],
+    answers: [
+      "Clients receiving services",
+      "Supervisees learning professional practice",
+      "The behavior analyst and organization",
+      "The profession of behavior analysis",
+    ],
+    answer:
+      "Clients, supervisees, behavior analysts, organizations, and the profession can all be harmed by unethical behavior",
+    explanation:
+      "Unethical behavior can harm [clients, supervisees, the practitioner, organizations, and the profession].",
+    hint:
+      "Think beyond one person. Ethical risk can affect safety, trust, services, supervision, and public credibility.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A BCBA ends services abruptly after a disagreement with a caregiver and provides no referrals, transition plan, or documentation. Which concern is most direct?",
+    choices: [
+      "Abandonment risk during discontinuation of services",
+      "Appropriate transition planning",
+      "Interobserver agreement",
+      "Generalization programming",
+    ],
+    answer: "Abandonment risk during discontinuation of services",
+    explanation:
+      "Discontinuing services requires [transition planning and avoidance of abandonment].",
+    hint:
+      "Look for whether the service change protects continuity of care and client welfare.",
+  },
+  {
+    type: "matching",
+    prompt: "Match each transition responsibility to its cue.",
+    pairs: [
+      { term: "Avoid abandonment", definition: "Do not leave clients or supervisees without reasonable protection." },
+      { term: "Referral", definition: "Identify appropriate supports when services end or change." },
+      { term: "Documentation", definition: "Record transition decisions, risks, and follow-up." },
+      { term: "Continuity of care", definition: "Plan so needed supports do not stop abruptly." },
+    ],
+    answer: "All transition responsibilities matched correctly",
+    explanation:
+      "Ethical transitions require [continuity of care, referral support, documentation, and avoidance of abandonment].",
+    hint:
+      "Separate the actions that protect the person during service or supervision changes.",
+  },
+  {
+    type: "sorting",
+    prompt: "Sort each interpersonal response.",
+    categories: ["Ethical interpersonal skill", "Needs revision"],
+    items: [
+      { label: "Listen and summarize the caregiver's concern before responding", category: "Ethical interpersonal skill" },
+      { label: "Reject feedback because it feels critical", category: "Needs revision" },
+      { label: "Ask a supervisee what support would improve implementation", category: "Ethical interpersonal skill" },
+      { label: "Use credentials to shut down disagreement", category: "Needs revision" },
+    ],
+    answer: "Interpersonal responses sorted correctly",
+    explanation:
+      "Ethical collaboration includes [active listening, accepting feedback, respectful communication, and seeking input].",
+    hint:
+      "Look for responses that keep communication respectful and client-centered.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A BCBA feels frustrated with a family and notices they are recommending a more restrictive plan than the data support. What should the BCBA do?",
+    choices: [
+      "Seek consultation, review data and ethics standards, and evaluate possible bias",
+      "Proceed because frustration is clinically irrelevant",
+      "Discontinue services immediately without a transition plan",
+      "Ask the family to accept the recommendation without discussion",
+    ],
+    answer:
+      "Seek consultation, review data and ethics standards, and evaluate possible bias",
+    explanation:
+      "Bias must not interfere with [professional judgment or client welfare].",
+    hint:
+      "Focus on using consultation, data, and ethics standards when personal reactions may affect judgment.",
+  },
+  {
+    type: "fill-blank",
+    prompt:
+      "Complete the cue: Ethical practice must follow applicable law, regulation, and ____ requirements.",
+    answer: "practice",
+    explanation:
+      "Ethical practice must follow [applicable law, regulation, and practice requirements].",
+    hint:
+      "The missing word refers to requirements that govern professional service delivery.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "An agency policy conflicts with a mandated reporting requirement. Which action best reflects ethical practice?",
+    choices: [
+      "Follow applicable law or regulation and seek appropriate administrative or legal guidance",
+      "Follow the agency policy only because it is local",
+      "Wait until the next annual review",
+      "Ask a supervisee to decide without consultation",
+    ],
+    answer:
+      "Follow applicable law or regulation and seek appropriate administrative or legal guidance",
+    explanation:
+      "Legal and regulatory requirements may require action beyond internal service-setting policies.",
+    hint:
+      "Think about the hierarchy among law, regulation, policy, and consultation when protection is at stake.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A supervisee is losing supervision because the supervisor is leaving the agency. Which action best protects the supervisee and clients?",
+    choices: [
+      "Create a transition plan, document responsibilities, and arrange competent replacement supervision",
+      "Tell the supervisee to keep practicing and catch up later",
+      "Stop supervision records immediately with no notice",
+      "Let clients decide whether supervision is needed",
+    ],
+    answer:
+      "Create a transition plan, document responsibilities, and arrange competent replacement supervision",
+    explanation:
+      "Discontinuing supervision ethically requires [supervisee protection, client protection, and transition documentation].",
+    hint:
+      "Focus on continuity and protection during a supervision change.",
+  },
+];
+
+const sectionETcoMappingMasteryQuestions: QuestionContent[] = [
+  {
+    type: "scenario",
+    prompt:
+      "A BCBA falsifies treatment-integrity data to make services appear effective. Which risk statement is most accurate?",
+    choices: [
+      "The action can harm clients, the organization, the practitioner, and public trust in the profession",
+      "The action only matters if the client notices",
+      "The action is acceptable if behavior improved later",
+      "The action affects billing but not ethical credibility",
+    ],
+    answer:
+      "The action can harm clients, the organization, the practitioner, and public trust in the profession",
+    explanation:
+      "Unethical behavior can harm [clients, supervisees, the practitioner, organizations, and the profession].",
+    hint:
+      "Consider safety, outcomes, documentation, organizational trust, and professional credibility.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A provider must stop services because the client is moving, but the client still needs support. Which action is most ethical?",
+    choices: [
+      "Plan the transition, provide referral options, document the change, and support continuity of care",
+      "End sessions on the final scheduled day with no additional action",
+      "Continue billing without services until another provider is found",
+      "Delete records so the next provider can start fresh",
+    ],
+    answer:
+      "Plan the transition, provide referral options, document the change, and support continuity of care",
+    explanation:
+      "Discontinuing services requires [transition planning and avoidance of abandonment].",
+    hint:
+      "Look for client protection during the service change.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "During a team meeting, a caregiver challenges the plan because it conflicts with family routines. Which response best reflects ethical interpersonal skill?",
+    choices: [
+      "Listen, ask clarifying questions, review data, and collaborate on an acceptable plan",
+      "Dismiss the concern because the intervention is evidence based",
+      "Tell the caregiver disagreement means services must end",
+      "Ask the RBT to explain why the caregiver is wrong",
+    ],
+    answer:
+      "Listen, ask clarifying questions, review data, and collaborate on an acceptable plan",
+    explanation:
+      "Ethical collaboration includes [active listening, accepting feedback, and seeking input].",
+    hint:
+      "Focus on communication that remains respectful, data-informed, and client-centered.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A BCBA realizes a personal belief about a family may be affecting treatment recommendations. Which response is most appropriate?",
+    choices: [
+      "Seek consultation, review data and ethics standards, and adjust recommendations to protect client welfare",
+      "Trust the belief because clinical judgment is always enough",
+      "Avoid documenting the concern",
+      "Recommend the most familiar intervention regardless of fit",
+    ],
+    answer:
+      "Seek consultation, review data and ethics standards, and adjust recommendations to protect client welfare",
+    explanation:
+      "Bias must not interfere with [professional judgment or client welfare].",
+    hint:
+      "Look for consultation and data-based safeguards against biased judgment.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A BCBA is unsure whether a privacy rule, state law, or agency policy governs a records request. What is the best next action?",
+    choices: [
+      "Seek appropriate legal, administrative, supervisory, or regulatory guidance before releasing records",
+      "Release all records immediately because the request sounds urgent",
+      "Ignore the request until it expires",
+      "Ask a friend outside the case to decide",
+    ],
+    answer:
+      "Seek appropriate legal, administrative, supervisory, or regulatory guidance before releasing records",
+    explanation:
+      "Ethical practice must follow [applicable law, regulation, and practice requirements].",
+    hint:
+      "When requirements are unclear, consider the safest authorized guidance channel.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A supervisor ends a supervision relationship but leaves the supervisee responsible for active client programming without replacement oversight. Which issue is most direct?",
+    choices: [
+      "Unethical supervision discontinuation and transition planning",
+      "Appropriate independent practice",
+      "A valid discontinuous measurement procedure",
+      "A public statement concern only",
+    ],
+    answer:
+      "Unethical supervision discontinuation and transition planning",
+    explanation:
+      "Discontinuing supervision ethically requires [supervisee protection, client protection, and transition documentation].",
+    hint:
+      "Look for whether the supervision change protects clients and supervisee competence.",
+  },
+];
+
+const sectionCMeasurementExpansionPracticeQuestions: QuestionContent[] = [
+  {
+    type: "scenario",
+    prompt:
+      "During a 20-minute observation, a learner emits 40 hand raises. Which measure reports responses per unit of time?",
+    choices: ["Rate", "Frequency", "Duration", "Latency"],
+    answer: "Rate",
+    explanation:
+      "Rate includes [count per time unit]; frequency is count alone.",
+    hint:
+      "Ask whether [the observation time] is part of the measurement statement.",
+  },
+  {
+    type: "matching",
+    prompt: "Match each continuous measure to its discrimination cue.",
+    pairs: [
+      { term: "Frequency", definition: "Count of responses." },
+      { term: "Duration", definition: "Time from response onset to response offset." },
+      { term: "Latency", definition: "Time from stimulus to response onset." },
+      { term: "IRT", definition: "Time between consecutive responses." },
+    ],
+    answer: "All continuous measures matched correctly",
+    explanation:
+      "Continuous measures differ by whether they capture [count], [response length], [time to start], or [time between responses].",
+    hint:
+      "Separate [count], [length of behavior], [time after an antecedent], and [time between responses].",
+  },
+  {
+    type: "select-all",
+    prompt:
+      "Select statements that correctly describe discontinuous measurement.",
+    choices: [
+      "Partial interval can [overestimate] behavior.",
+      "Whole interval can [underestimate] behavior.",
+      "Momentary time sampling records behavior at [the interval endpoint].",
+      "Discontinuous measurement captures every response.",
+    ],
+    answers: [
+      "Partial interval can [overestimate] behavior.",
+      "Whole interval can [underestimate] behavior.",
+      "Momentary time sampling records behavior at [the interval endpoint].",
+    ],
+    answer:
+      "Partial interval, whole interval, and momentary time sampling descriptions selected",
+    explanation:
+      "Discontinuous systems [sample behavior] rather than recording every occurrence.",
+    hint:
+      "Think about [how intervals are scored] and whether every response is captured.",
+  },
+  {
+    type: "fill-blank",
+    prompt:
+      "Complete the statement: Duration measures how long behavior ____.",
+    answer: "lasts",
+    explanation:
+      "Duration measures temporal extent: how long behavior lasts from [onset to offset].",
+    hint:
+      "This measure captures temporal extent, not count or response speed.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A BCBA counts completed envelopes at the end of a vocational task without observing the whole session. Which recording system is being used?",
+    choices: [
+      "Permanent product recording",
+      "Momentary time sampling",
+      "Latency recording",
+      "Whole interval recording",
+    ],
+    answer: "Permanent product recording",
+    explanation:
+      "Permanent product recording measures [a lasting product of behavior] after it occurs.",
+    hint:
+      "Look for [a durable outcome] that remains after behavior has occurred.",
+  },
+  {
+    type: "scenario",
+    graphId: "reversal-positive-attention",
+    prompt:
+      "The data show a clear level change immediately after one condition change and another clear level change after the next condition change. Which measurement/data interpretation is strongest?",
+    choices: [
+      "The data pattern shows strong immediacy and low overlap across condition changes.",
+      "The graph cannot be interpreted because it has phase labels.",
+      "The graph shows only a bar graph summary.",
+      "The graph shows no relation because the data are connected.",
+    ],
+    answer:
+      "The data pattern shows strong immediacy and low overlap across condition changes.",
+    explanation:
+      "Immediate data shifts with little overlap support a stronger [visual-analysis interpretation].",
+    hint:
+      "Focus on [level change around phase change lines] and whether the pattern repeats.",
+  },
+  {
+    type: "matching",
+    prompt: "Match each graph element to its role.",
+    pairs: [
+      { term: "X-axis", definition: "Sessions or time." },
+      { term: "Y-axis", definition: "Measured response value." },
+      { term: "Phase change line", definition: "Condition changed." },
+      { term: "Legend", definition: "Identifies data paths or symbols." },
+    ],
+    answer: "All graph elements matched correctly",
+    explanation:
+      "Graph elements orient the analyst to [time], [measured values], [conditions], and [data paths].",
+    hint:
+      "Separate [axes], [condition changes], and [labels for symbols or paths].",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "Intervention data are improving but highly variable and overlap with baseline. What is the best data-based decision?",
+    choices: [
+      "Collect more data or modify the plan based on the pattern.",
+      "Declare mastery because one point improved.",
+      "Terminate intervention because variability is always success.",
+      "Ignore baseline because intervention has started.",
+    ],
+    answer: "Collect more data or modify the plan based on the pattern.",
+    explanation:
+      "Data-based decisions consider [level, trend, variability, overlap, and immediacy] instead of a single point.",
+    hint:
+      "When confidence is weak, use [the data pattern] to guide additional data collection or changes.",
+  },
+];
+
+const sectionCMeasurementExpansionMasteryQuestions: QuestionContent[] = [
+  {
+    prompt: "Which option is best described as rate?",
+    choices: [
+      "Thirty responses in ten minutes",
+      "Thirty total responses",
+      "Ten minutes of crying",
+      "Five seconds from instruction to response",
+    ],
+    answer: "Thirty responses in ten minutes",
+    explanation:
+      "Rate includes [a count in relation to time].",
+    hint:
+      "Rate requires both [a response count] and [a time unit].",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A teacher records whether out-of-seat behavior occurred at any point during each 30-second interval. Which system is described?",
+    choices: [
+      "Partial interval recording",
+      "Whole interval recording",
+      "Latency recording",
+      "Permanent product recording",
+    ],
+    answer: "Partial interval recording",
+    explanation:
+      "Partial interval recording scores the interval if behavior occurs [at any time during the interval].",
+    hint:
+      "Notice whether behavior must occur [for the whole interval] or [at any point in the interval].",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A BCBA wants to measure time from a demand to the first compliance response. Which measure fits best?",
+    choices: ["Latency", "Duration", "IRT", "Frequency"],
+    answer: "Latency",
+    explanation:
+      "Latency measures time from [a stimulus or instruction to response onset].",
+    hint:
+      "Focus on the time from [an antecedent event to the start of behavior].",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "Which example is best described as permanent product recording?",
+    choices: [
+      "Counting completed task cards after a work period",
+      "Recording every hand raise as it occurs",
+      "Scoring behavior at the end of each interval",
+      "Timing from instruction to first response",
+    ],
+    answer: "Counting completed task cards after a work period",
+    explanation:
+      "Permanent product recording uses [a durable outcome of behavior] that can be measured later.",
+    hint:
+      "Look for [a lasting product] rather than direct observation of each response.",
+  },
+  {
+    type: "scenario",
+    graphId: "reversal-aba",
+    prompt:
+      "Which visual-analysis feature is most relevant when judging whether the data changed quickly after the phase change line?",
+    choices: [
+      "Immediacy of effect",
+      "Legend placement",
+      "Axis font size",
+      "Session numbering",
+    ],
+    answer: "Immediacy of effect",
+    explanation:
+      "Immediacy of effect evaluates [how quickly data change after a condition change].",
+    hint:
+      "Attend to the data [immediately before and immediately after] the condition changes.",
+  },
+  {
+    prompt:
+      "Which data pattern most strongly suggests collecting more data before changing an intervention?",
+    choices: [
+      "Highly variable data with no clear trend",
+      "Stable baseline followed by immediate level change",
+      "Repeated low variability across all sessions",
+      "Clear replication across phase changes",
+    ],
+    answer: "Highly variable data with no clear trend",
+    explanation:
+      "Variable data with [no clear trend] can weaken confidence and may require more data before a decision.",
+    hint:
+      "Think about when the visual pattern is [unclear] rather than stable or replicated.",
+  },
+  {
+    prompt: "Which option is best described as a data path?",
+    choices: [
+      "A line connecting data points within a condition",
+      "The vertical axis label",
+      "A written condition name above the graph",
+      "A summary statement below a bar graph",
+    ],
+    answer: "A line connecting data points within a condition",
+    explanation:
+      "A data path connects data points [within a condition] to show the pattern over time.",
+    hint:
+      "Look for the element that shows [the pattern between repeated data points].",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A BCBA records whether a student is engaged at the exact moment each 2-minute interval ends. Which system is described?",
+    choices: [
+      "Momentary time sampling",
+      "Partial interval recording",
+      "Whole interval recording",
+      "Frequency recording",
+    ],
+    answer: "Momentary time sampling",
+    explanation:
+      "Momentary time sampling scores whether behavior is occurring [at the interval endpoint].",
+    hint:
+      "Focus on whether behavior is scored [throughout the interval] or [only at one moment].",
+  },
+  {
+    prompt: "Which option best differentiates latency from IRT?",
+    choices: [
+      "Latency is [stimulus-to-response time]; IRT is [response-to-response time].",
+      "Latency is count per time; IRT is total count.",
+      "Latency requires a product; IRT requires interval scoring.",
+      "Latency overestimates behavior; IRT underestimates behavior.",
+    ],
+    answer:
+      "Latency is [stimulus-to-response time]; IRT is [response-to-response time].",
+    explanation:
+      "Latency begins with [an antecedent stimulus]; IRT begins [after one response and ends at the next response].",
+    hint:
+      "Compare [the starting event] for each time measure.",
+  },
+];
+
+const sectionCValidityIntegrityMiniLessons: MiniLessonContent[] = [
+  {
+    slug: "validity-vs-reliability",
+    label: "C.8",
+    title: "Validity vs Reliability",
+    body: [
+      "Validity means the measurement system measures [what it is intended to measure].",
+      "Reliability means the procedure produces [consistent results across observers or occasions].",
+    ],
+    visual: {
+      type: "matching",
+      prompt: "Match each measurement quality to its cue.",
+      pairs: [
+        { term: "Validity", definition: "Measures the intended behavior or dimension." },
+        { term: "Reliability", definition: "Produces consistent measurement results." },
+        { term: "Nonvalid measure", definition: "Records something different from the target behavior." },
+        { term: "Unreliable measure", definition: "Changes because of observer or procedure inconsistency." },
+      ],
+    },
+  },
+  {
+    slug: "accuracy-reliability-bias-error",
+    label: "C.8",
+    title: "Accuracy, Reliability, Bias, and Error",
+    body: [
+      "Accuracy means observed values are [close to the true value].",
+      "Measurement bias is [systematic error in one direction]; measurement error is [the difference between observed and true values].",
+    ],
+    visual: {
+      type: "matching",
+      prompt: "Match each measurement concern to its cue.",
+      pairs: [
+        { term: "Accuracy", definition: "Observed values are close to the true value." },
+        { term: "Reliability", definition: "Observers repeatedly record similar values." },
+        { term: "Bias", definition: "Error occurs systematically in one direction." },
+        { term: "Error", definition: "Observed values differ from true values." },
+      ],
+    },
+  },
+  {
+    slug: "efficient-measurement-systems",
+    label: "C.9",
+    title: "Efficient Measurement Systems",
+    body: [
+      "Efficient measurement balances [data usefulness with response effort].",
+      "A simpler system may be appropriate when it still answers [the clinical decision question].",
+    ],
+    visual: {
+      type: "choice",
+      prompt:
+        "A high-rate classroom behavior occurs all day, and exact frequency would be impractical. Which decision best reflects efficiency?",
+      choices: [
+        "Choose a feasible sampling system that still answers the question",
+        "Stop collecting data because exact frequency is hard",
+        "Use the most complex system regardless of observer training",
+        "Change the target behavior so measurement is easier",
+      ],
+      answer: "Choose a feasible sampling system that still answers the question",
+      hint:
+        "Consider [data usefulness], [observer effort], and whether the system answers the clinical question.",
+      feedback:
+        "Efficient systems preserve decision value while reducing unnecessary measurement burden.",
+    },
+  },
+  {
+    slug: "cost-benefit-and-training-duration",
+    label: "C.9",
+    title: "Cost-Benefit and Observer Training",
+    body: [
+      "Cost-benefit analysis weighs [decision value against time, training, and effort].",
+      "Observer training duration matters when complex systems reduce [feasibility or reliability].",
+    ],
+    visual: {
+      type: "select-all",
+      prompt: "Select factors that should affect measurement-system selection.",
+      choices: [
+        { label: "How useful the data are for decisions", correct: true },
+        { label: "How much observer training is required", correct: true },
+        { label: "Whether the system is practical in the setting", correct: true },
+        { label: "Whether the graph looks decorative", correct: false },
+      ],
+      feedback:
+        "Measurement selection should consider [decision usefulness], [training time], and [practical implementation].",
+    },
+  },
+  {
+    slug: "procedural-integrity-measurement",
+    label: "C.12",
+    title: "Procedural Integrity Measurement",
+    body: [
+      "Procedural integrity measures whether procedures are implemented [as written].",
+      "Treatment outcomes are harder to interpret when procedures are [not implemented consistently].",
+    ],
+    visual: {
+      type: "choice",
+      prompt:
+        "Behavior does not improve, and integrity data show staff delivered reinforcement only half of the planned times. What is the best interpretation?",
+      choices: [
+        "Low procedural integrity weakens conclusions about the intervention",
+        "The intervention is definitely ineffective",
+        "The dependent variable is invalid",
+        "A standard celeration chart is required",
+      ],
+      answer: "Low procedural integrity weakens conclusions about the intervention",
+      hint:
+        "Ask whether the intervention was implemented [as written] before interpreting outcomes.",
+      feedback:
+        "Procedural integrity data help determine whether outcomes reflect the planned procedure or inconsistent implementation.",
+    },
+  },
+  {
+    slug: "treatment-integrity-vs-procedural-integrity",
+    label: "C.12",
+    title: "Treatment Integrity vs Procedural Integrity",
+    body: [
+      "Treatment integrity and procedural integrity both concern [implementation as planned].",
+      "Procedural-integrity data show whether intervention components occurred [as written and at the planned quality].",
+    ],
+    visual: {
+      type: "matching",
+      prompt: "Match each integrity cue.",
+      pairs: [
+        { term: "Procedure implemented as written", definition: "High procedural integrity." },
+        { term: "Steps skipped or delivered inconsistently", definition: "Low procedural integrity." },
+        { term: "Outcome improves with high integrity", definition: "Stronger interpretation of intervention effect." },
+        { term: "Outcome unclear with low integrity", definition: "Weaker interpretation of intervention effect." },
+      ],
+    },
+  },
+  {
+    slug: "standard-celeration-chart",
+    label: "C.10-C.11",
+    title: "Standard Celeration Chart",
+    body: [
+      "Standard celeration charts show [frequency change over time].",
+      "Celeration describes [acceleration or deceleration in response frequency].",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which statement best describes what a standard celeration chart displays?",
+      choices: [
+        "Frequency change over time on a standardized display",
+        "A single percentage score without repeated measurement",
+        "Only agreement between two observers",
+        "Only categorical survey responses",
+      ],
+      answer: "Frequency change over time on a standardized display",
+      hint:
+        "Focus on [frequency] and [change over time], not IOA or one-time summaries.",
+      feedback:
+        "Standard celeration charts are used to display repeated frequency data and celeration patterns.",
+    },
+  },
+  {
+    slug: "celeration-vs-line-graph",
+    label: "C.10-C.11",
+    title: "Standard Celeration Chart vs Line Graph",
+    body: [
+      "A basic line graph shows [level and trend on an equal-interval display].",
+      "A standard celeration chart emphasizes [multiplicative frequency change over time].",
+    ],
+    visual: {
+      type: "matching",
+      prompt: "Match the display to its main discrimination cue.",
+      pairs: [
+        { term: "Line graph", definition: "Repeated data points connected across sessions or time." },
+        { term: "Standard celeration chart", definition: "Standardized display for frequency change over time." },
+        { term: "Acceleration", definition: "Frequency increases over time." },
+        { term: "Deceleration", definition: "Frequency decreases over time." },
+      ],
+    },
+  },
+];
+
+const sectionCValidityIntegrityPracticeQuestions: QuestionContent[] = [
+  {
+    type: "scenario",
+    prompt:
+      "A team wants to measure aggressive behavior, but the data sheet records only whether the learner frowned. Which measurement concern is most direct?",
+    choices: ["Validity", "Reliability", "Trial-by-trial IOA", "Generality"],
+    answer: "Validity",
+    explanation:
+      "Validity means the system measures [what it is intended to measure].",
+    hint:
+      "Ask whether the recorded response matches [the intended target behavior].",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "Two observers repeatedly obtain similar counts, but both miss low-intensity responses because the definition excludes them. Which statement is most accurate?",
+    choices: [
+      "The data may be reliable but inaccurate",
+      "The data must be valid because observers agree",
+      "The data show procedural integrity",
+      "The data are a standard celeration chart",
+    ],
+    answer: "The data may be reliable but inaccurate",
+    explanation:
+      "Reliability reflects [consistent results]; accuracy requires values [close to the true value].",
+    hint:
+      "Separate [observer consistency] from [closeness to the true value].",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "An observer consistently records shorter durations than actually occurred because the timer starts late. Which issue is most direct?",
+    choices: ["Measurement bias", "External validity", "Maintenance", "Momentary time sampling"],
+    answer: "Measurement bias",
+    explanation:
+      "Measurement bias is [systematic error in one direction].",
+    hint:
+      "Look for an error pattern that repeatedly shifts values [in the same direction].",
+  },
+  {
+    type: "select-all",
+    prompt: "Select factors that support an efficient measurement system.",
+    choices: [
+      "The data answer the clinical decision question.",
+      "Observers can be trained to use the system accurately.",
+      "The system is feasible in the setting.",
+      "The system is selected only because it is the longest form available.",
+    ],
+    answers: [
+      "The data answer the clinical decision question.",
+      "Observers can be trained to use the system accurately.",
+      "The system is feasible in the setting.",
+    ],
+    answer:
+      "Useful, trainable, and feasible measurement systems support efficient data collection.",
+    explanation:
+      "Efficiency balances [data usefulness], [training time], and [response effort].",
+    hint:
+      "Think about whether the data are useful enough to justify [time and effort].",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A caregiver reports that the intervention was rarely implemented as written, but the graph shows little behavior change. What should the BCBA consider first?",
+    choices: [
+      "Low procedural integrity may weaken interpretation of the outcome",
+      "The intervention is conclusively ineffective",
+      "The behavior has generalized",
+      "Reliability of the y-axis label is the central issue",
+    ],
+    answer: "Low procedural integrity may weaken interpretation of the outcome",
+    explanation:
+      "Procedural integrity measures whether procedures were implemented [as written], which affects interpretation of outcomes.",
+    hint:
+      "Ask whether poor outcomes reflect [the procedure] or [inconsistent implementation].",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A chart displays response frequency each day and emphasizes whether responding is accelerating or decelerating over time. Which display is most directly described?",
+    choices: [
+      "Standard celeration chart",
+      "Bar graph",
+      "Scatterplot for time of day",
+      "Trial-by-trial IOA table",
+    ],
+    answer: "Standard celeration chart",
+    explanation:
+      "Standard celeration charts show [frequency change over time], including acceleration and deceleration.",
+    hint:
+      "Focus on [frequency over time] and [celeration].",
+  },
+];
+
+const sectionCValidityIntegrityMasteryQuestions: QuestionContent[] = [
+  {
+    type: "scenario",
+    prompt:
+      "A BCBA measures 'engagement' by recording only eye contact, although the operational definition includes touching materials, responding, and looking at the task. Which issue is most direct?",
+    choices: ["Validity", "Momentary time sampling", "Generalization", "Total count IOA"],
+    answer: "Validity",
+    explanation:
+      "Validity means the measurement system measures [what it is intended to measure].",
+    hint:
+      "Compare the measured response to [the full intended target].",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "Observer records are highly consistent across sessions, but later video review shows both observers missed many responses. Which statement is most accurate?",
+    choices: [
+      "The measurement may be reliable but not accurate",
+      "The measurement must be accurate because it is consistent",
+      "The measurement demonstrates external validity",
+      "The measurement is a permanent product",
+    ],
+    answer: "The measurement may be reliable but not accurate",
+    explanation:
+      "Reliable data are [consistent]; accurate data are [close to the true value].",
+    hint:
+      "Do not treat [consistency] as the same thing as [truthfulness of values].",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A complex duration system gives excellent detail but requires extensive training and produces frequent observer errors in a busy classroom. Which consideration is most relevant?",
+    choices: [
+      "Efficiency and cost-benefit of the measurement system",
+      "Positive punishment",
+      "External validity of a replication",
+      "Generality across settings",
+    ],
+    answer: "Efficiency and cost-benefit of the measurement system",
+    explanation:
+      "Efficient measurement weighs [data usefulness against time, training, and effort].",
+    hint:
+      "Consider whether the measurement system is [practical enough] to produce usable data.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "Treatment data show no improvement, and integrity data show the procedure was implemented correctly on only 35% of opportunities. What conclusion is most appropriate?",
+    choices: [
+      "The low integrity weakens conclusions about treatment effectiveness",
+      "The treatment is proven ineffective",
+      "The dependent variable is no longer measurable",
+      "The outcome demonstrates maintenance",
+    ],
+    answer: "The low integrity weakens conclusions about treatment effectiveness",
+    explanation:
+      "Treatment outcomes are harder to interpret when procedures are [not implemented consistently].",
+    hint:
+      "Ask whether the treatment was actually delivered [as planned].",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A display shows daily response frequency and whether performance is accelerating or decelerating. Which interpretation target fits best?",
+    choices: [
+      "Celeration",
+      "Exact count IOA",
+      "Latency",
+      "Procedural drift",
+    ],
+    answer: "Celeration",
+    explanation:
+      "Celeration describes [acceleration or deceleration in response frequency].",
+    hint:
+      "Look for [frequency change over time], not observer agreement or response delay.",
+  },
+];
+
+const sectionDRelocatedFromCMiniLessons: MiniLessonContent[] = [
+  {
+    slug: "single-subject-design-basics",
+    label: "D.4-D.7",
+    title: "Single-Subject Design Basics",
+    body: [
+      "Single-subject designs use repeated measurement to evaluate [individual behavior change].",
+      "Experimental control is shown when data patterns change with experimental conditions.",
+    ],
+    visual: {
+      type: "select-all",
+      prompt: "Select design features that help demonstrate experimental control.",
+      choices: [
+        { label: "Repeated measurement", correct: true },
+        { label: "Clear phase changes or design logic", correct: true },
+        { label: "Only one pretest and one posttest", correct: false },
+        { label: "Behavior change linked to the independent variable", correct: true },
+      ],
+      feedback:
+        "Single-subject designs rely on repeated measurement and systematic condition changes.",
+    },
+  },
+  {
+    slug: "single-subject-design-types",
+    label: "D.4-D.7",
+    title: "Reversal, Multiple Baseline, Alternating Treatments, and Changing Criterion",
+    body: [
+      "Each single-subject design shows experimental control through [a different data pattern].",
+      "Choose the design that fits the behavior, ethics, and intervention question.",
+    ],
+    visual: {
+      type: "matching",
+      prompt: "Match each design to its visual logic.",
+      pairs: [
+        { term: "Reversal Design", definition: "Behavior changes as conditions repeat or withdraw." },
+        { term: "Multiple Baseline Design", definition: "Behavior changes after staggered intervention across tiers." },
+        { term: "Alternating Treatments / Multielement Design", definition: "Rapid alternation creates separated data paths." },
+        { term: "Changing Criterion Design", definition: "Behavior tracks stepwise criterion changes." },
+      ],
+    },
+  },
+];
+
+const sectionDRelocatedFromCPracticeQuestions: QuestionContent[] = [
+  {
+    type: "scenario",
+    graphId: "multiple-baseline-settings",
+    prompt:
+      "Behavior changes only after intervention is introduced at staggered times across settings. Which design is represented?",
+    choices: ["Multiple Baseline Design", "Reversal Design", "Changing Criterion Design", "Alternating Treatments / Multielement Design"],
+    answer: "Multiple Baseline Design",
+    explanation:
+      "Multiple Baseline Designs show behavior change after staggered intervention across tiers.",
+    hint:
+      "Look for staggered intervention rather than withdrawal or rapid alternation.",
+  },
+  {
+    type: "scenario",
+    graphId: "alternating-standard",
+    prompt:
+      "Two interventions are rapidly alternated, and one data path is consistently higher than the other. Which design feature is being evaluated?",
+    choices: ["Differentiated data paths", "Criterion tracking", "Return to baseline", "Exact count IOA"],
+    answer: "Differentiated data paths",
+    explanation:
+      "Alternating Treatments / Multielement Designs compare conditions through rapid alternation and separated data paths.",
+    hint:
+      "Focus on rapid alternation and whether the paths separate by condition.",
+  },
+  {
+    type: "scenario",
+    graphId: "changing-criterion-on-task",
+    prompt:
+      "On-task duration increases each time the criterion line increases. Which graph feature supports experimental control?",
+    choices: ["Behavior tracks criterion shifts", "Behavior reverses after withdrawal", "All tiers change at once", "Data paths overlap completely"],
+    answer: "Behavior tracks criterion shifts",
+    explanation:
+      "Changing Criterion Designs show control when behavior shifts with each criterion change.",
+    hint:
+      "Look for behavior moving step-by-step with the criterion line.",
+  },
+  {
+    type: "scenario",
+    graphId: "reversal-pvr",
+    prompt:
+      "A graph shows baseline responding, behavior change during intervention, return toward baseline when the intervention is withdrawn, and behavior change again when intervention returns. What is the strongest interpretation?",
+    choices: [
+      "Prediction, verification, and replication strengthen experimental control",
+      "Only external validity is demonstrated",
+      "A single phase change is enough to demonstrate control",
+      "IOA has replaced the need for repeated measurement",
+    ],
+    answer:
+      "Prediction, verification, and replication strengthen experimental control",
+    explanation:
+      "Experimental control is strengthened when baseline prediction is tested, verified by withdrawal or return, and replicated when the independent variable is reintroduced.",
+    hint:
+      "Look for repeated behavior change tied to condition changes, not one isolated improvement.",
+  },
+  {
+    type: "scenario",
+    graphId: "multiple-baseline-settings",
+    prompt:
+      "Across three settings, behavior changes only after the intervention begins in each setting while untreated settings remain near baseline. What does this pattern support?",
+    choices: [
+      "Experimental control through staggered intervention",
+      "A history threat affecting all settings at once",
+      "Treatment withdrawal as the required control tactic",
+      "Momentary time sampling as the dependent variable",
+    ],
+    answer: "Experimental control through staggered intervention",
+    explanation:
+      "A staggered pattern supports experimental control when each tier changes only after the independent variable is introduced.",
+    hint:
+      "Compare when each tier changes relative to when intervention begins in that tier.",
+  },
+  {
+    type: "select-all",
+    prompt: "Select all features that strengthen evidence for a functional relation.",
+    choices: [
+      "Repeated behavior change when the independent variable changes",
+      "Low overlap between baseline and intervention data",
+      "Immediate change after phase change",
+      "A single improved data point with no replication",
+    ],
+    answers: [
+      "Repeated behavior change when the independent variable changes",
+      "Low overlap between baseline and intervention data",
+      "Immediate change after phase change",
+    ],
+    answer:
+      "Repeated condition-linked change, low overlap, and immediacy strengthen evidence for a functional relation.",
+    explanation:
+      "Functional relation identification relies on replicated, condition-linked behavior change and visual analysis features.",
+    hint:
+      "Look for replicated change tied to the independent variable, not one isolated data point.",
+  },
+  {
+    type: "scenario",
+    graphId: "alternating-standard",
+    prompt:
+      "Two rapidly alternated conditions produce consistently separated data paths with little overlap. Which visual-analysis conclusion is best supported?",
+    choices: [
+      "One condition is associated with a different level of responding",
+      "Behavior is maintained only because baseline was withdrawn",
+      "The criterion line controlled the behavior step by step",
+      "The data show generalization across settings",
+    ],
+    answer: "One condition is associated with a different level of responding",
+    explanation:
+      "In Alternating Treatments / Multielement Designs, separated data paths with low overlap support a condition-linked difference in responding.",
+    hint:
+      "Focus on level separation and overlap across rapidly alternated conditions.",
+  },
+];
+
+const sectionDRelocatedFromCMasteryQuestions: QuestionContent[] = [
+  {
+    prompt:
+      "Which statement best describes a functional relation?",
+    choices: [
+      "Behavior changes systematically with manipulation of the independent variable.",
+      "Behavior changes once after a preferred item is delivered.",
+      "Two observers agree on measurement during one session.",
+      "A skill appears in a new setting after teaching.",
+    ],
+    answer:
+      "Behavior changes systematically with manipulation of the independent variable.",
+    explanation:
+      "A functional relation is supported when behavior changes systematically with manipulation of the independent variable.",
+  },
+  {
+    type: "scenario",
+    graphId: "reversal-pvr",
+    prompt:
+      "Which option best supports a functional relation in a single-subject graph?",
+    choices: [
+      "Behavior changes repeatedly when the independent variable changes.",
+      "Behavior improves once without replication.",
+      "The y-axis has a clinical label.",
+      "The graph contains three colors.",
+    ],
+    answer: "Behavior changes repeatedly when the independent variable changes.",
+    explanation:
+      "Functional relation identification requires replicated, condition-linked behavior change.",
+  },
+  {
+    type: "scenario",
+    graphId: "multiple-baseline-participants",
+    prompt:
+      "A graph shows three participants with intervention introduced at different sessions. Each participant changes only after intervention begins. Which design is shown?",
+    choices: ["Multiple Baseline Design", "Reversal Design", "Changing Criterion Design", "Alternating Treatments / Multielement Design"],
+    answer: "Multiple Baseline Design",
+    explanation:
+      "Multiple Baseline Designs use staggered intervention across participants, settings, or behaviors.",
+  },
+  {
+    type: "scenario",
+    graphId: "alternating-standard",
+    prompt:
+      "A graph rapidly alternates Intervention A and Intervention B and shows separated data paths. Which design is shown?",
+    choices: ["Alternating Treatments / Multielement Design", "Multiple Baseline Design", "Withdrawal Design", "Changing Criterion Design"],
+    answer: "Alternating Treatments / Multielement Design",
+    explanation:
+      "Alternating Treatments / Multielement Designs compare rapidly alternated conditions through differentiated data paths.",
+  },
+  {
+    type: "scenario",
+    graphId: "changing-criterion-on-task",
+    prompt:
+      "A learner's behavior changes stepwise each time the performance criterion changes. Which design is shown?",
+    choices: ["Changing Criterion Design", "Multiple Baseline Design", "Reversal Design", "Alternating Treatments / Multielement Design"],
+    answer: "Changing Criterion Design",
+    explanation:
+      "Changing Criterion Designs show control when behavior tracks criterion shifts.",
+  },
+  {
+    type: "scenario",
+    graphId: "reversal-pvr",
+    prompt:
+      "Which statement best describes how experimental control is demonstrated in this kind of single-subject graph?",
+    choices: [
+      "Behavior changes when the independent variable is introduced, withdrawn or changed, and reintroduced.",
+      "The title names the design, so the effect is experimentally controlled.",
+      "One improved data point after intervention is enough to rule out alternative explanations.",
+      "The same intervention is used with a group average instead of repeated measurement.",
+    ],
+    answer:
+      "Behavior changes when the independent variable is introduced, withdrawn or changed, and reintroduced.",
+    explanation:
+      "Experimental control is demonstrated when behavior changes systematically with manipulation of the independent variable across repeated comparisons.",
+  },
+  {
+    type: "scenario",
+    graphId: "multiple-baseline-participants",
+    prompt:
+      "Which pattern most strongly supports experimental control when withdrawal is not appropriate?",
+    choices: [
+      "Staggered intervention with behavior change only after intervention begins in each tier",
+      "All participants improve before intervention begins",
+      "Only one participant is measured before and after intervention",
+      "Behavior changes in every tier at the same calendar time",
+    ],
+    answer:
+      "Staggered intervention with behavior change only after intervention begins in each tier",
+    explanation:
+      "Staggered intervention reduces threats to validity because untreated tiers continue to serve as comparisons until intervention is introduced.",
+  },
+  {
+    type: "scenario",
+    graphId: "alternating-standard",
+    prompt:
+      "Which visual-analysis feature best supports a condition difference in a rapidly alternated design?",
+    choices: [
+      "Consistent separation between data paths with low overlap",
+      "A return to baseline after every intervention session",
+      "The same criterion line across all phases",
+      "Only one data point in each condition",
+    ],
+    answer: "Consistent separation between data paths with low overlap",
+    explanation:
+      "Alternating Treatments / Multielement Designs rely on differentiation between rapidly alternated data paths.",
+  },
+  {
+    type: "scenario",
+    graphId: "multiple-baseline-settings",
+    prompt:
+      "A graph shows behavior improving only after intervention starts in each tier. Which interpretation is strongest?",
+    choices: [
+      "The pattern supports a functional relation across tiers.",
+      "The pattern is a bar graph summary.",
+      "The pattern shows latency only.",
+      "The pattern cannot be interpreted because tiers are stacked.",
+    ],
+    answer: "The pattern supports a functional relation across tiers.",
+    explanation:
+      "Staggered changes [across tiers] support interpretation of experimental control and treatment effects.",
+    hint:
+      "Look for whether behavior changes [when, and only when, the intervention begins] in each tier.",
   },
 ];
 
@@ -3397,7 +6473,7 @@ const sectionIMiniLessons: MiniLessonContent[] = [
 
 const moduleContent: Record<string, ModuleContent> = {
   a: {
-    miniLessons: sectionAMiniLessons,
+    miniLessons: [...sectionAMiniLessons, ...sectionAExpandedMiniLessons],
     practiceQuestions: [
       {
         type: "matching",
@@ -3830,17 +6906,31 @@ const moduleContent: Record<string, ModuleContent> = {
     masteryQuestions: sectionBMasteryQuestions,
   },
   c: {
-    miniLessons: sectionCExpandedMiniLessons,
-    practiceQuestions: sectionCPracticeQuestions,
-    masteryQuestions: sectionCMasteryQuestions,
+    miniLessons: [
+      ...sectionCExpandedMiniLessons,
+      ...sectionCMeasurementExpansionMiniLessons,
+      ...sectionCValidityIntegrityMiniLessons,
+    ],
+    practiceQuestions: [
+      ...sectionCPracticeQuestions,
+      ...sectionCMeasurementExpansionPracticeQuestions,
+      ...sectionCValidityIntegrityPracticeQuestions,
+    ],
+    masteryQuestions: [
+      ...sectionCMasteryQuestions,
+      ...sectionCMeasurementExpansionMasteryQuestions,
+      ...sectionCValidityIntegrityMasteryQuestions,
+    ],
   },
   d: {
     miniLessons: [
       ...sectionDVariablesAndValidityMiniLessons,
+      ...sectionDRelocatedFromCMiniLessons,
       ...sectionDMiniLessons,
       ...sectionDAnalysisApplicationMiniLessons,
     ],
     practiceQuestions: [
+      ...sectionDRelocatedFromCPracticeQuestions,
       {
         type: "matching",
         prompt: "Match each design to the graph pattern that shows experimental control.",
@@ -4304,6 +7394,7 @@ const moduleContent: Record<string, ModuleContent> = {
       },
     ],
     masteryQuestions: [
+      ...sectionDRelocatedFromCMasteryQuestions,
       {
         type: "scenario",
         graphId: "withdrawal-problem-behavior",
@@ -4573,296 +7664,20 @@ const moduleContent: Record<string, ModuleContent> = {
     ],
   },
   e: {
-    miniLessons: sectionEMiniLessons,
+    miniLessons: [
+      ...sectionEMiniLessons,
+      ...sectionEExpandedMiniLessons,
+      ...sectionETcoMappingMiniLessons,
+    ],
     practiceQuestions: [
-      {
-        type: "scenario",
-        prompt:
-          "During a 20-minute observation, a learner emits 40 hand raises. Which measure reports responses per unit of time?",
-        choices: [
-          "Rate",
-          "Frequency",
-          "Duration",
-          "Latency",
-        ],
-        answer: "Rate",
-        explanation:
-          "Rate includes [count per time unit]; frequency is count alone.",
-        hint:
-          "Ask whether [the observation time] is part of the measurement statement.",
-      },
-      {
-        type: "matching",
-        prompt: "Match each continuous measure to its discrimination cue.",
-        pairs: [
-          { term: "Frequency", definition: "Count of responses." },
-          { term: "Duration", definition: "Time from response onset to response offset." },
-          { term: "Latency", definition: "Time from stimulus to response onset." },
-          { term: "IRT", definition: "Time between consecutive responses." },
-        ],
-        answer: "All continuous measures matched correctly",
-        explanation:
-          "Continuous measures differ by whether they capture [count], [response length], [time to start], or [time between responses].",
-        hint:
-          "Separate [count], [length of behavior], [time after an antecedent], and [time between responses].",
-      },
-      {
-        type: "select-all",
-        prompt:
-          "Select statements that correctly describe discontinuous measurement.",
-        choices: [
-          "Partial interval can [overestimate] behavior.",
-          "Whole interval can [underestimate] behavior.",
-          "Momentary time sampling records behavior at [the interval endpoint].",
-          "Discontinuous measurement captures every response.",
-        ],
-        answers: [
-          "Partial interval can [overestimate] behavior.",
-          "Whole interval can [underestimate] behavior.",
-          "Momentary time sampling records behavior at [the interval endpoint].",
-        ],
-        answer: "Partial interval, whole interval, and momentary time sampling descriptions selected",
-        explanation:
-          "Discontinuous systems [sample behavior] rather than recording every occurrence.",
-        hint:
-          "Think about [how intervals are scored] and whether every response is captured.",
-      },
-      {
-        type: "fill-blank",
-        prompt:
-          "Complete the statement: Duration measures how long behavior ____.",
-        answer: "lasts",
-        explanation:
-          "Duration measures temporal extent: how long behavior lasts from [onset to offset].",
-        hint:
-          "This measure captures temporal extent, not count or response speed.",
-      },
-      {
-        type: "scenario",
-        prompt:
-          "A BCBA counts completed envelopes at the end of a vocational task without observing the whole session. Which recording system is being used?",
-        choices: [
-          "Permanent product recording",
-          "Momentary time sampling",
-          "Latency recording",
-          "Whole interval recording",
-        ],
-        answer: "Permanent product recording",
-        explanation:
-          "Permanent product recording measures [a lasting product of behavior] after it occurs.",
-        hint:
-          "Look for [a durable outcome] that remains after behavior has occurred.",
-      },
-      {
-        type: "scenario",
-        graphId: "reversal-positive-attention",
-        prompt:
-          "The data shift upward immediately after the condition change and shift downward when the condition is removed. Which interpretation is strongest?",
-        choices: [
-          "The graph shows an immediate treatment effect with a replicated pattern.",
-          "The graph cannot be interpreted because it has phase labels.",
-          "The graph shows only a bar graph summary.",
-          "The graph shows no relation because the data are connected.",
-        ],
-        answer:
-          "The graph shows an immediate treatment effect with a replicated pattern.",
-        explanation:
-          "Immediate data shifts [across condition changes] strengthen interpretation of a treatment effect.",
-        hint:
-          "Focus on [level change around phase change lines] and whether the pattern repeats.",
-      },
-      {
-        type: "matching",
-        prompt: "Match each graph element to its role.",
-        pairs: [
-          { term: "X-axis", definition: "Sessions or time." },
-          { term: "Y-axis", definition: "Measured response value." },
-          { term: "Phase change line", definition: "Condition changed." },
-          { term: "Legend", definition: "Identifies data paths or symbols." },
-        ],
-        answer: "All graph elements matched correctly",
-        explanation:
-          "Graph elements orient the analyst to [time], [measured values], [conditions], and [data paths].",
-        hint:
-          "Separate [axes], [condition changes], and [labels for symbols or paths].",
-      },
-      {
-        type: "scenario",
-        prompt:
-          "Intervention data are improving but highly variable and overlap with baseline. What is the best data-based decision?",
-        choices: [
-          "Collect more data or modify the plan based on the pattern.",
-          "Declare mastery because one point improved.",
-          "Terminate intervention because variability is always success.",
-          "Ignore baseline because intervention has started.",
-        ],
-        answer: "Collect more data or modify the plan based on the pattern.",
-        explanation:
-          "Data-based decisions consider [level, trend, variability, overlap, and immediacy] instead of a single point.",
-        hint:
-          "When confidence is weak, use [the data pattern] to guide additional data collection or changes.",
-      },
+      ...sectionEPracticeQuestions,
+      ...sectionEExpandedPracticeQuestions,
+      ...sectionETcoMappingPracticeQuestions,
     ],
     masteryQuestions: [
-      {
-        prompt:
-          "Which option is best described as rate?",
-        choices: [
-          "Thirty responses in ten minutes",
-          "Thirty total responses",
-          "Ten minutes of crying",
-          "Five seconds from instruction to response",
-        ],
-        answer: "Thirty responses in ten minutes",
-        explanation:
-          "Rate includes [a count in relation to time].",
-        hint:
-          "Rate requires both [a response count] and [a time unit].",
-      },
-      {
-        type: "scenario",
-        prompt:
-          "A teacher records whether out-of-seat behavior occurred at any point during each 30-second interval. Which system is described?",
-        choices: [
-          "Partial interval recording",
-          "Whole interval recording",
-          "Latency recording",
-          "Permanent product recording",
-        ],
-        answer: "Partial interval recording",
-        explanation:
-          "Partial interval recording scores the interval if behavior occurs [at any time during the interval].",
-        hint:
-          "Notice whether behavior must occur [for the whole interval] or [at any point in the interval].",
-      },
-      {
-        type: "scenario",
-        prompt:
-          "A BCBA wants to measure time from a demand to the first compliance response. Which measure fits best?",
-        choices: [
-          "Latency",
-          "Duration",
-          "IRT",
-          "Frequency",
-        ],
-        answer: "Latency",
-        explanation:
-          "Latency measures time from [a stimulus or instruction to response onset].",
-        hint:
-          "Focus on the time from [an antecedent event to the start of behavior].",
-      },
-      {
-        type: "scenario",
-        prompt:
-          "Which example is best described as permanent product recording?",
-        choices: [
-          "Counting completed task cards after a work period",
-          "Recording every hand raise as it occurs",
-          "Scoring behavior at the end of each interval",
-          "Timing from instruction to first response",
-        ],
-        answer: "Counting completed task cards after a work period",
-        explanation:
-          "Permanent product recording uses [a durable outcome of behavior] that can be measured later.",
-        hint:
-          "Look for [a lasting product] rather than direct observation of each response.",
-      },
-      {
-        type: "scenario",
-        graphId: "reversal-aba",
-        prompt:
-          "Which visual-analysis feature is most relevant when judging whether the data changed quickly after the phase change line?",
-        choices: [
-          "Immediacy of effect",
-          "Legend placement",
-          "Axis font size",
-          "Session numbering",
-        ],
-        answer: "Immediacy of effect",
-        explanation:
-          "Immediacy of effect evaluates [how quickly data change after a condition change].",
-        hint:
-          "Attend to the data [immediately before and immediately after] the condition changes.",
-      },
-      {
-        type: "scenario",
-        graphId: "multiple-baseline-settings",
-        prompt:
-          "A graph shows behavior improving only after intervention starts in each tier. Which interpretation is strongest?",
-        choices: [
-          "The pattern supports a functional relation across tiers.",
-          "The pattern is a bar graph summary.",
-          "The pattern shows latency only.",
-          "The pattern cannot be interpreted because tiers are stacked.",
-        ],
-        answer: "The pattern supports a functional relation across tiers.",
-        explanation:
-          "Staggered changes [across tiers] support interpretation of experimental control and treatment effects.",
-        hint:
-          "Look for whether behavior changes [when, and only when, the intervention begins] in each tier.",
-      },
-      {
-        prompt:
-          "Which data pattern most strongly suggests collecting more data before changing an intervention?",
-        choices: [
-          "Highly variable data with no clear trend",
-          "Stable baseline followed by immediate level change",
-          "Repeated low variability across all sessions",
-          "Clear replication across phase changes",
-        ],
-        answer: "Highly variable data with no clear trend",
-        explanation:
-          "Variable data with [no clear trend] can weaken confidence and may require more data before a decision.",
-        hint:
-          "Think about when the visual pattern is [unclear] rather than stable or replicated.",
-      },
-      {
-        prompt:
-          "Which option is best described as a data path?",
-        choices: [
-          "A line connecting data points within a condition",
-          "The vertical axis label",
-          "A written condition name above the graph",
-          "A summary statement below a bar graph",
-        ],
-        answer: "A line connecting data points within a condition",
-        explanation:
-          "A data path connects data points [within a condition] to show the pattern over time.",
-        hint:
-          "Look for the element that shows [the pattern between repeated data points].",
-      },
-      {
-        type: "scenario",
-        prompt:
-          "A BCBA records whether a student is engaged at the exact moment each 2-minute interval ends. Which system is described?",
-        choices: [
-          "Momentary time sampling",
-          "Partial interval recording",
-          "Whole interval recording",
-          "Frequency recording",
-        ],
-        answer: "Momentary time sampling",
-        explanation:
-          "Momentary time sampling scores whether behavior is occurring [at the interval endpoint].",
-        hint:
-          "Focus on whether behavior is scored [throughout the interval] or [only at one moment].",
-      },
-      {
-        prompt:
-          "Which option best differentiates latency from IRT?",
-        choices: [
-          "Latency is [stimulus-to-response time]; IRT is [response-to-response time].",
-          "Latency is count per time; IRT is total count.",
-          "Latency requires a product; IRT requires interval scoring.",
-          "Latency overestimates behavior; IRT underestimates behavior.",
-        ],
-        answer:
-          "Latency is [stimulus-to-response time]; IRT is [response-to-response time].",
-        explanation:
-          "Latency begins with [an antecedent stimulus]; IRT begins [after one response and ends at the next response].",
-        hint:
-          "Compare [the starting event] for each time measure.",
-      },
+      ...sectionEMasteryQuestions,
+      ...sectionEExpandedMasteryQuestions,
+      ...sectionETcoMappingMasteryQuestions,
     ],
   },
   f: {

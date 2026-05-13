@@ -155,7 +155,7 @@ function PracticeView({ section }: { section: TcoSection }) {
       <p className={eyebrowClass}>Interactive Practice</p>
 
       <h2 className={sectionTitleClass}>
-        Module {section.code}: Interactive Practice Test
+        Module {section.code}: {section.code === "E" ? "Practice Test" : "Interactive Practice Test"}
       </h2>
 
       <p className="mx-auto mt-3 max-w-2xl rounded-2xl border border-blue-100 bg-blue-50 p-4 text-sm font-black text-blue-700">

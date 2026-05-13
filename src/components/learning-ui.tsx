@@ -324,9 +324,14 @@ export function ModuleLandingTemplate({
         {description}
       </p>
 
-      <div className="mt-10 grid w-full gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-10 flex w-full flex-wrap justify-center gap-6">
         {cards.map((card) => (
-          <ModuleCard key={card.term} {...card} />
+          <div
+            key={card.term}
+            className="w-full md:w-[calc(50%_-_0.75rem)] lg:w-[calc(33.333%_-_1rem)]"
+          >
+            <ModuleCard {...card} />
+          </div>
         ))}
       </div>
     </PageShell>
@@ -340,8 +345,10 @@ export function LoadingCard({ children }: { children: ReactNode }) {
         Loading
       </h1>
 
-      <div className="mt-10 grid w-full gap-6 md:grid-cols-2 lg:grid-cols-3">
-        <div className={`${cardBaseClass} border-blue-200 bg-blue-50`}>
+      <div className="mt-10 flex w-full flex-wrap justify-center gap-6">
+        <div
+          className={`${cardBaseClass} w-full border-blue-200 bg-blue-50 md:w-[calc(50%_-_0.75rem)] lg:w-[calc(33.333%_-_1rem)]`}
+        >
           <p className="text-base leading-relaxed text-slate-950">
             {children}
           </p>

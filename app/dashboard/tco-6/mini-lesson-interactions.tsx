@@ -134,6 +134,19 @@ function defaultLearnHint() {
   return "Compare the critical features in the question before trying again.";
 }
 
+const centeredTwoColumnGroupClass =
+  "mx-auto flex w-full flex-wrap justify-center gap-4";
+const twoColumnCardClass = "w-full md:w-[calc(50%_-_0.5rem)]";
+const centeredChoiceGroupClass =
+  "mx-auto mt-5 flex w-full max-w-3xl flex-wrap justify-center gap-3";
+const centeredWideChoiceGroupClass =
+  "mx-auto mt-5 flex w-full max-w-4xl flex-wrap justify-center gap-3";
+const choiceCardClass = "w-full md:w-[calc(50%_-_0.375rem)]";
+const centeredFourColumnGroupClass =
+  "mx-auto mt-5 flex w-full max-w-4xl flex-wrap justify-center gap-3";
+const fourColumnCardClass =
+  "w-full sm:w-[calc(50%_-_0.375rem)] lg:w-[calc(25%_-_0.5625rem)]";
+
 export function InteractiveVisualBlock({
   lessonSlug,
   onPassedChange,
@@ -148,9 +161,13 @@ export function InteractiveVisualBlock({
   if (visual.type === "comparison") {
     return (
       <div className="mx-auto mt-8 w-full max-w-4xl">
-        <div className="mx-auto grid w-full place-items-stretch gap-4 md:grid-cols-2">
-          <RevealCard title={visual.leftTitle} text={visual.leftText} tone="blue" />
-          <RevealCard title={visual.rightTitle} text={visual.rightText} tone="teal" />
+        <div className={centeredTwoColumnGroupClass}>
+          <div className={twoColumnCardClass}>
+            <RevealCard title={visual.leftTitle} text={visual.leftText} tone="blue" />
+          </div>
+          <div className={twoColumnCardClass}>
+            <RevealCard title={visual.rightTitle} text={visual.rightText} tone="teal" />
+          </div>
         </div>
         {visual.cue ? (
           <div className="mx-auto mt-5 max-w-3xl rounded-3xl border border-purple-100 bg-purple-50 p-5">
@@ -255,12 +272,16 @@ export function InteractiveVisualBlock({
   }
 
   return (
-    <div className="mx-auto mt-8 grid w-full max-w-4xl place-items-stretch gap-4 md:grid-cols-2">
-      <RevealCard title="Example" text={visual.example} tone="blue" />
-      <RevealCard title="Nonexample" text={visual.nonexample} tone="teal" />
-      <div className="md:col-span-2">
-        <CompletionButton onPassedChange={onPassedChange} />
+    <div className="mx-auto mt-8 w-full max-w-4xl">
+      <div className={`mt-5 ${centeredTwoColumnGroupClass}`}>
+        <div className={twoColumnCardClass}>
+          <RevealCard title="Example" text={visual.example} tone="blue" />
+        </div>
+        <div className={twoColumnCardClass}>
+          <RevealCard title="Nonexample" text={visual.nonexample} tone="teal" />
+        </div>
       </div>
+      <CompletionButton onPassedChange={onPassedChange} />
     </div>
   );
 }
@@ -313,9 +334,11 @@ function ConsequenceChart({
         </p>
       </div>
 
-      <div className="mx-auto mt-5 grid w-full max-w-4xl place-items-stretch gap-4 md:grid-cols-2">
+      <div className={`mt-5 ${centeredTwoColumnGroupClass}`}>
         {cards.map((card) => (
-          <ConsequenceCard key={card.title} {...card} />
+          <div key={card.title} className={twoColumnCardClass}>
+            <ConsequenceCard {...card} />
+          </div>
         ))}
       </div>
       <CompletionButton onPassedChange={onPassedChange} />
@@ -592,7 +615,7 @@ function ChoiceInteraction({
       <h3 className="text-2xl font-black text-slate-950">
         <FormattedConceptText text={visual.prompt} />
       </h3>
-      <div className="mx-auto mt-5 grid w-full max-w-3xl place-items-stretch gap-3 md:grid-cols-2">
+      <div className={centeredChoiceGroupClass}>
         {visual.choices.map((choice) => (
           <button
             key={choice}
@@ -606,7 +629,7 @@ function ChoiceInteraction({
               updateState({ selected: choice, submitted: false });
               onPassedChange?.(false);
             }}
-            className={`rounded-2xl border p-4 text-sm font-black transition ${
+            className={`${choiceCardClass} rounded-2xl border p-4 text-sm font-black transition ${
               selected === choice
                 ? "border-blue-300 bg-blue-50 text-blue-700"
                 : "border-white bg-white text-slate-950 hover:border-blue-200"
@@ -698,11 +721,11 @@ function GraphInterpretationInteraction({
         <FormattedConceptText text={visual.graphTitle} />
       </h3>
 
-      <div className="mx-auto mt-5 grid w-full max-w-4xl place-items-stretch gap-3 md:grid-cols-4">
+      <div className={centeredFourColumnGroupClass}>
         {visual.phases.map((phase, index) => (
           <article
             key={`${phase.label}-${index}`}
-            className={`rounded-3xl border p-4 ${toneClass[phase.tone]}`}
+            className={`${fourColumnCardClass} rounded-3xl border p-4 ${toneClass[phase.tone]}`}
           >
             <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-2xl bg-white text-lg font-black text-slate-950">
               {index + 1}
@@ -730,7 +753,7 @@ function GraphInterpretationInteraction({
       <h4 className="mt-6 text-xl font-black text-slate-950">
         <FormattedConceptText text={visual.prompt} />
       </h4>
-      <div className="mx-auto mt-4 grid w-full max-w-3xl place-items-stretch gap-3 md:grid-cols-2">
+      <div className={centeredChoiceGroupClass}>
         {visual.choices.map((choice) => (
           <button
             key={choice}
@@ -744,7 +767,7 @@ function GraphInterpretationInteraction({
               updateState({ selected: choice, submitted: false });
               onPassedChange?.(false);
             }}
-            className={`rounded-2xl border p-4 text-sm font-black transition ${
+            className={`${choiceCardClass} rounded-2xl border p-4 text-sm font-black transition ${
               selected === choice
                 ? "border-blue-300 bg-blue-50 text-blue-700"
                 : "border-slate-200 bg-slate-50 text-slate-950 hover:border-blue-200 hover:bg-blue-50"
@@ -1149,7 +1172,7 @@ function SortingInteraction({
       <h3 className="text-2xl font-black text-slate-950">
         <FormattedConceptText text={visual.prompt} />
       </h3>
-      <div className="mx-auto mt-5 grid w-full max-w-4xl place-items-stretch gap-3 md:grid-cols-2">
+      <div className={centeredWideChoiceGroupClass}>
         {visual.items.map((item) => (
           <button
             key={item.label}
@@ -1164,7 +1187,7 @@ function SortingInteraction({
               setSubmitted(false);
               onPassedChange?.(false);
             }}
-            className={`rounded-2xl border p-4 text-sm font-black transition ${
+            className={`${choiceCardClass} rounded-2xl border p-4 text-sm font-black transition ${
               activeItem === item.label
                 ? "border-teal-300 bg-white text-teal-700"
                 : "border-white bg-white text-slate-950 hover:border-teal-200"
@@ -1179,7 +1202,7 @@ function SortingInteraction({
           </button>
         ))}
       </div>
-      <div className="mx-auto mt-5 grid w-full max-w-4xl place-items-stretch gap-4 md:grid-cols-2">
+      <div className={centeredTwoColumnGroupClass}>
         {visual.categories.map((category) => (
           <button
             key={category}
@@ -1187,7 +1210,7 @@ function SortingInteraction({
             onClick={() => placeItem(category)}
             onDragOver={(event: DragEvent<HTMLButtonElement>) => event.preventDefault()}
             onDrop={() => dropItem(category, activeItem)}
-            className="min-h-28 rounded-3xl border border-white bg-white/80 p-5 text-center text-sm font-black text-slate-950 transition hover:border-teal-200"
+            className={`${twoColumnCardClass} min-h-28 rounded-3xl border border-white bg-white/80 p-5 text-center text-sm font-black text-slate-950 transition hover:border-teal-200`}
           >
             <FormattedConceptText text={category} />
             <span className="mt-3 block text-xs font-semibold leading-5 text-slate-700">
@@ -1383,13 +1406,13 @@ function SelectAllInteraction({
       <h3 className="text-2xl font-black text-slate-950">
         <FormattedConceptText text={visual.prompt} />
       </h3>
-      <div className="mx-auto mt-5 grid w-full max-w-3xl place-items-stretch gap-3 md:grid-cols-2">
+      <div className={centeredChoiceGroupClass}>
         {visual.choices.map((choice) => (
           <button
             key={choice.label}
             type="button"
             onClick={() => toggle(choice.label)}
-            className={`rounded-2xl border p-4 text-sm font-black transition ${
+            className={`${choiceCardClass} rounded-2xl border p-4 text-sm font-black transition ${
               selected.includes(choice.label)
                 ? "border-purple-300 bg-white text-purple-700"
                 : "border-white bg-white/80 text-slate-950 hover:border-purple-200"

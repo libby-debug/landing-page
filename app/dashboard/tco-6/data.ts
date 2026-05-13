@@ -78,16 +78,18 @@ export const tcoSections: TcoSection[] = [
   {
     code: "E",
     slug: "e",
-    title: "Ethical and Professional Issues",
+    title: "Measurement, Data Display, and Interpretation",
     description:
-      "Review ethical principles, confidentiality, competence, professional boundaries, cultural humility, and legal requirements.",
+      "Build fluency with measurement systems, graph components, visual analysis, and data-based decision making.",
     progress: 0,
     checklistItems: [
-      "E.1-E.3. Apply core ethical principles, identify risks of unethical behavior, and maintain competence.",
-      "E.4-E.5. Comply with confidentiality and public statement requirements.",
-      "E.6-E.7. Manage service discontinuation and multiple relationships.",
-      "E.8-E.11. Use professional interpersonal skills, cultural humility, and identify personal biases.",
-      "E.12. Comply with legal, regulatory, and licensure requirements.",
+      "E.1. Distinguish repeatability, temporal locus, temporal extent, countability, and measurable behavior.",
+      "E.2. Select continuous measurement procedures including frequency, rate, duration, latency, and IRT.",
+      "E.3. Select discontinuous measurement procedures including partial interval, whole interval, MTS, and PLACHECK.",
+      "E.4. Identify permanent product recording advantages, limitations, examples, and nonexamples.",
+      "E.5. Interpret data displays including line graphs, bar graphs, cumulative records, and standard celeration chart basics.",
+      "E.6. Interpret level, trend, variability, immediacy of effect, and treatment effects.",
+      "E.7. Make data-based decisions to continue, modify, terminate, or collect more data.",
     ],
   },
   {

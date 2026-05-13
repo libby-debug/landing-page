@@ -56,6 +56,18 @@ function learnCompletionKey(sectionSlug: string) {
   return `aba-mastered:tco6:${sectionSlug}:learn-completed-lessons`;
 }
 
+function localDateKey(date = new Date()) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+
+  return `${year}-${month}-${day}`;
+}
+
+function dailyLearnCompletionKey(dateKey = localDateKey()) {
+  return `aba-mastered:tco6:daily-learn-completions:${dateKey}`;
+}
+
 export function practiceAnswersKey(sectionSlug: string) {
   return `aba-mastered:tco6:${sectionSlug}:practice-answers`;
 }
@@ -146,6 +158,47 @@ export function readCompletedLearnLessonSlugs(sectionSlug: string) {
   }
 }
 
+function readDailyCompletedLearnLessonIds(dateKey = localDateKey()) {
+  if (typeof window === "undefined") {
+    return [];
+  }
+
+  try {
+    const stored = window.localStorage.getItem(dailyLearnCompletionKey(dateKey));
+    const parsed = stored ? JSON.parse(stored) : [];
+    return Array.isArray(parsed)
+      ? parsed.filter((id): id is string => typeof id === "string")
+      : [];
+  } catch {
+    return [];
+  }
+}
+
+export function countTodaysCompletedLearnLessons() {
+  return readDailyCompletedLearnLessonIds().length;
+}
+
+function writeDailyCompletedLearnLesson(sectionSlug: string, lessonSlug: string) {
+  if (typeof window === "undefined") {
+    return;
+  }
+
+  const completionId = `${sectionSlug}:${lessonSlug}`;
+  const completedToday = Array.from(
+    new Set([...readDailyCompletedLearnLessonIds(), completionId]),
+  );
+
+  window.localStorage.setItem(
+    dailyLearnCompletionKey(),
+    JSON.stringify(completedToday),
+  );
+  window.dispatchEvent(
+    new CustomEvent("aba-mastered-daily-learn-progress", {
+      detail: { completedLessons: completedToday },
+    }),
+  );
+}
+
 function writeCompletedLearnLessonSlugs(
   sectionSlug: string,
   lessonSlugs: string[],
@@ -206,10 +259,17 @@ export function markLearnLessonComplete({
     return;
   }
 
+  const previouslyCompleted = readCompletedLearnLessonSlugs(sectionSlug);
+  const isNewCompletion = !previouslyCompleted.includes(lessonSlug);
   const completedLessons = writeCompletedLearnLessonSlugs(sectionSlug, [
-    ...readCompletedLearnLessonSlugs(sectionSlug),
+    ...previouslyCompleted,
     lessonSlug,
   ]);
+
+  if (isNewCompletion) {
+    writeDailyCompletedLearnLesson(sectionSlug, lessonSlug);
+  }
+
   const learnCompleted =
     totalLessons > 0 && completedLessons.length >= totalLessons;
   const nextProgress = {
@@ -649,12 +709,12 @@ export function SaveProgressButton({
       <button
         type="button"
         onClick={saveProgress}
-        className="rounded-xl border border-green-300 bg-green-600 px-6 py-3 text-sm font-black text-white shadow-sm shadow-green-100 transition hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2"
+        className="rounded-xl border border-[#16a34a] bg-[#16a34a] px-6 py-3 text-sm font-black text-white shadow-sm shadow-[#16a34a]/20 transition hover:border-[#15803d] hover:bg-[#15803d] active:border-[#166534] active:bg-[#166534] focus:outline-none focus:ring-2 focus:ring-[#86efac] focus:ring-offset-2"
       >
         Save Progress
       </button>
       {message ? (
-        <p className="rounded-2xl border border-green-200 bg-green-50 px-4 py-2 text-sm font-black text-green-700">
+        <p className="rounded-2xl border border-[#86efac] bg-[#dcfce7] px-4 py-2 text-sm font-black text-[#15803d]">
           {message}
         </p>
       ) : null}

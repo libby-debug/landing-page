@@ -2415,64 +2415,715 @@ const sectionDAnalysisApplicationMiniLessons: MiniLessonContent[] = [
 
 const sectionEMiniLessons: MiniLessonContent[] = [
   {
-    slug: "ethical-principles",
-    label: "E.1-E.3",
-    title: "Core ethical principles",
+    slug: "repeatability",
+    label: "E.1",
+    title: "Repeatability",
     body: [
-      "Ethical practice protects [client dignity, welfare, and autonomy].",
-      "Competence means practicing within training, supervision, and experience.",
-    ],
-    visual: {
-      type: "select-all",
-      prompt: "Select ethical decision anchors.",
-      choices: [
-        { label: "Client welfare", correct: true },
-        { label: "Scope of competence", correct: true },
-        { label: "Data and documentation", correct: true },
-        { label: "Convenience over risk", correct: false },
-      ],
-      feedback:
-        "Ethical decisions prioritize client welfare, competence, data, consent, and applicable requirements.",
-    },
-  },
-  {
-    slug: "confidentiality",
-    label: "E.4-E.5",
-    title: "Confidentiality and public statements",
-    body: [
-      "Confidentiality protects [client-identifying information].",
-      "Public statements must be accurate and not misleading.",
+      "Repeatability means behavior can occur [more than once].",
+      "Use repeatability when the measurement question is about [how many responses occurred].",
     ],
     visual: {
       type: "choice",
-      prompt: "Which action best protects confidentiality?",
+      prompt: "Which example best fits repeatability?",
       choices: [
-        "Share only the minimum necessary information with authorized people.",
-        "Discuss a client case in a public hallway without names.",
-        "Post a de-identified client video without consent.",
-        "Use client details in marketing if outcomes were positive.",
+        "A learner raises a hand 12 times during group instruction",
+        "A tantrum lasts 9 minutes",
+        "A learner begins work 20 seconds after an instruction",
+        "A graph shows a delayed effect after intervention",
       ],
-      answer:
-        "Share only the minimum necessary information with authorized people.",
+      answer: "A learner raises a hand 12 times during group instruction",
+      hint:
+        "Repeatability is about whether behavior can be counted as separate occurrences.",
       feedback:
-        "Confidentiality requires authorized access, minimum necessary disclosure, and care with identifying details.",
+        "Repeatability supports count-based measures because behavior can occur [again and again].",
     },
   },
   {
-    slug: "boundaries-culture",
-    label: "E.6-E.11",
-    title: "Boundaries and cultural humility",
+    slug: "temporal-locus",
+    label: "E.1",
+    title: "Temporal Locus",
     body: [
-      "Professional boundaries reduce [conflicts of interest].",
-      "Cultural humility requires ongoing self-reflection and responsiveness.",
+      "Temporal locus refers to [when behavior occurs] in time.",
+      "Latency and Interresponse Time (IRT) both use temporal locus, but they start from [different events].",
     ],
     visual: {
       type: "comparison",
-      leftTitle: "Boundary issue",
-      leftText: "Role conflict or impaired objectivity",
-      rightTitle: "Cultural humility",
-      rightText: "Client-centered responsiveness",
-      cue: "Boundaries protect judgment. Cultural humility improves fit and respect.",
+      leftTitle: "Latency",
+      leftText: "Time from [stimulus to response]",
+      rightTitle: "IRT",
+      rightText: "Time from [response to response]",
+      cue: "Temporal locus tells you where the timing starts and ends.",
+    },
+  },
+  {
+    slug: "temporal-extent",
+    label: "E.1",
+    title: "Temporal Extent",
+    body: [
+      "Temporal extent means behavior occupies [an amount of time].",
+      "Duration measures time from [response onset to response offset].",
+    ],
+    visual: {
+      type: "fill-blank",
+      prompt: "Complete the duration cue.",
+      sentence: "Duration measures time from response onset to response ____.",
+      answer: "offset",
+      feedback:
+        "Duration is temporal extent: time from [response onset to response offset].",
+    },
+  },
+  {
+    slug: "countability",
+    label: "E.1",
+    title: "Countability",
+    body: [
+      "Countability requires a clear response definition with [discrete beginnings and endings].",
+      "If observers cannot tell when one response ends and another begins, count data may be weak.",
+    ],
+    visual: {
+      type: "sorting",
+      prompt: "Sort each target by countability.",
+      categories: ["Countable", "Needs clearer definition"],
+      items: [
+        { label: "Each completed worksheet problem", category: "Countable" },
+        { label: "Being off task", category: "Needs clearer definition" },
+        { label: "Each instance of hand raising above shoulder", category: "Countable" },
+        { label: "Acting upset", category: "Needs clearer definition" },
+      ],
+    },
+  },
+  {
+    slug: "dimensional-quantities",
+    label: "E.1",
+    title: "Dimensional Quantities",
+    body: [
+      "Dimensional quantities describe measurable features of behavior.",
+      "The core quantities are [repeatability], [temporal locus], and [temporal extent].",
+    ],
+    visual: {
+      type: "select-all",
+      prompt: "Select dimensional quantities of behavior.",
+      choices: [
+        { label: "Repeatability", correct: true },
+        { label: "Temporal locus", correct: true },
+        { label: "Temporal extent", correct: true },
+        { label: "Client preference", correct: false },
+      ],
+      feedback:
+        "Dimensional quantities include [repeatability], [temporal locus], and [temporal extent]. Client preference may guide goals, but it is not a dimensional quantity.",
+    },
+  },
+  {
+    slug: "measurable-vs-nonmeasurable",
+    label: "E.1",
+    title: "Measurable vs Non-Measurable Behavior",
+    body: [
+      "Measurable behavior is observable enough for consistent recording.",
+      "Non-measurable labels need operational definitions before data collection.",
+    ],
+    visual: {
+      type: "sorting",
+      prompt: "Sort each statement by measurement quality.",
+      categories: ["Measurable", "Needs definition"],
+      items: [
+        { label: "Raises hand above shoulder", category: "Measurable" },
+        { label: "Is disrespectful", category: "Needs definition" },
+        { label: "Leaves seat with both feet outside the desk area", category: "Measurable" },
+        { label: "Has a bad attitude", category: "Needs definition" },
+      ],
+    },
+  },
+  {
+    slug: "frequency-vs-rate",
+    label: "E.2",
+    title: "Frequency vs Rate",
+    body: [
+      "Frequency is [count only].",
+      "Rate is [count per unit of time].",
+    ],
+    visual: {
+      type: "comparison",
+      leftTitle: "Frequency",
+      leftText: "How many times behavior occurred",
+      rightTitle: "Rate",
+      rightText: "How many responses [per time unit]",
+      cue: "Frequency = [count]. Rate = [count divided by observation time].",
+    },
+  },
+  {
+    slug: "duration",
+    label: "E.2",
+    title: "Duration",
+    body: [
+      "Duration measures time from [response onset to response offset].",
+      "Use duration when the clinical question asks [how long behavior lasts].",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which scenario calls for duration recording?",
+      choices: [
+        "A BCBA measures how long crying lasts after denial of a request",
+        "A BCBA counts each hand raise during circle time",
+        "A BCBA records time from instruction to first response",
+        "A BCBA records whether behavior occurs at interval endpoints",
+      ],
+      answer: "A BCBA measures how long crying lasts after denial of a request",
+      hint:
+        "Look for a response that has a beginning, an ending, and a clinically important length.",
+      feedback:
+        "Duration fits when the question is [how long the response continues].",
+    },
+  },
+  {
+    slug: "latency",
+    label: "E.2",
+    title: "Latency",
+    body: [
+      "Latency measures time from [stimulus or instruction to response onset].",
+      "Use latency when speed of response after an antecedent matters.",
+    ],
+    visual: {
+      type: "flow",
+      prompt: "Order the latency timeline.",
+      steps: [
+        "Discriminative Stimulus (SD) or instruction occurs",
+        "Timer starts",
+        "Response begins",
+        "Timer stops",
+      ],
+      feedback:
+        "Latency begins with [the antecedent event] and ends when the response begins.",
+    },
+  },
+  {
+    slug: "interresponse-time",
+    label: "E.2",
+    title: "Interresponse Time",
+    body: [
+      "Interresponse Time (IRT) measures time [between consecutive responses].",
+      "IRT starts after one response and ends when [the next response begins].",
+    ],
+    visual: {
+      type: "matching",
+      prompt: "Match each temporal measure to its starting cue.",
+      pairs: [
+        { term: "Duration", definition: "Starts when the response begins." },
+        { term: "Latency", definition: "Starts when the stimulus or instruction occurs." },
+        { term: "Interresponse Time (IRT)", definition: "Starts after one response and ends at the next response." },
+      ],
+    },
+  },
+  {
+    slug: "percentage-correct",
+    label: "E.2",
+    title: "Percentage Correct",
+    body: [
+      "Percentage correct converts performance into [correct responses divided by opportunities].",
+      "Use it when the number of opportunities is clear and comparable.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "A learner answers 18 of 20 tact trials correctly. Which measure best summarizes performance?",
+      choices: ["Percentage correct", "Latency", "Partial interval recording", "Duration"],
+      answer: "Percentage correct",
+      hint:
+        "Look for correct responses compared with total opportunities.",
+      feedback:
+        "Percentage correct is [correct responses divided by total opportunities] multiplied by 100.",
+    },
+  },
+  {
+    slug: "trials-to-criterion",
+    label: "E.2",
+    title: "Trials to Criterion",
+    body: [
+      "Trials to criterion measures [how many learning opportunities] are needed to meet a performance standard.",
+      "It is useful when comparing acquisition efficiency across skills or teaching procedures.",
+    ],
+    visual: {
+      type: "fill-blank",
+      prompt: "Complete the discrimination cue.",
+      sentence: "Trials to criterion asks how many trials are needed to reach ____.",
+      answer: "criterion",
+      feedback:
+        "Trials to criterion focuses on [efficiency of acquisition], not just current accuracy.",
+    },
+  },
+  {
+    slug: "continuous-measurement-selection",
+    label: "E.2",
+    title: "Choosing Continuous Measurement",
+    body: [
+      "Continuous measurement records every occurrence during observation.",
+      "Select the measure that matches [the behavior dimension of interest].",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "A BCBA needs to know whether time from demand to compliance decreases. Which measure fits best?",
+      choices: ["Latency", "Duration", "Frequency", "Whole interval recording"],
+      answer: "Latency",
+      hint:
+        "Ask whether the question is about count, time until behavior starts, or how long behavior continues.",
+      feedback:
+        "Latency measures time from [antecedent event to response onset].",
+    },
+  },
+  {
+    slug: "partial-interval",
+    label: "E.3",
+    title: "Partial Interval Recording",
+    body: [
+      "Partial interval scores an interval if behavior occurs [at any time].",
+      "Partial interval recording tends to [overestimate] behavior.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which scoring rule describes partial interval recording?",
+      choices: [
+        "Score the interval if behavior occurs at any time",
+        "Score only if behavior occurs for the entire interval",
+        "Score only at the exact end of the interval",
+        "Count every response during the session",
+      ],
+      answer: "Score the interval if behavior occurs at any time",
+      hint:
+        "Partial interval asks whether behavior happened at least once during the interval.",
+      feedback:
+        "Partial interval uses the [any occurrence] rule and can [overestimate] behavior.",
+    },
+  },
+  {
+    slug: "whole-interval",
+    label: "E.3",
+    title: "Whole Interval Recording",
+    body: [
+      "Whole interval scores an interval only if behavior occurs [for the entire interval].",
+      "Whole interval recording tends to [underestimate] behavior.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which scoring rule describes whole interval recording?",
+      choices: [
+        "Score only if behavior occurs for the entire interval",
+        "Score if behavior occurs at any time",
+        "Score only at the exact interval endpoint",
+        "Count every response separately",
+      ],
+      answer: "Score only if behavior occurs for the entire interval",
+      hint:
+        "Whole interval requires behavior to be present throughout the interval.",
+      feedback:
+        "Whole interval uses the [entire interval] rule and can [underestimate] behavior.",
+    },
+  },
+  {
+    slug: "partial-vs-whole-interval",
+    label: "E.3",
+    title: "Partial vs Whole Interval",
+    body: [
+      "Partial interval asks whether behavior occurred [at all].",
+      "Whole interval asks whether behavior occurred [the whole time].",
+    ],
+    visual: {
+      type: "comparison",
+      leftTitle: "Partial interval",
+      leftText: "Tends to [overestimate] behavior",
+      rightTitle: "Whole interval",
+      rightText: "Tends to [underestimate] behavior",
+      cue: "Partial = [any occurrence]. Whole = [entire interval].",
+    },
+  },
+  {
+    slug: "momentary-time-sampling",
+    label: "E.3",
+    title: "Momentary Time Sampling",
+    body: [
+      "Momentary time sampling records whether behavior occurs [at the end of an interval].",
+      "It samples a moment instead of scoring the whole interval.",
+    ],
+    visual: {
+      type: "flow",
+      prompt: "Order the momentary time sampling sequence.",
+      steps: [
+        "Interval begins",
+        "Wait until the interval endpoint",
+        "Look at that exact moment",
+        "Score whether behavior is occurring",
+      ],
+      feedback:
+        "Momentary time sampling scores behavior [only at the interval endpoint].",
+    },
+  },
+  {
+    slug: "placheck",
+    label: "E.3",
+    title: "PLACHECK",
+    body: [
+      "PLACHECK records [how many people are engaged at a moment].",
+      "It is a group measurement system, not a count of every individual response.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which scenario is the best fit for PLACHECK?",
+      choices: [
+        "A teacher records how many students are engaged when the timer sounds",
+        "A therapist counts every mand during a session",
+        "A BCBA times how long screaming lasts",
+        "An RBT records time from instruction to compliance",
+      ],
+      answer: "A teacher records how many students are engaged when the timer sounds",
+      hint:
+        "Look for group engagement scored at a moment.",
+      feedback:
+        "PLACHECK measures [group engagement at a moment].",
+    },
+  },
+  {
+    slug: "discontinuous-measurement-discrimination",
+    label: "E.3",
+    title: "Discontinuous Measurement Discrimination",
+    body: [
+      "Discontinuous systems sample behavior instead of capturing every response.",
+      "The key discrimination is [when the interval is scored].",
+    ],
+    visual: {
+      type: "matching",
+      prompt: "Match each discontinuous system to its best cue.",
+      pairs: [
+        { term: "Momentary time sampling", definition: "Score behavior at [the interval endpoint]." },
+        { term: "PLACHECK", definition: "Count [individuals engaged at a moment]." },
+        { term: "Partial interval", definition: "Score [any occurrence] during the interval." },
+        { term: "Whole interval", definition: "Score behavior across [the entire interval]." },
+      ],
+    },
+  },
+  {
+    slug: "choosing-measurement-systems",
+    label: "E.2-E.3",
+    title: "Choosing Correct Measurement Systems",
+    body: [
+      "Choose measurement from the clinical question, not from habit.",
+      "Ask whether you need [count], [time], [interval samples], or [a lasting product].",
+    ],
+    visual: {
+      type: "sorting",
+      prompt: "Sort each scenario by the best measurement family.",
+      categories: ["Continuous or product", "Discontinuous"],
+      items: [
+        { label: "How many bites of food occurred", category: "Continuous or product" },
+        { label: "Whether engagement occurred at each interval endpoint", category: "Discontinuous" },
+        { label: "How long elopement lasted", category: "Continuous or product" },
+        { label: "Whether behavior happened at any time in each interval", category: "Discontinuous" },
+      ],
+    },
+  },
+  {
+    slug: "permanent-product-recording",
+    label: "E.4",
+    title: "Permanent Product Recording",
+    body: [
+      "Permanent product recording measures [lasting environmental effects] of behavior.",
+      "Direct observation is not required when [the product clearly represents the behavior].",
+    ],
+    visual: {
+      type: "example",
+      example: "Counting completed math problems after independent work.",
+      nonexample: "Estimating time on task without observing or having a product.",
+    },
+  },
+  {
+    slug: "permanent-product-limits",
+    label: "E.4",
+    title: "Permanent Product Limits",
+    body: [
+      "Permanent products are efficient when the product is [durable and clearly linked to behavior].",
+      "They are weak when [someone else could have produced or altered the product].",
+    ],
+    visual: {
+      type: "select-all",
+      prompt: "Select permanent product examples.",
+      choices: [
+        { label: "Number of worksheets completed", correct: true },
+        { label: "Trash bags filled after cleaning", correct: true },
+        { label: "Minutes from instruction to first response", correct: false },
+        { label: "Correctly assembled kits remaining after a task", correct: true },
+      ],
+      feedback:
+        "Permanent products are [lasting outcomes] that can be measured [after behavior occurs].",
+    },
+  },
+  {
+    slug: "ioa-methods",
+    label: "E.5",
+    title: "IOA Methods",
+    body: [
+      "Interobserver agreement (IOA) estimates [agreement between independent observers].",
+      "Choose IOA based on the data system: count, duration, interval, or trial data.",
+    ],
+    visual: {
+      type: "matching",
+      prompt: "Match each IOA method to the data type.",
+      pairs: [
+        { term: "Exact count IOA", definition: "Interval-by-interval count agreement." },
+        { term: "Total duration IOA", definition: "Agreement on total time behavior occurred." },
+        { term: "Mean duration-per-occurrence IOA", definition: "Agreement on average duration per response." },
+        { term: "Trial-by-trial IOA", definition: "Agreement across discrete trials." },
+      ],
+    },
+  },
+  {
+    slug: "graph-components",
+    label: "E.5",
+    title: "Graph Components",
+    body: [
+      "Line graphs show repeated measurement across time.",
+      "Axes, data points, data paths, phase change lines, condition labels, and legends help interpret [patterns across time].",
+    ],
+    visual: {
+      type: "matching",
+      prompt: "Match each graph component to its function.",
+      pairs: [
+        { term: "X-axis", definition: "[Sessions or time]." },
+        { term: "Y-axis", definition: "[Measured behavior value]." },
+        { term: "Data path", definition: "Line connecting data points [within a condition]." },
+        { term: "Phase change line", definition: "Vertical line showing [a condition change]." },
+      ],
+    },
+  },
+  {
+    slug: "graph-construction",
+    label: "E.5",
+    title: "Graph Construction",
+    body: [
+      "A clear graph shows [what was measured] and [when conditions changed].",
+      "Construction features include axes, data points, data paths, condition labels, phase change lines, and legends.",
+    ],
+    visual: {
+      type: "select-all",
+      prompt: "Select features needed for clear graph construction.",
+      choices: [
+        { label: "Labeled x-axis and y-axis", correct: true },
+        { label: "Data points connected within the same condition", correct: true },
+        { label: "Phase change lines when conditions change", correct: true },
+        { label: "A title that gives away the answer to a mastery question", correct: false },
+      ],
+      feedback:
+        "Graph construction should make [measurement and condition changes] clear without adding misleading labels.",
+    },
+  },
+  {
+    slug: "data-display-types",
+    label: "E.5",
+    title: "Data Display Types",
+    body: [
+      "Different displays answer different questions.",
+      "Line graphs show [repeated behavior data]; bar graphs summarize [categories].",
+    ],
+    visual: {
+      type: "sorting",
+      prompt: "Sort each display by best use.",
+      categories: ["Repeated data over time", "Summary or category comparison"],
+      items: [
+        { label: "Line graph", category: "Repeated data over time" },
+        { label: "Cumulative record", category: "Repeated data over time" },
+        { label: "Bar graph", category: "Summary or category comparison" },
+        { label: "Mean correct responses by condition", category: "Summary or category comparison" },
+      ],
+    },
+  },
+  {
+    slug: "level",
+    label: "E.6",
+    title: "Level",
+    body: [
+      "Level is the [vertical position] of data.",
+      "Compare level within and across phases to judge behavior change.",
+    ],
+    visual: {
+      type: "graph",
+      graphTitle: "Level",
+      phases: [
+        { label: "Low level", detail: "Data cluster [lower] on the y-axis.", tone: "blue" },
+        { label: "High level", detail: "Data cluster [higher] on the y-axis.", tone: "teal" },
+        { label: "Compare phases", detail: "Ask whether level changes after the condition change.", tone: "purple" },
+      ],
+      graphId: "reversal-positive-attention",
+      prompt: "Which cue best describes level?",
+      choices: [
+        "The vertical position of the data",
+        "The overall direction of the data path",
+        "How much data bounce session to session",
+        "How quickly data change after the phase line",
+      ],
+      answer: "The vertical position of the data",
+      hint:
+        "Level is about where data sit on the y-axis.",
+      feedback:
+        "Level means the [vertical position] of the data.",
+    },
+  },
+  {
+    slug: "trend",
+    label: "E.6",
+    title: "Trend",
+    body: [
+      "Trend is the [overall direction], and variability is [how much data fluctuate].",
+      "Trend may be increasing, decreasing, zero, or variable.",
+    ],
+    visual: {
+      type: "graph",
+      graphTitle: "Trend",
+      phases: [
+        { label: "Increasing", detail: "Data move [upward] over time.", tone: "blue" },
+        { label: "Decreasing", detail: "Data move [downward] over time.", tone: "teal" },
+        { label: "Zero trend", detail: "Data remain [flat] over time.", tone: "purple" },
+      ],
+      graphId: "changing-criterion-increasing",
+      prompt: "Which visual-analysis feature describes the direction of the data path?",
+      choices: ["Trend", "Level", "Variability", "Legend"],
+      answer: "Trend",
+      hint:
+        "Look for whether the data path moves upward, downward, or stays flat.",
+      feedback:
+        "Trend describes the [overall direction] of the data path.",
+    },
+  },
+  {
+    slug: "variability",
+    label: "E.6",
+    title: "Variability",
+    body: [
+      "Variability is [how much data fluctuate] around a level or trend.",
+      "High variability can weaken confidence in a treatment effect.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which pattern shows high variability?",
+      choices: [
+        "Data bounce widely up and down across sessions",
+        "Data stay tightly clustered near the same value",
+        "Data shift immediately after intervention starts",
+        "A data path has a clear condition label",
+      ],
+      answer: "Data bounce widely up and down across sessions",
+      hint:
+        "Variability is about how much the data fluctuate.",
+      feedback:
+        "Variability means [how much data fluctuate] from session to session.",
+    },
+  },
+  {
+    slug: "level-trend-variability",
+    label: "E.6",
+    title: "Level, Trend, and Variability",
+    body: [
+      "Level, trend, and variability are read together during visual analysis.",
+      "Separate [vertical position], [direction], and [bounce] before judging effect.",
+    ],
+    visual: {
+      type: "graph",
+      graphTitle: "Visual Analysis Components",
+      phases: [
+        { label: "Level", detail: "Vertical position of data.", tone: "blue" },
+        { label: "Trend", detail: "[Overall direction] of data.", tone: "teal" },
+        { label: "Variability", detail: "[How much data fluctuate].", tone: "purple" },
+        { label: "Immediacy", detail: "Speed of change [after condition change].", tone: "green" },
+      ],
+      graphId: "reversal-aba",
+      prompt: "Which visual-analysis feature describes the overall direction of the data path?",
+      choices: ["Trend", "Level", "Variability", "Legend"],
+      answer: "Trend",
+      hint:
+        "Look for whether the data path moves upward, downward, or stays flat over time.",
+      feedback:
+        "Trend describes the [overall direction] of data across sessions.",
+    },
+  },
+  {
+    slug: "immediacy-of-effect",
+    label: "E.6",
+    title: "Immediacy of Effect",
+    body: [
+      "Immediate behavior change occurs [quickly after a condition change].",
+      "Strong immediacy means the data shift right after the phase change line.",
+    ],
+    visual: {
+      type: "graph",
+      graphTitle: "Immediacy of Effect",
+      phases: [
+        { label: "Before change", detail: "Inspect data just before the phase line.", tone: "blue" },
+        { label: "Phase line", detail: "Condition changes here.", tone: "purple" },
+        { label: "After change", detail: "Inspect data just after the phase line.", tone: "teal" },
+      ],
+      graphId: "reversal-aba",
+      prompt: "Where do you look to judge immediacy of effect?",
+      choices: [
+        "Data immediately before and after the phase change line",
+        "Only the first baseline data point",
+        "Only the graph legend",
+        "Only the final session in the graph",
+      ],
+      answer: "Data immediately before and after the phase change line",
+      hint:
+        "Immediacy is about what happens right around the condition change.",
+      feedback:
+        "Immediacy of effect evaluates data [right before and right after] the phase change line.",
+    },
+  },
+  {
+    slug: "immediate-vs-delayed-change",
+    label: "E.6",
+    title: "Immediate vs Delayed Change",
+    body: [
+      "Immediate behavior change occurs [right after a condition change].",
+      "Delayed change means the data shift [only after additional sessions].",
+    ],
+    visual: {
+      type: "graph",
+      graphTitle: "Interpreting Treatment Effects",
+      phases: [
+        { label: "Baseline", detail: "Data before intervention.", tone: "blue" },
+        { label: "Condition change", detail: "Intervention begins.", tone: "purple" },
+        { label: "Effect", detail: "Data shift [after the condition change].", tone: "teal" },
+        { label: "Decision", detail: "Interpret [level, trend, and variability].", tone: "green" },
+      ],
+      graphId: "reversal-positive-attention",
+      prompt: "What best supports an immediate treatment effect?",
+      choices: [
+        "A clear data shift right after the phase change line",
+        "A label above the graph",
+        "High variability before baseline begins",
+        "A legend with multiple symbols",
+      ],
+      answer: "A clear data shift right after the phase change line",
+      hint:
+        "Focus on what happens to the data [immediately after the condition changes].",
+      feedback:
+        "Immediacy of effect evaluates [how quickly data change] after a condition change.",
+    },
+  },
+  {
+    slug: "data-based-decision-making",
+    label: "E.7",
+    title: "Data-Based Decision Making",
+    body: [
+      "Decisions should follow the data pattern, not preference alone.",
+      "Level, trend, and variability guide whether to [continue, modify, terminate, or collect more data].",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Baseline is variable and intervention data overlap heavily with baseline. What is the best next decision?",
+      choices: [
+        "Collect more data or modify the measurement/intervention plan.",
+        "Declare a functional relation immediately.",
+        "Terminate services because variability proves success.",
+        "Ignore baseline and use the most recent data point only.",
+      ],
+      answer: "Collect more data or modify the measurement/intervention plan.",
+      hint:
+        "Heavy overlap and variability [weaken confidence] in a treatment effect.",
+      feedback:
+        "Data-based decisions consider [level, trend, variability, overlap, and immediacy] before changing course.",
     },
   },
 ];
@@ -3927,83 +4578,290 @@ const moduleContent: Record<string, ModuleContent> = {
       {
         type: "scenario",
         prompt:
-          "A BCBA is asked to treat a behavior outside their training and experience. What should they do first?",
+          "During a 20-minute observation, a learner emits 40 hand raises. Which measure reports responses per unit of time?",
         choices: [
-          "Seek supervision, training, or refer as appropriate.",
-          "Accept because all behavior plans are similar.",
-          "Use a procedure from social media.",
-          "Proceed if the family signs a form.",
+          "Rate",
+          "Frequency",
+          "Duration",
+          "Latency",
         ],
-        answer: "Seek supervision, training, or refer as appropriate.",
+        answer: "Rate",
         explanation:
-          "Maintaining competence means practicing within training and obtaining support or referrals when needed.",
+          "Rate includes [count per time unit]; frequency is count alone.",
+        hint:
+          "Ask whether [the observation time] is part of the measurement statement.",
+      },
+      {
+        type: "matching",
+        prompt: "Match each continuous measure to its discrimination cue.",
+        pairs: [
+          { term: "Frequency", definition: "Count of responses." },
+          { term: "Duration", definition: "Time from response onset to response offset." },
+          { term: "Latency", definition: "Time from stimulus to response onset." },
+          { term: "IRT", definition: "Time between consecutive responses." },
+        ],
+        answer: "All continuous measures matched correctly",
+        explanation:
+          "Continuous measures differ by whether they capture [count], [response length], [time to start], or [time between responses].",
+        hint:
+          "Separate [count], [length of behavior], [time after an antecedent], and [time between responses].",
       },
       {
         type: "select-all",
-        prompt: "Select actions that support confidentiality.",
+        prompt:
+          "Select statements that correctly describe discontinuous measurement.",
         choices: [
-          "Use minimum necessary disclosure.",
-          "Share information only with authorization or legal permission.",
-          "Protect identifying details in documentation.",
-          "Discuss cases in public if names are removed.",
+          "Partial interval can [overestimate] behavior.",
+          "Whole interval can [underestimate] behavior.",
+          "Momentary time sampling records behavior at [the interval endpoint].",
+          "Discontinuous measurement captures every response.",
         ],
         answers: [
-          "Use minimum necessary disclosure.",
-          "Share information only with authorization or legal permission.",
-          "Protect identifying details in documentation.",
+          "Partial interval can [overestimate] behavior.",
+          "Whole interval can [underestimate] behavior.",
+          "Momentary time sampling records behavior at [the interval endpoint].",
         ],
-        answer: "Minimum necessary, authorized sharing, and protected identifying details",
+        answer: "Partial interval, whole interval, and momentary time sampling descriptions selected",
         explanation:
-          "Confidentiality includes protecting identifying information and limiting disclosure.",
+          "Discontinuous systems [sample behavior] rather than recording every occurrence.",
+        hint:
+          "Think about [how intervals are scored] and whether every response is captured.",
       },
       {
         type: "fill-blank",
-        prompt: "Complete the statement: Cultural humility requires ongoing self-____.",
-        answer: "reflection",
+        prompt:
+          "Complete the statement: Duration measures how long behavior ____.",
+        answer: "lasts",
         explanation:
-          "Cultural humility involves ongoing self-reflection, learning, and responsiveness to the client context.",
+          "Duration measures temporal extent: how long behavior lasts from [onset to offset].",
+        hint:
+          "This measure captures temporal extent, not count or response speed.",
+      },
+      {
+        type: "scenario",
+        prompt:
+          "A BCBA counts completed envelopes at the end of a vocational task without observing the whole session. Which recording system is being used?",
+        choices: [
+          "Permanent product recording",
+          "Momentary time sampling",
+          "Latency recording",
+          "Whole interval recording",
+        ],
+        answer: "Permanent product recording",
+        explanation:
+          "Permanent product recording measures [a lasting product of behavior] after it occurs.",
+        hint:
+          "Look for [a durable outcome] that remains after behavior has occurred.",
+      },
+      {
+        type: "scenario",
+        graphId: "reversal-positive-attention",
+        prompt:
+          "The data shift upward immediately after the condition change and shift downward when the condition is removed. Which interpretation is strongest?",
+        choices: [
+          "The graph shows an immediate treatment effect with a replicated pattern.",
+          "The graph cannot be interpreted because it has phase labels.",
+          "The graph shows only a bar graph summary.",
+          "The graph shows no relation because the data are connected.",
+        ],
+        answer:
+          "The graph shows an immediate treatment effect with a replicated pattern.",
+        explanation:
+          "Immediate data shifts [across condition changes] strengthen interpretation of a treatment effect.",
+        hint:
+          "Focus on [level change around phase change lines] and whether the pattern repeats.",
+      },
+      {
+        type: "matching",
+        prompt: "Match each graph element to its role.",
+        pairs: [
+          { term: "X-axis", definition: "Sessions or time." },
+          { term: "Y-axis", definition: "Measured response value." },
+          { term: "Phase change line", definition: "Condition changed." },
+          { term: "Legend", definition: "Identifies data paths or symbols." },
+        ],
+        answer: "All graph elements matched correctly",
+        explanation:
+          "Graph elements orient the analyst to [time], [measured values], [conditions], and [data paths].",
+        hint:
+          "Separate [axes], [condition changes], and [labels for symbols or paths].",
+      },
+      {
+        type: "scenario",
+        prompt:
+          "Intervention data are improving but highly variable and overlap with baseline. What is the best data-based decision?",
+        choices: [
+          "Collect more data or modify the plan based on the pattern.",
+          "Declare mastery because one point improved.",
+          "Terminate intervention because variability is always success.",
+          "Ignore baseline because intervention has started.",
+        ],
+        answer: "Collect more data or modify the plan based on the pattern.",
+        explanation:
+          "Data-based decisions consider [level, trend, variability, overlap, and immediacy] instead of a single point.",
+        hint:
+          "When confidence is weak, use [the data pattern] to guide additional data collection or changes.",
       },
     ],
     masteryQuestions: [
       {
         prompt:
-          "A BCBA advertises guaranteed outcomes for every learner. What is the ethical concern?",
+          "Which option is best described as rate?",
         choices: [
-          "The public statement may be misleading.",
-          "The statement is required for informed consent.",
-          "The statement improves analytic control.",
-          "The statement is acceptable if prices are listed.",
+          "Thirty responses in ten minutes",
+          "Thirty total responses",
+          "Ten minutes of crying",
+          "Five seconds from instruction to response",
         ],
-        answer: "The public statement may be misleading.",
+        answer: "Thirty responses in ten minutes",
         explanation:
-          "Public statements must be accurate and not misleading; guaranteed outcomes are not appropriate.",
+          "Rate includes [a count in relation to time].",
+        hint:
+          "Rate requires both [a response count] and [a time unit].",
       },
       {
         type: "scenario",
         prompt:
-          "A dual relationship could impair objectivity. Which action best protects the client?",
+          "A teacher records whether out-of-seat behavior occurred at any point during each 30-second interval. Which system is described?",
         choices: [
-          "Identify the risk and manage or avoid the multiple relationship.",
-          "Continue without documentation.",
-          "Ask the client to ignore the issue.",
-          "Use less data so the relationship feels natural.",
+          "Partial interval recording",
+          "Whole interval recording",
+          "Latency recording",
+          "Permanent product recording",
         ],
-        answer:
-          "Identify the risk and manage or avoid the multiple relationship.",
+        answer: "Partial interval recording",
         explanation:
-          "Multiple relationships require careful management because they can impair objectivity and client welfare.",
+          "Partial interval recording scores the interval if behavior occurs [at any time during the interval].",
+        hint:
+          "Notice whether behavior must occur [for the whole interval] or [at any point in the interval].",
       },
       {
-        type: "matching",
-        prompt: "Match each ethics term to its definition.",
-        pairs: [
-          { term: "Competence", definition: "Practice within training and experience." },
-          { term: "Confidentiality", definition: "Protect identifying information." },
-          { term: "Cultural humility", definition: "Ongoing self-reflection and responsiveness." },
+        type: "scenario",
+        prompt:
+          "A BCBA wants to measure time from a demand to the first compliance response. Which measure fits best?",
+        choices: [
+          "Latency",
+          "Duration",
+          "IRT",
+          "Frequency",
         ],
-        answer: "All ethics terms matched correctly",
+        answer: "Latency",
         explanation:
-          "These definitions help discriminate common ethics concepts on exam scenarios.",
+          "Latency measures time from [a stimulus or instruction to response onset].",
+        hint:
+          "Focus on the time from [an antecedent event to the start of behavior].",
+      },
+      {
+        type: "scenario",
+        prompt:
+          "Which example is best described as permanent product recording?",
+        choices: [
+          "Counting completed task cards after a work period",
+          "Recording every hand raise as it occurs",
+          "Scoring behavior at the end of each interval",
+          "Timing from instruction to first response",
+        ],
+        answer: "Counting completed task cards after a work period",
+        explanation:
+          "Permanent product recording uses [a durable outcome of behavior] that can be measured later.",
+        hint:
+          "Look for [a lasting product] rather than direct observation of each response.",
+      },
+      {
+        type: "scenario",
+        graphId: "reversal-aba",
+        prompt:
+          "Which visual-analysis feature is most relevant when judging whether the data changed quickly after the phase change line?",
+        choices: [
+          "Immediacy of effect",
+          "Legend placement",
+          "Axis font size",
+          "Session numbering",
+        ],
+        answer: "Immediacy of effect",
+        explanation:
+          "Immediacy of effect evaluates [how quickly data change after a condition change].",
+        hint:
+          "Attend to the data [immediately before and immediately after] the condition changes.",
+      },
+      {
+        type: "scenario",
+        graphId: "multiple-baseline-settings",
+        prompt:
+          "A graph shows behavior improving only after intervention starts in each tier. Which interpretation is strongest?",
+        choices: [
+          "The pattern supports a functional relation across tiers.",
+          "The pattern is a bar graph summary.",
+          "The pattern shows latency only.",
+          "The pattern cannot be interpreted because tiers are stacked.",
+        ],
+        answer: "The pattern supports a functional relation across tiers.",
+        explanation:
+          "Staggered changes [across tiers] support interpretation of experimental control and treatment effects.",
+        hint:
+          "Look for whether behavior changes [when, and only when, the intervention begins] in each tier.",
+      },
+      {
+        prompt:
+          "Which data pattern most strongly suggests collecting more data before changing an intervention?",
+        choices: [
+          "Highly variable data with no clear trend",
+          "Stable baseline followed by immediate level change",
+          "Repeated low variability across all sessions",
+          "Clear replication across phase changes",
+        ],
+        answer: "Highly variable data with no clear trend",
+        explanation:
+          "Variable data with [no clear trend] can weaken confidence and may require more data before a decision.",
+        hint:
+          "Think about when the visual pattern is [unclear] rather than stable or replicated.",
+      },
+      {
+        prompt:
+          "Which option is best described as a data path?",
+        choices: [
+          "A line connecting data points within a condition",
+          "The vertical axis label",
+          "A written condition name above the graph",
+          "A summary statement below a bar graph",
+        ],
+        answer: "A line connecting data points within a condition",
+        explanation:
+          "A data path connects data points [within a condition] to show the pattern over time.",
+        hint:
+          "Look for the element that shows [the pattern between repeated data points].",
+      },
+      {
+        type: "scenario",
+        prompt:
+          "A BCBA records whether a student is engaged at the exact moment each 2-minute interval ends. Which system is described?",
+        choices: [
+          "Momentary time sampling",
+          "Partial interval recording",
+          "Whole interval recording",
+          "Frequency recording",
+        ],
+        answer: "Momentary time sampling",
+        explanation:
+          "Momentary time sampling scores whether behavior is occurring [at the interval endpoint].",
+        hint:
+          "Focus on whether behavior is scored [throughout the interval] or [only at one moment].",
+      },
+      {
+        prompt:
+          "Which option best differentiates latency from IRT?",
+        choices: [
+          "Latency is [stimulus-to-response time]; IRT is [response-to-response time].",
+          "Latency is count per time; IRT is total count.",
+          "Latency requires a product; IRT requires interval scoring.",
+          "Latency overestimates behavior; IRT underestimates behavior.",
+        ],
+        answer:
+          "Latency is [stimulus-to-response time]; IRT is [response-to-response time].",
+        explanation:
+          "Latency begins with [an antecedent stimulus]; IRT begins [after one response and ends at the next response].",
+        hint:
+          "Compare [the starting event] for each time measure.",
       },
     ],
   },

@@ -31,7 +31,7 @@ const taskListSections = [
     prominence: "section",
   },
   {
-    title: "E. Ethical and Professional Issues",
+    title: "E. Measurement, Data Display, and Interpretation",
     href: "/dashboard/tco-6/e",
     prominence: "section",
   },
@@ -88,6 +88,16 @@ function isActiveNavItem(pathname: string, href: string) {
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
+function getNavAriaLabel(title: string, href: string) {
+  const moduleMatch = title.match(/^([A-I])\./);
+
+  if (moduleMatch && href.startsWith("/dashboard/tco-6/")) {
+    return `Open Module ${moduleMatch[1]} dashboard`;
+  }
+
+  return `Open ${title}`;
+}
+
 export function PlatformShell({ children }: { children: React.ReactNode }) {
   return (
     <AuthProvider>
@@ -134,8 +144,9 @@ function PlatformShellContent({ children }: { children: React.ReactNode }) {
                 return (
                   <Link
                     key={item.title}
+                    aria-label={getNavAriaLabel(item.title, item.href)}
                     href={item.href}
-                    className={`rounded-xl px-4 py-3 transition ${prominenceClass} ${activeClass}`}
+                    className={`block w-full cursor-pointer rounded-xl px-4 py-3 transition focus:outline-none focus:ring-4 focus:ring-blue-100 ${prominenceClass} ${activeClass}`}
                   >
                     {item.href === "/dashboard" ? (
                       <span className="inline-block bg-gradient-to-r from-purple-600 via-blue-500 to-teal-400 bg-clip-text text-transparent [-webkit-text-fill-color:transparent]">
@@ -149,7 +160,7 @@ function PlatformShellContent({ children }: { children: React.ReactNode }) {
               })}
             </nav>
 
-            <div className="mt-6 rounded-2xl border border-blue-100 bg-gradient-to-r from-purple-50 via-blue-50 to-teal-50 p-5 text-left shadow-sm">
+            <div className="mt-6 flex flex-col items-center rounded-2xl border border-blue-100 bg-gradient-to-r from-purple-50 via-blue-50 to-teal-50 p-5 text-center shadow-sm">
               <h2 className="text-lg font-black text-slate-950">
                 Need help?
               </h2>

@@ -152,6 +152,10 @@ function getQuestionLabel(question: QuestionContent) {
   return labels[question.type ?? "multiple-choice"];
 }
 
+function shouldHideGraphMetadata(sectionSlug: string) {
+  return ["c", "d", "e"].includes(sectionSlug);
+}
+
 function asMasteryQuestion(question: QuestionContent) {
   if (
     (question.type === "multiple-choice" || question.type === "scenario" || !question.type) &&
@@ -345,6 +349,13 @@ function shuffleStringValues(values: string[], seedSource: string) {
 
   return unchanged ? [...shuffled.slice(1), shuffled[0]] : shuffled;
 }
+
+const centeredResponseGroupClass =
+  "mx-auto mt-5 flex w-full max-w-3xl flex-wrap justify-center gap-3";
+const responseChoiceCardClass = "w-full md:w-[calc(50%_-_0.375rem)]";
+const centeredWideResponseGroupClass =
+  "mx-auto mt-5 flex w-full max-w-4xl flex-wrap justify-center gap-3";
+const wideResponseCardClass = "w-full md:w-[calc(50%_-_0.375rem)]";
 
 function readStoredAnswer(sectionSlug: string, index: number) {
   if (typeof window === "undefined") {
@@ -731,10 +742,10 @@ function QuestionResponseInput({
     const record = parseRecordResponse(response);
 
     return (
-      <div className="mx-auto mt-5 grid w-full max-w-4xl gap-3">
+      <div className={centeredWideResponseGroupClass}>
         {question.pairs.map((pair) => (
           <label
-            className="grid gap-2 rounded-2xl border border-slate-200 bg-white p-4 text-sm font-bold text-slate-950 sm:grid-cols-[0.8fr_1.2fr] sm:items-center"
+            className={`${wideResponseCardClass} grid gap-2 rounded-2xl border border-slate-200 bg-white p-4 text-sm font-bold text-slate-950 sm:grid-cols-[0.8fr_1.2fr] sm:items-center`}
             key={pair.term}
           >
             <span>
@@ -766,19 +777,19 @@ function QuestionResponseInput({
     const categories = question.categories;
 
     return (
-      <div className="mx-auto mt-5 grid w-full max-w-4xl gap-3">
+      <div className={centeredWideResponseGroupClass}>
         {question.items.map((item) => (
           <div
-            className="rounded-2xl border border-slate-200 bg-white p-4"
+            className={`${wideResponseCardClass} rounded-2xl border border-slate-200 bg-white p-4`}
             key={item.label}
           >
             <p className="text-sm font-black text-slate-950">
               <FormattedConceptText text={item.label} />
             </p>
-            <div className="mx-auto mt-3 grid w-full max-w-3xl gap-2 sm:grid-cols-2">
+            <div className="mx-auto mt-3 flex w-full max-w-3xl flex-wrap justify-center gap-2">
               {categories.map((category) => (
                 <label
-                  className="flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm font-bold text-slate-950"
+                  className="flex w-full items-center justify-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm font-bold text-slate-950 sm:w-[calc(50%_-_0.25rem)]"
                   key={category}
                 >
                   <input
@@ -804,10 +815,10 @@ function QuestionResponseInput({
     const selected = parseArrayResponse(response);
 
     return (
-      <div className="mx-auto mt-5 grid w-full max-w-3xl gap-3">
+      <div className={centeredResponseGroupClass}>
         {question.choices.map((choice) => (
           <label
-            className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white p-4 text-sm font-bold text-slate-950"
+            className={`${responseChoiceCardClass} flex items-center gap-3 rounded-2xl border border-slate-200 bg-white p-4 text-sm font-bold text-slate-950`}
             key={choice}
           >
             <input
@@ -829,11 +840,11 @@ function QuestionResponseInput({
   const choices = question.choices ?? ["True", "False"];
 
   return (
-    <div className="mx-auto mt-5 grid w-full max-w-3xl gap-3">
+    <div className={centeredResponseGroupClass}>
       {choices.map((choice) => (
         <label
           key={choice}
-          className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white p-4 text-sm font-bold text-slate-950"
+          className={`${responseChoiceCardClass} flex items-center gap-3 rounded-2xl border border-slate-200 bg-white p-4 text-sm font-bold text-slate-950`}
         >
           <input
             checked={response === choice}
@@ -934,13 +945,13 @@ export function PracticeQuestionCard({
       {question.graphId ? (
         <GraphCard
           className="mt-5"
-          genericPanelLabels={sectionSlug === "c" || sectionSlug === "d"}
+          genericPanelLabels={shouldHideGraphMetadata(sectionSlug)}
           graphId={question.graphId}
-          hideCallouts={sectionSlug === "c" || sectionSlug === "d"}
-          hideDescription={sectionSlug === "c" || sectionSlug === "d"}
+          hideCallouts={shouldHideGraphMetadata(sectionSlug)}
+          hideDescription={shouldHideGraphMetadata(sectionSlug)}
           monochrome={mode === "practice" && sectionSlug === "d"}
           titleOverride={
-            sectionSlug === "c" || sectionSlug === "d"
+            shouldHideGraphMetadata(sectionSlug)
               ? `Graph for Question ${index + 1}`
               : undefined
           }

@@ -121,13 +121,13 @@ export function HowItWorksFeatureGraphic() {
       </motion.h2>
 
       <motion.div
-        className="relative z-10 mt-10 grid w-full gap-6 md:grid-cols-2 lg:grid-cols-3"
+        className="relative z-10 mt-10 flex w-full flex-wrap justify-center gap-6"
         variants={containerVariants}
       >
         {features.map((feature) => (
           <motion.article
             key={feature.title}
-            className="group relative rounded-3xl border-2 border-transparent p-7 text-center transition-shadow duration-300 [background-clip:padding-box,border-box] sm:p-8"
+            className="group relative w-full rounded-3xl border-2 border-transparent p-7 text-center transition-shadow duration-300 [background-clip:padding-box,border-box] md:w-[calc(50%_-_0.75rem)] lg:w-[calc(33.333%_-_1rem)] sm:p-8"
             style={{
               backgroundImage: `linear-gradient(transparent, transparent), ${feature.border}`,
               backgroundOrigin: "border-box",

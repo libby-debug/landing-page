@@ -257,8 +257,8 @@ export function BehaviorChangeModule({ module }: BehaviorChangeModuleProps) {
 
       <p className={leadClass}>{module.description}</p>
 
-      <section className="mt-10 grid w-full gap-6 md:grid-cols-3">
-        <div className={`${cardBaseClass} border-blue-200 bg-blue-50`}>
+      <section className="mt-10 flex w-full flex-wrap justify-center gap-6">
+        <div className={`${cardBaseClass} w-full border-blue-200 bg-blue-50 md:w-[calc(33.333%_-_1rem)]`}>
           <p className={eyebrowClass}>Mastery threshold</p>
           <div className="mt-4 text-6xl font-extrabold tracking-tight text-slate-950">
             {masteryThreshold}%
@@ -268,7 +268,7 @@ export function BehaviorChangeModule({ module }: BehaviorChangeModuleProps) {
           </p>
         </div>
 
-        <div className={`${cardBaseClass} border-purple-200 bg-purple-50`}>
+        <div className={`${cardBaseClass} w-full border-purple-200 bg-purple-50 md:w-[calc(33.333%_-_1rem)]`}>
           <p className="text-sm font-semibold uppercase tracking-wide text-purple-600">
             TCO alignment
           </p>
@@ -280,7 +280,7 @@ export function BehaviorChangeModule({ module }: BehaviorChangeModuleProps) {
           </p>
         </div>
 
-        <div className={`${cardBaseClass} border-teal-200 bg-teal-50`}>
+        <div className={`${cardBaseClass} w-full border-teal-200 bg-teal-50 md:w-[calc(33.333%_-_1rem)]`}>
           <p className="text-sm font-semibold uppercase tracking-wide text-teal-600">
             Saved mastery
           </p>
@@ -327,14 +327,14 @@ export function BehaviorChangeModule({ module }: BehaviorChangeModuleProps) {
           Core distinctions
         </h2>
 
-        <div className="mt-6 grid gap-6 md:grid-cols-3">
+        <div className="mt-6 flex flex-wrap justify-center gap-6">
           {module.concepts.map((concept, index) => {
             const tone = getTone(index);
 
             return (
               <article
                 key={concept.label}
-                className={`${cardBaseClass} ${tone.border} ${tone.bg}`}
+                className={`${cardBaseClass} w-full ${tone.border} ${tone.bg} md:w-[calc(33.333%_-_1rem)]`}
               >
                 <h3 className="text-3xl font-extrabold tracking-tight text-slate-950">
                   {concept.label}
@@ -350,14 +350,14 @@ export function BehaviorChangeModule({ module }: BehaviorChangeModuleProps) {
 
       <section className="mt-10 w-full">
         <p className={eyebrowClass}>Discrimination practice</p>
-        <div className="mt-6 grid gap-6 lg:grid-cols-2">
+        <div className="mt-6 flex flex-wrap justify-center gap-6">
           {module.comparisons.map((comparison, index) => {
             const tone = getTone(index + 1);
 
             return (
               <article
                 key={comparison.title}
-                className={`${cardBaseClass} ${tone.border} bg-white`}
+                className={`${cardBaseClass} w-full ${tone.border} bg-white lg:w-[calc(50%_-_0.75rem)]`}
               >
                 <h3 className="text-2xl font-extrabold tracking-tight text-slate-950">
                   {comparison.title}
@@ -373,11 +373,11 @@ export function BehaviorChangeModule({ module }: BehaviorChangeModuleProps) {
 
       <section className="mt-10 w-full">
         <p className={eyebrowClass}>Examples and nonexamples</p>
-        <div className="mt-6 grid gap-6 lg:grid-cols-2">
+        <div className="mt-6 flex flex-wrap justify-center gap-6">
           {module.examples.map((item, index) => (
             <article
               key={item.example}
-              className={`${cardBaseClass} border-blue-200 bg-white`}
+              className={`${cardBaseClass} w-full border-blue-200 bg-white lg:w-[calc(50%_-_0.75rem)]`}
             >
               <h3 className="text-2xl font-extrabold tracking-tight text-slate-950">
                 Scenario {index + 1}
@@ -405,11 +405,11 @@ export function BehaviorChangeModule({ module }: BehaviorChangeModuleProps) {
 
       <section className="mt-10 w-full">
         <p className={eyebrowClass}>Common confusions</p>
-        <div className="mt-6 grid gap-6 md:grid-cols-2">
+        <div className="mt-6 flex flex-wrap justify-center gap-6">
           {module.commonConfusions.map((confusion) => (
             <article
               key={confusion.title}
-              className={`${cardBaseClass} border-purple-200 bg-purple-50`}
+              className={`${cardBaseClass} w-full border-purple-200 bg-purple-50 md:w-[calc(50%_-_0.75rem)]`}
             >
               <h3 className="text-2xl font-extrabold tracking-tight text-slate-950">
                 {confusion.title}
@@ -438,7 +438,7 @@ export function BehaviorChangeModule({ module }: BehaviorChangeModuleProps) {
                 {questionIndex + 1}. {question.prompt}
               </h3>
 
-              <div className="mt-5 grid gap-3 md:grid-cols-2">
+              <div className="mt-5 flex flex-wrap justify-center gap-3">
               {question.options.map((option) => {
                 const selected = answers[questionIndex] === option;
                 const selectedCorrect =
@@ -452,7 +452,7 @@ export function BehaviorChangeModule({ module }: BehaviorChangeModuleProps) {
                       type="button"
                       disabled={locked || (submitted && selectedCorrect)}
                       onClick={() => updateAnswer(questionIndex, option)}
-                      className={`rounded-2xl border px-4 py-3 text-left text-sm font-semibold transition disabled:cursor-not-allowed ${
+                      className={`w-full rounded-2xl border px-4 py-3 text-left text-sm font-semibold transition disabled:cursor-not-allowed md:w-[calc(50%_-_0.375rem)] ${
                         selectedCorrect
                           ? "border-green-300 bg-green-50 text-green-700"
                           : incorrectSelected

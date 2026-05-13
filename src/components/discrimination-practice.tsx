@@ -75,7 +75,7 @@ export function DiscriminationPractice({
                 </h3>
               </div>
 
-              <div className="mt-5 grid gap-3 md:grid-cols-2">
+              <div className="mt-5 flex flex-wrap justify-center gap-3">
                 {question.options.map((option) => {
                   const isSelected = selected === option;
                   const isCorrect = option === question.answer;
@@ -87,7 +87,7 @@ export function DiscriminationPractice({
                       type="button"
                       disabled={hasAnswer}
                       onClick={() => selectAnswer(questionIndex, option)}
-                      className={`rounded-2xl border px-4 py-3 text-center text-sm font-semibold transition disabled:cursor-not-allowed ${
+                      className={`w-full rounded-2xl border px-4 py-3 text-center text-sm font-semibold transition disabled:cursor-not-allowed md:w-[calc(50%_-_0.375rem)] ${
                         hasAnswer && isCorrect
                           ? "border-green-300 bg-green-50 text-green-700"
                           : hasAnswer && isSelected

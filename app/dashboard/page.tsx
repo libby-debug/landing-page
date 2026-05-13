@@ -26,7 +26,7 @@ import {
 import { getMiniLessons } from "./tco-6/mini-lesson-data";
 import {
   calculateSavedModuleProgressPercent,
-  readProgress,
+  countTodaysCompletedLearnLessons,
   useModuleProgress,
 } from "./tco-6/progression";
 
@@ -59,11 +59,10 @@ function DashboardContent() {
   const [moduleProgress, setModuleProgress] = useState<Record<string, number>>(
     {},
   );
-  const [completedSlugs, setCompletedSlugs] = useState<Set<string>>(new Set());
+  const [todaysCompletedLessons, setTodaysCompletedLessons] = useState(0);
 
   useEffect(() => {
     async function loadSavedModuleProgress() {
-      const completed = new Set<string>();
       const progressBySlug: Record<string, number> = {};
 
       tcoSections.forEach((section) => {
@@ -72,11 +71,6 @@ function DashboardContent() {
           getMiniLessons(section).length,
           section.progress,
         );
-        const progress = readProgress(section.slug);
-
-        if (progress.masteryCompleted) {
-          completed.add(section.slug);
-        }
       });
 
       if (isSupabaseConfigured && user) {
@@ -101,18 +95,15 @@ function DashboardContent() {
             remoteScore,
           );
 
-          if (row.mastered || remoteScore >= masteryThreshold) {
-            completed.add(section.slug);
-          }
         });
       }
 
       setModuleProgress(progressBySlug);
-      setCompletedSlugs(completed);
       setProgressLoaded(true);
     }
 
     function syncSavedModuleProgress() {
+      setTodaysCompletedLessons(countTodaysCompletedLearnLessons());
       void loadSavedModuleProgress();
     }
 
@@ -124,6 +115,10 @@ function DashboardContent() {
     );
     window.addEventListener(
       "aba-mastered-progress-saved",
+      syncSavedModuleProgress,
+    );
+    window.addEventListener(
+      "aba-mastered-daily-learn-progress",
       syncSavedModuleProgress,
     );
 
@@ -138,6 +133,10 @@ function DashboardContent() {
       );
       window.removeEventListener(
         "aba-mastered-progress-saved",
+        syncSavedModuleProgress,
+      );
+      window.removeEventListener(
+        "aba-mastered-daily-learn-progress",
         syncSavedModuleProgress,
       );
     };
@@ -157,21 +156,16 @@ function DashboardContent() {
       .sort((a, b) => getSectionProgress(b) - getSectionProgress(a))[0] ??
     tcoSections[0];
   const continueSectionProgress = getSectionProgress(continueSection);
-  const completedCount = tcoSections.filter(
-    (section) =>
-      completedSlugs.has(section.slug) ||
-      getSectionProgress(section) >= masteryThreshold,
-  ).length;
   const startedCount = tcoSections.filter(
     (section) => getSectionProgress(section) > 0,
   ).length;
   const completedDescription = !progressLoaded
-    ? "Loading your saved module completion data."
-    : completedCount > 0
-      ? "Calculated from saved mastery checks and completed module progress."
+    ? "Loading your saved lesson completion data."
+    : todaysCompletedLessons > 0
+      ? "Mini-lessons completed at 100% today, midnight to midnight in your local timezone."
       : startedCount > 0
-        ? "No modules mastered yet. Keep going from your saved progress."
-        : "No modules completed yet. Start a Learn path to begin tracking.";
+        ? "No mini-lessons completed today yet. Continue a saved Learn path."
+        : "Complete a mini-lesson at 100% to start today's count.";
   const overallDescription = !progressLoaded
     ? "Loading saved Learn, Practice, and Mastery Check progress."
     : startedCount > 0
@@ -203,6 +197,7 @@ function DashboardContent() {
         <SummaryCard
           eyebrow="Daily Duration"
           value={dailyDuration.loaded ? dailyDuration.formatted : "..."}
+          valueTone="purple"
           description={
             dailyDuration.loaded
               ? dailyDuration.totalMs > 0
@@ -214,8 +209,9 @@ function DashboardContent() {
         />
 
         <SummaryCard
-          eyebrow="Completed modules"
-          value={progressLoaded ? `${completedCount}/${tcoSections.length}` : "..."}
+          eyebrow="Completed Lessons"
+          value={progressLoaded ? `${todaysCompletedLessons}` : "..."}
+          valueTone="blue"
           description={completedDescription}
           tone="purple"
         />
@@ -223,6 +219,7 @@ function DashboardContent() {
         <SummaryCard
           eyebrow="Overall progress"
           value={progressLoaded ? `${averageProgress}%` : "..."}
+          valueTone="teal"
           description={overallDescription}
           tone="teal"
         />
@@ -418,11 +415,13 @@ function DailyEngagementGraph({
 function SummaryCard({
   eyebrow,
   value,
+  valueTone,
   description,
   tone,
 }: {
   eyebrow: string;
   value: string;
+  valueTone: "blue" | "purple" | "teal";
   description: string;
   tone: "blue" | "purple" | "teal";
 }) {
@@ -431,12 +430,19 @@ function SummaryCard({
     purple: "border-purple-200 bg-purple-50 text-purple-600",
     teal: "border-blue-200 bg-gradient-to-r from-purple-50 via-blue-50 to-teal-50 text-slate-950",
   }[tone];
+  const valueClass = {
+    blue: "text-blue-600",
+    purple: "text-purple-600",
+    teal: "text-teal-600",
+  }[valueTone];
 
   return (
     <div className={`${cardBaseClass} ${toneClass} text-center`}>
-      <p className="text-sm font-semibold uppercase tracking-wide">{eyebrow}</p>
+      <p className="text-sm font-bold uppercase tracking-wide text-slate-950">
+        {eyebrow}
+      </p>
 
-      <div className="mt-4 inline-block bg-gradient-to-r from-purple-600 via-blue-500 to-teal-400 bg-clip-text text-5xl font-extrabold tracking-tight text-transparent [-webkit-text-fill-color:transparent]">
+      <div className={`mt-4 inline-block text-5xl font-extrabold tracking-tight ${valueClass}`}>
         {value}
       </div>
 

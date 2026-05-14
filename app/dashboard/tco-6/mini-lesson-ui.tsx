@@ -112,7 +112,7 @@ export function MiniLessonView({
       </div>
 
       <p className="mt-6 text-sm font-black uppercase tracking-wide text-blue-600">
-        {lesson.label}
+        Learning Focus
       </p>
 
       <h2 className="mx-auto mt-2 max-w-4xl text-4xl font-black tracking-tight text-slate-950">

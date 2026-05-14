@@ -1929,7 +1929,7 @@ const sectionDMiniLessons: MiniLessonContent[] = [
       leftText: "Individual serves as their own control through repeated measures",
       rightTitle: "Group design",
       rightText: "Compares or summarizes performance across participants",
-      cue: "D.5 asks for the [relative strengths] of each design approach.",
+      cue: "Design comparison asks for the [relative strengths] of each design approach.",
     },
   },
   {
@@ -7927,7 +7927,7 @@ const sectionFTcoAuditMiniLessons: MiniLessonContent[] = [
     label: "F.7",
     title: "Service Need vs Referral",
     body: [
-      "F.7 asks whether assessment data support [behavior-analytic services, referral, or more assessment].",
+      "Assessment interpretation asks whether data support [behavior-analytic services, referral, or more assessment].",
       "Referral is indicated when findings involve [needs outside the behavior analyst's scope or competence].",
     ],
     visual: {
@@ -8185,7 +8185,7 @@ const sectionFExpandedPracticeQuestions: QuestionContent[] = [
     ],
     answer: "All information sources matched correctly",
     explanation:
-      "F.1 requires selecting [relevant sources of information] rather than collecting every possible record.",
+      "Assessment planning requires selecting [relevant sources of information] rather than collecting every possible record.",
     hint:
       "Think about the assessment question each source can answer.",
   },
@@ -8223,7 +8223,7 @@ const sectionFExpandedPracticeQuestions: QuestionContent[] = [
     answer:
       "Accessible language, caregiver input, and checking assumptions reduce bias.",
     explanation:
-      "F.2 emphasizes [cultural variables] that may affect assessment and service delivery.",
+      "Culturally responsive assessment emphasizes [cultural variables] that may affect assessment and service delivery.",
     hint:
       "Look for actions that improve access, context, and data-based interpretation.",
   },
@@ -8337,7 +8337,7 @@ const sectionFExpandedPracticeQuestions: QuestionContent[] = [
     answer:
       "Seek medical consultation or referral while continuing appropriate behavioral assessment",
     explanation:
-      "F.7 includes interpreting assessment data to determine [referral needs].",
+      "Assessment interpretation includes using data to determine [referral needs].",
     hint:
       "Look for assessment findings outside behavior-analytic scope that could affect services.",
   },
@@ -8370,7 +8370,7 @@ const sectionFExpandedPracticeQuestions: QuestionContent[] = [
     answer:
       "Teach a functional safety response and reduce elopement in community routines",
     explanation:
-      "F.8 goal selection should prioritize [social significance, client context, risk, and feasibility].",
+      "Assessment-based goal selection should prioritize [social significance, client context, risk, and feasibility].",
     hint:
       "Look for the target with meaningful safety and daily-life impact.",
   },
@@ -8625,7 +8625,7 @@ const sectionFAdditionalPracticeQuestions: QuestionContent[] = [
     ],
     answer: "All conclusions sorted correctly",
     explanation:
-      "F.7 interpretation requires [conclusions that match the strength and limits of the data].",
+      "Assessment interpretation requires [conclusions that match the strength and limits of the data].",
     hint:
       "Separate cautious interpretation from claims that exceed the available data.",
   },
@@ -8646,7 +8646,7 @@ const sectionFAdditionalPracticeQuestions: QuestionContent[] = [
     answer:
       "Social significance, client input, and contextual fit support strong goal selection.",
     explanation:
-      "F.8 goal selection should reflect [social significance, client-informed priorities, cultural context, and feasibility].",
+      "Assessment-based goal selection should reflect [social significance, client-informed priorities, cultural context, and feasibility].",
     hint:
       "Look for goals that matter in context and can be implemented effectively.",
   },
@@ -8666,7 +8666,7 @@ const sectionFTcoAuditPracticeQuestions: QuestionContent[] = [
     answer:
       "Use the interview data as a hypothesis and collect direct assessment data",
     explanation:
-      "F.7 requires [interpreting assessment data within the limits of the evidence]. Indirect data can guide next steps without proving function.",
+      "Assessment interpretation requires [interpreting assessment data within the limits of the evidence]. Indirect data can guide next steps without proving function.",
     hint:
       "Ask whether the current information is enough to support a firm functional conclusion.",
   },
@@ -8683,7 +8683,7 @@ const sectionFTcoAuditPracticeQuestions: QuestionContent[] = [
     answer:
       "Teach an appropriate break/request response while coordinating about task demands",
     explanation:
-      "F.8 procedure selection should integrate [behavioral function, relevant interdisciplinary information, and contextual fit].",
+      "Assessment-based procedure selection should integrate [behavioral function, relevant interdisciplinary information, and contextual fit].",
     hint:
       "Look for the option that matches the likely function and uses relevant assessment context.",
   },
@@ -8936,7 +8936,7 @@ const sectionFExpandedMasteryQuestions: QuestionContent[] = [
   {
     type: "scenario",
     prompt:
-      "A BCBA reviews an IEP, caregiver interview, physician note, and speech-language report before assessment. Which use of those sources best fits F.1?",
+      "A BCBA reviews an IEP, caregiver interview, physician note, and speech-language report before assessment. Which use of those sources best reflects selecting relevant assessment information?",
     choices: [
       "Use each source to identify variables relevant to the referral question and assessment plan",
       "Collect every available document even if it has no relation to assessment decisions",
@@ -8946,7 +8946,7 @@ const sectionFExpandedMasteryQuestions: QuestionContent[] = [
     answer:
       "Use each source to identify variables relevant to the referral question and assessment plan",
     explanation:
-      "F.1 focuses on [relevant sources of information] from records, clients, caregivers, and other professionals.",
+      "Assessment planning focuses on [relevant sources of information] from records, clients, caregivers, and other professionals.",
     hint:
       "Look for a response that connects records to the assessment question without overgeneralizing.",
   },
@@ -8963,7 +8963,7 @@ const sectionFExpandedMasteryQuestions: QuestionContent[] = [
     answer:
       "Arrange accessible communication supports and ask about language, routines, and priorities",
     explanation:
-      "F.2 requires attention to [cultural variables, language access, and contextual variables] that may affect assessment.",
+      "Culturally responsive assessment requires attention to [cultural variables, language access, and contextual variables] that may affect assessment.",
     hint:
       "Focus on access and context before interpreting behavior or selecting goals.",
   },
@@ -9079,14 +9079,14 @@ const sectionFExpandedMasteryQuestions: QuestionContent[] = [
     answer:
       "Consider referral or consultation while continuing behavior-analytic assessment within scope",
     explanation:
-      "F.7 includes using assessment data to determine [service needs, referral needs, and limits of conclusions].",
+      "Assessment interpretation includes using data to determine [service needs, referral needs, and limits of conclusions].",
     hint:
       "Look for a response that respects scope and avoids unsupported conclusions.",
   },
   {
     type: "scenario",
     prompt:
-      "Assessment shows severe elopement in parking lots, caregiver concern about safety, and available practice routines. Which goal-selection decision best fits F.8?",
+      "Assessment shows severe elopement in parking lots, caregiver concern about safety, and available practice routines. Which assessment-based goal-selection decision is strongest?",
     choices: [
       "Prioritize a measurable safety goal with procedures that fit daily routines and available support",
       "Choose a low-priority academic target because it is easier to score",
@@ -9096,7 +9096,7 @@ const sectionFExpandedMasteryQuestions: QuestionContent[] = [
     answer:
       "Prioritize a measurable safety goal with procedures that fit daily routines and available support",
     explanation:
-      "F.8 uses assessment data to select [socially significant, feasible, and contextually fit goals and procedures].",
+      "Assessment-based planning uses data to select [socially significant, feasible, and contextually fit goals and procedures].",
     hint:
       "Consider risk, social significance, client context, and feasibility together.",
   },
@@ -9116,14 +9116,14 @@ const sectionFAdditionalMasteryQuestions: QuestionContent[] = [
     answer:
       "Review records connected to the target behavior, routines, health variables, and prior interventions",
     explanation:
-      "F.1 emphasizes [relevant records and information sources] that clarify assessment questions and risk.",
+      "Assessment planning emphasizes [relevant records and information sources] that clarify assessment questions and risk.",
     hint:
       "Look for information sources tied to the referral question and assessment decisions.",
   },
   {
     type: "scenario",
     prompt:
-      "A caregiver's description of appropriate mealtime behavior differs from the clinic's default expectations. Which response best reflects F.2?",
+      "A caregiver's description of appropriate mealtime behavior differs from the clinic's default expectations. Which response best reflects culturally responsive assessment?",
     choices: [
       "Ask about family routines and values before interpreting the behavior or selecting goals",
       "Treat the difference as noncompliance because clinic expectations are standard",
@@ -9348,14 +9348,14 @@ const sectionFAdditionalMasteryQuestions: QuestionContent[] = [
     answer:
       "Seek appropriate medical referral or consultation while staying within behavior-analytic scope",
     explanation:
-      "F.7 includes identifying [referral needs] and avoiding unsupported conclusions from insufficient data.",
+      "Assessment interpretation includes identifying [referral needs] and avoiding unsupported conclusions from insufficient data.",
     hint:
       "Look for the action that protects scope and client safety.",
   },
   {
     type: "scenario",
     prompt:
-      "A team wants to target a low-priority worksheet skill, but assessment shows unsafe street elopement and caregiver concern about community access. Which decision best fits F.8?",
+      "A team wants to target a low-priority worksheet skill, but assessment shows unsafe street elopement and caregiver concern about community access. Which assessment-based goal-selection decision is strongest?",
     choices: [
       "Prioritize a measurable safety and community-access goal with contextual fit",
       "Select the worksheet skill because it is easier to teach",
@@ -9385,14 +9385,14 @@ const sectionFTcoAuditMasteryQuestions: QuestionContent[] = [
     answer:
       "The data suggest both behavioral assessment needs and possible referral or consultation needs",
     explanation:
-      "F.7 requires determining [need for behavior-analytic services, referral needs, and the limits of assessment conclusions].",
+      "Assessment interpretation requires determining [need for behavior-analytic services, referral needs, and the limits of assessment conclusions].",
     hint:
       "Look for the option that uses relevant sources without making a conclusion beyond the data.",
   },
   {
     type: "scenario",
     prompt:
-      "A learner's behavior occurs during hard tasks and decreases when an appropriate break response contacts reinforcement. Which procedure-selection statement best fits F.8?",
+      "A learner's behavior occurs during hard tasks and decreases when an appropriate break response contacts reinforcement. Which assessment-based procedure-selection statement is strongest?",
     choices: [
       "Assessment supports a function-based procedure that teaches an alternative response and arranges reinforcement",
       "Assessment supports selecting goals unrelated to daily routines",
@@ -9402,7 +9402,7 @@ const sectionFTcoAuditMasteryQuestions: QuestionContent[] = [
     answer:
       "Assessment supports a function-based procedure that teaches an alternative response and arranges reinforcement",
     explanation:
-      "F.8 links assessment data to [socially significant goals and behavior-change procedures].",
+      "Assessment-based planning links assessment data to [socially significant goals and behavior-change procedures].",
     hint:
       "Focus on whether the procedure follows from the function and teaches a useful response.",
   },
@@ -9419,7 +9419,7 @@ const sectionFTcoAuditMasteryQuestions: QuestionContent[] = [
     answer:
       "Responsive decisions check client context, language access, and stakeholder priorities against data",
     explanation:
-      "F.2 emphasizes [cultural variables, language access, contextual variables, and bias reduction] during assessment.",
+      "Culturally responsive assessment emphasizes [cultural variables, language access, contextual variables, and bias reduction].",
     hint:
       "Look for the option that improves access and interpretation without relying on assumptions.",
   },
@@ -9436,7 +9436,7 @@ const sectionFTcoAuditMasteryQuestions: QuestionContent[] = [
     answer:
       "The data can guide hypotheses, but function has not been experimentally demonstrated",
     explanation:
-      "F.5 descriptive assessment identifies [patterns and correlations]; F.6 functional analysis tests [environmental variables experimentally].",
+      "Descriptive assessment identifies [patterns and correlations]; functional analysis tests [environmental variables experimentally].",
     hint:
       "Compare hypothesis development with experimental demonstration.",
   },
@@ -10629,7 +10629,7 @@ const sectionGPracticeQuestions: QuestionContent[] = [
     ],
     answer: "Emotional responding, avoidance, and aggression or escape",
     explanation:
-      "G.18 requires monitoring [emotional and elicited effects] of procedures.",
+      "Behavior-change planning requires monitoring [emotional and elicited effects] of procedures.",
     hint: "Look for effects that may signal distress or unwanted side effects.",
   },
   {
@@ -10689,7 +10689,7 @@ const sectionGPracticeQuestions: QuestionContent[] = [
     ],
     answer: "Monitor and adjust for possible emotional or elicited effects",
     explanation:
-      "G.18 requires identifying and mitigating [emotional and elicited effects] of behavior-change procedures.",
+      "Behavior-change planning requires identifying and mitigating [emotional and elicited effects] of behavior-change procedures.",
     hint: "Focus on unwanted effects produced by the intervention context.",
   },
 ];
@@ -10882,7 +10882,7 @@ const sectionGMasteryQuestions: QuestionContent[] = [
   {
     type: "scenario",
     prompt:
-      "A learner starts crying and escaping from sessions after a new response cost program begins. Which G.18 issue should be evaluated?",
+      "A learner starts crying and escaping from sessions after a new response cost program begins. Which unwanted effect of behavior-change procedures should be evaluated?",
     choices: [
       "Emotional and elicited effects of the behavior-change procedure",
       "Emergent relations from matrix training",
@@ -10919,7 +10919,7 @@ const sectionHMiniLessons: MiniLessonContent[] = [
         "During independent work, Jordan will request help within 10 seconds in 80% of opportunities.",
       hint: "Look for [a response, condition, and measurable criterion].",
       feedback:
-        "H.1 goals need [observable responses] and [measurable criteria].",
+        "Intervention goals need [observable responses] and [measurable criteria].",
     },
   },
   {
@@ -11024,7 +11024,7 @@ const sectionHMiniLessons: MiniLessonContent[] = [
         { label: "Provider convenience alone", correct: false },
       ],
       feedback:
-        "H.2 requires [assessment results, scientific evidence, client preferences, and contextual fit].",
+        "Intervention recommendations require [assessment results, scientific evidence, client preferences, and contextual fit].",
     },
   },
   {
@@ -11575,13 +11575,220 @@ const sectionHMiniLessons: MiniLessonContent[] = [
         "Strong collaboration preserves [scope, data, and shared implementation].",
     },
   },
+  {
+    slug: "h2-contextual-fit-failures",
+    label: "H.2",
+    title: "Contextual Fit Failures",
+    body: [
+      "A plan can be evidence-based and still fail if it does not fit [real routines, resources, culture, or staffing].",
+      "Contextual fit failures often show up as low procedural integrity, low acceptability, or rapid abandonment.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which example most clearly shows a contextual fit failure?",
+      choices: [
+        "A plan requires two trained staff during lunch, but the classroom has one aide and no extra coverage.",
+        "A function-based FCT plan is easy for caregivers to implement during meals.",
+        "A teacher collects data with a simple checklist during the natural routine.",
+        "A learner's communication response contacts reinforcement in school and home.",
+      ],
+      answer:
+        "A plan requires two trained staff during lunch, but the classroom has one aide and no extra coverage.",
+      hint: "Look for [a mismatch between the plan and actual implementation conditions].",
+      feedback:
+        "Contextual fit requires [feasible implementation in the real service context].",
+    },
+  },
+  {
+    slug: "h7-treatment-acceptability",
+    label: "H.7",
+    title: "Treatment Acceptability and Social Validity",
+    body: [
+      "Social validity asks whether goals, procedures, and outcomes are [acceptable and meaningful to stakeholders].",
+      "Treatment acceptability affects whether caregivers, teachers, staff, and clients will actually use the plan.",
+    ],
+    visual: {
+      type: "select-all",
+      prompt: "Select signs that treatment acceptability needs more review.",
+      choices: [
+        { label: "Caregivers say the plan conflicts with daily routines", correct: true },
+        { label: "Teachers report the procedure is too complex during transitions", correct: true },
+        { label: "The learner strongly avoids the intervention materials", correct: true },
+        { label: "Stakeholders report the plan is feasible and meaningful", correct: false },
+      ],
+      feedback:
+        "Social validity includes [goal importance, procedure acceptability, and outcome meaningfulness].",
+    },
+  },
+  {
+    slug: "h3-function-based-replacement-selection",
+    label: "H.3",
+    title: "Replacement Behavior by Function",
+    body: [
+      "A strong replacement behavior should access [the same functional reinforcer] more appropriately.",
+      "Poor replacements may be polite, easy to teach, or preferred by adults but still fail if they do not match function.",
+    ],
+    visual: {
+      type: "matching",
+      prompt: "Match each function to the strongest replacement behavior focus.",
+      pairs: [
+        { term: "Escape", definition: "Request a break, help, or task modification." },
+        { term: "Attention", definition: "Request attention appropriately." },
+        { term: "Tangible", definition: "Request access, wait, or trade appropriately." },
+        { term: "Automatic", definition: "Use a competing response or alternative stimulation." },
+      ],
+    },
+  },
+  {
+    slug: "h4-extinction-emotional-responding",
+    label: "H.4",
+    title: "Extinction Bursts and Emotional Responding",
+    body: [
+      "Extinction can temporarily produce [more frequent, intense, or varied responding].",
+      "Emotional responding is a clinical safety signal, not a reason to ignore data or continue without supports.",
+    ],
+    visual: {
+      type: "sorting",
+      prompt: "Sort each observation by clinical meaning.",
+      categories: ["Plan for support", "Not enough by itself"],
+      items: [
+        { label: "Aggression increases during early extinction sessions", category: "Plan for support" },
+        { label: "Crying begins when reinforcement is withheld", category: "Plan for support" },
+        { label: "One low-frequency response occurs once", category: "Not enough by itself" },
+        { label: "A procedure name appears in a written plan", category: "Not enough by itself" },
+      ],
+    },
+  },
+  {
+    slug: "h5-relapse-pattern-discrimination",
+    label: "H.5",
+    title: "Resurgence, Renewal, and Reinstatement",
+    body: [
+      "Relapse planning requires discriminating [which recurrence pattern is likely].",
+      "Resurgence, renewal, and reinstatement point to different prevention supports.",
+    ],
+    visual: {
+      type: "matching",
+      prompt: "Match each relapse pattern to its cue.",
+      pairs: [
+        { term: "Resurgence", definition: "An older response returns when the current alternative no longer contacts reinforcement." },
+        { term: "Renewal", definition: "Problem behavior returns when the learner enters a different context." },
+        { term: "Reinstatement", definition: "Problem behavior returns after response-independent access to the reinforcer." },
+        { term: "Maintenance", definition: "Behavior change continues over time after teaching conditions change." },
+      ],
+    },
+  },
+  {
+    slug: "h6-treatment-fidelity-graphs",
+    label: "H.6",
+    title: "Treatment Fidelity Graphs",
+    body: [
+      "Treatment fidelity graphs show whether procedures are implemented [as designed across time].",
+      "Outcome data are harder to interpret when fidelity is low or unstable.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "A fidelity graph shows implementation near 45% for five sessions while problem behavior remains high. What should the team do first?",
+      choices: [
+        "Improve training, simplify the plan, or adjust supports before judging effectiveness.",
+        "Conclude the procedure is ineffective and abandon assessment results.",
+        "Stop collecting integrity data because outcome data are enough.",
+        "Increase response effort for the replacement behavior.",
+      ],
+      answer:
+        "Improve training, simplify the plan, or adjust supports before judging effectiveness.",
+      hint: "Ask whether the intervention was implemented [accurately enough to evaluate].",
+      feedback:
+        "Fidelity data guide [procedural integrity decisions] before outcome conclusions.",
+    },
+  },
+  {
+    slug: "h7-ineffective-intervention-analysis",
+    label: "H.7",
+    title: "Ineffective Intervention Analysis",
+    body: [
+      "An ineffective plan should be analyzed before replacing it.",
+      "Check [function match, integrity, reinforcement strength, response effort, side effects, and contextual fit].",
+    ],
+    visual: {
+      type: "flow",
+      prompt: "Order an ineffective-intervention review.",
+      steps: [
+        "Confirm data pattern",
+        "Check procedural integrity",
+        "Revisit function and replacement behavior",
+        "Modify the plan and continue monitoring",
+      ],
+      feedback:
+        "Intervention modification should be [data-based and assessment-linked].",
+    },
+  },
+  {
+    slug: "h7-effectiveness-vs-practicality",
+    label: "H.7",
+    title: "Effectiveness vs Practicality",
+    body: [
+      "A plan must be effective enough to matter and practical enough to be used.",
+      "The best clinical decision balances [behavior-change outcomes] with [feasible, acceptable implementation].",
+    ],
+    visual: {
+      type: "comparison",
+      leftTitle: "Effective but impractical",
+      leftText: "Behavior improves, but the plan cannot be sustained in real routines",
+      rightTitle: "Practical but weak",
+      rightText: "Easy to implement, but data show little meaningful behavior change",
+      cue: "Best fit = meaningful change plus feasible implementation.",
+    },
+  },
+  {
+    slug: "h5-natural-contingency-transfer",
+    label: "H.5",
+    title: "Schedule Thinning and Natural Contingencies",
+    body: [
+      "Schedule thinning gradually shifts reinforcement toward [natural timing, natural people, and natural consequences].",
+      "Abrupt thinning can produce relapse, ratio strain, or loss of the replacement behavior.",
+    ],
+    visual: {
+      type: "flow",
+      prompt: "Order a reinforcement-transfer plan.",
+      steps: [
+        "Start with dense reinforcement for the replacement behavior",
+        "Confirm stable low problem behavior",
+        "Thin reinforcement gradually using data",
+        "Transfer to natural contingencies and booster supports",
+      ],
+      feedback:
+        "Maintenance planning uses [gradual schedule thinning and natural contingencies].",
+    },
+  },
+  {
+    slug: "h8-culturally-responsive-implementation",
+    label: "H.8",
+    title: "Culturally Responsive Intervention Planning",
+    body: [
+      "Culturally responsive planning integrates [client values, language, routines, and caregiver priorities].",
+      "Collaboration is strongest when stakeholders help shape how the plan will work in real life.",
+    ],
+    visual: {
+      type: "select-all",
+      prompt: "Select culturally responsive implementation actions.",
+      choices: [
+        { label: "Ask how procedures fit family routines and priorities", correct: true },
+        { label: "Use language-access supports for training and consent", correct: true },
+        { label: "Adapt examples and materials to the natural setting", correct: true },
+        { label: "Keep the plan unchanged when stakeholders describe access barriers", correct: false },
+      ],
+      feedback:
+        "Culturally responsive intervention planning supports [acceptability, feasibility, and client-centered care].",
+    },
+  },
 ];
 
 const sectionHPracticeQuestions: QuestionContent[] = [
   {
     type: "scenario",
     prompt:
-      "A draft goal says, 'Kai will be more cooperative.' Which revision best meets H.1?",
+      "A draft goal says, 'Kai will be more cooperative.' Which revision best develops an intervention goal in observable and measurable terms?",
     choices: [
       "Given a one-step instruction, Kai will begin the task within 10 seconds in 80% of opportunities.",
       "Kai will have a better attitude during instruction.",
@@ -11591,7 +11798,7 @@ const sectionHPracticeQuestions: QuestionContent[] = [
     answer:
       "Given a one-step instruction, Kai will begin the task within 10 seconds in 80% of opportunities.",
     explanation:
-      "H.1 goals should include [observable behavior] and [measurable criteria].",
+      "Intervention goals should include [observable behavior] and [measurable criteria].",
     hint: "Look for a response that can be observed and counted.",
   },
   {
@@ -11605,7 +11812,7 @@ const sectionHPracticeQuestions: QuestionContent[] = [
     ],
     answer: "All intervention-selection variables matched correctly",
     explanation:
-      "H.2 integrates [assessment results, evidence, preferences, and contextual fit].",
+      "Intervention recommendations should integrate [assessment results, evidence, preferences, and contextual fit].",
     hint: "Match each cue to the source of information it describes.",
   },
   {
@@ -11641,7 +11848,7 @@ const sectionHPracticeQuestions: QuestionContent[] = [
     answer:
       "Efficient, acceptable, and functionally related alternatives are socially valid.",
     explanation:
-      "H.3 alternatives should be [efficient, effective, acceptable, and functionally related].",
+      "Socially valid alternatives should be [efficient, effective, acceptable, and functionally related].",
     hint: "Check each option against function, effort, and acceptability.",
   },
   {
@@ -11683,7 +11890,7 @@ const sectionHPracticeQuestions: QuestionContent[] = [
     ],
     answer: "All unwanted effects sorted correctly",
     explanation:
-      "H.4 requires planning for [unwanted effects of reinforcement, extinction, and punishment procedures].",
+      "Mitigating unwanted effects requires planning for [unwanted effects of reinforcement, extinction, and punishment procedures].",
     hint: "Separate withholding reinforcement from consequences that reduce behavior.",
   },
   {
@@ -11703,7 +11910,7 @@ const sectionHPracticeQuestions: QuestionContent[] = [
     answer:
       "Schedule thinning, common stimuli, and caregiver response plans mitigate relapse.",
     explanation:
-      "H.5 plans for [maintenance, generalization, and recurrence risk].",
+      "Relapse mitigation plans for [maintenance, generalization, and recurrence risk].",
     hint: "Look for supports that make behavior durable over time and context.",
   },
   {
@@ -11732,14 +11939,14 @@ const sectionHPracticeQuestions: QuestionContent[] = [
     ],
     answer: "All data patterns matched correctly",
     explanation:
-      "H.6 and H.7 decisions use [integrity data] and [effectiveness data] together.",
+      "Data-based decisions about procedural integrity and intervention effectiveness use [integrity data] and [effectiveness data] together.",
     hint: "Choose the decision supported by implementation and outcome data.",
   },
   {
     type: "scenario",
     graphId: "reversal-positive-attention",
     prompt:
-      "A graph shows study behavior increases when the intervention is introduced and decreases when it is removed. What H.7 decision is most supported if integrity is high?",
+      "A graph shows study behavior increases when the intervention is introduced and decreases when it is removed. What data-based decision about intervention effectiveness is most supported if procedural integrity is high?",
     choices: [
       "The intervention appears effective and should be continued or planned for maintenance.",
       "The plan should be abandoned because behavior changed.",
@@ -11755,7 +11962,7 @@ const sectionHPracticeQuestions: QuestionContent[] = [
   {
     type: "scenario",
     prompt:
-      "Caregivers report that a technically effective plan is too complex for morning routines. Which H.8 response is strongest?",
+      "Caregivers report that a technically effective plan is too complex for morning routines. Which collaborative response best supports services?",
     choices: [
       "Collaborate to simplify the plan while preserving its function-based components.",
       "Dismiss caregiver input because the graph improved.",
@@ -11783,7 +11990,7 @@ const sectionHPracticeQuestions: QuestionContent[] = [
     choices: ["Generalization and relapse planning", "Paired-stimulus preference assessment", "Momentary time sampling", "External validity of a group design"],
     answer: "Generalization and relapse planning",
     explanation:
-      "H.5 requires planning for [future contexts and recurrence risk].",
+      "Planning for relapse requires attention to [future contexts and recurrence risk].",
     hint: "Focus on what happens when context and supports change.",
   },
   {
@@ -11803,8 +12010,98 @@ const sectionHPracticeQuestions: QuestionContent[] = [
     answer:
       "Roles, accessible materials, and shared data review support collaboration.",
     explanation:
-      "H.8 collaboration should support [implementation, communication, and data-based adjustment].",
+      "Collaboration to support services should strengthen [implementation, communication, and data-based adjustment].",
     hint: "Look for actions that help people implement and review the plan together.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A clinic plan reduced elopement, but teachers report it cannot be used during recess because materials are locked in the therapy room. What is the strongest next step?",
+    choices: [
+      "Revise the plan with teachers so function-based supports are feasible in the recess routine.",
+      "Keep the plan unchanged because clinic data improved.",
+      "Remove recess from the intervention because it is difficult to control.",
+      "Switch to punishment because materials are unavailable.",
+    ],
+    answer:
+      "Revise the plan with teachers so function-based supports are feasible in the recess routine.",
+    explanation:
+      "Contextual fit problems require [collaborative adaptation while preserving intervention function].",
+    hint:
+      "Look for a response that keeps the behavioral logic and solves the implementation barrier.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A learner engages in hand biting to escape toothbrushing. Which replacement behavior is weakest?",
+    choices: [
+      "Saying 'all done' to end toothbrushing permanently with no hygiene alternative.",
+      "Requesting a 30-second break during toothbrushing.",
+      "Requesting help with the next step.",
+      "Choosing between two toothbrushes before continuing.",
+    ],
+    answer:
+      "Saying 'all done' to end toothbrushing permanently with no hygiene alternative.",
+    explanation:
+      "Poor replacement behaviors may access escape but fail to support [health, safety, and socially valid outcomes].",
+    hint:
+      "Compare whether each response matches function while still preserving the clinical goal.",
+  },
+  {
+    type: "select-all",
+    prompt:
+      "Select supports that reduce risk during extinction bursts and emotional responding.",
+    choices: [
+      "Teach and reinforce an alternative response before extinction is implemented",
+      "Prepare staff for temporary increases in intensity or variability",
+      "Set safety criteria and monitor emotional responding",
+      "Withhold all reinforcement for every response indefinitely",
+    ],
+    answers: [
+      "Teach and reinforce an alternative response before extinction is implemented",
+      "Prepare staff for temporary increases in intensity or variability",
+      "Set safety criteria and monitor emotional responding",
+    ],
+    answer:
+      "Alternative reinforcement, staff preparation, and safety criteria reduce extinction-related risk.",
+    explanation:
+      "Mitigation planning should anticipate [extinction bursts, emotional responding, variability, and safety needs].",
+    hint:
+      "Choose supports that prepare for side effects rather than making extinction broader or harsher.",
+  },
+  {
+    type: "scenario",
+    graphId: "withdrawal-problem-behavior",
+    prompt:
+      "A graph shows problem behavior decreases during intervention phases and rises when the intervention is withdrawn. Procedural integrity is consistently high. Which data-based decision is strongest?",
+    choices: [
+      "Continue the intervention and plan maintenance, generalization, and relapse-prevention supports.",
+      "Modify the intervention because improved data always indicate failure.",
+      "Ignore implementation data because only the final data point matters.",
+      "Stop the plan immediately because withdrawal produced behavior change.",
+    ],
+    answer:
+      "Continue the intervention and plan maintenance, generalization, and relapse-prevention supports.",
+    explanation:
+      "High-integrity outcome data can support [continuation plus maintenance and relapse planning].",
+    hint:
+      "Look for whether behavior changes in the expected direction when the intervention is present.",
+  },
+  {
+    type: "matching",
+    prompt:
+      "Match each relapse or maintenance planning concern to the best prevention cue.",
+    pairs: [
+      { term: "Resurgence", definition: "Keep the alternative response contacting reinforcement during thinning." },
+      { term: "Renewal", definition: "Program supports across contexts where the behavior may occur." },
+      { term: "Reinstatement", definition: "Plan for response-independent contact with the maintaining reinforcer." },
+      { term: "Maintenance", definition: "Shift behavior toward natural contingencies over time." },
+    ],
+    answer: "All relapse and maintenance planning concerns matched correctly",
+    explanation:
+      "Relapse prevention depends on [the recurrence pattern and the contingencies likely to change].",
+    hint:
+      "Match each concern to what changes: reinforcement for alternatives, context, reinforcer access, or time.",
   },
 ];
 
@@ -11812,7 +12109,7 @@ const sectionHMasteryQuestions: QuestionContent[] = [
   {
     type: "scenario",
     prompt:
-      "Which intervention goal is best written for H.1?",
+      "Which intervention goal is best written in observable and measurable terms?",
     choices: [
       "Given a denied item, Mia will request 'wait' or 'help' within 10 seconds in 80% of opportunities across three sessions.",
       "Mia will tolerate frustration better.",
@@ -11838,7 +12135,7 @@ const sectionHMasteryQuestions: QuestionContent[] = [
     answer:
       "Teach an appropriate access request and reinforce it with the requested tangible on a clear schedule.",
     explanation:
-      "H.2 integrates [assessment results, scientific evidence, client preferences, and contextual fit].",
+      "Intervention recommendations integrate [assessment results, scientific evidence, client preferences, and contextual fit].",
     hint: "Choose the plan that fits function, evidence, and stakeholder context.",
   },
   {
@@ -11854,7 +12151,7 @@ const sectionHMasteryQuestions: QuestionContent[] = [
     answer:
       "Requesting a brief break or help using an already teachable response form.",
     explanation:
-      "H.3 alternatives should be [efficient, effective, acceptable, and functionally related].",
+      "Socially valid alternative behaviors should be [efficient, effective, acceptable, and functionally related].",
     hint: "Look for the response that competes with problem behavior and works in context.",
   },
   {
@@ -11870,7 +12167,7 @@ const sectionHMasteryQuestions: QuestionContent[] = [
     answer:
       "Safety planning, dense reinforcement for the alternative response, and staff coaching.",
     explanation:
-      "H.4 requires mitigating [unwanted effects of reinforcement, extinction, and punishment procedures].",
+      "Intervention planning should mitigate [unwanted effects of reinforcement, extinction, and punishment procedures].",
     hint: "Look for prevention and support, not ignoring side effects.",
   },
   {
@@ -11897,7 +12194,7 @@ const sectionHMasteryQuestions: QuestionContent[] = [
     choices: ["Relapse and renewal risk", "Preference assessment format", "Operational definition quality", "Multiple relationship risk"],
     answer: "Relapse and renewal risk",
     explanation:
-      "H.5 includes planning for [relapse when contexts or contingencies change].",
+      "Relapse planning includes preparing for [recurrence when contexts or contingencies change].",
     hint: "Focus on recurrence after a context change.",
   },
   {
@@ -11913,14 +12210,14 @@ const sectionHMasteryQuestions: QuestionContent[] = [
     answer:
       "The intervention cannot be fairly judged until implementation improves.",
     explanation:
-      "H.6 decisions use procedural integrity data because low integrity weakens interpretation of [intervention effectiveness].",
+      "Data-based decisions about procedural integrity matter because low integrity weakens interpretation of [intervention effectiveness].",
     hint: "Ask whether the plan was actually implemented.",
   },
   {
     type: "scenario",
     graphId: "reversal-positive-attention",
     prompt:
-      "A graph shows improved responding only when the intervention is active, and integrity is high. Which H.7 decision is most supported?",
+      "A graph shows improved responding only when the intervention is active, and procedural integrity is high. Which data-based decision about intervention effectiveness is most supported?",
     choices: [
       "Continue the intervention and plan maintenance/generalization supports.",
       "Modify the plan because any behavior change means it failed.",
@@ -11930,7 +12227,7 @@ const sectionHMasteryQuestions: QuestionContent[] = [
     answer:
       "Continue the intervention and plan maintenance/generalization supports.",
     explanation:
-      "H.7 uses [effectiveness data] with integrity and social validity to guide continuation or modification.",
+      "Data-based decisions about intervention effectiveness use [effectiveness data] with integrity and social validity to guide continuation or modification.",
     hint: "Look for behavior change that tracks the intervention condition.",
   },
   {
@@ -11946,7 +12243,7 @@ const sectionHMasteryQuestions: QuestionContent[] = [
     answer:
       "Collaborate to adapt materials and routines while preserving the intervention function.",
     explanation:
-      "H.8 requires collaboration to support [contextual fit and implementation].",
+      "Collaboration with others should support [contextual fit and implementation].",
     hint: "Look for problem solving with stakeholders while keeping the behavioral logic.",
   },
   {
@@ -11978,7 +12275,7 @@ const sectionHMasteryQuestions: QuestionContent[] = [
   {
     type: "scenario",
     prompt:
-      "Which decision best reflects H.7 when high-integrity data show no improvement after enough sessions?",
+      "Which data-based decision about intervention effectiveness is best when high-integrity data show no improvement after enough sessions?",
     choices: [
       "Modify the intervention based on the data pattern and assessment logic.",
       "Continue indefinitely because integrity is high.",
@@ -11988,7 +12285,7 @@ const sectionHMasteryQuestions: QuestionContent[] = [
     answer:
       "Modify the intervention based on the data pattern and assessment logic.",
     explanation:
-      "When integrity is adequate and data show insufficient progress, H.7 supports [data-based intervention modification].",
+      "When integrity is adequate and data show insufficient progress, data-based decision making supports [intervention modification].",
     hint: "Use both implementation and outcome data.",
   },
   {
@@ -12004,8 +12301,93 @@ const sectionHMasteryQuestions: QuestionContent[] = [
     answer:
       "Use shared data review, clear role descriptions, and accessible caregiver/teacher training.",
     explanation:
-      "H.8 collaboration supports [consistent implementation and service coordination].",
+      "Collaboration with others supports [consistent implementation and service coordination].",
     hint: "Look for communication, training, roles, and data sharing.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A behavior analyst recommends a highly effective intervention, but caregivers cannot implement it because it requires materials they do not have and conflicts with transportation routines. Which concern should guide revision?",
+    choices: [
+      "Contextual fit and treatment acceptability",
+      "Response class hierarchy only",
+      "Momentary time sampling accuracy",
+      "Private events as explanatory fiction",
+    ],
+    answer: "Contextual fit and treatment acceptability",
+    explanation:
+      "Intervention selection should balance [evidence, effectiveness, feasibility, and stakeholder acceptability].",
+    hint:
+      "Focus on whether the plan can be used accurately in the real routine.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A learner hits to obtain teacher attention. Which replacement behavior is most functionally matched and socially valid?",
+    choices: [
+      "Tap a card or say 'excuse me' to request teacher attention.",
+      "Complete extra math problems silently.",
+      "Request a break from all academic tasks.",
+      "Stand with hands in pockets for ten minutes.",
+    ],
+    answer:
+      "Tap a card or say 'excuse me' to request teacher attention.",
+    explanation:
+      "Replacement behavior should access [the same functional reinforcer] in a more acceptable way.",
+    hint:
+      "Identify the reinforcer maintaining the target behavior, then choose a response that accesses it appropriately.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "During extinction for attention-maintained disruption, disruption initially becomes louder and more variable. What is the best interpretation?",
+    choices: [
+      "This may be an extinction burst or response variability that requires planned support and safety monitoring.",
+      "The behavior is now automatically reinforced and all data should be discarded.",
+      "The team should stop all reinforcement for appropriate behavior.",
+      "The operational definition must be invalid because behavior changed.",
+    ],
+    answer:
+      "This may be an extinction burst or response variability that requires planned support and safety monitoring.",
+    explanation:
+      "Extinction can produce [temporary increases, variability, and emotional responding] that should be anticipated and monitored.",
+    hint:
+      "Look for a side effect of withholding the maintaining reinforcer, not a reason to ignore replacement behavior.",
+  },
+  {
+    type: "scenario",
+    graphId: "reversal-positive-attention",
+    prompt:
+      "A graph shows behavior improves during intervention phases, but fidelity data show implementation was below 50% during the same sessions. What conclusion is most defensible?",
+    choices: [
+      "Interpret effectiveness cautiously and review which components were actually implemented.",
+      "Assume the entire written intervention package is effective exactly as designed.",
+      "Stop collecting procedural integrity data because behavior improved.",
+      "Conclude the intervention failed because fidelity was imperfect.",
+    ],
+    answer:
+      "Interpret effectiveness cautiously and review which components were actually implemented.",
+    explanation:
+      "Procedural integrity data affect how confidently the team can interpret [intervention effectiveness].",
+    hint:
+      "Ask whether the outcome data reflect the written plan or only parts of it.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "After FCT reduces problem behavior, the team gradually delays reinforcement, teaches caregivers to honor requests in natural routines, and schedules booster checks. Which goal is most directly addressed?",
+    choices: [
+      "Maintenance through schedule thinning and transfer to natural contingencies",
+      "Immediate discontinuation of reinforcement",
+      "Punishment-based response suppression",
+      "Reducing measurement reliability",
+    ],
+    answer:
+      "Maintenance through schedule thinning and transfer to natural contingencies",
+    explanation:
+      "Durable intervention effects require [gradual schedule thinning, natural contingencies, and relapse-prevention planning].",
+    hint:
+      "Look for procedures that help the replacement behavior continue after intensive teaching conditions change.",
   },
 ];
 
@@ -12608,7 +12990,7 @@ const moduleContent: Record<string, ModuleContent> = {
         answer:
           "Single-case designs can show change in individual behavior through repeated measurement.",
         explanation:
-          "D.5 asks learners to distinguish [relative strengths] of single-case and group designs.",
+          "Design comparison asks learners to distinguish [relative strengths] of single-case and group designs.",
         hint:
           "Focus on whether the question values individual behavior patterns or aggregate group comparisons.",
       },

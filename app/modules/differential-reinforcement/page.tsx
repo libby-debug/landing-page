@@ -21,7 +21,7 @@ import {
 export default function DifferentialReinforcementModulePage() {
   return (
     <PageShell maxWidth="6xl">
-      <p className={eyebrowClass}>TCO 6 G.1-G.4 Behavior-Change Procedures</p>
+      <p className={eyebrowClass}>Behavior-Change Procedures</p>
 
       <h1 className={pageTitleClass}>Differential Reinforcement</h1>
 

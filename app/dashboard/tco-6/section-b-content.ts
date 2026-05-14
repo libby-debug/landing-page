@@ -664,7 +664,7 @@ export const sectionBMiniLessons: MiniLessonContent[] = [
   {
     slug: "b6-b8-consequence-chart",
     label: "B.6-B.8",
-    title: "B.6-B.8 consequence classification chart",
+    title: "Consequence Classification Chart",
     body: [
       "Classify consequences by [effect on behavior] and [learning history].",
       "The same stimulus label is not enough; verify the effect on future responding.",

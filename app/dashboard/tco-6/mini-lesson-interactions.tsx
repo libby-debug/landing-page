@@ -24,6 +24,25 @@ type LearnInteractionState = {
   submitted?: boolean;
 };
 
+const learnCorrectFeedbackMessages = [
+  "Great job! You are correct.",
+  "Nice work! That's right.",
+  "Correct - keep going!",
+  "You got it!",
+  "Excellent discrimination.",
+];
+
+function getLearnCorrectFeedback(message: string) {
+  const total = [...message].reduce(
+    (sum, character) => sum + character.charCodeAt(0),
+    0,
+  );
+
+  return learnCorrectFeedbackMessages[
+    total % learnCorrectFeedbackMessages.length
+  ];
+}
+
 function learnInteractionKey(sectionSlug: string, lessonSlug: string) {
   return `aba-mastered:tco6:${sectionSlug}:learn:${lessonSlug}:interaction`;
 }
@@ -1541,7 +1560,7 @@ function FeedbackBox({
         }`}
       >
         {correct
-          ? "Correct"
+          ? getLearnCorrectFeedback(message)
           : remediation
             ? "Review topic again"
             : "Review and try again"}

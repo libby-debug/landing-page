@@ -136,8 +136,9 @@ function LearnView({ section }: { section: TcoSection }) {
               {item}
             </h3>
             <p className="mt-3 text-base font-semibold leading-7 text-slate-950">
-              This lesson area will hold visual explanations, term comparisons,
-              examples, and nonexamples for this TCO 6 checklist item.
+              Learning content is not available for this topic right now. Return
+              to the module dashboard or choose another activity while this
+              lesson refreshes.
             </p>
           </article>
         ))}

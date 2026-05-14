@@ -1,9 +1,11 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
 import { FormattedConceptText } from "@/components/learning-ui";
 import { masteryThreshold } from "./data";
 import { GraphCard } from "./module-d-graphs";
+import { isFinalExamUnlocked } from "./program-progress";
 import {
   SaveProgressButton,
   persistProgressValueSoon,
@@ -30,8 +32,8 @@ function getPositiveFeedback(index: number) {
   return positiveFeedbackMessages[index % positiveFeedbackMessages.length];
 }
 
-function getPracticeRemediationAttemptLimit(sectionSlug: string) {
-  return sectionSlug === "a" ? 3 : 4;
+function getPracticeRemediationAttemptLimit() {
+  return 4;
 }
 
 function normalize(value: string) {
@@ -813,7 +815,7 @@ export function PracticeQuestionCard({
   const { updateProgress } = useModuleProgress(sectionSlug);
   const answered = isAnswered(question, response);
   const correct = isCorrect(question, response);
-  const remediationAttemptLimit = getPracticeRemediationAttemptLimit(sectionSlug);
+  const remediationAttemptLimit = getPracticeRemediationAttemptLimit();
 
   useEffect(() => {
     if (mode !== "practice") {
@@ -1126,6 +1128,7 @@ export function MasteryCheckQuiz({
   sectionCode: string;
   sectionSlug: string;
 }) {
+  const router = useRouter();
   const savedMasterySnapshot =
     readSavedModuleProgress(sectionSlug).snapshots["mastery-check"];
   const [responses, setResponses] = useState<Record<number, string>>(() =>
@@ -1247,6 +1250,14 @@ export function MasteryCheckQuiz({
 
     if (passed) {
       updateProgress({ masteryCompleted: true });
+
+      if (sectionSlug === "i") {
+        window.setTimeout(() => {
+          if (isFinalExamUnlocked()) {
+            router.push("/dashboard/celebration");
+          }
+        }, 0);
+      }
     }
 
     void persistModuleScore(sectionSlug, score, passed);

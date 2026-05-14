@@ -159,6 +159,7 @@ function DashboardContent() {
       0,
     ) / tcoSections.length,
   );
+  const finalExamUnlocked = progressLoaded && averageProgress >= 100;
   const firstIncompleteSection =
     tcoSections.find((section) => getSectionProgress(section) < masteryThreshold) ??
     tcoSections[0];
@@ -341,6 +342,7 @@ function DashboardContent() {
         <div className="mt-6 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {tcoSections.map((section) => (
             <TcoSectionCard
+              finalExamUnlocked={finalExamUnlocked}
               key={section.code}
               progressPercent={getSectionProgress(section)}
               section={section}
@@ -469,9 +471,11 @@ function SummaryCard({
 }
 
 function TcoSectionCard({
+  finalExamUnlocked,
   progressPercent,
   section,
 }: {
+  finalExamUnlocked: boolean;
   progressPercent: number;
   section: TcoSection;
 }) {
@@ -535,6 +539,15 @@ function TcoSectionCard({
       >
         {actionLabel}
       </Link>
+
+      {section.slug === "i" && finalExamUnlocked ? (
+        <Link
+          href="/dashboard/final-exam"
+          className="mt-3 inline-block rounded-xl border border-emerald-300 bg-emerald-600 px-5 py-3 text-center text-sm font-black text-white shadow-sm shadow-emerald-600/20 transition hover:border-emerald-400 hover:bg-emerald-700 active:bg-emerald-800"
+        >
+          Final Exam
+        </Link>
+      ) : null}
 
       {showDeveloperAccess ? (
         <div className="mt-3 grid gap-2">

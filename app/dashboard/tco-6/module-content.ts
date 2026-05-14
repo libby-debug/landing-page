@@ -11083,6 +11083,169 @@ const sectionGMasteryQuestions: QuestionContent[] = [
       "Behavior-change procedures can produce [emotional responding, avoidance, or other unwanted effects] that require monitoring and mitigation.",
     hint: "Focus on side effects of the procedure, not the target behavior definition.",
   },
+  {
+    type: "scenario",
+    graphId: "measurement-level-change",
+    prompt:
+      "A graph shows independent requesting increases only after requests produce the same reinforcer that previously followed problem behavior. Which behavior-change procedure is most directly represented?",
+    choices: [
+      "Differential reinforcement of an alternative response",
+      "Noncontingent punishment",
+      "Response cost without reinforcement",
+      "A preference assessment",
+    ],
+    answer: "Differential reinforcement of an alternative response",
+    explanation:
+      "DRA strengthens [a functionally useful alternative response] while reducing reliance on the problem response.",
+    hint:
+      "Look for a replacement response contacting reinforcement that competes with the target behavior.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A team teaches a learner to request attention while attention-maintained disruption no longer produces attention. Which package is most conceptually accurate?",
+    choices: [
+      "Functional communication training with extinction for disruption",
+      "DRH with automatic reinforcement",
+      "Stimulus fading without reinforcement",
+      "Backward chaining with response cost",
+    ],
+    answer: "Functional communication training with extinction for disruption",
+    explanation:
+      "FCT teaches [an appropriate communicative response] while extinction withholds [the maintaining reinforcer] for problem behavior.",
+    hint:
+      "Identify whether the alternative response and problem behavior contact different consequences.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A client receives a break every 90 seconds during work whether or not problem behavior occurs. The plan is later thinned to every 3 minutes. Which procedure is being used?",
+    choices: [
+      "Noncontingent reinforcement with schedule thinning",
+      "Conditional discrimination training",
+      "DRL with punishment",
+      "Forward chaining",
+    ],
+    answer: "Noncontingent reinforcement with schedule thinning",
+    explanation:
+      "Time-based delivery is [response-independent], and schedule thinning gradually reduces [reinforcement density].",
+    hint:
+      "Notice whether the consequence follows a response or the passage of time.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "Tokens are delivered for accurate task completion, later exchanged for several backup reinforcers, and paired with praise across routines. What is the key behavior-change mechanism?",
+    choices: [
+      "Conditioned reinforcement through a token economy",
+      "Unconditioned punishment",
+      "Respondent extinction",
+      "Simple discrimination without consequences",
+    ],
+    answer: "Conditioned reinforcement through a token economy",
+    explanation:
+      "Tokens function as [conditioned reinforcers] when they have exchange value for backup reinforcers.",
+    hint:
+      "Look for earned symbols that can be exchanged for other reinforcers.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A learner asks for a snack only when the snack is visible and access is currently restricted. Which combination best explains the request?",
+    choices: [
+      "A motivating operation establishes value and an SD signals availability",
+      "A punisher establishes response effort and an S-delta signals reinforcement",
+      "Generalization eliminates the need for antecedent control",
+      "A token economy replaces the motivating operation",
+    ],
+    answer:
+      "A motivating operation establishes value and an SD signals availability",
+    explanation:
+      "Motivating operations alter [reinforcer value], while discriminative stimuli signal [reinforcement availability].",
+    hint:
+      "Separate what changes the value of the item from what signals that requesting will work.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A teacher uses full physical guidance for handwashing, then partial physical guidance, then a gesture, then no prompt. Which procedure is most directly shown?",
+    choices: [
+      "Prompt fading",
+      "Differential punishment",
+      "Response generalization",
+      "Momentary time sampling",
+    ],
+    answer: "Prompt fading",
+    explanation:
+      "Prompt fading systematically reduces [supplemental assistance] so natural stimuli control the response.",
+    hint:
+      "Look for a planned transfer from more intrusive help to less intrusive help.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A class earns extra computer time only if the entire class average for completed assignments meets criterion. Which contingency is described?",
+    choices: [
+      "Interdependent group contingency",
+      "Independent group contingency",
+      "Dependent group contingency",
+      "Multiple schedule",
+    ],
+    answer: "Interdependent group contingency",
+    explanation:
+      "An interdependent group contingency requires [the group as a whole] to meet criterion for everyone to access the consequence.",
+    hint:
+      "Ask whether access depends on individual performance or the whole group's performance.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A learner follows a written checklist describing what to do and what consequence follows completion, even before directly contacting that consequence. Which process best describes the response?",
+    choices: [
+      "Rule-governed behavior arranged through instructions",
+      "Automatic reinforcement only",
+      "Respondent conditioning",
+      "Free-operant shaping without antecedents",
+    ],
+    answer: "Rule-governed behavior arranged through instructions",
+    explanation:
+      "Rules describe [contingency relations] that can affect behavior before direct contingency contact.",
+    hint:
+      "Look for behavior controlled by a statement about a contingency.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "After response blocking is added for dangerous behavior, the client begins avoiding the therapist and crying when sessions start. What should the BCBA evaluate first?",
+    choices: [
+      "Possible emotional or elicited effects and whether reinforcement-based alternatives are sufficient",
+      "Whether maintenance has already generalized",
+      "Whether the response is now a verbal operant",
+      "Whether the graph should be relabeled as a preference assessment",
+    ],
+    answer:
+      "Possible emotional or elicited effects and whether reinforcement-based alternatives are sufficient",
+    explanation:
+      "Behavior-change procedures can produce [emotional responding, avoidance, or other unwanted effects] that require mitigation.",
+    hint:
+      "Focus on side effects of the procedure and the client's welfare.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A learner is taught to match spoken words to pictures and pictures to printed words. Later, the learner matches spoken words to printed words without direct teaching. Which outcome is most directly shown?",
+    choices: [
+      "Emergent relations and generative performance",
+      "Response cost",
+      "DRO without extinction",
+      "Time-based reinforcement",
+    ],
+    answer: "Emergent relations and generative performance",
+    explanation:
+      "Emergent relations occur when [untrained relations] appear after related relations have been taught.",
+    hint:
+      "Look for untaught responding that emerges from trained stimulus relations.",
+  },
 ];
 
 const sectionHMiniLessons: MiniLessonContent[] = [
@@ -12576,6 +12739,178 @@ const sectionHMasteryQuestions: QuestionContent[] = [
       "Durable intervention effects require [gradual schedule thinning, natural contingencies, and relapse-prevention planning].",
     hint:
       "Look for procedures that help the replacement behavior continue after intensive teaching conditions change.",
+  },
+  {
+    type: "scenario",
+    graphId: "measurement-level-change",
+    prompt:
+      "A graph shows problem behavior decreases and replacement communication increases after an intervention begins. Procedural integrity is consistently above 90%. What intervention decision is most supported?",
+    choices: [
+      "Continue the intervention while planning maintenance and generalization.",
+      "Modify the intervention immediately because all improvement requires change.",
+      "Stop collecting integrity data because outcomes improved.",
+      "Replace the communication response with punishment.",
+    ],
+    answer:
+      "Continue the intervention while planning maintenance and generalization.",
+    explanation:
+      "When outcome data improve and integrity is high, data-based decision making supports [continuation with maintenance and generalization planning].",
+    hint:
+      "Use both client outcome data and implementation data before deciding.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A plan is evidence based but requires a caregiver to run 40 teaching trials during a chaotic morning routine. Integrity stays low despite coaching. What revision is most appropriate?",
+    choices: [
+      "Adapt the procedure to fit the routine while preserving the functional treatment logic.",
+      "Keep the plan unchanged because research support is enough.",
+      "Blame the caregiver for low motivation and discharge services.",
+      "Stop targeting the socially significant behavior.",
+    ],
+    answer:
+      "Adapt the procedure to fit the routine while preserving the functional treatment logic.",
+    explanation:
+      "Contextual fit requires intervention procedures that are [effective, feasible, and acceptable] in the actual service setting.",
+    hint:
+      "Look for a revision that respects evidence and real implementation conditions.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A learner engages in aggression to escape writing tasks. Which alternative behavior is most socially valid and functionally matched?",
+    choices: [
+      "Request help, a brief break, or a task modification during writing.",
+      "Request a preferred snack during writing.",
+      "Raise a hand only to obtain teacher praise.",
+      "Sit quietly with no access to escape or assistance.",
+    ],
+    answer:
+      "Request help, a brief break, or a task modification during writing.",
+    explanation:
+      "Replacement behavior should access [the same functional reinforcer] in an acceptable and efficient way.",
+    hint:
+      "Identify what the target behavior produces, then choose an alternative that can produce that outcome appropriately.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "During extinction for tangible-maintained behavior, the client begins screaming louder and throwing nearby items. Which plan element should have been prepared before implementation?",
+    choices: [
+      "A mitigation plan for extinction bursts, emotional responding, safety, and dense reinforcement for alternatives.",
+      "A plan to remove all reinforcement from every behavior.",
+      "A decision to ignore all safety concerns until extinction is complete.",
+      "A graph title that identifies the procedure.",
+    ],
+    answer:
+      "A mitigation plan for extinction bursts, emotional responding, safety, and dense reinforcement for alternatives.",
+    explanation:
+      "Extinction may produce [temporary increases, variability, emotional responding, or aggression] that require proactive supports.",
+    hint:
+      "Focus on unwanted effects that can occur when the maintaining reinforcer is withheld.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A replacement behavior maintained well in clinic, but problem behavior returned at home after reinforcement was thinned too quickly. Which relapse process is most relevant?",
+    choices: [
+      "Resurgence or renewal following changed reinforcement conditions or context.",
+      "A preference assessment proving the target is invalid.",
+      "A multiple relationship between the BCBA and caregiver.",
+      "Trial-by-trial measurement error.",
+    ],
+    answer:
+      "Resurgence or renewal following changed reinforcement conditions or context.",
+    explanation:
+      "Relapse planning addresses [recurrence when contexts, schedules, or reinforcement histories change].",
+    hint:
+      "Look for recurrence after a context or reinforcement-schedule change.",
+  },
+  {
+    type: "scenario",
+    graphId: "withdrawal-problem-behavior",
+    prompt:
+      "A graph shows behavior improves during treatment, worsens when treatment is removed, and improves again when treatment is reintroduced. What implementation decision is most appropriate?",
+    choices: [
+      "Maintain the effective treatment and plan supports for durable use across routines.",
+      "Terminate treatment because reversal data are never useful.",
+      "Ignore relapse planning because the second improvement is enough.",
+      "Use a new unrelated intervention without reviewing the functional relation.",
+    ],
+    answer:
+      "Maintain the effective treatment and plan supports for durable use across routines.",
+    explanation:
+      "Intervention decisions should use [effectiveness data] to support durable implementation, maintenance, and generalization.",
+    hint:
+      "Look for data showing the behavior changes with the intervention condition.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A caregiver reports that a proposed response-cost procedure feels unacceptable and inconsistent with family values. What should the BCBA do first?",
+    choices: [
+      "Review social validity, discuss concerns, and consider effective less intrusive alternatives.",
+      "Implement the procedure unchanged because the BCBA selected it.",
+      "Avoid all behavior-change procedures permanently.",
+      "Tell the caregiver social validity is unrelated to treatment planning.",
+    ],
+    answer:
+      "Review social validity, discuss concerns, and consider effective less intrusive alternatives.",
+    explanation:
+      "Treatment acceptability and social validity should guide selection of [effective and contextually appropriate interventions].",
+    hint:
+      "Look for collaboration that protects client welfare and treatment effectiveness.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A teacher implements an intervention accurately during observation, but rarely when the BCBA is absent. What data-based response best supports implementation?",
+    choices: [
+      "Assess barriers, simplify routines if needed, and monitor integrity across typical conditions.",
+      "Assume the intervention is ineffective.",
+      "Collect only client outcome data and stop integrity checks.",
+      "Move immediately to punishment procedures.",
+    ],
+    answer:
+      "Assess barriers, simplify routines if needed, and monitor integrity across typical conditions.",
+    explanation:
+      "Procedural integrity decisions should identify [implementation barriers] and support accurate use in natural conditions.",
+    hint:
+      "Separate whether the procedure works from whether it is being implemented consistently.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A plan reduces severe behavior but requires equipment the family cannot afford and staff cannot transport. Which decision best balances effectiveness and practicality?",
+    choices: [
+      "Collaboratively adapt the plan to retain the active treatment components with feasible materials.",
+      "Reject family input because the plan reduced behavior.",
+      "End services because the family cannot buy the equipment.",
+      "Use a less effective plan solely because it is easier for staff.",
+    ],
+    answer:
+      "Collaboratively adapt the plan to retain the active treatment components with feasible materials.",
+    explanation:
+      "Good intervention selection balances [effectiveness, practicality, client preference, and contextual fit].",
+    hint:
+      "Look for preserving the behavior-change mechanism while improving feasibility.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "After a DRA plan succeeds, the BCBA teaches naturally occurring adults to reinforce the replacement response and gradually transfers reinforcement to typical routines. Which outcome is being programmed?",
+    choices: [
+      "Maintenance and generalization through natural contingencies.",
+      "Immediate extinction of the replacement behavior.",
+      "Measurement validity without intervention planning.",
+      "Punishment-based suppression only.",
+    ],
+    answer:
+      "Maintenance and generalization through natural contingencies.",
+    explanation:
+      "Durable behavior change requires [natural reinforcement, multiple contexts, and planned supports] after initial treatment success.",
+    hint:
+      "Look for the replacement behavior continuing across people, settings, and time.",
   },
 ];
 

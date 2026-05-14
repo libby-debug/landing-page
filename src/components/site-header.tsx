@@ -1,57 +1,35 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useAuth } from "@/components/auth-provider";
+
+const navLinkClass =
+  "shrink-0 rounded-lg px-2 py-1.5 text-xs font-bold transition hover:bg-white/80 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 sm:rounded-xl sm:px-3 sm:py-2 sm:text-sm";
 
 export function SiteHeader() {
   const { user } = useAuth();
   const loginHref = user ? "/dashboard" : "/login";
 
   return (
-    <header className="pointer-events-none absolute inset-x-0 top-0 z-30 px-4 pt-4 sm:px-6">
-      <div className="pointer-events-auto mx-auto flex w-full max-w-6xl flex-col gap-3 rounded-2xl border border-white/60 bg-white/70 px-4 py-3 shadow-sm backdrop-blur-md sm:flex-row sm:items-center sm:justify-between sm:px-5">
-        <Link href="/" aria-label="ABA Mastered home" className="inline-flex">
-          <Image
-            src="/images/aba-mastered-updated-header-logo.png"
-            alt="ABA Mastered"
-            width={1024}
-            height={1024}
-            priority
-            sizes="56px"
-            className="h-14 w-14 object-contain p-1"
-          />
-        </Link>
-
-        <nav className="flex flex-wrap items-center gap-2 text-sm font-bold text-slate-800 sm:justify-end">
-          <Link
-            href="/"
-            className="rounded-xl px-3 py-2 transition hover:bg-white/80 hover:text-blue-700"
-          >
-            Main Page
+    <header className="pointer-events-none absolute inset-x-0 top-0 z-30 px-2 pt-2 sm:px-6 sm:pt-4">
+      <div className="pointer-events-auto mx-auto flex w-full max-w-6xl items-center justify-center rounded-2xl border border-white/60 bg-white/70 px-2 py-1.5 shadow-sm backdrop-blur-md sm:justify-end sm:px-5 sm:py-3">
+        <nav
+          aria-label="Primary navigation"
+          className="flex w-full flex-nowrap items-center justify-start gap-1 overflow-x-auto whitespace-nowrap text-slate-800 [-ms-overflow-style:none] [scrollbar-width:none] sm:justify-end sm:gap-2 [&::-webkit-scrollbar]:hidden"
+        >
+          <Link href="/" className={navLinkClass}>
+            Home
           </Link>
-          <Link
-            href="/how-it-works"
-            className="rounded-xl px-3 py-2 transition hover:bg-white/80 hover:text-blue-700"
-          >
+          <Link href="/how-it-works" className={navLinkClass}>
             How It Works
           </Link>
-          <Link
-            href="/pricing"
-            className="rounded-xl px-3 py-2 transition hover:bg-white/80 hover:text-blue-700"
-          >
+          <Link href="/pricing" className={navLinkClass}>
             Pricing
           </Link>
-          <Link
-            href="/signup"
-            className="rounded-xl px-3 py-2 transition hover:bg-white/80 hover:text-blue-700"
-          >
+          <Link href="/signup" className={navLinkClass}>
             Sign Up
           </Link>
-          <Link
-            href={loginHref}
-            className="rounded-xl px-3 py-2 transition hover:bg-white/80 hover:text-blue-700"
-          >
+          <Link href={loginHref} className={navLinkClass}>
             Login
           </Link>
         </nav>

@@ -262,6 +262,14 @@ function DashboardContent() {
             progression locks only for preview/testing.
           </p>
 
+          {/* Temporary developer preview shortcut for reviewing the Final Exam before full-course completion. */}
+          <Link
+            href="/dashboard/final-exam?preview=dev"
+            className="mx-auto mt-5 inline-block rounded-xl border border-slate-950 bg-slate-950 px-6 py-3 text-sm font-black text-white shadow-sm transition hover:bg-slate-800"
+          >
+            Developer Preview: Final Exam
+          </Link>
+
           <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
             {developerShortcutSections.map((section) => (
               <div

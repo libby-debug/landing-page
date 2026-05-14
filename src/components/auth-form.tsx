@@ -12,7 +12,11 @@ import {
   leadClass,
   pageTitleClass,
 } from "@/components/learning-ui";
-import { isSupabaseConfigured, supabase } from "@/lib/supabase/client";
+import {
+  isSupabaseConfigured,
+  supabase,
+  supabaseConfigurationMessage,
+} from "@/lib/supabase/client";
 
 type AuthFormProps = {
   mode: "login" | "signup";
@@ -38,7 +42,7 @@ export function AuthForm({ mode, afterSubmitAction }: AuthFormProps) {
 
     if (!isSupabaseConfigured) {
       setError(
-        "Supabase is not configured yet. Add NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY to your environment.",
+        supabaseConfigurationMessage,
       );
       return;
     }
@@ -142,8 +146,7 @@ export function AuthForm({ mode, afterSubmitAction }: AuthFormProps) {
               {error ? <Notice tone="error">{error}</Notice> : null}
               {!isSupabaseConfigured ? (
                 <Notice tone="error">
-                  Supabase is not configured yet. Add your public project URL
-                  and anon key before using authentication.
+                  {supabaseConfigurationMessage}
                 </Notice>
               ) : null}
 

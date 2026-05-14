@@ -18,7 +18,11 @@ import {
   masteryThreshold,
   type StudyModule,
 } from "@/lib/modules/behavior-change-modules";
-import { isSupabaseConfigured, supabase } from "@/lib/supabase/client";
+import {
+  isSupabaseConfigured,
+  supabase,
+  supabaseConfigurationMessage,
+} from "@/lib/supabase/client";
 
 type BehaviorChangeModuleProps = {
   module: StudyModule;
@@ -200,7 +204,7 @@ export function BehaviorChangeModule({ module }: BehaviorChangeModuleProps) {
 
     if (!isSupabaseConfigured) {
       setSaveState("error");
-      setMessage("Supabase is not configured, so this score was not saved.");
+      setMessage(`${supabaseConfigurationMessage} This score was not saved.`);
       return;
     }
 

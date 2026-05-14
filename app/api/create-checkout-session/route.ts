@@ -1,5 +1,10 @@
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
+import {
+  getPublicEnv,
+  getServerEnv,
+  getStripeCheckoutConfigStatus,
+} from "@/lib/env";
 
 const planConfig = {
   monthly: {
@@ -37,11 +42,21 @@ export async function POST(request: Request) {
       );
     }
 
-    const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+    const stripeConfig = getStripeCheckoutConfigStatus();
 
-    if (!stripeSecretKey) {
+    if (!stripeConfig.configured) {
       return NextResponse.json(
-        { error: "Stripe is not configured yet. Add STRIPE_SECRET_KEY." },
+        { error: stripeConfig.message },
+        { status: 500 },
+      );
+    }
+
+    const stripeSecretKey = getServerEnv("STRIPE_SECRET_KEY");
+    const siteUrl = getPublicEnv("NEXT_PUBLIC_SITE_URL");
+
+    if (!stripeSecretKey || !siteUrl) {
+      return NextResponse.json(
+        { error: stripeConfig.message },
         { status: 500 },
       );
     }
@@ -57,8 +72,6 @@ export async function POST(request: Request) {
     }
 
     const stripe = new Stripe(stripeSecretKey);
-    const siteUrl =
-      process.env.NEXT_PUBLIC_SITE_URL ?? new URL(request.url).origin;
 
     const session = await stripe.checkout.sessions.create({
       mode: "subscription",

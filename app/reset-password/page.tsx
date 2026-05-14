@@ -1,7 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { supabase } from "@/lib/supabase";
+import {
+  isSupabaseConfigured,
+  supabase,
+  supabaseConfigurationMessage,
+} from "@/lib/supabase";
 import Link from "next/link";
 
 export default function UpdatePasswordPage() {
@@ -10,6 +14,11 @@ export default function UpdatePasswordPage() {
 
   async function handleUpdate(e: React.FormEvent) {
     e.preventDefault();
+    if (!isSupabaseConfigured) {
+      setMessage(supabaseConfigurationMessage);
+      return;
+    }
+
     setMessage("Updating password...");
 
     const { error } = await supabase.auth.updateUser({

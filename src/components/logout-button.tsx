@@ -2,7 +2,11 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { isSupabaseConfigured, supabase } from "@/lib/supabase/client";
+import {
+  isSupabaseConfigured,
+  supabase,
+  supabaseConfigurationMessage,
+} from "@/lib/supabase/client";
 
 export function LogoutButton() {
   const router = useRouter();
@@ -11,7 +15,7 @@ export function LogoutButton() {
 
   async function handleLogout() {
     if (!isSupabaseConfigured) {
-      setError("Supabase is not configured yet.");
+      setError(supabaseConfigurationMessage);
       return;
     }
 

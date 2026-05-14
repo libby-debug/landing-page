@@ -6,14 +6,14 @@ export default function HomePage() {
     <main className="relative min-h-screen overflow-hidden bg-gradient-to-r from-[#dff1ff] to-[#ccfbf1]">
       <section className="relative flex min-h-0 items-start justify-center px-6 pb-16 pt-2 text-center sm:px-8 sm:pt-4">
         <div className="relative z-10 mx-auto flex w-full max-w-[900px] flex-col items-center">
-          <div className="flex w-full justify-start overflow-visible px-2 sm:px-4">
+          <div className="flex w-full justify-center overflow-visible px-2 sm:px-4">
             <Image
               src="/images/aba-mastered-hero-logo.png"
               alt="ABA Mastered"
               width={1536}
               height={1024}
               priority
-              className="h-auto w-full max-w-[338px] object-contain p-2 sm:max-w-[390px] lg:max-w-[442px]"
+              className="h-auto w-full max-w-[487px] object-contain p-2 sm:max-w-[562px] lg:max-w-[636px]"
             />
           </div>
 

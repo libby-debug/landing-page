@@ -3,7 +3,11 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { isSupabaseConfigured, supabase } from "@/lib/supabase/client";
+import {
+  isSupabaseConfigured,
+  supabase,
+  supabaseConfigurationMessage,
+} from "@/lib/supabase/client";
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState("");
@@ -24,7 +28,7 @@ export default function ForgotPasswordPage() {
 
     if (!isSupabaseConfigured) {
       setTone("error");
-      setMessage("Supabase is not configured yet.");
+      setMessage(supabaseConfigurationMessage);
       return;
     }
 
@@ -32,18 +36,9 @@ export default function ForgotPasswordPage() {
 
     const submittedEmail = email.trim();
     const redirectTo = `${window.location.origin}/reset-password`;
-    console.log("Submitting password reset email:", submittedEmail);
-
-    // Supabase setup reminder: Authentication > URL Configuration must include
-    // http://localhost:3000/reset-password in Redirect URLs. Also check
-    // Authentication > Email Templates > Reset Password and make sure the
-    // template uses the correct reset link variable.
     const response = await supabase.auth.resetPasswordForEmail(submittedEmail, {
       redirectTo,
     });
-
-    console.log("Supabase password reset response:", response);
-    console.error("Supabase password reset error:", response.error);
 
     setIsSubmitting(false);
 

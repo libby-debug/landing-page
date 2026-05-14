@@ -1,1 +1,6 @@
-export { supabase } from "@/lib/supabase/client";
+export {
+  isSupabaseConfigured,
+  missingSupabaseEnvVars,
+  supabase,
+  supabaseConfigurationMessage,
+} from "@/lib/supabase/client";

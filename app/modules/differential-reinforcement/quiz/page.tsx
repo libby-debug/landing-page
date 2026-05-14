@@ -6,7 +6,11 @@ import {
   pageTitleClass,
   sectionTitleClass,
 } from "@/components/learning-ui";
-import { supabase } from "@/lib/supabase";
+import {
+  isSupabaseConfigured,
+  supabase,
+  supabaseConfigurationMessage,
+} from "@/lib/supabase";
 import { SaveProgressButton } from "../../../dashboard/tco-6/progression";
 
 const questions = [
@@ -73,6 +77,11 @@ export default function DifferentialReinforcementQuizPage() {
     async function saveScore() {
       if (!isFinished) return;
       if (savedAlready.current) return;
+
+      if (!isSupabaseConfigured) {
+        setSaveMessage(supabaseConfigurationMessage);
+        return;
+      }
 
       savedAlready.current = true;
       setSaveMessage("Saving your mastery score...");

@@ -6,7 +6,11 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/components/auth-provider";
 import { readAndClearInactivityLogoutMessage } from "@/components/inactivity-auto-logout";
-import { isSupabaseConfigured, supabase } from "@/lib/supabase/client";
+import {
+  isSupabaseConfigured,
+  supabase,
+  supabaseConfigurationMessage,
+} from "@/lib/supabase/client";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -48,7 +52,7 @@ export default function LoginPage() {
     setMessage("");
 
     if (!isSupabaseConfigured) {
-      setMessage("Supabase is not configured yet.");
+      setMessage(supabaseConfigurationMessage);
       return;
     }
 

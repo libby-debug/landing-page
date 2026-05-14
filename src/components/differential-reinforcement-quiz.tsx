@@ -9,7 +9,11 @@ import {
   type DifferentialReinforcementProcedure,
   type QuizQuestion,
 } from "@/lib/modules/differential-reinforcement";
-import { isSupabaseConfigured, supabase } from "@/lib/supabase/client";
+import {
+  isSupabaseConfigured,
+  supabase,
+  supabaseConfigurationMessage,
+} from "@/lib/supabase/client";
 
 type SaveState = "idle" | "saving" | "saved" | "error";
 
@@ -80,7 +84,7 @@ export function DifferentialReinforcementQuiz({
 
     if (!isSupabaseConfigured) {
       setSaveState("error");
-      setMessage("Supabase is not configured, so this mastery score was not saved.");
+      setMessage(`${supabaseConfigurationMessage} This mastery score was not saved.`);
       return;
     }
 

@@ -4,7 +4,11 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { supabase } from "@/lib/supabase";
+import {
+  isSupabaseConfigured,
+  supabase,
+  supabaseConfigurationMessage,
+} from "@/lib/supabase";
 
 export default function SignupPage() {
   const router = useRouter();
@@ -14,13 +18,21 @@ export default function SignupPage() {
 
   async function handleSignup(e: React.FormEvent) {
     e.preventDefault();
+    if (!isSupabaseConfigured) {
+      setMessage(supabaseConfigurationMessage);
+      return;
+    }
+
     setMessage("Creating account...");
 
     const { error } = await supabase.auth.signUp({
       email,
       password,
       options: {
-        emailRedirectTo: "http://localhost:3000",
+        emailRedirectTo:
+          typeof window !== "undefined"
+            ? `${window.location.origin}/pricing`
+            : undefined,
       },
     });
 

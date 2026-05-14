@@ -1,9 +1,16 @@
 import { createClient } from "@supabase/supabase-js";
+import {
+  getPublicEnv,
+  getSupabaseClientConfigStatus,
+} from "@/lib/env";
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+const supabaseUrl = getPublicEnv("NEXT_PUBLIC_SUPABASE_URL");
+const supabaseAnonKey = getPublicEnv("NEXT_PUBLIC_SUPABASE_ANON_KEY");
+const supabaseConfigStatus = getSupabaseClientConfigStatus();
 
-export const isSupabaseConfigured = Boolean(supabaseUrl && supabaseAnonKey);
+export const isSupabaseConfigured = supabaseConfigStatus.configured;
+export const missingSupabaseEnvVars = supabaseConfigStatus.missing;
+export const supabaseConfigurationMessage = supabaseConfigStatus.message;
 
 export const supabase = createClient(
   supabaseUrl ?? "https://example.supabase.co",

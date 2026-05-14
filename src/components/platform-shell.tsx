@@ -5,6 +5,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { AuthProvider, useAuth } from "@/components/auth-provider";
 import { DailyDurationTracker } from "@/components/daily-duration-tracker";
+import { InactivityAutoLogout } from "@/components/inactivity-auto-logout";
 import { SiteHeader } from "@/components/site-header";
 import { ProgressStorageHydrator } from "../../app/dashboard/tco-6/progression";
 
@@ -125,6 +126,7 @@ function PlatformShellContent({ children }: { children: React.ReactNode }) {
   return (
     <div className="relative flex min-h-screen overflow-x-hidden bg-[radial-gradient(circle_at_88%_12%,rgba(153,246,228,0.68),transparent_28%),linear-gradient(180deg,#dff1ff_0%,#ccfbf1_34%,#ffffff_82%,#ffffff_100%)]">
       <DailyDurationTracker />
+      <InactivityAutoLogout />
       {user ? <ProgressStorageHydrator /> : null}
       <SiteHeader />
 
@@ -142,6 +144,7 @@ function PlatformShellContent({ children }: { children: React.ReactNode }) {
                 />
               </Link>
             </div>
+
 
             <nav className="mt-6 flex flex-col gap-2">
               {taskListSections.map((item) => {

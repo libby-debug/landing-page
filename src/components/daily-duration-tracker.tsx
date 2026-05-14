@@ -5,6 +5,7 @@ import { useAuth } from "@/components/auth-provider";
 import { persistProgressValueSoon } from "../../app/dashboard/tco-6/progression";
 
 const DAILY_DURATION_EVENT = "aba-mastered-daily-duration-updated";
+export const FLUSH_DAILY_DURATION_EVENT = "aba-mastered-flush-daily-duration";
 const SAVE_INTERVAL_MS = 5000;
 
 type DailyDurationRecord = {
@@ -252,6 +253,7 @@ export function DailyDurationTracker() {
     window.addEventListener("visibilitychange", handleVisibilityChange);
     window.addEventListener("pagehide", flushElapsed);
     window.addEventListener("beforeunload", flushElapsed);
+    window.addEventListener(FLUSH_DAILY_DURATION_EVENT, flushElapsed);
 
     return () => {
       flushElapsed();
@@ -259,6 +261,7 @@ export function DailyDurationTracker() {
       window.removeEventListener("visibilitychange", handleVisibilityChange);
       window.removeEventListener("pagehide", flushElapsed);
       window.removeEventListener("beforeunload", flushElapsed);
+      window.removeEventListener(FLUSH_DAILY_DURATION_EVENT, flushElapsed);
     };
   }, [loading, userId]);
 

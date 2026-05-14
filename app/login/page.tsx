@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/components/auth-provider";
+import { readAndClearInactivityLogoutMessage } from "@/components/inactivity-auto-logout";
 import { isSupabaseConfigured, supabase } from "@/lib/supabase/client";
 
 export default function LoginPage() {
@@ -23,6 +24,24 @@ export default function LoginPage() {
     const nextPath = new URLSearchParams(window.location.search).get("next");
     router.replace(nextPath ?? "/dashboard");
   }, [loading, router, user]);
+
+  useEffect(() => {
+    const reason = new URLSearchParams(window.location.search).get("reason");
+    const inactivityMessage = readAndClearInactivityLogoutMessage();
+
+    if (reason !== "inactive" && !inactivityMessage) {
+      return;
+    }
+
+    const messageTimeoutId = window.setTimeout(() => {
+      setMessage(
+        inactivityMessage ||
+          "You were logged out due to inactivity. Your progress was saved.",
+      );
+    }, 0);
+
+    return () => window.clearTimeout(messageTimeoutId);
+  }, []);
 
   async function handleLogin(e: React.FormEvent) {
     e.preventDefault();

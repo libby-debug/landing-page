@@ -105,6 +105,17 @@ export function persistProgressValueSoon(
   void persistProgressValue(progressStorageKey, progressData);
 }
 
+export async function persistProgressValueNow(
+  progressStorageKey: string,
+  progressData: unknown,
+) {
+  if (typeof window === "undefined") {
+    return;
+  }
+
+  await persistProgressValue(progressStorageKey, progressData);
+}
+
 async function persistProgressValue(
   progressStorageKey: string,
   progressData: unknown,
@@ -135,6 +146,33 @@ async function persistProgressValue(
     // Local progress remains the offline fallback if remote sync is unavailable.
   }
 }
+
+export async function flushLocalProgressStateToSupabase() {
+  if (typeof window === "undefined" || !isSupabaseConfigured) {
+    return;
+  }
+
+  const progressEntries = Object.keys(window.localStorage)
+    .filter((key) => key.startsWith("aba-mastered:"))
+    .map((key) => {
+      const storedValue = window.localStorage.getItem(key);
+
+      if (storedValue === null) {
+        return { key, value: null };
+      }
+
+      try {
+        return { key, value: JSON.parse(storedValue) as unknown };
+      } catch {
+        return { key, value: storedValue };
+      }
+    });
+
+  await Promise.all(
+    progressEntries.map(({ key, value }) => persistProgressValue(key, value)),
+  );
+}
+
 
 export async function hydrateUserProgressFromSupabase() {
   if (typeof window === "undefined" || !isSupabaseConfigured) {
@@ -523,6 +561,29 @@ function writeLastSavedProgressLocation(
     JSON.stringify(lastSavedLocation),
   );
   persistProgressValueSoon(lastSavedProgressLocationKey(), lastSavedLocation);
+}
+
+export function saveCurrentProgressLocation(currentLocation: string) {
+  if (typeof window === "undefined") {
+    return;
+  }
+
+  const updatedAt = new Date().toISOString();
+  const moduleLocationMatch = currentLocation.match(/^\/dashboard\/tco-6\/([^/?#]+)/);
+
+  if (moduleLocationMatch) {
+    writeLastSavedProgressLocation(
+      moduleLocationMatch[1],
+      currentLocation,
+      updatedAt,
+    );
+    return;
+  }
+
+  const key = "aba-mastered:last-authenticated-location";
+  const locationRecord = { currentLocation, updatedAt };
+  window.localStorage.setItem(key, JSON.stringify(locationRecord));
+  persistProgressValueSoon(key, locationRecord);
 }
 
 export function readMostRecentSavedProgressLocation(sectionSlugs: string[]) {

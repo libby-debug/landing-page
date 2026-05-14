@@ -13,7 +13,7 @@ const plans = [
   {
     name: "3-Month Plan",
     price: "$199",
-    cadence: "today",
+    cadence: "today*",
     effective: "$66",
     discount: "16% off",
     accent: "purple",
@@ -24,7 +24,7 @@ const plans = [
   {
     name: "6-Month Plan",
     price: "$379",
-    cadence: "today",
+    cadence: "today*",
     effective: "$63",
     discount: "20% off",
     accent: "teal",
@@ -137,7 +137,8 @@ export default function PricingPage() {
           </div>
 
           <p className="mx-auto mt-8 max-w-4xl rounded-2xl bg-white/95 px-5 py-4 text-base font-bold italic text-slate-950 shadow-sm">
-            3-month and 6-month plans renew at $79/month until canceled.
+            *3-month and 6-month plans, after term expires, will renew at
+            $79/month until canceled.
           </p>
         </div>
       </section>

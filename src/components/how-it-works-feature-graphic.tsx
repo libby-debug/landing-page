@@ -84,7 +84,7 @@ export function HowItWorksFeatureGraphic() {
   return (
     <motion.section
       aria-label="ABA Mastered visual study features"
-      className="relative mt-10 w-full overflow-hidden rounded-[2rem] bg-white/70 px-4 py-10 shadow-sm ring-1 ring-white/70 backdrop-blur-sm sm:px-6 md:px-8 md:py-12"
+      className="relative mt-10 w-full overflow-hidden rounded-[2rem] bg-[#020617] px-5 py-8 shadow-2xl shadow-slate-900/20 sm:px-8 md:py-10 lg:px-10"
       initial={shouldReduceMotion ? false : "hidden"}
       whileInView={shouldReduceMotion ? undefined : "show"}
       viewport={{ once: true, amount: 0.2 }}
@@ -114,23 +114,22 @@ export function HowItWorksFeatureGraphic() {
       )}
 
       <motion.h2
-        className="relative z-10 mx-auto max-w-5xl text-balance text-center text-4xl font-black leading-[1.08] tracking-tight text-slate-950 sm:text-5xl lg:text-6xl"
+        className="relative z-10 mx-auto max-w-5xl text-balance text-center text-4xl font-black leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-6xl"
         variants={headingVariants}
       >
         BCBA exam prep made visual, simple, and easier to remember.
       </motion.h2>
 
       <motion.div
-        className="relative z-10 mt-10 flex w-full flex-wrap justify-center gap-6"
+        className="relative z-10 mt-10 grid w-full gap-6 md:grid-cols-2 lg:grid-cols-3"
         variants={containerVariants}
       >
-        {features.map((feature) => (
+        {features.map((feature, index) => (
           <motion.article
             key={feature.title}
-            className="group relative w-full rounded-3xl border-2 border-transparent p-7 text-center transition-shadow duration-300 [background-clip:padding-box,border-box] md:w-[calc(50%_-_0.75rem)] lg:w-[calc(33.333%_-_1rem)] sm:p-8"
+            className="group relative flex min-h-[300px] flex-col overflow-hidden rounded-3xl border border-white/80 bg-white p-6 text-center shadow-xl transition-shadow duration-300 sm:p-7"
             style={{
-              backgroundImage: `linear-gradient(transparent, transparent), ${feature.border}`,
-              backgroundOrigin: "border-box",
+              boxShadow: `0 16px 42px rgba(15, 23, 42, 0.16)`,
             }}
             variants={cardVariants}
             whileHover={
@@ -161,11 +160,18 @@ export function HowItWorksFeatureGraphic() {
                 }}
               />
             )}
-            <div className="flex min-h-[220px] flex-col items-center justify-center rounded-[calc(1.5rem-2px)] bg-transparent">
-              <h3 className="text-center text-2xl font-black leading-tight text-slate-950">
+            <div
+                aria-hidden="true"
+                className={`absolute inset-x-0 top-0 h-2 bg-gradient-to-r ${feature.gradient}`}
+              />
+              <div className="flex flex-1 flex-col items-center justify-center">
+                <div className={`mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-r ${feature.gradient} text-2xl font-black text-white shadow-lg`}>
+                  {index + 1}
+                </div>
+              <h3 className="mt-6 text-center text-2xl font-black leading-tight tracking-tight text-slate-950">
                 {feature.title}
               </h3>
-              <p className="mt-5 text-center text-lg font-medium leading-8 text-slate-950">
+              <p className="mt-5 max-w-sm text-center text-base font-semibold leading-7 text-slate-700">
                 {feature.body}
               </p>
             </div>

@@ -20,7 +20,12 @@ import {
   finalExamQuestionCount,
   finalExamQuestions,
 } from "./final-exam-content";
-import { saveFinalExamProgress } from "./final-exam-progress";
+import {
+  clearFinalExamDraft,
+  readFinalExamDraft,
+  saveFinalExamDraft,
+  saveFinalExamProgress,
+} from "./final-exam-progress";
 
 const finalExamDurationSeconds = 4 * 60 * 60;
 const timeWarningThresholdSeconds = 10 * 60;
@@ -103,11 +108,13 @@ function FinalExam() {
   const [started, setStarted] = useState(false);
   const [responses, setResponses] = useState<Record<number, string>>({});
   const responsesRef = useRef(responses);
+  const restoredDraftRef = useRef(false);
   const [submitted, setSubmitted] = useState(false);
   const [autoSubmitted, setAutoSubmitted] = useState(false);
   const [remainingSeconds, setRemainingSeconds] = useState(
     finalExamDurationSeconds,
   );
+  const [startedAtMs, setStartedAtMs] = useState<number | null>(null);
   const [showTimer, setShowTimer] = useState(true);
   const [showTimeWarning, setShowTimeWarning] = useState(false);
   const [reviewedQuestionIndexes, setReviewedQuestionIndexes] = useState<
@@ -138,8 +145,11 @@ function FinalExam() {
     responsesRef.current = responses;
   }, [responses]);
 
-  const submitFinalExam = useCallback((autoSubmit: boolean) => {
-    const currentResponses = responsesRef.current;
+  const submitFinalExam = useCallback((
+    autoSubmit: boolean,
+    responseOverride?: Record<number, string>,
+  ) => {
+    const currentResponses = responseOverride ?? responsesRef.current;
     const finalCorrectCount = finalExamQuestions.reduce(
       (total, question, index) =>
         currentResponses[index] === question.answer ? total + 1 : total,
@@ -159,7 +169,10 @@ function FinalExam() {
       submittedAt: new Date().toISOString(),
       totalQuestions: finalExamQuestions.length,
     });
+    clearFinalExamDraft();
 
+    setResponses(currentResponses);
+    responsesRef.current = currentResponses;
     setAutoSubmitted(autoSubmit);
     setReviewedQuestionIndexes(new Set());
 
@@ -173,32 +186,93 @@ function FinalExam() {
   }, [router]);
 
   useEffect(() => {
-    if (!started || submitted) {
+    if (!started || submitted || !startedAtMs) {
       return;
     }
 
-    const timerId = window.setInterval(() => {
-      setRemainingSeconds((current) => {
-        if (current <= 0) {
-          return 0;
-        }
+    const activeStartedAtMs = startedAtMs;
 
-        const next = Math.max(current - 1, 0);
+    function updateRemainingTime() {
+      const elapsedSeconds = Math.floor((Date.now() - activeStartedAtMs) / 1000);
+      const next = Math.max(finalExamDurationSeconds - elapsedSeconds, 0);
 
-        if (next === timeWarningThresholdSeconds) {
-          setShowTimeWarning(true);
-        }
+      setRemainingSeconds(next);
 
-        if (next === 0) {
-          submitFinalExam(true);
-        }
+      if (next <= timeWarningThresholdSeconds && next > 0) {
+        setShowTimeWarning(true);
+      }
 
-        return next;
-      });
-    }, 1000);
+      if (next === 0) {
+        submitFinalExam(true);
+      }
+    }
+
+    updateRemainingTime();
+    const timerId = window.setInterval(updateRemainingTime, 1000);
 
     return () => window.clearInterval(timerId);
-  }, [started, submitted, submitFinalExam]);
+  }, [started, startedAtMs, submitted, submitFinalExam]);
+
+  useEffect(() => {
+    if (restoredDraftRef.current) {
+      return;
+    }
+
+    restoredDraftRef.current = true;
+    const draft = readFinalExamDraft();
+
+    if (!draft?.started || draft.submitted) {
+      return;
+    }
+
+    const restoreTimeoutId = window.setTimeout(() => {
+      const restoredStartedAt = draft.startedAt
+        ? Date.parse(draft.startedAt)
+        : Date.now();
+      const safeStartedAt = Number.isFinite(restoredStartedAt)
+        ? restoredStartedAt
+        : Date.now();
+      const restoredResponses = draft.responses ?? {};
+      const elapsedSeconds = Math.floor((Date.now() - safeStartedAt) / 1000);
+      const restoredRemaining = Math.max(
+        draft.durationSeconds - elapsedSeconds,
+        0,
+      );
+
+      responsesRef.current = restoredResponses;
+      setResponses(restoredResponses);
+      setStarted(true);
+      setStartedAtMs(safeStartedAt);
+      setShowTimer(draft.showTimer);
+      setRemainingSeconds(restoredRemaining);
+
+      if (restoredRemaining <= timeWarningThresholdSeconds && restoredRemaining > 0) {
+        setShowTimeWarning(true);
+      }
+
+      if (restoredRemaining === 0) {
+        submitFinalExam(true, restoredResponses);
+      }
+    }, 0);
+
+    return () => window.clearTimeout(restoreTimeoutId);
+  }, [submitFinalExam]);
+
+  useEffect(() => {
+    if (!started || submitted || !startedAtMs) {
+      return;
+    }
+
+    saveFinalExamDraft({
+      durationSeconds: finalExamDurationSeconds,
+      responses,
+      showTimer,
+      started,
+      startedAt: new Date(startedAtMs).toISOString(),
+      submitted,
+      updatedAt: new Date().toISOString(),
+    });
+  }, [responses, showTimer, started, startedAtMs, submitted]);
 
   function updateAnswer(index: number, answer: string) {
     if (submitted) {
@@ -214,7 +288,9 @@ function FinalExam() {
     setSubmitted(false);
     setAutoSubmitted(false);
     setRemainingSeconds(finalExamDurationSeconds);
+    setStartedAtMs(null);
     setShowTimeWarning(false);
+    clearFinalExamDraft();
     setReviewedQuestionIndexes(new Set());
     window.scrollTo({ behavior: "smooth", top: 0 });
   }
@@ -232,9 +308,20 @@ function FinalExam() {
     setResponses({});
     setSubmitted(false);
     setAutoSubmitted(false);
+    const startTime = Date.now();
+    setStartedAtMs(startTime);
     setRemainingSeconds(finalExamDurationSeconds);
     setShowTimer(true);
     setShowTimeWarning(false);
+    saveFinalExamDraft({
+      durationSeconds: finalExamDurationSeconds,
+      responses: {},
+      showTimer: true,
+      started: true,
+      startedAt: new Date(startTime).toISOString(),
+      submitted: false,
+      updatedAt: new Date().toISOString(),
+    });
     setReviewedQuestionIndexes(new Set());
     window.scrollTo({ behavior: "smooth", top: 0 });
   }

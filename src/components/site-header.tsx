@@ -43,16 +43,16 @@ export function SiteHeader() {
             Pricing
           </Link>
           <Link
-            href={loginHref}
-            className="rounded-xl px-3 py-2 transition hover:bg-white/80 hover:text-blue-700"
-          >
-            Login
-          </Link>
-          <Link
             href="/signup"
             className="rounded-xl px-3 py-2 transition hover:bg-white/80 hover:text-blue-700"
           >
             Sign Up
+          </Link>
+          <Link
+            href={loginHref}
+            className="rounded-xl px-3 py-2 transition hover:bg-white/80 hover:text-blue-700"
+          >
+            Login
           </Link>
         </nav>
       </div>

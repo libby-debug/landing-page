@@ -204,9 +204,12 @@ function DashboardContent() {
           <p className="mt-4 text-sm font-semibold text-slate-950">
             Signed in as {user?.email}
           </p>
+
+          <div className="mt-4 w-full max-w-xs">
+            <LogoutButton />
+          </div>
         </div>
 
-        <LogoutButton />
       </section>
 
       <section className="mt-8 grid w-full gap-6 md:grid-cols-3">

@@ -1283,7 +1283,7 @@ const sectionCExpandedMiniLessons: MiniLessonContent[] = [
         "To show generalization occurred",
       ],
       answer: "To evaluate consistency between observers",
-      hint: "IOA is about agreement in measurement, not experimental control.",
+      hint: "IOA is about agreement in measurement, not whether an intervention caused behavior change.",
       feedback:
         "IOA evaluates consistency between observers' data records.",
     },
@@ -1406,7 +1406,7 @@ const sectionCExpandedMiniLessons: MiniLessonContent[] = [
     label: "C.11",
     title: "Baseline, Intervention, Maintenance, and Generalization Data",
     body: [
-      "Baseline data support [prediction before intervention].",
+      "Initial data show [starting level, trend, and variability before decisions].",
       "Maintenance and generalization data show whether behavior change [continues or transfers].",
     ],
     visual: {
@@ -1434,7 +1434,7 @@ const sectionCExpandedMiniLessons: MiniLessonContent[] = [
         "Baseline is stable, intervention begins, and behavior does not change across several sessions. What is the best data-based decision?",
       choices: [
         "Review and adjust the intervention plan",
-        "Declare a functional relation",
+        "Make a confident data-based conclusion",
         "Ignore the data because intervention has started",
         "Switch to percentage IOA",
       ],
@@ -1561,10 +1561,10 @@ const sectionCPracticeQuestions: QuestionContent[] = [
   },
   {
     type: "scenario",
-    graphId: "reversal-aba",
+    graphId: "measurement-level-change",
     prompt:
       "Initial data are high and stable. After a condition change, behavior immediately drops to a lower, stable level with little overlap. Which data-interpretation statement is strongest?",
-    choices: ["Clear level change with strong immediacy", "No interpretable data pattern", "High variability blocks interpretation", "Only external validity is shown"],
+    choices: ["Clear level change with strong immediacy", "No interpretable data pattern", "High variability blocks interpretation", "Only the axis label should be interpreted"],
     answer: "Clear level change with strong immediacy",
     explanation:
       "A clear level change with immediacy and low overlap supports a stronger [visual-analysis interpretation].",
@@ -1601,7 +1601,7 @@ const sectionCPracticeQuestions: QuestionContent[] = [
     type: "scenario",
     prompt:
       "A learner uses the trained communication response with a new teacher in a new classroom. Which data type is most relevant?",
-    choices: ["Generalization", "Duration IOA", "Baseline prediction", "Momentary time sampling"],
+    choices: ["Generalization", "Duration IOA", "Initial data pattern", "Momentary time sampling"],
     answer: "Generalization",
     explanation:
       "Generalization data show transfer across people, settings, behaviors, or time.",
@@ -1636,7 +1636,7 @@ const sectionCMasteryQuestions: QuestionContent[] = [
       "Latency is time from stimulus to response; IRT is time between responses.",
       "Latency counts responses; IRT records permanent products.",
       "Latency samples intervals; IRT records whether behavior occurred at the interval end.",
-      "Latency measures observer agreement; IRT measures experimental control.",
+      "Latency measures observer agreement; IRT measures frequency.",
     ],
     answer:
       "Latency is time from stimulus to response; IRT is time between responses.",
@@ -1708,7 +1708,7 @@ const sectionCMasteryQuestions: QuestionContent[] = [
   },
   {
     type: "scenario",
-    graphId: "reversal-aba",
+    graphId: "measurement-level-change",
     prompt:
       "In a graph, data shift from high initial levels to lower levels immediately after a phase change, with little overlap. Which visual analysis feature is most directly described?",
     choices: ["Immediacy of effect", "Generalization", "Total count IOA", "Momentary time sampling"],
@@ -1729,7 +1729,7 @@ const sectionCMasteryQuestions: QuestionContent[] = [
     type: "scenario",
     prompt:
       "A learner uses a skill with a different therapist and in a different room. Which interpretation is most relevant?",
-    choices: ["Generalization", "Latency", "Permanent product", "Instrumentation"],
+    choices: ["Generalization", "Latency", "Permanent product", "Rate"],
     answer: "Generalization",
     explanation:
       "Generalization means behavior occurs across people, settings, behaviors, or time beyond original conditions.",
@@ -3608,7 +3608,7 @@ const sectionCMeasurementExpansionMiniLessons: MiniLessonContent[] = [
       prompt: "Baseline is variable and intervention data overlap heavily with baseline. What is the best next decision?",
       choices: [
         "Collect more data or modify the measurement/intervention plan.",
-        "Declare a functional relation immediately.",
+        "Make a confident data-based conclusion immediately.",
         "Terminate services because variability proves success.",
         "Ignore baseline and use the most recent data point only.",
       ],
@@ -5660,7 +5660,7 @@ const sectionCMeasurementExpansionPracticeQuestions: QuestionContent[] = [
   },
   {
     type: "scenario",
-    graphId: "reversal-positive-attention",
+    graphId: "measurement-level-change",
     prompt:
       "The data show a clear level change immediately after one condition change and another clear level change after the next condition change. Which measurement/data interpretation is strongest?",
     choices: [
@@ -5769,7 +5769,7 @@ const sectionCMeasurementExpansionMasteryQuestions: QuestionContent[] = [
   },
   {
     type: "scenario",
-    graphId: "reversal-aba",
+    graphId: "measurement-level-change",
     prompt:
       "Which visual-analysis feature is most relevant when judging whether the data changed quickly after the phase change line?",
     choices: [
@@ -5791,7 +5791,7 @@ const sectionCMeasurementExpansionMasteryQuestions: QuestionContent[] = [
       "Highly variable data with no clear trend",
       "Stable baseline followed by immediate level change",
       "Repeated low variability across all sessions",
-      "Clear replication across phase changes",
+      "Stable data with an immediate level change",
     ],
     answer: "Highly variable data with no clear trend",
     explanation:
@@ -6052,7 +6052,7 @@ const sectionCValidityIntegrityPracticeQuestions: QuestionContent[] = [
     type: "scenario",
     prompt:
       "An observer consistently records shorter durations than actually occurred because the timer starts late. Which issue is most direct?",
-    choices: ["Measurement bias", "External validity", "Maintenance", "Momentary time sampling"],
+    choices: ["Measurement bias", "Interobserver agreement", "Maintenance", "Momentary time sampling"],
     answer: "Measurement bias",
     explanation:
       "Measurement bias is [systematic error in one direction].",
@@ -6133,7 +6133,7 @@ const sectionCValidityIntegrityMasteryQuestions: QuestionContent[] = [
     choices: [
       "The measurement may be reliable but not accurate",
       "The measurement must be accurate because it is consistent",
-      "The measurement demonstrates external validity",
+      "The measurement demonstrates procedural integrity",
       "The measurement is a permanent product",
     ],
     answer: "The measurement may be reliable but not accurate",
@@ -6149,7 +6149,7 @@ const sectionCValidityIntegrityMasteryQuestions: QuestionContent[] = [
     choices: [
       "Efficiency and cost-benefit of the measurement system",
       "Positive punishment",
-      "External validity of a replication",
+      "Graph generalization summary",
       "Generality across settings",
     ],
     answer: "Efficiency and cost-benefit of the measurement system",
@@ -6837,7 +6837,7 @@ const sectionDAdditionalMasteryQuestions: QuestionContent[] = [
     choices: [
       "The visual pattern supports a stronger treatment effect.",
       "The graph cannot support experimental control because it has phase lines.",
-      "Only external validity is shown.",
+      "Only the axis label should be interpreted.",
       "The pattern shows observer drift.",
     ],
     answer: "The visual pattern supports a stronger treatment effect.",
@@ -6845,6 +6845,194 @@ const sectionDAdditionalMasteryQuestions: QuestionContent[] = [
       "Immediacy, low overlap, and consistency across similar phases support [stronger visual evidence of an effect].",
     hint:
       "Use level, immediacy, overlap, and consistency to interpret the graph.",
+  },
+];
+
+const sectionDPracticePromptsMovedToMastery = new Set<string>([
+  "Match each experimental-control term to its discrimination cue.",
+  "Sort each validity example.",
+  "Match each internal-validity threat to the scenario cue.",
+  "Select reasons repeated measurement matters in single-case experimental design.",
+  "A learner's severe behavior is likely irreversible once reduced, and withdrawing treatment would be unsafe. Which design-selection consideration matters most?",
+  "Select visual-analysis features that support a stronger treatment effect.",
+  "Complete the graph-interpretation cue: In a Changing Criterion Design, behavior should track the changing ____.",
+  "Study behavior increases during Positive Attention, decreases when attention is removed, and increases again when Positive Attention returns. Which graph feature shows replication?",
+  "In the withdrawal design graph, which feature verifies the original baseline prediction?",
+  "A reprimand condition is ineffective before a water mist condition, but effective after the water mist condition. What threat or effect should be considered?",
+]);
+
+const excludeMovedModuleDPracticeQuestions = (questions: QuestionContent[]) =>
+  questions.filter((question) => !sectionDPracticePromptsMovedToMastery.has(question.prompt));
+
+const sectionDMovedPracticeMasteryQuestions: QuestionContent[] = [
+  {
+    type: "scenario",
+    prompt:
+      "Which option best differentiates prediction, verification, and replication in experimental control?",
+    choices: [
+      "Prediction estimates future baseline responding, verification tests that estimate, and replication reproduces the effect.",
+      "Prediction means the intervention worked once, verification means the result generalized, and replication means observers agreed.",
+      "Prediction identifies the dependent variable, verification labels the axis, and replication selects the graph scale.",
+      "Prediction, verification, and replication are interchangeable labels for the same phase-change line.",
+    ],
+    answer:
+      "Prediction estimates future baseline responding, verification tests that estimate, and replication reproduces the effect.",
+    explanation:
+      "Experimental control is strengthened when baseline prediction is tested and the intervention effect is reproduced through [prediction, verification, and replication].",
+    hint:
+      "Separate forecasting baseline responding, testing that forecast, and reproducing the effect.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "Which statement best differentiates internal validity from external validity?",
+    choices: [
+      "Internal validity concerns whether the independent variable caused change; external validity concerns whether findings generalize.",
+      "Internal validity concerns whether findings generalize; external validity concerns whether the dependent variable was measurable.",
+      "Internal validity means the graph has repeated measurement; external validity means the y-axis is labeled.",
+      "Internal validity and external validity both mean the same thing as treatment integrity.",
+    ],
+    answer:
+      "Internal validity concerns whether the independent variable caused change; external validity concerns whether findings generalize.",
+    explanation:
+      "Internal validity asks whether the design supports [causal control]; external validity asks whether the finding shows [generality beyond the original conditions].",
+    hint:
+      "Ask whether the concern is causal control inside the study or generality outside it.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A school-wide reward program starts during treatment, observers change scoring rules, and a learner's development may affect responding. What do these examples have in common?",
+    choices: [
+      "They are alternative explanations that can threaten internal validity.",
+      "They are required components of a Changing Criterion Design.",
+      "They demonstrate external validity across settings.",
+      "They are examples of differentiated data paths in a multielement design.",
+    ],
+    answer:
+      "They are alternative explanations that can threaten internal validity.",
+    explanation:
+      "History, maturation, instrumentation, and sequence effects can create [alternative explanations] for behavior change.",
+    hint:
+      "Focus on events or measurement changes besides the planned independent variable.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "Why is repeated measurement necessary for interpreting experimental control in single-case designs?",
+    choices: [
+      "It reveals level, trend, variability, and behavior change across condition changes.",
+      "It eliminates the need for baseline prediction and operational definitions.",
+      "It proves treatment effects after one improved data point.",
+      "It replaces the need to manipulate the independent variable.",
+    ],
+    answer:
+      "It reveals level, trend, variability, and behavior change across condition changes.",
+    explanation:
+      "Repeated measurement provides the data patterns needed for [visual analysis and experimental control].",
+    hint:
+      "Think about what multiple data points show that a single score cannot show.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A target behavior is likely irreversible once reduced, and withdrawing an effective treatment would be unsafe. Which design-selection decision is most appropriate?",
+    choices: [
+      "Select a design that can show control without requiring treatment withdrawal.",
+      "Use repeated withdrawal because it is always required for experimental control.",
+      "Avoid baseline measurement because treatment withdrawal is unsafe.",
+      "Select a design based only on the easiest graph to draw.",
+    ],
+    answer:
+      "Select a design that can show control without requiring treatment withdrawal.",
+    explanation:
+      "Design selection should account for [ethics, reversibility, and client safety] while still supporting experimental control.",
+    hint:
+      "Consider whether the design would require removing an effective intervention.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "Which set of visual-analysis features most strongly supports a treatment effect?",
+    choices: [
+      "Immediate change, low overlap, and consistent patterns across similar phases",
+      "A descriptive graph title, one improved point, and a colorful data path",
+      "A labeled x-axis, participant diagnosis, and one baseline point",
+      "High overlap, delayed change, and inconsistent patterns across similar phases",
+    ],
+    answer:
+      "Immediate change, low overlap, and consistent patterns across similar phases",
+    explanation:
+      "Visual analysis integrates [level, trend, variability, immediacy, overlap, and consistency] to evaluate treatment effects.",
+    hint:
+      "Look for features showing behavior changed with the condition, not cosmetic graph features.",
+  },
+  {
+    type: "scenario",
+    graphId: "changing-criterion-on-task",
+    prompt:
+      "In a Changing Criterion Design, which feature most directly supports experimental control?",
+    choices: [
+      "Behavior changes stepwise with each new criterion.",
+      "Treatment is withdrawn and reintroduced across repeated baseline phases.",
+      "All tiers change before intervention begins.",
+      "Two conditions alternate rapidly with no criterion shifts.",
+    ],
+    answer: "Behavior changes stepwise with each new criterion.",
+    explanation:
+      "Changing Criterion Designs show control when behavior [tracks each new criterion].",
+    hint:
+      "Focus on whether responding shifts with the criterion line.",
+  },
+  {
+    type: "scenario",
+    graphId: "reversal-positive-attention",
+    prompt:
+      "Study behavior increases when Positive Attention is reintroduced after withdrawal. Which experimental-control feature is shown?",
+    choices: [
+      "Replication of the intervention effect",
+      "A staggered baseline across settings",
+      "A parametric comparison of criterion values",
+      "Observer drift during measurement",
+    ],
+    answer: "Replication of the intervention effect",
+    explanation:
+      "Replication occurs when the intervention effect is [reproduced after reintroduction].",
+    hint:
+      "Look for the effect occurring again when the same condition returns.",
+  },
+  {
+    type: "scenario",
+    graphId: "reversal-pvr",
+    prompt:
+      "During withdrawal, behavior returns toward the baseline pattern. What does this most directly support?",
+    choices: [
+      "Verification of the original baseline prediction",
+      "Generalization across untreated settings",
+      "A differentiated multielement condition",
+      "A new criterion level in a Changing Criterion Design",
+    ],
+    answer: "Verification of the original baseline prediction",
+    explanation:
+      "Verification is supported when withdrawal tests whether behavior returns toward [the predicted baseline pattern].",
+    hint:
+      "Focus on what the return toward baseline tests after intervention is removed.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A reprimand condition is ineffective before a water mist condition but effective after the water mist condition. Which validity concern should be considered?",
+    choices: [
+      "A sequence effect",
+      "External validity across settings",
+      "Response generalization",
+      "A criterion-tracking effect",
+    ],
+    answer: "A sequence effect",
+    explanation:
+      "A sequence effect occurs when exposure to [an earlier condition influences responding in a later condition].",
+    hint:
+      "Ask whether one condition changed how the learner responded in a later condition.",
   },
 ];
 
@@ -12906,7 +13094,7 @@ const moduleContent: Record<string, ModuleContent> = {
       ...sectionDAnalysisApplicationMiniLessons,
       ...sectionDAdditionalMiniLessons,
     ],
-    practiceQuestions: [
+    practiceQuestions: excludeMovedModuleDPracticeQuestions([
       ...sectionDRelocatedFromCPracticeQuestions,
       ...sectionDAdditionalPracticeQuestions,
       {
@@ -13387,10 +13575,11 @@ const moduleContent: Record<string, ModuleContent> = {
         hint:
           "Look for [one variable changing by amount, duration, magnitude, intensity, or frequency].",
       },
-    ],
+    ]),
     masteryQuestions: [
       ...sectionDRelocatedFromCMasteryQuestions,
       ...sectionDAdditionalMasteryQuestions,
+      ...sectionDMovedPracticeMasteryQuestions,
       {
         type: "scenario",
         graphId: "withdrawal-problem-behavior",

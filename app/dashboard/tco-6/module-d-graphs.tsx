@@ -1,4 +1,6 @@
 export type ModuleDGraphId =
+  | "measurement-level-change"
+  | "measurement-variable-trend"
   | "reversal-aba"
   | "reversal-positive-attention"
   | "reversal-pvr"
@@ -77,6 +79,76 @@ const toneStyles: Record<GraphTone, { line: string; soft: string; text: string }
 };
 
 export const moduleDGraphExamples: Record<ModuleDGraphId, ModuleDGraphExample> = {
+  "measurement-level-change": {
+    id: "measurement-level-change",
+    title: "Measurement Data Pattern",
+    description:
+      "A neutral repeated-measurement graph for interpreting level, trend, variability, overlap, and immediacy.",
+    panels: [
+      {
+        yLabel: "Responses per session",
+        yMax: 20,
+        phases: [
+          { label: "Initial condition", start: 1, end: 5 },
+          { label: "Changed condition", start: 6, end: 10 },
+        ],
+        series: [
+          {
+            label: "Measured behavior",
+            tone: "slate",
+            marker: "circle",
+            points: [
+              { x: 1, y: 15 },
+              { x: 2, y: 16 },
+              { x: 3, y: 15 },
+              { x: 4, y: 14 },
+              { x: 5, y: 15 },
+              { x: 6, y: 7 },
+              { x: 7, y: 6 },
+              { x: 8, y: 5 },
+              { x: 9, y: 6 },
+              { x: 10, y: 5 },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  "measurement-variable-trend": {
+    id: "measurement-variable-trend",
+    title: "Variable Measurement Data",
+    description:
+      "A neutral repeated-measurement graph for interpreting variable data and unclear trends.",
+    panels: [
+      {
+        yLabel: "Responses per session",
+        yMax: 30,
+        phases: [
+          { label: "Initial condition", start: 1, end: 5 },
+          { label: "Changed condition", start: 6, end: 10 },
+        ],
+        series: [
+          {
+            label: "Measured behavior",
+            tone: "slate",
+            marker: "square",
+            points: [
+              { x: 1, y: 14 },
+              { x: 2, y: 23 },
+              { x: 3, y: 11 },
+              { x: 4, y: 20 },
+              { x: 5, y: 16 },
+              { x: 6, y: 18 },
+              { x: 7, y: 12 },
+              { x: 8, y: 21 },
+              { x: 9, y: 15 },
+              { x: 10, y: 19 },
+            ],
+          },
+        ],
+      },
+    ],
+  },
   "reversal-aba": {
     id: "reversal-aba",
     title: "A-B-A Reversal Design",

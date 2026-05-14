@@ -37,9 +37,11 @@ export default function HomePage() {
             </p>
 
             <section className="relative left-1/2 right-1/2 my-16 w-screen -translate-x-1/2 overflow-hidden bg-[#020617]">
-              <img
+              <Image
                 src="/images/black-border2.png"
                 alt="ABA Mastered hero section"
+                width={2054}
+                height={766}
                 className="block h-auto w-full object-cover"
               />
             </section>

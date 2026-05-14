@@ -31,7 +31,7 @@ if (form && message && submitButton) {
 
       message.textContent = `You're on the list, ${email}.`;
       form.reset();
-    } catch (error) {
+    } catch {
       message.textContent = "Something went wrong. Please try again.";
     } finally {
       submitButton.disabled = false;

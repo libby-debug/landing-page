@@ -12581,57 +12581,2158 @@ const sectionHMasteryQuestions: QuestionContent[] = [
 
 const sectionIMiniLessons: MiniLessonContent[] = [
   {
-    slug: "supervision-relationship",
-    label: "I.1-I.3",
-    title: "Supervision foundations",
+    slug: "why-supervision-matters",
+    label: "I.1",
+    title: "Why Behavior-Analytic Supervision Matters",
     body: [
-      "Effective supervision depends on [clear expectations and a supportive relationship].",
-      "Equity means supervision systems are fair, responsive, and data-informed.",
+      "Behavior-analytic supervision is an active system for improving [supervisee performance and client outcomes].",
+      "Strong supervision supports procedural integrity, ethical behavior, problem solving, retention, and safer service delivery.",
+    ],
+    visual: {
+      type: "sorting",
+      prompt: "Sort each outcome by whether it is a direct benefit of strong supervision.",
+      categories: ["Supervision benefit", "Not a supervision benefit"],
+      items: [
+        { label: "Higher procedural integrity", category: "Supervision benefit" },
+        { label: "Clearer professional repertoires", category: "Supervision benefit" },
+        { label: "Ignoring implementation data", category: "Not a supervision benefit" },
+        { label: "Better support for client progress", category: "Supervision benefit" },
+      ],
+    },
+  },
+  {
+    slug: "supervision-as-behavior-change",
+    label: "I.1",
+    title: "Supervision Is Behavior Change",
+    body: [
+      "Supervisors change staff behavior by arranging [antecedents, consequences, modeling, rehearsal, feedback, and data review].",
+      "Meeting attendance alone is not supervision if staff performance is not assessed and improved.",
     ],
     visual: {
       type: "choice",
-      prompt: "Which practice best supports effective supervision?",
+      prompt: "Which action treats supervision as behavior change?",
       choices: [
-        "Set observable goals and review data with the supervisee.",
-        "Give vague feedback only when problems become serious.",
-        "Assume the same barriers affect every supervisee.",
-        "Avoid documenting performance expectations.",
+        "Observe implementation and reinforce accurate performance.",
+        "Hold a meeting without observing staff behavior.",
+        "Assume written instructions are enough for mastery.",
+        "Wait for client outcomes to worsen before giving feedback.",
       ],
-      answer: "Set observable goals and review data with the supervisee.",
+      answer: "Observe implementation and reinforce accurate performance.",
       feedback:
-        "Supervision should use clear expectations, direct observation, data, and supportive feedback.",
+        "Excellent discrimination. Effective supervision changes observable supervisee behavior through arranged conditions.",
+      hint:
+        "Look for direct observation and consequences for staff performance.",
     },
   },
   {
-    slug: "bst",
-    label: "I.4-I.5",
-    title: "Behavioral skills training",
+    slug: "risks-of-ineffective-supervision",
+    label: "I.1",
+    title: "Risks of Ineffective Supervision",
     body: [
-      "BST teaches skills using [instructions, modeling, rehearsal, and feedback].",
-      "It is active training, not just telling someone what to do.",
+      "Ineffective supervision can harm [clients, supervisees, organizations, and the profession].",
+      "Weak supervision may produce poor client progress, unsafe implementation, staff attrition, and ineffective future supervisors.",
+    ],
+    visual: {
+      type: "select-all",
+      prompt: "Select risks associated with ineffective supervision.",
+      choices: [
+        { label: "Poor procedural integrity", correct: true },
+        { label: "Greater client-safety risk", correct: true },
+        { label: "Improved staff retention by default", correct: false },
+        { label: "Weak professional repertoires", correct: true },
+      ],
+      feedback:
+        "Correct. Supervision quality affects client safety, staff skill, organizational functioning, and the field.",
+    },
+  },
+  {
+    slug: "capacity-before-supervision",
+    label: "I.1",
+    title: "Capacity Before Accepting Supervisees",
+    body: [
+      "Supervisory capacity includes [time, caseload, documentation, response time, client demand, and logistical resources].",
+      "Adding supervisees when feedback and documentation are already delayed can reduce supervision quality.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "A supervisor is already missing feedback deadlines and is asked to add two trainees. What is most appropriate?",
+      choices: [
+        "Review capacity and decline or delay new supervision if quality cannot be maintained.",
+        "Accept immediately because more supervision hours always benefit trainees.",
+        "Stop documenting supervision to create more time.",
+        "Assign trainees to independent cases before competence is verified.",
+      ],
+      answer:
+        "Review capacity and decline or delay new supervision if quality cannot be maintained.",
+      feedback:
+        "Correct. Ethical supervision requires realistic capacity and quality control.",
+      hint:
+        "Think about protecting supervision quality before increasing volume.",
+    },
+  },
+  {
+    slug: "effective-supervisory-relationships",
+    label: "I.2",
+    title: "Effective Supervisory Relationships",
+    body: [
+      "Effective supervisory relationships include [clear expectations, timely communication, active listening, and professional boundaries].",
+      "A positive relationship does not mean avoiding corrective feedback; it means feedback is respectful, useful, and behavior-focused.",
+    ],
+    visual: {
+      type: "sorting",
+      prompt: "Sort the supervisor behavior.",
+      categories: ["Supports relationship", "Weakens relationship"],
+      items: [
+        { label: "Schedules regular check-ins", category: "Supports relationship" },
+        { label: "Cancels observations without follow-up", category: "Weakens relationship" },
+        { label: "Listens actively before problem solving", category: "Supports relationship" },
+        { label: "Gives vague criticism days later", category: "Weakens relationship" },
+      ],
+    },
+  },
+  {
+    slug: "supervision-contracts",
+    label: "I.2",
+    title: "Supervisor-Supervisee Contracts",
+    body: [
+      "A supervision contract clarifies [roles, scope, expectations, communication, documentation, criteria, boundaries, and consequences].",
+      "Contracts reduce ambiguity by making supervision requirements explicit before problems occur.",
+    ],
+    visual: {
+      type: "matching",
+      prompt: "Match each contract element to its purpose.",
+      pairs: [
+        { term: "Roles", definition: "Who is responsible for each supervision activity." },
+        { term: "Criteria", definition: "How competent performance will be evaluated." },
+        { term: "Communication", definition: "How and when questions or updates should occur." },
+        { term: "Boundaries", definition: "Professional limits for the supervisory relationship." },
+      ],
+    },
+  },
+  {
+    slug: "clear-expectations",
+    label: "I.2",
+    title: "Clear Expectations and Role Clarification",
+    body: [
+      "Clear expectations define [what to do, when to do it, how quality is evaluated, and what documentation is required].",
+      "Vague expectations make feedback harder because performance is not observable or measurable.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which expectation is most behaviorally clear?",
+      choices: [
+        "Submit session notes by 5 p.m. using the clinic template with all required fields completed.",
+        "Be more responsible with paperwork.",
+        "Communicate better with caregivers.",
+        "Show more professionalism soon.",
+      ],
+      answer:
+        "Submit session notes by 5 p.m. using the clinic template with all required fields completed.",
+      feedback:
+        "Correct. Clear expectations specify observable behavior, timing, and quality criteria.",
+      hint:
+        "Choose the option that someone could observe and evaluate consistently.",
+    },
+  },
+  {
+    slug: "giving-performance-feedback",
+    label: "I.2",
+    title: "Giving Performance Feedback Effectively",
+    body: [
+      "Effective feedback is [timely, descriptive, contingent, behavior-focused, and linked to next steps].",
+      "Corrective feedback should describe what to change and may include modeling or rehearsal.",
+    ],
+    visual: {
+      type: "comparison",
+      leftTitle: "Weak feedback",
+      leftText: "You need to do better with prompting.",
+      rightTitle: "Strong feedback",
+      rightText: "During the next trial, wait 3 seconds before giving the gestural prompt.",
+      cue: "Strong feedback names the performance and the next observable action.",
+    },
+  },
+  {
+    slug: "accepting-supervisee-feedback",
+    label: "I.2",
+    title: "Accepting Supervisee Feedback",
+    body: [
+      "Supervisee feedback can be [social-validity and process data] about the supervision system.",
+      "A supervisor can maintain objective standards while adapting examples, communication, or support.",
+    ],
+    visual: {
+      type: "sorting",
+      prompt: "Sort each response to supervisee feedback.",
+      categories: ["Professional response", "Unhelpful response"],
+      items: [
+        { label: "Ask for examples and clarify the concern", category: "Professional response" },
+        { label: "Dismiss the concern because fidelity improved", category: "Unhelpful response" },
+        { label: "Use feedback to adjust meeting structure", category: "Professional response" },
+        { label: "Stop giving corrective feedback entirely", category: "Unhelpful response" },
+      ],
+    },
+  },
+  {
+    slug: "professional-boundaries",
+    label: "I.2",
+    title: "Professional Boundaries in Supervision",
+    body: [
+      "Professional boundaries protect [objectivity, supervisee welfare, and client service quality].",
+      "Friendly supervision can still maintain role clarity, confidentiality, and performance expectations.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which action best maintains professional boundaries?",
+      choices: [
+        "Clarify communication channels and keep feedback focused on work performance.",
+        "Use personal favors to motivate supervisee compliance.",
+        "Discuss confidential client details on a personal social media account.",
+        "Avoid written expectations because the relationship is friendly.",
+      ],
+      answer:
+        "Clarify communication channels and keep feedback focused on work performance.",
+      feedback:
+        "Correct. Boundaries support objectivity, confidentiality, and clear supervisory roles.",
+      hint:
+        "Look for role clarity and protection of professional responsibilities.",
+    },
+  },
+  {
+    slug: "equity-in-supervision",
+    label: "I.3",
+    title: "Equity in Supervision Practices",
+    body: [
+      "Equity means arranging [fair access to feedback, learning opportunities, role clarity, accommodations, and advancement].",
+      "Equity does not mean lowering competency standards; it means removing unnecessary barriers to meeting them.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which action best promotes equity?",
+      choices: [
+        "Audit who receives client-observation opportunities and correct access barriers.",
+        "Give fewer learning opportunities to supervisees with different schedules.",
+        "Use one feedback format even when it blocks understanding.",
+        "Avoid data review because equity is only about attitudes.",
+      ],
+      answer:
+        "Audit who receives client-observation opportunities and correct access barriers.",
+      feedback:
+        "Excellent. Equity is active, data-informed, and connected to access and opportunity.",
+      hint:
+        "Look for fair access while keeping objective expectations.",
+    },
+  },
+  {
+    slug: "culturally-responsive-supervision",
+    label: "I.3",
+    title: "Culturally Responsive Supervision",
+    body: [
+      "Culturally responsive supervision considers [communication, rapport, feedback preferences, authority relationships, and contextual variables].",
+      "Culture is not demographic trivia; it should affect real supervisory decisions when relevant.",
+    ],
+    visual: {
+      type: "comparison",
+      leftTitle: "Not responsive",
+      leftText: "Uses the same examples and feedback style even when they reduce participation.",
+      rightTitle: "Responsive",
+      rightText: "Collaborates on examples and feedback delivery while keeping measurable criteria.",
+      cue: "Responsiveness adapts support, not the need for competence.",
+    },
+  },
+  {
+    slug: "supervision-goals-direct-assessment",
+    label: "I.4",
+    title: "Selecting Goals From Direct Assessment",
+    body: [
+      "Direct assessment uses [observation of supervisee performance and permanent products] to select goals.",
+      "A supervision goal should target a measurable staff behavior linked to service quality.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which goal is based on direct assessment?",
+      choices: [
+        "Increase correct implementation of error correction from 45% to 90% during observed sessions.",
+        "Make the supervisee more confident by next month.",
+        "Improve professionalism because the supervisor prefers it.",
+        "Review definitions because the supervisee attended training.",
+      ],
+      answer:
+        "Increase correct implementation of error correction from 45% to 90% during observed sessions.",
+      feedback:
+        "Correct. Direct assessment goals use observed performance data and measurable criteria.",
+      hint:
+        "Choose the goal tied to observed staff behavior and a performance criterion.",
+    },
+  },
+  {
+    slug: "supervision-goals-indirect-assessment",
+    label: "I.4",
+    title: "Selecting Goals From Indirect Assessment",
+    body: [
+      "Indirect assessment includes [interviews, self-assessments, record review, and supervisee reports].",
+      "Indirect information helps identify possible goals, but direct performance data should verify priority needs when possible.",
+    ],
+    visual: {
+      type: "matching",
+      prompt: "Match each information source to its supervision use.",
+      pairs: [
+        { term: "Interview", definition: "Identifies perceived barriers and goals." },
+        { term: "Record review", definition: "Shows documentation patterns and missed requirements." },
+        { term: "Self-assessment", definition: "Reveals confidence and perceived competence." },
+        { term: "Direct observation", definition: "Verifies actual implementation performance." },
+      ],
+    },
+  },
+  {
+    slug: "goals-environmental-barriers",
+    label: "I.4",
+    title: "Matching Goals to Environmental Barriers",
+    body: [
+      "Goal selection should account for [workload, materials, workflow, staffing, language access, and setting demands].",
+      "A performance goal may fail if the environment makes correct implementation unnecessarily difficult.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Staff know the procedure but cannot find materials during sessions. Which goal/support best fits?",
+      choices: [
+        "Organize materials and create a pre-session checklist.",
+        "Assign more reading about reinforcement schedules.",
+        "Lower the integrity criterion permanently.",
+        "Ignore the barrier because staff should remember.",
+      ],
+      answer: "Organize materials and create a pre-session checklist.",
+      feedback:
+        "Correct. Environmental barriers often need resource, process, or task-clarification supports.",
+      hint:
+        "Ask whether the barrier is missing skill or missing conditions for performance.",
+    },
+  },
+  {
+    slug: "bst-instruction",
+    label: "I.5",
+    title: "Behavioral Skills Training: Instruction",
+    body: [
+      "BST instruction gives [clear directions, rationale, performance criteria, and active learner engagement].",
+      "Instruction alone is not enough when the supervisee has not demonstrated the skill.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which instruction component is strongest?",
+      choices: [
+        "Explain when to prompt, show the criterion, and define correct implementation.",
+        "Tell the supervisee to be more consistent.",
+        "Send a policy link without performance criteria.",
+        "Ask the supervisee to watch quietly without questions.",
+      ],
+      answer:
+        "Explain when to prompt, show the criterion, and define correct implementation.",
+      feedback:
+        "Correct. Instructions should make the target performance and criteria clear.",
+      hint:
+        "Choose the option that clarifies what correct performance looks like.",
+    },
+  },
+  {
+    slug: "bst-modeling",
+    label: "I.5",
+    title: "Behavioral Skills Training: Modeling",
+    body: [
+      "Modeling shows [what correct implementation looks like] before the supervisee practices.",
+      "Models may be live, video, peer, role-play, or in-vivo depending on context and safety.",
+    ],
+    visual: {
+      type: "sorting",
+      prompt: "Sort the example.",
+      categories: ["Modeling", "Not modeling"],
+      items: [
+        { label: "Supervisor demonstrates the data-collection procedure", category: "Modeling" },
+        { label: "Supervisor only emails the checklist", category: "Not modeling" },
+        { label: "Peer demonstrates FCT prompting during role play", category: "Modeling" },
+        { label: "Supervisor asks if everyone understands", category: "Not modeling" },
+      ],
+    },
+  },
+  {
+    slug: "bst-rehearsal",
+    label: "I.5",
+    title: "Behavioral Skills Training: Rehearsal",
+    body: [
+      "Rehearsal means the supervisee [practices the skill] under conditions close to where it will be used.",
+      "Role play may establish initial performance; in-vivo rehearsal helps generalize to real service settings.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which plan best adds rehearsal?",
+      choices: [
+        "Have the technician practice the prompting sequence with feedback before client implementation.",
+        "Tell the technician to read the protocol again.",
+        "Ask the technician to sign that training was completed.",
+        "Show a video but do not allow practice.",
+      ],
+      answer:
+        "Have the technician practice the prompting sequence with feedback before client implementation.",
+      feedback:
+        "Correct. Rehearsal requires active practice of the target performance.",
+      hint:
+        "Look for practice, not just exposure to information.",
+    },
+  },
+  {
+    slug: "bst-feedback",
+    label: "I.5",
+    title: "Behavioral Skills Training: Feedback",
+    body: [
+      "BST feedback is [descriptive, timely, contingent, and connected to the next performance opportunity].",
+      "Feedback may include praise for correct steps and corrective feedback with re-modeling or more practice.",
+    ],
+    visual: {
+      type: "comparison",
+      leftTitle: "Vague",
+      leftText: "Good job, but watch your timing.",
+      rightTitle: "Descriptive",
+      rightText: "You waited 1 second; next trial, wait 3 seconds before prompting.",
+      cue: "Feedback should specify the observed response and the next response.",
+    },
+  },
+  {
+    slug: "bst-vs-lecture",
+    label: "I.5",
+    title: "Discriminating BST From Lecture-Only Training",
+    body: [
+      "BST includes [instructions, modeling, rehearsal, and feedback].",
+      "Lecture-only training may build knowledge but often fails to establish accurate implementation.",
+    ],
+    visual: {
+      type: "sorting",
+      prompt: "Sort each training activity.",
+      categories: ["BST component", "Lecture-only feature"],
+      items: [
+        { label: "Role-play the procedure", category: "BST component" },
+        { label: "Watch slides without practice", category: "Lecture-only feature" },
+        { label: "Receive corrective feedback after rehearsal", category: "BST component" },
+        { label: "Listen to definitions only", category: "Lecture-only feature" },
+      ],
+    },
+  },
+  {
+    slug: "reinforcement-in-performance-management",
+    label: "I.5",
+    title: "Performance Management With Reinforcement",
+    body: [
+      "Performance management may use [contingent praise, recognition, preferred assignments, goal feedback, and natural reinforcers].",
+      "Staff reinforcement should be ethical, equitable, and connected to observable performance.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which example uses reinforcement for staff performance?",
+      choices: [
+        "The supervisor gives specific praise and preferred planning time when fidelity meets criterion.",
+        "The supervisor ignores correct implementation.",
+        "The supervisor criticizes errors without stating the correct response.",
+        "The supervisor withholds materials until staff complain.",
+      ],
+      answer:
+        "The supervisor gives specific praise and preferred planning time when fidelity meets criterion.",
+      feedback:
+        "Correct. Reinforcement follows and strengthens desired supervisee performance.",
+      hint:
+        "Look for a consequence delivered after accurate performance.",
+    },
+  },
+  {
+    slug: "feedback-in-performance-management",
+    label: "I.5",
+    title: "Performance Management With Feedback",
+    body: [
+      "Feedback is most useful when staff already have [at least some performance repertoire] and need correction, fluency, or consistency.",
+      "Feedback alone is less likely to work when the supervisee has never learned the skill.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "A technician can implement DRA correctly in role play but misses steps in session. Which support is most direct?",
+      choices: [
+        "In-vivo performance feedback with monitoring and reinforcement.",
+        "Only a lecture on the definition of DRA.",
+        "No support because role-play mastery is enough.",
+        "Change the client's behavior plan immediately.",
+      ],
+      answer:
+        "In-vivo performance feedback with monitoring and reinforcement.",
+      feedback:
+        "Correct. Performance supports fit when the skill exists but is inconsistent in context.",
+      hint:
+        "Ask whether the skill is absent or present but not occurring reliably.",
+    },
+  },
+  {
+    slug: "modeling-and-practice",
+    label: "I.5",
+    title: "Modeling and Practice for Supervisees",
+    body: [
+      "Modeling plus practice helps supervisees contact [examples, nonexamples, and corrected performance].",
+      "Performance improves fastest when practice occurs under realistic conditions with immediate feedback.",
     ],
     visual: {
       type: "flow",
-      prompt: "Order the BST components.",
-      steps: ["Instructions", "Modeling", "Rehearsal", "Feedback"],
+      prompt: "Order the active teaching sequence.",
+      steps: ["Describe the target response", "Model correct implementation", "Rehearse the skill", "Give descriptive feedback"],
+      feedback:
+        "Great job. Active performance management arranges demonstration, practice, and feedback.",
     },
   },
   {
-    slug: "function-based-supervision",
-    label: "I.6-I.7",
-    title: "Function-based supervision",
+    slug: "task-clarification",
+    label: "I.5",
+    title: "Task Clarification",
     body: [
-      "Supervisee performance problems can be affected by [antecedents and consequences].",
-      "Analyze barriers before selecting a performance management strategy.",
+      "Task clarification is indicated when staff do not know [what to do, when to do it, or which standard applies].",
+      "Checklists, decision rules, visual prompts, and job aids can clarify expected performance.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Staff know how to collect data but do not know which sheet to use for each program. What should the supervisor prioritize?",
+      choices: [
+        "A decision rule and job aid for selecting the correct data sheet.",
+        "A full lecture on all measurement systems.",
+        "Punishment for choosing the wrong form.",
+        "No change because staff already know data collection.",
+      ],
+      answer:
+        "A decision rule and job aid for selecting the correct data sheet.",
+      feedback:
+        "Correct. The barrier is task clarification, not necessarily lack of skill.",
+      hint:
+        "Look for unclear cues about when or which action to perform.",
+    },
+  },
+  {
+    slug: "response-effort",
+    label: "I.5",
+    title: "Manipulating Response Effort",
+    body: [
+      "Response-effort changes make correct staff performance [easier, more efficient, or less aversive].",
+      "Examples include organizing materials, simplifying forms, reducing unnecessary steps, or improving workflow.",
+    ],
+    visual: {
+      type: "sorting",
+      prompt: "Sort each intervention.",
+      categories: ["Reduces response effort", "Does not reduce response effort"],
+      items: [
+        { label: "Pre-load data sheets on tablets", category: "Reduces response effort" },
+        { label: "Add three duplicate signatures", category: "Does not reduce response effort" },
+        { label: "Keep teaching materials in labeled bins", category: "Reduces response effort" },
+        { label: "Require staff to search multiple folders", category: "Does not reduce response effort" },
+      ],
+    },
+  },
+  {
+    slug: "performance-diagnostics",
+    label: "I.6",
+    title: "Performance Diagnostics",
+    body: [
+      "Performance diagnostics assess [one specific supervisee performance concern] before selecting an intervention.",
+      "Useful domains include training, task clarification, resources/processes, and consequences/effort/competing tasks.",
+    ],
+    visual: {
+      type: "matching",
+      prompt: "Match each diagnostic domain to the likely support.",
+      pairs: [
+        { term: "Training", definition: "Use BST or improved teaching components." },
+        { term: "Task clarification", definition: "Use checklists, prompts, or decision rules." },
+        { term: "Resources/processes", definition: "Fix materials, staffing, workflow, or tools." },
+        { term: "Consequences/effort", definition: "Arrange feedback, reinforcement, or effort changes." },
+      ],
+    },
+  },
+  {
+    slug: "skill-vs-performance-deficits",
+    label: "I.6",
+    title: "Skill Deficits vs Performance Deficits",
+    body: [
+      "A skill deficit means the supervisee [cannot perform the response yet].",
+      "A performance deficit means the supervisee [can perform the response but does not under current conditions].",
     ],
     visual: {
       type: "comparison",
       leftTitle: "Skill deficit",
-      leftText: "Needs training and rehearsal",
+      leftText: "Needs instruction, modeling, rehearsal, and feedback.",
       rightTitle: "Performance deficit",
-      rightText: "Needs antecedent/consequence support",
-      cue: "Skill deficit = cannot do it yet. Performance deficit = can do it but does not under current conditions.",
+      rightText: "Needs antecedent, consequence, effort, or resource supports.",
+      cue: "Do not treat every staff issue as a training issue.",
     },
+  },
+  {
+    slug: "function-based-supervisee-behavior",
+    label: "I.6",
+    title: "Function-Based Approaches to Supervisee Behavior",
+    body: [
+      "Function-based supervision analyzes [antecedents and consequences] affecting supervisee behavior.",
+      "Low fidelity, late notes, or feedback avoidance may require different supports depending on the function.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "A supervisee avoids data entry because the system is slow and confusing. Which support best matches the barrier?",
+      choices: [
+        "Simplify the workflow, clarify steps, and monitor data-entry completion.",
+        "Repeat lecture content on reinforcement.",
+        "Assume the supervisee lacks motivation and stop supervision.",
+        "Ignore the data-entry problem because sessions occurred.",
+      ],
+      answer:
+        "Simplify the workflow, clarify steps, and monitor data-entry completion.",
+      feedback:
+        "Correct. The support matches resources, process, and response-effort barriers.",
+      hint:
+        "Look for the environmental condition making correct performance difficult.",
+    },
+  },
+  {
+    slug: "common-performance-barriers",
+    label: "I.6",
+    title: "Common Reasons Staff Do Not Perform",
+    body: [
+      "Staff performance may be affected by [missing skills, unclear cues, unavailable materials, weak consequences, high effort, or competing tasks].",
+      "Choosing the wrong support can waste supervision time and delay client progress.",
+    ],
+    visual: {
+      type: "matching",
+      prompt: "Match the barrier to the supervision response.",
+      pairs: [
+        { term: "Cannot perform skill", definition: "Use BST." },
+        { term: "Does not know when to act", definition: "Clarify task cues." },
+        { term: "Materials unavailable", definition: "Fix resources or process." },
+        { term: "Correct work never contacts feedback", definition: "Add feedback and reinforcement." },
+      ],
+    },
+  },
+  {
+    slug: "procedural-integrity-supervision",
+    label: "I.7",
+    title: "Procedural Integrity in Supervision",
+    body: [
+      "Procedural integrity measures whether staff implement procedures [as designed].",
+      "Low integrity should be addressed before concluding that a client intervention is ineffective.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Client outcomes are poor and staff fidelity averages 48%. What should the supervisor address first?",
+      choices: [
+        "Improve implementation fidelity before judging the clinical procedure.",
+        "Declare the intervention ineffective immediately.",
+        "Stop collecting integrity data.",
+        "Move to maintenance because poor outcomes are expected.",
+      ],
+      answer:
+        "Improve implementation fidelity before judging the clinical procedure.",
+      feedback:
+        "Correct. Low fidelity weakens interpretation of client outcome data.",
+      hint:
+        "Ask whether the intervention was implemented well enough to evaluate.",
+    },
+  },
+  {
+    slug: "measuring-staff-performance",
+    label: "I.7",
+    title: "Measuring Staff Performance",
+    body: [
+      "Staff performance can be measured with [direct observation, permanent products, fidelity checklists, latency, frequency, and quality criteria].",
+      "Measurement should match the performance target and the supervision decision.",
+    ],
+    visual: {
+      type: "sorting",
+      prompt: "Sort each measure.",
+      categories: ["Direct performance measure", "Indirect or product measure"],
+      items: [
+        { label: "Observed percentage of correct prompting steps", category: "Direct performance measure" },
+        { label: "Completed session note reviewed later", category: "Indirect or product measure" },
+        { label: "Latency to respond to caregiver message", category: "Direct performance measure" },
+        { label: "Supervisee self-rating of confidence", category: "Indirect or product measure" },
+      ],
+    },
+  },
+  {
+    slug: "graphing-supervisee-performance",
+    label: "I.7",
+    title: "Graphing Supervisee Performance Data",
+    body: [
+      "Graphs help supervisors detect [level, trend, variability, maintenance, and generalization] in staff performance.",
+      "Graphing staff data supports data-based decisions about training, feedback, fading, and follow-up checks.",
+    ],
+    visual: {
+      type: "graph",
+      prompt: "After BST, implementation fidelity increases across sessions. What decision is best supported?",
+      graphTitle: "Supervisee performance data",
+      phases: [
+        { label: "Baseline", detail: "Low fidelity", tone: "blue" },
+        { label: "BST", detail: "Fidelity improves", tone: "teal" },
+      ],
+      choices: [
+        "Plan maintenance and generalization checks after mastery.",
+        "End supervision permanently after one improved point.",
+        "Declare training unnecessary.",
+        "Ignore fidelity because attendance was high.",
+      ],
+      answer: "Plan maintenance and generalization checks after mastery.",
+      feedback:
+        "Correct. Improved staff performance should be followed by maintenance and generalization planning.",
+      graphId: "supervision-bst-fidelity",
+      hint:
+        "Look for improved fidelity and decide how to support durability.",
+    },
+  },
+  {
+    slug: "data-based-supervision-decisions",
+    label: "I.7",
+    title: "Data-Based Supervision Decisions",
+    body: [
+      "Data-based supervision integrates [staff fidelity, client outcomes, permanent products, professionalism, and social-validity data].",
+      "Different data patterns support different next steps.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Fidelity improves to 95%, but client target behavior does not improve. What is the best next decision?",
+      choices: [
+        "Analyze the clinical procedure, client variables, and assessment fit.",
+        "Blame staff performance first.",
+        "Stop measuring client outcomes.",
+        "Reduce supervision because fidelity improved.",
+      ],
+      answer:
+        "Analyze the clinical procedure, client variables, and assessment fit.",
+      feedback:
+        "Correct. High fidelity with weak client outcomes shifts attention to intervention effectiveness and fit.",
+      hint:
+        "First decide whether implementation is strong enough to evaluate the procedure.",
+    },
+  },
+  {
+    slug: "evaluating-supervisory-efficacy",
+    label: "I.7",
+    title: "Evaluating Supervisory Efficacy",
+    body: [
+      "Supervisory efficacy means supervision produces [measurable improvements in supervisee performance and relevant outcomes].",
+      "Efficacy should be evaluated with data, not assumed from meetings completed.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which data stream most directly evaluates supervisory efficacy?",
+      choices: [
+        "Supervisee fidelity improves after the supervision plan is implemented.",
+        "The supervisor scheduled all meetings but observed no performance.",
+        "The supervisee says the content was interesting without performance data.",
+        "The supervisor completed the same agenda each week.",
+      ],
+      answer:
+        "Supervisee fidelity improves after the supervision plan is implemented.",
+      feedback:
+        "Correct. Efficacy is shown by behavior change linked to the supervision procedures.",
+      hint:
+        "Look for measurable supervisee behavior change.",
+    },
+  },
+  {
+    slug: "modifying-supervision",
+    label: "I.7",
+    title: "Modifying Supervision When Performance Does Not Improve",
+    body: [
+      "When performance does not improve, supervisors should [reanalyze barriers and modify supports].",
+      "More lecture is not always the answer; the barrier may be task clarification, effort, materials, consequences, or relationship conditions.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Weekly lectures have not improved fidelity. Observations show staff need practice during live sessions. What should change?",
+      choices: [
+        "Add modeling, rehearsal, in-vivo feedback, and mastery checks.",
+        "Continue lectures only because attendance is high.",
+        "Stop supervision because staff attended training.",
+        "Change the client goal before addressing fidelity.",
+      ],
+      answer:
+        "Add modeling, rehearsal, in-vivo feedback, and mastery checks.",
+      feedback:
+        "Correct. Data suggest active performance training is needed.",
+      hint:
+        "Match the supervision change to the observed performance barrier.",
+    },
+  },
+  {
+    slug: "collaboration-during-supervision",
+    label: "I.2",
+    title: "Collaboration During Supervision",
+    body: [
+      "Collaboration includes [active listening, seeking input, coordinating roles, and communicating respectfully].",
+      "Collaboration supports services while preserving scope, confidentiality, and accountability.",
+    ],
+    visual: {
+      type: "select-all",
+      prompt: "Select collaborative supervision behaviors.",
+      choices: [
+        { label: "Ask the teacher what barriers occur during implementation", correct: true },
+        { label: "Clarify who will collect integrity data", correct: true },
+        { label: "Dismiss caregiver concerns because fidelity improved", correct: false },
+        { label: "Coordinate feedback with the interdisciplinary team when appropriate", correct: true },
+      ],
+      feedback:
+        "Correct. Collaboration uses input and role clarity to improve service delivery.",
+    },
+  },
+  {
+    slug: "ethical-supervision-scenarios",
+    label: "I.2",
+    title: "Ethical Supervision Scenarios",
+    body: [
+      "Ethical supervision requires [competence, documentation, confidentiality, appropriate delegation, and continuity].",
+      "Supervisors should not delegate independent implementation before competence is demonstrated.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "A supervisee watched one model but has not demonstrated the skill. What should happen before independent implementation?",
+      choices: [
+        "The supervisee should rehearse and meet competency criteria with feedback.",
+        "The supervisee can implement independently because observation occurred.",
+        "The supervisor should remove documentation requirements.",
+        "The client should be used for unsupervised practice.",
+      ],
+      answer:
+        "The supervisee should rehearse and meet competency criteria with feedback.",
+      feedback:
+        "Correct. Delegation requires demonstrated competent performance.",
+      hint:
+        "Look for verified competence, not just exposure.",
+    },
+  },
+  {
+    slug: "treatment-integrity-vs-supervisory-efficacy",
+    label: "I.7",
+    title: "Treatment Integrity vs Supervisory Efficacy",
+    body: [
+      "Treatment integrity asks whether staff implemented the client procedure [as designed].",
+      "Supervisory efficacy asks whether the supervision plan [improved supervisee performance].",
+    ],
+    visual: {
+      type: "comparison",
+      leftTitle: "Treatment integrity",
+      leftText: "Did staff implement the behavior plan correctly?",
+      rightTitle: "Supervisory efficacy",
+      rightText: "Did supervision improve staff implementation?",
+      cue: "One measures implementation; the other evaluates supervision effects.",
+    },
+  },
+  {
+    slug: "maintenance-generalization-supervisee-skills",
+    label: "I.7",
+    title: "Maintenance and Generalization of Supervisee Skills",
+    body: [
+      "Supervisee skills should maintain [over time] and generalize [across clients, settings, materials, and routines].",
+      "Role-play mastery is not enough if performance drops with a new client or setting.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Role-play fidelity reaches 95%, but in-vivo fidelity with a new client drops to 58%. What should the supervisor do?",
+      choices: [
+        "Train and probe generalization across clients and settings.",
+        "Declare the supervisee fully mastered because role-play was high.",
+        "Stop measuring fidelity during real sessions.",
+        "Move immediately to reinforcement thinning only.",
+      ],
+      answer: "Train and probe generalization across clients and settings.",
+      feedback:
+        "Correct. Mastery should be checked across relevant performance contexts.",
+      hint:
+        "Look for a generalization gap between training and service settings.",
+    },
+  },
+  {
+    slug: "reinforcement-thinning-supervisee-performance",
+    label: "I.7",
+    title: "Reinforcement Thinning for Supervisee Performance",
+    body: [
+      "When staff performance is stable, supports can be [thinned gradually while monitoring maintenance].",
+      "Abruptly removing feedback or reinforcement may reduce performance.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Fidelity falls after feedback stops abruptly. What decision is most appropriate?",
+      choices: [
+        "Return to feedback, then thin it gradually with maintenance probes.",
+        "End supervision because fidelity was once high.",
+        "Punish all errors without re-teaching.",
+        "Ignore the drop because staff attended training.",
+      ],
+      answer:
+        "Return to feedback, then thin it gradually with maintenance probes.",
+      feedback:
+        "Correct. Thinning should be gradual and data-based.",
+      hint:
+        "Think about maintenance after support is reduced.",
+    },
+  },
+  {
+    slug: "feedback-systems-acceptability",
+    label: "I.7",
+    title: "Staff Feedback Systems and Acceptability",
+    body: [
+      "Acceptability data can reveal whether feedback systems are [usable, respectful, timely, and sustainable].",
+      "Social-validity concerns should guide modifications without abandoning objective performance goals.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Fidelity is stable, but supervisee satisfaction with feedback drops sharply. What should the supervisor do?",
+      choices: [
+        "Treat the feedback as social-validity data and adjust the process while maintaining standards.",
+        "Ignore the feedback because fidelity is stable.",
+        "Stop all feedback permanently.",
+        "Lower competency criteria to increase satisfaction.",
+      ],
+      answer:
+        "Treat the feedback as social-validity data and adjust the process while maintaining standards.",
+      feedback:
+        "Correct. Acceptability is data that can improve supervision design.",
+      hint:
+        "Balance objective performance criteria with social validity.",
+    },
+  },
+  {
+    slug: "supervision-contextual-fit",
+    label: "I.4",
+    title: "Supervision Contextual Fit",
+    body: [
+      "Contextual fit means supervision procedures match [setting resources, workflows, culture, schedules, and supervisee needs].",
+      "A technically sound plan may fail if it cannot be implemented in the actual service context.",
+    ],
+    visual: {
+      type: "choice",
+      prompt: "Which supervision plan has the strongest contextual fit?",
+      choices: [
+        "Brief in-vivo observations during existing sessions with same-day feedback and a simple fidelity checklist.",
+        "Two-hour daily meetings that remove staff from required client coverage.",
+        "A complex data system that staff cannot access at the school.",
+        "Feedback delivered only in a format the supervisee cannot use.",
+      ],
+      answer:
+        "Brief in-vivo observations during existing sessions with same-day feedback and a simple fidelity checklist.",
+      feedback:
+        "Correct. Contextual fit supports feasible, acceptable, and effective supervision.",
+      hint:
+        "Look for a plan that works with real service constraints.",
+    },
+  },
+];
+
+const sectionIPracticeQuestions: QuestionContent[] = [
+  {
+    type: "matching",
+    prompt: "Match each staff-performance barrier to the most aligned supervision support.",
+    pairs: [
+      { term: "No skill yet", definition: "Behavioral skills training with rehearsal and feedback." },
+      { term: "Unclear when to act", definition: "Task clarification, prompts, or a job aid." },
+      { term: "Materials unavailable", definition: "Resource or process change." },
+      { term: "Correct work contacts no consequence", definition: "Performance feedback and reinforcement." },
+    ],
+    answer: "All staff-performance barriers matched correctly",
+    explanation:
+      "Performance diagnostics match supports to [training, task clarification, resources/processes, or consequences/effort barriers].",
+    hint:
+      "Do not make every staff performance problem a training problem.",
+  },
+  {
+    type: "sorting",
+    prompt: "Sort each supervision behavior.",
+    categories: ["Effective supervisory relationship", "Ineffective supervision"],
+    items: [
+      { label: "Uses clear agendas and timely feedback", category: "Effective supervisory relationship" },
+      { label: "Cancels observations without rescheduling", category: "Ineffective supervision" },
+      { label: "Clarifies roles and documentation expectations", category: "Effective supervisory relationship" },
+      { label: "Gives vague criticism after problems escalate", category: "Ineffective supervision" },
+    ],
+    answer: "All supervision behaviors sorted correctly",
+    explanation:
+      "Effective relationships require [clear expectations, communication, feedback, and accountability].",
+    hint:
+      "Look for observable support versus vague or delayed supervision.",
+  },
+  {
+    type: "select-all",
+    prompt:
+      "A supervisor has many trainees, delayed feedback, missed documentation, and weak client progress. Select the risks present.",
+    choices: [
+      "Capacity problem",
+      "Documentation risk",
+      "Delayed performance feedback",
+      "Client outcome risk",
+      "Proof that supervision is effective",
+    ],
+    answers: [
+      "Capacity problem",
+      "Documentation risk",
+      "Delayed performance feedback",
+      "Client outcome risk",
+    ],
+    answer:
+      "Capacity, documentation, delayed feedback, and client outcome risks are present.",
+    explanation:
+      "Supervision quality depends on [capacity, timely feedback, documentation, and client-related outcomes].",
+    hint:
+      "Identify risks created by the current supervision conditions.",
+  },
+  {
+    type: "fill-blank",
+    prompt:
+      "Complete the active training package: Behavioral skills training includes instructions, modeling, rehearsal, and ____.",
+    answer: "feedback",
+    explanation:
+      "BST includes [instructions, modeling, rehearsal, and feedback].",
+    hint:
+      "Think about the component delivered after the supervisee practices.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "An RBT can describe a protocol accurately but scores 42% fidelity during sessions. What is the best next supervision action?",
+    choices: [
+      "Use active practice with immediate descriptive feedback in the service context.",
+      "Assign more reading only because the RBT can state the protocol.",
+      "Declare the client intervention ineffective.",
+      "Stop measuring fidelity until the RBT feels confident.",
+    ],
+    answer:
+      "Use active practice with immediate descriptive feedback in the service context.",
+    explanation:
+      "Low implementation fidelity after verbal knowledge suggests a need for [rehearsal, feedback, and in-vivo support].",
+    hint:
+      "Separate knowing about a procedure from performing it accurately.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "Staff stopped entering data because the new form is slow and confusing. Which intervention best fits the barrier?",
+    choices: [
+      "Simplify the form, clarify steps, and monitor completion.",
+      "Repeat a lecture on behavior principles only.",
+      "Ignore data entry because sessions are still happening.",
+      "Lower all performance expectations permanently.",
+    ],
+    answer: "Simplify the form, clarify steps, and monitor completion.",
+    explanation:
+      "A confusing, effortful form suggests [task clarification and response-effort/process supports].",
+    hint:
+      "Look for the environmental feature blocking performance.",
+  },
+  {
+    type: "scenario",
+    graphId: "supervision-generalization-drop",
+    prompt:
+      "Role-play fidelity reaches mastery, but fidelity drops with a new client. What supervision decision is best supported?",
+    choices: [
+      "Program generalization and conduct follow-up competency checks.",
+      "Declare full mastery because role-play performance was high.",
+      "Stop monitoring in-vivo implementation.",
+      "Change the client intervention before addressing staff performance.",
+    ],
+    answer: "Program generalization and conduct follow-up competency checks.",
+    explanation:
+      "A drop from role play to new-client implementation shows a [generalization problem] in supervisee performance.",
+    hint:
+      "Compare performance across training and natural contexts.",
+  },
+  {
+    type: "select-all",
+    prompt: "Select elements that belong in a supervision contract.",
+    choices: [
+      "Roles and responsibilities",
+      "Communication expectations",
+      "Documentation requirements",
+      "Performance criteria",
+      "Permission to ignore professional boundaries",
+    ],
+    answers: [
+      "Roles and responsibilities",
+      "Communication expectations",
+      "Documentation requirements",
+      "Performance criteria",
+    ],
+    answer:
+      "Contracts should include roles, communication expectations, documentation, and performance criteria.",
+    explanation:
+      "Supervision contracts clarify [roles, scope, expectations, criteria, documentation, communication, and boundaries].",
+    hint:
+      "Look for elements that make supervision expectations clear and accountable.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A supervisee reports that feedback feels culturally dismissive, although fidelity is improving. What should the supervisor do?",
+    choices: [
+      "Treat the concern as social-validity data, collaborate on feedback delivery, and keep objective criteria.",
+      "Ignore the report because fidelity improved.",
+      "Stop giving corrective feedback.",
+      "Lower competency criteria to avoid discomfort.",
+    ],
+    answer:
+      "Treat the concern as social-validity data, collaborate on feedback delivery, and keep objective criteria.",
+    explanation:
+      "Culturally responsive supervision adapts [communication and support] while maintaining measurable standards.",
+    hint:
+      "Balance responsiveness with objective performance expectations.",
+  },
+  {
+    type: "sorting",
+    prompt: "Sort each competency example.",
+    categories: ["Knowledge-based competency", "Performance-based competency"],
+    items: [
+      { label: "Defines differential reinforcement", category: "Knowledge-based competency" },
+      { label: "Implements DRA with 90% fidelity", category: "Performance-based competency" },
+      { label: "Describes preference assessment types", category: "Knowledge-based competency" },
+      { label: "Conducts paired-stimulus trials accurately", category: "Performance-based competency" },
+    ],
+    answer: "All competency examples sorted correctly",
+    explanation:
+      "Knowledge means the supervisee can state concepts; performance means the supervisee can [implement accurately].",
+    hint:
+      "Separate describing a skill from doing it with fidelity.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A supervisee repeatedly misses meeting agendas. Assessment suggests unclear expectations and no reminders. What should the supervisor do first?",
+    choices: [
+      "Define the agenda expectation and add prompts or a checklist.",
+      "Use intensive BST for all clinical procedures.",
+      "Assume the supervisee is not committed.",
+      "Discontinue supervision without clarifying expectations.",
+    ],
+    answer: "Define the agenda expectation and add prompts or a checklist.",
+    explanation:
+      "Unclear expectations and missing reminders suggest [task clarification and prompting].",
+    hint:
+      "Match the intervention to the assessed barrier.",
+  },
+  {
+    type: "scenario",
+    graphId: "supervision-attendance-low-integrity",
+    prompt:
+      "Training attendance is consistently high, but implementation fidelity remains low. What is the best interpretation?",
+    choices: [
+      "Attendance alone has not established accurate performance.",
+      "The supervisee has mastered the skill because attendance is high.",
+      "Client outcomes should be ignored because training occurred.",
+      "The graph proves feedback should be removed.",
+    ],
+    answer: "Attendance alone has not established accurate performance.",
+    explanation:
+      "Supervision should evaluate [performance], not only attendance or exposure to training.",
+    hint:
+      "Compare attending training with implementing correctly.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A supervisor notices one supervisee receives fewer observation opportunities because of assumptions about family obligations. What is the best response?",
+    choices: [
+      "Analyze and correct access barriers while maintaining the same competency standards.",
+      "Keep the schedule unchanged because opportunities are optional.",
+      "Lower criteria for that supervisee instead of changing access.",
+      "Avoid discussing the pattern because intent was not harmful.",
+    ],
+    answer:
+      "Analyze and correct access barriers while maintaining the same competency standards.",
+    explanation:
+      "Equity involves [fair access to learning opportunities] without reducing objective competence expectations.",
+    hint:
+      "Look for access correction, not lowered standards.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A staff member performs a procedure accurately only when the supervisor is present. Which support best promotes maintenance?",
+    choices: [
+      "Thin supervisor presence gradually and add natural feedback or self-monitoring.",
+      "Remove all supports immediately.",
+      "Stop measuring fidelity because performance occurred once.",
+      "Change to lecture-only training.",
+    ],
+    answer:
+      "Thin supervisor presence gradually and add natural feedback or self-monitoring.",
+    explanation:
+      "Maintenance requires [gradual support thinning and follow-up checks].",
+    hint:
+      "Think about durable performance after supervision support changes.",
+  },
+  {
+    type: "scenario",
+    graphId: "supervision-integrity-client-outcome",
+    prompt:
+      "Fidelity improves to high levels, but client target behavior remains unchanged. What is the best data-based decision?",
+    choices: [
+      "Evaluate the clinical intervention, client variables, and assessment fit.",
+      "Blame staff implementation first because fidelity is high.",
+      "Stop collecting client outcome data.",
+      "Assume supervision is ineffective because client data did not change.",
+    ],
+    answer:
+      "Evaluate the clinical intervention, client variables, and assessment fit.",
+    explanation:
+      "When fidelity is high but outcomes are weak, analyze [intervention effectiveness and client variables].",
+    hint:
+      "Ask whether implementation is strong enough to shift attention to the intervention itself.",
+  },
+  {
+    type: "scenario",
+    graphId: "supervision-feedback-thinning",
+    prompt:
+      "Fidelity rises with frequent feedback but falls after feedback stops. What should the supervisor do?",
+    choices: [
+      "Reintroduce feedback and thin it gradually while monitoring maintenance.",
+      "End supervision because fidelity was once high.",
+      "Use only a written policy from now on.",
+      "Ignore the decrease because the staff member attended training.",
+    ],
+    answer:
+      "Reintroduce feedback and thin it gradually while monitoring maintenance.",
+    explanation:
+      "Abrupt support removal can reduce performance; thinning should be [gradual and data-based].",
+    hint:
+      "Think about support fading, not sudden removal.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A supervisor wants to know whether their supervision plan is working. Which data stream is most direct?",
+    choices: [
+      "Repeated measures of supervisee implementation fidelity after supervision changes.",
+      "The number of meetings scheduled only.",
+      "The supervisor's preference for the training format.",
+      "A list of articles sent to the supervisee.",
+    ],
+    answer:
+      "Repeated measures of supervisee implementation fidelity after supervision changes.",
+    explanation:
+      "Supervisory efficacy is evaluated with [data on supervisee behavior and relevant outcomes].",
+    hint:
+      "Look for behavior change linked to the supervision plan.",
+  },
+  {
+    type: "matching",
+    prompt: "Match each BST component to its supervision example.",
+    pairs: [
+      { term: "Instructions", definition: "Describe steps and criteria before practice." },
+      { term: "Modeling", definition: "Demonstrate the procedure." },
+      { term: "Rehearsal", definition: "Have the supervisee practice the procedure." },
+      { term: "Feedback", definition: "Describe accurate and inaccurate performance after practice." },
+    ],
+    answer: "All BST components matched correctly",
+    explanation:
+      "BST is an active package of [instructions, modeling, rehearsal, and feedback].",
+    hint:
+      "Identify what happens before, during, and after supervisee practice.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A caregiver and teacher provide different reports about barriers to implementation. What should the supervisor do?",
+    choices: [
+      "Collaborate respectfully, gather direct data, and clarify roles before changing supports.",
+      "Choose one report and ignore the other.",
+      "Stop collaboration because reports conflict.",
+      "Change the plan without verifying implementation barriers.",
+    ],
+    answer:
+      "Collaborate respectfully, gather direct data, and clarify roles before changing supports.",
+    explanation:
+      "Collaboration uses [input, direct data, and role clarification] to support services.",
+    hint:
+      "Look for respectful collaboration plus verification.",
+  },
+  {
+    type: "fill-blank",
+    prompt:
+      "Complete the supervision discrimination: Treatment integrity measures whether staff implement procedures as ____.",
+    answer: "designed",
+    explanation:
+      "Treatment integrity measures whether procedures are implemented [as designed].",
+    hint:
+      "Think about comparing implementation to the written procedure.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A supervisor has high client demands, delayed responses to trainees, and incomplete supervision logs. What should be evaluated before taking additional supervisees?",
+    choices: [
+      "Supervisory capacity and quality-control systems.",
+      "Whether trainees can work without contracts.",
+      "Whether documentation can be discontinued.",
+      "How to reduce observation requirements for all trainees.",
+    ],
+    answer: "Supervisory capacity and quality-control systems.",
+    explanation:
+      "Capacity includes [time, caseload, logistics, documentation, and response time].",
+    hint:
+      "Focus on whether the supervisor can maintain quality supervision.",
+  },
+  {
+    type: "select-all",
+    prompt: "Select data that can be used to evaluate supervision.",
+    choices: [
+      "Supervisee procedural fidelity",
+      "Client outcome data when relevant",
+      "Supervisee satisfaction or acceptability",
+      "Permanent products such as session notes",
+      "Supervisor intention without performance data",
+    ],
+    answers: [
+      "Supervisee procedural fidelity",
+      "Client outcome data when relevant",
+      "Supervisee satisfaction or acceptability",
+      "Permanent products such as session notes",
+    ],
+    answer:
+      "Supervision can be evaluated with fidelity, client outcomes, acceptability, and permanent-product data.",
+    explanation:
+      "Data-based supervision integrates [multiple data streams] rather than relying on supervisor intention.",
+    hint:
+      "Look for observable or reportable data streams tied to supervision quality.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A supervisee has never conducted a paired-stimulus preference assessment. What supervision procedure best establishes the skill?",
+    choices: [
+      "Behavioral skills training to mastery with practice and feedback.",
+      "Performance feedback only after independent implementation.",
+      "A job aid without modeling or rehearsal.",
+      "Assigning the supervisee to train others immediately.",
+    ],
+    answer:
+      "Behavioral skills training to mastery with practice and feedback.",
+    explanation:
+      "A new skill requires [active training with mastery criteria], not feedback alone.",
+    hint:
+      "Ask whether the supervisee already has the skill in repertoire.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A supervisor gives feedback two weeks after observation and says only, 'Be more professional.' What is the main weakness?",
+    choices: [
+      "The feedback is delayed and not behavior-specific.",
+      "The feedback includes too much modeling.",
+      "The feedback uses too many objective criteria.",
+      "The feedback is too culturally responsive.",
+    ],
+    answer: "The feedback is delayed and not behavior-specific.",
+    explanation:
+      "Effective feedback should be [timely, descriptive, and behavior-focused].",
+    hint:
+      "Evaluate timing and specificity.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A supervisee reports the supervision agenda does not match current case demands. What is the best use of that feedback?",
+    choices: [
+      "Review the data and revise agenda priorities while preserving required supervision activities.",
+      "Ignore the feedback because the agenda was already written.",
+      "Remove all structure from supervision.",
+      "Cancel observations until the supervisee is satisfied.",
+    ],
+    answer:
+      "Review the data and revise agenda priorities while preserving required supervision activities.",
+    explanation:
+      "Supervisee feedback can guide [contextual fit and social validity] without abandoning supervision responsibilities.",
+    hint:
+      "Use feedback as data, not as a reason to remove accountability.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A technician reads the behavior plan and watches the supervisor run one trial but has not practiced. Which BST component is missing?",
+    choices: [
+      "Rehearsal with feedback",
+      "Written instructions",
+      "Initial modeling",
+      "A task-analysis label",
+    ],
+    answer: "Rehearsal with feedback",
+    explanation:
+      "BST requires the supervisee to [practice the target performance and receive feedback], not only observe it.",
+    hint:
+      "Look for the active practice component after instructions and modeling.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "An RBT previously scored 95% fidelity on discrete-trial teaching, but current fidelity is 55% when sessions are scheduled during cleanup time. What is the most likely issue?",
+    choices: [
+      "A performance deficit affected by competing contingencies",
+      "A skill deficit requiring teaching the skill from the beginning",
+      "A respondent extinction process",
+      "A generalized conditioned punisher",
+    ],
+    answer: "A performance deficit affected by competing contingencies",
+    explanation:
+      "Previously demonstrated skill with poor performance under current conditions suggests [performance barriers], not absent skill.",
+    hint:
+      "Use the history of accurate performance to discriminate skill from performance deficits.",
+  },
+  {
+    type: "select-all",
+    prompt:
+      "Select features of effective corrective feedback after an observed implementation error.",
+    choices: [
+      "Describes the specific staff response observed",
+      "States the expected next response",
+      "Occurs close enough to guide the next opportunity",
+      "Uses only a global label such as unprofessional",
+      "Avoids any chance for rehearsal",
+    ],
+    answers: [
+      "Describes the specific staff response observed",
+      "States the expected next response",
+      "Occurs close enough to guide the next opportunity",
+    ],
+    answer:
+      "Effective corrective feedback is specific, timely, and linked to the next response opportunity.",
+    explanation:
+      "Useful feedback should be [descriptive, timely, behavior-focused, and actionable].",
+    hint:
+      "Look for feedback that tells the supervisee exactly what happened and what to do next.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A team wants to increase accurate data entry. Staff who submit accurate notes by 5 p.m. receive specific praise and first choice of prep materials. Which procedure is being used?",
+    choices: [
+      "A reinforcement system for supervisee performance",
+      "Lecture-only training",
+      "Task clarification without consequences",
+      "A preference assessment for the client",
+    ],
+    answer: "A reinforcement system for supervisee performance",
+    explanation:
+      "The supervisor arranges preferred consequences following [accurate, timely staff performance].",
+    hint:
+      "Look at what happens after the staff behavior.",
+  },
+  {
+    type: "scenario",
+    graphId: "supervision-bst-fidelity",
+    prompt:
+      "Procedural integrity rises after active training is introduced. What supervision decision is best supported?",
+    choices: [
+      "Continue active training until mastery is stable, then probe maintenance.",
+      "Stop supervision after the first improved session.",
+      "Conclude that attendance caused the improvement.",
+      "Remove integrity monitoring because performance improved once.",
+    ],
+    answer:
+      "Continue active training until mastery is stable, then probe maintenance.",
+    explanation:
+      "Improving fidelity supports continuing the supervision package until [stable mastery and maintenance checks] are in place.",
+    hint:
+      "Focus on what the graph suggests about staff performance and next steps.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A supervision plan requires staff to complete a 14-step form during fast-paced teaching, and data are often missing. Which change best targets response effort?",
+    choices: [
+      "Simplify the form and pre-fill stable fields while keeping essential data requirements.",
+      "Add a lecture about why data are important.",
+      "Tell staff to try harder without changing the form.",
+      "Stop collecting data because the form is long.",
+    ],
+    answer:
+      "Simplify the form and pre-fill stable fields while keeping essential data requirements.",
+    explanation:
+      "Response-effort manipulations make correct performance [easier while preserving the needed behavior].",
+    hint:
+      "Look for a change that reduces unnecessary effort without removing accountability.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A supervisor uses examples that do not match the supervisee's service setting, and the supervisee asks for examples involving bilingual caregiver meetings. What is the best response?",
+    choices: [
+      "Collaborate to adapt examples to the service context while keeping the same performance criteria.",
+      "Refuse because all supervisees should receive identical examples.",
+      "Remove performance criteria because cultural responsiveness requires flexibility.",
+      "Avoid caregiver-meeting examples because they are too specific.",
+    ],
+    answer:
+      "Collaborate to adapt examples to the service context while keeping the same performance criteria.",
+    explanation:
+      "Culturally responsive supervision uses [contextually relevant examples and clear standards].",
+    hint:
+      "Choose responsiveness without lowering objective expectations.",
+  },
+  {
+    type: "matching",
+    prompt: "Match each performance diagnostic cue to the best first support.",
+    pairs: [
+      { term: "No model or practice history", definition: "BST with rehearsal and feedback." },
+      { term: "Unclear decision rule", definition: "Task clarification or job aid." },
+      { term: "Supplies missing in the room", definition: "Resource or process fix." },
+      { term: "Accurate work never receives feedback", definition: "Feedback and reinforcement." },
+    ],
+    answer: "All diagnostic cues matched correctly",
+    explanation:
+      "Performance diagnostics guide supervisors to [function-matched staff supports].",
+    hint:
+      "Match each barrier to the smallest supervision change likely to improve performance.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A supervisee misses data during group instruction because the data sheet is across the room. Which intervention best fits?",
+    choices: [
+      "Move the data sheet to the teaching area and add a simple prompt.",
+      "Require the supervisee to memorize all data after the session.",
+      "Provide a full ethics lecture as the only support.",
+      "Change the client's target behavior because data are inconvenient.",
+    ],
+    answer:
+      "Move the data sheet to the teaching area and add a simple prompt.",
+    explanation:
+      "The barrier is practical access to materials, so a [resource/process and response-effort adjustment] fits.",
+    hint:
+      "Look for the environmental arrangement that makes data collection easier.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A supervisor gives all feedback through long written reports, but staff implement changes only after brief in-vivo demonstrations. What should the supervisor modify?",
+    choices: [
+      "Shift to direct modeling, rehearsal, and immediate feedback in the work setting.",
+      "Keep written reports as the only method because they are detailed.",
+      "Stop giving feedback because staff did not use the reports.",
+      "Lower all fidelity goals to match current performance.",
+    ],
+    answer:
+      "Shift to direct modeling, rehearsal, and immediate feedback in the work setting.",
+    explanation:
+      "Supervision should be modified when data show that [active, contextual performance support] is more effective.",
+    hint:
+      "Use staff response to supervision as data for changing the support.",
+  },
+];
+
+const sectionIMasteryQuestions: QuestionContent[] = [
+  {
+    type: "scenario",
+    prompt:
+      "A supervisor is asked to add three trainees but already misses observation and feedback deadlines. Which response is most appropriate?",
+    choices: [
+      "Decline or delay new supervision until quality, capacity, and documentation can be maintained.",
+      "Accept the trainees and reduce observations for everyone.",
+      "Stop documenting supervision to create more meeting time.",
+      "Let trainees supervise each other without oversight.",
+    ],
+    answer:
+      "Decline or delay new supervision until quality, capacity, and documentation can be maintained.",
+    explanation:
+      "Supervisory capacity must protect [feedback quality, documentation, responsiveness, and client service outcomes].",
+    hint:
+      "Focus on quality and capacity before expanding supervision volume.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A supervisee defensively rejects correction and stops bringing cases to meetings. What should the supervisor do first?",
+    choices: [
+      "Assess feedback conditions and the supervisory relationship, then model expected feedback behavior and make a plan.",
+      "Remove the supervisee from all cases immediately without assessing the barrier.",
+      "Stop giving corrective feedback to preserve rapport.",
+      "Ignore the pattern because supervision meetings still occur.",
+    ],
+    answer:
+      "Assess feedback conditions and the supervisory relationship, then model expected feedback behavior and make a plan.",
+    explanation:
+      "Feedback resistance may reflect [relationship, feedback-delivery, or performance-contingency variables] that should be assessed.",
+    hint:
+      "Look for assessment and repair of the supervision conditions.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A staff member has never implemented a preference assessment. Which procedure best establishes the skill?",
+    choices: [
+      "Behavioral skills training with instructions, modeling, rehearsal, feedback, and mastery criteria.",
+      "A single emailed checklist with no practice.",
+      "Performance feedback after independent implementation only.",
+      "A verbal reminder to be more accurate.",
+    ],
+    answer:
+      "Behavioral skills training with instructions, modeling, rehearsal, feedback, and mastery criteria.",
+    explanation:
+      "New supervisee skills are best established with [active performance training to mastery].",
+    hint:
+      "Choose the option that teaches and verifies performance.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "Staff are trained and capable, but they do not know which data sheet to use for each program. What should the supervisor prioritize?",
+    choices: [
+      "A clear decision rule, job aid, and prompts for selecting the correct sheet.",
+      "Full retraining on every measurement procedure as the first step.",
+      "Punishment for choosing the wrong form.",
+      "Ignoring the issue because staff are capable.",
+    ],
+    answer:
+      "A clear decision rule, job aid, and prompts for selecting the correct sheet.",
+    explanation:
+      "When performance is blocked by unclear cues, task clarification and prompts fit better than broad retraining.",
+    hint:
+      "Identify whether the issue is skill absence or unclear conditions for using the skill.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A diagnostic assessment shows the main barriers are performance consequences, high effort, and competing tasks. Which intervention is most aligned?",
+    choices: [
+      "Add performance feedback, reinforcement, outcome visibility, and response-effort changes.",
+      "Use lecture-only training because all barriers are knowledge deficits.",
+      "Change the client goal before addressing staff performance.",
+      "Remove all monitoring so staff feel less pressured.",
+    ],
+    answer:
+      "Add performance feedback, reinforcement, outcome visibility, and response-effort changes.",
+    explanation:
+      "Consequence, effort, and competing-task barriers call for [feedback, reinforcement, monitoring, and effort/process supports].",
+    hint:
+      "Match the intervention to the diagnosed performance barrier.",
+  },
+  {
+    type: "scenario",
+    graphId: "supervision-bst-fidelity",
+    prompt:
+      "Implementation fidelity is low during baseline and improves after active training is introduced. What decision is most supported?",
+    choices: [
+      "Continue until mastery is stable, then program maintenance and generalization checks.",
+      "End supervision after the first improved data point.",
+      "Declare training unnecessary because baseline was measured.",
+      "Ignore fidelity and evaluate only meeting attendance.",
+    ],
+    answer:
+      "Continue until mastery is stable, then program maintenance and generalization checks.",
+    explanation:
+      "Improved fidelity after active training supports supervisory efficacy, followed by [maintenance and generalization planning].",
+    hint:
+      "Look for improved staff performance and the next durability step.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "One supervisee consistently receives fewer client-observation opportunities because of scheduling assumptions. What should the supervisor do?",
+    choices: [
+      "Analyze and correct the access barrier while maintaining objective competency requirements.",
+      "Lower the competency standard for that supervisee.",
+      "Keep opportunities unchanged because the difference was unintentional.",
+      "Stop tracking observation opportunities.",
+    ],
+    answer:
+      "Analyze and correct the access barrier while maintaining objective competency requirements.",
+    explanation:
+      "Equity requires [fair access to learning opportunities] while preserving competence standards.",
+    hint:
+      "Choose access correction, not lowered expectations.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A supervisor notices examples and feedback formats do not fit the supervisee's context, and the supervisee avoids feedback. What is the best response?",
+    choices: [
+      "Collaborate to adapt examples and feedback delivery, measure effects, and keep performance criteria clear.",
+      "Ignore the concern because the criteria are objective.",
+      "Remove performance criteria to improve comfort.",
+      "Avoid feedback and rely only on client outcome data.",
+    ],
+    answer:
+      "Collaborate to adapt examples and feedback delivery, measure effects, and keep performance criteria clear.",
+    explanation:
+      "Culturally responsive supervision adapts [support and communication] while maintaining measurable performance expectations.",
+    hint:
+      "Look for collaboration plus objective standards.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A supervisee watched one model but has not demonstrated competency. Can the supervisor delegate independent implementation?",
+    choices: [
+      "No; competent performance should be verified before independent delegation.",
+      "Yes; observing a model is the same as mastery.",
+      "Yes; delegation is appropriate if the client needs services quickly.",
+      "No; supervisees should never implement procedures.",
+    ],
+    answer:
+      "No; competent performance should be verified before independent delegation.",
+    explanation:
+      "Appropriate delegation requires [demonstrated competence and ongoing oversight].",
+    hint:
+      "Distinguish exposure to training from verified performance.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "Client outcomes improve, but the supervisee reports supervision is disorganized and goals are unclear. What should the supervisor do?",
+    choices: [
+      "Use the feedback as process and social-validity data to improve supervision structure.",
+      "Ignore the report because client outcomes improved.",
+      "End supervision because the client data are positive.",
+      "Remove all goals so supervision feels less structured.",
+    ],
+    answer:
+      "Use the feedback as process and social-validity data to improve supervision structure.",
+    explanation:
+      "Supervisory efficacy includes [supervisee performance, relevant outcomes, process quality, and acceptability].",
+    hint:
+      "Do not ignore supervision-process data just because one outcome improved.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A supervisor takes unexpected leave. Which action best protects services and supervisee progress?",
+    choices: [
+      "Communicate a transition plan, identify coverage, preserve documentation, and minimize disruption.",
+      "Leave cases uncovered until the supervisor returns.",
+      "Delete supervision records to protect privacy.",
+      "Tell supervisees to make independent clinical decisions outside their competence.",
+    ],
+    answer:
+      "Communicate a transition plan, identify coverage, preserve documentation, and minimize disruption.",
+    explanation:
+      "Continuity requires [transition planning, documentation, coverage, and protection of clients and supervisees].",
+    hint:
+      "Look for continuity of care and supervision support.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A trainee repeatedly misses agendas. Assessment suggests unclear expectations and no reminders. What is the best intervention?",
+    choices: [
+      "Operationally define agenda submission, add prompts or a checklist, monitor, and reinforce meeting prep.",
+      "Use punishment without clarifying the expected behavior.",
+      "Assign more reading about ethics as the only support.",
+      "Ignore the pattern because agenda submission is not client-facing.",
+    ],
+    answer:
+      "Operationally define agenda submission, add prompts or a checklist, monitor, and reinforce meeting prep.",
+    explanation:
+      "Task clarification problems call for [observable expectations, prompts, monitoring, and performance consequences].",
+    hint:
+      "Match the support to unclear expectations and missing reminders.",
+  },
+  {
+    type: "scenario",
+    graphId: "supervision-generalization-drop",
+    prompt:
+      "Role-play performance meets criterion, but in-vivo performance with a different client is much lower. Which interpretation is strongest?",
+    choices: [
+      "The skill has not generalized adequately to the service context.",
+      "The supervisee mastered all relevant contexts.",
+      "The clinical intervention is ineffective because role-play was high.",
+      "Supervision should end because one context reached criterion.",
+    ],
+    answer: "The skill has not generalized adequately to the service context.",
+    explanation:
+      "Supervisee mastery should be evaluated across [clients, settings, materials, and routines] when those contexts matter.",
+    hint:
+      "Compare training-context performance with real-context performance.",
+  },
+  {
+    type: "scenario",
+    graphId: "supervision-attendance-low-integrity",
+    prompt:
+      "Staff attend nearly all trainings, but implementation fidelity remains low. Which conclusion is best?",
+    choices: [
+      "Training attendance alone is not evidence of competent implementation.",
+      "Attendance proves the supervision plan is effective.",
+      "Fidelity data should be removed because attendance is high.",
+      "The client procedure should be changed before staff performance is addressed.",
+    ],
+    answer:
+      "Training attendance alone is not evidence of competent implementation.",
+    explanation:
+      "Supervision should evaluate [observable performance], not only exposure or attendance.",
+    hint:
+      "Separate participation in training from accurate implementation.",
+  },
+  {
+    type: "scenario",
+    graphId: "supervision-feedback-thinning",
+    prompt:
+      "Fidelity improves with frequent feedback but declines after feedback is removed. Which modification is most data-based?",
+    choices: [
+      "Reintroduce feedback, then thin it gradually with maintenance probes.",
+      "Stop all feedback permanently because it once worked.",
+      "Use only lecture-based supervision.",
+      "Ignore the decline because previous fidelity was high.",
+    ],
+    answer:
+      "Reintroduce feedback, then thin it gradually with maintenance probes.",
+    explanation:
+      "Performance maintenance often requires [gradual thinning, natural supports, and follow-up checks].",
+    hint:
+      "Look for a plan that maintains performance as support is reduced.",
+  },
+  {
+    type: "scenario",
+    graphId: "supervision-integrity-client-outcome",
+    prompt:
+      "Staff fidelity improves to high levels, but client behavior does not improve. What should the supervisor analyze next?",
+    choices: [
+      "The clinical procedure, assessment accuracy, client variables, and intervention fit.",
+      "Staff implementation as the primary barrier because fidelity is high.",
+      "Whether to stop all client data collection.",
+      "Whether attendance at supervision meetings was high enough.",
+    ],
+    answer:
+      "The clinical procedure, assessment accuracy, client variables, and intervention fit.",
+    explanation:
+      "When staff fidelity is high but outcomes are poor, the next analysis shifts to [intervention effectiveness and client variables].",
+    hint:
+      "Use fidelity data to decide whether implementation is still the main concern.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A supervisor wants staff to complete session notes accurately and quickly. Which target is most measurable?",
+    choices: [
+      "Submit session notes within 24 hours with all required fields accurate on 90% of audits.",
+      "Be better at documentation.",
+      "Care more about paperwork.",
+      "Understand why notes matter.",
+    ],
+    answer:
+      "Submit session notes within 24 hours with all required fields accurate on 90% of audits.",
+    explanation:
+      "Supervision goals should define [observable behavior, timing, quality criteria, and measurement].",
+    hint:
+      "Choose the target someone could measure reliably.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A feedback system improves fidelity but staff report it is embarrassing in front of peers. What should the supervisor do?",
+    choices: [
+      "Modify delivery to protect dignity and acceptability while keeping objective performance feedback.",
+      "Ignore the concern because the system improved fidelity.",
+      "Stop all feedback permanently.",
+      "Lower implementation criteria to reduce embarrassment.",
+    ],
+    answer:
+      "Modify delivery to protect dignity and acceptability while keeping objective performance feedback.",
+    explanation:
+      "Acceptability and dignity are supervision data; the supervisor can adjust [feedback delivery] without abandoning performance goals.",
+    hint:
+      "Balance effective feedback with dignity and social validity.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A supervisee can perform a skill when materials are arranged but misses steps when materials are scattered. Which support is most precise?",
+    choices: [
+      "Reduce response effort by organizing materials and using a pre-session setup checklist.",
+      "Teach the entire procedure from scratch as the only intervention.",
+      "Assume poor motivation and remove the supervisee from the case.",
+      "Change the client treatment goal before adjusting materials.",
+    ],
+    answer:
+      "Reduce response effort by organizing materials and using a pre-session setup checklist.",
+    explanation:
+      "Materials and workflow barriers often require [resource, process, and response-effort changes].",
+    hint:
+      "Look at what changes when performance succeeds versus fails.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "Which supervision plan best reflects contextual fit?",
+    choices: [
+      "Uses brief in-vivo observations during existing sessions, same-day feedback, and a simple fidelity checklist.",
+      "Requires daily two-hour meetings that remove staff from client coverage.",
+      "Uses a data platform staff cannot access in the service setting.",
+      "Uses feedback only in a format the supervisee cannot understand.",
+    ],
+    answer:
+      "Uses brief in-vivo observations during existing sessions, same-day feedback, and a simple fidelity checklist.",
+    explanation:
+      "Contextual fit means the plan is [feasible, acceptable, resource-sensitive, and aligned with service conditions].",
+    hint:
+      "Choose the supervision plan that can actually be implemented well in context.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A supervisor gives corrective feedback but never observes whether performance changes afterward. What is missing?",
+    choices: [
+      "Data-based evaluation of supervisory efficacy.",
+      "A multiple relationship.",
+      "A preference assessment for the client.",
+      "A punishment procedure for staff behavior.",
+    ],
+    answer: "Data-based evaluation of supervisory efficacy.",
+    explanation:
+      "Supervisory practices should be evaluated with [follow-up performance data].",
+    hint:
+      "Ask whether the supervisor measured the effect of supervision.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "Which action best represents professional boundaries in supervision?",
+    choices: [
+      "Keeping communication professional, documented, and focused on supervisee performance.",
+      "Using personal favors as consequences for meeting clinical goals.",
+      "Sharing confidential client updates through personal social media.",
+      "Avoiding role clarity because the supervisor and supervisee are friendly.",
+    ],
+    answer:
+      "Keeping communication professional, documented, and focused on supervisee performance.",
+    explanation:
+      "Professional boundaries protect [objectivity, confidentiality, client welfare, and supervisee welfare].",
+    hint:
+      "Look for role clarity and protection of professional responsibilities.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A supervisor chooses goals based only on personal preference, without observing skills or reviewing context. What is the main problem?",
+    choices: [
+      "Goals are not based on assessment of supervisee skills and environmental variables.",
+      "Goals are too measurable.",
+      "The supervisor used too much direct observation.",
+      "The supervision plan is too culturally responsive.",
+    ],
+    answer:
+      "Goals are not based on assessment of supervisee skills and environmental variables.",
+    explanation:
+      "Supervision goals should be selected from [skills, cultural variables, learning history, and environmental conditions].",
+    hint:
+      "Look for whether the goal is assessment-based.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A staff member implements a behavior plan at 95% fidelity for three weeks and maintains performance when feedback is thinned. What should the supervisor plan next?",
+    choices: [
+      "Continue maintenance probes and check generalization across relevant clients or settings.",
+      "End all monitoring permanently.",
+      "Return to baseline by removing the client intervention.",
+      "Assume all other staff have mastered the skill too.",
+    ],
+    answer:
+      "Continue maintenance probes and check generalization across relevant clients or settings.",
+    explanation:
+      "Stable performance supports [maintenance and generalization checks], not abrupt removal of all monitoring.",
+    hint:
+      "Think about durability and transfer of supervisee performance.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A supervisor finds that the supervision procedure is producing accurate staff performance but creating excessive documentation burden. What is the best next step?",
+    choices: [
+      "Evaluate efficiency and simplify documentation while preserving essential accountability and data quality.",
+      "Stop documenting supervision entirely.",
+      "Keep the burden unchanged because accuracy improved.",
+      "Lower client-service standards to reduce paperwork.",
+    ],
+    answer:
+      "Evaluate efficiency and simplify documentation while preserving essential accountability and data quality.",
+    explanation:
+      "Effective supervision should balance [efficacy, feasibility, accountability, and contextual fit].",
+    hint:
+      "Look for preserving quality while improving feasibility.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A technician's late session notes contact no consequence, but on-time notes are never acknowledged. Which performance-management change is most aligned?",
+    choices: [
+      "Add monitoring, feedback, and reinforcement for accurate on-time notes.",
+      "Use BST for preference assessments as the first step.",
+      "Ignore documentation because clinical sessions occurred.",
+      "Change the client's treatment procedure.",
+    ],
+    answer:
+      "Add monitoring, feedback, and reinforcement for accurate on-time notes.",
+    explanation:
+      "When consequences for desired performance are weak, arrange [feedback and reinforcement] for the target staff behavior.",
+    hint:
+      "Focus on what follows the staff behavior.",
+  },
+  {
+    type: "scenario",
+    graphId: "supervision-integrity-client-outcome",
+    prompt:
+      "A supervision package raises implementation fidelity to 95%, but client behavior remains unchanged. Which modification is most defensible?",
+    choices: [
+      "Keep fidelity supports in place and evaluate the clinical intervention, target, and assessment results.",
+      "Increase staff training intensity because low fidelity is still the most likely problem.",
+      "Stop all supervision because staff performance is high.",
+      "Conclude the client cannot benefit from behavior-analytic services.",
+    ],
+    answer:
+      "Keep fidelity supports in place and evaluate the clinical intervention, target, and assessment results.",
+    explanation:
+      "High integrity with weak client outcomes shifts the next decision toward [intervention effectiveness and assessment fit].",
+    hint:
+      "Use both staff-performance data and client-outcome data before changing the plan.",
+  },
+  {
+    type: "scenario",
+    graphId: "supervision-attendance-low-integrity",
+    prompt:
+      "A supervisor documents high training attendance but low implementation fidelity across sessions. Which supervision failure is most likely?",
+    choices: [
+      "The supervision system measured exposure but did not establish or verify performance.",
+      "The staff member has demonstrated mastery because attendance is high.",
+      "The client intervention should be abandoned before staff performance is addressed.",
+      "The supervisor should remove all fidelity measures from future trainings.",
+    ],
+    answer:
+      "The supervision system measured exposure but did not establish or verify performance.",
+    explanation:
+      "Attendance is not the same as [competent implementation]; supervision should verify observable performance.",
+    hint:
+      "Separate training participation from performance mastery.",
+  },
+  {
+    type: "scenario",
+    graphId: "supervision-feedback-thinning",
+    prompt:
+      "Staff performance decreases after feedback is removed, even though it had previously met criterion. What is the best data-based supervision modification?",
+    choices: [
+      "Reinstate feedback, thin it gradually, and add maintenance supports such as self-monitoring.",
+      "Remove all monitoring because the skill was once mastered.",
+      "Switch to punishment because feedback previously worked.",
+      "Conclude that the behavior plan is ineffective.",
+    ],
+    answer:
+      "Reinstate feedback, thin it gradually, and add maintenance supports such as self-monitoring.",
+    explanation:
+      "The graph suggests performance was not maintaining after abrupt support removal, so supervision should include [gradual thinning and maintenance supports].",
+    hint:
+      "Think about what changed immediately before performance declined.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A technician skips integrity checklist steps because completing them delays access to preferred peer conversation and no one reviews the checklist. Which analysis is strongest?",
+    choices: [
+      "Competing contingencies and weak performance consequences are affecting staff behavior.",
+      "The technician has a pure skill deficit requiring only lecture-based training.",
+      "The client procedure has demonstrated external validity.",
+      "The checklist steps are unnecessary because the technician is busy.",
+    ],
+    answer:
+      "Competing contingencies and weak performance consequences are affecting staff behavior.",
+    explanation:
+      "Performance may be affected by [effort, competing tasks, and lack of feedback or reinforcement].",
+    hint:
+      "Look at the consequences for completing versus skipping the staff response.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A supervisor discovers they delegated a complex assessment task after one observation and no competency check. What is the most ethical next step?",
+    choices: [
+      "Pause independent delegation, assess competence, provide training as needed, and protect client services.",
+      "Continue delegation because the supervisee saw the task once.",
+      "Avoid documenting the concern to prevent embarrassment.",
+      "Ask the supervisee to train another staff member immediately.",
+    ],
+    answer:
+      "Pause independent delegation, assess competence, provide training as needed, and protect client services.",
+    explanation:
+      "Ethical supervision requires [verified competence, documentation, and appropriate oversight] before independent implementation.",
+    hint:
+      "Prioritize client protection and demonstrated competence.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A supervisor assigns complex cases only to staff who share the supervisor's communication style, leaving other qualified staff without advancement opportunities. What is the best response?",
+    choices: [
+      "Audit assignment patterns, define objective criteria, and correct inequitable access to learning opportunities.",
+      "Keep assignments unchanged because the supervisor feels more comfortable.",
+      "Lower performance criteria for excluded staff instead of changing access.",
+      "Stop tracking assignments to avoid bias concerns.",
+    ],
+    answer:
+      "Audit assignment patterns, define objective criteria, and correct inequitable access to learning opportunities.",
+    explanation:
+      "Equity barriers should be addressed through [data review, objective criteria, and fair access to opportunities].",
+    hint:
+      "Look for correcting access barriers while keeping standards objective.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "After two weeks of email reminders, staff still omit safety checks because materials are stored in another building and sessions start immediately. Which intervention package best fits?",
+    choices: [
+      "Move materials to the session location, add a pre-session checklist, and monitor safety-check completion.",
+      "Send longer email reminders about safety-check definitions.",
+      "Punish omissions without changing material access.",
+      "Remove the safety checks from the procedure.",
+    ],
+    answer:
+      "Move materials to the session location, add a pre-session checklist, and monitor safety-check completion.",
+    explanation:
+      "The best package addresses [resources, task clarification, response effort, and monitoring].",
+    hint:
+      "Choose the package that changes the conditions blocking correct performance.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A behavior plan is implemented with 98% integrity, but staff still require daily supervisor prompts to complete it. Which conclusion is most accurate?",
+    choices: [
+      "Treatment integrity is high, but staff performance may not yet maintain without supervisory prompts.",
+      "Staff performance has generalized and maintained fully.",
+      "The client intervention is ineffective because integrity is high.",
+      "Supervisory efficacy cannot be evaluated with staff data.",
+    ],
+    answer:
+      "Treatment integrity is high, but staff performance may not yet maintain without supervisory prompts.",
+    explanation:
+      "Treatment integrity measures current implementation; staff-performance programming must also evaluate [maintenance without intensive prompts].",
+    hint:
+      "Distinguish correct implementation now from durable supervisee performance over time.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "A supervisee implements FCT accurately with one learner, but fidelity drops when the same procedure is used with a learner who uses a speech-generating device. What is the best next step?",
+    choices: [
+      "Program generalization with device-specific modeling, rehearsal, feedback, and follow-up probes.",
+      "Declare the supervisee incompetent across all FCT procedures.",
+      "Stop using speech-generating devices in treatment.",
+      "End supervision because one learner context was mastered.",
+    ],
+    answer:
+      "Program generalization with device-specific modeling, rehearsal, feedback, and follow-up probes.",
+    explanation:
+      "A context-specific drop in fidelity calls for [generalization training across relevant clients, materials, and routines].",
+    hint:
+      "Look for transfer of staff performance across materials and client contexts.",
+  },
+  {
+    type: "scenario",
+    prompt:
+      "Supervision data show that staff performance improves only when the supervisor is present, and client outcomes vary when the supervisor is absent. Which decision best evaluates supervisory efficacy?",
+    choices: [
+      "Collect supervisor-present and supervisor-absent fidelity data, then program maintenance supports if needed.",
+      "Use only client outcome averages and stop observing staff.",
+      "Assume supervision is effective because performance improves sometimes.",
+      "Remove the supervisor immediately to test staff without supports and stop data collection.",
+    ],
+    answer:
+      "Collect supervisor-present and supervisor-absent fidelity data, then program maintenance supports if needed.",
+    explanation:
+      "Supervisory efficacy should be evaluated with [condition-relevant staff performance data and maintenance planning].",
+    hint:
+      "Ask whether the data show performance under the conditions that matter.",
   },
 ];
 
@@ -13911,74 +16012,8 @@ const moduleContent: Record<string, ModuleContent> = {
   },
   i: {
     miniLessons: sectionIMiniLessons,
-    practiceQuestions: [
-      {
-        type: "matching",
-        prompt: "Match BST components to their definitions.",
-        pairs: [
-          { term: "Instructions", definition: "Tell what to do." },
-          { term: "Modeling", definition: "Show what to do." },
-          { term: "Rehearsal", definition: "Practice the skill." },
-          { term: "Feedback", definition: "Describe correct and incorrect performance." },
-        ],
-        answer: "All BST components matched correctly",
-        explanation:
-          "BST is active training with instructions, modeling, rehearsal, and feedback.",
-      },
-      {
-        type: "scenario",
-        prompt:
-          "A supervisee knows how to run preference assessments but does not do them because materials are unavailable. What is the best description?",
-        choices: ["Performance deficit", "Skill deficit", "Respondent extinction", "Negative punishment"],
-        answer: "Performance deficit",
-        explanation:
-          "The supervisee can perform the skill, but environmental conditions interfere with performance.",
-      },
-      {
-        type: "sorting",
-        prompt: "Sort each support by deficit type.",
-        categories: ["Skill deficit", "Performance deficit"],
-        items: [
-          { label: "Model the procedure", category: "Skill deficit" },
-          { label: "Arrange materials before session", category: "Performance deficit" },
-          { label: "Rehearse with feedback", category: "Skill deficit" },
-          { label: "Add prompts in the work setting", category: "Performance deficit" },
-        ],
-        answer: "All supervision supports sorted correctly",
-        explanation:
-          "Skill deficits need training. Performance deficits need antecedent and consequence supports.",
-      },
-    ],
-    masteryQuestions: [
-      {
-        prompt: "Which sequence best represents behavioral skills training?",
-        choices: [
-          "Instructions, modeling, rehearsal, feedback",
-          "Interview, diagnosis, insight, discharge",
-          "Baseline, reversal, withdrawal, maintenance",
-          "Prompting, extinction, punishment, fading",
-        ],
-        answer: "Instructions, modeling, rehearsal, feedback",
-        explanation:
-          "BST uses instructions, modeling, rehearsal, and feedback to build performance.",
-      },
-      {
-        type: "scenario",
-        prompt:
-          "A supervisor observes implementation, graphs performance data, and changes supports based on results. What is being evaluated?",
-        choices: ["Supervision efficacy", "A preference assessment", "Stimulus equivalence", "Respondent conditioning"],
-        answer: "Supervision efficacy",
-        explanation:
-          "Supervision should be evaluated with data on supervisee performance and client-related outcomes when relevant.",
-      },
-      {
-        type: "fill-blank",
-        prompt: "Complete the statement: Function-based supervision analyzes antecedents and ____ for supervisee behavior.",
-        answer: "consequences",
-        explanation:
-          "Function-based supervision uses behavior-environment relations to improve supervisee performance.",
-      },
-    ],
+    practiceQuestions: sectionIPracticeQuestions,
+    masteryQuestions: sectionIMasteryQuestions,
   },
 };
 

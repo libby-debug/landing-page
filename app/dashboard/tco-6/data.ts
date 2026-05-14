@@ -195,12 +195,16 @@ export const tcoSections: TcoSection[] = [
     slug: "i",
     title: "Personnel Supervision and Management",
     description:
-      "Develop supervision systems using relationships, equity, supervision goals, BST, function-based approaches, and efficacy evaluation.",
+      "Develop and enhance your Supervision skill set by learning how to establish and maintain supervisory relationships, BST, and function-based approaches to Supervision.",
     progress: 0,
     checklistItems: [
-      "I.1-I.3. Identify supervision benefits, establish relationships, and promote equity.",
-      "I.4-I.5. Select supervision goals and apply performance management (BST).",
-      "I.6-I.7. Use function-based approaches to improve supervisee behavior and evaluate efficacy.",
+      "I.1. Identify the benefits of behavior-analytic supervision.",
+      "I.2. Establish effective supervisory relationships.",
+      "I.3. Promote equity in supervision practices.",
+      "I.4. Select supervision goals based on an assessment of the supervisee's skills, cultural variables, and environmental variables.",
+      "I.5. Apply empirically validated and culturally responsive performance management procedures.",
+      "I.6. Apply function-based approaches to improve supervisee behavior.",
+      "I.7. Make data-based decisions about the effectiveness of supervisory practices.",
     ],
   },
 ];

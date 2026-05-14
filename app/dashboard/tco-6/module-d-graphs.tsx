@@ -15,7 +15,12 @@ export type ModuleDGraphId =
   | "changing-criterion-stacked"
   | "withdrawal-problem-behavior"
   | "withdrawal-aba"
-  | "withdrawal-beginner";
+  | "withdrawal-beginner"
+  | "supervision-bst-fidelity"
+  | "supervision-generalization-drop"
+  | "supervision-attendance-low-integrity"
+  | "supervision-feedback-thinning"
+  | "supervision-integrity-client-outcome";
 
 type GraphTone = "blue" | "teal" | "purple" | "green" | "slate";
 
@@ -143,6 +148,200 @@ export const moduleDGraphExamples: Record<ModuleDGraphId, ModuleDGraphExample> =
               { x: 8, y: 21 },
               { x: 9, y: 15 },
               { x: 10, y: 19 },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  "supervision-bst-fidelity": {
+    id: "supervision-bst-fidelity",
+    title: "Supervisee Procedural Integrity",
+    description:
+      "A supervision graph showing fidelity before and after active performance training.",
+    panels: [
+      {
+        yLabel: "Procedural integrity (%)",
+        yMax: 100,
+        phases: [
+          { label: "Baseline", start: 1, end: 3 },
+          { label: "BST", start: 4, end: 8 },
+        ],
+        series: [
+          {
+            label: "Implementation fidelity",
+            tone: "slate",
+            marker: "circle",
+            points: [
+              { x: 1, y: 38 },
+              { x: 2, y: 44 },
+              { x: 3, y: 41 },
+              { x: 4, y: 72 },
+              { x: 5, y: 84 },
+              { x: 6, y: 92 },
+              { x: 7, y: 94 },
+              { x: 8, y: 95 },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  "supervision-generalization-drop": {
+    id: "supervision-generalization-drop",
+    title: "Supervisee Performance Across Contexts",
+    description:
+      "A supervision graph showing role-play mastery with lower in-vivo generalization.",
+    panels: [
+      {
+        yLabel: "Procedural integrity (%)",
+        yMax: 100,
+        phases: [
+          { label: "Role play", start: 1, end: 4 },
+          { label: "New client", start: 5, end: 8 },
+        ],
+        series: [
+          {
+            label: "Implementation fidelity",
+            tone: "slate",
+            marker: "square",
+            points: [
+              { x: 1, y: 76 },
+              { x: 2, y: 86 },
+              { x: 3, y: 94 },
+              { x: 4, y: 96 },
+              { x: 5, y: 58 },
+              { x: 6, y: 62 },
+              { x: 7, y: 68 },
+              { x: 8, y: 71 },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  "supervision-attendance-low-integrity": {
+    id: "supervision-attendance-low-integrity",
+    title: "Training Attendance and Fidelity",
+    description:
+      "A supervision graph comparing attendance with implementation integrity.",
+    panels: [
+      {
+        yLabel: "Percent",
+        yMax: 100,
+        phases: [{ label: "Training period", start: 1, end: 8 }],
+        series: [
+          {
+            label: "Training attendance",
+            tone: "slate",
+            marker: "circle",
+            points: [
+              { x: 1, y: 95 },
+              { x: 2, y: 100 },
+              { x: 3, y: 95 },
+              { x: 4, y: 100 },
+              { x: 5, y: 95 },
+              { x: 6, y: 100 },
+              { x: 7, y: 95 },
+              { x: 8, y: 100 },
+            ],
+          },
+          {
+            label: "Implementation fidelity",
+            tone: "slate",
+            marker: "triangle",
+            dashed: true,
+            points: [
+              { x: 1, y: 42 },
+              { x: 2, y: 45 },
+              { x: 3, y: 39 },
+              { x: 4, y: 46 },
+              { x: 5, y: 43 },
+              { x: 6, y: 48 },
+              { x: 7, y: 41 },
+              { x: 8, y: 44 },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  "supervision-feedback-thinning": {
+    id: "supervision-feedback-thinning",
+    title: "Feedback Schedule and Staff Performance",
+    description:
+      "A supervision graph showing staff performance after feedback is abruptly removed.",
+    panels: [
+      {
+        yLabel: "Procedural integrity (%)",
+        yMax: 100,
+        phases: [
+          { label: "Frequent feedback", start: 1, end: 4 },
+          { label: "No feedback", start: 5, end: 8 },
+        ],
+        series: [
+          {
+            label: "Implementation fidelity",
+            tone: "slate",
+            marker: "diamond",
+            points: [
+              { x: 1, y: 62 },
+              { x: 2, y: 74 },
+              { x: 3, y: 86 },
+              { x: 4, y: 91 },
+              { x: 5, y: 78 },
+              { x: 6, y: 70 },
+              { x: 7, y: 66 },
+              { x: 8, y: 64 },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  "supervision-integrity-client-outcome": {
+    id: "supervision-integrity-client-outcome",
+    title: "Integrity and Client Outcome Data",
+    description:
+      "A supervision graph comparing staff fidelity and client outcome data.",
+    panels: [
+      {
+        yLabel: "Percent / rate",
+        yMax: 100,
+        phases: [
+          { label: "Baseline", start: 1, end: 3 },
+          { label: "Supervision support", start: 4, end: 8 },
+        ],
+        series: [
+          {
+            label: "Implementation fidelity",
+            tone: "slate",
+            marker: "circle",
+            points: [
+              { x: 1, y: 52 },
+              { x: 2, y: 56 },
+              { x: 3, y: 54 },
+              { x: 4, y: 82 },
+              { x: 5, y: 90 },
+              { x: 6, y: 94 },
+              { x: 7, y: 95 },
+              { x: 8, y: 96 },
+            ],
+          },
+          {
+            label: "Client target behavior",
+            tone: "slate",
+            marker: "square",
+            dashed: true,
+            points: [
+              { x: 1, y: 72 },
+              { x: 2, y: 70 },
+              { x: 3, y: 74 },
+              { x: 4, y: 73 },
+              { x: 5, y: 71 },
+              { x: 6, y: 72 },
+              { x: 7, y: 73 },
+              { x: 8, y: 74 },
             ],
           },
         ],

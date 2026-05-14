@@ -2,7 +2,7 @@ import { createClient } from "@supabase/supabase-js";
 import {
   getPublicEnv,
   getSupabaseClientConfigStatus,
-} from "@/lib/env";
+} from "@/lib/env/public";
 
 const supabaseUrl = getPublicEnv("NEXT_PUBLIC_SUPABASE_URL");
 const supabaseAnonKey = getPublicEnv("NEXT_PUBLIC_SUPABASE_ANON_KEY");

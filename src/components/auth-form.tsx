@@ -12,6 +12,7 @@ import {
   leadClass,
   pageTitleClass,
 } from "@/components/learning-ui";
+import { buildPublicUrl } from "@/lib/env/public";
 import {
   isSupabaseConfigured,
   supabase,
@@ -54,10 +55,10 @@ export function AuthForm({ mode, afterSubmitAction }: AuthFormProps) {
           email,
           password,
           options: {
-            emailRedirectTo:
-              typeof window !== "undefined"
-                ? `${window.location.origin}/dashboard`
-                : undefined,
+            emailRedirectTo: buildPublicUrl(
+              "/dashboard",
+              typeof window !== "undefined" ? window.location.origin : undefined,
+            ),
           },
         })
       : await supabase.auth.signInWithPassword({ email, password });

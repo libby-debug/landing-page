@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { buildPublicUrl } from "@/lib/env/public";
 import {
   isSupabaseConfigured,
   supabase,
@@ -35,7 +36,10 @@ export default function ForgotPasswordPage() {
     setIsSubmitting(true);
 
     const submittedEmail = email.trim();
-    const redirectTo = `${window.location.origin}/reset-password`;
+    const redirectTo = buildPublicUrl(
+      "/reset-password",
+      typeof window !== "undefined" ? window.location.origin : undefined,
+    );
     const response = await supabase.auth.resetPasswordForEmail(submittedEmail, {
       redirectTo,
     });

@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { buildPublicUrl } from "@/lib/env/public";
 import {
   isSupabaseConfigured,
   supabase,
@@ -29,10 +30,10 @@ export default function SignupPage() {
       email,
       password,
       options: {
-        emailRedirectTo:
-          typeof window !== "undefined"
-            ? `${window.location.origin}/pricing`
-            : undefined,
+        emailRedirectTo: buildPublicUrl(
+          "/pricing",
+          typeof window !== "undefined" ? window.location.origin : undefined,
+        ),
       },
     });
 

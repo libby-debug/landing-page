@@ -4,7 +4,7 @@ import {
   getPublicEnv,
   getServerEnv,
   getStripeCheckoutConfigStatus,
-} from "@/lib/env";
+} from "@/lib/env/server";
 
 const planConfig = {
   monthly: {

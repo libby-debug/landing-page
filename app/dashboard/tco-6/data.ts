@@ -180,9 +180,14 @@ export const tcoSections: TcoSection[] = [
       "Connect assessment results to measurable goals, evidence-based interventions, alternative behaviors, integrity, effectiveness, and collaboration.",
     progress: 0,
     checklistItems: [
-      "H.1-H.3. Develop measurable goals, recommend evidence-based interventions, and select alternative behaviors.",
-      "H.4-H.5. Mitigate unwanted effects of procedures and plan for relapse.",
-      "H.6-H.8. Make data-based decisions on integrity/effectiveness and collaborate with others.",
+      "H.1. Develop intervention goals in observable and measurable terms.",
+      "H.2. Identify and recommend interventions based on assessment results, scientific evidence, client preferences, and contextual fit.",
+      "H.3. Select socially valid alternative behavior to establish or increase when decreasing target behavior.",
+      "H.4. Mitigate unwanted effects of reinforcement, extinction, and punishment procedures.",
+      "H.5. Plan for and mitigate relapse.",
+      "H.6. Make data-based decisions about procedural integrity.",
+      "H.7. Make data-based decisions about intervention effectiveness and modification.",
+      "H.8. Collaborate with others to support services.",
     ],
   },
   {

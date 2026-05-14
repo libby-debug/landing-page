@@ -5,14 +5,17 @@ const planConfig = {
   monthly: {
     envKey: "STRIPE_MONTHLY_PRICE_ID",
     price: "79",
+    priceId: "price_1TVyH6L25jpeiL0EUfnP9tVy",
   },
   "3month": {
     envKey: "STRIPE_3_MONTH_PRICE_ID",
     price: "199",
+    priceId: "price_1TX35EL25jpeiL0EH97Egx4k",
   },
   "6month": {
     envKey: "STRIPE_6_MONTH_PRICE_ID",
     price: "379",
+    priceId: "price_1TVzVAL25jpeiL0E7KbZk37c",
   },
 } as const;
 
@@ -44,7 +47,7 @@ export async function POST(request: Request) {
     }
 
     const selectedPlan = planConfig[plan];
-    const priceId = process.env[selectedPlan.envKey];
+    const priceId = process.env[selectedPlan.envKey] ?? selectedPlan.priceId;
 
     if (!priceId) {
       return NextResponse.json(

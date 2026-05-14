@@ -13,12 +13,13 @@ export function SiteHeader() {
       <div className="pointer-events-auto mx-auto flex w-full max-w-6xl flex-col gap-3 rounded-2xl border border-white/60 bg-white/70 px-4 py-3 shadow-sm backdrop-blur-md sm:flex-row sm:items-center sm:justify-between sm:px-5">
         <Link href="/" aria-label="ABA Mastered home" className="inline-flex">
           <Image
-            src="/images/aba-mastered-hero-logo.png"
+            src="/images/aba-mastered-updated-header-logo.png"
             alt="ABA Mastered"
-            width={180}
-            height={120}
+            width={1024}
+            height={1024}
             priority
-            className="h-14 w-auto object-contain p-1"
+            sizes="56px"
+            className="h-14 w-14 object-contain p-1"
           />
         </Link>
 

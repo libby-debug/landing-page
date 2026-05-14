@@ -728,10 +728,10 @@ function QuestionResponseInput({
 
     return (
       <div className={centeredResponseGroupClass}>
-        {question.choices.map((choice) => (
+        {question.choices.map((choice, choiceIndex) => (
           <label
             className={`${responseChoiceCardClass} flex items-center gap-3 rounded-2xl border border-slate-200 bg-white p-4 text-sm font-bold text-slate-950`}
-            key={choice}
+            key={`select-all-${choiceIndex}-${choice}`}
           >
             <input
               checked={selected.includes(choice)}
@@ -753,9 +753,9 @@ function QuestionResponseInput({
 
   return (
     <div className={centeredResponseGroupClass}>
-      {choices.map((choice) => (
+      {choices.map((choice, choiceIndex) => (
         <label
-          key={choice}
+          key={`choice-${choiceIndex}-${choice}`}
           className={`${responseChoiceCardClass} flex items-center gap-3 rounded-2xl border border-slate-200 bg-white p-4 text-sm font-bold text-slate-950`}
         >
           <input
@@ -1461,8 +1461,8 @@ function AnswerFeedback({
             {remediationDetails.heading}
           </p>
           <ul className="mt-2 space-y-2 text-sm font-semibold leading-6 text-slate-950">
-            {remediationDetails.items.map((item) => (
-              <li key={item}>
+            {remediationDetails.items.map((item, itemIndex) => (
+              <li key={`${itemIndex}-${item}`}>
                 <FormattedConceptText text={item} />
               </li>
             ))}

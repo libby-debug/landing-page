@@ -7,6 +7,16 @@ create table if not exists public.module_mastery_scores (
   primary key (user_id, module_slug)
 );
 
+grant select on table public.module_mastery_scores to anon;
+
+grant select, insert, update, delete
+on table public.module_mastery_scores
+to authenticated;
+
+grant select, insert, update, delete
+on table public.module_mastery_scores
+to service_role;
+
 alter table public.module_mastery_scores enable row level security;
 
 create policy "Users can read their own module mastery scores"

@@ -130,7 +130,7 @@ export function ChecklistButtons({ section }: { section: TcoSection }) {
             }
             className="group rounded-2xl border border-slate-200 bg-slate-50 p-4 text-center shadow-sm transition hover:border-blue-500 hover:bg-blue-600 hover:shadow-blue-100 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-200"
             href={href}
-            key={item}
+            key={`${index}-${item}`}
           >
             <p className="text-base font-bold leading-7 text-slate-950 transition group-hover:text-white">
               {item}

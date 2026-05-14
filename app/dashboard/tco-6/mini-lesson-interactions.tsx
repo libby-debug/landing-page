@@ -641,9 +641,9 @@ function ChoiceInteraction({
         <FormattedConceptText text={visual.prompt} />
       </h3>
       <div className={centeredChoiceGroupClass}>
-        {visual.choices.map((choice) => (
+        {visual.choices.map((choice, choiceIndex) => (
           <button
-            key={choice}
+            key={`choice-${choiceIndex}-${choice}`}
             type="button"
             onClick={() => {
               if (completed) {
@@ -779,9 +779,9 @@ function GraphInterpretationInteraction({
         <FormattedConceptText text={visual.prompt} />
       </h4>
       <div className={centeredChoiceGroupClass}>
-        {visual.choices.map((choice) => (
+        {visual.choices.map((choice, choiceIndex) => (
           <button
-            key={choice}
+            key={`graph-choice-${choiceIndex}-${choice}`}
             type="button"
             onClick={() => {
               if (completed) {

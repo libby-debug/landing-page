@@ -6,6 +6,16 @@ create table if not exists public.user_progress_state (
   primary key (user_id, progress_key)
 );
 
+grant select on table public.user_progress_state to anon;
+
+grant select, insert, update, delete
+on table public.user_progress_state
+to authenticated;
+
+grant select, insert, update, delete
+on table public.user_progress_state
+to service_role;
+
 alter table public.user_progress_state enable row level security;
 
 create policy "Users can read their own progress state"

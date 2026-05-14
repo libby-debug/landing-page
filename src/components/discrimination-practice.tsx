@@ -76,14 +76,14 @@ export function DiscriminationPractice({
               </div>
 
               <div className="mt-5 flex flex-wrap justify-center gap-3">
-                {question.options.map((option) => {
+                {question.options.map((option, optionIndex) => {
                   const isSelected = selected === option;
                   const isCorrect = option === question.answer;
                   const hasAnswer = Boolean(selected);
 
                   return (
                     <button
-                      key={option}
+                      key={`${questionIndex}-${optionIndex}-${option}`}
                       type="button"
                       disabled={hasAnswer}
                       onClick={() => selectAnswer(questionIndex, option)}

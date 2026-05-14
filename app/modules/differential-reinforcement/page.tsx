@@ -146,9 +146,9 @@ export default function DifferentialReinforcementModulePage() {
           <p className={eyebrowClass}>TCO 6 alignment</p>
 
           <div className="mt-6 grid gap-3">
-            {tcoAlignment.map((item) => (
+            {tcoAlignment.map((item, itemIndex) => (
               <div
-                key={item}
+                key={`${itemIndex}-${item}`}
                 className="rounded-2xl border border-white/80 bg-white p-4 text-base font-semibold text-slate-950"
               >
                 {item}

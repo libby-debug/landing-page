@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { ProtectedRoute } from "@/components/protected-route";
 import {
   FormattedConceptText,
@@ -20,6 +20,7 @@ import {
   finalExamQuestionCount,
   finalExamQuestions,
 } from "./final-exam-content";
+import { saveFinalExamProgress } from "./final-exam-progress";
 
 const finalExamDurationSeconds = 4 * 60 * 60;
 const timeWarningThresholdSeconds = 10 * 60;
@@ -98,8 +99,10 @@ function FinalExamGate() {
 }
 
 function FinalExam() {
+  const router = useRouter();
   const [started, setStarted] = useState(false);
   const [responses, setResponses] = useState<Record<number, string>>({});
+  const responsesRef = useRef(responses);
   const [submitted, setSubmitted] = useState(false);
   const [autoSubmitted, setAutoSubmitted] = useState(false);
   const [remainingSeconds, setRemainingSeconds] = useState(
@@ -132,12 +135,54 @@ function FinalExam() {
     .filter(({ index, question }) => responses[index] !== question.answer);
 
   useEffect(() => {
+    responsesRef.current = responses;
+  }, [responses]);
+
+  const submitFinalExam = useCallback((autoSubmit: boolean) => {
+    const currentResponses = responsesRef.current;
+    const finalCorrectCount = finalExamQuestions.reduce(
+      (total, question, index) =>
+        currentResponses[index] === question.answer ? total + 1 : total,
+      0,
+    );
+    const finalScore =
+      finalExamQuestions.length > 0
+        ? Math.round((finalCorrectCount / finalExamQuestions.length) * 100)
+        : 0;
+    const finalPassed = finalScore >= finalExamPassingScore;
+
+    saveFinalExamProgress({
+      autoSubmitted: autoSubmit,
+      correctCount: finalCorrectCount,
+      passed: finalPassed,
+      score: finalScore,
+      submittedAt: new Date().toISOString(),
+      totalQuestions: finalExamQuestions.length,
+    });
+
+    setAutoSubmitted(autoSubmit);
+    setReviewedQuestionIndexes(new Set());
+
+    if (finalPassed) {
+      router.push("/dashboard/final-exam/completion");
+      return;
+    }
+
+    setSubmitted(true);
+    window.scrollTo({ behavior: "smooth", top: 0 });
+  }, [router]);
+
+  useEffect(() => {
     if (!started || submitted) {
       return;
     }
 
     const timerId = window.setInterval(() => {
       setRemainingSeconds((current) => {
+        if (current <= 0) {
+          return 0;
+        }
+
         const next = Math.max(current - 1, 0);
 
         if (next === timeWarningThresholdSeconds) {
@@ -145,10 +190,7 @@ function FinalExam() {
         }
 
         if (next === 0) {
-          setAutoSubmitted(true);
-          setReviewedQuestionIndexes(new Set());
-          setSubmitted(true);
-          window.scrollTo({ behavior: "smooth", top: 0 });
+          submitFinalExam(true);
         }
 
         return next;
@@ -156,7 +198,7 @@ function FinalExam() {
     }, 1000);
 
     return () => window.clearInterval(timerId);
-  }, [started, submitted]);
+  }, [started, submitted, submitFinalExam]);
 
   function updateAnswer(index: number, answer: string) {
     if (submitted) {
@@ -275,7 +317,7 @@ function FinalExam() {
             ) : null}
 
             <div className="mt-5 grid gap-3" role="radiogroup">
-              {question.choices.map((choice) => {
+              {question.choices.map((choice, choiceIndex) => {
                 const checked = responses[index] === choice;
 
                 return (
@@ -285,7 +327,7 @@ function FinalExam() {
                         ? "border-black bg-black text-white"
                         : "border-black bg-white text-black hover:bg-neutral-100"
                     } ${submitted ? "cursor-default" : ""}`}
-                    key={choice}
+                    key={`${index}-${choiceIndex}-${choice}`}
                   >
                     <input
                       checked={checked}
@@ -326,12 +368,7 @@ function FinalExam() {
             <button
               className="mt-5 rounded-xl border border-black bg-black px-8 py-4 text-base font-black text-white shadow-sm transition hover:bg-neutral-800 disabled:cursor-not-allowed disabled:opacity-50"
               disabled={!allAnswered}
-              onClick={() => {
-                setAutoSubmitted(false);
-                setReviewedQuestionIndexes(new Set());
-                setSubmitted(true);
-                window.scrollTo({ behavior: "smooth", top: 0 });
-              }}
+              onClick={() => submitFinalExam(false)}
               type="button"
             >
               Submit Final Exam
@@ -346,46 +383,61 @@ function FinalExam() {
 
 function FinalExamStartScreen({ onStart }: { onStart: () => void }) {
   const directions = [
-    "this exam is timed",
-    "you have exactly 4 hours to complete it",
-    "you may hide the timer if you choose",
-    "there will be a 10 minute warning before the exam closes",
-    "when the exam closes it will grade your exam and give you a score",
-    "passing score is 90%",
-    "if you fail the Final Exam you may take it again after reviewing the modules to the questions you missed",
+    "This exam is timed",
+    "You have exactly 4 hours to complete it",
+    "You may hide the timer if you choose",
+    "There will be a 10 minute warning before the exam closes",
+    "When the exam closes it will grade your exam and give you a score",
+    "Passing score is 90%",
+    "If you fail the Final Exam you may take it again after reviewing the modules to the questions you missed",
+  ];
+  const bulletClasses = [
+    "bg-purple-500 shadow-purple-200",
+    "bg-blue-500 shadow-blue-200",
+    "bg-teal-500 shadow-teal-200",
+    "bg-emerald-500 shadow-emerald-200",
   ];
 
   return (
-    <section className={`${cardBaseClass} w-full border-black bg-white text-center text-black shadow-xl shadow-black/10`}>
-      <p className="text-sm font-black uppercase tracking-wide text-black">
+    <section className="relative w-full overflow-hidden rounded-[2rem] border border-white/80 bg-gradient-to-br from-purple-50 via-blue-50 to-teal-50 p-2 text-center shadow-2xl shadow-teal-100/60">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(147,51,234,0.16),transparent_28%),radial-gradient(circle_at_85%_16%,rgba(59,130,246,0.18),transparent_30%),radial-gradient(circle_at_50%_90%,rgba(16,185,129,0.16),transparent_32%)]" />
+      <div className="relative rounded-[1.75rem] border border-white/70 bg-white/80 px-6 py-10 backdrop-blur-xl sm:px-10">
+      <p className="text-sm font-black uppercase tracking-wide text-blue-700">
         Final Exam directions
       </p>
-      <h1 className="mt-3 text-5xl font-black tracking-tight text-black">
+      <h1 className="mt-3 bg-gradient-to-r from-purple-700 via-blue-600 to-teal-500 bg-clip-text text-5xl font-black tracking-tight text-transparent">
         Before You Begin
       </h1>
 
-      <ul className="mx-auto mt-8 grid max-w-3xl gap-3 text-left">
-        {directions.map((direction) => (
+      <ul className="mx-auto mt-8 grid max-w-3xl gap-5 text-left">
+        {directions.map((direction, index) => (
           <li
-            className="rounded-2xl border border-black bg-white p-4 text-base font-bold leading-7 text-black"
+            className="flex items-start gap-4 text-base font-bold leading-7 text-slate-950"
             key={direction}
           >
-            {direction}
+            <span
+              aria-hidden="true"
+              className={`mt-2 h-3 w-3 shrink-0 rounded-full shadow-md ${
+                bulletClasses[index % bulletClasses.length]
+              }`}
+            />
+            <span>{direction}</span>
           </li>
         ))}
       </ul>
 
-      <p className="mx-auto mt-8 max-w-2xl text-xl font-black leading-8 text-black">
+      <p className="mx-auto mt-10 max-w-2xl text-xl font-black leading-8 text-slate-950">
         When you&apos;re ready, push &quot;Start the Final Exam&quot;
       </p>
 
       <button
-        className="mt-6 rounded-2xl border border-black bg-black px-10 py-5 text-lg font-black text-white shadow-lg shadow-black/20 transition hover:bg-neutral-800 focus:outline-none focus:ring-4 focus:ring-neutral-300"
+        className="mt-6 rounded-2xl bg-gradient-to-r from-purple-600 via-blue-500 to-teal-400 px-10 py-5 text-lg font-black text-white shadow-lg shadow-teal-300/40 transition hover:scale-[1.01] hover:opacity-95 focus:outline-none focus:ring-4 focus:ring-blue-200"
         onClick={onStart}
         type="button"
       >
         Start the Final Exam
       </button>
+      </div>
     </section>
   );
 }

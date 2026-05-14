@@ -529,9 +529,9 @@ function MasteryQuizLesson({
       </p>
 
       <div className="mt-6 grid gap-3 md:grid-cols-2 lg:grid-cols-4">
-        {tcoAlignment.map((item) => (
+        {tcoAlignment.map((item, itemIndex) => (
           <div
-            key={item}
+            key={`${itemIndex}-${item}`}
             className="rounded-2xl border border-blue-200 bg-blue-50 p-4 text-sm font-semibold text-slate-950"
           >
             {item}

@@ -139,7 +139,7 @@ export function DifferentialReinforcementQuiz({
             </h3>
 
             <div className="mt-5 flex flex-wrap justify-center gap-3">
-              {question.options.map((option) => {
+              {question.options.map((option, optionIndex) => {
                 const selected = answers[questionIndex] === option;
                 const selectedCorrect =
                   submitted && selected && option === question.answer;
@@ -148,7 +148,7 @@ export function DifferentialReinforcementQuiz({
 
                 return (
                   <button
-                    key={option}
+                    key={`${questionIndex}-${optionIndex}-${option}`}
                     type="button"
                     disabled={submitted && selectedCorrect}
                     onClick={() => selectAnswer(questionIndex, option)}

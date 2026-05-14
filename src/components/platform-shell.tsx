@@ -66,6 +66,13 @@ function isAuthenticatedAppRoute(pathname: string) {
   );
 }
 
+function isFinalExamRoute(pathname: string) {
+  return (
+    pathname === "/dashboard/final-exam" ||
+    pathname.startsWith("/dashboard/final-exam/")
+  );
+}
+
 function isActiveNavItem(pathname: string, href: string) {
   if (href === "#") {
     return false;
@@ -110,7 +117,10 @@ export function PlatformShell({ children }: { children: React.ReactNode }) {
 function PlatformShellContent({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const { user } = useAuth();
-  const showSidebar = Boolean(user) && isAuthenticatedAppRoute(pathname);
+  const showSidebar =
+    Boolean(user) &&
+    isAuthenticatedAppRoute(pathname) &&
+    !isFinalExamRoute(pathname);
 
   return (
     <div className="relative flex min-h-screen overflow-x-hidden bg-[radial-gradient(circle_at_88%_12%,rgba(153,246,228,0.68),transparent_28%),linear-gradient(180deg,#dff1ff_0%,#ccfbf1_34%,#ffffff_82%,#ffffff_100%)]">
@@ -123,11 +133,12 @@ function PlatformShellContent({ children }: { children: React.ReactNode }) {
             <div className="pb-4">
               <Link href="/" aria-label="ABA Mastered home" className="inline-flex">
                 <Image
-                  src="/images/aba-mastered-hero-logo.png"
+                  src="/images/aba-mastered-updated-header-logo.png"
                   alt="ABA Mastered"
-                  width={220}
-                  height={147}
-                  className="h-auto w-full max-w-[220px] object-contain p-1"
+                  width={1024}
+                  height={1024}
+                  sizes="112px"
+                  className="h-28 w-28 object-contain p-1"
                 />
               </Link>
             </div>

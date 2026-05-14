@@ -87,13 +87,16 @@ export default function DifferentialReinforcementQuizPage() {
         return;
       }
 
-      const { error } = await supabase.from("mastery_scores").insert({
-        user_id: user.id,
-        module_slug: "differential-reinforcement",
-        module_title: "Differential Reinforcement",
-        score: percent,
-        mastered: mastery,
-      });
+      const { error } = await supabase.from("module_mastery_scores").upsert(
+        {
+          mastered: mastery,
+          module_slug: "differential-reinforcement",
+          score: percent,
+          updated_at: new Date().toISOString(),
+          user_id: user.id,
+        },
+        { onConflict: "user_id,module_slug" },
+      );
 
       if (error) {
         setSaveMessage(`Could not save score: ${error.message}`);
@@ -217,7 +220,7 @@ export default function DifferentialReinforcementQuizPage() {
               </p>
 
               <div className="mt-6 grid gap-3 md:grid-cols-2">
-                {question.choices.map((choice) => {
+                {question.choices.map((choice, choiceIndex) => {
                   const isSelected = selected === choice;
                   const isSelectedCorrect =
                     answered && isSelected && choice === question.answer;
@@ -242,7 +245,7 @@ export default function DifferentialReinforcementQuizPage() {
 
                   return (
                     <button
-                      key={choice}
+                      key={`${current}-${choiceIndex}-${choice}`}
                       onClick={() => chooseAnswer(choice)}
                       className={buttonStyle}
                     >

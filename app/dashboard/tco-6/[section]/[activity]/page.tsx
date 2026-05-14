@@ -126,7 +126,7 @@ function LearnView({ section }: { section: TcoSection }) {
         {section.checklistItems.map((item, index) => (
           <article
             id={`lesson-${index + 1}`}
-            key={item}
+            key={`${index}-${item}`}
             className="rounded-3xl border border-slate-200 bg-slate-50 p-5"
           >
             <p className="text-sm font-black uppercase tracking-wide text-blue-600">

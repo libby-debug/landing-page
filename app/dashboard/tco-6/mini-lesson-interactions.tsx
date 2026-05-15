@@ -161,18 +161,21 @@ function defaultLearnHint() {
 
 const centeredTwoColumnGroupClass =
   "mx-auto flex w-full flex-wrap justify-center gap-4";
+const noMidWordWrapClass =
+  "min-w-0 whitespace-normal break-normal hyphens-none [overflow-wrap:normal] [word-break:normal]";
+const mobileInteractionTextClass = "text-[0.8125rem] leading-5 sm:text-sm sm:leading-6";
 const twoColumnCardClass =
-  "w-[calc(50%_-_0.5rem)] break-words whitespace-normal";
+  `w-[calc(50%_-_0.5rem)] ${noMidWordWrapClass}`;
 const centeredChoiceGroupClass =
   "mx-auto mt-5 flex w-full max-w-3xl flex-wrap justify-center gap-3";
 const centeredWideChoiceGroupClass =
   "mx-auto mt-5 flex w-full max-w-4xl flex-wrap justify-center gap-3";
 const choiceCardClass =
-  "w-[calc(50%_-_0.375rem)] break-words whitespace-normal";
+  `w-[calc(50%_-_0.375rem)] ${noMidWordWrapClass}`;
 const centeredFourColumnGroupClass =
   "mx-auto mt-5 flex w-full max-w-4xl flex-wrap justify-center gap-3";
 const fourColumnCardClass =
-  "w-[calc(50%_-_0.375rem)] break-words whitespace-normal lg:w-[calc(25%_-_0.5625rem)]";
+  `w-[calc(50%_-_0.375rem)] lg:w-[calc(25%_-_0.5625rem)] ${noMidWordWrapClass}`;
 
 export function InteractiveVisualBlock({
   lessonSlug,
@@ -495,7 +498,7 @@ function FlowInteraction({
       <h3 className="text-2xl font-black text-slate-950">
         <FormattedConceptText text={visual.prompt ?? "Choose the correct sequence."} />
       </h3>
-      <p className="mt-2 text-sm font-semibold leading-6 text-slate-950">
+      <p className={`mt-2 font-semibold text-slate-950 ${mobileInteractionTextClass} ${noMidWordWrapClass}`}>
         Click each option in the order you think it belongs. The correct labels
         stay hidden until you check your answer.
       </p>
@@ -509,7 +512,7 @@ function FlowInteraction({
             disabled={completed || selectedSteps.includes(step)}
             onDragStart={() => setDraggedStep(step)}
             onClick={() => chooseStep(step)}
-            className="w-[calc(50%_-_0.375rem)] break-words whitespace-normal rounded-2xl border border-blue-100 bg-white p-4 text-sm font-black text-slate-950 transition hover:border-blue-300 disabled:cursor-not-allowed disabled:opacity-50 md:w-[calc(25%_-_0.5625rem)]"
+            className={`w-[calc(50%_-_0.375rem)] rounded-2xl border border-blue-100 bg-white p-3 font-black text-slate-950 transition hover:border-blue-300 disabled:cursor-not-allowed disabled:opacity-50 sm:p-4 md:w-[calc(25%_-_0.5625rem)] ${noMidWordWrapClass} ${mobileInteractionTextClass}`}
           >
             {step}
           </button>
@@ -520,7 +523,7 @@ function FlowInteraction({
         {visual.steps.map((_step, index) => (
           <div
             key={index}
-            className="min-h-28 w-[calc(50%_-_0.375rem)] break-words whitespace-normal rounded-3xl border border-white bg-white/80 p-4 md:w-[calc(25%_-_0.5625rem)]"
+            className={`min-h-28 w-[calc(50%_-_0.375rem)] rounded-3xl border border-white bg-white/80 p-3 sm:p-4 md:w-[calc(25%_-_0.5625rem)] ${noMidWordWrapClass}`}
             onDragOver={(event: DragEvent<HTMLDivElement>) => event.preventDefault()}
             onDrop={() => dropStep(index)}
           >
@@ -529,7 +532,7 @@ function FlowInteraction({
             >
               {index + 1}
             </div>
-            <p className="mt-3 text-sm font-black leading-6 text-slate-950">
+            <p className={`mt-3 font-black text-slate-950 ${mobileInteractionTextClass} ${noMidWordWrapClass}`}>
               {submitted
                 ? visual.steps[index]
                 : selectedSteps[index] ?? "Choose a step"}
@@ -595,7 +598,7 @@ function FlowInteraction({
               Correct answer: <FormattedConceptText text={sequenceAnswer(visual.steps)} />
             </p>
           ) : null}
-          <p className="mt-2 text-sm font-semibold leading-6 text-slate-950">
+          <p className={`mt-2 font-semibold text-slate-950 ${mobileInteractionTextClass} ${noMidWordWrapClass}`}>
             {isCorrect || remediation
               ? visual.feedback ??
                 "Respondent conditioning moves from Neutral Stimulus (NS), to pairing with an Unconditioned Stimulus (US), to Conditioned Stimulus (CS), to Conditioned Response (CR)."
@@ -656,7 +659,7 @@ function ChoiceInteraction({
               updateState({ selected: choice, submitted: false });
               onPassedChange?.(false);
             }}
-            className={`${choiceCardClass} rounded-2xl border p-4 text-sm font-black transition ${
+            className={`${choiceCardClass} rounded-2xl border p-3 font-black transition sm:p-4 ${mobileInteractionTextClass} ${
               selected === choice
                 ? "border-blue-300 bg-blue-50 text-blue-700"
                 : "border-white bg-white text-slate-950 hover:border-blue-200"
@@ -752,15 +755,15 @@ function GraphInterpretationInteraction({
         {visual.phases.map((phase, index) => (
           <article
             key={`${phase.label}-${index}`}
-            className={`${fourColumnCardClass} rounded-3xl border p-4 ${toneClass[phase.tone]}`}
+            className={`${fourColumnCardClass} rounded-3xl border p-3 sm:p-4 ${toneClass[phase.tone]}`}
           >
             <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-2xl bg-white text-lg font-black text-slate-950">
               {index + 1}
             </div>
-            <p className="mt-3 text-sm font-black uppercase tracking-wide">
+            <p className={`mt-3 font-black uppercase tracking-wide ${mobileInteractionTextClass} ${noMidWordWrapClass}`}>
               {phase.label}
             </p>
-            <p className="mt-2 text-sm font-semibold leading-6 text-slate-950">
+            <p className={`mt-2 font-semibold text-slate-950 ${mobileInteractionTextClass} ${noMidWordWrapClass}`}>
               <FormattedConceptText text={phase.detail} />
             </p>
           </article>
@@ -794,7 +797,7 @@ function GraphInterpretationInteraction({
               updateState({ selected: choice, submitted: false });
               onPassedChange?.(false);
             }}
-            className={`${choiceCardClass} rounded-2xl border p-4 text-sm font-black transition ${
+            className={`${choiceCardClass} rounded-2xl border p-3 font-black transition sm:p-4 ${mobileInteractionTextClass} ${
               selected === choice
                 ? "border-blue-300 bg-blue-50 text-blue-700"
                 : "border-slate-200 bg-slate-50 text-slate-950 hover:border-blue-200 hover:bg-blue-50"
@@ -952,7 +955,7 @@ function MatchingInteraction({
                 setSubmitted(false);
                 onPassedChange?.(false);
               }}
-              className={`min-h-16 w-[calc(50%_-_0.375rem)] cursor-grab break-words whitespace-normal rounded-2xl border p-3 text-sm font-black transition active:cursor-grabbing sm:p-4 lg:w-full ${
+              className={`min-h-16 w-[calc(50%_-_0.375rem)] cursor-grab rounded-2xl border p-3 font-black transition active:cursor-grabbing sm:p-4 lg:w-full ${noMidWordWrapClass} ${mobileInteractionTextClass} ${
                 pair.term === "Duration" ? "lg:mt-3" : ""
               } ${
                 activeTerm === pair.term
@@ -981,7 +984,7 @@ function MatchingInteraction({
               }}
               onDrop={(event) => dropTerm(event, definition)}
               onClick={() => assignMatch(definition)}
-              className={`rounded-2xl border bg-white p-4 text-left text-sm font-semibold leading-6 text-slate-950 transition ${
+              className={`rounded-2xl border bg-white p-3 text-left font-semibold text-slate-950 transition sm:p-4 ${mobileInteractionTextClass} ${noMidWordWrapClass} ${
                 matches[definition]
                   ? "border-blue-300"
                   : "border-white hover:border-blue-200"
@@ -1214,7 +1217,7 @@ function SortingInteraction({
               setSubmitted(false);
               onPassedChange?.(false);
             }}
-            className={`${choiceCardClass} rounded-2xl border p-4 text-sm font-black transition ${
+            className={`${choiceCardClass} rounded-2xl border p-3 font-black transition sm:p-4 ${mobileInteractionTextClass} ${
               activeItem === item.label
                 ? "border-teal-300 bg-white text-teal-700"
                 : "border-white bg-white text-slate-950 hover:border-teal-200"
@@ -1237,7 +1240,7 @@ function SortingInteraction({
             onClick={() => placeItem(category)}
             onDragOver={(event: DragEvent<HTMLButtonElement>) => event.preventDefault()}
             onDrop={() => dropItem(category, activeItem)}
-            className={`${twoColumnCardClass} min-h-28 rounded-3xl border border-white bg-white/80 p-5 text-center text-sm font-black text-slate-950 transition hover:border-teal-200`}
+            className={`${twoColumnCardClass} min-h-28 rounded-3xl border border-white bg-white/80 p-4 text-center font-black text-slate-950 transition hover:border-teal-200 sm:p-5 ${mobileInteractionTextClass}`}
           >
             <FormattedConceptText text={category} />
             <span className="mt-3 block text-xs font-semibold leading-5 text-slate-700">
@@ -1439,7 +1442,7 @@ function SelectAllInteraction({
             key={choice.label}
             type="button"
             onClick={() => toggle(choice.label)}
-            className={`${choiceCardClass} rounded-2xl border p-4 text-sm font-black transition ${
+            className={`${choiceCardClass} rounded-2xl border p-3 font-black transition sm:p-4 ${mobileInteractionTextClass} ${
               selected.includes(choice.label)
                 ? "border-purple-300 bg-white text-purple-700"
                 : "border-white bg-white/80 text-slate-950 hover:border-purple-200"
@@ -1573,7 +1576,7 @@ function FeedbackBox({
           <FormattedConceptText text={correctAnswer} />
         </p>
       ) : null}
-      <p className="mt-2 text-sm font-semibold leading-6 text-slate-950">
+      <p className={`mt-2 font-semibold text-slate-950 ${mobileInteractionTextClass} ${noMidWordWrapClass}`}>
         <FormattedConceptText text={message} />
       </p>
       {!correct && onReset ? (

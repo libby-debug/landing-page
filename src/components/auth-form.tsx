@@ -87,6 +87,32 @@ export function AuthForm({ mode, afterSubmitAction }: AuthFormProps) {
       return;
     }
 
+    if (!isSignup) {
+      if (!result.data.session) {
+        setError("Login did not return an active session. Please try again.");
+        setStatus("idle");
+        return;
+      }
+
+      await supabase.auth.setSession({
+        access_token: result.data.session.access_token,
+        refresh_token: result.data.session.refresh_token,
+      });
+
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+
+      if (!session) {
+        setError("Login session could not be saved. Please try again.");
+        setStatus("idle");
+        return;
+      }
+
+      window.location.replace(nextPath);
+      return;
+    }
+
     router.replace(nextPath);
     router.refresh();
   }

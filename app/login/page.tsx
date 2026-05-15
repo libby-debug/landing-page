@@ -68,20 +68,49 @@ export default function LoginPage() {
       });
     }
 
-    const { error } = await supabase.auth.signInWithPassword({
-      email: normalizedEmail,
-      password,
-    });
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: normalizedEmail,
+        password,
+      });
 
-    if (error) {
-      setMessage(error.message);
+      if (error) {
+        setMessage(error.message);
+        setIsSubmitting(false);
+        return;
+      }
+
+      if (!data.session) {
+        setMessage("Login did not return an active session. Please try again.");
+        setIsSubmitting(false);
+        return;
+      }
+
+      await supabase.auth.setSession({
+        access_token: data.session.access_token,
+        refresh_token: data.session.refresh_token,
+      });
+
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+
+      if (!session) {
+        setMessage("Login session could not be saved. Please try again.");
+        setIsSubmitting(false);
+        return;
+      }
+
+      const nextPath = new URLSearchParams(window.location.search).get("next");
+      window.location.replace(nextPath ?? "/dashboard");
+    } catch (loginError) {
+      setMessage(
+        loginError instanceof Error
+          ? loginError.message
+          : "Unable to log in. Please try again.",
+      );
       setIsSubmitting(false);
-      return;
     }
-
-    const nextPath = new URLSearchParams(window.location.search).get("next");
-    router.replace(nextPath ?? "/dashboard");
-    router.refresh();
   }
 
   return (
@@ -193,6 +222,7 @@ export default function LoginPage() {
           </Link>
 
           <button
+            type="submit"
             className="mt-5 w-full rounded-xl bg-blue-600 p-4 font-bold text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60"
             disabled={isSubmitting}
           >

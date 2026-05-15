@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { AuthProvider, useAuth } from "@/components/auth-provider";
 import { DailyDurationTracker } from "@/components/daily-duration-tracker";
 import { InactivityAutoLogout } from "@/components/inactivity-auto-logout";
@@ -59,6 +59,10 @@ const taskListSections = [
   },
 ];
 
+const moduleDropdownSections = taskListSections.filter(
+  (item) => item.prominence === "section" || item.href === "/modules",
+);
+
 const authenticatedRoutePrefixes = ["/dashboard", "/modules", "/account", "/study"];
 
 function isAuthenticatedAppRoute(pathname: string) {
@@ -97,6 +101,13 @@ function isActiveNavItem(pathname: string, href: string) {
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
+function getActiveDropdownValue(pathname: string) {
+  return (
+    moduleDropdownSections.find((item) => isActiveNavItem(pathname, item.href))
+      ?.href ?? ""
+  );
+}
+
 function getNavAriaLabel(title: string, href: string) {
   const moduleMatch = title.match(/^([A-I])\./);
 
@@ -117,21 +128,72 @@ export function PlatformShell({ children }: { children: React.ReactNode }) {
 
 function PlatformShellContent({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  const router = useRouter();
   const { user } = useAuth();
-  const showSidebar =
+  const showAuthenticatedNavigation =
     Boolean(user) &&
     isAuthenticatedAppRoute(pathname) &&
     !isFinalExamRoute(pathname);
+  const showPublicHeader = !showAuthenticatedNavigation;
 
   return (
     <div className="relative flex min-h-screen overflow-x-hidden bg-[radial-gradient(circle_at_88%_12%,rgba(153,246,228,0.68),transparent_28%),linear-gradient(180deg,#dff1ff_0%,#ccfbf1_34%,#ffffff_82%,#ffffff_100%)]">
       <DailyDurationTracker />
       <InactivityAutoLogout />
       {user ? <ProgressStorageHydrator /> : null}
-      <SiteHeader />
+      {showPublicHeader ? <SiteHeader /> : null}
 
-      {showSidebar && (
-        <aside className="relative z-20 w-72 flex-col border-r border-cyan-200/80 bg-[linear-gradient(180deg,rgba(56,189,248,0.22)_0%,rgba(34,211,238,0.18)_34%,rgba(186,230,253,0.60)_68%,rgba(255,255,255,0.92)_100%)] p-6 pt-28 shadow-[0_24px_70px_rgba(14,165,233,0.14)] backdrop-blur-2xl lg:flex">
+      {showAuthenticatedNavigation ? (
+        <div className="fixed inset-x-0 top-0 z-30 px-3 pt-3 lg:hidden">
+          <div className="mx-auto w-full max-w-[430px] rounded-2xl border border-cyan-200/80 bg-[linear-gradient(180deg,rgba(56,189,248,0.24)_0%,rgba(186,230,253,0.72)_100%)] p-2 shadow-[0_16px_42px_rgba(14,165,233,0.18)] backdrop-blur-2xl">
+            <div className="grid grid-cols-[3.25rem_1fr_3.25rem] items-center gap-2">
+              <Link href="/" aria-label="ABA Mastered home" className="inline-flex">
+                <Image
+                  src="/images/aba-mastered-updated-header-logo.png"
+                  alt="ABA Mastered"
+                  width={1024}
+                  height={1024}
+                  sizes="44px"
+                  className="h-11 w-11 object-contain p-0.5"
+                />
+              </Link>
+
+              <Link
+                href="/dashboard"
+                className="justify-self-center rounded-xl border border-blue-200 bg-white/85 px-4 py-2 text-center text-sm font-black text-slate-950 shadow-sm transition hover:bg-white hover:text-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-100"
+              >
+                Main Dashboard
+              </Link>
+
+              <div aria-hidden="true" />
+            </div>
+
+            <label className="mt-2 block text-left text-xs font-black uppercase tracking-wide text-slate-950">
+              Modules
+              <select
+                aria-label="Choose a module"
+                value={getActiveDropdownValue(pathname)}
+                onChange={(event) => {
+                  if (event.target.value) {
+                    router.push(event.target.value);
+                  }
+                }}
+                className="mt-1 w-full rounded-xl border border-blue-100 bg-white/90 px-3 py-2 text-sm font-bold text-slate-950 shadow-sm outline-none transition focus:border-blue-300 focus:ring-4 focus:ring-blue-100"
+              >
+                <option value="">Choose a module</option>
+                {moduleDropdownSections.map((item) => (
+                  <option key={item.href} value={item.href}>
+                    {item.title}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </div>
+        </div>
+      ) : null}
+
+      {showAuthenticatedNavigation && (
+        <aside className="relative z-20 hidden w-72 flex-col border-r border-cyan-200/80 bg-[linear-gradient(180deg,rgba(56,189,248,0.22)_0%,rgba(34,211,238,0.18)_34%,rgba(186,230,253,0.60)_68%,rgba(255,255,255,0.92)_100%)] p-6 pt-28 shadow-[0_24px_70px_rgba(14,165,233,0.14)] backdrop-blur-2xl lg:flex">
             <div className="pb-4">
               <Link href="/" aria-label="ABA Mastered home" className="inline-flex">
                 <Image
@@ -144,7 +206,6 @@ function PlatformShellContent({ children }: { children: React.ReactNode }) {
                 />
               </Link>
             </div>
-
 
             <nav className="mt-6 flex flex-col gap-2">
               {taskListSections.map((item) => {
@@ -208,7 +269,11 @@ function PlatformShellContent({ children }: { children: React.ReactNode }) {
         </aside>
       )}
 
-      <main className="relative z-10 flex-1 pt-32 md:pt-36">
+      <main
+        className={`relative z-10 min-w-0 flex-1 ${
+          showAuthenticatedNavigation ? "w-full pt-36 lg:pt-36" : "pt-32 md:pt-36"
+        }`}
+      >
         {children}
       </main>
     </div>

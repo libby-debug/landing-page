@@ -57,29 +57,29 @@ const accentClass = {
 
 export default function PricingPage() {
   return (
-    <main className="min-h-screen bg-transparent px-6 pb-24 text-center sm:px-8">
+    <main className="min-h-screen bg-transparent px-4 pb-20 text-center sm:px-8 sm:pb-24">
       <section className="mx-auto flex w-full max-w-6xl flex-col items-center">
-        <h1 className="text-5xl font-black tracking-tight text-slate-950 md:text-7xl">
+        <h1 className="mx-auto max-w-[20rem] text-center text-[clamp(2.5rem,12vw,3.5rem)] font-black leading-[1.05] tracking-tight text-slate-950 sm:max-w-none md:text-7xl">
           Choose Your Mastery Plan
         </h1>
 
-        <p className="mt-5 max-w-3xl text-lg font-medium leading-8 text-slate-950 md:text-xl md:leading-9">
+        <p className="mx-auto mt-4 max-w-3xl px-1 text-center text-base font-medium leading-7 text-slate-950 sm:mt-5 sm:text-lg sm:leading-8 md:text-xl md:leading-9">
           Affordable and Flexible BCBA exam prep plans designed to fit your
           budget.
         </p>
 
-        <div className="mt-12 w-full rounded-[2rem] bg-[#020617] px-5 py-8 shadow-2xl shadow-slate-900/20 sm:px-8 lg:px-10">
-          <div className="grid gap-6 lg:grid-cols-3">
+        <div className="mx-auto mt-8 w-full max-w-[28rem] rounded-[2rem] bg-[#020617] px-3 py-6 shadow-2xl shadow-slate-900/20 sm:mt-10 sm:max-w-6xl sm:px-8 sm:py-8 lg:px-10">
+          <div className="grid place-items-center gap-6 lg:grid-cols-3">
             {plans.map((plan) => {
               const tone = accentClass[plan.accent as keyof typeof accentClass];
 
               return (
                 <article
                   key={plan.name}
-                  className={`relative flex flex-col rounded-3xl border ${tone.border} bg-white p-6 text-center shadow-xl`}
+                  className={`relative mx-auto flex w-full max-w-sm flex-col rounded-3xl border ${tone.border} bg-white p-5 text-center shadow-xl sm:p-6`}
                 >
                   {plan.popular ? (
-                    <div className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-r from-purple-600 via-blue-500 to-teal-400 px-8 py-2 text-sm font-extrabold uppercase tracking-wide text-white shadow-lg">
+                    <div className="absolute left-1/2 top-0 w-max max-w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-r from-purple-600 via-blue-500 to-teal-400 px-6 py-2 text-xs font-extrabold uppercase tracking-wide text-white shadow-lg sm:px-8 sm:text-sm">
                       Most Popular
                     </div>
                   ) : null}
@@ -102,12 +102,12 @@ export default function PricingPage() {
 
                   <div className={`mx-auto mt-5 h-px w-4/5 ${tone.bg}`} />
 
-                  <div className="mt-5 flex items-end justify-center gap-2 text-slate-950">
-                    <span className="text-4xl font-black">$</span>
-                    <span className="text-7xl font-black leading-none">
+                  <div className="mt-5 flex items-end justify-center gap-1.5 text-slate-950 sm:gap-2">
+                    <span className="text-3xl font-black sm:text-4xl">$</span>
+                    <span className="text-6xl font-black leading-none sm:text-7xl">
                       {plan.price.replace("$", "")}
                     </span>
-                    <span className="pb-2 text-xl font-black">
+                    <span className="pb-1.5 text-base font-black sm:pb-2 sm:text-xl">
                       {plan.cadence}
                     </span>
                   </div>
@@ -126,7 +126,7 @@ export default function PricingPage() {
 
                   <Link
                     href={plan.href}
-                    className={`mt-8 flex min-h-14 flex-col items-center justify-center rounded-2xl border px-5 py-3 text-center text-sm font-black uppercase leading-tight tracking-wide transition hover:opacity-90 ${tone.button}`}
+                    className={`mx-auto mt-8 flex min-h-14 w-full max-w-[17rem] flex-col items-center justify-center rounded-2xl border px-5 py-3 text-center text-sm font-black uppercase leading-tight tracking-wide transition hover:opacity-90 ${tone.button}`}
                   >
                     <span>Choose the</span>
                     <span>{plan.buttonLineTwo}</span>
@@ -136,7 +136,7 @@ export default function PricingPage() {
             })}
           </div>
 
-          <p className="mx-auto mt-8 max-w-4xl rounded-2xl bg-white/95 px-5 py-4 text-base font-bold italic text-slate-950 shadow-sm">
+          <p className="mx-auto mt-8 max-w-4xl rounded-2xl bg-white/95 px-4 py-4 text-center text-sm font-bold italic leading-6 text-slate-950 shadow-sm sm:px-5 sm:text-base">
             *3-month and 6-month plans, after term expires, will renew at
             $79/month until canceled.
           </p>

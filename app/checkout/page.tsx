@@ -2,7 +2,13 @@
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { Suspense, useState } from "react";
+import {
+  Suspense,
+  useRef,
+  useState,
+  type MouseEvent,
+  type PointerEvent,
+} from "react";
 import {
   isSupabaseConfigured,
   supabase,
@@ -24,12 +30,23 @@ function CheckoutContent() {
   const searchParams = useSearchParams();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const checkoutStartedRef = useRef(false);
   const plan = searchParams.get("plan") ?? "monthly";
   const price = searchParams.get("price") ?? "79";
   const selectedPlan =
     planNames[plan as keyof typeof planNames] ?? "Monthly Plan";
 
-  async function handleCheckout() {
+  async function handleCheckout(
+    event?: MouseEvent<HTMLButtonElement> | PointerEvent<HTMLButtonElement>,
+  ) {
+    event?.preventDefault();
+    event?.stopPropagation();
+
+    if (checkoutStartedRef.current || isLoading) {
+      return;
+    }
+
+    checkoutStartedRef.current = true;
     setIsLoading(true);
     setError("");
 
@@ -60,13 +77,14 @@ function CheckoutContent() {
         throw new Error(data.error ?? "Unable to start Stripe Checkout.");
       }
 
-      window.location.href = data.url;
+      window.location.assign(data.url);
     } catch (checkoutError) {
       const message =
         checkoutError instanceof Error
           ? checkoutError.message
           : "Unable to start Stripe Checkout.";
 
+      checkoutStartedRef.current = false;
       setError(message);
       setIsLoading(false);
     }
@@ -112,9 +130,10 @@ function CheckoutContent() {
             ) : null}
 
             <button
-              className="mt-6 w-full rounded-xl bg-blue-600 p-4 font-black text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60"
+              className="mt-6 w-full touch-manipulation rounded-xl bg-blue-600 p-4 font-black text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60"
               disabled={isLoading}
               onClick={handleCheckout}
+              onPointerUp={handleCheckout}
               type="button"
             >
               {isLoading ? "Redirecting to Stripe..." : "Proceed to Checkout"}

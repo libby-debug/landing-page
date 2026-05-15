@@ -126,7 +126,7 @@ export default function PricingPage() {
 
                   <Link
                     href={plan.href}
-                    className={`mx-auto mt-8 flex min-h-14 w-full max-w-[17rem] flex-col items-center justify-center rounded-2xl border px-5 py-3 text-center text-sm font-black uppercase leading-tight tracking-wide transition hover:opacity-90 ${tone.button}`}
+                    className={`relative z-10 mx-auto mt-8 flex min-h-14 w-full max-w-[17rem] touch-manipulation flex-col items-center justify-center rounded-2xl border px-5 py-3 text-center text-sm font-black uppercase leading-tight tracking-wide transition hover:opacity-90 ${tone.button}`}
                   >
                     <span>Choose the</span>
                     <span>{plan.buttonLineTwo}</span>

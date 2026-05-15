@@ -1,7 +1,13 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import {
+  useRef,
+  useState,
+  type MouseEvent,
+  type PointerEvent,
+  type TouchEvent,
+} from "react";
 import {
   isSupabaseConfigured,
   supabase,
@@ -12,10 +18,52 @@ export function LogoutButton() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const logoutStartedRef = useRef(false);
 
-  async function handleLogout() {
+  function stopMenuEvent(
+    event:
+      | MouseEvent<HTMLButtonElement>
+      | PointerEvent<HTMLButtonElement>
+      | TouchEvent<HTMLButtonElement>,
+  ) {
+    event.stopPropagation();
+  }
+
+  function clearSupabaseSessionCache() {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    try {
+      for (const storage of [window.localStorage, window.sessionStorage]) {
+        for (let index = storage.length - 1; index >= 0; index -= 1) {
+          const key = storage.key(index);
+
+          if (key?.startsWith("sb-") && key.includes("auth-token")) {
+            storage.removeItem(key);
+          }
+        }
+      }
+    } catch {
+      // Supabase signOut already ran; storage cleanup should not block redirect.
+    }
+  }
+
+  async function handleLogout(
+    event: MouseEvent<HTMLButtonElement> | PointerEvent<HTMLButtonElement>,
+  ) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    if (logoutStartedRef.current || loading) {
+      return;
+    }
+
+    logoutStartedRef.current = true;
+
     if (!isSupabaseConfigured) {
       setError(supabaseConfigurationMessage);
+      logoutStartedRef.current = false;
       return;
     }
 
@@ -26,10 +74,12 @@ export function LogoutButton() {
 
     if (logoutError) {
       setError(logoutError.message);
+      logoutStartedRef.current = false;
       setLoading(false);
       return;
     }
 
+    clearSupabaseSessionCache();
     router.replace("/login");
     router.refresh();
   }
@@ -37,9 +87,12 @@ export function LogoutButton() {
   return (
     <div className="flex w-full flex-col items-stretch gap-2">
       <button
-        className="w-full rounded-xl bg-[linear-gradient(135deg,#7c3aed_0%,#3b82f6_36%,#14b8a6_68%,#6ee7b7_100%)] px-4 py-3 text-sm font-black text-white shadow-[0_14px_32px_rgba(59,130,246,0.24)] transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_18px_40px_rgba(20,184,166,0.28)] focus:outline-none focus:ring-4 focus:ring-blue-100 disabled:cursor-not-allowed disabled:opacity-60"
+        className="touch-manipulation w-full rounded-xl bg-[linear-gradient(135deg,#7c3aed_0%,#3b82f6_36%,#14b8a6_68%,#6ee7b7_100%)] px-4 py-3 text-sm font-black text-white shadow-[0_14px_32px_rgba(59,130,246,0.24)] transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_18px_40px_rgba(20,184,166,0.28)] focus:outline-none focus:ring-4 focus:ring-blue-100 disabled:cursor-not-allowed disabled:opacity-60"
         type="button"
         onClick={handleLogout}
+        onPointerDown={stopMenuEvent}
+        onPointerUp={handleLogout}
+        onTouchStart={stopMenuEvent}
         disabled={loading}
       >
         {loading ? "Logging out..." : "Log Out"}

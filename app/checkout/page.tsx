@@ -3,6 +3,11 @@
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { Suspense, useState } from "react";
+import {
+  isSupabaseConfigured,
+  supabase,
+  supabaseConfigurationMessage,
+} from "@/lib/supabase/client";
 
 const planNames = {
   monthly: "Monthly Plan",
@@ -29,9 +34,22 @@ function CheckoutContent() {
     setError("");
 
     try {
+      if (!isSupabaseConfigured) {
+        throw new Error(supabaseConfigurationMessage);
+      }
+
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+
+      if (!session?.access_token) {
+        throw new Error("Please log in before starting checkout.");
+      }
+
       const response = await fetch("/api/create-checkout-session", {
         method: "POST",
         headers: {
+          Authorization: `Bearer ${session.access_token}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ plan }),

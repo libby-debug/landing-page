@@ -1,10 +1,10 @@
-const demoPassword = "DemoAccess2026!";#!/usr/bin/env node
+#!/usr/bin/env node
 import { readFileSync, existsSync } from "node:fs";
 import { resolve } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 
 const demoEmail = "demo@abamastered.com";
-const demoPassword = "Demo123!";
+const demoPassword = "DemoAccess2026!";
 
 function loadEnvFile(fileName) {
   const filePath = resolve(process.cwd(), fileName);

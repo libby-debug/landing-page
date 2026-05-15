@@ -208,7 +208,7 @@ function DashboardContent() {
             Signed in as {user?.email}
           </p>
 
-          <div className="mt-4 w-full max-w-xs">
+          <div className="mt-4 hidden w-full max-w-xs lg:block">
             <LogoutButton />
           </div>
         </div>

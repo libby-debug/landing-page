@@ -161,16 +161,18 @@ function defaultLearnHint() {
 
 const centeredTwoColumnGroupClass =
   "mx-auto flex w-full flex-wrap justify-center gap-4";
-const twoColumnCardClass = "w-full md:w-[calc(50%_-_0.5rem)]";
+const twoColumnCardClass =
+  "w-[calc(50%_-_0.5rem)] break-words whitespace-normal";
 const centeredChoiceGroupClass =
   "mx-auto mt-5 flex w-full max-w-3xl flex-wrap justify-center gap-3";
 const centeredWideChoiceGroupClass =
   "mx-auto mt-5 flex w-full max-w-4xl flex-wrap justify-center gap-3";
-const choiceCardClass = "w-full md:w-[calc(50%_-_0.375rem)]";
+const choiceCardClass =
+  "w-[calc(50%_-_0.375rem)] break-words whitespace-normal";
 const centeredFourColumnGroupClass =
   "mx-auto mt-5 flex w-full max-w-4xl flex-wrap justify-center gap-3";
 const fourColumnCardClass =
-  "w-full sm:w-[calc(50%_-_0.375rem)] lg:w-[calc(25%_-_0.5625rem)]";
+  "w-[calc(50%_-_0.375rem)] break-words whitespace-normal lg:w-[calc(25%_-_0.5625rem)]";
 
 export function InteractiveVisualBlock({
   lessonSlug,
@@ -507,7 +509,7 @@ function FlowInteraction({
             disabled={completed || selectedSteps.includes(step)}
             onDragStart={() => setDraggedStep(step)}
             onClick={() => chooseStep(step)}
-            className="w-full rounded-2xl border border-blue-100 bg-white p-4 text-sm font-black text-slate-950 transition hover:border-blue-300 disabled:cursor-not-allowed disabled:opacity-50 sm:w-[calc(50%-0.375rem)] md:w-[calc(25%-0.5625rem)]"
+            className="w-[calc(50%_-_0.375rem)] break-words whitespace-normal rounded-2xl border border-blue-100 bg-white p-4 text-sm font-black text-slate-950 transition hover:border-blue-300 disabled:cursor-not-allowed disabled:opacity-50 md:w-[calc(25%_-_0.5625rem)]"
           >
             {step}
           </button>
@@ -518,7 +520,7 @@ function FlowInteraction({
         {visual.steps.map((_step, index) => (
           <div
             key={index}
-            className="min-h-28 w-full rounded-3xl border border-white bg-white/80 p-4 sm:w-[calc(50%-0.375rem)] md:w-[calc(25%-0.5625rem)]"
+            className="min-h-28 w-[calc(50%_-_0.375rem)] break-words whitespace-normal rounded-3xl border border-white bg-white/80 p-4 md:w-[calc(25%_-_0.5625rem)]"
             onDragOver={(event: DragEvent<HTMLDivElement>) => event.preventDefault()}
             onDrop={() => dropStep(index)}
           >
@@ -934,7 +936,7 @@ function MatchingInteraction({
         then Enter or Space on a definition.
       </p>
       <div className="mx-auto mt-5 grid w-full max-w-4xl items-start gap-4 lg:grid-cols-[0.8fr_1.2fr]">
-        <div className="grid gap-3">
+        <div className="flex flex-wrap justify-center gap-3 lg:grid lg:grid-cols-1">
           {visual.pairs.map((pair) => (
             <button
               key={pair.term}
@@ -950,8 +952,8 @@ function MatchingInteraction({
                 setSubmitted(false);
                 onPassedChange?.(false);
               }}
-              className={`cursor-grab rounded-2xl border p-4 text-sm font-black transition active:cursor-grabbing ${
-                pair.term === "Duration" ? "mt-3" : ""
+              className={`min-h-16 w-[calc(50%_-_0.375rem)] cursor-grab break-words whitespace-normal rounded-2xl border p-3 text-sm font-black transition active:cursor-grabbing sm:p-4 lg:w-full ${
+                pair.term === "Duration" ? "lg:mt-3" : ""
               } ${
                 activeTerm === pair.term
                   ? "border-purple-300 bg-purple-50 text-purple-700"

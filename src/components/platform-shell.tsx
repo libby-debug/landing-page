@@ -6,6 +6,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { AuthProvider, useAuth } from "@/components/auth-provider";
 import { DailyDurationTracker } from "@/components/daily-duration-tracker";
 import { InactivityAutoLogout } from "@/components/inactivity-auto-logout";
+import { LogoutButton } from "@/components/logout-button";
 import { SiteHeader } from "@/components/site-header";
 import { ProgressStorageHydrator } from "../../app/dashboard/tco-6/progression";
 
@@ -146,7 +147,7 @@ function PlatformShellContent({ children }: { children: React.ReactNode }) {
       {showAuthenticatedNavigation ? (
         <div className="fixed inset-x-0 top-0 z-30 px-3 pt-3 lg:hidden">
           <div className="mx-auto w-full max-w-[430px] rounded-2xl border border-cyan-200/80 bg-[linear-gradient(180deg,rgba(56,189,248,0.24)_0%,rgba(186,230,253,0.72)_100%)] p-2 shadow-[0_16px_42px_rgba(14,165,233,0.18)] backdrop-blur-2xl">
-            <div className="grid grid-cols-[3.25rem_1fr_3.25rem] items-center gap-2">
+            <div className="grid grid-cols-[3.25rem_1fr_4.75rem] items-center gap-2">
               <Link href="/" aria-label="ABA Mastered home" className="inline-flex">
                 <Image
                   src="/images/aba-mastered-updated-header-logo.png"
@@ -165,7 +166,12 @@ function PlatformShellContent({ children }: { children: React.ReactNode }) {
                 Main Dashboard
               </Link>
 
-              <div aria-hidden="true" />
+              <div className="justify-self-end">
+                <LogoutButton
+                  className="touch-manipulation whitespace-nowrap rounded-xl bg-[linear-gradient(135deg,#7c3aed_0%,#3b82f6_36%,#14b8a6_68%,#6ee7b7_100%)] px-2.5 py-2 text-[0.68rem] font-black leading-none text-white shadow-[0_10px_24px_rgba(59,130,246,0.24)] transition duration-200 active:scale-95 disabled:cursor-not-allowed disabled:opacity-60"
+                  showError={false}
+                />
+              </div>
             </div>
 
             <label className="mt-2 block text-left text-xs font-black uppercase tracking-wide text-slate-950">

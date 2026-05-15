@@ -3,7 +3,9 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useAuth } from "@/components/auth-provider";
 import { ProtectedRoute } from "@/components/protected-route";
+import { isDemoUserEmail } from "@/lib/demo-user";
 import {
   FormattedConceptText,
   PageShell,
@@ -48,6 +50,7 @@ export default function FinalExamPage() {
 
 function FinalExamGate() {
   const router = useRouter();
+  const { user } = useAuth();
   const [allowed, setAllowed] = useState(false);
   const [checked, setChecked] = useState(false);
 
@@ -65,6 +68,7 @@ function FinalExamGate() {
       // overall program progress before the Final Exam route is available.
       const developerPreview =
         process.env.NODE_ENV === "development" &&
+        !isDemoUserEmail(user?.email) &&
         new URLSearchParams(window.location.search).get("preview") === "dev";
       const unlocked = developerPreview || isFinalExamUnlocked();
       setAllowed(unlocked);
@@ -80,7 +84,7 @@ function FinalExamGate() {
     return () => {
       active = false;
     };
-  }, [router]);
+  }, [router, user?.email]);
 
   if (!checked || !allowed) {
     return (

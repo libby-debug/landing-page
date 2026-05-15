@@ -10,6 +10,7 @@ import {
   useWeeklyDailyDuration,
 } from "@/components/daily-duration-tracker";
 import { isSupabaseConfigured, supabase } from "@/lib/supabase/client";
+import { isDemoUserEmail } from "@/lib/demo-user";
 import {
   PageShell,
   cardBaseClass,
@@ -182,6 +183,8 @@ function DashboardContent() {
       : startedCount > 0
         ? "No mini-lessons completed today yet. Continue a saved Learn path."
         : "Complete a mini-lesson at 100% to start today's count.";
+  const showDeveloperShortcuts =
+    process.env.NODE_ENV === "development" && !isDemoUserEmail(user?.email);
   const overallDescription = !progressLoaded
     ? "Loading saved Learn, Practice, and Mastery Check progress."
     : startedCount > 0
@@ -250,7 +253,7 @@ function DashboardContent() {
       />
 
       {/* Development-only QA panel. These links are stripped from production UI by NODE_ENV. */}
-      {process.env.NODE_ENV === "development" ? (
+      {showDeveloperShortcuts ? (
         <section className={`${cardBaseClass} mt-8 w-full border-amber-200 bg-amber-50 text-center`}>
           <p className="text-sm font-black uppercase tracking-wide text-amber-700">
             Developer Shortcuts
@@ -490,9 +493,11 @@ function TcoSectionCard({
   progressPercent: number;
   section: TcoSection;
 }) {
+  const { user } = useAuth();
   const { progress: savedProgress } = useModuleProgress(section.slug);
   const showDeveloperAccess =
     process.env.NODE_ENV === "development" &&
+    !isDemoUserEmail(user?.email) &&
     ["a", "b", "c", "d", "e", "f", "g", "h", "i"].includes(section.slug);
   const completed = savedProgress.masteryCompleted;
   const status = getMasteryStatus(progressPercent);

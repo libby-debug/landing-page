@@ -4,6 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
 import { useEffect, useState } from "react";
+import { useAuth } from "@/components/auth-provider";
+import { isDemoUserEmail } from "@/lib/demo-user";
 import { isSupabaseConfigured, supabase } from "@/lib/supabase/client";
 import { masteryThreshold, miniLessonMasteryThreshold } from "./data";
 
@@ -749,11 +751,13 @@ export function isActivityUnlocked(
 function hasDeveloperPreviewAccess(
   activity: ActivitySlug,
   sectionSlug: string,
+  userEmail?: string | null,
 ) {
   // Development-only bypass for QA shortcuts. Production learners still follow
   // normal Learn -> Practice -> Mastery Check progression.
   return (
     process.env.NODE_ENV === "development" &&
+    !isDemoUserEmail(userEmail) &&
     ["a", "b", "c", "d", "e", "f", "g", "h", "i"].includes(sectionSlug) &&
     (activity === "practice" || activity === "mastery-check")
   );
@@ -766,6 +770,7 @@ export function ActivityProgressNav({
   activeActivity: ActivitySlug;
   sectionSlug: string;
 }) {
+  const { user } = useAuth();
   const { progress } = useModuleProgress(sectionSlug);
   const items: {
     activity: ActivitySlug;
@@ -794,7 +799,7 @@ export function ActivityProgressNav({
       {items.map((item) => {
         const unlocked =
           isActivityUnlocked(item.activity, progress) ||
-          hasDeveloperPreviewAccess(item.activity, sectionSlug);
+          hasDeveloperPreviewAccess(item.activity, sectionSlug, user?.email);
         const active = item.activity === activeActivity;
         const baseClass =
           "rounded-xl border px-4 py-2 text-sm font-black shadow-sm transition";
@@ -843,10 +848,11 @@ export function ActivityGate({
   children: ReactNode;
   sectionSlug: string;
 }) {
+  const { user } = useAuth();
   const { progress } = useModuleProgress(sectionSlug);
   const unlocked =
     isActivityUnlocked(activity, progress) ||
-    hasDeveloperPreviewAccess(activity, sectionSlug);
+    hasDeveloperPreviewAccess(activity, sectionSlug, user?.email);
 
   if (!unlocked && activity !== "learn") {
     return <LockedActivityCard activity={activity} />;

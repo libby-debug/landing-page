@@ -160,7 +160,7 @@ function PlatformShellContent({ children }: { children: React.ReactNode }) {
 
               <Link
                 href="/dashboard"
-                className="justify-self-center rounded-xl border border-blue-200 bg-white/85 px-4 py-2 text-center text-sm font-black text-slate-950 shadow-sm transition hover:bg-white hover:text-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-100"
+                className="justify-self-center rounded-xl border border-white/50 bg-gradient-to-r from-purple-600 via-blue-500 via-60% to-emerald-300 px-4 py-2 text-center text-sm font-black text-white shadow-lg shadow-teal-300/30 transition hover:-translate-y-0.5 hover:shadow-xl hover:shadow-teal-300/40 focus:outline-none focus:ring-4 focus:ring-blue-100"
               >
                 Main Dashboard
               </Link>

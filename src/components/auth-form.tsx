@@ -51,7 +51,14 @@ export function AuthForm({ mode, afterSubmitAction }: AuthFormProps) {
 
     setStatus("submitting");
 
-    const normalizedEmail = email.trim();
+    const normalizedEmail = email.trim().toLowerCase();
+
+    if (process.env.NODE_ENV === "development") {
+      console.info("ABA Mastered auth debug", {
+        emailLength: normalizedEmail.length,
+        passwordLength: password.length,
+      });
+    }
 
     const result = isSignup
       ? await supabase.auth.signUp({
@@ -127,6 +134,7 @@ export function AuthForm({ mode, afterSubmitAction }: AuthFormProps) {
                   autoComplete="email"
                   spellCheck={false}
                   inputMode="email"
+                  enterKeyHint="next"
                   value={email}
                   onChange={(event) => setEmail(event.target.value)}
                   required
@@ -150,6 +158,7 @@ export function AuthForm({ mode, afterSubmitAction }: AuthFormProps) {
                     autoCorrect="off"
                     autoComplete={isSignup ? "new-password" : "current-password"}
                     spellCheck={false}
+                    enterKeyHint="done"
                     minLength={6}
                     value={password}
                     onChange={(event) => setPassword(event.target.value)}

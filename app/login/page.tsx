@@ -59,8 +59,17 @@ export default function LoginPage() {
 
     setIsSubmitting(true);
 
+    const normalizedEmail = email.trim().toLowerCase();
+
+    if (process.env.NODE_ENV === "development") {
+      console.info("ABA Mastered login debug", {
+        emailLength: normalizedEmail.length,
+        passwordLength: password.length,
+      });
+    }
+
     const { error } = await supabase.auth.signInWithPassword({
-      email: email.trim(),
+      email: normalizedEmail,
       password,
     });
 
@@ -101,6 +110,9 @@ export default function LoginPage() {
           </p>
 
           <input
+            id="login-email"
+            name="email"
+            aria-label="Email address"
             className="mt-6 w-full rounded-xl border border-slate-950 p-4 text-left"
             type="email"
             placeholder="Email address"
@@ -109,6 +121,7 @@ export default function LoginPage() {
             autoComplete="email"
             spellCheck={false}
             inputMode="email"
+            enterKeyHint="next"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -116,6 +129,9 @@ export default function LoginPage() {
 
           <div className="relative mt-4">
             <input
+              id="login-password"
+              name="password"
+              aria-label="Password"
               className="w-full rounded-xl border border-slate-950 p-4 pr-14 text-left"
               type={showPassword ? "text" : "password"}
               placeholder="Password"
@@ -123,6 +139,7 @@ export default function LoginPage() {
               autoCorrect="off"
               autoComplete="current-password"
               spellCheck={false}
+              enterKeyHint="done"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required

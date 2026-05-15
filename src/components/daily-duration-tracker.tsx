@@ -95,7 +95,7 @@ function getLastSevenDailyDurations(userId: string) {
   return Array.from({ length: 7 }, (_, index) => {
     const date = new Date(today);
     date.setHours(12, 0, 0, 0);
-    date.setDate(today.getDate() - (6 - index));
+    date.setDate(today.getDate() - index);
     const dateKey = getLocalDateKey(date);
 
     return {

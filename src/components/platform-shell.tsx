@@ -6,7 +6,6 @@ import { usePathname, useRouter } from "next/navigation";
 import { AuthProvider, useAuth } from "@/components/auth-provider";
 import { DailyDurationTracker } from "@/components/daily-duration-tracker";
 import { InactivityAutoLogout } from "@/components/inactivity-auto-logout";
-import { LogoutButton } from "@/components/logout-button";
 import { SiteHeader } from "@/components/site-header";
 import { ProgressStorageHydrator } from "../../app/dashboard/tco-6/progression";
 
@@ -164,10 +163,22 @@ function PlatformShellContent({ children }: { children: React.ReactNode }) {
               </div>
 
               <div className="justify-self-end">
-                <LogoutButton
-                  className="touch-manipulation whitespace-nowrap rounded-xl bg-[linear-gradient(135deg,#7c3aed_0%,#3b82f6_36%,#14b8a6_68%,#6ee7b7_100%)] px-2.5 py-2 text-[0.68rem] font-black leading-none text-white shadow-[0_10px_24px_rgba(59,130,246,0.24)] transition duration-200 active:scale-95 disabled:cursor-not-allowed disabled:opacity-60"
-                  showError={false}
-                />
+                <a
+                  href="/logout"
+                  onClick={() => {
+                    if (process.env.NODE_ENV === "development") {
+                      console.info("mobile logout clicked/tapped");
+                    }
+                  }}
+                  onTouchEnd={() => {
+                    if (process.env.NODE_ENV === "development") {
+                      console.info("mobile logout clicked/tapped");
+                    }
+                  }}
+                  className="inline-flex touch-manipulation whitespace-nowrap rounded-xl bg-[linear-gradient(135deg,#7c3aed_0%,#3b82f6_36%,#14b8a6_68%,#6ee7b7_100%)] px-2.5 py-2 text-[0.68rem] font-black leading-none text-white shadow-[0_10px_24px_rgba(59,130,246,0.24)] transition duration-200 active:scale-95"
+                >
+                  Log Out
+                </a>
               </div>
             </div>
 

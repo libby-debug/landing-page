@@ -16,7 +16,7 @@ function logLogoutDebug(message: "logout tapped" | "signOut success" | "signOut 
   }
 }
 
-function clearLogoutSessionStorage() {
+export function clearLogoutSessionStorage() {
   if (typeof window === "undefined") {
     return;
   }

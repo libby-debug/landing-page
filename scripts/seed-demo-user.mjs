@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+const demoPassword = "DemoAccess2026!";#!/usr/bin/env node
 import { readFileSync, existsSync } from "node:fs";
 import { resolve } from "node:path";
 import { createClient } from "@supabase/supabase-js";

@@ -208,6 +208,13 @@ function DashboardContent() {
             Signed in as {user?.email}
           </p>
 
+          <Link
+            href="/dashboard"
+            className="mt-4 inline-flex touch-manipulation items-center justify-center rounded-xl border border-white/50 bg-gradient-to-r from-purple-600 via-blue-500 via-60% to-emerald-300 px-5 py-3 text-center text-sm font-black text-white shadow-lg shadow-teal-300/30 transition hover:-translate-y-0.5 hover:shadow-xl hover:shadow-teal-300/40 focus:outline-none focus:ring-4 focus:ring-blue-100 lg:hidden"
+          >
+            Main Dashboard
+          </Link>
+
           <div className="mt-4 hidden w-full max-w-xs lg:block">
             <LogoutButton />
           </div>

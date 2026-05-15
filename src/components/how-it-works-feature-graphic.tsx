@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import type { Variants } from "motion/react";
 
@@ -80,6 +81,38 @@ const cardVariants: Variants = {
 
 export function HowItWorksFeatureGraphic() {
   const shouldReduceMotion = useReducedMotion();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 767px)");
+    const updateMobileState = () => setIsMobile(mediaQuery.matches);
+
+    updateMobileState();
+    mediaQuery.addEventListener("change", updateMobileState);
+
+    return () => mediaQuery.removeEventListener("change", updateMobileState);
+  }, []);
+
+  const sectionVariants = isMobile
+    ? {
+        hidden: {},
+        show: {
+          transition: {
+            delayChildren: 0,
+            staggerChildren: 0.12,
+          },
+        },
+      }
+    : containerVariants;
+
+  const mobileHeadingVariants: Variants = {
+    hidden: { opacity: 0, y: 12 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.35, ease: calmEase },
+    },
+  };
 
   return (
     <motion.section
@@ -87,8 +120,8 @@ export function HowItWorksFeatureGraphic() {
       className="relative mt-10 w-full overflow-hidden rounded-[2rem] bg-[#020617] px-5 py-8 shadow-2xl shadow-slate-900/20 sm:px-8 md:py-10 lg:px-10"
       initial={shouldReduceMotion ? false : "hidden"}
       whileInView={shouldReduceMotion ? undefined : "show"}
-      viewport={{ once: true, amount: 0.2 }}
-      variants={containerVariants}
+      viewport={{ once: true, amount: isMobile ? 0.05 : 0.2 }}
+      variants={sectionVariants}
     >
       {!shouldReduceMotion && (
         <>
@@ -115,7 +148,7 @@ export function HowItWorksFeatureGraphic() {
 
       <motion.h2
         className="relative z-10 mx-auto max-w-5xl text-balance text-center text-4xl font-black leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-6xl"
-        variants={headingVariants}
+        variants={isMobile ? mobileHeadingVariants : headingVariants}
       >
         BCBA exam prep made visual, simple, and easier to remember.
       </motion.h2>

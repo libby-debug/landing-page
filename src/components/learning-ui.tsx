@@ -25,7 +25,7 @@ export const eyebrowClass =
   "text-sm font-semibold uppercase tracking-wide text-blue-600";
 
 export const pageTitleClass =
-  `mt-2 max-w-full overflow-visible px-2 pb-2 text-5xl font-extrabold leading-[1.15] tracking-tight ${gradientTextClass}`;
+  `mt-2 max-w-full whitespace-normal break-words px-2 pb-2 text-3xl font-extrabold leading-[1.12] tracking-tight sm:text-5xl sm:leading-[1.15] ${gradientTextClass}`;
 
 export const sectionTitleClass =
   "mt-2 max-w-full overflow-visible px-2 pb-1 text-3xl font-extrabold leading-[1.15] tracking-tight text-slate-950";

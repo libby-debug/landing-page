@@ -60,7 +60,7 @@ const taskListSections = [
 ];
 
 const moduleDropdownSections = taskListSections.filter(
-  (item) => item.prominence === "section" || item.href === "/modules",
+  (item) => item.prominence === "section",
 );
 
 const authenticatedRoutePrefixes = ["/dashboard", "/modules", "/account", "/study"];

@@ -4,7 +4,7 @@ import { HomepageCtaButtons } from "@/components/homepage-cta-buttons";
 export default function HomePage() {
   return (
     <main className="relative min-h-screen overflow-hidden bg-gradient-to-r from-[#dff1ff] to-[#ccfbf1]">
-      <section className="relative flex min-h-0 items-start justify-center px-4 pb-10 pt-10 text-center sm:px-8 sm:pb-14 sm:pt-12 lg:pb-16">
+      <section className="relative flex min-h-0 items-start justify-center px-4 pb-10 pt-7 text-center sm:px-8 sm:pb-14 sm:pt-9 lg:pb-16">
         <div className="relative z-10 mx-auto flex w-full max-w-[900px] flex-col items-center">
           <div className="flex w-full justify-center overflow-visible px-2 sm:px-4">
             <Image

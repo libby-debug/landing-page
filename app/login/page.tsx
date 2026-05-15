@@ -19,6 +19,7 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
     if (loading || !user) {
@@ -59,7 +60,7 @@ export default function LoginPage() {
     setIsSubmitting(true);
 
     const { error } = await supabase.auth.signInWithPassword({
-      email,
+      email: email.trim(),
       password,
     });
 
@@ -103,19 +104,69 @@ export default function LoginPage() {
             className="mt-6 w-full rounded-xl border border-slate-950 p-4 text-left"
             type="email"
             placeholder="Email address"
+            autoCapitalize="none"
+            autoCorrect="off"
+            autoComplete="email"
+            spellCheck={false}
+            inputMode="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
 
-          <input
-            className="mt-4 w-full rounded-xl border border-slate-950 p-4 text-left"
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
+          <div className="relative mt-4">
+            <input
+              className="w-full rounded-xl border border-slate-950 p-4 pr-14 text-left"
+              type={showPassword ? "text" : "password"}
+              placeholder="Password"
+              autoCapitalize="none"
+              autoCorrect="off"
+              autoComplete="current-password"
+              spellCheck={false}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <button
+              type="button"
+              aria-label={showPassword ? "Hide password" : "Show password"}
+              aria-pressed={showPassword}
+              onClick={() => setShowPassword((current) => !current)}
+              className="absolute right-3 top-1/2 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-xl text-slate-700 transition hover:bg-blue-50 hover:text-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-100"
+            >
+              {showPassword ? (
+                <svg
+                  aria-hidden="true"
+                  className="h-5 w-5"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="m3 3 18 18" />
+                  <path d="M10.6 10.6a2 2 0 0 0 2.8 2.8" />
+                  <path d="M9.9 4.2A10.8 10.8 0 0 1 12 4c5 0 9 4.6 10 8a12.7 12.7 0 0 1-3.1 4.8" />
+                  <path d="M6.6 6.6A12.4 12.4 0 0 0 2 12c1 3.4 5 8 10 8a10.9 10.9 0 0 0 4.1-.8" />
+                </svg>
+              ) : (
+                <svg
+                  aria-hidden="true"
+                  className="h-5 w-5"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M2 12s4-8 10-8 10 8 10 8-4 8-10 8S2 12 2 12Z" />
+                  <circle cx="12" cy="12" r="3" />
+                </svg>
+              )}
+            </button>
+          </div>
 
           <Link
             href="/forgot-password"

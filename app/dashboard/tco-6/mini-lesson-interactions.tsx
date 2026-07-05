@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
-import type { DragEvent } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   ComparisonDefinitionBlocks,
   FormattedConceptText,
@@ -134,29 +133,45 @@ function nextIncorrectState(attempts = 0) {
   };
 }
 
-function sequenceAnswer(steps: string[]) {
-  return steps.join(" \u2192 ");
-}
-
-function matchingAnswer(pairs: { term: string; definition: string }[]) {
-  return pairs.map((pair) => `${pair.term} \u2192 ${pair.definition}`).join("; ");
-}
-
-function sortingAnswer(items: { label: string; category: string }[]) {
-  return items.map((item) => `${item.label} \u2192 ${item.category}`).join("; ");
-}
-
-function selectAllAnswer(
-  choices: { label: string; correct: boolean }[],
-) {
-  return choices
-    .filter((choice) => choice.correct)
-    .map((choice) => choice.label)
-    .join("; ");
-}
-
 function defaultLearnHint() {
   return "Compare the critical features in the question before trying again.";
+}
+
+function formatArrowPair(left: string, right: string) {
+  return `${left} → ${right}`;
+}
+
+function LearningQuestionFormatLabel() {
+  if (process.env.NODE_ENV !== "development") {
+    return null;
+  }
+
+  return (
+    <p className="mx-auto mb-4 inline-flex rounded-full border border-blue-200 bg-white/90 px-3 py-1 text-xs font-black text-blue-700 shadow-sm">
+      Learning question format: multiple choice/fill-in-the-blank
+    </p>
+  );
+}
+
+function joinAnswerParts(parts: string[]) {
+  return parts.filter(Boolean).join("; ");
+}
+
+function makeUniqueChoices(answer: string, candidates: string[]) {
+  const choices = [answer, ...candidates]
+    .map((choice) => choice.trim())
+    .filter(Boolean)
+    .filter((choice, index, list) => list.indexOf(choice) === index);
+
+  if (choices.length < 2) {
+    choices.push("A different option from the lesson");
+  }
+
+  return choices.slice(0, 4);
+}
+
+function normalizeFillBlankAnswer(value: string) {
+  return value.trim().replace(/\s+/g, " ").toLowerCase();
 }
 
 const centeredTwoColumnGroupClass =
@@ -165,17 +180,15 @@ const noMidWordWrapClass =
   "min-w-0 whitespace-normal break-normal hyphens-none [overflow-wrap:normal] [word-break:normal]";
 const mobileInteractionTextClass = "text-[0.8125rem] leading-5 sm:text-sm sm:leading-6";
 const twoColumnCardClass =
-  `w-[calc(50%_-_0.5rem)] ${noMidWordWrapClass}`;
+  `w-full sm:w-[calc(50%_-_0.5rem)] ${noMidWordWrapClass}`;
 const centeredChoiceGroupClass =
   "mx-auto mt-5 flex w-full max-w-3xl flex-wrap justify-center gap-3";
-const centeredWideChoiceGroupClass =
-  "mx-auto mt-5 flex w-full max-w-4xl flex-wrap justify-center gap-3";
 const choiceCardClass =
-  `w-[calc(50%_-_0.375rem)] ${noMidWordWrapClass}`;
+  `w-full sm:w-[calc(50%_-_0.375rem)] ${noMidWordWrapClass}`;
 const centeredFourColumnGroupClass =
   "mx-auto mt-5 flex w-full max-w-4xl flex-wrap justify-center gap-3";
 const fourColumnCardClass =
-  `w-[calc(50%_-_0.375rem)] lg:w-[calc(25%_-_0.5625rem)] ${noMidWordWrapClass}`;
+  `w-full sm:w-[calc(50%_-_0.375rem)] lg:w-[calc(25%_-_0.5625rem)] ${noMidWordWrapClass}`;
 
 export function InteractiveVisualBlock({
   lessonSlug,
@@ -204,7 +217,26 @@ export function InteractiveVisualBlock({
             <ComparisonDefinitionBlocks text={visual.cue} />
           </div>
         ) : null}
-        <CompletionButton onPassedChange={onPassedChange} />
+        <ChoiceInteraction
+          lessonSlug={lessonSlug}
+          onPassedChange={onPassedChange}
+          sectionSlug={sectionSlug}
+          visual={{
+            type: "choice",
+            prompt: "Which option best captures this comparison?",
+            choices: makeUniqueChoices(
+              visual.cue ?? `${visual.leftTitle}: ${visual.leftText}; ${visual.rightTitle}: ${visual.rightText}`,
+              [
+                `${visual.leftTitle}: ${visual.rightText}; ${visual.rightTitle}: ${visual.leftText}`,
+                visual.leftText,
+                visual.rightText,
+              ],
+            ),
+            answer: visual.cue ?? `${visual.leftTitle}: ${visual.leftText}; ${visual.rightTitle}: ${visual.rightText}`,
+            feedback: visual.cue ?? `Correct. ${visual.leftTitle} and ${visual.rightTitle} differ by their critical features.`,
+            hint: "Compare the two definitions by their discriminating feature before choosing.",
+          }}
+        />
       </div>
     );
   }
@@ -298,7 +330,13 @@ export function InteractiveVisualBlock({
   }
 
   if (visual.type === "quadrant") {
-    return <ConsequenceChart onPassedChange={onPassedChange} />;
+    return (
+      <ConsequenceChart
+        lessonSlug={lessonSlug}
+        onPassedChange={onPassedChange}
+        sectionSlug={sectionSlug}
+      />
+    );
   }
 
   return (
@@ -311,15 +349,38 @@ export function InteractiveVisualBlock({
           <RevealCard title="Nonexample" text={visual.nonexample} tone="teal" />
         </div>
       </div>
-      <CompletionButton onPassedChange={onPassedChange} />
+      <ChoiceInteraction
+        lessonSlug={lessonSlug}
+        onPassedChange={onPassedChange}
+        sectionSlug={sectionSlug}
+        visual={{
+          type: "choice",
+          prompt: "Which option correctly distinguishes the example from the nonexample?",
+          choices: makeUniqueChoices(
+            `Example: ${visual.example}; Nonexample: ${visual.nonexample}`,
+            [
+              `Example: ${visual.nonexample}; Nonexample: ${visual.example}`,
+              visual.example,
+              visual.nonexample,
+            ],
+          ),
+          answer: `Example: ${visual.example}; Nonexample: ${visual.nonexample}`,
+          feedback: "Correct. The example matches the lesson concept; the nonexample is missing the critical feature.",
+          hint: "Look for the option that keeps the example and nonexample in their original roles.",
+        }}
+      />
     </div>
   );
 }
 
 function ConsequenceChart({
+  lessonSlug,
   onPassedChange,
+  sectionSlug,
 }: {
+  lessonSlug: string;
   onPassedChange?: (passed: boolean) => void;
+  sectionSlug: string;
 }) {
   const cards = [
     {
@@ -371,7 +432,24 @@ function ConsequenceChart({
           </div>
         ))}
       </div>
-      <CompletionButton onPassedChange={onPassedChange} />
+      <ChoiceInteraction
+        lessonSlug={lessonSlug}
+        onPassedChange={onPassedChange}
+        sectionSlug={sectionSlug}
+        visual={{
+          type: "choice",
+          prompt: "Which statement correctly reads the consequence chart?",
+          choices: [
+            "Positive and negative describe whether a stimulus is added or removed; reinforcement and punishment describe whether behavior increases or decreases.",
+            "Positive and negative describe whether behavior increases or decreases; reinforcement and punishment describe whether a stimulus is added or removed.",
+            "Positive reinforcement and positive punishment both decrease behavior because something is added.",
+            "Negative reinforcement and negative punishment both increase behavior because something is removed.",
+          ],
+          answer: "Positive and negative describe whether a stimulus is added or removed; reinforcement and punishment describe whether behavior increases or decreases.",
+          feedback: "Correct. Positive/negative describes the stimulus change, while reinforcement/punishment describes the future effect on behavior.",
+          hint: "Separate the stimulus change from the behavior-change effect.",
+        }}
+      />
     </div>
   );
 }
@@ -439,175 +517,34 @@ function FlowInteraction({
   sectionSlug: string;
   visual: Extract<VisualKind, { type: "flow" }>;
 }) {
-  const { resetState, state, updateState } = useLearnInteractionState(
-    sectionSlug,
-    lessonSlug,
-  );
-  const [selectedSteps, setSelectedSteps] = useState<string[]>(
-    () => state.selectedSteps ?? [],
-  );
-  const [submitted, setSubmitted] = useState(() => Boolean(state.submitted));
-  const [draggedStep, setDraggedStep] = useState("");
-  const shuffledSteps = useMemo(() => [...visual.steps].reverse(), [visual.steps]);
-  const isCorrect =
-    selectedSteps.length === visual.steps.length &&
-    selectedSteps.every((step, index) => step === visual.steps[index]);
-  const completed = Boolean(state.completed);
-  const remediation = Boolean(state.remediation);
-  useRestoreLearnCompletion(completed, onPassedChange);
+  const answer = visual.steps.join(" → ");
+  const reversed = [...visual.steps].reverse().join(" → ");
+  const swapped = [...visual.steps];
 
-  function chooseStep(step: string) {
-    if (completed || selectedSteps.includes(step)) {
-      return;
-    }
-
-    setSelectedSteps((current) => {
-      const next = [...current, step];
-      updateState({ selectedSteps: next, submitted: false });
-      return next;
-    });
-    setSubmitted(false);
+  if (swapped.length > 2) {
+    [swapped[1], swapped[2]] = [swapped[2], swapped[1]];
+  } else {
+    swapped.reverse();
   }
 
-  function reset() {
-    setSelectedSteps([]);
-    setSubmitted(false);
-    setDraggedStep("");
-    resetState({ selectedSteps: [] });
-    onPassedChange?.(false);
-  }
-
-  function dropStep(index: number) {
-    if (completed || !draggedStep || selectedSteps.includes(draggedStep)) {
-      return;
-    }
-
-    setSelectedSteps((current) => {
-      const next = [...current];
-      next[index] = draggedStep;
-      const filtered = next.filter(Boolean);
-      updateState({ selectedSteps: filtered, submitted: false });
-      return filtered;
-    });
-    setDraggedStep("");
-    setSubmitted(false);
-  }
+  const rotated = [...visual.steps.slice(1), visual.steps[0]].join(" → ");
 
   return (
-    <div className="mx-auto mt-8 w-full max-w-5xl rounded-3xl border border-blue-100 bg-blue-50 p-5 text-center">
-      <h3 className="text-2xl font-black text-slate-950">
-        <FormattedConceptText text={visual.prompt ?? "Choose the correct sequence."} />
-      </h3>
-      <p className={`mt-2 font-semibold text-slate-950 ${mobileInteractionTextClass} ${noMidWordWrapClass}`}>
-        Click each option in the order you think it belongs. The correct labels
-        stay hidden until you check your answer.
-      </p>
-
-      <div className="mx-auto mt-5 flex w-full max-w-4xl flex-wrap justify-center gap-3">
-        {shuffledSteps.map((step) => (
-          <button
-            key={step}
-            type="button"
-            draggable={!completed && !selectedSteps.includes(step)}
-            disabled={completed || selectedSteps.includes(step)}
-            onDragStart={() => setDraggedStep(step)}
-            onClick={() => chooseStep(step)}
-            className={`w-[calc(50%_-_0.375rem)] rounded-2xl border border-blue-100 bg-white p-3 font-black text-slate-950 transition hover:border-blue-300 disabled:cursor-not-allowed disabled:opacity-50 sm:p-4 md:w-[calc(25%_-_0.5625rem)] ${noMidWordWrapClass} ${mobileInteractionTextClass}`}
-          >
-            {step}
-          </button>
-        ))}
-      </div>
-
-      <div className="mx-auto mt-6 flex w-full max-w-4xl flex-wrap justify-center gap-3">
-        {visual.steps.map((_step, index) => (
-          <div
-            key={index}
-            className={`min-h-28 w-[calc(50%_-_0.375rem)] rounded-3xl border border-white bg-white/80 p-3 sm:p-4 md:w-[calc(25%_-_0.5625rem)] ${noMidWordWrapClass}`}
-            onDragOver={(event: DragEvent<HTMLDivElement>) => event.preventDefault()}
-            onDrop={() => dropStep(index)}
-          >
-            <div
-              className="mx-auto flex h-10 w-10 items-center justify-center rounded-2xl bg-white text-lg font-black text-slate-950"
-            >
-              {index + 1}
-            </div>
-            <p className={`mt-3 font-black text-slate-950 ${mobileInteractionTextClass} ${noMidWordWrapClass}`}>
-              {submitted
-                ? visual.steps[index]
-                : selectedSteps[index] ?? "Choose a step"}
-            </p>
-          </div>
-        ))}
-      </div>
-
-      <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
-        <button
-          type="button"
-          disabled={selectedSteps.length !== visual.steps.length}
-          onClick={() => {
-            setSubmitted(true);
-            if (isCorrect) {
-              updateState({
-                attempts: state.attempts ?? 0,
-                completed: true,
-                remediation: false,
-                selectedSteps,
-                submitted: true,
-              });
-              onPassedChange?.(true);
-            } else {
-              const nextState = nextIncorrectState(state.attempts);
-              updateState({ ...nextState, selectedSteps });
-              onPassedChange?.(nextState.completed);
-            }
-          }}
-          className="w-full rounded-xl bg-slate-950 px-6 py-3 text-center text-sm font-black text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
-        >
-          Check Answer
-        </button>
-      </div>
-
-      {submitted ? (
-        <div
-          className={`mt-5 rounded-2xl border p-4 ${
-            isCorrect
-              ? "border-green-100 bg-green-50"
-              : remediation
-                ? "border-amber-200 bg-amber-50"
-                : "border-red-100 bg-red-50"
-          }`}
-        >
-          <p
-            className={`text-sm font-black uppercase tracking-wide ${
-              isCorrect
-                ? "text-green-700"
-                : remediation
-                ? "text-amber-700"
-                : "text-red-700"
-            }`}
-          >
-            {isCorrect
-              ? "Correct sequence"
-              : remediation
-                ? "Review topic again"
-                : "Review and try again"}
-          </p>
-          {remediation ? (
-            <p className="mt-2 text-sm font-black text-slate-950">
-              Correct answer: <FormattedConceptText text={sequenceAnswer(visual.steps)} />
-            </p>
-          ) : null}
-          <p className={`mt-2 font-semibold text-slate-950 ${mobileInteractionTextClass} ${noMidWordWrapClass}`}>
-            {isCorrect || remediation
-              ? visual.feedback ??
-                "Respondent conditioning moves from Neutral Stimulus (NS), to pairing with an Unconditioned Stimulus (US), to Conditioned Stimulus (CS), to Conditioned Response (CR)."
-              : defaultLearnHint()}
-          </p>
-          {!isCorrect ? <ResetAnswersButton onClick={reset} /> : null}
-        </div>
-      ) : null}
-    </div>
+    <ChoiceInteraction
+      lessonSlug={lessonSlug}
+      onPassedChange={onPassedChange}
+      sectionSlug={sectionSlug}
+      visual={{
+        type: "choice",
+        prompt: visual.prompt ?? "Which sequence is correct?",
+        choices: makeUniqueChoices(answer, [swapped.join(" → "), reversed, rotated]),
+        answer,
+        feedback:
+          visual.feedback ??
+          `Correct. The sequence is ${answer}.`,
+        hint: "Look for the option that keeps the steps in their behavior-analytic order.",
+      }}
+    />
   );
 }
 
@@ -642,6 +579,7 @@ function ChoiceInteraction({
 
   return (
     <div className="mx-auto mt-8 w-full max-w-4xl rounded-3xl border border-purple-100 bg-purple-50 p-5 text-center">
+      <LearningQuestionFormatLabel />
       <h3 className="text-2xl font-black text-slate-950">
         <FormattedConceptText text={visual.prompt} />
       </h3>
@@ -744,6 +682,7 @@ function GraphInterpretationInteraction({
 
   return (
     <div className="mx-auto mt-8 w-full max-w-5xl rounded-3xl border border-blue-100 bg-white p-5 text-center shadow-sm">
+      <LearningQuestionFormatLabel />
       <p className="text-sm font-black uppercase tracking-wide text-blue-600">
         Graph interpretation
       </p>
@@ -858,180 +797,47 @@ function MatchingInteraction({
   sectionSlug: string;
   visual: Extract<VisualKind, { type: "matching" }>;
 }) {
-  const { resetState, state, updateState } = useLearnInteractionState(
-    sectionSlug,
-    lessonSlug,
+  const answer = joinAnswerParts(
+    visual.pairs.map((pair) => formatArrowPair(pair.term, pair.definition)),
   );
-  const [activeTerm, setActiveTerm] = useState("");
-  const [matches, setMatches] = useState<Record<string, string>>(
-    () => state.matches ?? {},
+  const rotatedDefinitions = visual.pairs.map((pair, index) =>
+    formatArrowPair(
+      pair.term,
+      visual.pairs[(index + 1) % visual.pairs.length]?.definition ?? pair.definition,
+    ),
   );
-  const [submitted, setSubmitted] = useState(() => Boolean(state.submitted));
-  const definitions = useMemo(
-    () => [...visual.pairs].reverse().map((pair) => pair.definition),
-    [visual.pairs],
+  const rotatedTerms = visual.pairs.map((pair, index) =>
+    formatArrowPair(
+      visual.pairs[(index + 1) % visual.pairs.length]?.term ?? pair.term,
+      pair.definition,
+    ),
   );
-  const allMatched = definitions.every((definition) => matches[definition]);
-  const isCorrect = visual.pairs.every(
-    (pair) => matches[pair.definition] === pair.term,
-  );
-  const completed = Boolean(state.completed);
-  const remediation = Boolean(state.remediation);
-  useRestoreLearnCompletion(completed, onPassedChange);
-
-  function assignMatch(definition: string, term = activeTerm) {
-    if (completed || !term) {
-      return;
-    }
-
-    setSubmitted(false);
-    onPassedChange?.(false);
-    setMatches((current) => {
-      const next = { ...current };
-
-      Object.entries(next).forEach(([matchedDefinition, matchedTerm]) => {
-        if (matchedTerm === term && matchedDefinition !== definition) {
-          delete next[matchedDefinition];
-        }
-      });
-
-      next[definition] = term;
-      updateState({ matches: next, submitted: false });
-      return next;
-    });
-    setActiveTerm("");
-  }
-
-  function dragTerm(event: DragEvent<HTMLButtonElement>, term: string) {
-    if (completed) {
-      return;
-    }
-
-    event.dataTransfer.setData("text/plain", term);
-    event.dataTransfer.effectAllowed = "move";
-    setActiveTerm(term);
-    setSubmitted(false);
-    onPassedChange?.(false);
-  }
-
-  function dropTerm(event: DragEvent<HTMLButtonElement>, definition: string) {
-    event.preventDefault();
-    const term = event.dataTransfer.getData("text/plain") || activeTerm;
-    assignMatch(definition, term);
-  }
-
-  function reset() {
-    setActiveTerm("");
-    setMatches({});
-    setSubmitted(false);
-    resetState({ matches: {} });
-    onPassedChange?.(false);
-  }
+  const lastDefinitionShift = visual.pairs.map((pair, index) => {
+    const isLast = index === visual.pairs.length - 1;
+    return formatArrowPair(
+      pair.term,
+      isLast ? visual.pairs[0]?.definition ?? pair.definition : pair.definition,
+    );
+  });
 
   return (
-    <div className="mx-auto mt-8 w-full max-w-5xl rounded-3xl border border-blue-100 bg-blue-50 p-5 text-center">
-      <h3 className="text-2xl font-black text-slate-950">
-        <FormattedConceptText text={visual.prompt} />
-      </h3>
-      <p className="mx-auto mt-2 max-w-3xl text-sm font-semibold leading-6 text-slate-950">
-        Drag a term to its definition, or click a term and then click the
-        matching definition. Keyboard users can press Enter or Space on a term,
-        then Enter or Space on a definition.
-      </p>
-      <div className="mx-auto mt-5 grid w-full max-w-4xl items-start gap-4 lg:grid-cols-[0.8fr_1.2fr]">
-        <div className="flex flex-wrap justify-center gap-3 lg:grid lg:grid-cols-1">
-          {visual.pairs.map((pair) => (
-            <button
-              key={pair.term}
-              type="button"
-              aria-pressed={activeTerm === pair.term}
-              draggable
-              onDragStart={(event) => dragTerm(event, pair.term)}
-              onClick={() => {
-                if (completed) {
-                  return;
-                }
-                setActiveTerm(pair.term);
-                setSubmitted(false);
-                onPassedChange?.(false);
-              }}
-              className={`min-h-16 w-[calc(50%_-_0.375rem)] cursor-grab rounded-2xl border p-3 font-black transition active:cursor-grabbing sm:p-4 lg:w-full ${noMidWordWrapClass} ${mobileInteractionTextClass} ${
-                pair.term === "Duration" ? "lg:mt-3" : ""
-              } ${
-                activeTerm === pair.term
-                  ? "border-purple-300 bg-purple-50 text-purple-700"
-                  : "border-white bg-white text-slate-950 hover:border-purple-200"
-              }`}
-            >
-              <FormattedConceptText text={pair.term} />
-              {Object.values(matches).includes(pair.term) ? (
-                <span className="mt-2 block text-xs font-black uppercase tracking-wide text-slate-600">
-                  Placed
-                </span>
-              ) : null}
-            </button>
-          ))}
-        </div>
-        <div className="grid gap-3">
-          {definitions.map((definition) => (
-            <button
-              key={definition}
-              type="button"
-              aria-label={`Match a term to definition: ${definition}`}
-              onDragOver={(event: DragEvent<HTMLButtonElement>) => {
-                event.preventDefault();
-                event.dataTransfer.dropEffect = "move";
-              }}
-              onDrop={(event) => dropTerm(event, definition)}
-              onClick={() => assignMatch(definition)}
-              className={`rounded-2xl border bg-white p-3 text-left font-semibold text-slate-950 transition sm:p-4 ${mobileInteractionTextClass} ${noMidWordWrapClass} ${
-                matches[definition]
-                  ? "border-blue-300"
-                  : "border-white hover:border-blue-200"
-              }`}
-            >
-              <span className="mb-2 block text-xs font-black uppercase tracking-wide text-blue-600">
-                {matches[definition] ?? "Choose a term"}
-              </span>
-              <FormattedConceptText text={definition} />
-            </button>
-          ))}
-        </div>
-      </div>
-      <CheckButton
-        disabled={!allMatched}
-        onClick={() => {
-          setSubmitted(true);
-          if (isCorrect) {
-            updateState({
-              attempts: state.attempts ?? 0,
-              completed: true,
-              matches,
-              remediation: false,
-              submitted: true,
-            });
-            onPassedChange?.(true);
-          } else {
-            const nextState = nextIncorrectState(state.attempts);
-            updateState({ ...nextState, matches });
-            onPassedChange?.(nextState.completed);
-          }
-        }}
-      />
-      {submitted ? (
-        <FeedbackBox
-          correct={isCorrect}
-          correctAnswer={matchingAnswer(visual.pairs)}
-          message={
-            isCorrect
-              ? "Matched. Operant conditioning is organized around behavior and its consequences."
-              : "Review each term and match it to the role it plays in the contingency."
-          }
-          remediation={remediation}
-          onReset={reset}
-        />
-      ) : null}
-    </div>
+    <ChoiceInteraction
+      lessonSlug={lessonSlug}
+      onPassedChange={onPassedChange}
+      sectionSlug={sectionSlug}
+      visual={{
+        type: "choice",
+        prompt: `${visual.prompt} Which option shows the correct pairings?`,
+        choices: makeUniqueChoices(answer, [
+          joinAnswerParts(rotatedDefinitions),
+          joinAnswerParts(rotatedTerms),
+          joinAnswerParts(lastDefinitionShift),
+        ]),
+        answer,
+        feedback: `Correct. ${answer}`,
+        hint: "Look for the option where each term is paired with its defining feature.",
+      }}
+    />
   );
 }
 
@@ -1046,88 +852,22 @@ function TrueFalseInteraction({
   sectionSlug: string;
   visual: Extract<VisualKind, { type: "true-false" }>;
 }) {
-  const { resetState, state, updateState } = useLearnInteractionState(
-    sectionSlug,
-    lessonSlug,
-  );
-  const [selected, setSelected] = useState<boolean | null>(
-    () => state.selectedBoolean ?? null,
-  );
-  const [submitted, setSubmitted] = useState(() => Boolean(state.submitted));
-  const isCorrect = selected === visual.answer;
-  const completed = Boolean(state.completed);
-  const remediation = Boolean(state.remediation);
-  useRestoreLearnCompletion(completed, onPassedChange);
-
-  function reset() {
-    setSelected(null);
-    setSubmitted(false);
-    resetState({ selectedBoolean: null });
-    onPassedChange?.(false);
-  }
+  const answer = visual.answer ? "True" : "False";
 
   return (
-    <div className="mx-auto mt-8 w-full max-w-4xl rounded-3xl border border-green-100 bg-green-50 p-5 text-center">
-      <h3 className="text-2xl font-black text-slate-950">
-        <FormattedConceptText text={visual.prompt} />
-      </h3>
-      <p className="mx-auto mt-4 max-w-3xl rounded-2xl bg-white p-5 text-lg font-black leading-8 text-slate-950">
-        {visual.statement}
-      </p>
-      <div className="mx-auto mt-5 flex max-w-xl flex-col items-center justify-center gap-3 sm:flex-row">
-        {[true, false].map((value) => (
-          <button
-            key={String(value)}
-            type="button"
-          onClick={() => {
-              if (completed) {
-                return;
-              }
-              setSelected(value);
-              setSubmitted(false);
-              updateState({ selectedBoolean: value, submitted: false });
-              onPassedChange?.(false);
-            }}
-            className={`rounded-xl border px-8 py-3 text-sm font-black transition ${
-              selected === value
-                ? "border-green-300 bg-white text-green-700"
-                : "border-white bg-white/70 text-slate-950 hover:border-green-200"
-            }`}
-          >
-            {value ? "True" : "False"}
-          </button>
-        ))}
-      </div>
-      <CheckButton
-        disabled={selected === null}
-        onClick={() => {
-          setSubmitted(true);
-          if (isCorrect) {
-            updateState({
-              attempts: state.attempts ?? 0,
-              completed: true,
-              remediation: false,
-              selectedBoolean: selected,
-              submitted: true,
-            });
-            onPassedChange?.(true);
-          } else {
-            const nextState = nextIncorrectState(state.attempts);
-            updateState({ ...nextState, selectedBoolean: selected });
-            onPassedChange?.(nextState.completed);
-          }
-        }}
-      />
-      {submitted ? (
-        <FeedbackBox
-          correct={isCorrect}
-          correctAnswer={visual.answer ? "True" : "False"}
-          message={isCorrect || remediation ? visual.feedback : defaultLearnHint()}
-          remediation={remediation}
-          onReset={reset}
-        />
-      ) : null}
-    </div>
+    <ChoiceInteraction
+      lessonSlug={lessonSlug}
+      onPassedChange={onPassedChange}
+      sectionSlug={sectionSlug}
+      visual={{
+        type: "choice",
+        prompt: `${visual.prompt} ${visual.statement}`,
+        choices: ["True", "False"],
+        answer,
+        feedback: visual.feedback,
+        hint: "Decide whether the statement matches the critical features from the lesson.",
+      }}
+    />
   );
 }
 
@@ -1142,147 +882,41 @@ function SortingInteraction({
   sectionSlug: string;
   visual: Extract<VisualKind, { type: "sorting" }>;
 }) {
-  const { resetState, state, updateState } = useLearnInteractionState(
-    sectionSlug,
-    lessonSlug,
+  const answer = joinAnswerParts(
+    visual.items.map((item) => formatArrowPair(item.label, item.category)),
   );
-  const [activeItem, setActiveItem] = useState("");
-  const [placements, setPlacements] = useState<Record<string, string>>(
-    () => state.placements ?? {},
+  const [firstCategory, secondCategory] = visual.categories;
+  const flipped = visual.items.map((item) =>
+    formatArrowPair(
+      item.label,
+      item.category === firstCategory ? secondCategory : firstCategory,
+    ),
   );
-  const [submitted, setSubmitted] = useState(() => Boolean(state.submitted));
-  const allSorted = Object.keys(placements).length === visual.items.length;
-  const isCorrect = visual.items.every(
-    (item) => placements[item.label] === item.category,
+  const firstOnly = visual.items.map((item) =>
+    formatArrowPair(item.label, firstCategory),
   );
-  const completed = Boolean(state.completed);
-  const remediation = Boolean(state.remediation);
-  useRestoreLearnCompletion(completed, onPassedChange);
-
-  function placeItem(category: string) {
-    if (completed || !activeItem) {
-      return;
-    }
-
-    setSubmitted(false);
-    onPassedChange?.(false);
-    setPlacements((current) => {
-      const next = { ...current, [activeItem]: category };
-      updateState({ placements: next, submitted: false });
-      return next;
-    });
-    setActiveItem("");
-  }
-
-  function dropItem(category: string, item: string) {
-    if (completed) {
-      return;
-    }
-
-    setSubmitted(false);
-    onPassedChange?.(false);
-    setPlacements((current) => {
-      const next = { ...current, [item]: category };
-      updateState({ placements: next, submitted: false });
-      return next;
-    });
-    setActiveItem("");
-  }
-
-  function reset() {
-    setActiveItem("");
-    setPlacements({});
-    setSubmitted(false);
-    resetState({ placements: {} });
-    onPassedChange?.(false);
-  }
+  const secondOnly = visual.items.map((item) =>
+    formatArrowPair(item.label, secondCategory),
+  );
 
   return (
-    <div className="mx-auto mt-8 w-full max-w-5xl rounded-3xl border border-teal-100 bg-teal-50 p-5 text-center">
-      <h3 className="text-2xl font-black text-slate-950">
-        <FormattedConceptText text={visual.prompt} />
-      </h3>
-      <div className={centeredWideChoiceGroupClass}>
-        {visual.items.map((item) => (
-          <button
-            key={item.label}
-            type="button"
-            draggable={!submitted}
-            onDragStart={() => setActiveItem(item.label)}
-            onClick={() => {
-              if (completed) {
-                return;
-              }
-              setActiveItem(item.label);
-              setSubmitted(false);
-              onPassedChange?.(false);
-            }}
-            className={`${choiceCardClass} rounded-2xl border p-3 font-black transition sm:p-4 ${mobileInteractionTextClass} ${
-              activeItem === item.label
-                ? "border-teal-300 bg-white text-teal-700"
-                : "border-white bg-white text-slate-950 hover:border-teal-200"
-            }`}
-          >
-            <FormattedConceptText text={item.label} />
-            {placements[item.label] ? (
-              <span className="mt-2 block text-xs uppercase tracking-wide text-slate-600">
-                Sorted to: {placements[item.label]}
-              </span>
-            ) : null}
-          </button>
-        ))}
-      </div>
-      <div className={centeredTwoColumnGroupClass}>
-        {visual.categories.map((category) => (
-          <button
-            key={category}
-            type="button"
-            onClick={() => placeItem(category)}
-            onDragOver={(event: DragEvent<HTMLButtonElement>) => event.preventDefault()}
-            onDrop={() => dropItem(category, activeItem)}
-            className={`${twoColumnCardClass} min-h-28 rounded-3xl border border-white bg-white/80 p-4 text-center font-black text-slate-950 transition hover:border-teal-200 sm:p-5 ${mobileInteractionTextClass}`}
-          >
-            <FormattedConceptText text={category} />
-            <span className="mt-3 block text-xs font-semibold leading-5 text-slate-700">
-              Click a scenario, then click here. Drag and drop also works.
-            </span>
-          </button>
-        ))}
-      </div>
-      <CheckButton
-        disabled={!allSorted}
-        onClick={() => {
-          setSubmitted(true);
-          if (isCorrect) {
-            updateState({
-              attempts: state.attempts ?? 0,
-              completed: true,
-              placements,
-              remediation: false,
-              submitted: true,
-            });
-            onPassedChange?.(true);
-          } else {
-            const nextState = nextIncorrectState(state.attempts);
-            updateState({ ...nextState, placements });
-            onPassedChange?.(nextState.completed);
-          }
-        }}
-      />
-      {submitted ? (
-        <FeedbackBox
-          correct={isCorrect}
-          correctAnswer={sortingAnswer(visual.items)}
-          message={
-            isCorrect
-              ? "Sorted correctly. The technical label depends on the contingency and future behavior change."
-              : "Review each scenario and ask what happened to the stimulus and future behavior."
-          }
-          remediation={remediation}
-          onReset={reset}
-        />
-      ) : null}
-    </div>
+    <ChoiceInteraction
+      lessonSlug={lessonSlug}
+      onPassedChange={onPassedChange}
+      sectionSlug={sectionSlug}
+      visual={{
+        type: "choice",
+        prompt: `${visual.prompt} Which option sorts every item correctly?`,
+        choices: makeUniqueChoices(answer, [
+          joinAnswerParts(flipped),
+          joinAnswerParts(firstOnly),
+          joinAnswerParts(secondOnly),
+        ]),
+        answer,
+        feedback: `Correct. ${answer}`,
+        hint: "Compare each item to the category definition before choosing the full sorted set.",
+      }}
+    />
   );
 }
 
@@ -1304,7 +938,7 @@ function FillBlankInteraction({
   const [answer, setAnswer] = useState(() => state.answer ?? "");
   const [submitted, setSubmitted] = useState(() => Boolean(state.submitted));
   const isCorrect =
-    answer.trim().toLowerCase() === visual.answer.trim().toLowerCase();
+    normalizeFillBlankAnswer(answer) === normalizeFillBlankAnswer(visual.answer);
   const completed = Boolean(state.completed);
   const remediation = Boolean(state.remediation);
   useRestoreLearnCompletion(completed, onPassedChange);
@@ -1318,6 +952,7 @@ function FillBlankInteraction({
 
   return (
     <div className="mx-auto mt-8 w-full max-w-4xl rounded-3xl border border-blue-100 bg-blue-50 p-5 text-center">
+      <LearningQuestionFormatLabel />
       <h3 className="text-2xl font-black text-slate-950">
         <FormattedConceptText text={visual.prompt} />
       </h3>
@@ -1385,103 +1020,34 @@ function SelectAllInteraction({
   sectionSlug: string;
   visual: Extract<VisualKind, { type: "select-all" }>;
 }) {
-  const { resetState, state, updateState } = useLearnInteractionState(
-    sectionSlug,
-    lessonSlug,
-  );
-  const [selected, setSelected] = useState<string[]>(
-    () => state.selectedItems ?? [],
-  );
-  const [submitted, setSubmitted] = useState(() => Boolean(state.submitted));
   const correctLabels = visual.choices
     .filter((choice) => choice.correct)
-    .map((choice) => choice.label)
-    .sort();
-  const selectedLabels = [...selected].sort();
-  const isCorrect =
-    correctLabels.length === selectedLabels.length &&
-    correctLabels.every((label, index) => label === selectedLabels[index]);
-  const completed = Boolean(state.completed);
-  const remediation = Boolean(state.remediation);
-  useRestoreLearnCompletion(completed, onPassedChange);
-
-  function toggle(label: string) {
-    if (completed) {
-      return;
-    }
-
-    if (submitted) {
-      setSubmitted(false);
-      onPassedChange?.(false);
-    }
-
-    setSelected((current) => {
-      const next = current.includes(label)
-        ? current.filter((item) => item !== label)
-        : [...current, label];
-      updateState({ selectedItems: next, submitted: false });
-      return next;
-    });
-  }
-
-  function reset() {
-    setSelected([]);
-    setSubmitted(false);
-    resetState({ selectedItems: [] });
-    onPassedChange?.(false);
-  }
+    .map((choice) => choice.label);
+  const incorrectLabels = visual.choices
+    .filter((choice) => !choice.correct)
+    .map((choice) => choice.label);
+  const answer = joinAnswerParts(correctLabels);
+  const omitOne = joinAnswerParts(correctLabels.slice(0, -1));
+  const addOne = joinAnswerParts([
+    ...correctLabels,
+    incorrectLabels[0] ?? visual.choices[0]?.label ?? "",
+  ]);
+  const allChoices = joinAnswerParts(visual.choices.map((choice) => choice.label));
 
   return (
-    <div className="mx-auto mt-8 w-full max-w-4xl rounded-3xl border border-purple-100 bg-purple-50 p-5 text-center">
-      <h3 className="text-2xl font-black text-slate-950">
-        <FormattedConceptText text={visual.prompt} />
-      </h3>
-      <div className={centeredChoiceGroupClass}>
-        {visual.choices.map((choice) => (
-          <button
-            key={choice.label}
-            type="button"
-            onClick={() => toggle(choice.label)}
-            className={`${choiceCardClass} rounded-2xl border p-3 font-black transition sm:p-4 ${mobileInteractionTextClass} ${
-              selected.includes(choice.label)
-                ? "border-purple-300 bg-white text-purple-700"
-                : "border-white bg-white/80 text-slate-950 hover:border-purple-200"
-            }`}
-          >
-            {choice.label}
-          </button>
-        ))}
-      </div>
-      <CheckButton
-        disabled={selected.length === 0}
-        onClick={() => {
-          setSubmitted(true);
-          if (isCorrect) {
-            updateState({
-              attempts: state.attempts ?? 0,
-              completed: true,
-              remediation: false,
-              selectedItems: selected,
-              submitted: true,
-            });
-            onPassedChange?.(true);
-          } else {
-            const nextState = nextIncorrectState(state.attempts);
-            updateState({ ...nextState, selectedItems: selected });
-            onPassedChange?.(nextState.completed);
-          }
-        }}
-      />
-      {submitted ? (
-        <FeedbackBox
-          correct={isCorrect}
-          correctAnswer={selectAllAnswer(visual.choices)}
-          message={isCorrect || remediation ? visual.feedback : defaultLearnHint()}
-          remediation={remediation}
-          onReset={reset}
-        />
-      ) : null}
-    </div>
+    <ChoiceInteraction
+      lessonSlug={lessonSlug}
+      onPassedChange={onPassedChange}
+      sectionSlug={sectionSlug}
+      visual={{
+        type: "choice",
+        prompt: `${visual.prompt} Which option includes all and only the correct answers?`,
+        choices: makeUniqueChoices(answer, [omitOne, addOne, allChoices]),
+        answer,
+        feedback: visual.feedback,
+        hint: "Choose the set that includes every correct item without adding an incorrect one.",
+      }}
+    />
   );
 }
 
@@ -1501,34 +1067,6 @@ function CheckButton({
     >
       Check Answer
     </button>
-  );
-}
-
-function CompletionButton({
-  onPassedChange,
-}: {
-  onPassedChange?: (passed: boolean) => void;
-}) {
-  const [completed, setCompleted] = useState(false);
-
-  return (
-    <div className="mt-6 text-center">
-      <button
-        type="button"
-        onClick={() => {
-          setCompleted(true);
-          onPassedChange?.(true);
-        }}
-        className="rounded-xl bg-slate-950 px-6 py-3 text-sm font-black text-white transition hover:opacity-90"
-      >
-        {completed ? "Check Complete" : "Mark Check Complete"}
-      </button>
-      {completed ? (
-        <p className="mx-auto mt-3 max-w-xl rounded-2xl border border-green-100 bg-green-50 p-3 text-sm font-black text-green-700">
-          Completed. You can move to the next lesson.
-        </p>
-      ) : null}
-    </div>
   );
 }
 
@@ -1607,7 +1145,6 @@ function RevealCard({
   title: string;
   tone: "blue" | "teal";
 }) {
-  const [revealed, setRevealed] = useState(false);
   const toneClass =
     tone === "blue"
       ? "border-blue-100 bg-blue-50 text-blue-600"
@@ -1616,19 +1153,9 @@ function RevealCard({
   return (
     <div className={`w-full rounded-3xl border p-6 text-center ${toneClass}`}>
       <p className="text-sm font-black uppercase tracking-wide">{title}</p>
-      {revealed ? (
-        <p className="mt-4 text-xl font-black leading-8 text-slate-950">
-          <FormattedConceptText text={text} />
-        </p>
-      ) : (
-        <button
-          type="button"
-          className="mt-4 rounded-xl bg-white px-5 py-3 text-sm font-black text-slate-950 shadow-sm transition hover:opacity-90"
-          onClick={() => setRevealed(true)}
-        >
-          Reveal
-        </button>
-      )}
+      <p className="mt-4 text-xl font-black leading-8 text-slate-950">
+        <FormattedConceptText text={text} />
+      </p>
     </div>
   );
 }
